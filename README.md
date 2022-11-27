@@ -1,2 +1,2 @@
-# Koller
-Kolesz dolgok
+# Koller-Android
+Android alkalmazás a Koller-hez. 
