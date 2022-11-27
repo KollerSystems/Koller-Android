@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="colorBackground066" format="reference|color" />
+    <attr name="colorBackground033" format="reference|color" />
+    <attr name="colorBackground075" format="reference|color" />
+    <attr name="colorBackground05" format="reference|color" />
+    <attr name="colorBackground025" format="reference|color" />
+
+    <attr name="colorForeground066" format="reference|color" />
+    <attr name="colorForeground033" format="reference|color" />
+    <attr name="colorForeground075" format="reference|color" />
+    <attr name="colorForeground05" format="reference|color" />
+    <attr name="colorForeground025" format="reference|color" />
+</resources>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorOnSurfaceInverse"/>
+            <corners android:bottomLeftRadius="@dimen/panel_round"
+                android:bottomRightRadius="@dimen/panel_round"
+                android:topLeftRadius="0dp"
+                android:topRightRadius="0dp"/>
+            <padding android:bottom="@dimen/panel_padding"
+                android:left="@dimen/panel_padding"
+                android:right="@dimen/panel_padding"
+                android:top="@dimen/panel_padding"/>
+        </shape>
+    </item>
+</selector>
