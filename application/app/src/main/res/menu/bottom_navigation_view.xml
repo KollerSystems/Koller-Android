@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/home_icon"
+        android:title="@string/home" />
+    <item
+        android:id="@+id/calendarFragment"
+        android:icon="@drawable/calendar_icon"
+        android:title="@string/calendar" />
+    <item
+        android:id="@+id/absencesFragment"
+        android:icon="@drawable/alarm_icon"
+        android:title="@string/absence" />
+    <item
+        android:id="@+id/studentHostelFragment"
+        android:icon="@drawable/building"
+        android:title="@string/student_hostel" />
+    <item
+        android:id="@+id/notificationsFragment"
+        android:icon="@drawable/bell_icon"
+        android:title="@string/notifications" />
+</menu>

@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.CalendarFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button"
+                style="@style/SimpleButton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:text="≪" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <com.google.android.material.tabs.TabLayout
+                    style="@style/tab"
+                    android:layout_weight="1"
+                    android:fadingEdgeLength="50dp"
+                    android:requiresFadingEdge="horizontal">
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/monday" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tuesday" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wednesday" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabItem3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/thursday" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabItem4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/friday" />
+
+                    <com.google.android.material.tabs.TabItem
+                        android:id="@+id/tabItem5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/saturday" />
+
+                </com.google.android.material.tabs.TabLayout>
+
+                <TextView
+                    android:id="@+id/textView16"
+                    style="@style/Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:text="Szeptember 15."
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/SimpleButton"
+                android:layout_width="40dp"
+                android:layout_height="match_parent"
+                android:text="≫" />
+
+        </LinearLayout>
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/pullToRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.core.widget.NestedScrollView
+                style="@style/nestedScrollView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fillViewport="true">
+
+                <LinearLayout
+                    style="@style/MainLayout"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:padding="@null"
+                    android:paddingLeft="@dimen/application_padding"
+                    android:paddingTop="@dimen/application_padding"
+                    android:paddingRight="@dimen/application_padding"
+                    android:paddingBottom="@dimen/application_padding">
+
+                    <androidx.cardview.widget.CardView
+                        style="@style/MainCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="-35dp">
+
+                        <LinearLayout
+                            style="@style/MainCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingTop="20dp">
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="120dp"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.imageview.ShapeableImageView
+                                        style="@style/Icon"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/moon" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/sleeping" />
+
+                                        <TextView
+                                            android:id="@+id/textView28"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="@string/in" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="-\n6:00"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        style="@style/MainCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            style="@style/MainCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="195dp"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.imageview.ShapeableImageView
+                                        style="@style/Icon"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/moon_fill" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/doing_things" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="@string/out_in" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="6:00\n-\n15:45"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                                <Button
+                                    android:id="@+id/ediary_button"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="bottom|center_horizontal"
+                                    android:layout_weight="1"
+                                    android:text="@string/open_ediary" />
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.imageview.ShapeableImageView
+                                        style="@style/Icon"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/home_with_person" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/doing_things" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="@string/in" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="15:45\n-\n16:00"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/textView31"
+                        style="@style/CategoryCardName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="15dp"
+                        android:alpha="0.666"
+                        android:text="Foglalkozások időkerete" />
+
+                    <androidx.cardview.widget.CardView
+                        style="@style/MainCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            style="@style/MainCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/textView30"
+                                        style="@style/Title"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:gravity="center"
+                                        android:text="1."
+                                        android:textAlignment="center"
+                                        android:textSize="40sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/doing_things" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="216" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="16:00\n-\n16:45"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/textView30"
+                                        style="@style/Title"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:gravity="center"
+                                        android:text="2."
+                                        android:textAlignment="center"
+                                        android:textSize="40sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="Online Marketing" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="F5" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="16:50\n-\n17:35"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/textView30"
+                                        style="@style/Title"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:gravity="center"
+                                        android:text="3."
+                                        android:textAlignment="center"
+                                        android:textSize="40sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/doing_things" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="216" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="17:40\n-\n18:25"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <TextView
+                                        android:id="@+id/textView30"
+                                        style="@style/Title"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:gravity="center"
+                                        android:text="4."
+                                        android:textAlignment="center"
+                                        android:textSize="40sp" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/doing_things" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="216" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="18:30\n-\n19:15"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        style="@style/MainCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            style="@style/MainCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.imageview.ShapeableImageView
+                                        style="@style/Icon"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/moon_fill" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/doing_things" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="@string/out_in" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="19:15\n-\n21:00"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.imageview.ShapeableImageView
+                                        style="@style/Icon"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/home_with_person" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/doing_things" />
+
+                                        <TextView
+                                            android:id="@+id/textView29"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="@string/in" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="21:00\n-\n22:00"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+
+                    <androidx.cardview.widget.CardView
+                        style="@style/MainCard"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="-35dp">
+
+                        <LinearLayout
+                            style="@style/MainCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:paddingBottom="20dp">
+
+                            <com.google.android.material.card.MaterialCardView
+                                style="@style/Card"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.imageview.ShapeableImageView
+                                        style="@style/Icon"
+                                        android:layout_width="@dimen/panel_icon"
+                                        android:layout_height="@dimen/panel_icon"
+                                        android:layout_gravity="center"
+                                        android:src="@drawable/moon" />
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent"
+                                        android:layout_marginLeft="10dp"
+                                        android:layout_marginTop="@dimen/text_container_margin"
+                                        android:layout_marginRight="10dp"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:gravity="center_vertical"
+                                        android:orientation="vertical">
+
+                                        <TextView
+                                            android:id="@+id/notification_title"
+                                            style="@style/Title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:text="@string/sleeping" />
+
+                                        <TextView
+                                            android:id="@+id/textView28"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="0"
+                                            android:text="@string/in" />
+
+                                    </LinearLayout>
+
+                                    <TextView
+                                        android:id="@+id/textView27"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="22:00\n-"
+                                        android:textAlignment="center" />
+
+                                </LinearLayout>
+
+                            </com.google.android.material.card.MaterialCardView>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/bottom_sheet_duty"
+        style="@style/CustomBottomSheet"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="2dp"
+        app:behavior_hideable="false"
+        app:behavior_peekHeight="56dp"
+        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+        <!-- Drag handle for accessibility -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/drag_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minWidth="@null"
+                android:minHeight="@null"
+                android:paddingTop="12dp"
+                android:paddingBottom="12dp" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:id="@+id/panel_duty_full"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="0"
+                    android:orientation="vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/textView14"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="@dimen/application_padding"
+                        android:paddingRight="@dimen/application_padding"
+                        android:text="Ügyeletes tanárok:"
+                        android:textAppearance="@style/Title"
+                        android:textStyle="bold" />
+
+                    <androidx.core.widget.NestedScrollView
+                        style="@style/nestedScrollView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            style="@style/MainLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:elevation="3dp"
+                            android:orientation="vertical"
+                            android:padding="@null"
+                            android:paddingLeft="@dimen/application_padding"
+                            android:paddingTop="@dimen/application_padding"
+                            android:paddingRight="@dimen/application_padding">
+
+                            <androidx.cardview.widget.CardView
+                                style="@style/MainCard"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="0dp">
+
+                                <RelativeLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content">
+
+                                    <androidx.recyclerview.widget.RecyclerView
+                                        android:id="@+id/on_duty_recycler_view"
+                                        style="@style/MainCardLayout"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        tools:itemCount="4"
+                                        tools:listitem="@layout/notification_panel" />
+                                </RelativeLayout>
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+                    </androidx.core.widget.NestedScrollView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/panel_duty_min"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:alpha="1"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/application_padding"
+                    android:paddingRight="@dimen/application_padding"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/textView14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ügyeletes a közeledben:"
+                            android:textAppearance="@style/Normal"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/text_my_duty_name"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Nagy Gazsi"
+                            android:textAlignment="textEnd"
+                            android:textAppearance="@style/Normal" />
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+        <!-- Bottom sheet contents. -->
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

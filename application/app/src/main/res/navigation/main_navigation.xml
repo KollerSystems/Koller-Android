@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    android:label="@string/student_hostel"
+    app:startDestination="@id/homeFragment">
+
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.example.koller.fragments.HomeFragment"
+        android:label="@string/home"
+        tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/notificationsFragment"
+        android:name="com.example.koller.fragments.NotificationsFragment"
+        android:label="@string/notifications"
+        tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/calendarFragment"
+        android:name="com.example.koller.fragments.CalendarFragment"
+        android:label="@string/calendar"
+        tools:layout="@layout/fragment_calendar" />
+    <fragment
+        android:id="@+id/absencesFragment"
+        android:name="com.example.koller.fragments.AbsencesFragment"
+        android:label="@string/absence"
+        tools:layout="@layout/fragment_absences" />
+    <fragment
+        android:id="@+id/studentHostelFragment"
+        android:name="com.example.koller.fragments.StudentHostelFragment"
+        android:label="@string/student_hostel"
+        tools:layout="@layout/fragment_student_hostel" />
+</navigation>

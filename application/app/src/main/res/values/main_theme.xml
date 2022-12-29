@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.MainTheme" parent="Theme.Color">
+        <item name="fontFamily">@font/rubik</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
+        <item name="materialAlertDialogTheme">@style/MyTitle_ThemeOverlay.MaterialComponents.MaterialAlertDialog</item>
+        <item name="android:spinnerStyle">@style/kollerSpinnerStyle</item>
+        <item name="spinnerDropDownItemStyle">@style/kollerSpinnerDropdownItemStyle</item>
+        <item name="android:spinnerItemStyle">@style/kollerSpinnerItemStyle</item>
+        <item name="tabStyle">@style/tab</item>
+    </style>
+
+    <style name="kollerSpinnerItemStyle" parent="@style/Normal">
+
+    </style>
+
+    <style name="kollerSpinnerStyle" parent="android:Widget.Material.Spinner">
+            <item name="android:popupBackground">@drawable/panel_dropdown</item>
+    </style>
+
+    <style name="kollerSpinnerDropdownItemStyle" parent="@style/Normal">
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="RatingBar" parent="@android:style/Widget.Material.RatingBar.Small">
+        <item name="android:progressTint">?attr/colorPrimary</item>
+        <item name="android:secondaryProgressTint">?attr/colorPrimary</item>
+        <item name="android:progressBackgroundTint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="MyTitle_ThemeOverlay.MaterialComponents.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitle</item>
+        <item name="materialAlertDialogTitleIconStyle">@style/DialogIcon</item>
+    </style>
+    <style name="DialogTitle" parent="MainTitle">
+        <item name="android:textAlignment">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:translationY">-200dp</item>
+        <item name="android:paddingTop">15dp</item>
+    </style>
+
+    <style name="DialogIcon" parent="Icon">
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:translationY">50dp</item>
+    </style>
+
+    <style name="MainTitleExpanded">
+        <item name="android:textSize">@dimen/text_main_title_expanded</item>
+        <item name="android:textColor">?android:attr/colorForeground</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="MainTitle">
+        <item name="android:textSize">@dimen/text_main_title</item>
+        <item name="android:textColor">?android:attr/colorForeground</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Title">
+        <item name="android:textSize">@dimen/text_title</item>
+        <item name="android:textColor">?android:attr/colorForeground</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SmallTitle">
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">?android:attr/colorForeground</item>
+        <item name="android:textStyle">bold</item>
+        <item name="minHeight">15dp</item>
+    </style>
+
+    <style name="Normal">
+        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textColor">?android:attr/colorForeground</item>
+    </style>
+
+    <style name="CategoryCardName" parent="Normal">
+        <item name="android:textStyle">bold</item>
+        <item name="android:alpha">0.666</item>
+        <item name="android:layout_marginHorizontal">15dp</item>
+    </style>
+
+    <style name="Description">
+        <item name="android:textSize">@dimen/text_description</item>
+        <item name="android:textColor">?colorForeground066</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="roundImageView">
+        <item name="cornerSize">50%</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+    <style name="roundedImageView">
+        <item name="cornerSize">10dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="Card" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="contentPadding">@dimen/panel_padding</item>
+        <item name="cardBackgroundColor">?colorSurface</item>
+        <item name="android:clipChildren">false</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="android:layout_margin">0.75dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="CardHeader" parent="Card">
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
+
+    <style name="CardMainCategory" parent="Card">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
+    </style>
+
+
+    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
+    </style>
+
+    <style name="MainCard" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">@null</item>
+        <item name="cardCornerRadius">@dimen/panel_round</item>
+        <item name="android:backgroundTint">#00000000</item>
+        <item name="cardElevation">0dp</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:clipChildren">false</item>
+        <item name="android:layout_marginTop">5dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginRight">5dp</item>
+        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="MainCardLayout">
+        <item name="android:layout_marginBottom">-0.75dp</item>
+        <item name="android:layout_marginTop">-0.75dp</item>
+        <item name="android:layout_marginLeft">-0.75dp</item>
+        <item name="android:layout_marginRight">-0.75dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:clipChildren">false</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
+
+    <style name="SimpleButton" parent="@style/Widget.Material3.Button.TextButton">
+        <item name="cornerRadius">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">?android:attr/colorForeground</item>
+    </style>
+
+    <style name="Icon">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="tint">?android:attr/colorForeground</item>
+    </style>
+
+    <style name="SmallIcon">
+        <item name="android:adjustViewBounds">true</item>
+        <item name="tint">?android:attr/colorForeground</item>
+        <item name="android:layout_height">20sp</item>
+        <item name="android:layout_width">20sp</item>
+    </style>
+
+    <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+    </style>
+
+    <style name="BottomSheetDialogFull" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetFull</item>
+    </style>
+
+    <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
+        <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+    </style>
+
+    <style name="FakeBottomSheet" parent="Card">
+        <item name="cardCornerRadius">@dimen/panel_round</item>
+        <item name="contentPaddingBottom">10dp</item>
+        <item name="contentPaddingTop">0dp</item>
+        <item name="contentPaddingLeft">0dp</item>
+        <item name="contentPaddingRight">0dp</item>
+
+        <item name="android:layout_margin">@null</item>
+        <item name="android:layout_marginBottom">-20dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+    </style>
+
+    <style name="BottomSheetFull" parent="CustomBottomSheet">
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="background">?android:attr/colorBackground</item>
+        <item name="android:state_expanded">true</item>
+        <item name="behavior_fitToContents">true</item>
+        <item name="behavior_peekHeight">1000dp</item>
+        <item name="behavior_skipCollapsed">true</item>
+    </style>
+
+    <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">@dimen/panel_round</item>
+        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+    </style>
+
+    <style name="MainLayout">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:elevation">@dimen/default_card_elevation</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:padding">@dimen/application_padding</item>
+        <item name="android:background">?android:attr/colorBackground</item>
+        <item name="android:translationZ">100dp</item>
+    </style>
+
+    <style name="tab" parent="@style/Widget.Material3.TabLayout">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="tabMode">scrollable</item>
+        <item name="tabGravity">center</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="tabSelectedTextColor">?attr/colorPrimary</item>
+        <item name="tabTextColor">?colorForeground066</item>
+        <item name="tabIndicatorColor">?attr/colorPrimary</item>
+        <item name="tabUnboundedRipple">false</item>
+    </style>
+
+    <style name="nestedScrollView">
+        <item name="android:scrollbars">vertical</item>
+    </style>
+
+    <style name="infoLeft" parent="info">
+        <item name="android:textAlignment">textStart</item>
+    </style>
+
+    <style name="infoRight" parent="info">
+        <item name="android:textAlignment">textEnd</item>
+    </style>
+
+    <style name="list">
+        <item name="android:padding">@dimen/text_container_margin</item>
+    </style>
+
+    <style name="separatedBG2" parent="list">
+        <item name="android:background">#0D000000</item>
+    </style>
+
+    <style name="separatedBG1" parent="list">
+        <item name="android:background">#0DFFFFFF</item>
+    </style>
+
+    <style name="info" parent="@style/Description">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:layout_width">match_parent</item>
+    </style>
+</resources>
