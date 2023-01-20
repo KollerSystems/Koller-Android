@@ -45,7 +45,7 @@
     <string name="arrival_reminder_description">Értesítést az utolsó 1, és fél órádban</string>
     <string name="occupation_reminder">Foglalkozás emlékeztető</string>
     <string name="occupation_reminder_description">Értesítés negyed órával a foglalkozás előtt</string>
-    <string name="room_order">Szobarend</string>
+    <string name="room_order">Szobarendek</string>
     <string name="commendation_warning">Dícséret/Figyelmeztetés</string>
     <string name="news">Hírek</string>
     <string name="appearance">Megjelenítés</string>
@@ -130,4 +130,6 @@
     <string name="accurate_address_colon">Pontos lakcím:</string>
     <string name="instagram" translatable="false">Instagram</string>
     <string name="people">Emberek</string>
+    <string name="sunday">Vasárnap</string>
+    <string name="no_account_yet">Nincs fiókom</string>
 </resources>

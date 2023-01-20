@@ -9,5 +9,6 @@ class MyApplication : Application() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
 
+
     }
 }

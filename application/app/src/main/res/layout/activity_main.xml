@@ -1,97 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
-
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="false">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/main_fragment"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="-200dp"
-        android:layout_marginBottom="60dp"
-        android:scrollbars="none"
-        android:translationZ="100dp"
-        app:defaultNavHost="true"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        app:navGraph="@navigation/main_navigation" />
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
-
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="?colorSurface"
-        android:translationZ="-1000dp"
-        app:elevation="3dp"
-        app:expanded="false">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar_layout"
-            android:layout_width="match_parent"
-
-            android:layout_height="match_parent"
-            android:paddingBottom="200dp"
-            app:collapsedTitleTextAppearance="@style/MainTitle"
-            app:collapsedTitleTextColor="?android:attr/colorForeground"
-            app:contentScrim="?android:attr/colorBackground"
-            app:expandedTitleGravity="center"
-            app:expandedTitleMarginBottom="216dp"
-            app:expandedTitleTextAppearance="@style/MainTitleExpanded"
-            app:expandedTitleTextColor="?android:attr/colorForeground"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:scrimVisibleHeightTrigger="400dp"
-            app:title="@string/title"
-            app:titleCollapseMode="fade"
-            app:toolbarId="@+id/toolbar">
-
-
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginBottom="200dp"
-                android:minHeight="0dp" />
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/user_button"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_gravity="bottom|right"
-                android:layout_marginTop="12dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="?attr/colorPrimaryContainer"
-                android:clickable="true"
-                android:scaleType="centerInside"
-                app:shapeAppearanceOverlay="@style/roundImageView"
-                app:srcCompat="@drawable/norbert" />
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation_view"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_gravity="bottom"
         android:fitsSystemWindows="true"
-        android:minHeight="0dp"
-        android:translationZ="1000dp"
-        app:itemBackground="@drawable/tab_ripple"
-        app:itemIconTint="@drawable/bottom_navigation_view_text"
-        app:itemPaddingBottom="0dp"
-        app:itemPaddingTop="0dp"
-        app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/bottom_navigation_view">
+        android:translationZ="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar"
+
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@android:color/transparent"
+            android:clickable="false"
+            app:expanded="false">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/collapsing_toolbar_layout"
+                android:layout_width="match_parent"
+
+                android:layout_height="match_parent"
+                android:clickable="false"
+                app:collapsedTitleTextAppearance="@style/MainTitle"
+                app:collapsedTitleTextColor="?android:attr/colorForeground"
+                app:expandedTitleGravity="center"
+                app:expandedTitleTextAppearance="@style/MainTitleExpanded"
+                app:expandedTitleTextColor="?android:attr/colorForeground"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
+                app:scrimVisibleHeightTrigger="250dp"
+                app:title="@string/title"
+                app:titleCollapseMode="scale"
+                app:toolbarId="@+id/toolbar">
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:clickable="false"
+                    android:minHeight="0dp" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/user_button"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="?attr/colorPrimaryContainer"
+                    android:clickable="true"
+                    android:scaleType="centerInside"
+                    app:shapeAppearanceOverlay="@style/roundImageView"
+                    app:srcCompat="@drawable/norbert" />
+
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/main_fragment"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"
+            android:scrollbars="none"
+            app:defaultNavHost="true"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+            app:navGraph="@navigation/main_navigation" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottom_navigation_view"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_gravity="bottom"
+            android:fitsSystemWindows="true"
+            android:minHeight="0dp"
+            android:translationZ="1000dp"
+            app:itemBackground="@drawable/tab_ripple"
+            app:itemIconTint="@drawable/bottom_navigation_view_text"
+            app:itemPaddingBottom="0dp"
+            app:itemPaddingTop="0dp"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_navigation_view">
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/main_background"
+        style="@style/Widget.Material3.CardView.Filled"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:cardBackgroundColor="?attr/colorSurface"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

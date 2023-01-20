@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.FragmentContainerView
+import androidx.navigation.Navigation
 import com.example.koller.R
 import com.google.android.material.card.MaterialCardView
 
@@ -38,16 +39,20 @@ class StudentHostelFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_student_hostel, container, false)
 
         val roomsButton: MaterialCardView = view.findViewById(R.id.button_rooms)
+        val usersButton: MaterialCardView = view.findViewById(R.id.button_users)
 
         roomsButton.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_studentHostelFragment_to_roomsFragment2)
+        }
 
+        usersButton.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.action_studentHostelFragment_to_usersFragment2)
         }
 
         return view;
     }
 
     companion object {
-
         fun newInstance(param1: String, param2: String) =
             StudentHostelFragment().apply {
                 arguments = Bundle().apply {

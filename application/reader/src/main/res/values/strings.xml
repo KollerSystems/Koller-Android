@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">reader</string>
+    <string name="success">Siker</string>
+    <string name="wrong">Helytelen</string>
+    <string name="error">Hiba</string>
+    <string name="name">NFC olvasó 2000</string>
+    <string name="do_this">Közelítsd ide az NFC-t</string>
+    <string name="key">Kulcs:</string>
+</resources>

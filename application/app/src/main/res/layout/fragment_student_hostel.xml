@@ -104,7 +104,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/button_people"
+                android:id="@+id/button_users"
                 style="@style/Card"
                 android:layout_width="0dp"
                 android:layout_height="45sp"

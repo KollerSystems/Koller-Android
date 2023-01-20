@@ -30,5 +30,25 @@
         android:id="@+id/studentHostelFragment"
         android:name="com.example.koller.fragments.StudentHostelFragment"
         android:label="@string/student_hostel"
-        tools:layout="@layout/fragment_student_hostel" />
+        tools:layout="@layout/fragment_student_hostel" >
+        <action
+            android:id="@+id/action_studentHostelFragment_to_roomsFragment2"
+            app:destination="@id/roomsFragment" />
+        <action
+            android:id="@+id/action_studentHostelFragment_to_usersFragment2"
+            app:destination="@id/usersFragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <fragment
+        android:id="@+id/roomsFragment"
+        android:name="com.example.koller.fragments.RoomsFragment"
+        android:label="@string/rooms" />
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.example.koller.fragments.UsersFragment"
+        android:label="@string/people"
+        tools:layout="@layout/fragment_rooms" />
 </navigation>

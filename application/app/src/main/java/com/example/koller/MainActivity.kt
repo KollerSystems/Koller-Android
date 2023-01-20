@@ -1,16 +1,17 @@
 package com.example.koller
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
+import androidx.appcompat.widget.Toolbar
+import androidx.core.view.WindowCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 
@@ -25,8 +26,17 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
 
         val appBar = findViewById<AppBarLayout>(R.id.appbar)
+        val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
 
         val collapsingToolbarLayout = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar_layout)
+        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+        //setSupportActionBar(toolbar)
+
+        appBar.addOnOffsetChangedListener(OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            var collapsedSize : Float = -570f
+            //collapsingToolbarLayout.title = verticalOffset.toString()
+            mainBackground.alpha = verticalOffset / collapsedSize
+        })
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigationView.setupWithNavController(navController)
@@ -47,16 +57,17 @@ class MainActivity : AppCompatActivity() {
 
     fun onProfileClick(){
 
-        /*MaterialAlertDialogBuilder(this@MainActivity)
-            .setTitle(R.string.nfc_success)
-            .setIcon(R.drawable.done_thick)
-            .setPositiveButton(
-                R.string.ok
-            ) { dialogInterface, i -> }
-            .show()*/
-
-
         val dialog = ProfileBottomSheet()
         dialog.show(supportFragmentManager, ProfileBottomSheet.TAG)
+    }
+
+    public fun NFCSuccess(){
+        MaterialAlertDialogBuilder(this@MainActivity)
+    .setTitle(R.string.nfc_success)
+    .setIcon(R.drawable.done_thick)
+    .setPositiveButton(
+        R.string.ok
+    ) { dialogInterface, i -> }
+    .show()
     }
 }

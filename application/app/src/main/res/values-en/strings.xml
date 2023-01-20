@@ -102,4 +102,6 @@
     <string name="mothers_phone_number_colon">Mother\'s phone number:</string>
     <string name="accurate_address_colon">Accurate address:</string>
     <string name="people">People</string>
+    <string name="sunday">Sunday</string>
+    <string name="no_account_yet">I have no account</string>
 </resources>
