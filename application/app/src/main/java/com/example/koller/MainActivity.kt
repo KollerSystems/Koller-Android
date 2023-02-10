@@ -1,22 +1,26 @@
 package com.example.koller
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.view.WindowCompat
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.AppBarLayout.OnOffsetChangedListener
+import com.google.android.material.appbar.AppBarLayout.*
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 
+object MyObject {
+    var recreated : Boolean = false
+}
 
 class MainActivity : AppCompatActivity() {
+
+    private var recreated: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,8 +29,9 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
-        val appBar = findViewById<AppBarLayout>(R.id.appbar)
+        val appBar = findViewById<AppBarLayout>(R.id.appbar_user)
         val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
+        val layoutCordinator = findViewById<CoordinatorLayout>(R.id.layout_cordinator)
 
         val collapsingToolbarLayout = findViewById<CollapsingToolbarLayout>(R.id.collapsing_toolbar_layout)
         val toolbar = findViewById<Toolbar>(R.id.toolbar)
@@ -41,12 +46,28 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigationView.setupWithNavController(navController)
 
+        val defaultAppBarHeight = appBar.layoutParams.height
+
         navHostFragment.navController.addOnDestinationChangedListener{  controller, destination, arguments ->
 
 
 
             collapsingToolbarLayout.title = destination.label.toString()
             appBar.setExpanded(false, true)
+
+            if(destination.id == R.id.userFragment){
+                appBar.setExpanded(true, false)
+                appBar.layoutParams.height = 0
+                layoutCordinator.fitsSystemWindows = false
+                appBar.visibility = INVISIBLE
+            }
+            else{
+                appBar.visibility = VISIBLE
+                layoutCordinator.fitsSystemWindows = true
+                appBar.layoutParams.height = defaultAppBarHeight
+                appBar.setExpanded(false, false)
+
+            }
         }
 
         val userButton = findViewById<ShapeableImageView>(R.id.user_button)

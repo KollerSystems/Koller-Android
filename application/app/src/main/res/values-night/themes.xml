@@ -12,5 +12,9 @@
         <item name="colorForeground033">#54FFFFFF</item>
         <item name="colorForeground066">#ABFFFFFF</item>
         <item name="colorForeground075">#BFFFFFFF</item>
+
+        <item name="colorYellow">#FFD400</item>
+        <item name="colorRed">#660C00</item>
+        <item name="colorGreen">#276600</item>
     </style>
 </resources>

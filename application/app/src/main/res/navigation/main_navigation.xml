@@ -50,5 +50,13 @@
         android:id="@+id/usersFragment"
         android:name="com.example.koller.fragments.UsersFragment"
         android:label="@string/people"
-        tools:layout="@layout/fragment_rooms" />
+        tools:layout="@layout/fragment_rooms" >
+        <action
+            android:id="@+id/action_usersFragment_to_userFragment"
+            app:destination="@id/userFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userFragment"
+        android:name="com.example.koller.fragments.UserFragment"
+        android:label="UserFragment" />
 </navigation>

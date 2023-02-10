@@ -1,14 +1,15 @@
 package com.example.koller.fragments
 
-import android.R.id.tabs
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.TooltipCompat
 import androidx.fragment.app.Fragment
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -21,7 +22,6 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -123,7 +123,7 @@ class CalendarFragment : Fragment() {
 
 
                 val drawerHeight = bottomSheet.height * slideOffset
-                var textMyDutyName = view.findViewById<TextView>(R.id.text_my_duty_name)
+                var textMyDutyName = view.findViewById<TextView>(R.id.text_close_duty_name)
 
                 panelDutyMax.alpha = slideOffset
                 panelDutyMin.alpha = (slideOffset * -1) + 1
@@ -132,6 +132,11 @@ class CalendarFragment : Fragment() {
 
             override fun onStateChanged(bottomSheet: View, newState: Int) = Unit
         })
+
+        var textCloseDutyName : TextView = view.findViewById(R.id.text_close_duty_name)
+        textCloseDutyName.setOnClickListener{
+            Navigation.findNavController(view).navigate(R.id.userFragment)
+        }
 
         return view;
     }

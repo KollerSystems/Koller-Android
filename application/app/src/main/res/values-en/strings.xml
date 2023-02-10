@@ -104,4 +104,8 @@
     <string name="people">People</string>
     <string name="sunday">Sunday</string>
     <string name="no_account_yet">I have no account</string>
+    <string name="report">Report</string>
+    <string name="report_desc">The user violates the rules</string>
+    <string name="online_connections">Online connections</string>
+    <string name="manage_student">Manage student</string>
 </resources>

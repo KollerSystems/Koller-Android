@@ -132,4 +132,9 @@
     <string name="people">Emberek</string>
     <string name="sunday">Vasárnap</string>
     <string name="no_account_yet">Nincs fiókom</string>
+    <string name="report">Jelentés</string>
+    <string name="report_desc">A felhasználó szabályokat szeg</string>
+    <string name="online_connections">Online elérhetőségek</string>
+    <string name="manage_student">Diák kezelése</string>
+    <string name="discord" translatable="false">Discord</string>
 </resources>

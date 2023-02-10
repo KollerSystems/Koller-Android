@@ -13,5 +13,9 @@
         <item name="colorForeground033">#54000000</item>
         <item name="colorForeground066">#AB000000</item>
         <item name="colorForeground075">#BF000000</item>
+
+        <item name="colorYellow">#FFE14D</item>
+        <item name="colorRed">#FF624D</item>
+        <item name="colorGreen">#97FF4D</item>
     </style>
 </resources>

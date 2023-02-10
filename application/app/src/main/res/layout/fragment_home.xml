@@ -23,7 +23,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-            android:alpha="0.666"
             android:text="@string/now" />
 
         <androidx.cardview.widget.CardView
@@ -320,7 +319,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="15dp"
-            android:alpha="0.666"
             android:text="@string/today" />
 
         <androidx.cardview.widget.CardView
@@ -350,8 +348,6 @@
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="15dp"
-            android:alpha="0.666"
             android:text="@string/news" />
 
         <androidx.cardview.widget.CardView

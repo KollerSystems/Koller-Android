@@ -252,6 +252,7 @@
 
     <style name="nestedScrollView">
         <item name="android:scrollbars">vertical</item>
+
     </style>
 
     <style name="infoLeft" parent="info">
