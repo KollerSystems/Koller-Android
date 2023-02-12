@@ -142,4 +142,8 @@
     <string name="add_calendar">Rögzítés naptárban</string>
     <string name="write_comment">Írj hozzászólást...</string>
     <string name="lorem_short" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
+    <string name="i_will_be_there">Ott leszek</string>
+    <string name="welcome">Helló!</string>
+    <string name="you_are_new_here">Úgy tűnik új vagy a rendszerben.</string>
+    <string name="start">Kezdés</string>
 </resources>

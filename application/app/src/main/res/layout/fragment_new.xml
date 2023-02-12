@@ -106,6 +106,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_margin="@dimen/text_container_margin"
                                 android:adjustViewBounds="true"
+                                android:clickable="true"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/boom"></com.google.android.material.imageview.ShapeableImageView>
 
@@ -116,6 +117,7 @@
                                 android:layout_margin="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:adjustViewBounds="true"
+                                android:clickable="true"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/secret"></com.google.android.material.imageview.ShapeableImageView>
                         </LinearLayout>
@@ -124,7 +126,8 @@
                     <com.google.android.material.chip.ChipGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layoutDirection="rtl">
+                        android:layoutDirection="rtl"
+                        app:chipSpacingVertical="0dp">
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip6"
@@ -134,6 +137,16 @@
                             android:text="@string/like"
                             app:checkedIconEnabled="false"
                             app:chipIcon="@drawable/like_icon"
+                            app:chipIconVisible="true" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layoutDirection="locale"
+                            android:text="@string/i_will_be_there"
+                            app:checkedIconEnabled="false"
+                            app:chipIcon="@drawable/gps_icon"
                             app:chipIconVisible="true" />
 
                         <com.google.android.material.chip.Chip

@@ -38,7 +38,8 @@
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
-                    android:layout_width="match_parent">
+                    android:layout_width="match_parent"
+                    android:clickable="true">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
@@ -115,6 +116,7 @@
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
                     android:layout_width="match_parent"
+                    android:clickable="true"
                     android:orientation="vertical">
 
                     <LinearLayout

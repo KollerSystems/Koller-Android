@@ -72,7 +72,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/button6"
+            android:id="@+id/comment_more_options"
             style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

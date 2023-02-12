@@ -53,7 +53,6 @@ class MainActivity : AppCompatActivity() {
 
 
             collapsingToolbarLayout.title = destination.label.toString()
-            appBar.setExpanded(false, true)
 
             if(destination.id == R.id.userFragment){
                 appBar.setExpanded(true, false)
@@ -65,7 +64,7 @@ class MainActivity : AppCompatActivity() {
                 appBar.visibility = VISIBLE
                 layoutCordinator.fitsSystemWindows = true
                 appBar.layoutParams.height = defaultAppBarHeight
-                appBar.setExpanded(false, false)
+                appBar.setExpanded(false, true)
 
             }
         }

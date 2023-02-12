@@ -111,4 +111,8 @@
     <string name="add_calendar">Add to calendar</string>
     <string name="like">Like</string>
     <string name="write_comment">Write comment...</string>
+    <string name="i_will_be_there">I\'ll be there</string>
+    <string name="welcome">Hello!</string>
+    <string name="you_are_new_here">Seems like you\'re new in the system.</string>
+    <string name="start">Start</string>
 </resources>

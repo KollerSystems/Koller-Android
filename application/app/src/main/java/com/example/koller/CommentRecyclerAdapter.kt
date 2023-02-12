@@ -3,11 +3,9 @@ package com.example.koller
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.fragment.app.FragmentActivity
+import android.widget.*
+import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
-import com.example.koller.fragments.NewFragment
 
 class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
 {
@@ -31,5 +29,24 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>) 
         val userName : TextView = itemView.findViewById(R.id.comment_user_name)
         val pfp : ImageView = itemView.findViewById(R.id.comment_pfp)
         val text : TextView = itemView.findViewById(R.id.comment_text)
+
+        init {
+
+            val buttonMore : Button = itemView.findViewById(R.id.comment_more_options)
+
+            buttonMore.setOnClickListener {
+                val popupMenu = PopupMenu(itemView.context, buttonMore)
+                popupMenu.setForceShowIcon(true)
+
+                // Inflating popup menu from popup_menu.xml file
+                popupMenu.menuInflater.inflate(R.menu.comment, popupMenu.menu)
+                popupMenu.setOnMenuItemClickListener { menuItem ->
+                    // Toast message on menu item clicked
+                    true
+                }
+                // Showing the popup menu
+                popupMenu.show()
+            }
+        }
     }
 }
