@@ -29,15 +29,15 @@ class TodayRecyclerAdapter (private val todayList : ArrayList<TodayData>) : Recy
 
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val title : TextView = itemView.findViewById(R.id.notification_title)
-        val description : TextView = itemView.findViewById(R.id.notification_description)
+        val title : TextView = itemView.findViewById(R.id.comment_user_name)
+        val description : TextView = itemView.findViewById(R.id.comment_text)
         val icon : TextView = itemView.findViewById(R.id.notification_icon)
 
         init {
             itemView.setOnClickListener {
 
                 val dialog = RoomOrderBottomSheet()
-                dialog.show((itemView.context as FragmentActivity).supportFragmentManager, ProfileBottomSheet.TAG)
+                dialog.show((itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBottomSheet.TAG)
             }
         }
     }

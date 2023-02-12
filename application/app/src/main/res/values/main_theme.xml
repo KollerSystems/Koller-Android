@@ -12,6 +12,11 @@
         <item name="android:spinnerItemStyle">@style/kollerSpinnerItemStyle</item>
         <item name="tabStyle">@style/tab</item>
         <item name="chipStyle">@style/chipButtonFilterStyle</item>
+        <item name="android:textViewStyle">@style/DefaultTextView</item>
+    </style>
+
+    <style name="DefaultTextView">
+        <item name="android:textAppearance">@style/Normal</item>
     </style>
 
     <style name="kollerSpinnerItemStyle" parent="@style/Normal">
@@ -122,6 +127,7 @@
 
     <style name="CardHeader" parent="Card">
         <item name="android:layout_margin">0dp</item>
+        <item name="contentPadding">0dp</item>
     </style>
 
 
@@ -150,6 +156,16 @@
         <item name="android:layout_marginRight">5dp</item>
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="BottomSheetMainLayout" parent="@style/MainCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginTop">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+        <item name="cardCornerRadius">@dimen/application_round</item>
     </style>
 
     <style name="MainCardLayout">
@@ -216,7 +232,7 @@
         <item name="background">?android:attr/colorBackground</item>
         <item name="android:state_expanded">true</item>
         <item name="behavior_fitToContents">true</item>
-        <item name="behavior_peekHeight">1000dp</item>
+        <item name="behavior_peekHeight">10000dp</item>
         <item name="behavior_skipCollapsed">true</item>
     </style>
 

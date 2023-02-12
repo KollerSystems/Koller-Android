@@ -34,7 +34,8 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="20dp"
-                android:background="?colorYellow"
+                android:alpha="0.25"
+                android:background="@drawable/circle_gradient"
                 android:translationZ="1dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@null"
@@ -61,7 +62,7 @@
                 style="@style/Card"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:alpha="1"
+                android:alpha="0.25"
                 android:elevation="0dp"
                 app:cardBackgroundColor="?colorYellow"
                 app:cardElevation="3dp"
@@ -161,7 +162,7 @@
         android:layout_width="match_parent"
 
 
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
@@ -187,13 +188,13 @@
                 <LinearLayout
                     style="@style/MainCardLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
                         style="@style/Card"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:clickable="true"
                         android:clipChildren="false"
                         android:clipToPadding="false"
@@ -202,15 +203,23 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView16"
+                                style="@style/Icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -255,12 +264,20 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:id="@+id/imageView17"
+                                style="@style/Icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -305,12 +322,20 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:id="@+id/imageView18"
+                                style="@style/Icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -355,12 +380,20 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:id="@+id/imageView19"
+                                style="@style/Icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -412,6 +445,12 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
+                    <Button
+                        android:id="@+id/button4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Button" />
+
                     <com.google.android.material.card.MaterialCardView
                         style="@style/Card"
                         android:layout_width="match_parent"
@@ -427,12 +466,20 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                android:id="@+id/imageView14"
+                                style="@style/Icon"
+                                android:layout_width="@dimen/panel_icon"
+                                android:layout_height="@dimen/panel_icon"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/flag" />
+
                             <LinearLayout
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"

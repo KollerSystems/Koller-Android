@@ -64,7 +64,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -141,7 +141,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -213,7 +213,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -304,7 +304,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -371,7 +371,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -438,7 +438,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -505,7 +505,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -583,7 +583,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -647,7 +647,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -728,7 +728,7 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/comment_user_name"
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

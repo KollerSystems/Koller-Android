@@ -137,4 +137,9 @@
     <string name="online_connections">Online elérhetőségek</string>
     <string name="manage_student">Diák kezelése</string>
     <string name="discord" translatable="false">Discord</string>
+    <string name="lorem_medium" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae dolor nec metus tempus maximus. Vestibulum egestas dictum hendrerit. Pellentesque tellus enim, tempor id quam nec, fringilla gravida velit. Aenean luctus eros eu mi posuere rhoncus. Quisque quis quam augue. Morbi venenatis, libero quis gravida ornare, felis nunc efficitur felis, eu egestas eros sem ac purus. Phasellus ullamcorper ante dolor, sed pretium purus ultrices non. Quisque gravida laoreet finibus. Aenean convallis orci eu nibh faucibus dictum volutpat at felis. Donec vestibulum pulvinar justo, at vehicula enim egestas vel. Sed lectus nulla, ultrices sed sodales rhoncus, suscipit scelerisque ante.  Nulla bibendum dictum massa vel accumsan. Mauris tempor iaculis neque, vel vehicula sem ullamcorper sit amet. Ut luctus mi nunc, ac blandit justo dignissim eu. Etiam a purus a tortor luctus congue. In nec fringilla enim. Vestibulum facilisis nisl in mi venenatis varius quis ut tortor. Nullam pretium laoreet neque at condimentum.</string>
+    <string name="like">Tetszik</string>
+    <string name="add_calendar">Rögzítés naptárban</string>
+    <string name="write_comment">Írj hozzászólást...</string>
+    <string name="lorem_short" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
 </resources>

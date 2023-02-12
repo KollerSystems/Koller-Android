@@ -5,7 +5,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.koller.fragments.NewFragment
 
 class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>()
 {
@@ -29,5 +31,13 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
         val title : TextView = itemView.findViewById(R.id.events_title)
         val description : TextView = itemView.findViewById(R.id.events_description)
         val image : ImageView = itemView.findViewById(R.id.events_image)
+
+        init {
+            itemView.setOnClickListener {
+
+                val dialog = NewFragment()
+                dialog.show((itemView.context as FragmentActivity).supportFragmentManager, NewFragment.TAG)
+            }
+        }
     }
 }

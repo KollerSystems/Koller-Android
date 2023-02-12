@@ -108,4 +108,7 @@
     <string name="report_desc">The user violates the rules</string>
     <string name="online_connections">Online connections</string>
     <string name="manage_student">Manage student</string>
+    <string name="add_calendar">Add to calendar</string>
+    <string name="like">Like</string>
+    <string name="write_comment">Write comment...</string>
 </resources>
