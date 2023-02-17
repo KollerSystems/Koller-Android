@@ -10,6 +10,8 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.checkbox.MaterialCheckBox
+import okhttp3.*
+import java.io.IOException
 import java.util.*
 
 
@@ -43,7 +45,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialogFull)
 
     }
-
+    private val client = OkHttpClient()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -58,6 +60,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
             val intent = Intent(view.context, LoginActivity::class.java)
             startActivity(intent)
+            requireActivity().finish()
         }
 
         val buttonExpand: MaterialCheckBox = view.findViewById(R.id.button_expand)
@@ -135,6 +138,16 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             }
         }
 
+        fun run(url: String) {
+            val request = Request.Builder()
+                .url(url)
+                .build()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {}
+                override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
+            })
+        }
 
         return view
     }

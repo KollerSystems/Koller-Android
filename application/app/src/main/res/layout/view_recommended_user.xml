@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Card"
+        android:layout_width="match_parent"
+        android:clickable="true"
+        app:contentPadding="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <Button
+                android:id="@+id/button9"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/expand_toggle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:padding="@dimen/panel_padding"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/comment_pfp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginRight="@dimen/text_container_margin"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="?attr/colorPrimaryContainer"
+                    android:clickable="true"
+                    android:scaleType="centerInside"
+                    app:shapeAppearanceOverlay="@style/roundImageView"
+                    app:srcCompat="@drawable/norbert" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/comment_user_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:ellipsize="none"
+                        android:fadingEdgeLength="50dp"
+                        android:requiresFadingEdge="horizontal"
+                        android:singleLine="true"
+                        android:text="@android:string/unknownName"
+                        android:textAppearance="@style/Description" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin">
+
+                        <TextView
+                            android:id="@+id/comment_text5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:gravity="center_vertical"
+                            android:text="S:"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip23"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Szex"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip24"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Programozás"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip25"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="UI"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip26"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Evés"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip28"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Gaming"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <TextView
+                            android:id="@+id/comment_text3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:gravity="center_vertical"
+                            android:text="A:"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Ivás"
+                            android:visibility="visible"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Sex"
+                            android:visibility="visible"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip21"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Lakberendezés"
+                            android:visibility="visible"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorPrimaryContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <TextView
+                            android:id="@+id/comment_text2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:gravity="center_vertical"
+                            android:text="D:"
+                            android:textStyle="bold"
+                            android:visibility="visible" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Nincs szex"
+                            android:visibility="visible"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorErrorContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Foci"
+                            android:visibility="visible"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorErrorContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Ének"
+                            android:visibility="visible"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorErrorContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <TextView
+                            android:id="@+id/comment_text4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="25dp"
+                            android:gravity="center_vertical"
+                            android:text="F:"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Tánc"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorErrorContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip32"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Kosárlabda"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorErrorContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip35"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="Man"
+                            app:checkedIconEnabled="false"
+                            app:chipBackgroundColor="?attr/colorErrorContainer"
+                            app:chipEndPadding="@dimen/text_container_margin"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconEnabled="true"
+                            app:chipMinHeight="25dp"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:chipStartPadding="@dimen/text_container_margin" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+</com.google.android.material.card.MaterialCardView>

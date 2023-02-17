@@ -60,6 +60,7 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/login_inpl_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/username"
@@ -67,14 +68,18 @@
                     app:counterMaxLength="11"
                     app:counterOverflowTextAppearance="@style/Description"
                     app:counterTextAppearance="@style/Description"
+                    app:errorEnabled="true"
+                    app:errorTextAppearance="@style/Description"
                     app:helperText="@string/education_ID_hint"
                     app:helperTextTextAppearance="@style/Description">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/login_inpf_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="number"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="12345678910" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Space
@@ -82,27 +87,21 @@
                     android:layout_height="5dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/login_inpl_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
+                    app:errorTextAppearance="@style/Description"
                     app:passwordToggleEnabled="true">
 
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/login_inpf_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textWebPassword"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="sex" />
                 </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/textView12"
-                    style="@style/Description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="@dimen/text_container_margin"
-                    android:paddingRight="16dp"
-                    android:text="Forgot password?"
-                    android:textAlignment="textEnd" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -112,7 +111,7 @@
                     android:padding="@dimen/text_container_margin">
 
                     <Button
-                        android:id="@+id/button_no_account"
+                        android:id="@+id/login_button_no_account"
                         style="@style/Widget.Material3.Button.OutlinedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -120,10 +119,11 @@
                         android:text="@string/no_account_yet" />
 
                     <Button
-                        android:id="@+id/login_button"
+                        android:id="@+id/login_button_login"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/text_container_margin"
+                        android:enabled="false"
                         android:text="@string/login" />
 
                 </LinearLayout>

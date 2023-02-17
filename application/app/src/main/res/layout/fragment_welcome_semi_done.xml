@@ -4,19 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
-    android:clipToPadding="false"
-    tools:context=".fragments.WelcomeMainFragment">
+    tools:context=".fragments.WelcomeSemiDoneFragment">
 
     <TextView
-        android:id="@+id/textView50"
+        android:id="@+id/textView60"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="-35dp"
         android:layout_marginBottom="-35dp"
         android:alpha="0.5"
         android:elevation="@dimen/header_footer_elevation"
-        android:text="👋"
+        android:scaleX="-1"
+        android:text="🎉"
         android:textSize="200dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -37,24 +36,24 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
+            android:gravity="center_horizontal"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/textView44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/welcome"
+                android:text="Elkészültél!"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textAppearance="@style/MainTitleExpanded"
                 android:textSize="40sp" />
 
             <TextView
-                android:id="@+id/textView45"
+                android:id="@+id/textView61"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
-                android:text="@string/you_are_new_here"
+                android:text="De még nincs vége!"
                 android:textAlignment="center"
                 android:textSize="@dimen/text_title" />
 
@@ -62,15 +61,29 @@
                 android:id="@+id/textView48"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Azt már tudjuk rólad, hogy nak hívnak, azonban ez nem minden. Kérlek szánj ránk egy kis időt és töltsd ki a maradék adataidat."
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:text="Adataidat sikeresen rögzítettük,\nazonban ha szeretnéd még pontosítani, hogy kivel szeretnél a jövőben egy közegben lenni, gyere vissza x y múlva a folytatáshoz."
                 android:textAlignment="center" />
 
             <TextView
-                android:id="@+id/textView49"
+                android:id="@+id/textView62"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Ez igénybe fog venni egy kis időt."
-                android:textAlignment="center"
+                android:drawableLeft="@drawable/info"
+                android:drawablePadding="@dimen/text_container_margin"
+                android:text="Amennyiben az értesítések engedélyezve vannak, jelezni fogunk."
+                android:textAlignment="textStart"
+                android:textAppearance="@style/Description" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/info"
+                android:drawablePadding="@dimen/text_container_margin"
+                android:text="Itt majd nem a konkrét a szobatársaidat kell kiválasztani."
+                android:textAlignment="textStart"
                 android:textAppearance="@style/Description" />
 
         </LinearLayout>
@@ -82,25 +95,15 @@
             android:orientation="horizontal">
 
             <Button
-                android:id="@+id/welcome_main_btn_back"
-                style="@style/Widget.Material3.Button.OutlinedButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:text="@string/back" />
-
-            <Button
                 android:id="@+id/welcome_semi_done_btn_enter"
-                style="@style/Widget.Material3.Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/text_container_margin"
                 android:layoutDirection="rtl"
-                android:text="@string/start"
+                android:text="Belépés"
                 app:icon="@drawable/arrow_right" />
 
         </LinearLayout>
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

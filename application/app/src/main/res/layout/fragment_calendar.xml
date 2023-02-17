@@ -42,9 +42,8 @@
                 <com.google.android.material.tabs.TabLayout
                     android:id="@+id/tab_layout_days"
                     style="@style/tab"
-                    android:layout_weight="1"
                     android:fadingEdgeLength="50dp"
-                    android:requiresFadingEdge="horizontal"/>
+                    android:requiresFadingEdge="horizontal" />
 
                 <TextView
                     android:id="@+id/textView16"

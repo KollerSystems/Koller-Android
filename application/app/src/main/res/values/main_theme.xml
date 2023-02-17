@@ -4,7 +4,7 @@
 
         <item name="fontFamily">@font/rubik</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">?android:attr/colorBackground</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
         <item name="materialAlertDialogTheme">@style/MyTitle_ThemeOverlay.MaterialComponents.MaterialAlertDialog</item>
         <item name="android:spinnerStyle">@style/kollerSpinnerStyle</item>
@@ -13,6 +13,15 @@
         <item name="tabStyle">@style/tab</item>
         <item name="chipStyle">@style/chipButtonFilterStyle</item>
         <item name="android:textViewStyle">@style/DefaultTextView</item>
+    </style>
+
+    <style name="CategoryIcon" parent="@style/Icon">
+        <item name="android:layout_width">35dp</item>
+        <item name="android:layout_height">35dp</item>
+        <item name="android:layout_marginTop">@dimen/spacing</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:alpha">0.666</item>
+        <item name="android:paddingRight">@dimen/spacing</item>
     </style>
 
     <style name="DefaultTextView">
@@ -249,9 +258,17 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:elevation">@dimen/default_card_elevation</item>
         <item name="android:orientation">vertical</item>
-        <item name="android:padding">@dimen/application_padding</item>
+        <item name="android:paddingBottom">@dimen/application_padding</item>
+        <item name="android:paddingRight">@dimen/application_padding</item>
+        <item name="android:paddingLeft">@dimen/application_padding</item>
+        <item name="android:paddingTop">@dimen/application_padding</item>
         <item name="android:background">?android:attr/colorBackground</item>
-        <item name="android:translationZ">100dp</item>
+    </style>
+
+    <style name="MainLayoutWelcome" parent="MainLayout">
+        <item name="android:paddingBottom">@dimen/welcome_bottom_padding</item>
+        <item name="android:paddingTop">@dimen/welcome_top_padding</item>
+        <item name="background">@android:color/transparent</item>
     </style>
 
     <style name="tab" parent="@style/Widget.Material3.TabLayout">

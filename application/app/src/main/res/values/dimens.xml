@@ -26,4 +26,11 @@
     <dimen name="header_footer_size">60dp</dimen>
 
     <dimen name="spacing">10dp</dimen>
+
+    <dimen name="tab_height">40dp</dimen>
+
+    <dimen name="welcome_bottom_padding">75dp</dimen>
+    <dimen name="welcome_top_padding">55dp</dimen>
+
+    <dimen name="transitionDefaultSpeed">250</dimen>
 </resources>

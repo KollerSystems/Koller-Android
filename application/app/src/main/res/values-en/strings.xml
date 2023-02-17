@@ -115,4 +115,13 @@
     <string name="welcome">Hello!</string>
     <string name="you_are_new_here">Seems like you\'re new in the system.</string>
     <string name="start">Start</string>
+    <string name="back">Back</string>
+    <string name="next">Next</string>
+    <string name="test123">Ország<font color="#01C6DB">*</font></string>
+    <string name="country">Country</string>
+    <string name="required">Required</string>
+    <string name="optional">Optional</string>
+    <string name="invalid_id">Invalid education ID</string>
+    <string name="finnish">Finnish</string>
+    <string name="backward">Backward</string>
 </resources>

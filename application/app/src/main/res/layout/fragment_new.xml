@@ -37,7 +37,7 @@
                     android:layout_height="225dp"
                     android:adjustViewBounds="true"
                     android:scaleType="centerCrop"
-                    app:srcCompat="@drawable/norbert" />
+                    app:srcCompat="@drawable/hills" />
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/CardHeader"
@@ -126,8 +126,10 @@
                     <com.google.android.material.chip.ChipGroup
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/spacing"
                         android:layoutDirection="rtl"
-                        app:chipSpacingVertical="0dp">
+                        app:chipSpacingHorizontal="@dimen/spacing"
+                        app:chipSpacingVertical="@dimen/spacing">
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip6"
@@ -137,7 +139,8 @@
                             android:text="@string/like"
                             app:checkedIconEnabled="false"
                             app:chipIcon="@drawable/like_icon"
-                            app:chipIconVisible="true" />
+                            app:chipIconVisible="true"
+                            app:chipMinTouchTargetSize="0dp" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip7"
@@ -147,7 +150,8 @@
                             android:text="@string/i_will_be_there"
                             app:checkedIconEnabled="false"
                             app:chipIcon="@drawable/gps_icon"
-                            app:chipIconVisible="true" />
+                            app:chipIconVisible="true"
+                            app:chipMinTouchTargetSize="0dp" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip5"
@@ -157,7 +161,8 @@
                             android:text="@string/add_calendar"
                             app:checkedIconEnabled="false"
                             app:chipIcon="@drawable/calendar_icon"
-                            app:chipIconVisible="true" />
+                            app:chipIconVisible="true"
+                            app:chipMinTouchTargetSize="0dp" />
 
                     </com.google.android.material.chip.ChipGroup>
 
@@ -226,7 +231,7 @@
                                         <com.google.android.material.textfield.TextInputEditText
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:maxLines="10"
+                                            android:inputType="textAutoCorrect|textMultiLine|text|textCapSentences"
                                             android:paddingStart="11.5dp"
                                             android:paddingLeft="11.5dp"
                                             android:paddingTop="10.5dp"

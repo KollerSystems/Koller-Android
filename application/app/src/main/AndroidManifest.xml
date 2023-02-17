@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -12,6 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="31">
+        <activity
+            android:name=".WelcomeActivity"
+            android:exported="false"
+            android:noHistory="true">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".LoginActivity"
             android:exported="true">
@@ -38,32 +48,19 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity
-            android:name=".ProfileBottomSheet"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.DEFAULT" />
+        <service
+            android:name=".KollerHostApduService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
             </intent-filter>
 
             <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
+                android:name="android.nfc.cardemulation.host_apdu_service"
+                android:resource="@xml/apduservice" />
+        </service>
+    </application>
 
-
-        <service
-             android:name=".KollerHostApduService"
-             android:exported="true"
-             android:permission="android.permission.BIND_NFC_SERVICE">
-             <intent-filter>
-                 <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
-             </intent-filter>
-             <meta-data
-                 android:name="android.nfc.cardemulation.host_apdu_service"
-                 android:resource="@xml/apduservice" />
-         </service>
-     </application>
-
- </manifest>
+</manifest>

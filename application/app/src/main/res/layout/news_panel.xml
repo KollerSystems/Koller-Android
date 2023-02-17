@@ -20,7 +20,7 @@
             android:layout_marginTop="-15dp"
             android:layout_marginRight="-15dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/norbert" />
+            app:srcCompat="@drawable/hills" />
 
         <LinearLayout
             android:layout_width="match_parent"

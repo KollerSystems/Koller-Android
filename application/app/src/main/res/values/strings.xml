@@ -146,4 +146,15 @@
     <string name="welcome">Helló!</string>
     <string name="you_are_new_here">Úgy tűnik új vagy a rendszerben.</string>
     <string name="start">Kezdés</string>
+    <string name="back">Vissza</string>
+    <string name="next">Következő</string>
+    <string name="test123">Ország<font color="#01C6DB">*</font></string>
+    <string name="country">Ország</string>
+    <string name="required">Kötelező</string>
+    <string name="optional">Opcionális</string>
+    <string name="too_low_char_id" translatable="false">Kevesebb mint 11 számot írtál be!</string>
+    <string name="too_much_char_id" translatable="false">Több mint 11 számot írtál be!</string>
+    <string name="invalid_id">Érvénytelen oktatási azonosító!</string>
+    <string name="backward">Előző</string>
+    <string name="finnish">Befejezés</string>
 </resources>
