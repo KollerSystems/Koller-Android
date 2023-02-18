@@ -11,10 +11,10 @@
 
         android:id="@+id/layout_cordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         android:fitsSystemWindows="true"
         android:translationZ="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -76,31 +76,33 @@
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="60dp"
             app:defaultNavHost="true"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
             app:navGraph="@navigation/main_navigation" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottom_navigation_view"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/header_footer_size"
-            android:layout_gravity="bottom"
-            android:fitsSystemWindows="true"
-            android:minHeight="0dp"
-            android:translationZ="1000dp"
-            app:elevation="@dimen/header_footer_elevation"
-            app:itemBackground="@drawable/tab_ripple"
-            app:itemIconTint="@drawable/bottom_navigation_view_text"
-            app:itemPaddingBottom="0dp"
-            app:itemPaddingTop="0dp"
-            app:labelVisibilityMode="unlabeled"
-            app:menu="@menu/bottom_navigation_view">
-
-        </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_footer_size"
+        android:fitsSystemWindows="true"
+        android:minHeight="0dp"
+        android:translationZ="1000dp"
+        app:elevation="@dimen/header_footer_elevation"
+        app:itemBackground="@drawable/tab_ripple"
+        app:itemIconTint="@drawable/bottom_navigation_view_text"
+        app:itemPaddingBottom="0dp"
+        app:itemPaddingTop="0dp"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_cordinator"
+        app:menu="@menu/bottom_navigation_view">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
     <com.google.android.material.card.MaterialCardView

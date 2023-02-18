@@ -4,7 +4,7 @@
 
         <item name="fontFamily">@font/rubik</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">?android:attr/colorBackground</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
         <item name="materialAlertDialogTheme">@style/MyTitle_ThemeOverlay.MaterialComponents.MaterialAlertDialog</item>
         <item name="android:spinnerStyle">@style/kollerSpinnerStyle</item>
@@ -13,6 +13,17 @@
         <item name="tabStyle">@style/tab</item>
         <item name="chipStyle">@style/chipButtonFilterStyle</item>
         <item name="android:textViewStyle">@style/DefaultTextView</item>
+        <item name="bottomSheetDragHandleStyle">@style/bottomSheetDrag</item>
+        <item name="materialCardViewStyle">@style/SimpleCard</item>
+    </style>
+
+    <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardCornerRadius">@dimen/panel_round</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+    </style>
+
+    <style name="bottomSheetDrag" parent="Widget.Material3.BottomSheet.DragHandle">
+        <item name="tint">?attr/colorForeground066</item>
     </style>
 
     <style name="CategoryIcon" parent="@style/Icon">
@@ -153,9 +164,8 @@
         <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
     </style>
 
-    <style name="MainCard" parent="@style/Widget.Material3.CardView.Filled">
+    <style name="MainCard" parent="@style/SimpleCard">
         <item name="cardBackgroundColor">@null</item>
-        <item name="cardCornerRadius">@dimen/panel_round</item>
         <item name="android:backgroundTint">#00000000</item>
         <item name="cardElevation">0dp</item>
         <item name="android:clipToPadding">false</item>
@@ -273,7 +283,7 @@
 
     <style name="tab" parent="@style/Widget.Material3.TabLayout">
         <item name="android:background">@android:color/transparent</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">@dimen/tab_height</item>
         <item name="tabMode">scrollable</item>
         <item name="tabGravity">center</item>
         <item name="android:layout_width">match_parent</item>

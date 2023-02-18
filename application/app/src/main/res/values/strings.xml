@@ -157,4 +157,5 @@
     <string name="invalid_id">Érvénytelen oktatási azonosító!</string>
     <string name="backward">Előző</string>
     <string name="finnish">Befejezés</string>
+    <string name="date">Dátum</string>
 </resources>

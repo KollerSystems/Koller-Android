@@ -33,4 +33,6 @@
     <dimen name="welcome_top_padding">55dp</dimen>
 
     <dimen name="transitionDefaultSpeed">250</dimen>
+
+    <dimen name="imageHeight">200dp</dimen>
 </resources>

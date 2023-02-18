@@ -124,4 +124,5 @@
     <string name="invalid_id">Invalid education ID</string>
     <string name="finnish">Finnish</string>
     <string name="backward">Backward</string>
+    <string name="date">Date</string>
 </resources>

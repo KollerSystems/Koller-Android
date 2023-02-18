@@ -11,6 +11,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
+import androidx.core.view.WindowCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -32,6 +33,8 @@ class WelcomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
+
+        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         tabs = findViewById(R.id.welcome_tabs)
         val btnNavigation: CardView = findViewById(R.id.welcome_btn_navigation)
@@ -108,7 +111,7 @@ class WelcomeActivity : AppCompatActivity() {
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
-                if (position == 0 || position == 5) {
+                if (position == 0 || position == viewPager!!.adapter!!.itemCount - 1) {
                     animateOutNavigation()
                 }
                 else{
@@ -117,7 +120,7 @@ class WelcomeActivity : AppCompatActivity() {
                         btnBackward.text = getString(R.string.back)
                         btnForward.text = getString(R.string.next)
                     }
-                    else if (position == 5 - 1){
+                    else if (position == viewPager!!.adapter!!.itemCount - 1 - 1){
                         btnForward.text = getString(R.string.finnish)
                         btnBackward.text = getString(R.string.backward)
                     }
@@ -143,11 +146,17 @@ class WelcomeActivity : AppCompatActivity() {
                 }
                 super.onPageSelected(position)
 
-
-
             }
         })
+    }
 
+    override fun onBackPressed() {
+        if(viewPager.currentItem != 0) {
+            ScrollBackward()
+        }
+        else{
+            finish()
+        }
     }
     //override fun onDestroy() {
     //    super.onDestroy()

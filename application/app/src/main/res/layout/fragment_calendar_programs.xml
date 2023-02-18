@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.NotificationsFragment">
+    tools:context=".CalendarProgramsFragment" >
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             style="@style/nestedScrollView"
@@ -24,36 +24,13 @@
                 android:orientation="vertical">
 
                 <com.google.android.material.chip.ChipGroup
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:chipSpacingVertical="0dp">
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/room_order" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/praises" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/warnings" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/news" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date" />
@@ -82,12 +59,11 @@
                             style="@style/MainCardLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:listitem="@layout/notification_panel" />
+                            tools:listitem="@layout/news_panel" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </LinearLayout>

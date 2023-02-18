@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.NotificationsFragment">
+    tools:context=".CalendarCanteenFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             style="@style/nestedScrollView"
@@ -29,31 +29,25 @@
                     app:chipSpacingVertical="0dp">
 
                     <com.google.android.material.chip.Chip
+                        android:id="@+id/chip13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reggeli" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip14"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Ebéd" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vacsora" />
+
+                    <com.google.android.material.chip.Chip
                         android:id="@+id/chip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/room_order" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/praises" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/warnings" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/news" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date" />
@@ -78,16 +72,16 @@
                         android:layout_height="wrap_content">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycleview_notifications"
+                            android:id="@+id/canteen_recycle_view"
                             style="@style/MainCardLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            tools:listitem="@layout/notification_panel" />
+                            tools:itemCount="3"
+                            tools:listitem="@layout/view_canteen" />
                     </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </LinearLayout>
