@@ -158,4 +158,8 @@
     <string name="backward">Előző</string>
     <string name="finnish">Befejezés</string>
     <string name="date">Dátum</string>
+    <string name="filters">Szűrők</string>
+    <string name="arrangement">Rendezés</string>
+    <string name="oldest">Legrégebbi</string>
+    <string name="newest">Legújabb</string>
 </resources>

@@ -1,4 +1,4 @@
-package com.example.koller
+package com.example.koller.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,6 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.koller.CanteenData
+import com.example.koller.CanteenRecyclerAdapter
+import com.example.koller.R
 
 class CalendarCanteenFragment : Fragment() {
 
@@ -30,8 +33,9 @@ class CalendarCanteenFragment : Fragment() {
 
         canteenDataArrayList = arrayListOf(
             CanteenData("Reggeli", "6:00 - 8:45", "Száraz kenyér"),
-            CanteenData("Ebéd", "13:00 - 15:45-ig", "Zöccség leves és Polipos genyó"),
-            CanteenData("Vacsora", "19:15 - 19:45", "Száraz kenyér"))
+            CanteenData("Ebéd", "13:00 - 15:45", "Zöccség leves és Polipos genyó"),
+            CanteenData("Vacsora", "19:15 - 19:45", "Száraz kenyér")
+        )
 
         canteenRecyclerView.adapter = CanteenRecyclerAdapter(canteenDataArrayList)
 

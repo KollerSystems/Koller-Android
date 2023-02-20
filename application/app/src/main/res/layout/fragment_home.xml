@@ -248,6 +248,7 @@
                                     android:gravity="center"
                                     android:text="3."
                                     android:textAlignment="center"
+                                    android:textColor="?colorForeground066"
                                     android:textSize="25.5sp"
                                     android:textStyle="bold" />
 
@@ -273,8 +274,8 @@
                                             style="@style/TextAppearance.AppCompat.Medium"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1"
                                             android:text="Online Marketing"
+                                            android:textColor="?colorForeground066"
                                             android:textSize="@dimen/text_title_smaller"
                                             android:textStyle="bold" />
 
@@ -283,7 +284,6 @@
                                             style="@style/Description"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_weight="1"
                                             android:text="F5"
                                             android:textAlignment="textStart"
                                             android:textColor="?colorForeground033"

@@ -20,6 +20,7 @@
             android:gravity="center"
             android:text="@string/app_name"
             android:textAlignment="center"
+            android:textAllCaps="false"
             android:textAppearance="@style/MainTitleExpanded"
             android:textSize="60sp" />
 
@@ -46,16 +47,16 @@
                 android:text="@string/login" />
 
             <TextView
-                android:id="@+id/textView7"
+                android:id="@+id/login_text_please_login"
                 style="@style/Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
                 android:text="@string/please_login" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:gravity="center"
                 android:orientation="vertical">
 
@@ -102,6 +103,25 @@
                         android:singleLine="true"
                         android:text="sex" />
                 </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button8"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:paddingHorizontal="16dp"
+                    android:paddingVertical="4dp"
+                    android:paddingLeft="0dp"
+                    android:paddingTop="0dp"
+                    android:paddingRight="0dp"
+                    android:paddingBottom="0dp"
+                    android:text="Elfelejtett jelszó"
+                    android:textAppearance="@style/Description" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

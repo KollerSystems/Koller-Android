@@ -14,10 +14,6 @@
         android:icon="@drawable/building"
         android:title="@string/student_hostel" />
     <item
-        android:id="@+id/absencesFragment"
-        android:icon="@drawable/alarm_icon"
-        android:title="@string/absence" />
-    <item
         android:id="@+id/notificationsFragment"
         android:icon="@drawable/bell_icon"
         android:title="@string/notifications" />

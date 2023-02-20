@@ -4,24 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.FrameLayout
-import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.TooltipCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
-import androidx.navigation.Navigation
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.koller.*
-import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.OnTabSelectedListener
 import com.google.android.material.tabs.TabLayoutMediator
-import java.util.*
 
 class CalendarFragment : Fragment() {
 
@@ -57,6 +47,9 @@ class CalendarFragment : Fragment() {
                     tab.text = "Alapprogramok"
                 }
                 3->{
+                    tab.text = "Szakkörök"
+                }
+                4->{
                     tab.text = "Programok"
                 }
             }
@@ -77,7 +70,7 @@ class CalendarFragment : Fragment() {
 class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle)
 {
     override fun getItemCount(): Int {
-        return 4
+        return 5
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -92,6 +85,9 @@ class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Life
                 CalendarBaseProgramsFragment()
             }
             3->{
+                CalendarStudyGroupFragment()
+            }
+            4->{
                 CalendarProgramsFragment()
             }
             else->{

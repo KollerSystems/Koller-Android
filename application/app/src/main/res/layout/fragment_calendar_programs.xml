@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".CalendarProgramsFragment" >
+    tools:context=".fragments.CalendarProgramsFragment" >
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
@@ -23,11 +23,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView72"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:text="@string/filters" />
+
                 <com.google.android.material.chip.ChipGroup
 
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:chipSpacingVertical="0dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip36"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Alapprogram pótlás" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip"
@@ -37,8 +50,37 @@
 
                 </com.google.android.material.chip.ChipGroup>
 
+                <TextView
+                    android:id="@+id/textView73"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:text="@string/arrangement" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:checkedChip="@id/chip20"
+                    app:chipSpacingVertical="0dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/newest" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/oldest" />
+
+                </com.google.android.material.chip.ChipGroup>
+
                 <View
-                    android:id="@+id/divider"
+                    android:id="@+id/divider6"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="5dp"
@@ -55,7 +97,7 @@
                         android:layout_height="wrap_content">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycleview_notifications"
+                            android:id="@+id/calendar_programs_recycle_view"
                             style="@style/MainCardLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

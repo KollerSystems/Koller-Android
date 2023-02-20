@@ -125,4 +125,8 @@
     <string name="finnish">Finnish</string>
     <string name="backward">Backward</string>
     <string name="date">Date</string>
+    <string name="filters">Filters</string>
+    <string name="arrangement">Arrangement</string>
+    <string name="oldest">Oldest</string>
+    <string name="newest">Newest</string>
 </resources>

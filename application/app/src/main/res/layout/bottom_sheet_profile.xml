@@ -20,16 +20,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/button3"
-            style="@style/Widget.Material3.Button.IconButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -49,451 +39,90 @@
             android:paddingRight="@dimen/application_padding"
             android:paddingBottom="@dimen/application_padding">
 
-            <!-- Drag handle for accessibility -->
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"></LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:animateLayoutChanges="true"
-                android:background="@drawable/square_transparent"
-                android:backgroundTint="@android:color/holo_orange_light"
-                android:clipToPadding="false"
-                android:elevation="5dp"
-                android:orientation="vertical"
-                android:padding="@dimen/panel_padding">
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/shapeableImageView"
-                    android:layout_width="100sp"
-                    android:layout_height="100sp"
-                    android:layout_gravity="center"
-                    android:adjustViewBounds="true"
-                    android:scaleType="centerInside"
-                    android:src="@drawable/norbert"
-                    app:shapeAppearanceOverlay="@style/roundImageView" />
-
-                <TextView
-                    android:id="@+id/textView32"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_container_margin"
-                    android:text="Kis Norbert"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/MainTitle"
-                    android:textColor="@color/white"
-                    android:textSize="22sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@+id/textView33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/text_container_margin"
-                        android:text="F3"
-                        android:textAlignment="textEnd"
-                        android:textAppearance="@style/Normal"
-                        android:textColor="@color/white" />
-
-                    <Space
-                        android:layout_width="25dp"
-                        android:layout_height="match_parent" />
-
-                    <TextView
-                        android:id="@+id/textView34"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/text_container_margin"
-                        android:text="216"
-                        android:textAlignment="viewStart"
-                        android:textAppearance="@style/Normal"
-                        android:textColor="@color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/expanded_info"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:visibility="gone"
-                    tools:visibility="visible">
-
-
-                    <LinearLayout
-                        style="@style/separatedBG1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/education_ID_colon" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="46269684921" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/education_teacher" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Nagy Gazsi" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/school" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Szent Márton Mágus Techikum" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/class_colon" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="11. b" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/born_date_colon" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="2004. 03. 33." />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/born_place_colon" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Parlament" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mothers_name" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Orbán Ferenc" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mothers_phone_number_colon" />
-
-                        <TextView
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="+36 11 111 1111" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        style="@style/separatedBG1"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            style="@style/infoLeft"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/accurate_address_colon" />
-
-                        <TextView
-                            android:id="@+id/textView13"
-                            style="@style/infoRight"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Parlament" />
-                    </LinearLayout>
-
-                </LinearLayout>
-
-                <CheckBox
-                    android:id="@+id/button_expand"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/expand_toggle"
-                    android:minHeight="40sp"
-                    app:buttonTint="@color/white" />
-
-                <Button
-                    android:id="@+id/button_logout"
-                    style="@style/Widget.Material3.ExtendedFloatingActionButton.Icon.Primary"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_margin="@dimen/text_container_margin"
-                    android:backgroundTint="@android:color/holo_orange_light"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:minHeight="0dp"
-                    android:paddingLeft="10dp"
-                    android:paddingTop="10dp"
-                    android:paddingRight="10dp"
-                    android:paddingBottom="10dp"
-                    android:text="@string/logout"
-                    android:textColor="@android:color/white"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    app:icon="@drawable/logout"
-                    app:iconTint="@android:color/holo_red_light"
-                    app:rippleColor="#40FF4444" />
-
-
-            </LinearLayout>
-
             <TextView
-                android:id="@+id/textView25"
+                android:id="@+id/textView13"
                 style="@style/CategoryCardName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/general"
-                android:visibility="gone" />
+                android:text="Profilod" />
 
-            <androidx.cardview.widget.CardView
-                style="@style/MainCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone">
-
-                <LinearLayout
-                    style="@style/MainCardLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/fdsfsdf"
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/language" />
-
-                                <TextView
-                                    android:id="@+id/jhgjgjghj"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <Spinner
-                                android:id="@+id/language"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:entries="@array/languages" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/textView35"
-                style="@style/CategoryCardName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/notifications" />
-
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
                 style="@style/MainCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <LinearLayout
-                    style="@style/MainCardLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
                         style="@style/Card"
                         android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
+                        android:layout_height="wrap_content">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
                             <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal">
 
-                                <TextView
-                                    android:id="@+id/dsadsaasd"
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/all" />
+                                <com.google.android.material.imageview.ShapeableImageView
+                                    android:id="@+id/shapeableImageView"
+                                    android:layout_width="75dp"
+                                    android:layout_height="75dp"
+                                    android:layout_gravity="center"
+                                    android:layout_marginRight="@dimen/spacing"
+                                    android:adjustViewBounds="true"
+                                    android:scaleType="centerInside"
+                                    android:src="@drawable/norbert"
+                                    app:shapeAppearanceOverlay="@style/roundImageView" />
 
-                                <TextView
-                                    android:id="@+id/dsadasd"
-                                    style="@style/Description"
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
+                                    android:layout_height="match_parent"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/textView32"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:text="Kis Norbert"
+                                        android:textAppearance="@style/MainTitle" />
+                                </LinearLayout>
+
 
                             </LinearLayout>
 
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_all"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent" />
+                            <Button
+                                style="@style/Widget.Material3.Button.OutlinedButton"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Fiók kezelése" />
+
+                            <Button
+                                android:id="@+id/button_logout"
+                                style="@style/Widget.Material3.Button"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/logout"
+                                app:icon="@drawable/logout"
+                                app:iconGravity="textStart" />
 
                         </LinearLayout>
-
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
                         style="@style/Card"
                         android:layout_width="match_parent"
-                        android:layout_height="76sp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:clipChildren="false"
                         android:clipToPadding="false"
                         android:orientation="horizontal"
@@ -504,66 +133,20 @@
                             android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/gfdgdfgdfgdf"
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/arrival_reminder" />
-
-                                <TextView
-                                    android:id="@+id/bnm"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:text="@string/arrival_reminder_description" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_arrival"
+                            <ImageView
+                                android:id="@+id/imageView16"
+                                style="@style/Icon"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -572,50 +155,56 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/fdsf"
                                     style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/occupation_reminder" />
+                                    android:text="Kimenők" />
 
                                 <TextView
-                                    android:id="@+id/textView5"
+                                    style="@style/Description"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/occupation_reminder_description"
-                                    android:textAppearance="@style/Description" />
+                                    android:layout_weight="0"
+                                    android:ellipsize="end"
+                                    android:maxLines="1"
+                                    android:text="@string/report_desc"
+                                    android:visibility="gone" />
 
                             </LinearLayout>
 
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_occupation"
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/Card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        app:cardCornerRadius="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView16"
+                                style="@style/Icon"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -624,53 +213,56 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/hhhhhh"
                                     style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/room_order" />
+                                    android:text="Portai ki- és belépések" />
 
                                 <TextView
-                                    android:id="@+id/hfghfg"
                                     style="@style/Description"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0"
                                     android:ellipsize="end"
                                     android:maxLines="1"
+                                    android:text="@string/report_desc"
                                     android:visibility="gone" />
 
                             </LinearLayout>
 
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_room"
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/Card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        app:cardCornerRadius="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView16"
+                                style="@style/Icon"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -679,186 +271,55 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/gg"
                                     style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/commendation_warning" />
+                                    android:text="Beállítások" />
 
                                 <TextView
-                                    android:id="@+id/s"
                                     style="@style/Description"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0"
                                     android:ellipsize="end"
                                     android:maxLines="1"
+                                    android:text="@string/report_desc"
                                     android:visibility="gone" />
 
                             </LinearLayout>
 
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_comm_or_warn"
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/Card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        app:cardCornerRadius="0dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView16"
+                                style="@style/Icon"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/zturzrt"
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/news" />
-
-                                <TextView
-                                    android:id="@+id/ztrzrtrr"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_new"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/textView36"
-                style="@style/CategoryCardName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/appearance" />
-
-            <androidx.cardview.widget.CardView
-                style="@style/MainCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    style="@style/MainCardLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/uutextView8"
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/mode" />
-
-                                <TextView
-                                    android:id="@+id/textutuztView15"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <Spinner
-                                android:id="@+id/theme_mode"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0"
-                                android:entries="@array/mode" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -870,7 +331,7 @@
                                     style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/colors" />
+                                    android:text="Adatvédelmi irányelvek" />
 
                                 <TextView
                                     style="@style/Description"
@@ -879,84 +340,7 @@
                                     android:layout_weight="0"
                                     android:ellipsize="end"
                                     android:maxLines="1"
-                                    android:text="Értesítést az utolsó 1, és fél órádban"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <Spinner
-                                android:id="@+id/spinner3"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:layout_weight="0"
-                                android:entries="@array/mode" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-
-            <TextView
-                android:id="@+id/textView37"
-                style="@style/CategoryCardName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/student_hostel" />
-
-            <androidx.cardview.widget.CardView
-                style="@style/MainCard"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <LinearLayout
-                    style="@style/MainCardLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/website" />
-
-                                <TextView
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:text="Értesítést az utolsó 1, és fél órádban"
+                                    android:text="@string/report_desc"
                                     android:visibility="gone" />
 
                             </LinearLayout>
@@ -965,106 +349,11 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/facebook" />
-
-                                <TextView
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="76sp"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal"
-                        app:cardCornerRadius="0dp">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/instagram" />
-
-                                <TextView
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:text="Értesítést az utolsó 1, és fél órádban"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
 
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
+
 
             <TextView
                 android:id="@+id/textView38"

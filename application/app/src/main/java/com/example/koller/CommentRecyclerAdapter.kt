@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.widget.PopupMenu
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
 {
@@ -35,17 +36,8 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>) 
             val buttonMore : Button = itemView.findViewById(R.id.comment_more_options)
 
             buttonMore.setOnClickListener {
-                val popupMenu = PopupMenu(itemView.context, buttonMore)
-                popupMenu.setForceShowIcon(true)
 
-                // Inflating popup menu from popup_menu.xml file
-                popupMenu.menuInflater.inflate(R.menu.comment, popupMenu.menu)
-                popupMenu.setOnMenuItemClickListener { menuItem ->
-                    // Toast message on menu item clicked
-                    true
-                }
-                // Showing the popup menu
-                popupMenu.show()
+
             }
         }
     }
