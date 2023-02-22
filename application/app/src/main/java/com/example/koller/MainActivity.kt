@@ -21,6 +21,7 @@ object MyObject {
 class MainActivity : AppCompatActivity() {
 
     private var recreated: Boolean = false
+    lateinit var bottomNavigationView : BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
             mainBackground.alpha = verticalOffset / collapsedSize
         })
 
-        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
+        bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation_view)
         bottomNavigationView.setupWithNavController(navController)
 
         val defaultAppBarHeight = appBar.layoutParams.height

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.koller.R
 
-class CalendarGateFragment : Fragment() {
+class UserGateFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

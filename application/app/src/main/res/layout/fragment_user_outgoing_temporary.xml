@@ -5,11 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.NotificationsFragment">
+    tools:context=".UserOutgoingTemporaryFragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
         <androidx.core.widget.NestedScrollView
             style="@style/nestedScrollView"
@@ -24,43 +24,25 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/textView77"
+                    android:id="@+id/textView70"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/text_container_margin"
                     android:text="@string/filters" />
 
                 <com.google.android.material.chip.ChipGroup
+                    app:chipSpacingVertical="0dp"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:chipSpacingVertical="0dp">
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip37"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Hossz" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/room_order" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/praises" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/warnings" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/news" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip11"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/date" />
@@ -68,7 +50,7 @@
                 </com.google.android.material.chip.ChipGroup>
 
                 <TextView
-                    android:id="@+id/textView76"
+                    android:id="@+id/textView71"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/text_container_margin"
@@ -125,5 +107,4 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
 </LinearLayout>

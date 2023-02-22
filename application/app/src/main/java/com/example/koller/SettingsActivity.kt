@@ -6,10 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CheckBox
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.checkbox.MaterialCheckBox
 import java.util.ArrayList
 
-class SettingsFragment : Fragment() {
+class SettingsActivity : AppCompatActivity() {
 
     private var isUpdatingChildren = false
 
@@ -36,17 +37,10 @@ class SettingsFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-    }
+        setContentView(R.layout.activity_settings)
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_settings, container, false)
-
-        val checkBoxParent: MaterialCheckBox = view.findViewById(R.id.notifics_all)
-        val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(view.findViewById(R.id.notifics_arrival), view.findViewById(R.id.notifics_new), view.findViewById(R.id.notifics_room), view.findViewById(R.id.notifics_occupation), view.findViewById(R.id.notifics_comm_or_warn))
+        val checkBoxParent: MaterialCheckBox = findViewById(R.id.notifics_all)
+        val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(R.id.notifics_arrival), findViewById(R.id.notifics_new), findViewById(R.id.notifics_room), findViewById(R.id.notifics_occupation), findViewById(R.id.notifics_comm_or_warn))
 
         // Parent's checked state changed listener
         val parentOnCheckedStateChangedListener =
@@ -78,7 +72,5 @@ class SettingsFragment : Fragment() {
             (child as MaterialCheckBox)
                 .addOnCheckedStateChangedListener(childOnCheckedStateChangedListener)
         }
-
-        return view
     }
 }

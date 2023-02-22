@@ -41,6 +41,16 @@
             app:exitAnim="@anim/nav_default_exit_anim"
             app:popEnterAnim="@anim/nav_default_pop_enter_anim"
             app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_studentHostelFragment_to_userGateFragment"
+            app:destination="@id/userGateFragment"
+            app:popUpTo="@id/studentHostelFragment"
+            app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_studentHostelFragment_to_userOutgoingFragment"
+            app:destination="@id/userOutgoingFragment"
+            app:popUpTo="@id/studentHostelFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/roomsFragment"
@@ -58,5 +68,24 @@
     <fragment
         android:id="@+id/userFragment"
         android:name="com.example.koller.fragments.UserFragment"
-        android:label="UserFragment" />
+        android:label="UserFragment" >
+        <action
+            android:id="@+id/action_userFragment_to_userGateFragment"
+            app:destination="@id/userGateFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_userGateFragment2"
+            app:destination="@id/userGateFragment" />
+        <action
+            android:id="@+id/action_userFragment_to_userOutgoingFragment"
+            app:destination="@id/userOutgoingFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userGateFragment"
+        android:name="com.example.koller.fragments.UserGateFragment"
+        android:label="Ki- és belépések" />
+    <fragment
+        android:id="@+id/userOutgoingFragment"
+        android:name="com.example.koller.UserOutgoingFragment"
+        android:label="Kimenők"
+        tools:layout="@layout/fragment_user_outgoing" />
 </navigation>

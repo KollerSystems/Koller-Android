@@ -34,8 +34,8 @@
             android:layout_height="wrap_content"
             android:background="@null"
             android:orientation="vertical"
-            android:padding="@null"
             android:paddingLeft="@dimen/application_padding"
+            android:paddingTop="0dp"
             android:paddingRight="@dimen/application_padding"
             android:paddingBottom="@dimen/application_padding">
 
@@ -69,12 +69,13 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/spacing"
                                 android:orientation="horizontal">
 
                                 <com.google.android.material.imageview.ShapeableImageView
                                     android:id="@+id/shapeableImageView"
-                                    android:layout_width="75dp"
-                                    android:layout_height="75dp"
+                                    android:layout_width="50dp"
+                                    android:layout_height="50dp"
                                     android:layout_gravity="center"
                                     android:layout_marginRight="@dimen/spacing"
                                     android:adjustViewBounds="true"
@@ -85,6 +86,7 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
+                                    android:layout_margin="@dimen/text_container_margin"
                                     android:gravity="center"
                                     android:orientation="vertical">
 
@@ -92,15 +94,22 @@
                                         android:id="@+id/textView32"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="@dimen/text_container_margin"
                                         android:text="Kis Norbert"
                                         android:textAppearance="@style/MainTitle" />
+
+                                    <TextView
+                                        android:id="@+id/textView33"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:text="F3 • 268 • 10. osztály"
+                                        android:textAppearance="@style/Description" />
                                 </LinearLayout>
 
 
                             </LinearLayout>
 
                             <Button
+                                android:id="@+id/profile_btn_manage_account"
                                 style="@style/Widget.Material3.Button.OutlinedButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -119,6 +128,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profile_fbtn_outgoing"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -139,7 +149,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="30dp"
                                 android:alpha="0.666"
-                                app:srcCompat="@drawable/mail" />
+                                app:srcCompat="@drawable/wave" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -155,7 +165,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Kimenők" />
@@ -177,6 +186,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profile_fbtn_gate"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -197,7 +207,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="30dp"
                                 android:alpha="0.666"
-                                app:srcCompat="@drawable/mail" />
+                                app:srcCompat="@drawable/gate" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -213,7 +223,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Portai ki- és belépések" />
@@ -235,6 +244,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profile_fbtn_settings"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -255,7 +265,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="30dp"
                                 android:alpha="0.666"
-                                app:srcCompat="@drawable/mail" />
+                                app:srcCompat="@drawable/settings" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -271,7 +281,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Beállítások" />
@@ -291,7 +300,9 @@
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
+
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profile_fbtn_privacy_policy"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -312,7 +323,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="30dp"
                                 android:alpha="0.666"
-                                app:srcCompat="@drawable/mail" />
+                                app:srcCompat="@drawable/policy" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
@@ -328,7 +339,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Adatvédelmi irányelvek" />
@@ -348,7 +358,6 @@
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
-
 
 
                 </LinearLayout>
@@ -727,9 +736,11 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/profile_fbtn_email"
                         style="@style/Card"
                         android:layout_width="match_parent"
-                        android:layout_height="76sp"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:clipChildren="false"
                         android:clipToPadding="false"
                         android:orientation="horizontal"
@@ -737,15 +748,23 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/imageView16"
+                                style="@style/Icon"
+                                android:layout_width="wrap_content"
+                                android:layout_height="30dp"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/mail" />
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
                                 android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
+                                android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:clipChildren="false"
@@ -754,10 +773,9 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/email" />
+                                    android:text="Email küldése" />
 
                                 <TextView
                                     style="@style/Description"
@@ -766,6 +784,7 @@
                                     android:layout_weight="0"
                                     android:ellipsize="end"
                                     android:maxLines="1"
+                                    android:text="@string/report_desc"
                                     android:visibility="gone" />
 
                             </LinearLayout>
@@ -773,6 +792,7 @@
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
+
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
