@@ -1,5 +1,7 @@
 package com.example.koller
 
+import APIInterface
+import RetrofitHelper
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -7,11 +9,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
-import okhttp3.*
-import java.io.IOException
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 
 class ProfileBottomSheet : BottomSheetDialogFragment() {
@@ -23,7 +27,8 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         setStyle(STYLE_NORMAL, R.style.BottomSheetDialogFull)
 
     }
-    private val client = OkHttpClient()
+
+    private lateinit var textName : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,12 +38,33 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.bottom_sheet_profile, container, false)
 
+        textName = view.findViewById(R.id.profile_text_name)
+
+        textName.text = (activity as MainActivity).userName
+
+
         val buttonLogout: Button = view.findViewById(R.id.button_logout)
         buttonLogout.setOnClickListener{
-            val intent = Intent(view.context, LoginActivity::class.java)
-            startActivity(intent)
-            requireActivity().finish()
-            this.dismiss()
+
+            MaterialAlertDialogBuilder(view.context)
+                .setTitle("Biztosan ki akarsz jelentkezni?")
+                .setIcon(R.drawable.surpriesd)
+                .setPositiveButton(
+                    "Igen"
+                )
+                { _, _ ->
+                    val intent = Intent(view.context, LoginActivity::class.java)
+                    startActivity(intent)
+                    requireActivity().finish()
+                    this.dismiss()
+                }
+                .setNegativeButton(
+                    "Nem"
+                )
+                { _, _ ->
+
+                }
+                .show()
         }
 
         val btnManageAccount: Button = view.findViewById(R.id.profile_btn_manage_account)
@@ -80,26 +106,62 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val fbtnEmailPolicy: MaterialCardView = view.findViewById(R.id.profile_fbtn_email)
+        //DEVS
 
-        fbtnEmailPolicy.setOnClickListener{
+        val cardMarci: MaterialCardView = view.findViewById(R.id.profile_card_marci)
+
+        cardMarci.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Marci599"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
+
+        val cardAdam: MaterialCardView = view.findViewById(R.id.profile_card_adam)
+
+        cardAdam.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Lukacs-Adam"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
+        val cardGergo: MaterialCardView = view.findViewById(R.id.profile_card_gergo)
+
+        cardGergo.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/lolfail"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
+        val cardGyuri: MaterialCardView = view.findViewById(R.id.profile_card_gyuri)
+
+        cardGyuri.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kutzlect"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
+        val cardRobi: MaterialCardView = view.findViewById(R.id.profile_card_robi)
+
+        cardRobi.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/IronNight007"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
+        val cardMiki: MaterialCardView = view.findViewById(R.id.profile_card_miki)
+
+        cardMiki.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Ararakalari"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
+
+
+        val fbtnEmail: MaterialCardView = view.findViewById(R.id.profile_fbtn_email)
+
+        fbtnEmail.setOnClickListener{
 
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.data = Uri.parse("mailto:contact@norbert.hu?body=Felhasználó azonosítója:")
 
             startActivity(intent)
             this.dismiss()
-        }
-
-        fun run(url: String) {
-            val request = Request.Builder()
-                .url(url)
-                .build()
-
-            client.newCall(request).enqueue(object : Callback {
-                override fun onFailure(call: Call, e: IOException) {}
-                override fun onResponse(call: Call, response: Response) = println(response.body()?.string())
-            })
         }
 
         return view

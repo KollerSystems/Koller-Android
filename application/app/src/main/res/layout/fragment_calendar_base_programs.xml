@@ -40,7 +40,7 @@
                             android:clipToPadding="false">
 
                             <View
-                                android:id="@+id/view"
+                                android:id="@+id/home_view_stay_slider"
                                 android:layout_width="0dp"
                                 android:layout_height="0dp"
                                 android:background="?attr/colorPrimaryContainer"
@@ -80,7 +80,7 @@
                                 app:iconTint="?attr/colorPrimary"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="@+id/view"
+                                app:layout_constraintStart_toStartOf="@+id/home_view_stay_slider"
                                 app:layout_constraintTop_toTopOf="parent" />
 
                         </androidx.constraintlayout.widget.ConstraintLayout>

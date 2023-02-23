@@ -78,11 +78,12 @@
         <item name="android:paddingTop">15dp</item>
     </style>
 
-    <style name="DialogIcon" parent="Icon">
+    <style name="DialogIcon">
         <item name="android:layout_height">200dp</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:translationY">50dp</item>
+        <item name="android:adjustViewBounds">true</item>
     </style>
 
     <style name="MainTitleExpanded">

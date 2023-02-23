@@ -1,5 +1,6 @@
 package com.example.koller
 
+import APIInterface
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -13,6 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
 object MyObject {
     var recreated : Boolean = false
@@ -23,9 +26,21 @@ class MainActivity : AppCompatActivity() {
     private var recreated: Boolean = false
     lateinit var bottomNavigationView : BottomNavigationView
 
+    public lateinit var userName : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val apiInterface = RetrofitHelper.getInstance().create(APIInterface::class.java)
+        // launching a new coroutine
+        GlobalScope.launch {
+            val result = apiInterface.getUsername()
+            if (result != null)
+                userName = result.body().toString()
+
+        }
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
         val navController = navHostFragment.navController

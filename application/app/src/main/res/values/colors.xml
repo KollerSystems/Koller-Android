@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="panel">#eff3f9</color>
+    <color name="orange">#80FFBB33</color>
 </resources>

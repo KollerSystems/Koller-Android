@@ -1,14 +1,14 @@
 package com.example.koller.fragments
 
-import android.app.Activity
 import android.os.Bundle
+import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Adapter
 import com.example.koller.*
 
 
@@ -33,15 +33,14 @@ class HomeFragment : Fragment() {
     private lateinit var todayRecyclerView: RecyclerView
     private lateinit var todayDataArrayList: ArrayList<TodayData>
 
+    private lateinit var viewStayOutSlider: View
+    private lateinit var viewLessonSlider: View
+
+    var time : Float = 0.0f
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-
     }
 
     override fun onCreateView(
@@ -50,7 +49,9 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_home, container, false)
-
+        
+        viewStayOutSlider = view.findViewById(R.id.home_view_stay_slider)
+        viewLessonSlider = view.findViewById(R.id.home_view_lesson_slider)
         eventsRecyclerView = view.findViewById(R.id.eventsRecyclerView)
         eventsRecyclerView.layoutManager = LinearLayoutManager(context)
         eventsRecyclerView.setHasFixedSize(true)
@@ -64,7 +65,33 @@ class HomeFragment : Fragment() {
 
         eventsRecyclerView.adapter = EventsRecyclerAdapter(eventsDataArrayList)
 
+        object : CountDownTimer(1000000, 1) {
+            override fun onTick(millisUntilFinished: Long) {
+                (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
+                    .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 1000000) * -1) + 1
+                viewStayOutSlider.requestLayout()
+            }
 
+            override fun onFinish() {
+                (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
+                    .matchConstraintPercentWidth = 1f
+                viewStayOutSlider.requestLayout()
+            }
+        }.start()
+
+        object : CountDownTimer(100000, 1) {
+            override fun onTick(millisUntilFinished: Long) {
+                (viewLessonSlider.layoutParams as ConstraintLayout.LayoutParams)
+                    .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 100000) * -1) + 1
+                viewLessonSlider.requestLayout()
+            }
+
+            override fun onFinish() {
+                (viewLessonSlider.layoutParams as ConstraintLayout.LayoutParams)
+                    .matchConstraintPercentWidth = 1f
+                viewLessonSlider.requestLayout()
+            }
+        }.start()
 
 
 

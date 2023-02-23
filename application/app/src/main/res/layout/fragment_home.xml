@@ -39,78 +39,78 @@
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
                     android:layout_width="match_parent"
-                    android:clickable="true">
+                    android:clickable="true"
+                    app:contentPadding="0dp">
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="7.5dp"
+                        app:cardCornerRadius="15dp">
+
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <View
+                                android:id="@+id/home_view_stay_slider"
+                                android:layout_width="0dp"
+                                android:layout_height="0dp"
+                                android:background="?attr/colorPrimaryContainer"
+                                app:layout_constraintBottom_toBottomOf="parent"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent"
+                                app:layout_constraintWidth_percent="0.66" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:clipChildren="false"
-                        android:clipToPadding="false">
+                        android:layout_weight="1"
+                        android:padding="@dimen/panel_padding"
+                        >
 
-                        <View
-                            android:id="@+id/view"
-                            android:layout_width="0dp"
-                            android:layout_height="0dp"
-                            android:layout_marginLeft="-7.5dp"
-                            android:layout_marginTop="-7.5dp"
-                            android:layout_marginRight="-7.5dp"
-                            android:layout_marginBottom="-7.5dp"
-                            android:background="@drawable/inner_panel"
-                            android:backgroundTint="?attr/colorPrimaryContainer"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.0"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:layout_constraintWidth_percent="0.75" />
+                        <ImageView
+                            android:id="@+id/imageView5"
+                            android:layout_width="@dimen/panel_icon"
+                            android:layout_height="@dimen/panel_icon"
+                            android:layout_gravity="center_vertical"
+                            android:adjustViewBounds="true"
+                            android:src="@drawable/tree"
+                            app:tint="?android:attr/colorForeground" />
 
                         <LinearLayout
-                            android:id="@+id/linearLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_container_margin"
+                            android:layout_marginRight="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_weight="1"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent">
+                            android:orientation="vertical">
 
-                            <ImageView
-                                android:id="@+id/imageView5"
-                                android:layout_width="@dimen/panel_icon"
-                                android:layout_height="@dimen/panel_icon"
-                                android:layout_gravity="center_vertical"
-                                android:adjustViewBounds="true"
-                                android:src="@drawable/tree"
-                                app:tint="?android:attr/colorForeground" />
-
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/out_top_text"
+                                style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="@dimen/text_container_margin"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:orientation="vertical">
+                                android:text="@string/stay_out_text" />
 
-                                <TextView
-                                    android:id="@+id/out_top_text"
-                                    style="@style/Title"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/stay_out_text" />
-
-                                <TextView
-                                    android:id="@+id/textView9"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/now_remain" />
-                            </LinearLayout>
-
+                            <TextView
+                                android:id="@+id/textView9"
+                                style="@style/Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/now_remain" />
                         </LinearLayout>
 
-                    </androidx.constraintlayout.widget.ConstraintLayout>
+                    </LinearLayout>
+
                 </com.google.android.material.card.MaterialCardView>
 
                 <com.google.android.material.card.MaterialCardView
@@ -141,38 +141,42 @@
                             android:clipToPadding="false"
                             android:orientation="vertical">
 
-                            <androidx.constraintlayout.widget.ConstraintLayout
+                            <FrameLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:clipChildren="false"
-                                android:clipToPadding="false">
+                                android:layout_height="wrap_content">
 
-                                <View
-                                    android:id="@+id/view2"
-                                    android:layout_width="0dp"
-                                    android:layout_height="0dp"
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
                                     android:layout_marginLeft="-7.5dp"
                                     android:layout_marginRight="-7.5dp"
-                                    android:background="@drawable/inner_panel"
-                                    android:backgroundTint="?attr/colorPrimaryContainer"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintHorizontal_bias="0.0"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent"
-                                    app:layout_constraintWidth_percent="0.66" />
+                                    app:cardCornerRadius="15dp">
 
+                                    <androidx.constraintlayout.widget.ConstraintLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="match_parent">
+
+                                        <View
+                                            android:id="@+id/home_view_lesson_slider"
+                                            android:layout_width="0dp"
+                                            android:layout_height="0dp"
+                                            android:background="?attr/colorPrimaryContainer"
+                                            app:layout_constraintBottom_toBottomOf="parent"
+                                            app:layout_constraintEnd_toEndOf="parent"
+                                            app:layout_constraintHorizontal_bias="0.0"
+                                            app:layout_constraintStart_toStartOf="parent"
+                                            app:layout_constraintTop_toTopOf="parent"
+                                            app:layout_constraintWidth_percent="0.66" />
+                                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                                </com.google.android.material.card.MaterialCardView>
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7.5dp"
                                     android:layout_marginBottom="7.5dp"
                                     android:gravity="center_vertical"
-                                    android:orientation="horizontal"
-                                    app:layout_constraintBottom_toBottomOf="parent"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent">
+                                    android:orientation="horizontal">
 
                                     <TextView
                                         android:id="@+id/textView18"
@@ -230,7 +234,7 @@
                                     </LinearLayout>
 
                                 </LinearLayout>
-                            </androidx.constraintlayout.widget.ConstraintLayout>
+                            </FrameLayout>
 
                             <LinearLayout
                                 android:layout_width="match_parent"

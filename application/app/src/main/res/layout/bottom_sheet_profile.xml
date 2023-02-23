@@ -91,10 +91,10 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/textView32"
+                                        android:id="@+id/profile_text_name"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="Kis Norbert"
+                                        android:text="Név"
                                         android:textAppearance="@style/MainTitle" />
 
                                     <TextView
@@ -420,9 +420,11 @@
                                         android:orientation="horizontal">
 
                                         <com.google.android.material.card.MaterialCardView
+                                            android:id="@+id/profile_card_marci"
                                             style="@style/Card"
                                             android:layout_width="150dp"
                                             android:layout_height="225dp"
+                                            android:clickable="true"
                                             app:cardBackgroundColor="?attr/colorSurfaceVariant"
                                             app:contentPadding="0dp">
 
@@ -471,9 +473,11 @@
                                         </com.google.android.material.card.MaterialCardView>
 
                                         <com.google.android.material.card.MaterialCardView
+                                            android:id="@+id/profile_card_adam"
                                             style="@style/Card"
                                             android:layout_width="150dp"
                                             android:layout_height="225dp"
+                                            android:clickable="true"
                                             app:cardBackgroundColor="?attr/colorSurfaceVariant"
                                             app:contentPadding="0dp">
 
@@ -523,9 +527,11 @@
                                         </com.google.android.material.card.MaterialCardView>
 
                                         <com.google.android.material.card.MaterialCardView
+                                            android:id="@+id/profile_card_gergo"
                                             style="@style/Card"
                                             android:layout_width="150dp"
                                             android:layout_height="225dp"
+                                            android:clickable="true"
                                             app:cardBackgroundColor="?attr/colorSurfaceVariant"
                                             app:contentPadding="0dp">
 
@@ -574,9 +580,11 @@
                                         </com.google.android.material.card.MaterialCardView>
 
                                         <com.google.android.material.card.MaterialCardView
+                                            android:id="@+id/profile_card_gyuri"
                                             style="@style/Card"
                                             android:layout_width="150dp"
                                             android:layout_height="225dp"
+                                            android:clickable="true"
                                             app:cardBackgroundColor="?attr/colorSurfaceVariant"
                                             app:contentPadding="0dp">
 
@@ -625,9 +633,11 @@
                                         </com.google.android.material.card.MaterialCardView>
 
                                         <com.google.android.material.card.MaterialCardView
+                                            android:id="@+id/profile_card_robi"
                                             style="@style/Card"
                                             android:layout_width="150dp"
                                             android:layout_height="225dp"
+                                            android:clickable="true"
                                             app:cardBackgroundColor="?attr/colorSurfaceVariant"
                                             app:contentPadding="0dp">
 
@@ -677,9 +687,11 @@
                                         </com.google.android.material.card.MaterialCardView>
 
                                         <com.google.android.material.card.MaterialCardView
+                                            android:id="@+id/profile_card_miki"
                                             style="@style/Card"
                                             android:layout_width="150dp"
                                             android:layout_height="225dp"
+                                            android:clickable="true"
                                             app:cardBackgroundColor="?attr/colorSurfaceVariant"
                                             app:contentPadding="0dp">
 
