@@ -32,14 +32,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val apiInterface = RetrofitHelper.getInstance().create(APIInterface::class.java)
-        // launching a new coroutine
-        GlobalScope.launch {
-            val result = apiInterface.getUsername()
-            if (result != null)
-                userName = result.body().toString()
-
-        }
 
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment

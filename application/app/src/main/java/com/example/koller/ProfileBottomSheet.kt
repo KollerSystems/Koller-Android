@@ -16,6 +16,9 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class ProfileBottomSheet : BottomSheetDialogFragment() {
@@ -30,6 +33,23 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var textName : TextView
 
+    private fun GetUserName(){
+        val apiInterface = RetrofitHelper.getInstance().create(APIInterface::class.java)
+        // launching a new coroutine
+
+        val result = apiInterface.getUsername()
+
+        result.enqueue(object : Callback<String?> {
+            override fun onResponse(call: Call<String?>, response: Response<String?>) {
+                textName.text = response.body()
+            }
+
+            override fun onFailure(call: Call<String?>, t: Throwable) {
+                TODO("Not yet implemented")
+            }
+        })
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -40,7 +60,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         textName = view.findViewById(R.id.profile_text_name)
 
-        textName.text = (activity as MainActivity).userName
+        GetUserName()
 
 
         val buttonLogout: Button = view.findViewById(R.id.button_logout)
