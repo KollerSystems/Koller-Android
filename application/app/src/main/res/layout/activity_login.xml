@@ -78,7 +78,6 @@
                         android:id="@+id/login_inpf_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="number"
                         android:singleLine="true"
                         android:text="12345678910" />
                 </com.google.android.material.textfield.TextInputLayout>

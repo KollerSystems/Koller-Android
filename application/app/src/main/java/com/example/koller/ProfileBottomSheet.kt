@@ -33,23 +33,6 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
 
     private lateinit var textName : TextView
 
-    private fun GetUserName(){
-        val apiInterface = RetrofitHelper.getInstance().create(APIInterface::class.java)
-        // launching a new coroutine
-
-        val result = apiInterface.getUsername()
-
-        result.enqueue(object : Callback<String?> {
-            override fun onResponse(call: Call<String?>, response: Response<String?>) {
-                textName.text = response.body()
-            }
-
-            override fun onFailure(call: Call<String?>, t: Throwable) {
-                TODO("Not yet implemented")
-            }
-        })
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -59,9 +42,6 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val view : View = inflater.inflate(R.layout.bottom_sheet_profile, container, false)
 
         textName = view.findViewById(R.id.profile_text_name)
-
-        GetUserName()
-
 
         val buttonLogout: Button = view.findViewById(R.id.button_logout)
         buttonLogout.setOnClickListener{
