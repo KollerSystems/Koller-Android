@@ -162,4 +162,8 @@
     <string name="arrangement">Rendezés</string>
     <string name="oldest">Legrégebbi</string>
     <string name="newest">Legújabb</string>
+    <string name="outgoing">Kimenők</string>
+    <string name="settings">Beállítások</string>
+    <string name="privacy_policy">Adatvédelmi irányelvek</string>
+    <string name="manage_account">Fiók kezelése</string>
 </resources>

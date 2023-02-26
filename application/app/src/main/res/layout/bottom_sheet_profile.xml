@@ -73,7 +73,7 @@
                                 android:orientation="horizontal">
 
                                 <com.google.android.material.imageview.ShapeableImageView
-                                    android:id="@+id/shapeableImageView"
+                                    android:id="@+id/profile_simage"
                                     android:layout_width="50dp"
                                     android:layout_height="50dp"
                                     android:layout_gravity="center"
@@ -98,10 +98,10 @@
                                         android:textAppearance="@style/MainTitle" />
 
                                     <TextView
-                                        android:id="@+id/textView33"
+                                        android:id="@+id/profile_text_description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="F3 • 268 • 10. osztály"
+                                        android:text="@string/description"
                                         android:textAppearance="@style/Description" />
                                 </LinearLayout>
 
@@ -113,7 +113,7 @@
                                 style="@style/Widget.Material3.Button.OutlinedButton"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Fiók kezelése" />
+                                android:text="@string/manage_account" />
 
                             <Button
                                 android:id="@+id/button_logout"
@@ -167,7 +167,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Kimenők" />
+                                    android:text="@string/outgoing" />
 
                                 <TextView
                                     style="@style/Description"
@@ -283,7 +283,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Beállítások" />
+                                    android:text="@string/settings" />
 
                                 <TextView
                                     style="@style/Description"
@@ -341,7 +341,7 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Adatvédelmi irányelvek" />
+                                    android:text="@string/privacy_policy" />
 
                                 <TextView
                                     style="@style/Description"

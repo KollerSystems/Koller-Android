@@ -129,4 +129,8 @@
     <string name="arrangement">Arrangement</string>
     <string name="oldest">Oldest</string>
     <string name="newest">Newest</string>
+    <string name="outgoing">Outgoings</string>
+    <string name="settings">Settings</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="manage_account">Manage account</string>
 </resources>

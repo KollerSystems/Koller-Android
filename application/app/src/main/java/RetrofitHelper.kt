@@ -6,7 +6,7 @@ object RetrofitHelper {
     private val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl("http://192.168.0.16/")
+       .baseUrl("http:/TITOK_HAHAHA/")
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

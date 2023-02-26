@@ -22,11 +22,6 @@
         android:label="@string/calendar"
         tools:layout="@layout/fragment_calendar" />
     <fragment
-        android:id="@+id/absencesFragment"
-        android:name="com.example.koller.fragments.AbsencesFragment"
-        android:label="@string/absence"
-        tools:layout="@layout/fragment_absences" />
-    <fragment
         android:id="@+id/studentHostelFragment"
         android:name="com.example.koller.fragments.StudentHostelFragment"
         android:label="@string/student_hostel"

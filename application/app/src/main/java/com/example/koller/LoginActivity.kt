@@ -22,6 +22,15 @@ import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
+
+    private fun getHeaderMap(): Map<String, String> {
+        val headerMap = mutableMapOf<String, String>()
+        headerMap["Content-Type"] = "application/json"
+        headerMap["Authorization"] = "Bearer ${ApiLoginTokensData.instance.access_token}"
+        Log.d("INFO", ApiLoginTokensData.instance.access_token)
+        return headerMap
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -89,22 +98,27 @@ class LoginActivity : AppCompatActivity() {
                             if(loginResponse.code() == 200) {
 
                                 ApiLoginTokensData.instance = loginResponse.body()!!
+
+                                Log.d("ERROR", "Access token: "+ApiLoginTokensData.instance.access_token)
                                 
                                 val userResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                                userResponse.getCurrentUser().enqueue(
+                                userResponse.getCurrentUser(getHeaderMap()).enqueue(
                                     object : Callback<UserData> {
                                         override fun onResponse(
                                             call: Call<UserData>,
                                             userResponse: Response<UserData>
                                         ) {
+                                            Log.d("ERROR", "Username error num: "+userResponse.code())
+                                            Log.d("ERROR", "Header: "+getHeaderMap())
                                             if(userResponse.code() == 200) {
 
                                                 UserData.instance = userResponse.body()!!
+                                                Log.d("ERROR", "Username: "+UserData.instance.Name)
                                             }
                                         }
 
                                         override fun onFailure(call: Call<UserData>, t: Throwable) {
-
+                                            Log.d("ERROR", "Username error: " + t.message)
                                         }
                                     }
                                 )

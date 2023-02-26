@@ -79,7 +79,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
-                        android:text="12345678910" />
+                        android:text="Xx_Pistike_xX" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Space
@@ -100,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:inputType="textWebPassword"
                         android:singleLine="true"
-                        android:text="sex" />
+                        android:text="GoofyEmber" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button

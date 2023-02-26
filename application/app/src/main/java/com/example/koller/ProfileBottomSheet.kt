@@ -2,6 +2,7 @@ package com.example.koller
 
 import APIInterface
 import RetrofitHelper
+import UserData
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -32,6 +33,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
     }
 
     private lateinit var textName : TextView
+    private lateinit var textDescription : TextView
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,6 +44,11 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val view : View = inflater.inflate(R.layout.bottom_sheet_profile, container, false)
 
         textName = view.findViewById(R.id.profile_text_name)
+        textName.text = UserData.instance.Name
+
+        textDescription = view.findViewById(R.id.profile_text_description)
+        textDescription.text = UserData.instance.Group + " • " + UserData.instance.RoomNumber  + " • " + UserData.instance.Class
+
 
         val buttonLogout: Button = view.findViewById(R.id.button_logout)
         buttonLogout.setOnClickListener{
