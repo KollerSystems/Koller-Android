@@ -92,75 +92,23 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/button_rooms"
-                style="@style/Card"
+            <Button
+                android:id="@+id/student_hostel_button_rooms"
+                style="@style/panelButton"
                 android:layout_width="0dp"
-                android:layout_height="45sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:cardCornerRadius="0dp">
+                android:text="@string/places"
+                app:icon="@drawable/room" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center|center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        style="@style/SmallIcon"
-                        app:srcCompat="@drawable/room" />
-
-                    <TextView
-                        android:id="@+id/dsadsaasd"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/text_container_margin"
-                        android:text="@string/rooms" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/button_users"
-                style="@style/Card"
+            <Button
+                android:id="@+id/student_hostel_button_users"
+                style="@style/panelButton"
                 android:layout_width="0dp"
-                android:layout_height="45sp"
+                android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:clickable="true"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                app:cardCornerRadius="0dp">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:gravity="center|center_vertical"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView9"
-                        style="@style/SmallIcon"
-                        app:srcCompat="@drawable/people" />
-
-                    <TextView
-                        android:id="@+id/gfdgdfgdfgdf"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/text_container_margin"
-                        android:text="@string/people" />
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
+                android:text="@string/people"
+                app:icon="@drawable/people" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

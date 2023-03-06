@@ -78,8 +78,7 @@
                         android:id="@+id/login_inpf_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="true"
-                        android:text="Xx_Pistike_xX" />
+                        android:singleLine="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Space
@@ -99,8 +98,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textWebPassword"
-                        android:singleLine="true"
-                        android:text="GoofyEmber" />
+                        android:singleLine="true" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button

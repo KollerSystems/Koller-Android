@@ -10,8 +10,14 @@ data class UserData (
     val Birthdate : String,
     val GuardiaName : String,
     val GuardianPhone : String,
+    val RoomNumber : String,
+    val Country : String,
+    val City : String,
+    val Street : String,
+    val PostCode : String,
     val Address : String,
-    val RoomNumber : String
+    val Floor : String,
+    val Door : String,
 ){
     companion object {
         lateinit var instance: UserData

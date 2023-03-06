@@ -86,6 +86,18 @@
         <item name="android:adjustViewBounds">true</item>
     </style>
 
+
+    <style name="panelButton">
+        <item name="android:backgroundTint">?attr/colorSurface</item>
+        <item name="android:insetTop">@null</item>
+        <item name="android:insetBottom">@null</item>
+        <item name="cornerRadius">0dp</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconTint">?android:attr/colorForeground</item>
+        <item name="android:textColor">?android:attr/colorForeground</item>
+        <item name="android:textSize">@dimen/text_normal</item>
+    </style>
+
     <style name="MainTitleExpanded">
         <item name="android:textSize">@dimen/text_main_title_expanded</item>
         <item name="android:textColor">?android:attr/colorForeground</item>

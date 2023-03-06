@@ -38,8 +38,8 @@ class StudentHostelFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_student_hostel, container, false)
 
-        val roomsButton: MaterialCardView = view.findViewById(R.id.button_rooms)
-        val usersButton: MaterialCardView = view.findViewById(R.id.button_users)
+        val roomsButton: Button = view.findViewById(R.id.student_hostel_button_rooms)
+        val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
 
         roomsButton.setOnClickListener{
             Navigation.findNavController(view).navigate(R.id.action_studentHostelFragment_to_roomsFragment2)
