@@ -53,7 +53,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val buttonLogout: Button = view.findViewById(R.id.button_logout)
         buttonLogout.setOnClickListener{
 
-            MaterialAlertDialogBuilder(view.context)
+            MaterialAlertDialogBuilder(view.context, R.style.ImagePopup)
                 .setTitle("Biztosan ki akarsz jelentkezni?")
                 .setIcon(R.drawable.surpriesd)
                 .setPositiveButton(

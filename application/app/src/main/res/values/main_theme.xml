@@ -6,7 +6,6 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
-        <item name="materialAlertDialogTheme">@style/MyTitle_ThemeOverlay.MaterialComponents.MaterialAlertDialog</item>
         <item name="android:spinnerStyle">@style/kollerSpinnerStyle</item>
         <item name="spinnerDropDownItemStyle">@style/kollerSpinnerDropdownItemStyle</item>
         <item name="android:spinnerItemStyle">@style/kollerSpinnerItemStyle</item>
@@ -15,6 +14,7 @@
         <item name="android:textViewStyle">@style/DefaultTextView</item>
         <item name="bottomSheetDragHandleStyle">@style/bottomSheetDrag</item>
         <item name="materialCardViewStyle">@style/SimpleCard</item>
+        <item name="materialAlertDialogTheme">@style/Popup</item>
     </style>
 
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
@@ -66,14 +66,21 @@
         <item name="android:progressBackgroundTint">?attr/colorPrimary</item>
     </style>
 
-    <style name="MyTitle_ThemeOverlay.MaterialComponents.MaterialAlertDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
-        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitle</item>
+    <style name="ImagePopup" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitleWithImage</item>
         <item name="materialAlertDialogTitleIconStyle">@style/DialogIcon</item>
     </style>
+
+    <style name="Popup" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
+        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitle</item>
+    </style>
+
     <style name="DialogTitle" parent="MainTitle">
-        <item name="android:textAlignment">center</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+    <style name="DialogTitleWithImage" parent="DialogTitle">
         <item name="android:translationY">-200dp</item>
         <item name="android:paddingTop">15dp</item>
     </style>

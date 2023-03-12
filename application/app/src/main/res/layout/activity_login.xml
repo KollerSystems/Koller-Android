@@ -33,6 +33,7 @@
         app:cardElevation="8dp">
 
         <LinearLayout
+            android:id="@+id/login_linear_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
@@ -78,7 +79,8 @@
                         android:id="@+id/login_inpf_id"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="Barnabás" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Space
@@ -90,6 +92,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="@string/prompt_password"
+                    app:errorEnabled="true"
                     app:errorTextAppearance="@style/Description"
                     app:passwordToggleEnabled="true">
 
@@ -98,7 +101,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textWebPassword"
-                        android:singleLine="true" />
+                        android:singleLine="true"
+                        android:text="almafa1234" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
@@ -107,6 +111,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="right"
+                    android:layout_marginTop="-20sp"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:minWidth="0dp"
@@ -234,6 +239,22 @@
                     android:textAlignment="textEnd" />
             </LinearLayout>
         </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/login_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="true"
+            android:paddingBottom="@dimen/text_container_margin"
+            android:visibility="gone"
+            tools:visibility="visible">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
     </com.google.android.material.card.MaterialCardView>
 
 </LinearLayout>

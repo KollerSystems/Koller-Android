@@ -10,10 +10,14 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.view.MotionEvent
-import android.view.View.OnTouchListener
+import android.view.View
+import android.view.View.*
 import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import retrofit2.Call
@@ -56,6 +60,14 @@ class LoginActivity : AppCompatActivity() {
             false
         })
 
+        inpfPassword.setOnTouchListener(OnTouchListener { v, event ->
+            if (event.action == MotionEvent.ACTION_UP) {
+                inplPassword.error = null
+                return@OnTouchListener false
+            }
+            false
+        })
+
 
         inpfID.addTextChangedListener(object : TextWatcher {
 
@@ -85,61 +97,108 @@ class LoginActivity : AppCompatActivity() {
             }
         })
 
+        val loginLayout : LinearLayout = findViewById(R.id.login_linear_login)
+        val loadingBar : View = findViewById(R.id.login_loading)
+
+        fun ReturnLoginLayoutToNormal(){
+            loginLayout.alpha = 1f
+            loadingBar.visibility = GONE
+        }
+
+        fun ServerErrorPopup(){
+            MaterialAlertDialogBuilder(this@LoginActivity)
+                .setTitle("Szerver hiba!")
+                .setMessage("Az applikáció nem tudott kapcsolatot létesíteni a szerverrel.\nKérlek própád újra.")
+                .setPositiveButton(
+                    getString(R.string.ok)
+                )
+                { _, _ ->
+
+                }
+                .show()
+        }
+
         loginButton.setOnClickListener() {
-            if((inpfID.text?.length ?: 0) > 0) {
 
-                val loginResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                loginResponse.postLogin(ApiLoginData("password", inpfID.text.toString(), inpfPassword.text.toString())).enqueue(
-                    object : Callback<ApiLoginTokensData> {
-                        override fun onResponse(
-                            call: Call<ApiLoginTokensData>,
-                            loginResponse: Response<ApiLoginTokensData>
-                        ) {
-                            if(loginResponse.code() == 200) {
+            if(MyApplication.isOnline(this)){
 
-                                ApiLoginTokensData.instance = loginResponse.body()!!
 
-                                Log.d("ERROR", "Access token: "+ApiLoginTokensData.instance.access_token)
-                                
-                                val userResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                                userResponse.getCurrentUser(getHeaderMap()).enqueue(
-                                    object : Callback<UserData> {
-                                        override fun onResponse(
-                                            call: Call<UserData>,
-                                            userResponse: Response<UserData>
-                                        ) {
-                                            Log.d("ERROR", "Username error num: "+userResponse.code())
-                                            Log.d("ERROR", "Header: "+getHeaderMap())
-                                            if(userResponse.code() == 200) {
 
-                                                UserData.instance = userResponse.body()!!
-                                                Log.d("ERROR", "Username: "+UserData.instance.Name)
+                if((inpfID.text?.length ?: 0) > 0) {
+
+                    loginLayout.alpha = 0.25f
+                    loadingBar.visibility = VISIBLE
+
+                    val loginResponse = RetrofitHelper.buildService(APIInterface::class.java)
+                    loginResponse.postLogin(ApiLoginData("password", inpfID.text.toString(), inpfPassword.text.toString())).enqueue(
+                        object : Callback<ApiLoginTokensData> {
+
+                            override fun onResponse(
+                                call: Call<ApiLoginTokensData>,
+                                loginResponse: Response<ApiLoginTokensData>
+                            ) {
+                                if(loginResponse.code() == 200) {
+
+                                    ApiLoginTokensData.instance = loginResponse.body()!!
+                                    Log.d("ERROR", "Access token: "+ApiLoginTokensData.instance.access_token)
+
+
+                                    val userResponse = RetrofitHelper.buildService(APIInterface::class.java)
+                                    userResponse.getCurrentUser(getHeaderMap()).enqueue(
+                                        object : Callback<UserData> {
+                                            override fun onResponse(
+                                                call: Call<UserData>,
+                                                userResponse: Response<UserData>
+                                            ) {
+                                                if(userResponse.code() == 200) {
+
+                                                    UserData.instance = userResponse.body()!!
+
+                                                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                                                    startActivity(intent)
+                                                    finish()
+                                                }
+                                                else{
+                                                    ReturnLoginLayoutToNormal()
+                                                    ServerErrorPopup()
+                                                }
+                                            }
+
+                                            override fun onFailure(call: Call<UserData>, t: Throwable) {
+                                                ReturnLoginLayoutToNormal()
+                                                ServerErrorPopup()
                                             }
                                         }
-
-                                        override fun onFailure(call: Call<UserData>, t: Throwable) {
-                                            Log.d("ERROR", "Username error: " + t.message)
-                                        }
-                                    }
-                                )
-
-                                val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                                startActivity(intent)
-                                finish();
+                                    )
+                                }
+                                else{
+                                    ReturnLoginLayoutToNormal()
+                                    inplID.error = getString(R.string.invalid_id)
+                                    inplPassword.error = getString(R.string.invalid_password)
+                                }
                             }
-                            else{
-                                inplID.error = getString(R.string.invalid_id)
+
+                            override fun onFailure(call: Call<ApiLoginTokensData>, t: Throwable) {
+                                ReturnLoginLayoutToNormal()
+                                ServerErrorPopup()
                             }
                         }
-
-                        override fun onFailure(call: Call<ApiLoginTokensData>, t: Throwable) {
-                            inplID.error = "Hoppá! A szerver oldalán valami nem stimmel"
-                        }
-                    }
-                )
+                    )
+                }
+                else{
+                    inplID.error = getString(R.string.invalid_id)
+                }
             }
             else{
-                inplID.error = getString(R.string.invalid_id)
+                MaterialAlertDialogBuilder(this@LoginActivity)
+                    .setTitle("Nincs internet DUMASS!")
+                    .setPositiveButton(
+                        getString(R.string.ok)
+                    )
+                    { _, _ ->
+
+                    }
+                    .show()
             }
         }
 

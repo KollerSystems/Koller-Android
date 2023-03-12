@@ -84,8 +84,8 @@ class DayFragment : Fragment() {
                 val drawerHeight = bottomSheet.height * slideOffset
                 var textMyDutyName = view.findViewById<TextView>(R.id.text_close_duty_name)
 
-                panelDutyMax.alpha = slideOffset
-                panelDutyMin.alpha = (slideOffset * -1) + 1
+                panelDutyMax.alpha = (slideOffset * 2) -1
+                panelDutyMin.alpha = (((slideOffset -1) * 2) * -1) -1
 
             }
 
