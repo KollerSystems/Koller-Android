@@ -8,6 +8,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -15,6 +16,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.*
 import com.google.android.material.snackbar.Snackbar
+import org.w3c.dom.Text
+import java.lang.reflect.Array.get
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class HomeFragment : Fragment() {
@@ -36,7 +41,9 @@ class HomeFragment : Fragment() {
     }
 
     lateinit var outgoingTimer : CountDownTimer
+    var outgoingTimerRunning = false
     lateinit var lessonTimer : CountDownTimer
+    var lessonsTimerRunning = false
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,39 +67,66 @@ class HomeFragment : Fragment() {
 
         eventsRecyclerView.adapter = EventsRecyclerAdapter(eventsDataArrayList)
 
-        outgoingTimer = object : CountDownTimer(1000000, 1) {
-            override fun onTick(millisUntilFinished: Long) {
-                (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
+        val cardOutgoing : View = view.findViewById(R.id.home_card_outgoing)
+
+        val cardLessons : View = view.findViewById(R.id.home_card_lessons)
+
+        var c : Calendar = Calendar.getInstance()
+        val seconds = c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(Calendar.HOUR_OF_DAY) * 60 * 60
+        val minutes : Float = seconds.toFloat() / 60
+
+        Toast.makeText(view.context, minutes.toString(), Toast.LENGTH_LONG).show()
+
+        if(minutes > DefaultDayTimes.instance.dayTimeStart &&
+            minutes < DefaultDayTimes.instance.dayTimeGoInside){
+
+            cardOutgoing.visibility = VISIBLE
+
+            outgoingTimer = object : CountDownTimer(((DefaultDayTimes.instance.dayTimeGoInside / 60) - seconds).toLong(), 1) {
+                override fun onTick(millisUntilFinished: Long) {
+                    outgoingTimerRunning = true
+                    (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
                     .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 1000000) * -1) + 1
-                viewStayOutSlider.requestLayout()
-            }
+                    viewStayOutSlider.requestLayout()
+                }
 
-            override fun onFinish() {
-                (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
-                    .matchConstraintPercentWidth = 1f
-                viewStayOutSlider.requestLayout()
-            }
-        }.start()
+                override fun onFinish() {
+                    outgoingTimerRunning = false
+                }
+            }.start()
 
-        lessonTimer = object : CountDownTimer(100000, 1) {
-            override fun onTick(millisUntilFinished: Long) {
-                (viewLessonSlider.layoutParams as ConstraintLayout.LayoutParams)
-                    .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 100000) * -1) + 1
-                viewLessonSlider.requestLayout()
-            }
+        }
+        else if(minutes > DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to &&
+            minutes < DefaultDayTimes.instance.nightTimeGoInsideYellow){
 
-            override fun onFinish() {
-                (viewLessonSlider.layoutParams as ConstraintLayout.LayoutParams)
-                    .matchConstraintPercentWidth = 1f
-                viewLessonSlider.requestLayout()
-            }
-        }.start()
+            cardOutgoing.visibility = VISIBLE
 
+            outgoingTimer = object : CountDownTimer(((DefaultDayTimes.instance.nightTimeGoInsideYellow / 60) - seconds).toLong(), 1) {
+                override fun onTick(millisUntilFinished: Long) {
+                    outgoingTimerRunning = true
+                    (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
+                    .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 1000000) * -1) + 1
+                    viewStayOutSlider.requestLayout()
+                }
 
+                override fun onFinish() {
+                    outgoingTimerRunning = false
+                }
+            }.start()
 
+        }
+        else{
+            cardOutgoing.visibility = GONE
+        }
 
+        val textNow : TextView = view.findViewById(R.id.home_text_now)
 
-
+        if(cardOutgoing.visibility == VISIBLE || cardLessons.visibility == VISIBLE){
+            textNow.visibility = VISIBLE
+        }
+        else{
+            textNow.visibility = GONE
+        }
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)
         todayRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -111,7 +145,9 @@ class HomeFragment : Fragment() {
     }
 
     override fun onDestroyView() {
+        if (lessonsTimerRunning)
         lessonTimer.cancel()
+        if (outgoingTimerRunning)
         outgoingTimer.cancel()
         super.onDestroyView()
     }
