@@ -87,10 +87,10 @@
     <string name="nfc_success">Succesfull entry!</string>
     <string name="expand">Expand</string>
     <string name="successfull_exit">Successfull exit!</string>
-    <string name="go_out_text">"You can go out until "</string>
-    <string name="stay_out_text">"You can stay out until "</string>
-    <string name="will_remain">You will have  to get back</string>
-    <string name="now_remain">You have  to get back</string>
+    <string name="go_out_text">You can go out until %1$d</string>
+    <string name="stay_out_text">You can stay out until %1$d</string>
+    <string name="will_remain">You will have %1$sto get back</string>
+    <string name="now_remain">You have %1$sto get back</string>
     <string name="education_ID_colon">Education ID:</string>
     <string name="education_teacher">Education teacher:</string>
     <string name="school">School:</string>

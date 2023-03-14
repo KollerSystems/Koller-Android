@@ -2,7 +2,7 @@ package com.example.koller.fragments
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.Log
+import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -10,16 +10,14 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.annotation.ColorInt
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.*
-import com.google.android.material.snackbar.Snackbar
-import org.w3c.dom.Text
-import java.lang.reflect.Array.get
 import java.util.*
-import kotlin.collections.ArrayList
+import kotlin.math.roundToInt
 
 
 class HomeFragment : Fragment() {
@@ -32,6 +30,9 @@ class HomeFragment : Fragment() {
 
     private lateinit var viewStayOutSlider: View
     private lateinit var viewLessonSlider: View
+
+    private lateinit var textStayOutTop: TextView
+    private lateinit var textStayOutBottom: TextView
 
     var time : Float = 0.0f
 
@@ -51,8 +52,10 @@ class HomeFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_home, container, false)
-        
+
         viewStayOutSlider = view.findViewById(R.id.home_view_stay_slider)
+        textStayOutTop = view.findViewById(R.id.home_text_outgoing_top)
+        textStayOutBottom = view.findViewById(R.id.home_text_outgoing_down)
         viewLessonSlider = view.findViewById(R.id.home_view_lesson_slider)
         eventsRecyclerView = view.findViewById(R.id.eventsRecyclerView)
         eventsRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -72,7 +75,7 @@ class HomeFragment : Fragment() {
         val cardLessons : View = view.findViewById(R.id.home_card_lessons)
 
         var c : Calendar = Calendar.getInstance()
-        val seconds = c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(Calendar.HOUR_OF_DAY) * 60 * 60
+        val seconds : Long = (c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(Calendar.HOUR_OF_DAY) * 60 * 60).toLong()
         val minutes : Float = seconds.toFloat() / 60
 
         Toast.makeText(view.context, minutes.toString(), Toast.LENGTH_LONG).show()
@@ -86,7 +89,7 @@ class HomeFragment : Fragment() {
                 override fun onTick(millisUntilFinished: Long) {
                     outgoingTimerRunning = true
                     (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
-                    .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 1000000) * -1) + 1
+                        .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 1000000) * -1) + 1
                     viewStayOutSlider.requestLayout()
                 }
 
@@ -96,16 +99,53 @@ class HomeFragment : Fragment() {
             }.start()
 
         }
+
         else if(minutes > DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to &&
             minutes < DefaultDayTimes.instance.nightTimeGoInsideYellow){
 
             cardOutgoing.visibility = VISIBLE
 
-            outgoingTimer = object : CountDownTimer(((DefaultDayTimes.instance.nightTimeGoInsideYellow / 60) - seconds).toLong(), 1) {
+            var lastLessonMilli = (DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to * 60f * 1000).toLong()
+            var nightTimeGoInMilli = (DefaultDayTimes.instance.nightTimeGoInsideYellow * 60f * 1000).toLong()
+            var remainingTimeOnUpdateMilli : Long = nightTimeGoInMilli - (seconds * 1000)
+
+            textStayOutTop.text = getString(R.string.stay_out_text, DefaultDayTimes.instance.nightTimeGoInsideYellow / 60)
+
+            outgoingTimer = object : CountDownTimer(remainingTimeOnUpdateMilli, 1) {
                 override fun onTick(millisUntilFinished: Long) {
+                    val solid : Float = (remainingTimeOnUpdateMilli.toFloat() /  (nightTimeGoInMilli - lastLessonMilli) * -1) + 1
+                    val moving : Float = (((millisUntilFinished.toFloat() / remainingTimeOnUpdateMilli) * -1) + 1) * (1 - solid)
                     outgoingTimerRunning = true
+
+                    if((millisUntilFinished / 1000f / 60 / 60) < 0.25f){
+                        viewStayOutSlider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorErrorContainer))
+                    }
+                    else{
+                        viewStayOutSlider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorPrimaryContainer))
+                    }
+
+                    var remainText : String = ""
+
+                    var hoursUntilFinished : Int = (millisUntilFinished / 1000f / 60 / 60).roundToInt()
+                    var minutesWithoutHoursUntilFinished : Int = ((millisUntilFinished / 1000f / 60) - (hoursUntilFinished * 60)).roundToInt()
+
+                    if(hoursUntilFinished != 0){
+                        if(minutesWithoutHoursUntilFinished != 0){
+                            remainText += hoursUntilFinished.toString() + " óra "
+                        }
+                        else{
+                            remainText += hoursUntilFinished.toString() + " órád "
+                        }
+                    }
+                    if(minutesWithoutHoursUntilFinished != 0){
+                        remainText += minutesWithoutHoursUntilFinished.toString() + " perced "
+                    }
+
+
+                    textStayOutBottom.text = getString(R.string.now_remain, remainText)
+
                     (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
-                    .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 1000000) * -1) + 1
+                        .matchConstraintPercentWidth = solid + moving
                     viewStayOutSlider.requestLayout()
                 }
 
@@ -146,9 +186,9 @@ class HomeFragment : Fragment() {
 
     override fun onDestroyView() {
         if (lessonsTimerRunning)
-        lessonTimer.cancel()
+            lessonTimer.cancel()
         if (outgoingTimerRunning)
-        outgoingTimer.cancel()
+            outgoingTimer.cancel()
         super.onDestroyView()
     }
 }

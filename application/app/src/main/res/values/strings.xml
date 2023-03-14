@@ -87,10 +87,10 @@
     <string name="description">Leírás</string>
     <string name="icon">Ikon</string>
     <string name="today">Ma</string>
-    <string name="go_out_text">-ig még kimehetsz</string>
-    <string name="stay_out_text">-ig még kint maradhatsz</string>
-    <string name="will_remain">Lesz még  visszaérni</string>
-    <string name="now_remain">Van még  visszaérni</string>
+    <string name="go_out_text">%1$d-ig még kimehetsz</string>
+    <string name="stay_out_text">%1$d-ig még kint maradhatsz</string>
+    <string name="will_remain">Lesz még %1$svisszaérni</string>
+    <string name="now_remain">Van még %1$svisszaérni</string>
     <string name="praises">Dicséretek</string>
     <string name="warnings">Figyelmeztetők</string>
     <string name="students">Diákok</string>

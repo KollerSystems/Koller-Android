@@ -1,13 +1,14 @@
 package com.example.koller
 
-import ApiLoginTokensData
 import android.app.Application
 import android.content.Context
+import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
-import androidx.core.view.WindowCompat
+import android.util.TypedValue
 import com.google.android.material.color.DynamicColors
+
 
 class MyApplication : Application() {
 
@@ -37,6 +38,22 @@ class MyApplication : Application() {
                 }
             }
             return false
+        }
+
+        fun getAttributeColor(
+            context: Context,
+            attributeId: Int
+        ): Int {
+            val typedValue = TypedValue()
+            context.theme.resolveAttribute(attributeId, typedValue, true)
+            val colorRes = typedValue.resourceId
+            var color = -1
+            try {
+                color = context.resources.getColor(colorRes)
+            } catch (e: Resources.NotFoundException) {
+                Log.w("ERROR", "Not found color resource by id: $colorRes")
+            }
+            return color
         }
     }
 

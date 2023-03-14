@@ -71,7 +71,7 @@
                                         app:layout_constraintHorizontal_bias="0.0"
                                         app:layout_constraintStart_toStartOf="parent"
                                         app:layout_constraintTop_toTopOf="parent"
-                                        app:layout_constraintWidth_percent="0.66" />
+                                        app:layout_constraintWidth_percent="0.75" />
                                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                             </com.google.android.material.card.MaterialCardView>
@@ -103,14 +103,14 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/out_top_text"
+                                        android:id="@+id/home_text_outgoing_top"
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/stay_out_text" />
 
                                     <TextView
-                                        android:id="@+id/textView9"
+                                        android:id="@+id/home_text_outgoing_down"
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
