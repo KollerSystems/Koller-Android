@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,65 +8,77 @@
     tools:context=".fragments.CalendarDaysFragment" >
 
     <View
-        android:id="@+id/divider3"
+        android:id="@+id/calendar_days_divider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="?android:attr/listDivider" />
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@id/calendar_days_tabs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button"
+        style="@style/SimpleButton"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="-5dp"
+        android:text="≪"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintEnd_toStartOf="@+id/calendar_days_tabs"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/calendar_days_tabs"
+        style="@style/tab"
+        android:layout_width="0dp"
+        android:fadingEdgeLength="50dp"
+        android:requiresFadingEdge="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@id/calendar_days_divider"
+        app:tabIndicator="@drawable/m3_tabs_line_indicator"
+        app:tabIndicatorFullWidth="true" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:layout_marginStart="@dimen/text_container_margin"
+        android:layout_marginTop="@dimen/text_container_margin"
+        android:layout_marginEnd="@dimen/text_container_margin"
+        android:layout_marginBottom="@dimen/text_container_margin"
+        android:textAlignment="center"
+        android:textAppearance="@style/Title"
+        app:layout_constraintBottom_toTopOf="@+id/calendar_days_view_pager"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
+        app:layout_constraintStart_toEndOf="@+id/button"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_days_tabs" />
 
-        <Button
-            android:id="@+id/button"
-            style="@style/SimpleButton"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:text="≪"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="vertical">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/calendar_days_tabs"
-                style="@style/tab"
-                android:fadingEdgeLength="50dp"
-                android:requiresFadingEdge="horizontal"
-                app:tabIndicator="@drawable/m3_tabs_line_indicator"
-                app:tabIndicatorFullWidth="true" />
-
-            <TextView
-                android:id="@+id/textView16"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="15dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"
-                android:text="Szeptember 15."
-                android:textAlignment="center"
-                android:textAppearance="@style/Title" />
-
-        </LinearLayout>
-
-        <Button
-            android:id="@+id/button2"
-            style="@style/SimpleButton"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:text="≫"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    <Button
+        android:id="@+id/button2"
+        style="@style/SimpleButton"
+        android:layout_width="40dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="-5dp"
+        android:text="≫"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/calendar_days_tabs"
+        app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/calendar_days_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_days_tabs" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

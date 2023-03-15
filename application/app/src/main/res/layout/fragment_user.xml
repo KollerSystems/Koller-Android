@@ -170,6 +170,16 @@
             android:orientation="vertical"
             tools:context=".fragments.UserFragment">
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="hint" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <TextView
                 android:id="@+id/textView43"
                 style="@style/CategoryCardName"
@@ -225,7 +235,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
+                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/discord" />
@@ -283,7 +293,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
+                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/facebook" />
@@ -341,7 +351,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
+                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/instagram" />
@@ -399,7 +409,7 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    style="@style/Title"
+                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/email" />

@@ -55,6 +55,27 @@ class MyApplication : Application() {
             }
             return color
         }
+
+        fun timeTo(to : Int):String{
+            return "-\n" + minuteToHourMinuteFormat(to)
+        }
+
+        fun timeFromTo(from : Int, to : Int):String{
+            return minuteToHourMinuteFormat(from) + "\n-\n" + minuteToHourMinuteFormat(to)
+        }
+
+        fun timeFrom(from : Int):String{
+            return minuteToHourMinuteFormat(from) + "\n-"
+        }
+
+        fun minuteToHourMinuteFormat(minute : Int):String{
+
+
+            var hours : Int = ((minute) / 60)
+            var minutesWithoutHours : Int = (minute - (hours * 60))
+
+            return (hours.toString()+":"+minutesWithoutHours.toString().padStart(2, '0'))
+        }
     }
 
 }

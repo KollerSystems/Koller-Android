@@ -78,25 +78,10 @@ class HomeFragment : Fragment() {
         val seconds : Long = (c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(Calendar.HOUR_OF_DAY) * 60 * 60).toLong()
         val minutes : Float = seconds.toFloat() / 60
 
-        Toast.makeText(view.context, minutes.toString(), Toast.LENGTH_LONG).show()
-
         if(minutes > DefaultDayTimes.instance.dayTimeStart &&
             minutes < DefaultDayTimes.instance.dayTimeGoInside){
 
             cardOutgoing.visibility = VISIBLE
-
-            outgoingTimer = object : CountDownTimer(((DefaultDayTimes.instance.dayTimeGoInside / 60) - seconds).toLong(), 1) {
-                override fun onTick(millisUntilFinished: Long) {
-                    outgoingTimerRunning = true
-                    (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
-                        .matchConstraintPercentWidth = ((millisUntilFinished.toFloat() / 1000000) * -1) + 1
-                    viewStayOutSlider.requestLayout()
-                }
-
-                override fun onFinish() {
-                    outgoingTimerRunning = false
-                }
-            }.start()
 
         }
 
@@ -109,7 +94,19 @@ class HomeFragment : Fragment() {
             var nightTimeGoInMilli = (DefaultDayTimes.instance.nightTimeGoInsideYellow * 60f * 1000).toLong()
             var remainingTimeOnUpdateMilli : Long = nightTimeGoInMilli - (seconds * 1000)
 
-            textStayOutTop.text = getString(R.string.stay_out_text, DefaultDayTimes.instance.nightTimeGoInsideYellow / 60)
+
+            val nightTimeGoInsideForText : String = (DefaultDayTimes.instance.nightTimeGoInsideYellow / 60).toString()
+            var outStringId : Int = 0
+            var remainStringId : Int = 0
+            if(false){ // inside
+                outStringId = R.string.go_out_text
+                remainStringId = R.string.will_remain
+            }
+            else{
+                outStringId = R.string.stay_out_text
+                remainStringId = R.string.now_remain
+            }
+            textStayOutTop.text = getString(outStringId, nightTimeGoInsideForText)
 
             outgoingTimer = object : CountDownTimer(remainingTimeOnUpdateMilli, 1) {
                 override fun onTick(millisUntilFinished: Long) {
@@ -126,23 +123,23 @@ class HomeFragment : Fragment() {
 
                     var remainText : String = ""
 
-                    var hoursUntilFinished : Int = (millisUntilFinished / 1000f / 60 / 60).roundToInt()
-                    var minutesWithoutHoursUntilFinished : Int = ((millisUntilFinished / 1000f / 60) - (hoursUntilFinished * 60)).roundToInt()
+                    var hoursUntilFinished : Int = (((millisUntilFinished / 1000f / 60 + 1) / 60) - 0.5f).roundToInt()
+                    var minutesWithoutHoursUntilFinished : Int = (((millisUntilFinished / 1000f / 60) - (hoursUntilFinished * 60) + 0.5f)).roundToInt()
 
                     if(hoursUntilFinished != 0){
                         if(minutesWithoutHoursUntilFinished != 0){
-                            remainText += hoursUntilFinished.toString() + " óra "
+                            remainText += hoursUntilFinished.toString() + " " + getString(R.string.hour) + " "
                         }
                         else{
-                            remainText += hoursUntilFinished.toString() + " órád "
+                            remainText += hoursUntilFinished.toString() + " " + getString(R.string.hour_inflected) + " "
                         }
                     }
                     if(minutesWithoutHoursUntilFinished != 0){
-                        remainText += minutesWithoutHoursUntilFinished.toString() + " perced "
+                        remainText += minutesWithoutHoursUntilFinished.toString() +  " " + getString(R.string.minute) + " "
                     }
 
 
-                    textStayOutBottom.text = getString(R.string.now_remain, remainText)
+                    textStayOutBottom.text = getString(remainStringId, remainText)
 
                     (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
                         .matchConstraintPercentWidth = solid + moving
