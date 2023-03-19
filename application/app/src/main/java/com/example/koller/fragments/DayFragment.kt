@@ -1,6 +1,8 @@
 package com.example.koller.fragments
 
+import android.content.ComponentName
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -61,6 +63,11 @@ class DayFragment : Fragment() {
 
 
         val ediaryButton: Button = view.findViewById(R.id.ediary_button)
+
+        ediaryButton.setOnClickListener{
+
+        }
+
 
         usersRecyclerView = view.findViewById(R.id.on_duty_recycler_view)
         usersRecyclerView.layoutManager = LinearLayoutManager(context)

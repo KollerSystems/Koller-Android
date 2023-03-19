@@ -457,6 +457,11 @@
                             style="@style/Card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_margin="@null"
+                            android:layout_marginLeft="0.75dp"
+                            android:layout_marginTop="0.75dp"
+                            android:layout_marginRight="0.75dp"
+                            android:layout_marginBottom="-35dp"
                             android:clipChildren="false"
                             android:clipToPadding="false"
                             android:orientation="horizontal">
@@ -464,7 +469,8 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:orientation="horizontal">
+                                android:orientation="horizontal"
+                                android:paddingBottom="35dp">
 
                                 <com.google.android.material.imageview.ShapeableImageView
                                     style="@style/Icon"
