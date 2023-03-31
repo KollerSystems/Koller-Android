@@ -78,24 +78,14 @@ class HomeFragment : Fragment() {
         val seconds : Long = (c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(Calendar.HOUR_OF_DAY) * 60 * 60).toLong()
         val minutes : Float = seconds.toFloat() / 60
 
-        if(minutes > DefaultDayTimes.instance.dayTimeStart &&
-            minutes < DefaultDayTimes.instance.dayTimeGoInside){
+        fun startTimer (slider : View, startTimeMinute : Int, endTimeMinute : Int){
 
-            cardOutgoing.visibility = VISIBLE
-
-        }
-
-        else if(minutes > DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to &&
-            minutes < DefaultDayTimes.instance.nightTimeGoInsideYellow){
-
-            cardOutgoing.visibility = VISIBLE
-
-            var lastLessonMilli = (DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to * 60f * 1000).toLong()
-            var nightTimeGoInMilli = (DefaultDayTimes.instance.nightTimeGoInsideYellow * 60f * 1000).toLong()
+            var lastLessonMilli = (startTimeMinute * 60f * 1000).toLong()
+            var nightTimeGoInMilli = (endTimeMinute * 60f * 1000).toLong()
             var remainingTimeOnUpdateMilli : Long = nightTimeGoInMilli - (seconds * 1000)
 
+            val nightTimeGoInsideForText : String = (endTimeMinute / 60).toString()
 
-            val nightTimeGoInsideForText : String = (DefaultDayTimes.instance.nightTimeGoInsideYellow / 60).toString()
             var outStringId : Int = 0
             var remainStringId : Int = 0
             if(false){ // inside
@@ -115,10 +105,10 @@ class HomeFragment : Fragment() {
                     outgoingTimerRunning = true
 
                     if((millisUntilFinished / 1000f / 60 / 60) < 0.25f){
-                        viewStayOutSlider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorErrorContainer))
+                        slider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorErrorContainer))
                     }
                     else{
-                        viewStayOutSlider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorPrimaryContainer))
+                        slider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorPrimaryContainer))
                     }
 
                     var remainText : String = ""
@@ -127,29 +117,65 @@ class HomeFragment : Fragment() {
                     var minutesWithoutHoursUntilFinished : Int = (((millisUntilFinished / 1000f / 60) - (hoursUntilFinished * 60) + 0.5f)).roundToInt()
 
                     if(hoursUntilFinished != 0){
+                        var hoursString : String
                         if(minutesWithoutHoursUntilFinished != 0){
-                            remainText += hoursUntilFinished.toString() + " " + getString(R.string.hour) + " "
+                            if(hoursUntilFinished > 1) {
+                                hoursString = getString(R.string.hours)
+                            }
+                            else{
+                                hoursString = getString(R.string.hour)
+                            }
                         }
                         else{
-                            remainText += hoursUntilFinished.toString() + " " + getString(R.string.hour_inflected) + " "
+                            if(hoursUntilFinished > 1) {
+                                hoursString = getString(R.string.hours_infelcted)
+                            }
+                            else{
+                                hoursString = getString(R.string.hour_inflected)
+                            }
                         }
+                        remainText += "$hoursUntilFinished $hoursString "
                     }
                     if(minutesWithoutHoursUntilFinished != 0){
-                        remainText += minutesWithoutHoursUntilFinished.toString() +  " " + getString(R.string.minute) + " "
+
+                        var minutesString : String
+                        if(minutesWithoutHoursUntilFinished > 1) {
+                            minutesString = getString(R.string.minutes_infelcted)
+                        }
+                        else{
+                            minutesString = getString(R.string.minute)
+                        }
+
+                        remainText += "$minutesWithoutHoursUntilFinished $minutesString "
                     }
 
 
                     textStayOutBottom.text = getString(remainStringId, remainText)
 
-                    (viewStayOutSlider.layoutParams as ConstraintLayout.LayoutParams)
+                    (slider.layoutParams as ConstraintLayout.LayoutParams)
                         .matchConstraintPercentWidth = solid + moving
-                    viewStayOutSlider.requestLayout()
+                    slider.requestLayout()
                 }
 
                 override fun onFinish() {
                     outgoingTimerRunning = false
                 }
             }.start()
+        }
+
+        if(minutes > DefaultDayTimes.instance.dayTimeStart &&
+            minutes < DefaultDayTimes.instance.dayTimeGoInside){
+
+            cardOutgoing.visibility = VISIBLE
+
+            startTimer(viewStayOutSlider, DefaultDayTimes.instance.dayTimeStart, DefaultDayTimes.instance.dayTimeGoInside)
+        }
+        else if(minutes > DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to &&
+            minutes < DefaultDayTimes.instance.nightTimeGoInsideYellow){
+
+            cardOutgoing.visibility = VISIBLE
+
+            startTimer(viewStayOutSlider, DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to, DefaultDayTimes.instance.nightTimeGoInsideYellow)
 
         }
         else{
@@ -170,8 +196,8 @@ class HomeFragment : Fragment() {
         todayRecyclerView.setHasFixedSize(true)
 
         todayDataArrayList = arrayListOf(
-            TodayData("Szobarend", "K, P", "4"),
-            TodayData("Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mivel találkoztam vele a Mondoconon", context?.getDrawable(R.drawable.award)
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert kurvajó"
             ))
 
         todayRecyclerView.adapter = TodayRecyclerAdapter(todayDataArrayList)

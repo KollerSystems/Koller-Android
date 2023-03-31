@@ -191,7 +191,7 @@
                                             android:orientation="horizontal">
 
                                             <TextView
-                                                android:id="@+id/textView18"
+                                                android:id="@+id/home_text_lessons_number"
                                                 style="@style/Title"
                                                 android:layout_width="@dimen/panel_icon"
                                                 android:layout_height="@dimen/panel_icon"
@@ -218,14 +218,14 @@
                                                     android:orientation="vertical">
 
                                                     <TextView
-                                                        android:id="@+id/textView19"
+                                                        android:id="@+id/home_text_lessons_title"
                                                         style="@style/Title"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
                                                         android:text="@string/doing_things" />
 
                                                     <TextView
-                                                        android:id="@+id/textView20"
+                                                        android:id="@+id/home_text_lessons_description"
                                                         style="@style/Description"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
@@ -234,7 +234,7 @@
                                                 </LinearLayout>
 
                                                 <TextView
-                                                    android:id="@+id/textView21"
+                                                    android:id="@+id/home_text_lessons_time"
                                                     style="@style/Description"
                                                     android:layout_width="35sp"
                                                     android:layout_height="match_parent"

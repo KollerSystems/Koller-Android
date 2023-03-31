@@ -33,8 +33,8 @@ class NotificationsFragment : Fragment() {
         notificsRecyclerView.setHasFixedSize(true)
 
         notificationDataArrayList = arrayListOf(
-            TodayData("Szobarend", "K, P", "4"),
-            TodayData("Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mivel találkoztam vele a Mondoconon", context?.getDrawable(R.drawable.award)
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mivel találkoztam vele a Mondoconon"
             )
         )
 

@@ -15,13 +15,19 @@
         android:clipToPadding="false"
         android:orientation="horizontal">
 
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/notification_icon_start"
+            style="@style/Icon"
+            android:layout_width="@dimen/panel_icon"
+            android:layout_height="@dimen/panel_icon"
+            android:layout_marginRight="@dimen/text_container_margin"
+            android:alpha="0.666"
+            app:srcCompat="@drawable/room" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/text_container_margin"
-            android:layout_marginTop="@dimen/text_container_margin"
-            android:layout_marginRight="10dp"
-            android:layout_marginBottom="@dimen/text_container_margin"
+            android:layout_margin="@dimen/text_container_margin"
             android:layout_weight="1"
             android:clipChildren="false"
             android:clipToPadding="false"
@@ -53,11 +59,12 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/notification_icon"
+            android:id="@+id/notification_icon_end"
             style="@style/Title"
             android:layout_width="@dimen/panel_icon"
             android:layout_height="@dimen/panel_icon"
             android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/text_container_margin"
             android:backgroundTint="?android:attr/colorForeground"
             android:foregroundGravity="center"
             android:gravity="center"
@@ -65,7 +72,9 @@
             android:textAlignment="center"
             android:textColor="#00BF9F"
             android:textSize="40sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:visibility="visible" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

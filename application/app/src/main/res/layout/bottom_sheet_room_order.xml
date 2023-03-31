@@ -65,7 +65,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/notification_icon"
+                        android:id="@+id/room_order_fragment_text_final_rate"
                         style="@style/Title"
                         android:layout_width="@dimen/panel_icon"
                         android:layout_height="@dimen/panel_icon"
@@ -96,246 +96,18 @@
                 android:layout_margin="2.5dp"
                 android:orientation="vertical">
 
-                <LinearLayout
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
+                    android:layout_height="wrap_content">
 
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="0dp"
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/windows" />
+                        tools:listitem="@layout/view_rate_byte">
 
-                    <ImageView
-                        android:id="@+id/imageView7"
-                        android:layout_width="18dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:src="@drawable/done_thick"
-                        android:tint="?attr/colorPrimary" />
+                    </androidx.recyclerview.widget.RecyclerView>
+                </RelativeLayout>
 
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/beds" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/RatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:numStars="5"
-                        android:rating="5" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/power_cut" />
-
-                    <ImageView
-                        android:id="@+id/imageView8"
-                        android:layout_width="18dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:src="@drawable/done_thick"
-                        android:tint="?attr/colorPrimary" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/table" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/RatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:numStars="5"
-                        android:rating="4" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/fridge" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/RatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:numStars="5"
-                        android:rating="5" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/bin" />
-
-                    <ImageView
-                        android:id="@+id/imageView10"
-                        android:layout_width="18dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:alpha="0.3"
-                        android:src="@drawable/close_thick"
-                        android:tint="?attr/colorPrimary" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/air" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/RatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:numStars="5"
-                        android:rating="5" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/floor" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/RatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:numStars="5"
-                        android:rating="3" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/shelves" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/RatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:numStars="5"
-                        android:rating="4" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="2.5dp">
-
-                    <TextView
-                        android:id="@+id/textView8"
-                        style="@style/Normal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="@string/order" />
-
-                    <RatingBar
-                        android:id="@+id/ratingBar"
-                        style="@style/RatingBar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        android:numStars="5"
-                        android:rating="5" />
-                </LinearLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -345,7 +117,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/comment_text"
+                    android:id="@+id/room_order_fragment_text_rater_name"
                     style="@style/Description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -354,7 +126,7 @@
                     android:textAlignment="textStart" />
 
                 <TextView
-                    android:id="@+id/textView10"
+                    android:id="@+id/room_order_fragment_text_date"
                     style="@style/Description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

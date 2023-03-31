@@ -175,4 +175,7 @@
     <string name="hour">óra</string>
     <string name="minute">perced</string>
     <string name="hour_inflected">órád</string>
+    <string name="hours">óra</string>
+    <string name="minutes_infelcted">perced</string>
+    <string name="hours_infelcted">órád</string>
 </resources>

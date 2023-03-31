@@ -74,10 +74,10 @@ class DayFragment : Fragment() {
         usersRecyclerView.setHasFixedSize(true)
 
         todayDataArrayList = arrayListOf(
-            TodayData("Nagy Gazsi", "F3", "🐔"),
-            TodayData("Kis Péter", "F2", "🥶"),
-            TodayData("Hatalmas Norbert", "L1", "🤓"),
-            TodayData("Rogán Mátyás", "L3", "🦭")
+            TodayData(context?.getDrawable(R.drawable.person),"Nagy Gazsi", "F3", ),
+            TodayData(context?.getDrawable(R.drawable.person),"Kis Péter", "F2", ),
+            TodayData(context?.getDrawable(R.drawable.person),"Hatalmas Norbert", "L1", ),
+            TodayData(context?.getDrawable(R.drawable.person),"Rogán Mátyás", "L3", )
         )
 
         usersRecyclerView.adapter = TodayRecyclerAdapter(todayDataArrayList)

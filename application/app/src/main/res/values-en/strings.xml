@@ -141,4 +141,7 @@
     <string name="hour">hour</string>
     <string name="minute">minute</string>
     <string name="hour_inflected">hour</string>
+    <string name="hours">hours</string>
+    <string name="minutes_infelcted">minutes</string>
+    <string name="hours_infelcted">hours</string>
 </resources>
