@@ -8,6 +8,7 @@ android {
     compileSdk 33
 
     defaultConfig {
+        resourceConfigurations += ["en", "hu"]
         applicationId "com.example.koller"
         minSdk 26
         targetSdk 33

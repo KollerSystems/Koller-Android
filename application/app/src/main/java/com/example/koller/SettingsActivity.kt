@@ -1,16 +1,22 @@
 package com.example.koller
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.CheckBox
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.checkbox.MaterialCheckBox
-import java.util.ArrayList
+import com.google.android.material.slider.Slider
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
+import java.util.*
 
 class SettingsActivity : AppCompatActivity() {
+
+    companion object {
+        var timeOffset : Float = 0f
+    }
 
     private var isUpdatingChildren = false
 
@@ -38,6 +44,50 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        val timeOffsetSlider : Slider = findViewById(R.id.settings_slider_time_offset)
+        var c : Calendar = Calendar.getInstance()
+        val hours : Float = (c.get(Calendar.SECOND)  / 60f / 60f+ c.get(Calendar.MINUTE) / 60f + c.get(Calendar.HOUR_OF_DAY))
+        var hoursTIL : TextInputLayout = findViewById(R.id.settings_til_hours)
+        var hoursTIET : TextInputEditText = findViewById(R.id.settings_tiet_hours)
+        hoursTIET.setText((SettingsActivity.timeOffset).toString())
+
+
+        timeOffsetSlider.value = SettingsActivity.timeOffset
+
+        hoursTIL.hint = (hours + timeOffset).toString()
+
+        timeOffsetSlider.addOnChangeListener { slider, value, fromUser ->
+            SettingsActivity.timeOffset = value
+            if(timeOffsetSlider.value.toString() != hoursTIET.text.toString())
+            hoursTIET.setText((SettingsActivity.timeOffset).toString())
+        }
+
+        hoursTIET.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+
+                    try {
+                        if(hoursTIET.text.toString() == "") hoursTIET.setText("0")
+                        if(hoursTIET.text.toString().toFloat() > 24) hoursTIET.setText((24).toString())
+                        if(hoursTIET.text.toString().toFloat() < -24) hoursTIET.setText((-24).toString())
+                        if(timeOffsetSlider.value.toString() != hoursTIET.text.toString())
+                        timeOffsetSlider.value = hoursTIET.text.toString().toFloat()
+                        hoursTIL.hint = (hours + timeOffset).toString()
+                    }catch(asd : Exception){
+
+                    }
+
+            }
+        })
+
 
         val checkBoxParent: MaterialCheckBox = findViewById(R.id.notifics_all)
         val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(R.id.notifics_arrival), findViewById(R.id.notifics_new), findViewById(R.id.notifics_room), findViewById(R.id.notifics_occupation), findViewById(R.id.notifics_comm_or_warn))

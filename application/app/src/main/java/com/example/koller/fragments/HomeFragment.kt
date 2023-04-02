@@ -2,17 +2,16 @@ package com.example.koller.fragments
 
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
-import androidx.annotation.ColorInt
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.*
@@ -71,20 +70,51 @@ class HomeFragment : Fragment() {
         eventsRecyclerView.adapter = EventsRecyclerAdapter(eventsDataArrayList)
 
         val cardOutgoing : View = view.findViewById(R.id.home_card_outgoing)
+        cardOutgoing.setOnClickListener{
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelFragment
+            findNavController().navigate(R.id.action_studentHostelFragment_to_userOutgoingFragment)
+        }
 
         val cardLessons : View = view.findViewById(R.id.home_card_lessons)
+        cardLessons.setOnClickListener{
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.calendarFragment
+        }
 
         var c : Calendar = Calendar.getInstance()
-        val seconds : Long = (c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(Calendar.HOUR_OF_DAY) * 60 * 60).toLong()
+        val seconds : Long = ((c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(Calendar.HOUR_OF_DAY) * 60 * 60) + (SettingsActivity.timeOffset *60 *60)).toLong()
         val minutes : Float = seconds.toFloat() / 60
 
-        fun startTimer (slider : View, startTimeMinute : Int, endTimeMinute : Int){
+        fun startTimerForLessons(slider : View, startTimeMinute : Int, endTimeMinute : Int){
+            var lastLessonMilli = (startTimeMinute * 60f * 1000).toLong()
+            var nightTimeGoInMilli = (endTimeMinute * 60f * 1000).toLong()
+            var remainingTimeOnUpdateMilli : Long = nightTimeGoInMilli - (seconds * 1000)
+
+            outgoingTimer = object : CountDownTimer(remainingTimeOnUpdateMilli, 1000) {
+                override fun onTick(millisUntilFinished: Long) {
+                    val solid : Float = (remainingTimeOnUpdateMilli.toFloat() /  (nightTimeGoInMilli - lastLessonMilli) * -1) + 1
+                    val moving : Float = (((millisUntilFinished.toFloat() / remainingTimeOnUpdateMilli) * -1) + 1) * (1 - solid)
+
+                    (slider.layoutParams as ConstraintLayout.LayoutParams)
+                        .matchConstraintPercentWidth = solid + moving
+                    slider.requestLayout()
+                }
+
+                override fun onFinish() {
+                    lessonsTimerRunning = false
+                }
+            }.start()
+        }
+
+        fun startTimerForOutgoing (slider : View, startTimeMinute : Int, endTimeMinute : Int){
 
             var lastLessonMilli = (startTimeMinute * 60f * 1000).toLong()
             var nightTimeGoInMilli = (endTimeMinute * 60f * 1000).toLong()
             var remainingTimeOnUpdateMilli : Long = nightTimeGoInMilli - (seconds * 1000)
 
-            val nightTimeGoInsideForText : String = (endTimeMinute / 60).toString()
+            val hours: Int = endTimeMinute / 60 // since both are ints, you get an int
+            var minutes: String = (endTimeMinute % 60).toString()
+            if(minutes.length == 1) minutes = "0$minutes"
+            val nightTimeGoInsideForText : String = "$hours:$minutes"
 
             var outStringId : Int = 0
             var remainStringId : Int = 0
@@ -98,7 +128,7 @@ class HomeFragment : Fragment() {
             }
             textStayOutTop.text = getString(outStringId, nightTimeGoInsideForText)
 
-            outgoingTimer = object : CountDownTimer(remainingTimeOnUpdateMilli, 1) {
+            outgoingTimer = object : CountDownTimer(remainingTimeOnUpdateMilli, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
                     val solid : Float = (remainingTimeOnUpdateMilli.toFloat() /  (nightTimeGoInMilli - lastLessonMilli) * -1) + 1
                     val moving : Float = (((millisUntilFinished.toFloat() / remainingTimeOnUpdateMilli) * -1) + 1) * (1 - solid)
@@ -163,24 +193,104 @@ class HomeFragment : Fragment() {
             }.start()
         }
 
-        if(minutes > DefaultDayTimes.instance.dayTimeStart &&
-            minutes < DefaultDayTimes.instance.dayTimeGoInside){
+        if(minutes >= DefaultDayTimes.instance.dayTimeStart &&
+            minutes <= DefaultDayTimes.instance.dayTimeGoInside){
 
             cardOutgoing.visibility = VISIBLE
 
-            startTimer(viewStayOutSlider, DefaultDayTimes.instance.dayTimeStart, DefaultDayTimes.instance.dayTimeGoInside)
+            startTimerForOutgoing(viewStayOutSlider, DefaultDayTimes.instance.dayTimeStart, DefaultDayTimes.instance.dayTimeGoInside)
         }
-        else if(minutes > DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to &&
-            minutes < DefaultDayTimes.instance.nightTimeGoInsideYellow){
+        else if(minutes >= DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to &&
+            minutes <= DefaultDayTimes.instance.nightTimeGoInsideYellow){
 
             cardOutgoing.visibility = VISIBLE
 
-            startTimer(viewStayOutSlider, DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to, DefaultDayTimes.instance.nightTimeGoInsideYellow)
+            startTimerForOutgoing(viewStayOutSlider, DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size -1].to, DefaultDayTimes.instance.nightTimeGoInsideYellow)
 
         }
         else{
             cardOutgoing.visibility = GONE
         }
+
+        var lessonTime : Boolean = false
+
+        var textLessonsSilenceWarning : TextView = view.findViewById(R.id.home_text_silence_warning)
+
+        var textLessonsTitle : TextView = view.findViewById(R.id.home_text_lessons_title)
+        var textLessonsDescription : TextView = view.findViewById(R.id.home_text_lessons_description)
+        var textLessonsNumber : TextView = view.findViewById(R.id.home_text_lessons_number)
+        var textLessonsTime : TextView = view.findViewById(R.id.home_text_lessons_time)
+
+        var viewLessonsNext : View = view.findViewById(R.id.home_layout_lessons_next)
+        var textSmallLessonsTitle : TextView = view.findViewById(R.id.home_text_small_lessons_title)
+        var textSmallLessonsDescription : TextView = view.findViewById(R.id.home_text_small_lessons_description)
+        var textSmallLessonsNumber : TextView = view.findViewById(R.id.home_text_small_lessons_number)
+        var textSmallLessonsTime : TextView = view.findViewById(R.id.home_text_small_lessons_time)
+
+        fun NextLessonsGraphic(index : Int){
+            viewLessonsNext.visibility = VISIBLE
+
+            var lesson = DefaultDayTimes.instance.lessons[index + 1]
+            textSmallLessonsNumber.text = (index + 1 + 1).toString() + "."
+            textSmallLessonsTime.text = MyApplication.timeFromTo(lesson.from, lesson.to)
+        }
+
+        for (i in 0 until DefaultDayTimes.instance.lessons.size){
+            //óra
+            if(minutes >= DefaultDayTimes.instance.lessons[i].from &&
+                minutes <= DefaultDayTimes.instance.lessons[i].to){
+                lessonTime = true
+
+                var currentLessonTime = DefaultDayTimes.instance.lessons[i]
+
+                cardLessons.visibility = VISIBLE
+                textLessonsSilenceWarning.visibility = VISIBLE
+
+                textLessonsNumber.text = (i + 1).toString() + "."
+                textLessonsNumber.background = null
+
+                textLessonsTime.text = MyApplication.timeFromTo(currentLessonTime.from, currentLessonTime.to)
+
+                startTimerForLessons(viewLessonSlider, currentLessonTime.from, currentLessonTime.to)
+
+                if(i < DefaultDayTimes.instance.lessons.size - 1){
+                    var nextLessonTime = DefaultDayTimes.instance.lessons[i + 1]
+                    NextLessonsGraphic(i)
+                }
+                else{
+                    viewLessonsNext.visibility = GONE
+                }
+
+            }
+            //szünet
+            else if (i < DefaultDayTimes.instance.lessons.size - 1 &&
+                minutes >= DefaultDayTimes.instance.lessons[i].to &&
+                minutes <= DefaultDayTimes.instance.lessons[i + 1].from){
+                lessonTime = true
+
+                NextLessonsGraphic(i)
+
+                var currentLessonTime = DefaultDayTimes.instance.lessons[i]
+                var nextLessonTime = DefaultDayTimes.instance.lessons[i + 1]
+
+                cardLessons.visibility = VISIBLE
+                textLessonsSilenceWarning.visibility = GONE
+
+
+                textLessonsTitle.text = getText(R.string.pause)
+                textLessonsDescription.text = getText(R.string.pause_description)
+                textLessonsNumber.text = ""
+                textLessonsNumber.background = requireContext().getDrawable(R.drawable.pause)
+                textLessonsTime.text = MyApplication.timeFromTo(currentLessonTime.to, nextLessonTime.from)
+
+                startTimerForLessons(viewLessonSlider, currentLessonTime.to, nextLessonTime.from)
+            }
+        }
+
+        if(!lessonTime){
+            cardLessons.visibility = GONE
+        }
+
 
         val textNow : TextView = view.findViewById(R.id.home_text_now)
 

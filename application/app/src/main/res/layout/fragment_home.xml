@@ -107,14 +107,14 @@
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="@string/stay_out_text" />
+                                        android:text="@string/title" />
 
                                     <TextView
                                         android:id="@+id/home_text_outgoing_down"
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
-                                        android:text="@string/now_remain" />
+                                        android:text="@string/description" />
                                 </LinearLayout>
 
                             </LinearLayout>
@@ -138,11 +138,11 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textView17"
+                                    android:id="@+id/home_text_silence_warning"
                                     style="@style/Description"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginBottom="5dp"
+                                    android:layout_marginBottom="12.5dp"
                                     android:text="@string/silence_warning" />
 
                                 <LinearLayout
@@ -160,7 +160,9 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:layout_marginLeft="-7.5dp"
+                                            android:layout_marginTop="-7.5dp"
                                             android:layout_marginRight="-7.5dp"
+                                            android:layout_marginBottom="-7.5dp"
                                             app:cardCornerRadius="15dp">
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
@@ -177,7 +179,7 @@
                                                     app:layout_constraintHorizontal_bias="0.0"
                                                     app:layout_constraintStart_toStartOf="parent"
                                                     app:layout_constraintTop_toTopOf="parent"
-                                                    app:layout_constraintWidth_percent="0.66" />
+                                                    app:layout_constraintWidth_percent="0.75" />
                                             </androidx.constraintlayout.widget.ConstraintLayout>
 
                                         </com.google.android.material.card.MaterialCardView>
@@ -185,8 +187,6 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginTop="7.5dp"
-                                            android:layout_marginBottom="7.5dp"
                                             android:gravity="center_vertical"
                                             android:orientation="horizontal">
 
@@ -196,8 +196,9 @@
                                                 android:layout_width="@dimen/panel_icon"
                                                 android:layout_height="@dimen/panel_icon"
                                                 android:layout_gravity="center_vertical"
+                                                android:backgroundTint="?android:attr/colorForeground"
                                                 android:gravity="center|center_vertical"
-                                                android:text="2."
+                                                android:text="n"
                                                 android:textAlignment="center"
                                                 android:textSize="38sp" />
 
@@ -222,14 +223,14 @@
                                                         style="@style/Title"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:text="@string/doing_things" />
+                                                        android:text="@string/title" />
 
                                                     <TextView
                                                         android:id="@+id/home_text_lessons_description"
                                                         style="@style/Description"
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:text="216"
+                                                        android:text="@string/description"
                                                         android:textAlignment="textStart" />
                                                 </LinearLayout>
 
@@ -240,7 +241,7 @@
                                                     android:layout_height="match_parent"
                                                     android:gravity="center"
                                                     android:lineSpacingExtra="-5sp"
-                                                    android:text="18:00\n-\n18:45"
+                                                    android:text="@string/hours"
                                                     android:textAlignment="center" />
 
                                             </LinearLayout>
@@ -249,20 +250,21 @@
                                     </FrameLayout>
 
                                     <LinearLayout
+                                        android:id="@+id/home_layout_lessons_next"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="15dp"
-                                        android:layout_marginTop="5dp"
+                                        android:layout_marginTop="12.5dp"
                                         android:gravity="center_vertical"
                                         android:orientation="horizontal">
 
                                         <TextView
-                                            android:id="@+id/next_class_number"
+                                            android:id="@+id/home_text_small_lessons_number"
                                             android:layout_width="@dimen/panel_icon_smaller"
                                             android:layout_height="@dimen/panel_icon_smaller"
                                             android:layout_gravity="center"
                                             android:gravity="center"
-                                            android:text="3."
+                                            android:text="n"
                                             android:textAlignment="center"
                                             android:textColor="?colorForeground066"
                                             android:textSize="25.5sp"
@@ -286,34 +288,34 @@
                                                 android:orientation="vertical">
 
                                                 <TextView
-                                                    android:id="@+id/next_class_name"
+                                                    android:id="@+id/home_text_small_lessons_title"
                                                     style="@style/TextAppearance.AppCompat.Medium"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
-                                                    android:text="Online Marketing"
+                                                    android:text="@string/title"
                                                     android:textColor="?colorForeground066"
                                                     android:textSize="@dimen/text_title_smaller"
                                                     android:textStyle="bold" />
 
                                                 <TextView
-                                                    android:id="@+id/next_class_room"
+                                                    android:id="@+id/home_text_small_lessons_description"
                                                     style="@style/Description"
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
-                                                    android:text="F5"
+                                                    android:text="@string/description"
                                                     android:textAlignment="textStart"
                                                     android:textColor="?colorForeground033"
                                                     android:textSize="@dimen/text_description_smaller" />
                                             </LinearLayout>
 
                                             <TextView
-                                                android:id="@+id/textView22"
+                                                android:id="@+id/home_text_small_lessons_time"
                                                 style="@style/Description"
                                                 android:layout_width="26.25sp"
                                                 android:layout_height="match_parent"
                                                 android:gravity="center"
                                                 android:lineSpacingExtra="-3.75sp"
-                                                android:text="18:50\n-\n19:35"
+                                                android:text="@string/hours"
                                                 android:textAlignment="center"
                                                 android:textColor="?colorForeground033"
                                                 android:textSize="@dimen/text_description_smaller" />

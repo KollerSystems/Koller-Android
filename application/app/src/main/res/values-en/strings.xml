@@ -144,4 +144,6 @@
     <string name="hours">hours</string>
     <string name="minutes_infelcted">minutes</string>
     <string name="hours_infelcted">hours</string>
+    <string name="pause">Break</string>
+    <string name="pause_description">Don\'t go too far</string>
 </resources>

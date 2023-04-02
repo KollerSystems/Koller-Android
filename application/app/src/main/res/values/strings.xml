@@ -88,8 +88,8 @@
     <string name="icon">Ikon</string>
     <string name="today">Ma</string>
     <string name="go_out_text">%1$s-ig még kimehetsz</string>
-    <string name="stay_out_text">%1$s-ig még kint maradhatsz</string>
-    <string name="will_remain">Lesz még %1$svisszaérni</string>
+    <string name="stay_out_text">%1$s-ig kint maradhatsz</string>
+    <string name="will_remain">Lesz %1$svisszaérni</string>
     <string name="now_remain">Van még %1$svisszaérni</string>
     <string name="praises">Dicséretek</string>
     <string name="warnings">Figyelmeztetők</string>
@@ -178,4 +178,6 @@
     <string name="hours">óra</string>
     <string name="minutes_infelcted">perced</string>
     <string name="hours_infelcted">órád</string>
+    <string name="pause">Szünet</string>
+    <string name="pause_description">Ne menj túl messzire</string>
 </resources>
