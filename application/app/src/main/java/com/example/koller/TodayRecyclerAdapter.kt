@@ -12,19 +12,33 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.imageview.ShapeableImageView
 
 
-class TodayRecyclerAdapter (private val todayList : ArrayList<TodayData>) : RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>() {
+class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>(){
+
+    private val item: Int = 0
+    private val loading: Int = 1
+
+    private var isLoadingAdded: Boolean = false
+    private var retryPageLoad: Boolean = false
+
+    private var errorMsg: String? = "Szar"
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
-        return TodayViewHolder(itemView)
+
+
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
+            return TodayViewHolder(view)
+
+
     }
 
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
+
         holder.iconLeft.setImageDrawable(currentItem.iconLeft)
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
-        if(currentItem.iconRight != null || currentItem.charRight != ""){
+        if (currentItem.iconRight != null || currentItem.charRight != "") {
             holder.iconRight.visibility = VISIBLE
             holder.iconRight.background = currentItem.iconRight
             holder.iconRight.text = currentItem.charRight

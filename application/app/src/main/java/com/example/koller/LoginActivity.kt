@@ -27,13 +27,7 @@ import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
-    private fun getHeaderMap(): Map<String, String> {
-        val headerMap = mutableMapOf<String, String>()
-        headerMap["Content-Type"] = "application/json"
-        headerMap["Authorization"] = "Bearer ${ApiLoginTokensData.instance.access_token}"
-        Log.d("INFO", ApiLoginTokensData.instance.access_token)
-        return headerMap
-    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -105,19 +99,6 @@ class LoginActivity : AppCompatActivity() {
             loadingBar.visibility = GONE
         }
 
-        fun ServerErrorPopup(){
-            MaterialAlertDialogBuilder(this@LoginActivity)
-                .setTitle("Szerver hiba!")
-                .setMessage("Az applikáció nem tudott kapcsolatot létesíteni a szerverrel.\nKérlek própád újra.")
-                .setPositiveButton(
-                    getString(R.string.ok)
-                )
-                { _, _ ->
-
-                }
-                .show()
-        }
-
         loginButton.setOnClickListener() {
 
             if(MyApplication.isOnline(this)){
@@ -144,7 +125,7 @@ class LoginActivity : AppCompatActivity() {
 
 
                                     val userResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                                    userResponse.getCurrentUser(getHeaderMap()).enqueue(
+                                    userResponse.getCurrentUser(APIInterface.getHeaderMap()).enqueue(
                                         object : Callback<UserData> {
                                             override fun onResponse(
                                                 call: Call<UserData>,
@@ -160,13 +141,13 @@ class LoginActivity : AppCompatActivity() {
                                                 }
                                                 else{
                                                     ReturnLoginLayoutToNormal()
-                                                    ServerErrorPopup()
+                                                    APIInterface.ServerErrorPopup(this@LoginActivity)
                                                 }
                                             }
 
                                             override fun onFailure(call: Call<UserData>, t: Throwable) {
                                                 ReturnLoginLayoutToNormal()
-                                                ServerErrorPopup()
+                                                APIInterface.ServerErrorPopup(this@LoginActivity)
                                             }
                                         }
                                     )
@@ -180,7 +161,7 @@ class LoginActivity : AppCompatActivity() {
 
                             override fun onFailure(call: Call<ApiLoginTokensData>, t: Throwable) {
                                 ReturnLoginLayoutToNormal()
-                                ServerErrorPopup()
+                                APIInterface.ServerErrorPopup(this@LoginActivity)
                             }
                         }
                     )

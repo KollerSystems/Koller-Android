@@ -56,17 +56,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <RelativeLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/users_recycleview"
+                        style="@style/MainCardLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        tools:listitem="@layout/notification_panel" />
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycleview_notifications"
-                            style="@style/MainCardLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:listitem="@layout/notification_panel" />
-                    </RelativeLayout>
                 </com.google.android.material.card.MaterialCardView>
 
             </LinearLayout>

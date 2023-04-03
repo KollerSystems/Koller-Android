@@ -1,5 +1,9 @@
 
+import android.content.Context
+import android.util.Log
 import com.example.koller.ApiLoginData
+import com.example.koller.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -7,11 +11,57 @@ import retrofit2.http.*
 
 interface APIInterface {
 
+    companion object {
+        fun getHeaderMap(): Map<String, String> {
+            val headerMap = mutableMapOf<String, String>()
+            headerMap["Content-Type"] = "application/json"
+            headerMap["Authorization"] = "Bearer ${ApiLoginTokensData.instance.access_token}"
+            Log.d("INFO", ApiLoginTokensData.instance.access_token)
+            return headerMap
+        }
+
+        fun ServeUnableToConnectPopup(context: Context){
+            MaterialAlertDialogBuilder(context)
+                .setTitle("Szerver hiba!")
+                .setMessage("Az applikáció és a szerver között hiba lépett fel.\nKérlek própád újra.")
+                .setPositiveButton(
+                    context.getString(R.string.ok)
+                )
+                { _, _ ->
+
+                }
+                .show()
+        }
+
+        fun ServerErrorPopup(context: Context){
+            MaterialAlertDialogBuilder(context)
+                .setTitle("Szerver hiba!")
+                .setMessage("Az applikáció nem tudott kapcsolatot létesíteni a szerverrel.\nKérlek própád újra.")
+                .setPositiveButton(
+                    context.getString(R.string.ok)
+                )
+                { _, _ ->
+
+                }
+                .show()
+        }
+    }
+
+
+
+
     @POST("oauth/token")
     fun postLogin(@Body requestModel: ApiLoginData) : Call<ApiLoginTokensData>
 
-    @GET("api/user/me")
+    @GET("api/users/me")
     fun getCurrentUser(
         @HeaderMap headers: Map<String, String>
     ) : Call<UserData>
+
+    @GET("api/users")
+    fun getUsers(
+        @Query(value = "limit") limit : Int,
+        @Query(value = "offset") offset : Int,
+        @HeaderMap headers: Map<String, String>
+    ) : Call<ArrayList<UserData>>
 }
