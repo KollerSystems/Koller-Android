@@ -180,4 +180,11 @@
     <string name="hours_infelcted">órád</string>
     <string name="pause">Szünet</string>
     <string name="pause_description">Ne menj túl messzire</string>
+    <string name="kitchenette">Teakonyhák</string>
+    <string name="floor_level">Emelet</string>
+    <string name="gym">Konditerem</string>
+    <string name="from_up">Fentről</string>
+    <string name="from_down">Lentről</string>
+    <string name="my_room">Szobám</string>
+    <string name="report_room_desc">A szoba szabályokat szeg</string>
 </resources>

@@ -63,5 +63,5 @@ interface APIInterface {
         @Query(value = "limit") limit : Int,
         @Query(value = "offset") offset : Int,
         @HeaderMap headers: Map<String, String>
-    ) : Call<ArrayList<UserData>>
+    ) : Call<List<UserData>>
 }

@@ -1,7 +1,5 @@
 package com.example.koller
 
-import APIInterface
-import RetrofitHelper
 import UserData
 import android.content.Intent
 import android.net.Uri
@@ -15,11 +13,6 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 
 class ProfileBottomSheet : BottomSheetDialogFragment() {
@@ -77,14 +70,22 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val btnManageAccount: Button = view.findViewById(R.id.profile_btn_manage_account)
 
         btnManageAccount.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelFragment
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
+            this.dismiss()
+        }
+
+        val cardMyRoom: MaterialCardView = view.findViewById(R.id.profile_card_my_room)
+
+        cardMyRoom.setOnClickListener{
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
+            findNavController().navigate(R.id.action_studentHostelFragment_to_roomFragment)
             this.dismiss()
         }
 
         val fbtnOutgoing: MaterialCardView = view.findViewById(R.id.profile_fbtn_outgoing)
 
         fbtnOutgoing.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelFragment
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
             findNavController().navigate(R.id.action_studentHostelFragment_to_userOutgoingFragment)
             this.dismiss()
         }
@@ -92,7 +93,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val fbtnGate: MaterialCardView = view.findViewById(R.id.profile_fbtn_gate)
 
         fbtnGate.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelFragment
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
             findNavController().navigate(R.id.action_studentHostelFragment_to_userGateFragment)
             this.dismiss()
         }

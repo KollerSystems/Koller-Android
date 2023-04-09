@@ -21,66 +21,98 @@
         android:name="com.example.koller.fragments.CalendarFragment"
         android:label="@string/calendar"
         tools:layout="@layout/fragment_calendar" />
-    <fragment
-        android:id="@+id/studentHostelFragment"
-        android:name="com.example.koller.fragments.StudentHostelFragment"
-        android:label="@string/student_hostel"
-        tools:layout="@layout/fragment_student_hostel" >
-        <action
-            android:id="@+id/action_studentHostelFragment_to_roomsFragment2"
-            app:destination="@id/roomsFragment" />
-        <action
-            android:id="@+id/action_studentHostelFragment_to_usersFragment2"
-            app:destination="@id/usersFragment"
-            app:enterAnim="@anim/nav_default_enter_anim"
-            app:exitAnim="@anim/nav_default_exit_anim"
-            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-        <action
-            android:id="@+id/action_studentHostelFragment_to_userGateFragment"
-            app:destination="@id/userGateFragment"
-            app:popUpTo="@id/studentHostelFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_studentHostelFragment_to_userOutgoingFragment"
-            app:destination="@id/userOutgoingFragment"
-            app:popUpTo="@id/studentHostelFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
-    <fragment
-        android:id="@+id/roomsFragment"
-        android:name="com.example.koller.fragments.RoomsFragment"
-        android:label="@string/rooms" />
-    <fragment
-        android:id="@+id/usersFragment"
-        android:name="com.example.koller.fragments.UsersFragment"
-        android:label="@string/people"
-        tools:layout="@layout/fragment_rooms" >
-        <action
-            android:id="@+id/action_usersFragment_to_userFragment"
-            app:destination="@id/userFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userFragment"
-        android:name="com.example.koller.fragments.UserFragment"
-        android:label="UserFragment" >
-        <action
-            android:id="@+id/action_userFragment_to_userGateFragment"
-            app:destination="@id/userGateFragment" />
-        <action
-            android:id="@+id/action_userFragment_to_userGateFragment2"
-            app:destination="@id/userGateFragment" />
-        <action
-            android:id="@+id/action_userFragment_to_userOutgoingFragment"
-            app:destination="@id/userOutgoingFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/userGateFragment"
-        android:name="com.example.koller.fragments.UserGateFragment"
-        android:label="Ki- és belépések" />
-    <fragment
-        android:id="@+id/userOutgoingFragment"
-        android:name="com.example.koller.UserOutgoingFragment"
-        android:label="Kimenők"
-        tools:layout="@layout/fragment_user_outgoing" />
+    <navigation
+        android:id="@+id/studentHostelNest"
+        android:label="Kollegium"
+        app:startDestination="@id/studentHostelFragment">
+        <fragment
+            android:id="@+id/studentHostelFragment"
+            android:name="com.example.koller.fragments.StudentHostelFragment"
+            android:label="@string/student_hostel"
+            tools:layout="@layout/fragment_student_hostel">
+            <action
+                android:id="@+id/action_studentHostelFragment_to_roomsFragment2"
+                app:destination="@id/roomsFragment" />
+            <action
+                android:id="@+id/action_studentHostelFragment_to_usersFragment2"
+                app:destination="@id/usersFragment"
+                app:enterAnim="@anim/nav_default_enter_anim"
+                app:exitAnim="@anim/nav_default_exit_anim"
+                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+                app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+            <action
+                android:id="@+id/action_studentHostelFragment_to_userGateFragment"
+                app:destination="@id/userGateFragment"
+                app:popUpTo="@id/studentHostelNest"
+                app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_studentHostelFragment_to_userOutgoingFragment"
+                app:destination="@id/userOutgoingFragment"
+                app:popUpTo="@id/studentHostelNest"
+                app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_studentHostelFragment_to_userFragment"
+                app:destination="@id/userFragment"
+                app:popUpTo="@id/studentHostelFragment"
+                app:popUpToInclusive="true" />
+            <action
+                android:id="@+id/action_studentHostelFragment_to_roomFragment"
+                app:destination="@id/roomFragment"
+                app:popUpTo="@id/studentHostelFragment"
+                app:popUpToInclusive="true" />
+        </fragment>
+        <fragment
+            android:id="@+id/roomsFragment"
+            android:name="com.example.koller.fragments.RoomsFragment"
+            android:label="@string/rooms" >
+            <action
+                android:id="@+id/action_roomsFragment_to_roomFragment"
+                app:destination="@id/roomFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/usersFragment"
+            android:name="com.example.koller.fragments.UsersFragment"
+            android:label="@string/people"
+            tools:layout="@layout/fragment_rooms">
+            <action
+                android:id="@+id/action_usersFragment_to_userFragment"
+                app:destination="@id/userFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/userFragment"
+            android:name="com.example.koller.fragments.UserFragment"
+            android:label="UserFragment">
+            <action
+                android:id="@+id/action_userFragment_to_userGateFragment"
+                app:destination="@id/userGateFragment" />
+            <action
+                android:id="@+id/action_userFragment_to_userGateFragment2"
+                app:destination="@id/userGateFragment" />
+            <action
+                android:id="@+id/action_userFragment_to_userOutgoingFragment"
+                app:destination="@id/userOutgoingFragment" />
+            <action
+                android:id="@+id/action_userFragment_to_roomFragment"
+                app:destination="@id/roomFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/userOutgoingFragment"
+            android:name="com.example.koller.UserOutgoingFragment"
+            android:label="Kimenők"
+            tools:layout="@layout/fragment_user_outgoing" />
+        <fragment
+            android:id="@+id/userGateFragment"
+            android:name="com.example.koller.fragments.UserGateFragment"
+            android:label="Ki- és belépések" />
+        <fragment
+            android:id="@+id/roomFragment"
+            android:name="com.example.koller.RoomFragment"
+            android:label="Szoba"
+            tools:layout="@layout/fragment_room">
+            <action
+                android:id="@+id/action_roomFragment_to_userFragment"
+                app:destination="@id/userFragment" />
+        </fragment>
+    </navigation>
+
 </navigation>

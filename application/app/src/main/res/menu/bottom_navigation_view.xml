@@ -10,7 +10,7 @@
         android:icon="@drawable/calendar_icon"
         android:title="@string/calendar" />
     <item
-        android:id="@+id/studentHostelFragment"
+        android:id="@+id/studentHostelNest"
         android:icon="@drawable/building"
         android:title="@string/student_hostel" />
     <item

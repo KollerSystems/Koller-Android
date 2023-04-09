@@ -20,7 +20,7 @@ class CalendarDaysFragment : Fragment() {
     }
 
     private lateinit var days : Array<String>
-
+    lateinit var viewPager : ViewPager2
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -30,7 +30,7 @@ class CalendarDaysFragment : Fragment() {
 
         days = arrayOf(getString(com.example.koller.R.string.monday), getString(R.string.tuesday), getString(R.string.wednesday), getString(R.string.thursday), getString(R.string.friday), getString(R.string.saturday), getString(R.string.sunday))
 
-        val viewPager : ViewPager2 = view.findViewById(R.id.calendar_days_view_pager)
+        viewPager = view.findViewById(R.id.calendar_days_view_pager)
         viewPager.adapter = CalendarDayAdapter(this)
 
         val tabLayoutDays : TabLayout = view.findViewById(R.id.calendar_days_tabs)

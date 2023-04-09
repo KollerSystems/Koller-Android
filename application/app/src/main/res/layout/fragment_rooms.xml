@@ -24,6 +24,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:text="@string/filters" />
+
                 <com.google.android.material.chip.ChipGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -41,7 +48,61 @@
                         android:layout_height="wrap_content"
                         android:text="@string/classrooms" />
 
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip38"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kitchenette" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip40"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/gym" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip39"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/floor_level" />
+
                 </com.google.android.material.chip.ChipGroup>
+
+                <TextView
+                    android:id="@+id/textView21"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:text="@string/arrangement" />
+
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/chipGroupArrangeCard"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.chip.ChipGroup
+                        style="@style/chipGroupArrange"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:checkedChip="@id/chip20">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip20"
+                            style="@style/chipArrange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/from_down" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip22"
+                            style="@style/chipArrange"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/from_up" />
+
+                    </com.google.android.material.chip.ChipGroup>
+                </com.google.android.material.card.MaterialCardView>
 
                 <View
                     android:id="@+id/divider"

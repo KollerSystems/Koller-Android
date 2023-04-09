@@ -146,4 +146,11 @@
     <string name="hours_infelcted">hours</string>
     <string name="pause">Break</string>
     <string name="pause_description">Don\'t go too far</string>
+    <string name="kitchenette">Kitchenettes</string>
+    <string name="floor_level">Floor</string>
+    <string name="gym">Gym</string>
+    <string name="from_up">From up</string>
+    <string name="from_down">From down</string>
+    <string name="my_room">My room</string>
+    <string name="report_room_desc">The room violates the rules</string>
 </resources>

@@ -103,6 +103,10 @@
         <item name="iconTint">?android:attr/colorForeground</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
         <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:layout_marginBottom">0.75dp</item>
+        <item name="android:layout_marginTop">0.75dp</item>
+        <item name="android:layout_marginLeft">0.75dp</item>
+        <item name="android:layout_marginRight">0.75dp</item>
     </style>
 
     <style name="MainTitleExpanded">
@@ -153,6 +157,24 @@
     <style name="roundedImageView">
         <item name="cornerSize">10dp</item>
         <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="chipGroupArrangeCard">
+        <item name="cardCornerRadius">8dp</item>
+        <item name="android:layout_marginVertical">8dp</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="chipGroupArrange" parent="@style/Widget.Material3.ChipGroup">
+        <item name="chipSpacingHorizontal">0dp</item>
+        <item name="chipSpacingVertical">0dp</item>
+        <item name="selectionRequired">true</item>
+        <item name="singleSelection">true</item>
+    </style>
+
+    <style name="chipArrange" parent="chipButtonFilterStyle">
+        <item name="chipCornerRadius">0dp</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
     </style>
 
     <style name="Card" parent="@style/Widget.Material3.CardView.Filled">

@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.FragmentContainerView
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
+import com.example.koller.MainActivity
 import com.example.koller.R
 import com.google.android.material.card.MaterialCardView
 
@@ -42,11 +44,11 @@ class StudentHostelFragment : Fragment() {
         val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
 
         roomsButton.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_studentHostelFragment_to_roomsFragment2)
+            findNavController().navigate(R.id.action_studentHostelFragment_to_roomsFragment2)
         }
 
         usersButton.setOnClickListener{
-            Navigation.findNavController(view).navigate(R.id.action_studentHostelFragment_to_usersFragment2)
+            findNavController().navigate(R.id.action_studentHostelFragment_to_usersFragment2)
         }
 
         return view;

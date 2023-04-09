@@ -5,6 +5,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -98,14 +99,20 @@ class DayFragment : Fragment() {
 
                 panelDutyMax.alpha = (slideOffset * 2) -1
                 panelDutyMin.alpha = (((slideOffset -1) * 2) * -1) -1
+                (parentFragment as CalendarDaysFragment).viewPager.isUserInputEnabled = false
 
             }
 
-            override fun onStateChanged(bottomSheet: View, newState: Int) = Unit
+
+
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                (parentFragment as CalendarDaysFragment).viewPager.isUserInputEnabled = true
+            }
         })
 
         var textCloseDutyName : TextView = view.findViewById(R.id.text_close_duty_name)
         textCloseDutyName.setOnClickListener{
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
             Navigation.findNavController(view).navigate(R.id.userFragment)
         }
 
