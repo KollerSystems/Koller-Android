@@ -34,5 +34,7 @@
 
     <dimen name="transitionDefaultSpeed">250</dimen>
 
+    <dimen name="expandedToolbarHeight">250dp</dimen>
+
     <dimen name="imageHeight">200dp</dimen>
 </resources>

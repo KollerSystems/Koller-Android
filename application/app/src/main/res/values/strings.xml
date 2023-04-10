@@ -187,4 +187,5 @@
     <string name="from_down">Lentről</string>
     <string name="my_room">Szobám</string>
     <string name="report_room_desc">A szoba szabályokat szeg</string>
+    <string name="manage_room">Szoba kezelése</string>
 </resources>

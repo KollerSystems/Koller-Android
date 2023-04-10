@@ -153,4 +153,5 @@
     <string name="from_down">From down</string>
     <string name="my_room">My room</string>
     <string name="report_room_desc">The room violates the rules</string>
+    <string name="manage_room">Manage room</string>
 </resources>

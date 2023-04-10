@@ -15,6 +15,7 @@
         <item name="bottomSheetDragHandleStyle">@style/bottomSheetDrag</item>
         <item name="materialCardViewStyle">@style/SimpleCard</item>
         <item name="materialAlertDialogTheme">@style/Popup</item>
+        <item name="toolbarStyle">@style/toolbar</item>
     </style>
 
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
@@ -251,6 +252,23 @@
     <style name="Icon">
         <item name="android:adjustViewBounds">true</item>
         <item name="tint">?android:attr/colorForeground</item>
+    </style>
+
+    <style name="toolbar" parent="@style/Widget.Material3.Toolbar">
+        <item name="android:layout_height">@dimen/header_footer_size</item>
+        <item name="minHeight">0dp</item>
+    </style>
+
+    <style name="collapsing_toolbar_layout" parent="@style/Widget.Material3.CollapsingToolbar">
+        <item name="layout_scrollFlags">scroll|exitUntilCollapsed|snap</item>
+        <item name="collapsedTitleTextAppearance">@style/MainTitle</item>
+        <item name="expandedTitleGravity">center</item>
+        <item name="expandedTitleTextAppearance">@style/MainTitleExpanded</item>
+        <item name="scrimVisibleHeightTrigger">@dimen/expandedToolbarHeight</item>
+        <item name="expandedTitleTextColor">?android:attr/colorForeground</item>
+        <item name="collapsedTitleTextColor">?android:attr/colorForeground</item>
+        <item name="titleCollapseMode">scale</item>
+        <item name="title">@string/title</item>
     </style>
 
     <style name="SmallIcon">
