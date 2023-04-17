@@ -105,8 +105,3 @@ class UsersFragment : Fragment() {
         return view
     }
 }
-
-public class PaginationAdapter {
-
-
-}
