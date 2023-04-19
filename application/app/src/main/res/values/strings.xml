@@ -188,4 +188,12 @@
     <string name="my_room">Szobám</string>
     <string name="report_room_desc">A szoba szabályokat szeg</string>
     <string name="manage_room">Szoba kezelése</string>
+    <string name="content">Tartalom</string>
+    <string name="plus_image">+ kép</string>
+    <string name="scheduling">Beütemezés</string>
+    <string name="publish">Közzététel</string>
+    <string name="options">Beállítások</string>
+    <string name="place">Helyszín</string>
+    <string name="base_program_replacement">Alap program pótlás</string>
+    <string name="date_time">Időpont</string>
 </resources>

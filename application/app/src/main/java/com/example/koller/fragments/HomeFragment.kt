@@ -1,5 +1,6 @@
 package com.example.koller.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -325,6 +326,11 @@ class HomeFragment : Fragment() {
         todayRecyclerView.adapter = TodayRecyclerAdapter(todayDataArrayList)
 
         val fabRoot: View = view.findViewById(R.id.home_fab_root)
+
+        fabRoot.setOnClickListener{
+            val intent = Intent(view.context, CreateNewPostActivity::class.java)
+            startActivity(intent)
+        }
 
         return view
     }

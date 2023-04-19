@@ -37,4 +37,9 @@
     <dimen name="expandedToolbarHeight">250dp</dimen>
 
     <dimen name="imageHeight">200dp</dimen>
+
+    <dimen name="HeaderMarginVertical">10dp</dimen>
+    <dimen name="HeaderMarginHorizontal">20dp</dimen>
+
+    <dimen name="CardMargin">5dp</dimen>
 </resources>

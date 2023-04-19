@@ -154,4 +154,12 @@
     <string name="my_room">My room</string>
     <string name="report_room_desc">The room violates the rules</string>
     <string name="manage_room">Manage room</string>
+    <string name="content">Content</string>
+    <string name="plus_image">+ image</string>
+    <string name="scheduling">Scheduling</string>
+    <string name="publish">Publish</string>
+    <string name="options">Options</string>
+    <string name="place">Place</string>
+    <string name="base_program_replacement">Base program replacement</string>
+    <string name="date_time">Date</string>
 </resources>
