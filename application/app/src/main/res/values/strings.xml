@@ -196,4 +196,6 @@
     <string name="place">Helyszín</string>
     <string name="base_program_replacement">Alap program pótlás</string>
     <string name="date_time">Időpont</string>
+    <string name="addressee">Címzett</string>
+    <string name="unset">Nincs beállítva</string>
 </resources>

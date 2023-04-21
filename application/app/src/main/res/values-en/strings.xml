@@ -162,4 +162,6 @@
     <string name="place">Place</string>
     <string name="base_program_replacement">Base program replacement</string>
     <string name="date_time">Date</string>
+    <string name="addressee">Addressee</string>
+    <string name="unset">Unset</string>
 </resources>

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar"
@@ -21,6 +22,7 @@
 
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:title="@null"
+            app:titleCollapseMode="fade"
             app:toolbarId="@+id/toolbar">
 
 
@@ -28,7 +30,8 @@
                 android:id="@+id/toolbar4"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/header_footer_size"
-                android:clickable="false" />
+                android:clickable="false"
+                android:minHeight="@dimen/header_footer_size" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -94,55 +97,114 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/CardMargin"
-                android:hint="@string/title">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_margin="@dimen/CardMargin"
-                android:hint="@string/content">
+                android:hint="@string/addressee"
+                app:boxCornerRadiusBottomEnd="@dimen/panel_round"
+                app:boxCornerRadiusBottomStart="@dimen/panel_round"
+                app:boxCornerRadiusTopEnd="@dimen/panel_round"
+                app:boxCornerRadiusTopStart="@dimen/panel_round">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:lines="15" />
+                    android:inputType="text|textCapWords|textMultiLine"
+                    android:textAppearance="@style/Normal" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <HorizontalScrollView
+            <TextView
+                android:id="@+id/home_text_now3"
+                style="@style/CategoryCardName"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="-15dp"
-                android:layout_marginRight="-15dp"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:paddingLeft="15dp"
-                android:paddingRight="15dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="15dp"
+                android:text="@string/content" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/CardMargin"
+                android:layout_marginBottom="@dimen/CardMargin"
+                app:cardBackgroundColor="@android:color/transparent">
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <Button
-                        android:id="@+id/button3"
-                        android:layout_width="150dp"
-                        android:layout_height="150dp"
-                        android:layout_margin="@dimen/CardMargin"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:text="@string/plus_image"
-                        android:textSize="20sp"
-                        app:cornerRadius="@dimen/panel_round" />
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/title"
+                        app:boxCornerRadiusBottomEnd="0dp"
+                        app:boxCornerRadiusBottomStart="0dp"
+                        app:boxCornerRadiusTopEnd="@dimen/panel_round"
+                        app:boxCornerRadiusTopStart="@dimen/panel_round"
+                        app:counterEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text|textCapSentences|textMultiLine"
+                            android:maxLength="50"
+                            android:textAppearance="@style/Title" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:hint="@string/description"
+                        app:boxCornerRadiusBottomEnd="0dp"
+                        app:boxCornerRadiusBottomStart="0dp"
+                        app:boxCornerRadiusTopEnd="0dp"
+                        app:boxCornerRadiusTopStart="0dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="top"
+                            android:inputType="text|textCapSentences|textMultiLine"
+                            android:lines="15"
+                            android:maxLength="2500"
+                            android:textAppearance="@style/Normal" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="1.5dp"
+                        app:cardCornerRadius="0dp">
+
+                        <HorizontalScrollView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:clipChildren="false"
+                            android:clipToPadding="false">
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/panel_padding">
+
+                                <Button
+                                    android:id="@+id/button3"
+                                    android:layout_width="150dp"
+                                    android:layout_height="150dp"
+                                    android:layout_margin="@dimen/CardMargin"
+                                    android:insetTop="0dp"
+                                    android:insetBottom="0dp"
+                                    android:text="@string/plus_image"
+                                    android:textSize="20sp"
+                                    app:cornerRadius="15dp" />
+
+                            </LinearLayout>
+                        </HorizontalScrollView>
+                    </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
-            </HorizontalScrollView>
+
+            </com.google.android.material.card.MaterialCardView>
 
             <TextView
                 android:id="@+id/home_text_now2"
@@ -167,6 +229,7 @@
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:clipChildren="false"
                         android:clipToPadding="false"
                         android:orientation="horizontal">
@@ -178,7 +241,7 @@
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/text_container_margin"
                                 android:layout_marginTop="@dimen/text_container_margin"
                                 android:layout_marginRight="10dp"
@@ -207,12 +270,12 @@
 
                             </LinearLayout>
 
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_all"
+                            <TextView
+                                android:id="@+id/textView22"
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:minWidth="0dp"
-                                android:minHeight="0dp" />
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/text_container_margin"
+                                android:text="@string/unset" />
 
                         </LinearLayout>
 
@@ -222,6 +285,7 @@
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:clipChildren="false"
                         android:clipToPadding="false"
                         android:orientation="horizontal">
@@ -233,7 +297,7 @@
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/text_container_margin"
                                 android:layout_marginTop="@dimen/text_container_margin"
                                 android:layout_marginRight="10dp"
@@ -262,12 +326,28 @@
 
                             </LinearLayout>
 
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_all"
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="-10dp"
+                                android:layout_marginRight="-5dp"
+                                android:layout_marginBottom="-10dp"
                                 android:minWidth="0dp"
-                                android:minHeight="0dp" />
+                                app:hintEnabled="false">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:paddingStart="@dimen/spacing"
+                                    android:paddingLeft="@dimen/spacing"
+                                    android:paddingTop="@dimen/spacing"
+                                    android:paddingEnd="@dimen/spacing"
+                                    android:paddingRight="@dimen/spacing"
+                                    android:paddingBottom="@dimen/spacing"
+                                    android:text="@string/unset"
+                                    android:textAppearance="@style/Normal" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
 
@@ -277,6 +357,7 @@
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:clickable="true"
                         android:clipChildren="false"
                         android:clipToPadding="false"
                         android:orientation="horizontal">
@@ -288,7 +369,7 @@
 
                             <LinearLayout
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginLeft="@dimen/text_container_margin"
                                 android:layout_marginTop="@dimen/text_container_margin"
                                 android:layout_marginRight="10dp"
@@ -317,12 +398,30 @@
 
                             </LinearLayout>
 
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_all"
+                            <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginTop="-10dp"
+                                android:layout_marginRight="-5dp"
+                                android:layout_marginBottom="-10dp"
                                 android:minWidth="0dp"
-                                android:minHeight="0dp" />
+                                app:hintEnabled="false">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:inputType="number|numberSigned"
+                                    android:maxLength="1"
+                                    android:paddingStart="@dimen/spacing"
+                                    android:paddingLeft="@dimen/spacing"
+                                    android:paddingTop="@dimen/spacing"
+                                    android:paddingEnd="@dimen/spacing"
+                                    android:paddingRight="@dimen/spacing"
+                                    android:paddingBottom="@dimen/spacing"
+                                    android:text="0"
+                                    android:textAppearance="@style/Normal" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
 
