@@ -22,7 +22,8 @@
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingBottom="80dp">
 
                 <TextView
                     android:id="@+id/home_text_now"
@@ -393,6 +394,7 @@
                             android:layout_height="wrap_content"
                             android:isScrollContainer="false"
                             android:nestedScrollingEnabled="false"
+                            tools:itemCount="4"
                             tools:listitem="@layout/news_panel" />
 
                     </RelativeLayout>
@@ -411,6 +413,8 @@
         android:layout_marginEnd="@dimen/application_padding"
         android:layout_marginBottom="@dimen/application_padding"
         android:src="@drawable/pencil"
+        app:tint="?attr/colorOnSecondaryContainer"
+        app:backgroundTint="?attr/colorSecondaryContainer"
         app:useCompatPadding="false" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator

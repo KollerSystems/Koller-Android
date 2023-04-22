@@ -7,7 +7,10 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.util.Log
 import android.util.TypedValue
+import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat.getSystemService
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.textfield.TextInputLayout
 
 
 class MyApplication : Application() {
@@ -38,6 +41,13 @@ class MyApplication : Application() {
                 }
             }
             return false
+        }
+
+        fun FocusEdittext(ctx : Context, edittext : TextInputLayout){
+            edittext.isFocusableInTouchMode = true
+            edittext.requestFocus()
+            val imm = ctx.getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.showSoftInput(edittext, InputMethodManager.SHOW_IMPLICIT)
         }
 
         fun getAttributeColor(

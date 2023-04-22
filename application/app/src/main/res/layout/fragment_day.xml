@@ -85,14 +85,12 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/comment_user_name"
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/sleeping" />
 
                                     <TextView
-                                        android:id="@+id/textView28"
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -162,14 +160,13 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/comment_user_name"
+
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/doing_things" />
 
                                     <TextView
-                                        android:id="@+id/lesson_text_place"
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -234,14 +231,13 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/comment_user_name"
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/doing_things" />
 
                                     <TextView
-                                        android:id="@+id/lesson_text_place"
+
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -342,14 +338,14 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/comment_user_name"
+
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/doing_things" />
 
                                     <TextView
-                                        android:id="@+id/lesson_text_place"
+
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -406,14 +402,14 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/comment_user_name"
+
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/doing_things" />
 
                                     <TextView
-                                        android:id="@+id/lesson_text_place"
+
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -493,14 +489,14 @@
                                     android:orientation="vertical">
 
                                     <TextView
-                                        android:id="@+id/comment_user_name"
+
                                         style="@style/Title"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="@string/sleeping" />
 
                                     <TextView
-                                        android:id="@+id/textView28"
+
                                         style="@style/Description"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
@@ -571,7 +567,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/textView14"
+
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="@dimen/application_padding"
@@ -643,7 +639,7 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:id="@+id/textView14"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Ügyeletes a közeledben:"
@@ -663,8 +659,6 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
-
-        <!-- Bottom sheet contents. -->
 
     </FrameLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

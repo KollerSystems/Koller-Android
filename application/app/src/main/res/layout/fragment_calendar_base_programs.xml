@@ -120,19 +120,16 @@
                     app:chipSpacingVertical="0dp">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Teljesített" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip22"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Kihagyott" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip27"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Bepótolt" />
@@ -167,13 +164,12 @@
                     app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip20"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/newest" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip22"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/oldest" />

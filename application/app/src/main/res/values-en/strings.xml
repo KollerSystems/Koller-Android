@@ -164,4 +164,14 @@
     <string name="date_time">Date</string>
     <string name="addressee">Addressee</string>
     <string name="unset">Unset</string>
+    <string name="are_you_sure_canel_title">Are you sure you want to discard this post?</string>
+    <string name="are_you_sure_canel_post_desc">dsads</string>
+    <string name="q_save_a_draft">Would you like to save it as a draft?</string>
+    <string name="continue_editing">Continue editing</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="news_one">News</string>
+    <string name="program">Program</string>
+    <string name="general_post">Post</string>
+    <string name="time">Time</string>
 </resources>

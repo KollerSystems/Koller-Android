@@ -247,6 +247,10 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:padding">0dp</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
+        <item name="iconTint">?android:attr/colorForeground</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="iconGravity">textStart</item>
     </style>
 
     <style name="Icon">

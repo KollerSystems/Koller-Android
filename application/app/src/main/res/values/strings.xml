@@ -190,7 +190,7 @@
     <string name="manage_room">Szoba kezelése</string>
     <string name="content">Tartalom</string>
     <string name="plus_image">+ kép</string>
-    <string name="scheduling">Beütemezés</string>
+    <string name="scheduling">Ütemezés</string>
     <string name="publish">Közzététel</string>
     <string name="options">Beállítások</string>
     <string name="place">Helyszín</string>
@@ -198,4 +198,14 @@
     <string name="date_time">Időpont</string>
     <string name="addressee">Címzett</string>
     <string name="unset">Nincs beállítva</string>
+    <string name="are_you_sure_canel_title">Biztosan el akarod vetni a bejegyzést?</string>
+    <string name="are_you_sure_canel_post_desc">dasd</string>
+    <string name="q_save_a_draft">Szeretnéd piszkozatként elmenteni?</string>
+    <string name="continue_editing">Szerkesztés folytatása</string>
+    <string name="yes">Igen</string>
+    <string name="no">Nem</string>
+    <string name="news_one">Hír</string>
+    <string name="program">Program</string>
+    <string name="general_post">Bejegyzés</string>
+    <string name="time">Idő</string>
 </resources>
