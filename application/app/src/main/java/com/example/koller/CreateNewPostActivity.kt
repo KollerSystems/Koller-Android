@@ -1,11 +1,8 @@
 package com.example.koller
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
-import android.text.Spanned
 import android.text.TextWatcher
-import android.text.style.ImageSpan
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -16,7 +13,8 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
-import com.google.android.material.chip.ChipDrawable
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
@@ -25,6 +23,8 @@ import com.google.android.material.textfield.TextInputLayout
 class CreateNewPostActivity : AppCompatActivity() {
 
     lateinit var tilAddresse: TextInputLayout
+    lateinit var actvAddresse: AutoCompleteTextView
+    lateinit var chipsAddresse: ChipGroup
     lateinit var tilTitle: TextInputLayout
     lateinit var tilDescription: TextInputLayout
     lateinit var cardDate: View
@@ -65,6 +65,8 @@ class CreateNewPostActivity : AppCompatActivity() {
         val buttonAddImage : Button = findViewById(R.id.create_new_post_button_add_image)
 
         tilAddresse = findViewById (R.id.create_new_post_til_addresse)
+        actvAddresse = findViewById (R.id.create_new_post_edt_addresse)
+        chipsAddresse = findViewById (R.id.create_new_post_chips_addresse)
         tilTitle = findViewById (R.id.create_new_post_til_title)
         tilDescription = findViewById (R.id.create_new_post_til_description)
 
@@ -119,9 +121,48 @@ class CreateNewPostActivity : AppCompatActivity() {
 
         checkInputsRefreshButton()
 
+
+        var startBoxStrokeWidth = tilTitle.boxStrokeWidth
+        var startBoxStrokeColor = tilTitle.boxStrokeColor
+        tilAddresse.editText!!.setOnFocusChangeListener{ view, hasFocus ->
+            if (hasFocus) {
+                actvAddresse.requestFocus()
+            }
+        }
+
+        actvAddresse.setOnFocusChangeListener{ view, hasFocus ->
+            if (hasFocus){
+                tilAddresse.editText!!.setText(" ")
+                tilAddresse.boxStrokeWidth = tilAddresse.boxStrokeWidthFocused
+                tilAddresse.error = " "
+            } else
+            {
+                if((actvAddresse.text.length ?:0)==0 && chipsAddresse.childCount <= 1){
+                    tilAddresse.editText!!.setText(null)
+                }
+                tilAddresse.boxStrokeWidth = startBoxStrokeWidth
+                tilAddresse.error = null
+            }
+        }
+
+        val addresseItems = listOf("Nagy Géza", "Andrásosfi Norberto", "Kovács Gábor", "Nagy Norbert")
+        val addresseAdapter = ArrayAdapter(this, R.layout.list_item_text, addresseItems)
+
+        actvAddresse.setAdapter(addresseAdapter)
+
+        actvAddresse.setOnItemClickListener { parent, view, position, id ->
+            val chip = Chip(this)
+            chip.text = actvAddresse.text
+            actvAddresse.text = null
+            chip.isCheckable = false
+            chip.isCloseIconVisible = true
+            chip.setOnCloseIconClickListener {
+                chipsAddresse.removeView(chip)
+            }
+            chipsAddresse.addView(chip, chipsAddresse.childCount-1)
+        }
+
         tilAddresse.requestFocus()
-
-
 
         tilTitle.editText!!.addTextChangedListener(object : TextWatcher {
 
