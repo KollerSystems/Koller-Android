@@ -34,17 +34,17 @@ class CreateNewPostActivity : AppCompatActivity() {
 
 
     fun beforeClose(){
-        if((tilAddresse.editText!!.text?.length ?:0) > 0 || (tilTitle.editText!!.text?.length ?:0) > 0 || (tilDescription.editText!!.text?.length ?:0) > 0){
+        if(chipsAddresse.childCount > 1 || (tilTitle.editText!!.text?.length ?:0) > 0 || (tilDescription.editText!!.text?.length ?:0) > 0){
             MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.q_save_a_draft))
+                .setTitle(getString(R.string.are_you_sure_you_want_to_discard_the_post))
                 .setPositiveButton(getString(R.string.yes)) { _, _ ->
                     finish()
                 }
                 .setNegativeButton(getString(R.string.no)) { _, _ ->
-                    finish()
-                }
-                .setNeutralButton(getString(R.string.continue_editing)){_,_->
 
+                }
+                .setNeutralButton(getString(R.string.create_a_draft)){_,_->
+                    finish()
                 }
                 .show()
         }
@@ -123,7 +123,6 @@ class CreateNewPostActivity : AppCompatActivity() {
 
 
         var startBoxStrokeWidth = tilTitle.boxStrokeWidth
-        var startBoxStrokeColor = tilTitle.boxStrokeColor
         tilAddresse.editText!!.setOnFocusChangeListener{ view, hasFocus ->
             if (hasFocus) {
                 actvAddresse.requestFocus()
@@ -202,6 +201,9 @@ class CreateNewPostActivity : AppCompatActivity() {
                 acText.setLayoutParams(FrameLayout.LayoutParams(sizeText.width, FrameLayout.LayoutParams.WRAP_CONTENT))
             })
         }
+
+        if(intent.extras != null)
+            acText.setText(intent.extras!!.getString("type"))
 
         buttonAddImage.setOnClickListener{
 

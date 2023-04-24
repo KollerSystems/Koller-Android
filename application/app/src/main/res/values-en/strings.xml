@@ -174,4 +174,12 @@
     <string name="program">Program</string>
     <string name="general_post">Post</string>
     <string name="time">Time</string>
+    <string name="general_post_desc">For example, someone left their key.</string>
+    <string name="low_priority_highlighting">Low priority highlighting</string>
+    <string name="medium_priority_highlighting">Medium priority highlighting</string>
+    <string name="high_priority_highlighting">High priority highlighting</string>
+    <string name="news_desc">For example, the kitchen will be closed next week.</string>
+    <string name="program_desc">For example, a trip and even a basic program replacement.</string>
+    <string name="are_you_sure_you_want_to_discard_the_post">Are you sure you want to discard the post?</string>
+    <string name="create_a_draft">Create a draft</string>
 </resources>

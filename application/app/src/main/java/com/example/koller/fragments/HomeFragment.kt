@@ -328,8 +328,8 @@ class HomeFragment : Fragment() {
         val fabRoot: View = view.findViewById(R.id.home_fab_root)
 
         fabRoot.setOnClickListener{
-            val intent = Intent(view.context, CreateNewPostActivity::class.java)
-            startActivity(intent)
+            val dialog = BottomFragmentPostTypes()
+            dialog.show(requireActivity().supportFragmentManager, BottomFragmentPostTypes.TAG)
         }
 
         return view

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".BottomFragmentPostTypes">
+
+    <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+        android:id="@+id/drag_handle3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="0dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/post_type_ly_post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="@dimen/panel_padding">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/notification_icon_start"
+            style="@style/Icon"
+            android:layout_width="@dimen/panel_icon"
+            android:layout_height="@dimen/panel_icon"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/text_container_margin"
+            android:alpha="0.666"
+            app:srcCompat="@drawable/paper" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/comment_user_name"
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@string/general_post" />
+
+            <TextView
+                android:id="@+id/comment_text"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@string/general_post_desc" />
+
+            <TextView
+                android:id="@+id/comment_text6"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@string/low_priority_highlighting"
+                android:textColor="@android:color/holo_green_light" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/post_type_ly_program"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="@dimen/panel_padding">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            style="@style/Icon"
+            android:layout_width="@dimen/panel_icon"
+            android:layout_height="@dimen/panel_icon"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/text_container_margin"
+            android:alpha="0.666"
+            app:srcCompat="@drawable/tour" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@string/program" />
+
+            <TextView
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:requiresFadingEdge="horizontal"
+                android:text="@string/program_desc" />
+
+            <TextView
+                android:id="@+id/comment_text7"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:requiresFadingEdge="horizontal"
+                android:text="@string/medium_priority_highlighting"
+                android:textColor="@android:color/holo_orange_light" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/post_type_ly_news"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="@dimen/panel_padding">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            style="@style/Icon"
+            android:layout_width="@dimen/panel_icon"
+            android:layout_height="@dimen/panel_icon"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/text_container_margin"
+            android:alpha="0.666"
+            app:srcCompat="@drawable/megaphone" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@string/news_one" />
+
+            <TextView
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@string/news_desc" />
+
+            <TextView
+                android:id="@+id/comment_text8"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@string/high_priority_highlighting"
+                android:textColor="@android:color/holo_red_light" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

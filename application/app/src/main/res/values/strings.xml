@@ -208,4 +208,12 @@
     <string name="program">Program</string>
     <string name="general_post">Bejegyzés</string>
     <string name="time">Idő</string>
+    <string name="general_post_desc">Például valaki elhagyta a kulcsát.</string>
+    <string name="low_priority_highlighting">Alacsony prioritású kiemelés</string>
+    <string name="medium_priority_highlighting">Közepes prioritású kiemelés</string>
+    <string name="high_priority_highlighting">Magas prioritású kiemelés</string>
+    <string name="news_desc">Például a jövő héten zárva lesz a konyha.</string>
+    <string name="program_desc">Például kirándulás és akár alapprogram pótlási lehetőség.</string>
+    <string name="are_you_sure_you_want_to_discard_the_post">Biztos el akarod vetni a bejegyzést?</string>
+    <string name="create_a_draft">Piszkozat létrehozása</string>
 </resources>

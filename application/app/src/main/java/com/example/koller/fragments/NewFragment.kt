@@ -32,9 +32,9 @@ class NewFragment : BottomSheetDialogFragment() {
         commentRecyclerView.setHasFixedSize(true)
 
         commentDataArrayList = arrayListOf(
-            CommentData("Kis Norbert", context?.getDrawable(R.drawable.norbert), "Ez kurva jó 🤣🤣🤣🤣"),
-            CommentData("Kovács Péter", context?.getDrawable(R.drawable.pfp1), "anyad"),
-            CommentData("Smoll Cock", context?.getDrawable(R.drawable.pfp3), "Hallód? Mi lenne, ha végre eljönnél te is Mondoconra? Nagyon unalmas már, hogy mindig banánként táncikolsz a híd alatt."))
+            CommentData("Kovács Norbert", context?.getDrawable(R.drawable.norbert), "Ez nagyon jó 🤣🤣🤣🤣"),
+            CommentData("Kovács Péter", context?.getDrawable(R.drawable.pfp1), "anyad 👍"),
+            CommentData("Kovács Géza", context?.getDrawable(R.drawable.pfp3), "A nagyobb társadalmi és intellektuális kontextus széles spektrumában számos szempont és érvelés áll rendelkezésre annak megítélésére, hogy egy adott állítás, tézis vagy érv alátámasztottsága milyen mértékben felel meg a valóságos körülményeknek és megfigyelhető jelenségeknek. Azonban az említett kontextus és szempontok diverzitása miatt nem mindig van lehetőségünk teljes bizonyossággal állást foglalni egy adott kérdésben, és gyakran előfordul, hogy az argumentáció valójában semmitmondó és jelentéktelen."))
 
         commentRecyclerView.adapter = CommentRecyclerAdapter(commentDataArrayList)
 
