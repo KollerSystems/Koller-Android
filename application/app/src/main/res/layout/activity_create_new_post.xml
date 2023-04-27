@@ -73,7 +73,7 @@
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/create_new_post_til_type"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     app:boxBackgroundColor="?attr/colorSecondaryContainer"
                     app:boxBackgroundMode="filled"
                     app:boxCornerRadiusBottomEnd="10dp"
@@ -82,31 +82,27 @@
                     app:boxCornerRadiusTopStart="10dp"
                     app:boxStrokeWidth="0dp"
                     app:boxStrokeWidthFocused="0dp"
-                    app:endIconMode="dropdown_menu"
+                    app:endIconDrawable="@drawable/arrow_drop"
+                    app:endIconMode="custom"
+                    app:endIconScaleType="centerInside"
                     app:endIconTint="?attr/colorOnSecondaryContainer"
                     app:hintEnabled="false">
 
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                    <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:dropDownWidth="wrap_content"
-                        android:dropDownHeight="wrap_content"
+                        android:layout_height="match_parent"
                         android:editable="false"
+                        android:focusable="false"
+                        android:paddingStart="15dp"
                         android:paddingLeft="15dp"
+                        android:paddingTop="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingRight="0dp"
+                        android:paddingBottom="0dp"
                         android:singleLine="true"
-                        android:text="Hír"
+                        android:text="-"
                         android:textAppearance="@style/Title"
-                        android:textColor="?attr/colorOnSecondaryContainer"></com.google.android.material.textfield.MaterialAutoCompleteTextView>
-
-                    <TextView
-                        android:id="@+id/create_new_post_text_extra"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="52dp"
-                        android:text="Hír"
-                        android:textAppearance="@style/Title" />
+                        android:textColor="?attr/colorOnSecondaryContainer"></com.google.android.material.textfield.TextInputEditText>
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -184,9 +180,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginBottom="2dp"
-                    app:chipSpacingVertical="0dp"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="10dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -201,10 +196,10 @@
                         android:minWidth="2dp"
                         android:paddingStart="0dp"
                         android:paddingLeft="0dp"
-                        android:paddingTop="15dp"
+                        android:paddingTop="7.25dp"
                         android:paddingEnd="0dp"
                         android:paddingRight="0dp"
-                        android:paddingBottom="15dp"
+                        android:paddingBottom="7.25dp"
                         android:singleLine="false"
                         android:textAppearance="@style/Normal" />
 

@@ -230,6 +230,22 @@
         <item name="cardCornerRadius">@dimen/application_round</item>
     </style>
 
+    <style name="ImagePreviewList">
+        <item name="shapeAppearanceOverlay">@style/CornerRadius15</item>
+        <item name="android:layout_height">150dp</item>
+        <item name="android:layout_width">150dp</item>
+        <item name="android:layout_margin">@dimen/text_container_margin</item>
+    </style>
+
+
+    <style name="CornerRadius15">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopRight">15dp</item>
+        <item name="cornerSizeTopLeft">15dp</item>
+        <item name="cornerSizeBottomRight">15dp</item>
+        <item name="cornerSizeBottomLeft">15dp</item>
+    </style>
+
     <style name="MainCardLayout">
         <item name="android:layout_marginBottom">-0.75dp</item>
         <item name="android:layout_marginTop">-0.75dp</item>

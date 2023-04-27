@@ -21,6 +21,15 @@ class MyApplication : Application() {
     }
 
     companion object {
+
+        fun convertDpToPixel(dp: Int, context: Context): Int {
+            return TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_DIP,
+                dp.toFloat(),
+                context.resources.displayMetrics
+            ).toInt()
+        }
+
         fun isOnline(context: Context): Boolean {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

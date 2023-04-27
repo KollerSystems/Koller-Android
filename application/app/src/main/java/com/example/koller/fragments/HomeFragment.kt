@@ -8,6 +8,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -329,7 +330,31 @@ class HomeFragment : Fragment() {
 
         fabRoot.setOnClickListener{
             val dialog = BottomFragmentPostTypes()
+
             dialog.show(requireActivity().supportFragmentManager, BottomFragmentPostTypes.TAG)
+
+            fun openCreateNewPostActivity(type : String){
+                val intent = Intent(view.context, CreateNewPostActivity::class.java)
+                intent.putExtra("type", type)
+                startActivity(intent)
+                dialog.dismiss()
+            }
+
+            fabRoot.post(Runnable {
+                dialog.view?.findViewById<View>(R.id.post_type_ly_post)?.setOnClickListener{
+                    openCreateNewPostActivity(getString(R.string.general_post))
+                }
+                dialog.view?.findViewById<View>(R.id.post_type_ly_program)?.setOnClickListener{
+                    openCreateNewPostActivity(getString(R.string.program))
+                }
+                dialog.view?.findViewById<View>(R.id.post_type_ly_news)?.setOnClickListener{
+                    openCreateNewPostActivity(getString(R.string.news_one))
+                }
+            })
+
+
+
+
         }
 
         return view

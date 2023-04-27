@@ -1,22 +1,34 @@
 package com.example.koller
 
+import android.content.Intent
+import android.media.Image
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
+import android.text.Layout
 import android.text.TextWatcher
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.view.marginBottom
 import androidx.core.widget.addTextChangedListener
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textfield.TextInputLayout
 
 
@@ -28,6 +40,7 @@ class CreateNewPostActivity : AppCompatActivity() {
     lateinit var tilTitle: TextInputLayout
     lateinit var tilDescription: TextInputLayout
     lateinit var cardDate: View
+    lateinit var buttonAddImage : Button
     var date : Long = 0
     public var scheduleDate : Long = 0
     public var scheduleTime : Int = 0
@@ -53,6 +66,27 @@ class CreateNewPostActivity : AppCompatActivity() {
         }
     }
 
+    private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
+        if (uri != null) {
+
+            val shapeableImageView = ShapeableImageView(ContextThemeWrapper(this, R.style.ImagePreviewList))
+            shapeableImageView.scaleType = ImageView.ScaleType.CENTER_CROP
+
+            val layoutParams = ViewGroup.MarginLayoutParams(
+                MyApplication.convertDpToPixel(150, this),
+                MyApplication.convertDpToPixel(150, this)
+            )
+            val marginInDp = MyApplication.convertDpToPixel(5, this)
+            layoutParams.setMargins(marginInDp, marginInDp, marginInDp, marginInDp)
+
+
+            shapeableImageView.layoutParams = layoutParams
+
+            shapeableImageView.setImageURI(uri)
+            (buttonAddImage.parent as LinearLayout).addView(shapeableImageView, 0)
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
@@ -62,7 +96,7 @@ class CreateNewPostActivity : AppCompatActivity() {
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
         val buttonExit: Button = findViewById(R.id.toolbar_exit)
         val buttonRemoveDate: Button = findViewById(R.id.create_new_post_button_remove_date)
-        val buttonAddImage : Button = findViewById(R.id.create_new_post_button_add_image)
+        buttonAddImage = findViewById(R.id.create_new_post_button_add_image)
 
         tilAddresse = findViewById (R.id.create_new_post_til_addresse)
         actvAddresse = findViewById (R.id.create_new_post_edt_addresse)
@@ -144,7 +178,7 @@ class CreateNewPostActivity : AppCompatActivity() {
             }
         }
 
-        val addresseItems = listOf("Nagy Géza", "Andrásosfi Norberto", "Kovács Gábor", "Nagy Norbert")
+        val addresseItems = listOf("Nagy Géza", "Andrásosfi Norberto", "Kovács Gábor", "Nagy Norbert", "Lányok", "Fiúk", "F1", "F2", "F3", "L1", "L2", "L3")
         val addresseAdapter = ArrayAdapter(this, R.layout.list_item_text, addresseItems)
 
         actvAddresse.setAdapter(addresseAdapter)
@@ -155,6 +189,7 @@ class CreateNewPostActivity : AppCompatActivity() {
             actvAddresse.text = null
             chip.isCheckable = false
             chip.isCloseIconVisible = true
+            chip.ensureAccessibleTouchTarget(0)
             chip.setOnCloseIconClickListener {
                 chipsAddresse.removeView(chip)
             }
@@ -185,28 +220,41 @@ class CreateNewPostActivity : AppCompatActivity() {
             }
         })
 
-        val items = listOf(getString(R.string.general_post), getString(R.string.program), getString(R.string.news_one))
-        val adapter = ArrayAdapter(this, R.layout.list_item_text, items)
 
-        val acText = (tilType.editText as? AutoCompleteTextView)!!
+        tilType.editText!!.setOnClickListener{
+            val dialog = BottomFragmentPostTypes()
 
-        acText.setAdapter(adapter)
+            dialog.show(supportFragmentManager, BottomFragmentPostTypes.TAG)
 
-        val sizeText : TextView = findViewById(R.id.create_new_post_text_extra)
-
-        acText.addTextChangedListener {
-            sizeText.text = acText.text
-
-            acText.post(Runnable {
-                acText.setLayoutParams(FrameLayout.LayoutParams(sizeText.width, FrameLayout.LayoutParams.WRAP_CONTENT))
+            tilType.post(Runnable {
+                dialog.requireView().findViewById<LinearLayout>(R.id.post_type_ly_post).setOnClickListener{
+                    tilType.editText!!.setText(getString(R.string.general_post))
+                    dialog.dismiss()
+                }
+                dialog.requireView().findViewById<LinearLayout>(R.id.post_type_ly_program).setOnClickListener{
+                    tilType.editText!!.setText(getString(R.string.program))
+                    dialog.dismiss()
+                }
+                dialog.requireView().findViewById<LinearLayout>(R.id.post_type_ly_news).setOnClickListener{
+                    tilType.editText!!.setText(getString(R.string.news_one))
+                    dialog.dismiss()
+                }
             })
+
+        }
+
+
+        tilType.editText!!.addTextChangedListener {
+
         }
 
         if(intent.extras != null)
-            acText.setText(intent.extras!!.getString("type"))
+            tilType.editText!!.setText(intent.extras!!.getString("type"))
 
         buttonAddImage.setOnClickListener{
 
+
+            launcher.launch("image/*")
         }
 
         publishButton.setOnClickListener{

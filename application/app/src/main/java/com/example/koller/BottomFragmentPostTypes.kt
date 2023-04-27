@@ -17,26 +17,11 @@ class BottomFragmentPostTypes : BottomSheetDialogFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.bottom_fragment_post_types, container, false)
 
-        fun openCreateNewPostActivity(type : String){
-            val intent = Intent(view.context, CreateNewPostActivity::class.java)
-            intent.putExtra("type", type)
-            startActivity(intent)
-            dismiss()
-        }
 
-        view.findViewById<View>(R.id.post_type_ly_post).setOnClickListener{
-            openCreateNewPostActivity(getString(R.string.general_post))
-        }
-        view.findViewById<View>(R.id.post_type_ly_program).setOnClickListener{
-            openCreateNewPostActivity(getString(R.string.program))
-        }
-        view.findViewById<View>(R.id.post_type_ly_news).setOnClickListener{
-            openCreateNewPostActivity(getString(R.string.news_one))
-        }
 
         return view
     }
