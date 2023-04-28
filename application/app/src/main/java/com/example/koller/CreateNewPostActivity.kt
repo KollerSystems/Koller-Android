@@ -15,8 +15,10 @@ import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.HorizontalScrollView
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.ScrollView
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -44,6 +46,7 @@ class CreateNewPostActivity : AppCompatActivity() {
     var date : Long = 0
     public var scheduleDate : Long = 0
     public var scheduleTime : Int = 0
+    lateinit var scrollViewImage : HorizontalScrollView
 
 
     fun beforeClose(){
@@ -83,7 +86,11 @@ class CreateNewPostActivity : AppCompatActivity() {
             shapeableImageView.layoutParams = layoutParams
 
             shapeableImageView.setImageURI(uri)
-            (buttonAddImage.parent as LinearLayout).addView(shapeableImageView, 0)
+            val parent : LinearLayout = (buttonAddImage.parent as LinearLayout)
+            parent.addView(shapeableImageView, parent.childCount-1)
+            scrollViewImage.post {
+                scrollViewImage.scrollTo(scrollViewImage.getChildAt(0).width, 0)
+            }
         }
     }
 
@@ -91,7 +98,7 @@ class CreateNewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
 
-
+        scrollViewImage = findViewById(R.id.create_new_post_scroll_view_images)
         val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
         val buttonExit: Button = findViewById(R.id.toolbar_exit)

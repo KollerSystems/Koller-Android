@@ -272,6 +272,7 @@
                         app:cardCornerRadius="0dp">
 
                         <HorizontalScrollView
+                            android:id="@+id/create_new_post_scroll_view_images"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:clipChildren="false"
