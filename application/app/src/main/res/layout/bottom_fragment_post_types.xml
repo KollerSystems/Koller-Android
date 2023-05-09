@@ -82,7 +82,7 @@
                 android:requiresFadingEdge="horizontal"
                 android:singleLine="true"
                 android:text="@string/low_priority_highlighting"
-                android:textColor="@android:color/holo_green_light" />
+                android:textColor="?attr/colorGreen" />
 
         </LinearLayout>
 
@@ -140,7 +140,7 @@
                 android:layout_height="wrap_content"
                 android:requiresFadingEdge="horizontal"
                 android:text="@string/medium_priority_highlighting"
-                android:textColor="@android:color/holo_orange_light" />
+                android:textColor="?attr/colorYellow" />
 
         </LinearLayout>
 
@@ -206,7 +206,7 @@
                 android:requiresFadingEdge="horizontal"
                 android:singleLine="true"
                 android:text="@string/high_priority_highlighting"
-                android:textColor="@android:color/holo_red_light" />
+                android:textColor="?attr/colorRed" />
 
         </LinearLayout>
 

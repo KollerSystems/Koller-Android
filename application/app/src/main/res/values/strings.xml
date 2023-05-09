@@ -55,7 +55,7 @@
     <string name="website">Weboldal</string>
     <string name="facebook" translatable="false">Facebook</string>
     <string name="development_team">Fejlesztő csapat</string>
-    <string name="team_name" translatable="false">Norbert</string>
+    <string name="team_name" translatable="false">Norbert©</string>
     <string name="email" translatable="false">Email</string>
     <string name="version" translatable="false">v0.0.1</string>
     <string name="sleeping">Alvás</string>
@@ -216,4 +216,7 @@
     <string name="program_desc">Például kirándulás és akár alapprogram pótlási lehetőség.</string>
     <string name="are_you_sure_you_want_to_discard_the_post">Biztos el akarod vetni a bejegyzést?</string>
     <string name="create_a_draft">Piszkozat létrehozása</string>
+    <string name="state">Állapot</string>
+    <string name="direction">Irány</string>
+    <string name="also_contributed">Hozzájárult még</string>
 </resources>

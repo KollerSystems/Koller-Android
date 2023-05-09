@@ -114,16 +114,10 @@
                     app:chipSpacingVertical="0dp">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip33"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Teljesített" />
-
-                    <com.google.android.material.chip.Chip
                         android:id="@+id/chip34"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Kihagyott" />
+                        android:text="@string/state" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip13"

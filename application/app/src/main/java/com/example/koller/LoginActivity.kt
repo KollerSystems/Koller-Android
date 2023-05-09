@@ -194,7 +194,11 @@ class LoginActivity : AppCompatActivity() {
 
 
         buttonNoAccount.setOnClickListener() {
-            Toast.makeText(this, "Hát az szopás", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Csak téged csak most kivételesen beengedlek", Toast.LENGTH_SHORT).show()
+
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
         }
     }
 }

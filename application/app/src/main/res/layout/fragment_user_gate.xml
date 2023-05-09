@@ -114,16 +114,10 @@
                     app:chipSpacingVertical="0dp">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip30"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Be" />
-
-                    <com.google.android.material.chip.Chip
                         android:id="@+id/chip31"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Ki" />
+                        android:text="@string/direction" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip29"

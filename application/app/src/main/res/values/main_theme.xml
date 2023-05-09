@@ -46,6 +46,13 @@
 
     <style name="chipButtonFilterStyle" parent="@style/Widget.Material3.Chip.Filter">
         <item name="android:textAppearance">@style/chipButtonTextStyle</item>
+        <item name="checkedIconEnabled">false</item>
+        <item name="checkedIcon">@null</item>
+    </style>
+
+    <style name="chipDropdownButtonFilterStyle" parent="@style/chipButtonFilterStyle">
+        <item name="closeIcon">@drawable/arrow_drop</item>
+        <item name="closeIconEnabled">true</item>
     </style>
 
     <style name="chipButtonTextStyle" parent="@style/Description">
@@ -141,7 +148,7 @@
 
     <style name="CategoryCardName" parent="Normal">
         <item name="android:textStyle">bold</item>
-        <item name="android:alpha">0.666</item>
+        <item name="android:textColor">?attr/colorForeground066</item>
         <item name="android:layout_marginHorizontal">15dp</item>
     </style>
 

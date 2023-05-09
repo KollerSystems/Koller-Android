@@ -432,12 +432,16 @@
             <androidx.cardview.widget.CardView
                 style="@style/MainCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <LinearLayout
                     style="@style/MainCardLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
@@ -450,6 +454,8 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
                             android:orientation="vertical">
 
                             <TextView
@@ -461,345 +467,377 @@
                                 android:textAlignment="center"
                                 android:textStyle="bold" />
 
-                            <com.google.android.material.card.MaterialCardView
-                                style="@style/MainCard"
-                                android:layout_width="wrap_content"
+                            <HorizontalScrollView
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                app:cardCornerRadius="10dp">
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:overScrollMode="never">
 
-                                <HorizontalScrollView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
 
-                                    <LinearLayout
-                                        style="@style/MainCardLayout"
+                                    <com.google.android.material.card.MaterialCardView
+                                        style="@style/MainCard"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:orientation="horizontal">
+                                        app:cardCornerRadius="10dp">
 
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:id="@+id/profile_card_marci"
-                                            style="@style/Card"
-                                            android:layout_width="150dp"
-                                            android:layout_height="225dp"
-                                            android:clickable="true"
-                                            app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                                            app:contentPadding="0dp">
+                                        <LinearLayout
+                                            style="@style/MainCardLayout"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
 
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:clipChildren="false"
-                                                android:clipToPadding="false"
-                                                android:orientation="vertical">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="0dp"
-                                                    android:layout_weight="1"
-                                                    android:adjustViewBounds="true"
-                                                    android:cropToPadding="true"
-                                                    android:scaleType="centerCrop"
-                                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                                    app:srcCompat="@drawable/pfp4" />
+                                            <com.google.android.material.card.MaterialCardView
+                                                android:id="@+id/profile_card_marci"
+                                                style="@style/Card"
+                                                android:layout_width="150dp"
+                                                android:layout_height="225dp"
+                                                android:clickable="true"
+                                                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                                                app:contentPadding="0dp">
 
                                                 <LinearLayout
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_margin="@dimen/text_container_margin"
+                                                    android:layout_height="match_parent"
+                                                    android:clipChildren="false"
+                                                    android:clipToPadding="false"
                                                     android:orientation="vertical">
 
-                                                    <TextView
-                                                        style="@style/Normal"
+                                                    <ImageView
                                                         android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:gravity="center_horizontal"
-                                                        android:text="Katona Márton" />
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="1"
+                                                        android:adjustViewBounds="true"
+                                                        android:cropToPadding="true"
+                                                        android:scaleType="centerCrop"
+                                                        app:shapeAppearanceOverlay="@style/roundedImageView"
+                                                        app:srcCompat="@drawable/pfp4" />
 
-                                                    <TextView
-                                                        style="@style/Description"
+                                                    <LinearLayout
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:layout_weight="0"
-                                                        android:ellipsize="end"
-                                                        android:gravity="center_horizontal"
-                                                        android:maxLines="1"
-                                                        android:text="Menedszment és App" />
+                                                        android:layout_margin="@dimen/text_container_margin"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            style="@style/Normal"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center_horizontal"
+                                                            android:text="Katona Márton" />
+
+                                                        <TextView
+                                                            style="@style/Description"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="0"
+                                                            android:ellipsize="end"
+                                                            android:gravity="center_horizontal"
+                                                            android:maxLines="1"
+                                                            android:text="Menedszment és Android" />
+                                                    </LinearLayout>
+
                                                 </LinearLayout>
+                                            </com.google.android.material.card.MaterialCardView>
 
-                                            </LinearLayout>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:id="@+id/profile_card_adam"
-                                            style="@style/Card"
-                                            android:layout_width="150dp"
-                                            android:layout_height="225dp"
-                                            android:clickable="true"
-                                            app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                                            app:contentPadding="0dp">
-
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:clipChildren="false"
-                                                android:clipToPadding="false"
-                                                android:orientation="vertical">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="0dp"
-                                                    android:layout_weight="1"
-                                                    android:adjustViewBounds="true"
-                                                    android:cropToPadding="true"
-                                                    android:scaleType="centerCrop"
-                                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                                    app:srcCompat="@drawable/pfp2" />
+                                            <com.google.android.material.card.MaterialCardView
+                                                android:id="@+id/profile_card_gergo"
+                                                style="@style/Card"
+                                                android:layout_width="150dp"
+                                                android:layout_height="225dp"
+                                                android:clickable="true"
+                                                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                                                app:contentPadding="0dp">
 
                                                 <LinearLayout
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_margin="@dimen/text_container_margin"
+                                                    android:layout_height="match_parent"
+                                                    android:clipChildren="false"
+                                                    android:clipToPadding="false"
                                                     android:orientation="vertical">
 
-                                                    <TextView
-                                                        style="@style/Normal"
+                                                    <ImageView
                                                         android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:gravity="center_horizontal"
-                                                        android:text="Lukács Ádám" />
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="1"
+                                                        android:adjustViewBounds="true"
+                                                        android:cropToPadding="true"
+                                                        android:scaleType="centerCrop"
+                                                        app:shapeAppearanceOverlay="@style/roundedImageView"
+                                                        app:srcCompat="@drawable/pfp5" />
 
-                                                    <TextView
-                                                        android:id="@+id/textdsaView15"
-                                                        style="@style/Description"
+                                                    <LinearLayout
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:layout_weight="0"
-                                                        android:ellipsize="end"
-                                                        android:gravity="center_horizontal"
-                                                        android:maxLines="1"
-                                                        android:text="App" />
+                                                        android:layout_margin="@dimen/text_container_margin"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            style="@style/Normal"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center_horizontal"
+                                                            android:text="Bencsik Gergő" />
+
+                                                        <TextView
+                                                            style="@style/Description"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="0"
+                                                            android:ellipsize="end"
+                                                            android:gravity="center_horizontal"
+                                                            android:maxLines="1"
+                                                            android:text="Adatbázis és API" />
+                                                    </LinearLayout>
+
                                                 </LinearLayout>
+                                            </com.google.android.material.card.MaterialCardView>
 
-                                            </LinearLayout>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:id="@+id/profile_card_gergo"
-                                            style="@style/Card"
-                                            android:layout_width="150dp"
-                                            android:layout_height="225dp"
-                                            android:clickable="true"
-                                            app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                                            app:contentPadding="0dp">
-
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:clipChildren="false"
-                                                android:clipToPadding="false"
-                                                android:orientation="vertical">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="0dp"
-                                                    android:layout_weight="1"
-                                                    android:adjustViewBounds="true"
-                                                    android:cropToPadding="true"
-                                                    android:scaleType="centerCrop"
-                                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                                    app:srcCompat="@drawable/pfp5" />
+                                            <com.google.android.material.card.MaterialCardView
+                                                android:id="@+id/profile_card_robi"
+                                                style="@style/Card"
+                                                android:layout_width="150dp"
+                                                android:layout_height="225dp"
+                                                android:clickable="true"
+                                                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                                                app:contentPadding="0dp">
 
                                                 <LinearLayout
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_margin="@dimen/text_container_margin"
+                                                    android:layout_height="match_parent"
+                                                    android:clipChildren="false"
+                                                    android:clipToPadding="false"
                                                     android:orientation="vertical">
 
-                                                    <TextView
-                                                        style="@style/Normal"
+                                                    <ImageView
+                                                        android:id="@+id/imageView6"
                                                         android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:gravity="center_horizontal"
-                                                        android:text="Bencsik Gergő" />
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="1"
+                                                        android:adjustViewBounds="true"
+                                                        android:cropToPadding="true"
+                                                        android:scaleType="centerCrop"
+                                                        app:shapeAppearanceOverlay="@style/roundedImageView"
+                                                        app:srcCompat="@drawable/pfp3" />
 
-                                                    <TextView
-                                                        style="@style/Description"
+                                                    <LinearLayout
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:layout_weight="0"
-                                                        android:ellipsize="end"
-                                                        android:gravity="center_horizontal"
-                                                        android:maxLines="1"
-                                                        android:text="Adatbázis és API" />
+                                                        android:layout_margin="@dimen/text_container_margin"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            style="@style/Normal"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center_horizontal"
+                                                            android:text="Zsiga Róbert" />
+
+                                                        <TextView
+                                                            style="@style/Description"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="0"
+                                                            android:ellipsize="end"
+                                                            android:gravity="center_horizontal"
+                                                            android:maxLines="1"
+                                                            android:text="Adatbázis" />
+                                                    </LinearLayout>
+
                                                 </LinearLayout>
+                                            </com.google.android.material.card.MaterialCardView>
 
-                                            </LinearLayout>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:id="@+id/profile_card_gyuri"
-                                            style="@style/Card"
-                                            android:layout_width="150dp"
-                                            android:layout_height="225dp"
-                                            android:clickable="true"
-                                            app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                                            app:contentPadding="0dp">
-
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:clipChildren="false"
-                                                android:clipToPadding="false"
-                                                android:orientation="vertical">
-
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="0dp"
-                                                    android:layout_weight="1"
-                                                    android:adjustViewBounds="true"
-                                                    android:cropToPadding="true"
-                                                    android:scaleType="centerCrop"
-                                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                                    app:srcCompat="@drawable/pfp6" />
+                                            <com.google.android.material.card.MaterialCardView
+                                                android:id="@+id/profile_card_miki"
+                                                style="@style/Card"
+                                                android:layout_width="150dp"
+                                                android:layout_height="225dp"
+                                                android:clickable="true"
+                                                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                                                app:contentPadding="0dp">
 
                                                 <LinearLayout
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_margin="@dimen/text_container_margin"
+                                                    android:layout_height="match_parent"
+                                                    android:clipChildren="false"
+                                                    android:clipToPadding="false"
                                                     android:orientation="vertical">
 
-                                                    <TextView
-                                                        style="@style/Normal"
+                                                    <ImageView
                                                         android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:gravity="center_horizontal"
-                                                        android:text="Bende Ákos" />
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="1"
+                                                        android:adjustViewBounds="true"
+                                                        android:cropToPadding="true"
+                                                        android:scaleType="centerCrop"
+                                                        app:shapeAppearanceOverlay="@style/roundedImageView"
+                                                        app:srcCompat="@drawable/pfp1" />
 
-                                                    <TextView
-                                                        style="@style/Description"
+                                                    <LinearLayout
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:layout_weight="0"
-                                                        android:ellipsize="end"
-                                                        android:gravity="center_horizontal"
-                                                        android:maxLines="1"
-                                                        android:text="Adatbázis és Szerver" />
+                                                        android:layout_margin="@dimen/text_container_margin"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            style="@style/Normal"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center_horizontal"
+                                                            android:text="Várnagy Miklós" />
+
+                                                        <TextView
+                                                            style="@style/Description"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="0"
+                                                            android:ellipsize="end"
+                                                            android:gravity="center_horizontal"
+                                                            android:maxLines="1"
+                                                            android:text="Windows" />
+                                                    </LinearLayout>
+
                                                 </LinearLayout>
+                                            </com.google.android.material.card.MaterialCardView>
 
-                                            </LinearLayout>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:id="@+id/profile_card_robi"
-                                            style="@style/Card"
-                                            android:layout_width="150dp"
-                                            android:layout_height="225dp"
-                                            android:clickable="true"
-                                            app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                                            app:contentPadding="0dp">
-
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:clipChildren="false"
-                                                android:clipToPadding="false"
-                                                android:orientation="vertical">
-
-                                                <ImageView
-                                                    android:id="@+id/imageView6"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="0dp"
-                                                    android:layout_weight="1"
-                                                    android:adjustViewBounds="true"
-                                                    android:cropToPadding="true"
-                                                    android:scaleType="centerCrop"
-                                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                                    app:srcCompat="@drawable/pfp3" />
+                                            <com.google.android.material.card.MaterialCardView
+                                                android:id="@+id/profile_card_gyuri"
+                                                style="@style/Card"
+                                                android:layout_width="150dp"
+                                                android:layout_height="225dp"
+                                                android:clickable="true"
+                                                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                                                app:contentPadding="0dp">
 
                                                 <LinearLayout
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_margin="@dimen/text_container_margin"
+                                                    android:layout_height="match_parent"
+                                                    android:clipChildren="false"
+                                                    android:clipToPadding="false"
                                                     android:orientation="vertical">
 
-                                                    <TextView
-                                                        style="@style/Normal"
+                                                    <ImageView
                                                         android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:gravity="center_horizontal"
-                                                        android:text="Zsiga Róbert" />
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="1"
+                                                        android:adjustViewBounds="true"
+                                                        android:cropToPadding="true"
+                                                        android:scaleType="centerCrop"
+                                                        app:shapeAppearanceOverlay="@style/roundedImageView"
+                                                        app:srcCompat="@drawable/pfp6" />
 
-                                                    <TextView
-                                                        style="@style/Description"
+                                                    <LinearLayout
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:layout_weight="0"
-                                                        android:ellipsize="end"
-                                                        android:gravity="center_horizontal"
-                                                        android:maxLines="1"
-                                                        android:text="Adatbázis" />
+                                                        android:layout_margin="@dimen/text_container_margin"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            style="@style/Normal"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center_horizontal"
+                                                            android:text="Bende Ákos" />
+
+                                                        <TextView
+                                                            style="@style/Description"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="0"
+                                                            android:ellipsize="end"
+                                                            android:gravity="center_horizontal"
+                                                            android:maxLines="1"
+                                                            android:text="Szerver" />
+                                                    </LinearLayout>
+
                                                 </LinearLayout>
+                                            </com.google.android.material.card.MaterialCardView>
 
-                                            </LinearLayout>
-                                        </com.google.android.material.card.MaterialCardView>
+                                        </LinearLayout>
+                                    </com.google.android.material.card.MaterialCardView>
 
-                                        <com.google.android.material.card.MaterialCardView
-                                            android:id="@+id/profile_card_miki"
-                                            style="@style/Card"
-                                            android:layout_width="150dp"
-                                            android:layout_height="225dp"
-                                            android:clickable="true"
-                                            app:cardBackgroundColor="?attr/colorSurfaceVariant"
-                                            app:contentPadding="0dp">
+                                    <com.example.koller.VerticalTextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="center_vertical"
+                                        android:gravity="left|center_vertical"
+                                        android:text="@string/also_contributed"
+                                        android:textAppearance="@style/CategoryCardName" />
 
-                                            <LinearLayout
-                                                android:layout_width="match_parent"
-                                                android:layout_height="match_parent"
-                                                android:clipChildren="false"
-                                                android:clipToPadding="false"
-                                                android:orientation="vertical">
+                                    <com.google.android.material.card.MaterialCardView
+                                        style="@style/MainCard"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        app:cardCornerRadius="10dp">
 
-                                                <ImageView
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="0dp"
-                                                    android:layout_weight="1"
-                                                    android:adjustViewBounds="true"
-                                                    android:cropToPadding="true"
-                                                    android:scaleType="centerCrop"
-                                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                                    app:srcCompat="@drawable/pfp1" />
+                                        <LinearLayout
+                                            style="@style/MainCardLayout"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:orientation="horizontal">
+
+                                            <com.google.android.material.card.MaterialCardView
+                                                android:id="@+id/profile_card_adam"
+                                                style="@style/Card"
+                                                android:layout_width="150dp"
+                                                android:layout_height="225dp"
+                                                android:clickable="true"
+                                                app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                                                app:contentPadding="0dp">
 
                                                 <LinearLayout
                                                     android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_margin="@dimen/text_container_margin"
+                                                    android:layout_height="match_parent"
+                                                    android:clipChildren="false"
+                                                    android:clipToPadding="false"
                                                     android:orientation="vertical">
 
-                                                    <TextView
-                                                        style="@style/Normal"
+                                                    <ImageView
                                                         android:layout_width="match_parent"
-                                                        android:layout_height="wrap_content"
-                                                        android:gravity="center_horizontal"
-                                                        android:text="Várnagy Miklós" />
+                                                        android:layout_height="0dp"
+                                                        android:layout_weight="1"
+                                                        android:adjustViewBounds="true"
+                                                        android:cropToPadding="true"
+                                                        android:scaleType="centerCrop"
+                                                        app:shapeAppearanceOverlay="@style/roundedImageView"
+                                                        app:srcCompat="@drawable/pfp2" />
 
-                                                    <TextView
-                                                        style="@style/Description"
+                                                    <LinearLayout
                                                         android:layout_width="match_parent"
                                                         android:layout_height="wrap_content"
-                                                        android:layout_weight="0"
-                                                        android:ellipsize="end"
-                                                        android:gravity="center_horizontal"
-                                                        android:maxLines="1"
-                                                        android:text="Dokumentáció" />
+                                                        android:layout_margin="@dimen/text_container_margin"
+                                                        android:orientation="vertical">
+
+                                                        <TextView
+                                                            style="@style/Normal"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:gravity="center_horizontal"
+                                                            android:text="Lukács Ádám" />
+
+                                                        <TextView
+                                                            android:id="@+id/textdsaView15"
+                                                            style="@style/Description"
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="0"
+                                                            android:ellipsize="end"
+                                                            android:gravity="center_horizontal"
+                                                            android:maxLines="1"
+                                                            android:text="iOS" />
+                                                    </LinearLayout>
+
                                                 </LinearLayout>
+                                            </com.google.android.material.card.MaterialCardView>
 
-                                            </LinearLayout>
-                                        </com.google.android.material.card.MaterialCardView>
-
-                                    </LinearLayout>
-                                </HorizontalScrollView>
-                            </com.google.android.material.card.MaterialCardView>
+                                        </LinearLayout>
+                                    </com.google.android.material.card.MaterialCardView>
+                                </LinearLayout>
+                            </HorizontalScrollView>
 
                         </LinearLayout>
 

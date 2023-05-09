@@ -3,5 +3,5 @@
     <gradient
         android:type="radial"
         android:gradientRadius="50%"
-        android:centerColor="@android:color/holo_orange_light" />
+        android:centerColor="?attr/colorYellow" />
 </shape>

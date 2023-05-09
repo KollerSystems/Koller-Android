@@ -1,26 +1,26 @@
 data class UserData (
-    val ID : Int,
-    val OM : String,
-    val Name : String,
-    val Picture : String,
-    val Group : String,
-    val Class : String,
-    val School : String,
-    val Birthplace : String,
-    val Birthdate : String,
-    val GuardiaName : String,
-    val GuardianPhone : String,
-    val RoomNumber : String,
-    val Country : String,
-    val City : String,
-    val Street : String,
-    val PostCode : String,
-    val Address : String,
-    val Floor : String,
-    val Door : String,
+    val ID : Int = 0,
+    val OM : String = "12345678910",
+    val Name : String = "Teszt Géza",
+    val Picture : String = "0",
+    val Group : String = "0N",
+    val Class : String = "0.Z",
+    val School : String = "Az élet iskolája",
+    val Birthplace : String = "Parlament",
+    val Birthdate : String = "0. 0. 0.",
+    val GuardiaName : String = "Isten",
+    val GuardianPhone : String = "+36 1 441 4000",
+    val RoomNumber : String = "-1",
+    val Country : String = "Magyarország",
+    val City : String = "Budapest",
+    val Street : String = "Parlament utca (Földrajzból elírásból lettem 5-ös)",
+    val PostCode : String = "A Parlament posta kódja",
+    val Address : String = "0",
+    val Floor : String = "100",
+    val Door : String = "999",
 ){
     companion object {
-        lateinit var instance: UserData
+        var instance: UserData = UserData()
     }
 
     init {

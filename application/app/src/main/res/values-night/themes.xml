@@ -13,8 +13,8 @@
         <item name="colorForeground066">#ABFFFFFF</item>
         <item name="colorForeground075">#BFFFFFFF</item>
 
-        <item name="colorYellow">#FFD400</item>
-        <item name="colorRed">#660C00</item>
-        <item name="colorGreen">#276600</item>
+        <item name="colorYellow">@android:color/holo_orange_light</item>
+        <item name="colorRed">@android:color/holo_red_light</item>
+        <item name="colorGreen">@android:color/holo_green_light</item>
     </style>
 </resources>

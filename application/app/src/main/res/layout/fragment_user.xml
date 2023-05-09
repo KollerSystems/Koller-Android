@@ -170,32 +170,34 @@
                             <com.google.android.material.imageview.ShapeableImageView
                                 android:id="@+id/imageView8"
                                 style="@style/Icon"
-                                android:layout_width="wrap_content"
+                                android:layout_width="30dp"
                                 android:layout_height="30dp"
+                                android:background="#5865F2"
+                                app:contentPadding="5dp"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/discord"
-                                app:tint="@null" />
+                                app:tint="@color/white" />
 
-                            <LinearLayout
+                            <TextView
+                                style="@style/Normal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
+                                android:layout_weight="0"
+                                android:text="@string/discord" />
+
+                            <TextView
+                                android:id="@+id/textView5"
+                                style="@style/Normal"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="@dimen/text_container_margin"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
-                                android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Normal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/discord" />
-
-                            </LinearLayout>
+                                android:text="KisGazsi#5522"
+                                android:textAlignment="textEnd" />
 
                         </LinearLayout>
 
@@ -225,26 +227,27 @@
                                 app:srcCompat="@drawable/facebook"
                                 app:tint="@null" />
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/textView14"
+                                style="@style/Normal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
+                                android:layout_weight="0"
+                                android:text="@string/facebook" />
+
+                            <TextView
+                                android:id="@+id/textView18"
+                                style="@style/Normal"
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
-                                android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Normal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/facebook" />
-
-                            </LinearLayout>
+                                android:text="Kis Gazsi"
+                                android:textAlignment="textEnd" />
 
                         </LinearLayout>
 
@@ -274,26 +277,27 @@
                                 app:srcCompat="@drawable/instagram"
                                 app:tint="@null" />
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/textView23"
+                                style="@style/Normal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
+                                android:layout_weight="0"
+                                android:text="@string/instagram" />
+
+                            <TextView
+                                android:id="@+id/textView24"
+                                style="@style/Normal"
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
-                                android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Normal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/instagram" />
-
-                            </LinearLayout>
+                                android:text="\@kisGazsi"
+                                android:textAlignment="textEnd" />
 
                         </LinearLayout>
 
@@ -322,26 +326,27 @@
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/mail" />
 
-                            <LinearLayout
+                            <TextView
+                                android:id="@+id/textView27"
+                                style="@style/Normal"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
+                                android:layout_weight="0"
+                                android:text="@string/email" />
+
+                            <TextView
+                                android:id="@+id/textView28"
+                                style="@style/Normal"
                                 android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="@dimen/text_container_margin"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
-                                android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    style="@style/Normal"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/email" />
-
-                            </LinearLayout>
+                                android:text="kis.gazsi@gmail.com"
+                                android:textAlignment="textEnd" />
 
                         </LinearLayout>
 
