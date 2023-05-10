@@ -74,36 +74,30 @@
                     android:layout_marginTop="@dimen/text_container_margin"
                     android:text="@string/arrangement" />
 
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/chipGroupArrangeCard"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:checkedChip="@id/chip20"
+                    app:chipSpacingHorizontal="0dp"
+                    app:chipSpacingVertical="0dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
 
-                    <com.google.android.material.chip.ChipGroup
-                        style="@style/chipGroupArrange"
-                        android:layout_width="match_parent"
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip20"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        app:checkedChip="@id/chip20"
-                        app:chipSpacingVertical="0dp"
-                        app:selectionRequired="true"
-                        app:singleSelection="true">
+                        android:text="@string/newest"
+                        app:shapeAppearance="@style/overlayRoundedLeft" />
 
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip20"
-                            style="@style/chipArrange"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/newest" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/oldest"
+                        app:shapeAppearanceOverlay="@style/overlayRoundedRight" />
 
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip22"
-                            style="@style/chipArrange"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/oldest" />
-
-                    </com.google.android.material.chip.ChipGroup>
-                </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.chip.ChipGroup>
 
                 <View
                     android:id="@+id/divider"

@@ -114,5 +114,4 @@
                 app:destination="@id/userFragment" />
         </fragment>
     </navigation>
-
 </navigation>

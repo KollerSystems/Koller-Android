@@ -77,24 +77,18 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val cardMyRoom: MaterialCardView = view.findViewById(R.id.profile_card_my_room)
 
         cardMyRoom.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
-            findNavController().navigate(R.id.action_studentHostelFragment_to_roomFragment)
             this.dismiss()
         }
 
         val fbtnOutgoing: MaterialCardView = view.findViewById(R.id.profile_fbtn_outgoing)
 
         fbtnOutgoing.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
-            findNavController().navigate(R.id.action_studentHostelFragment_to_userOutgoingFragment)
             this.dismiss()
         }
 
         val fbtnGate: MaterialCardView = view.findViewById(R.id.profile_fbtn_gate)
 
         fbtnGate.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
-            findNavController().navigate(R.id.action_studentHostelFragment_to_userGateFragment)
             this.dismiss()
         }
 

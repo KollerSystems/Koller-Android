@@ -219,4 +219,6 @@
     <string name="state">Állapot</string>
     <string name="direction">Irány</string>
     <string name="also_contributed">Hozzájárult még</string>
+    <string name="discarded_comment_to_clipboard">Elvetett hozzászólás a vágólapra került</string>
+    <string name="remove">Törlés</string>
 </resources>

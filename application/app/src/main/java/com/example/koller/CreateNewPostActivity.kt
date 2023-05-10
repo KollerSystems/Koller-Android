@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.Layout
 import android.text.TextWatcher
+import android.view.KeyEvent
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -20,6 +21,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.ScrollView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
@@ -204,6 +206,47 @@ class CreateNewPostActivity : AppCompatActivity() {
         }
 
         tilAddresse.requestFocus()
+
+
+        actvAddresse.setOnKeyListener { _, keyCode, event ->
+            var currentChip: Chip? = null
+            if (chipsAddresse.childCount > 1) {
+                currentChip = (chipsAddresse.getChildAt(chipsAddresse.childCount - 1 - 1) as Chip)
+                if (event?.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_DEL && actvAddresse.text.isNullOrEmpty()) {
+                    if (!currentChip.isChecked) {
+                        currentChip.isCheckable = true
+                        currentChip.isChecked = true
+                        currentChip.isCheckable = false
+                    } else {
+                        currentChip.performCloseIconClick()
+                    }
+                }
+            }
+
+
+
+            true
+        }
+
+        actvAddresse.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {}
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) { }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+
+
+                if (chipsAddresse.childCount > 1) {
+                    val currentChip = (chipsAddresse.getChildAt(chipsAddresse.childCount - 1 - 1) as Chip)
+                    currentChip.isCheckable = true
+                    currentChip.isChecked = false
+                    currentChip.isCheckable = false
+                }
+
+            }
+        })
+
 
         tilTitle.editText!!.addTextChangedListener(object : TextWatcher {
 

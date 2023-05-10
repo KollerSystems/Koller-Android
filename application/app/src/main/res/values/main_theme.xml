@@ -162,6 +162,23 @@
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>
     </style>
+
+    <style name="overlayRoundedLeft">
+        <item name="cornerSizeBottomLeft">8dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="overlayRoundedRight">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
     <style name="roundedImageView">
         <item name="cornerSize">10dp</item>
         <item name="cornerFamily">rounded</item>

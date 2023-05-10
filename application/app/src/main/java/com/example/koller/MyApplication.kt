@@ -1,14 +1,16 @@
 package com.example.koller
 
 import android.app.Application
+import android.content.ClipData
 import android.content.Context
 import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.os.Build
+import android.text.ClipboardManager
 import android.util.Log
 import android.util.TypedValue
 import android.view.inputmethod.InputMethodManager
-import androidx.core.content.ContextCompat.getSystemService
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 
@@ -21,6 +23,22 @@ class MyApplication : Application() {
     }
 
     companion object {
+
+        const val minLengthBeforeDismiss : Int = 3
+
+        fun setClipboard(context: Context, text: String) {
+
+                val clipboard =
+                    context.getSystemService(CLIPBOARD_SERVICE) as android.content.ClipboardManager
+                val clip = ClipData.newPlainText("Koller", text)
+                clipboard.setPrimaryClip(clip)
+
+        }
+
+        fun longEnoughToAsk(til : TextInputLayout): Boolean{
+            return til.editText!!.text.toString().replace(" ", "").length>= minLengthBeforeDismiss
+        }
+
 
         fun convertDpToPixel(dp: Int, context: Context): Int {
             return TypedValue.applyDimension(

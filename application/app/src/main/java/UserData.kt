@@ -23,7 +23,5 @@ data class UserData (
         var instance: UserData = UserData()
     }
 
-    init {
-        instance = this
-    }
+
 }

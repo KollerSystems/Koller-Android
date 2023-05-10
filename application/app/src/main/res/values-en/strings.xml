@@ -185,4 +185,6 @@
     <string name="state">State</string>
     <string name="direction">Direction</string>
     <string name="also_contributed">Also contributed</string>
+    <string name="discarded_comment_to_clipboard">The discarded comment has been moved to the clipboard</string>
+    <string name="remove">Remove</string>
 </resources>

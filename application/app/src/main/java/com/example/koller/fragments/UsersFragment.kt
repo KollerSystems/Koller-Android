@@ -18,7 +18,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.MainActivity
 import com.example.koller.R
 import com.example.koller.TodayData
-import com.example.koller.TodayRecyclerAdapter
+import com.example.koller.UserRecycleAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -69,7 +69,7 @@ class UsersFragment : Fragment() {
                                 )
                             }
 
-                            usersRecyclerView.adapter = TodayRecyclerAdapter(usersDataArrayList)
+                            usersRecyclerView.adapter = UserRecycleAdapter(usersDataArrayList)
 
                         } else {
                             APIInterface.ServerErrorPopup(requireContext())
@@ -105,3 +105,4 @@ class UsersFragment : Fragment() {
         return view
     }
 }
+
