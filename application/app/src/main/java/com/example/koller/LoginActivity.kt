@@ -9,12 +9,10 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.view.MotionEvent
 import android.view.View
 import android.view.View.*
 import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -46,23 +44,6 @@ class LoginActivity : AppCompatActivity() {
 
         checkInputsRefreshButton()
 
-        inpfID.setOnTouchListener(OnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                inplID.error = null
-                return@OnTouchListener false
-            }
-            false
-        })
-
-        inpfPassword.setOnTouchListener(OnTouchListener { v, event ->
-            if (event.action == MotionEvent.ACTION_UP) {
-                inplPassword.error = null
-                return@OnTouchListener false
-            }
-            false
-        })
-
-
         inpfID.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
@@ -74,6 +55,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
                 checkInputsRefreshButton()
+                inplID.error = ""
             }
         })
 
@@ -88,6 +70,7 @@ class LoginActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
                 checkInputsRefreshButton()
+                inplPassword.error = ""
             }
         })
 
@@ -141,13 +124,13 @@ class LoginActivity : AppCompatActivity() {
                                                 }
                                                 else{
                                                     ReturnLoginLayoutToNormal()
-                                                    APIInterface.ServerErrorPopup(this@LoginActivity)
+                                                    APIInterface.ServerErrorPopup(this@LoginActivity, userResponse.code().toString())
                                                 }
                                             }
 
                                             override fun onFailure(call: Call<UserData>, t: Throwable) {
                                                 ReturnLoginLayoutToNormal()
-                                                APIInterface.ServerErrorPopup(this@LoginActivity)
+                                                APIInterface.ServerErrorPopup(this@LoginActivity, t.localizedMessage)
                                             }
                                         }
                                     )
@@ -191,14 +174,64 @@ class LoginActivity : AppCompatActivity() {
         }
 
 
+        val buttonForgotPassword : Button = findViewById(R.id.login_button_forgot_password)
+        buttonForgotPassword.setOnClickListener{
+            if(inplID.editText!!.text.isNullOrBlank()){
+                inplID.error = getString(R.string.mandatory_field)
+            }
+            else if(false){
+                inplID.error = getString(R.string.invalid_id)
+            }
+            else{
+                MaterialAlertDialogBuilder(this@LoginActivity)
+                    .setTitle(getString(R.string.successfully_sent))
+                    .setMessage(getString(R.string.success_email_sent_desc, "kisgazsi@gmail.com"))
+                    .setPositiveButton(
+                        getString(R.string.ok)
+                    )
+                    { _, _ ->
 
+                    }
+                    .setNeutralButton(getString(R.string.open_emails))
+                    { _, _ ->
+                        val intent = Intent(Intent.ACTION_MAIN)
+                        intent.addCategory(Intent.CATEGORY_APP_EMAIL)
+                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        this.startActivity(intent)
+                    }
+                    .show()
+            }
+        }
 
-        buttonNoAccount.setOnClickListener() {
+        buttonNoAccount.setOnClickListener{
+
+            MaterialAlertDialogBuilder(this@LoginActivity)
+                .setTitle(getString(R.string.this_app_is_not_for_everyone))
+                .setMessage(getString(R.string.this_app_is_not_for_everyone_desc))
+                .setPositiveButton(
+                    getString(R.string.understood)
+                )
+                { _, _ ->
+
+                }
+                .setNeutralButton(getString(R.string.open_emails))
+                { _, _ ->
+                    val intent = Intent(Intent.ACTION_MAIN)
+                    intent.addCategory(Intent.CATEGORY_APP_EMAIL)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    this.startActivity(intent)
+                }
+                .show()
+        }
+
+        buttonNoAccount.setOnLongClickListener {
             Toast.makeText(this, "Csak téged csak most kivételesen beengedlek", Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish()
+
+            return@setOnLongClickListener true
         }
     }
 }

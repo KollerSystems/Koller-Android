@@ -106,7 +106,7 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/button8"
+                    android:id="@+id/login_button_forgot_password"
                     style="@style/Widget.Material3.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

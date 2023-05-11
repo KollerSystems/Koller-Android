@@ -187,4 +187,11 @@
     <string name="also_contributed">Also contributed</string>
     <string name="discarded_comment_to_clipboard">The discarded comment has been moved to the clipboard</string>
     <string name="remove">Remove</string>
+    <string name="mandatory_field">Mandatory field</string>
+    <string name="successfully_sent">Successfully sent</string>
+    <string name="success_email_sent_desc">Your temporary password has been successfully sent to %1$s email</string>
+    <string name="open_emails">Open emails</string>
+    <string name="understood">Understood</string>
+    <string name="this_app_is_not_for_everyone">This app is not for everyone</string>
+    <string name="this_app_is_not_for_everyone_desc">"This application is intended fordiákok whose student hostel use our system.\nIf you are a college student whose college does this, then if everything is right, you have received an email with your temporary password. If this did not happen, please report it to yourdiákok teacher."</string>
 </resources>

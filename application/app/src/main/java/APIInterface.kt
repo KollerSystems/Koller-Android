@@ -5,7 +5,6 @@ import com.example.koller.ApiLoginData
 import com.example.koller.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.Call
-import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -20,10 +19,11 @@ interface APIInterface {
             return headerMap
         }
 
-        fun ServeUnableToConnectPopup(context: Context){
+        fun ServerUnableToConnectPopup(context: Context){
             MaterialAlertDialogBuilder(context)
                 .setTitle("Szerver hiba!")
-                .setMessage("Az applikáció és a szerver között hiba lépett fel.\nKérlek própád újra.")
+                .setMessage("Az applikáció nem tudott kapcsolatot létesíteni a szerverrel.\n" +
+                        "Kérlek própád újra.")
                 .setPositiveButton(
                     context.getString(R.string.ok)
                 )
@@ -33,10 +33,12 @@ interface APIInterface {
                 .show()
         }
 
-        fun ServerErrorPopup(context: Context){
+        fun ServerErrorPopup(context: Context, errorCode: String? = "No error message"){
             MaterialAlertDialogBuilder(context)
                 .setTitle("Szerver hiba!")
-                .setMessage("Az applikáció nem tudott kapcsolatot létesíteni a szerverrel.\nKérlek própád újra.")
+                .setMessage("Az applikáció és a szerver között hiba lépett fel.\n" +
+                        "Kérlek própád újra.\n" +
+                        errorCode)
                 .setPositiveButton(
                     context.getString(R.string.ok)
                 )
