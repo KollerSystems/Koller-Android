@@ -1,18 +1,22 @@
 package com.example.koller
 
+import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import androidx.appcompat.widget.PopupMenu
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import java.security.AccessController.getContext
 
-class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
+
+class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_comment, parent, false)
-        return CommentViewHolder(itemView)
+        return CommentViewHolder(itemView,context)
     }
 
     override fun onBindViewHolder(holder: CommentViewHolder, position: Int) {
@@ -25,7 +29,7 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>) 
         return commentList.size
     }
 
-    class CommentViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class CommentViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView)
     {
         val userName : TextView = itemView.findViewById(R.id.comment_user_name)
         val pfp : ImageView = itemView.findViewById(R.id.comment_pfp)
@@ -35,7 +39,24 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>) 
 
             val buttonMore : Button = itemView.findViewById(R.id.comment_more_options)
 
+            itemView.setOnLongClickListener{
+
+                buttonMore.callOnClick()
+
+                return@setOnLongClickListener true
+            }
+
             buttonMore.setOnClickListener {
+
+                val fragmentManager = (context as AppCompatActivity)
+                val dialog = ItemListDialogFragment()
+                dialog.show(fragmentManager.supportFragmentManager, ItemListDialogFragment.TAG)
+                val itemsArrayList = arrayListOf(
+                    ListItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag)))
+                buttonMore.post(Runnable {
+                    dialog.recycleView.adapter = ListAdapter(itemsArrayList)
+                })
+
 
 
             }

@@ -1,11 +1,13 @@
 package com.example.koller.fragments
 
 import android.content.Intent
+import android.graphics.Canvas
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
+import android.view.View.NOT_FOCUSABLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.FrameLayout
@@ -13,10 +15,12 @@ import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.*
+import com.google.android.material.card.MaterialCardView
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -28,6 +32,8 @@ class HomeFragment : Fragment() {
 
     private lateinit var todayRecyclerView: RecyclerView
     private lateinit var todayDataArrayList: ArrayList<TodayData>
+    private lateinit var unreadRecyclerView: RecyclerView
+    private lateinit var unreadDataArrayList: ArrayList<TodayData>
 
     private lateinit var viewStayOutSlider: View
     private lateinit var viewLessonSlider: View
@@ -59,6 +65,7 @@ class HomeFragment : Fragment() {
         textStayOutBottom = view.findViewById(R.id.home_text_outgoing_down)
         viewLessonSlider = view.findViewById(R.id.home_view_lesson_slider)
         eventsRecyclerView = view.findViewById(R.id.eventsRecyclerView)
+
         eventsRecyclerView.layoutManager = LinearLayoutManager(context)
         eventsRecyclerView.setHasFixedSize(true)
 
@@ -320,11 +327,67 @@ class HomeFragment : Fragment() {
         todayRecyclerView.setHasFixedSize(true)
 
         todayDataArrayList = arrayListOf(
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
+            TodayData(false, context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4,"),
+            TodayData(false, context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
             ))
 
-        todayRecyclerView.adapter = TodayRecyclerAdapter(todayDataArrayList)
+        var adapter = TodayRecyclerAdapter(todayDataArrayList)
+        todayRecyclerView.adapter = adapter
+
+
+        var itemTouchHelper: ItemTouchHelper? = null
+        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+
+            override fun onChildDraw(
+                c: Canvas, recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+
+                    val child: View = viewHolder.itemView.findViewById(R.id.notification_card_unread_overlay)
+                    super.onChildDraw(c, recyclerView, viewHolder, 0f, 0f, actionState, isCurrentlyActive)
+                    child.translationX = dX
+
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+
+                return false
+            }
+
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+                itemTouchHelper?.startSwipe(viewHolder)
+                todayDataArrayList[viewHolder.bindingAdapterPosition].read = !todayDataArrayList[viewHolder.bindingAdapterPosition].read
+                adapter.notifyItemChanged(viewHolder.bindingAdapterPosition)
+
+                val child: MaterialCardView = viewHolder.itemView.findViewById(R.id.notification_card_unread_overlay)
+                child.cardElevation = MyApplication.convertDpToPixel(1, requireContext()).toFloat()
+                (viewHolder.itemView as MaterialCardView).cardElevation = MyApplication.convertDpToPixel(10, requireContext()).toFloat()
+            }
+
+
+
+        }
+        itemTouchHelper = ItemTouchHelper(itemTouchCallback)
+        itemTouchHelper.attachToRecyclerView(todayRecyclerView)
+
+
+
+        unreadRecyclerView = view.findViewById(R.id.home_recycle_view_unread)
+        unreadRecyclerView.layoutManager = LinearLayoutManager(context)
+        unreadRecyclerView.setHasFixedSize(true)
+
+        unreadDataArrayList = arrayListOf(
+            TodayData(false, context?.getDrawable(R.drawable.room),"Szobarend", getString(R.string.perfect), "5")
+            )
+
+        unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList)
 
         val fabRoot: View = view.findViewById(R.id.home_fab_root)
 
@@ -371,4 +434,6 @@ class HomeFragment : Fragment() {
         cancelIfNeeded()
         super.onDestroyView()
     }
+
 }
+

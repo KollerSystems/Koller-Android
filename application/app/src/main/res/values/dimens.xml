@@ -1,6 +1,7 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="panel_padding">15dp</dimen>
+    <dimen name="n_panel_padding">-15dp</dimen>
     <dimen name="text_container_margin">5dp</dimen>
     <dimen name="panel_margin_down">1.5dp</dimen>
     <dimen name="panel_shadow">0dp</dimen>

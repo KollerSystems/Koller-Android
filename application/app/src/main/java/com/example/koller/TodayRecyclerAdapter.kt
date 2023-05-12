@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 
 
@@ -43,6 +44,14 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
             holder.iconRight.background = currentItem.iconRight
             holder.iconRight.text = currentItem.charRight
         }
+        if(!currentItem.read){
+            holder.card_unread_overlay.cardElevation = MyApplication.convertDpToPixel(10, holder.itemView.context).toFloat()
+            holder.root.cardElevation = MyApplication.convertDpToPixel(0, holder.itemView.context).toFloat()
+        }
+        else{
+            holder.card_unread_overlay.cardElevation = MyApplication.convertDpToPixel(-10, holder.itemView.context).toFloat()
+            holder.root.cardElevation = MyApplication.convertDpToPixel(10, holder.itemView.context).toFloat()
+        }
     }
 
     override fun getItemCount(): Int {
@@ -55,6 +64,8 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         val title : TextView = itemView.findViewById(R.id.comment_user_name)
         val description : TextView = itemView.findViewById(R.id.comment_text)
         val iconRight : TextView = itemView.findViewById(R.id.notification_icon_end)
+        val root : MaterialCardView = itemView as MaterialCardView
+        val card_unread_overlay : MaterialCardView = itemView.findViewById(R.id.notification_card_unread_overlay)
 
         init {
             itemView.setOnClickListener {

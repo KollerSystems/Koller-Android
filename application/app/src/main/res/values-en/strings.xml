@@ -20,9 +20,9 @@
     <string name="notifications">Notifications</string>
     <string name="all">All</string>
     <string name="arrival_reminder">Arrival reminder</string>
-    <string name="arrival_reminder_description">Notification in the last 1 and half hour</string>
+    <string name="arrival_reminder_description">Notification in the last one and half hour</string>
     <string name="occupation_reminder">Occupation reminder</string>
-    <string name="occupation_reminder_description">Notification a quarter of an hour before the occupation</string>
+    <string name="occupation_reminder_description">Notification fifteen minutes before occupation</string>
     <string name="room_order">Room order</string>
     <string name="commendation_warning">Commendation/Warning</string>
     <string name="news">News</string>
@@ -194,4 +194,10 @@
     <string name="understood">Understood</string>
     <string name="this_app_is_not_for_everyone">This app is not for everyone</string>
     <string name="this_app_is_not_for_everyone_desc">"This application is intended fordiákok whose student hostel use our system.\nIf you are a college student whose college does this, then if everything is right, you have received an email with your temporary password. If this did not happen, please report it to yourdiákok teacher."</string>
+    <string name="drafts">Drafts</string>
+    <string name="x_in_total">%1$i in total</string>
+    <string name="unread">Unread</string>
+    <string name="mark_all_as_read">Mark all as read</string>
+    <string name="view_all_notifications">All notifications</string>
+    <string name="perfect">Perfect</string>
 </resources>

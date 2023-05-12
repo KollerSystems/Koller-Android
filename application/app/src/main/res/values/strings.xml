@@ -42,9 +42,9 @@
     <string name="notifications">Értesítések</string>
     <string name="all">Összes</string>
     <string name="arrival_reminder">Beérkezés emlékeztető</string>
-    <string name="arrival_reminder_description">Értesítést az utolsó 1, és fél órádban</string>
+    <string name="arrival_reminder_description">Értesítést az utolsó egy és fél órádban</string>
     <string name="occupation_reminder">Foglalkozás emlékeztető</string>
-    <string name="occupation_reminder_description">Értesítés negyed órával a foglalkozás előtt</string>
+    <string name="occupation_reminder_description">Értesítés negyed órával foglalkozás előtt</string>
     <string name="room_order">Szobarendek</string>
     <string name="commendation_warning">Dícséret/Figyelmeztetés</string>
     <string name="news">Hírek</string>
@@ -228,4 +228,10 @@
     <string name="this_app_is_not_for_everyone">Ez az alkalmazás nem szól mindenkinek</string>
     <string name="this_app_is_not_for_everyone_desc">"Ez az alkalmazás olyan kollégistáknak készült, akiknek a kollégiuma használja a rendszerünket.\nAmennyiben te egy olyan kollégista vagy, akinek a kollégiuma így tesz, akkor ha minden igaz, kaptál egy emailt benne az ideiglenes jelszavaddal. Ha ez mégsem történt meg, kérlek jelezd ezt nevelőtanárodnak."</string>
     <string name="open_emails">Emailek megnyitása</string>
+    <string name="drafts">Piszkozatok</string>
+    <string name="x_in_total">összesen %1$i</string>
+    <string name="unread">Olvasatlan</string>
+    <string name="mark_all_as_read">Összes olvasottnak</string>
+    <string name="view_all_notifications">Összes értesítés</string>
+    <string name="perfect">Hibátlan</string>
 </resources>

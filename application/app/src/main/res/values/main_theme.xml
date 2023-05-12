@@ -16,6 +16,12 @@
         <item name="materialCardViewStyle">@style/SimpleCard</item>
         <item name="materialAlertDialogTheme">@style/Popup</item>
         <item name="toolbarStyle">@style/toolbar</item>
+        <item name="checkboxStyle">@style/Checkbox</item>
+    </style>
+
+    <style name="Checkbox" parent="@style/Widget.Material3.CompoundButton.CheckBox">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
     </style>
 
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">

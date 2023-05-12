@@ -93,7 +93,7 @@ class NewFragment : BottomSheetDialogFragment() {
             CommentData("Kovács Péter", context?.getDrawable(R.drawable.pfp1), "anyad 👍"),
             CommentData("Kovács Géza", context?.getDrawable(R.drawable.pfp3), "A nagyobb társadalmi és intellektuális kontextus széles spektrumában számos szempont és érvelés áll rendelkezésre annak megítélésére, hogy egy adott állítás, tézis vagy érv alátámasztottsága milyen mértékben felel meg a valóságos körülményeknek és megfigyelhető jelenségeknek. Azonban az említett kontextus és szempontok diverzitása miatt nem mindig van lehetőségünk teljes bizonyossággal állást foglalni egy adott kérdésben, és gyakran előfordul, hogy az argumentáció valójában semmitmondó és jelentéktelen."))
 
-        commentRecyclerView.adapter = CommentRecyclerAdapter(commentDataArrayList)
+        commentRecyclerView.adapter = CommentRecyclerAdapter(commentDataArrayList, requireContext())
 
         return view
     }
