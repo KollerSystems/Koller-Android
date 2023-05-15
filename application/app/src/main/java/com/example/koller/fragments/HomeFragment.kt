@@ -18,6 +18,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.*
 import com.google.android.material.card.MaterialCardView
@@ -331,8 +332,9 @@ class HomeFragment : Fragment() {
             TodayData(false, context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
             ))
 
-        var adapter = TodayRecyclerAdapter(todayDataArrayList)
+        var adapter = TodayRecyclerAdapter(todayDataArrayList, requireContext())
         todayRecyclerView.adapter = adapter
+
 
 
         var itemTouchHelper: ItemTouchHelper? = null
@@ -344,9 +346,13 @@ class HomeFragment : Fragment() {
                 isCurrentlyActive: Boolean
             ) {
 
-                    val child: View = viewHolder.itemView.findViewById(R.id.notification_card_unread_overlay)
-                    super.onChildDraw(c, recyclerView, viewHolder, 0f, 0f, actionState, isCurrentlyActive)
-                    child.translationX = dX
+
+                super.onChildDraw(c, recyclerView, viewHolder, 0f, 0f, actionState, isCurrentlyActive)
+                val child: View = viewHolder.itemView.findViewById(R.id.notification_card_unread_overlay)
+                child.translationX = dX
+
+                val mark: View = viewHolder.itemView.findViewById(R.id.notification_card_new_mark)
+                mark.translationX = dX
 
             }
 
@@ -362,13 +368,13 @@ class HomeFragment : Fragment() {
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
-                itemTouchHelper?.startSwipe(viewHolder)
+
+
                 todayDataArrayList[viewHolder.bindingAdapterPosition].read = !todayDataArrayList[viewHolder.bindingAdapterPosition].read
+                itemTouchHelper?.startSwipe(viewHolder)
                 adapter.notifyItemChanged(viewHolder.bindingAdapterPosition)
 
-                val child: MaterialCardView = viewHolder.itemView.findViewById(R.id.notification_card_unread_overlay)
-                child.cardElevation = MyApplication.convertDpToPixel(1, requireContext()).toFloat()
-                (viewHolder.itemView as MaterialCardView).cardElevation = MyApplication.convertDpToPixel(10, requireContext()).toFloat()
+
             }
 
 
@@ -387,7 +393,7 @@ class HomeFragment : Fragment() {
             TodayData(false, context?.getDrawable(R.drawable.room),"Szobarend", getString(R.string.perfect), "5")
             )
 
-        unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList)
+        unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList, requireContext())
 
         val fabRoot: View = view.findViewById(R.id.home_fab_root)
 

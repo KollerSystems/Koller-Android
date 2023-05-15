@@ -81,7 +81,7 @@ class DayFragment : Fragment() {
             TodayData(context?.getDrawable(R.drawable.person),"Rogán Mátyás", "L3")
         )
 
-        usersRecyclerView.adapter = TodayRecyclerAdapter(todayDataArrayList)
+        usersRecyclerView.adapter = TodayRecyclerAdapter(todayDataArrayList, requireContext())
 
         bottomSheetDuty = view.findViewById(R.id.bottom_sheet_duty)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetDuty);

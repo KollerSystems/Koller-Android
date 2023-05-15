@@ -27,6 +27,7 @@
     <dimen name="header_footer_size">60dp</dimen>
 
     <dimen name="spacing">10dp</dimen>
+    <dimen name="n_spacing">-10dp</dimen>
 
     <dimen name="tab_height">40dp</dimen>
 

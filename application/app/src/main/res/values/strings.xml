@@ -234,4 +234,7 @@
     <string name="mark_all_as_read">Összes olvasottnak</string>
     <string name="view_all_notifications">Összes értesítés</string>
     <string name="perfect">Hibátlan</string>
+    <string name="new_">Új</string>
+    <string name="mark_as_read">Megjelölés olvasottnak</string>
+    <string name="mark_as_unread">Megjelölés olvasatlannak</string>
 </resources>

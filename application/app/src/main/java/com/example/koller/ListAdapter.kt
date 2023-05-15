@@ -11,11 +11,14 @@ import androidx.recyclerview.widget.RecyclerView
 
 data class ListItem(val title: String, val description: String?, val icon: Drawable?)
 
+private val mOnClickListener: View.OnClickListener? = null
+
 class ListAdapter (private val listItem : ArrayList<ListItem>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item_list_dialog_list_dialog_item, parent, false)
-        return ListViewHolder(itemView)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item_list_dialog_list_dialog_item, parent, false)
+        view.setOnClickListener(mOnClickListener);
+        return ListViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
