@@ -371,7 +371,7 @@ class HomeFragment : Fragment() {
 
 
                 todayDataArrayList[viewHolder.bindingAdapterPosition].read = !todayDataArrayList[viewHolder.bindingAdapterPosition].read
-                itemTouchHelper?.startSwipe(viewHolder)
+                //itemTouchHelper?.startSwipe(viewHolder)
                 adapter.notifyItemChanged(viewHolder.bindingAdapterPosition)
 
 

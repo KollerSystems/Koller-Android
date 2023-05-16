@@ -56,6 +56,9 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
         var text : String?
         var icon : Drawable?
 
+        holder.card_unread_overlay.translationX = 0f
+        holder.card_new_mark.translationX = 0f
+
         if(!currentItem.read){
             holder.card_unread_overlay.cardElevation = MyApplication.convertDpToPixel(25, holder.itemView.context).toFloat()
             holder.root.cardElevation = MyApplication.convertDpToPixel(0, holder.itemView.context).toFloat()
