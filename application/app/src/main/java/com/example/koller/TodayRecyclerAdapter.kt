@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
@@ -48,6 +49,9 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
             holder.iconRight.background = currentItem.iconRight
             holder.iconRight.text = currentItem.charRight
         }
+        else{
+            holder.iconRight.visibility = GONE
+        }
 
         var text : String?
         var icon : Drawable?
@@ -71,6 +75,9 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
 
             val dialog = RoomOrderBottomSheet()
             dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBottomSheet.TAG)
+
+            currentItem.read = true
+            notifyItemChanged(holder.bindingAdapterPosition)
         }
 
         holder.itemView.setOnLongClickListener{
