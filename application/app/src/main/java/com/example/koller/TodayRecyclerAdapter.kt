@@ -1,6 +1,7 @@
 package com.example.koller
 
 import android.content.Context
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
@@ -37,6 +39,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
 
 
     }
+
 
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
@@ -104,6 +107,55 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
     override fun getItemCount(): Int {
         return todayList.size
     }
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        var itemTouchHelper: ItemTouchHelper? = null
+        val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
+
+            override fun onChildDraw(
+                c: Canvas, recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int,
+                isCurrentlyActive: Boolean
+            ) {
+
+
+                super.onChildDraw(c, recyclerView, viewHolder, 0f, 0f, actionState, isCurrentlyActive)
+                val child: View = viewHolder.itemView.findViewById(R.id.notification_card_unread_overlay)
+                child.translationX = dX
+
+                val mark: View = viewHolder.itemView.findViewById(R.id.notification_card_new_mark)
+                mark.translationX = dX
+
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+
+                return false
+            }
+
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+
+
+
+                todayList[viewHolder.bindingAdapterPosition].read = !todayList[viewHolder.bindingAdapterPosition].read
+                notifyItemChanged(viewHolder.bindingAdapterPosition)
+
+
+            }
+
+
+
+        }
+        itemTouchHelper = ItemTouchHelper(itemTouchCallback)
+        itemTouchHelper.attachToRecyclerView(recyclerView)
+    }
+
 
     class TodayViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView)
     {
