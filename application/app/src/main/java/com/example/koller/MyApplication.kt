@@ -1,6 +1,7 @@
 package com.example.koller
 
 import android.app.Application
+import android.app.Dialog
 import android.content.ClipData
 import android.content.Context
 import android.content.res.Resources
@@ -10,6 +11,7 @@ import android.os.Build
 import android.text.ClipboardManager
 import android.util.Log
 import android.util.TypedValue
+import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
@@ -25,6 +27,10 @@ class MyApplication : Application() {
     companion object {
 
         const val minLengthBeforeDismiss : Int = 3
+
+        fun setupBottomSheet(dialog : Dialog){
+            dialog.window!!.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        }
 
         fun setClipboard(context: Context, text: String) {
 

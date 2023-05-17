@@ -7,10 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.app.ActivityCompat.finishAffinity
-import com.example.koller.MainActivity
+import com.example.koller.activities.MainActivity
 import com.example.koller.R
-import com.example.koller.WelcomeActivity
 
 class WelcomeSemiDoneFragment : Fragment() {
 

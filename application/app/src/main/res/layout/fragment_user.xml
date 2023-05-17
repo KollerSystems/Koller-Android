@@ -31,12 +31,13 @@
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/view4"
-                style="@style/Card"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_margin="0dp"
                 android:alpha="0"
-                app:cardBackgroundColor="@android:color/holo_orange_light"
+                app:cardBackgroundColor="?attr/colorYellow"
+                app:cardCornerRadius="0dp"
+                app:cardElevation="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -48,15 +49,17 @@
                 android:id="@+id/outline"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginLeft="25dp"
+                android:layout_marginLeft="-25dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginRight="25dp"
+                android:layout_marginRight="-25dp"
                 android:layout_marginBottom="@dimen/spacing"
-                android:background="@drawable/circle_gradient"
+                android:alpha="1"
+                android:background="?attr/colorYellow"
                 app:layout_constraintBottom_toTopOf="@+id/text_user_name"
-                app:layout_constraintEnd_toEndOf="@+id/view4"
-                app:layout_constraintStart_toStartOf="@+id/view4"
-                app:layout_constraintTop_toTopOf="@+id/view4">
+                app:layout_constraintEnd_toEndOf="@+id/imageView12"
+                app:layout_constraintStart_toStartOf="@+id/imageView12"
+                app:layout_constraintTop_toTopOf="@+id/view4"
+                app:shapeAppearanceOverlay="@style/roundImageView">
 
             </com.google.android.material.imageview.ShapeableImageView>
 
@@ -64,15 +67,15 @@
                 android:id="@+id/imageView12"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
-                android:layout_marginStart="25dp"
+                android:layout_marginLeft="25dp"
                 android:layout_marginTop="25dp"
-                android:layout_marginEnd="25dp"
+                android:layout_marginRight="25dp"
                 android:layout_marginBottom="25dp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/norbert"
                 app:layout_constraintBottom_toBottomOf="@+id/outline"
-                app:layout_constraintEnd_toEndOf="@+id/outline"
-                app:layout_constraintStart_toStartOf="@+id/outline"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/outline"
                 app:shapeAppearanceOverlay="@style/roundImageView" />
 

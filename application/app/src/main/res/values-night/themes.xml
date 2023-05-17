@@ -16,5 +16,9 @@
         <item name="colorYellow">@android:color/holo_orange_light</item>
         <item name="colorRed">@android:color/holo_red_light</item>
         <item name="colorGreen">@android:color/holo_green_light</item>
+
+        <item name="colorYellowInverse">@android:color/holo_orange_dark</item>
+        <item name="colorRedInverse">@android:color/holo_red_dark</item>
+        <item name="colorGreenInverse">@android:color/holo_green_dark</item>
     </style>
 </resources>

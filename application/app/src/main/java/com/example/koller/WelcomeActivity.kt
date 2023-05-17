@@ -4,8 +4,6 @@ import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.animation.PathInterpolator
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +11,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
 import androidx.core.view.WindowCompat
 import androidx.viewpager2.widget.ViewPager2
+import com.example.koller.fragments.WelcomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

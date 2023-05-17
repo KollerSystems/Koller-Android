@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.koller.CanteenData
-import com.example.koller.CanteenRecyclerAdapter
+import com.example.koller.data.CanteenData
+import com.example.koller.recycleradapter.CanteenRecyclerAdapter
 import com.example.koller.R
 
 class CalendarCanteenFragment : Fragment() {

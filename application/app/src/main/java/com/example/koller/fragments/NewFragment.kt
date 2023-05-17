@@ -11,6 +11,9 @@ import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.*
+import com.example.koller.activities.MainActivity
+import com.example.koller.data.CommentData
+import com.example.koller.recycleradapter.CommentRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -68,6 +71,7 @@ class NewFragment : BottomSheetDialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_new, container, false)
+        MyApplication.setupBottomSheet(dialog!!)
         commentTil = view.findViewById(R.id.news_til_comment)
         val buttonPost : Button = view.findViewById(R.id.news_button_post_comment)
 
@@ -91,7 +95,8 @@ class NewFragment : BottomSheetDialogFragment() {
         commentDataArrayList = arrayListOf(
             CommentData("Kovács Norbert", context?.getDrawable(R.drawable.norbert), "Ez nagyon jó 🤣🤣🤣🤣"),
             CommentData("Kovács Péter", context?.getDrawable(R.drawable.pfp1), "anyad 👍"),
-            CommentData("Kovács Géza", context?.getDrawable(R.drawable.pfp3), "A nagyobb társadalmi és intellektuális kontextus széles spektrumában számos szempont és érvelés áll rendelkezésre annak megítélésére, hogy egy adott állítás, tézis vagy érv alátámasztottsága milyen mértékben felel meg a valóságos körülményeknek és megfigyelhető jelenségeknek. Azonban az említett kontextus és szempontok diverzitása miatt nem mindig van lehetőségünk teljes bizonyossággal állást foglalni egy adott kérdésben, és gyakran előfordul, hogy az argumentáció valójában semmitmondó és jelentéktelen."))
+            CommentData("Kovács Géza", context?.getDrawable(R.drawable.pfp3), "A nagyobb társadalmi és intellektuális kontextus széles spektrumában számos szempont és érvelés áll rendelkezésre annak megítélésére, hogy egy adott állítás, tézis vagy érv alátámasztottsága milyen mértékben felel meg a valóságos körülményeknek és megfigyelhető jelenségeknek. Azonban az említett kontextus és szempontok diverzitása miatt nem mindig van lehetőségünk teljes bizonyossággal állást foglalni egy adott kérdésben, és gyakran előfordul, hogy az argumentáció valójában semmitmondó és jelentéktelen.")
+        )
 
         commentRecyclerView.adapter = CommentRecyclerAdapter(commentDataArrayList, requireContext())
 

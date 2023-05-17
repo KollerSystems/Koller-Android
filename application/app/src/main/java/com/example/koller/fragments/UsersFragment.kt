@@ -11,8 +11,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.R
-import com.example.koller.TodayData
-import com.example.koller.UserRecycleAdapter
+import com.example.koller.data.TodayData
+import com.example.koller.recycleradapter.UserRecycleAdapter
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

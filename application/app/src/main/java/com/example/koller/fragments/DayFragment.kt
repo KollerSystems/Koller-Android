@@ -1,11 +1,7 @@
 package com.example.koller.fragments
 
-import android.content.ComponentName
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
@@ -16,6 +12,12 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.*
+import com.example.koller.activities.MainActivity
+import com.example.koller.data.DefaultDayTimes
+import com.example.koller.data.FromTo
+import com.example.koller.data.TodayData
+import com.example.koller.recycleradapter.TodayRecyclerAdapter
+import com.example.koller.recycleradapter.UserRecycleAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 class DayFragment : Fragment() {
@@ -81,7 +83,7 @@ class DayFragment : Fragment() {
             TodayData(context?.getDrawable(R.drawable.person),"Rogán Mátyás", "L3")
         )
 
-        usersRecyclerView.adapter = TodayRecyclerAdapter(todayDataArrayList, requireContext())
+        usersRecyclerView.adapter = UserRecycleAdapter(todayDataArrayList)
 
         bottomSheetDuty = view.findViewById(R.id.bottom_sheet_duty)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetDuty);

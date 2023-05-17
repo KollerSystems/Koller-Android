@@ -1,7 +1,7 @@
 
 import android.content.Context
 import android.util.Log
-import com.example.koller.ApiLoginData
+import com.example.koller.api.ApiLoginData
 import com.example.koller.R
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.Call

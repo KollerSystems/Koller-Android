@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.R
-import com.example.koller.TodayData
-import com.example.koller.TodayRecyclerAdapter
+import com.example.koller.data.TodayData
+import com.example.koller.recycleradapter.TodayRecyclerAdapter
 
 class NotificationsFragment : Fragment() {
 

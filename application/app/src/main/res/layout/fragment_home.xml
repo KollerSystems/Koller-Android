@@ -61,7 +61,8 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_margin="7.5dp"
-                                app:cardCornerRadius="15dp">
+                                app:cardCornerRadius="15dp"
+                                app:cardElevation="-1dp">
 
                                 <androidx.constraintlayout.widget.ConstraintLayout
                                     android:layout_width="match_parent"
@@ -169,7 +170,8 @@
                                             android:layout_marginTop="-7.5dp"
                                             android:layout_marginRight="-7.5dp"
                                             android:layout_marginBottom="-7.5dp"
-                                            app:cardCornerRadius="15dp">
+                                            app:cardCornerRadius="15dp"
+                                            app:cardElevation="-1dp">
 
                                             <androidx.constraintlayout.widget.ConstraintLayout
                                                 android:layout_width="match_parent"

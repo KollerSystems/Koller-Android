@@ -97,7 +97,7 @@
         </fragment>
         <fragment
             android:id="@+id/userOutgoingFragment"
-            android:name="com.example.koller.UserOutgoingFragment"
+            android:name="com.example.koller.fragments.UserOutgoingFragment"
             android:label="Kimenők"
             tools:layout="@layout/fragment_user_outgoing" />
         <fragment
@@ -106,7 +106,7 @@
             android:label="Ki- és belépések" />
         <fragment
             android:id="@+id/roomFragment"
-            android:name="com.example.koller.RoomFragment"
+            android:name="com.example.koller.fragments.RoomFragment"
             android:label="Szoba"
             tools:layout="@layout/fragment_room">
             <action

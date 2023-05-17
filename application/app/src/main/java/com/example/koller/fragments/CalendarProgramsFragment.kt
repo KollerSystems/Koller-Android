@@ -7,8 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.koller.EventsData
-import com.example.koller.EventsRecyclerAdapter
+import com.example.koller.data.EventsData
+import com.example.koller.recycleradapter.EventsRecyclerAdapter
 import com.example.koller.R
 
 class CalendarProgramsFragment : Fragment() {

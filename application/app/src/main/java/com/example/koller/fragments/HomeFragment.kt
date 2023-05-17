@@ -1,27 +1,30 @@
 package com.example.koller.fragments
 
 import android.content.Intent
-import android.graphics.Canvas
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
-import android.view.View.NOT_FOCUSABLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.SimpleItemAnimator
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.*
-import com.google.android.material.card.MaterialCardView
+import com.example.koller.activities.CreateNewPostActivity
+import com.example.koller.activities.MainActivity
+import com.example.koller.activities.SettingsActivity
+import com.example.koller.data.DefaultDayTimes
+import com.example.koller.data.EventsData
+import com.example.koller.data.TodayData
+import com.example.koller.fragments.bottomsheet.BottomFragmentPostTypes
+import com.example.koller.recycleradapter.EventsRecyclerAdapter
+import com.example.koller.recycleradapter.TodayRecyclerAdapter
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -75,7 +78,8 @@ class HomeFragment : Fragment() {
             EventsData("UI design verseny", "A Ralix megkereste a kollégiumunkot, hogy van-e igény egy user interface tervező versenyre. Állítólag egy kifejezetten nagy nyereménye lenne a versenynek. Kérek mindenkit aki érdeklődik ez iránt reagáljon egy like-al erre a bejegyzésre.", "test"),
             EventsData("Kovács Gábor az év kollégistája", "Az idei legjobb kollégista díjat Kovács Gábor, 11-es Pusksásos diák nyerte. Kovács Gábor egy olyan ember a Kollégisták szerint, aki ahol baj van ott segít. Ajtókat javít, gyorskötőzőzik és még fűrészel is ha kell.", "test"),
             EventsData("Jön a nyári szünet", "Az idei tanévnek is vége van, ugyan hosszú volt, de ez mindig így van. Most azonban elkezdődik a 2 és fél hómapőos nyári szünet, amire mindenki annyira várt. Mik voltak a kedvenc pillanataid a kollégiumban idén? Írd le a kommentek közé", "test"),
-            EventsData("Andrásosfi Norberto", "Kicsoda Andrásosfi? Egy távoli hang kérdezi. Andrásosfi egy Linux user, aki szereti hangosan szidni a Windowst. Sértően beszél a diákokkal, de legalább jól érzi magát a LoL meccsek között, mivel", "test"))
+            EventsData("Andrásosfi Norberto", "Kicsoda Andrásosfi? Egy távoli hang kérdezi. Andrásosfi egy Linux user, aki szereti hangosan szidni a Windowst. Sértően beszél a diákokkal, de legalább jól érzi magát a LoL meccsek között, mivel", "test")
+        )
 
         eventsRecyclerView.adapter = EventsRecyclerAdapter(eventsDataArrayList)
 
@@ -330,7 +334,8 @@ class HomeFragment : Fragment() {
         todayDataArrayList = arrayListOf(
             TodayData(false, context?.getDrawable(R.drawable.room), getString(R.string.room_order), "K, P", "4,"),
             TodayData(false, context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
-            ))
+            )
+        )
 
         var adapter = TodayRecyclerAdapter(todayDataArrayList, requireContext())
         todayRecyclerView.adapter = adapter

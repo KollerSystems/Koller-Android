@@ -5,7 +5,7 @@
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MessageFragment">
+    tools:context=".fragments.MessageFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         <com.google.android.material.card.MaterialCardView
             style="@style/CardHeader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/header_footer_size"
             app:cardElevation="@dimen/header_footer_elevation">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -66,22 +66,6 @@
                             android:text="@string/title" />
 
                     </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/room_order_fragment_text_final_rate"
-                        style="@style/Title"
-                        android:layout_width="@dimen/panel_icon"
-                        android:layout_height="@dimen/panel_icon"
-                        android:layout_gravity="center"
-                        android:backgroundTint="?android:attr/colorForeground"
-                        android:foregroundGravity="center"
-                        android:gravity="center"
-                        android:text="4"
-                        android:textAlignment="center"
-                        android:textColor="#00BF9F"
-                        android:textSize="40sp"
-                        android:textStyle="bold"
-                        android:visibility="invisible" />
 
                 </LinearLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>

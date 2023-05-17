@@ -84,6 +84,7 @@
             style="@style/MainCardLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:elevation="@dimen/default_card_elevation"
             android:orientation="horizontal">
 
             <Button

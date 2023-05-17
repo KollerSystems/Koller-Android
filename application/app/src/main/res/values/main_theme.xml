@@ -25,6 +25,7 @@
     </style>
 
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardElevation">@dimen/default_card_elevation</item>
         <item name="cardCornerRadius">@dimen/panel_round</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
     </style>
@@ -113,6 +114,7 @@
         <item name="android:insetTop">@null</item>
         <item name="android:insetBottom">@null</item>
         <item name="cornerRadius">0dp</item>
+        <item name="android:elevation">@dimen/default_card_elevation</item>
         <item name="iconGravity">textStart</item>
         <item name="iconTint">?android:attr/colorForeground</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
@@ -208,14 +210,14 @@
         <item name="chipMinTouchTargetSize">0dp</item>
     </style>
 
-    <style name="Card" parent="@style/Widget.Material3.CardView.Filled">
+    <style name="Card" parent="@style/SimpleCard">
         <item name="contentPadding">@dimen/panel_padding</item>
-        <item name="cardBackgroundColor">?colorSurface</item>
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="cardCornerRadius">0dp</item>
         <item name="android:layout_margin">0.75dp</item>
         <item name="android:layout_height">wrap_content</item>
+        <item name="android:outlineProvider">none</item>
     </style>
 
     <style name="CardHeader" parent="Card">
@@ -249,15 +251,26 @@
         <item name="android:layout_marginLeft">5dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
+
+    <style name="MainCardLayout">
+        <item name="android:layout_marginBottom">-0.75dp</item>
+        <item name="android:layout_marginTop">-0.75dp</item>
+        <item name="android:layout_marginLeft">-0.75dp</item>
+        <item name="android:layout_marginRight">-0.75dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:clipToPadding">false</item>
+        <item name="android:clipChildren">false</item>
+        <item name="android:overScrollMode">never</item>
+    </style>
     
-    <style name="BottomSheetMainLayout" parent="@style/MainCard">
+    <style name="BottomSheetMainLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">0dp</item>
         <item name="android:layout_marginRight">0dp</item>
         <item name="android:layout_marginTop">0dp</item>
-        <item name="android:layout_marginBottom">0dp</item>
         <item name="cardCornerRadius">@dimen/application_round</item>
+        <item name="cardElevation" >-16dp</item>
     </style>
 
     <style name="ImagePreviewList">
@@ -274,17 +287,6 @@
         <item name="cornerSizeTopLeft">15dp</item>
         <item name="cornerSizeBottomRight">15dp</item>
         <item name="cornerSizeBottomLeft">15dp</item>
-    </style>
-
-    <style name="MainCardLayout">
-        <item name="android:layout_marginBottom">-0.75dp</item>
-        <item name="android:layout_marginTop">-0.75dp</item>
-        <item name="android:layout_marginLeft">-0.75dp</item>
-        <item name="android:layout_marginRight">-0.75dp</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:clipToPadding">false</item>
-        <item name="android:clipChildren">false</item>
-        <item name="android:overScrollMode">never</item>
     </style>
 
     <style name="SimpleButton" parent="@style/Widget.Material3.Button.TextButton">
@@ -330,6 +332,7 @@
 
     <style name="CustomBottomSheetDialog" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+        <item name="backgroundTint">@android:color/transparent</item>
     </style>
 
     <style name="BottomSheetDialogFull" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
@@ -338,6 +341,15 @@
 
     <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
+        <item name="backgroundTint">@android:color/transparent</item>
+<item name="android:outlineProvider" >none</item>
+        <item name="android:elevation">0dp</item>
+        <item name="elevation">0dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="android:state_expanded">true</item>
+        <item name="behavior_fitToContents">true</item>
+        <item name="behavior_peekHeight">10000dp</item>
+        <item name="behavior_skipCollapsed">true</item>
     </style>
 
     <style name="FakeBottomSheet" parent="Card">
@@ -355,14 +367,7 @@
     </style>
 
     <style name="BottomSheetFull" parent="CustomBottomSheet">
-        <item name="android:elevation">0dp</item>
-        <item name="elevation">0dp</item>
-        <item name="cardElevation">0dp</item>
-        <item name="background">?android:attr/colorBackground</item>
-        <item name="android:state_expanded">true</item>
-        <item name="behavior_fitToContents">true</item>
-        <item name="behavior_peekHeight">10000dp</item>
-        <item name="behavior_skipCollapsed">true</item>
+
     </style>
 
     <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
@@ -376,7 +381,6 @@
     <style name="MainLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
-        <item name="android:elevation">@dimen/default_card_elevation</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingBottom">@dimen/application_padding</item>
         <item name="android:paddingRight">@dimen/application_padding</item>

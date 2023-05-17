@@ -16,5 +16,9 @@
     <attr name="colorRed" format="reference|color" />
     <attr name="colorGreen" format="reference|color" />
 
+    <attr name="colorYellowInverse" format="reference|color" />
+    <attr name="colorRedInverse" format="reference|color" />
+    <attr name="colorGreenInverse" format="reference|color" />
+
 
 </resources>
