@@ -79,8 +79,13 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
 
         holder.itemView.setOnClickListener {
 
-            val dialog = RoomOrderBottomSheet()
-            dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBottomSheet.TAG)
+            if(currentItem.title == context.getString(R.string.room_order)){
+                val dialog = RoomOrderBottomSheet()
+                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBottomSheet.TAG)
+            }else{
+                val dialog = MessageFragment()
+                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, MessageFragment.TAG)
+            }
 
             currentItem.read = true
             notifyItemChanged(holder.bindingAdapterPosition)

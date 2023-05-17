@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import java.text.SimpleDateFormat
 import kotlin.math.roundToInt
@@ -41,6 +42,10 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
 
         val format = SimpleDateFormat("MM. dd.")
         date.text = format.format(RoomOrderData.instance[0].date)
+
+        val recyclerView : RecyclerView = view.findViewById(R.id.room_order_recycler_view)
+
+
 
         return view
     }

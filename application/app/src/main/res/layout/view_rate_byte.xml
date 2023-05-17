@@ -6,7 +6,7 @@
     android:padding="2.5dp">
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/view_rate_byte_text"
         style="@style/Normal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

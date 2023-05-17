@@ -328,7 +328,7 @@ class HomeFragment : Fragment() {
         todayRecyclerView.setHasFixedSize(true)
 
         todayDataArrayList = arrayListOf(
-            TodayData(false, context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4,"),
+            TodayData(false, context?.getDrawable(R.drawable.room), getString(R.string.room_order), "K, P", "4,"),
             TodayData(false, context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
             ))
 
@@ -344,7 +344,7 @@ class HomeFragment : Fragment() {
         unreadRecyclerView.setHasFixedSize(true)
 
         unreadDataArrayList = arrayListOf(
-            TodayData(false, context?.getDrawable(R.drawable.room),"Szobarend", getString(R.string.perfect), "5")
+            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(R.string.perfect), "5")
             )
 
         unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList, requireContext())

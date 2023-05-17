@@ -24,4 +24,7 @@ class MessageFragment : BottomSheetDialogFragment() {
         return view
     }
 
+    companion object {
+        const val TAG = "MessageBottomSheet"
+    }
 }
