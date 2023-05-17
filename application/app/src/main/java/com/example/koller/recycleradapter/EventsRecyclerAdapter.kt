@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.R
 import com.example.koller.data.EventsData
-import com.example.koller.fragments.NewFragment
+import com.example.koller.fragments.bottomsheet.NewFragment
 
 class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>()
 {

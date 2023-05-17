@@ -1,4 +1,4 @@
-package com.example.koller.fragments
+package com.example.koller.fragments.bottomsheet
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -8,12 +8,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.*
 import com.example.koller.activities.MainActivity
 import com.example.koller.data.CommentData
 import com.example.koller.recycleradapter.CommentRecyclerAdapter
+import com.example.koller.recycleradapter.ImageRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
@@ -87,6 +89,18 @@ class NewFragment : BottomSheetDialogFragment() {
 
             }
         })
+
+        val imageRecyclerView : RecyclerView = view.findViewById(R.id.new_recyclerview_images)
+        imageRecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        imageRecyclerView.setHasFixedSize(true)
+
+        val drawableArrayList = arrayListOf(
+            AppCompatResources.getDrawable(requireContext(), R.drawable.hills)!!,
+            AppCompatResources.getDrawable(requireContext(), R.drawable.secret)!!,
+            AppCompatResources.getDrawable(requireContext(), R.drawable.group_picture)!!
+            )
+
+        imageRecyclerView.adapter = ImageRecyclerAdapter(drawableArrayList, requireContext())
 
         commentRecyclerView = view.findViewById(R.id.recycle_view_comment)
         commentRecyclerView.layoutManager = LinearLayoutManager(context)

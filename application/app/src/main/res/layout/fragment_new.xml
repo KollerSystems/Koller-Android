@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -79,11 +80,11 @@
                 android:layout_height="wrap_content">
 
                 <androidx.core.widget.NestedScrollView
+                    android:id="@+id/new_nested_scroll"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
 
 
-                    >
+                    android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -100,41 +101,18 @@
                             android:layout_margin="@dimen/text_container_margin"
                             android:text="@string/lorem_medium" />
 
-                        <HorizontalScrollView
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/new_recyclerview_images"
                             android:layout_width="match_parent"
                             android:layout_height="200dp"
-                            android:clipChildren="false"
+                            android:layout_marginLeft="@dimen/n_panel_padding"
+                            android:layout_marginRight="@dimen/n_panel_padding"
                             android:clipToPadding="false"
-                            android:overScrollMode="never">
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:orientation="horizontal">
-
-                                <com.google.android.material.imageview.ShapeableImageView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="@dimen/text_container_margin"
-                                    android:adjustViewBounds="true"
-                                    android:clickable="true"
-                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                    app:srcCompat="@drawable/boom"></com.google.android.material.imageview.ShapeableImageView>
-
-                                <com.google.android.material.imageview.ShapeableImageView
-                                    android:id="@+id/shapeableImageView3"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="match_parent"
-                                    android:layout_margin="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:adjustViewBounds="true"
-                                    android:clickable="true"
-                                    app:shapeAppearanceOverlay="@style/roundedImageView"
-                                    app:srcCompat="@drawable/secret"></com.google.android.material.imageview.ShapeableImageView>
-                            </LinearLayout>
-                        </HorizontalScrollView>
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/panel_padding"
+                            android:paddingRight="@dimen/panel_padding"
+                            tools:itemCount="1"
+                            tools:listitem="@layout/view_image" />
 
                         <com.google.android.material.chip.ChipGroup
                             android:layout_width="match_parent"

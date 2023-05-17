@@ -8,6 +8,8 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
@@ -25,6 +27,7 @@ import com.example.koller.data.TodayData
 import com.example.koller.fragments.bottomsheet.BottomFragmentPostTypes
 import com.example.koller.recycleradapter.EventsRecyclerAdapter
 import com.example.koller.recycleradapter.TodayRecyclerAdapter
+import com.igreenwood.loupe.Loupe
 import java.util.*
 import kotlin.math.roundToInt
 
