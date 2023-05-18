@@ -4,12 +4,14 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.media.Image
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.core.widget.NestedScrollView
@@ -19,7 +21,8 @@ import com.example.koller.activities.FullScreenImageActivity
 import com.example.koller.activities.MainActivity
 import com.example.koller.data.StarData
 import com.google.android.material.imageview.ShapeableImageView
-import com.igreenwood.loupe.Loupe
+import com.stfalcon.imageviewer.StfalconImageViewer
+import java.util.ArrayList
 
 class ImageRecyclerAdapter (private val imageList : ArrayList<Drawable>, val context : Context) : RecyclerView.Adapter<ImageRecyclerAdapter.ImageViewHolder>()
 {
@@ -32,16 +35,21 @@ class ImageRecyclerAdapter (private val imageList : ArrayList<Drawable>, val con
         val currentItem = imageList[position]
         holder.image.setImageDrawable(currentItem)
 
+        val drawableArrayList = arrayOf(
+            AppCompatResources.getDrawable(context, R.drawable.hills)!!,
+            AppCompatResources.getDrawable(context, R.drawable.sh_room)!!,
+            AppCompatResources.getDrawable(context, R.drawable.group_picture)!!
+        )
+
         holder.itemView.setOnClickListener{
             holder.image.transitionName = "smooth_transition"
 
-            val intent = Intent(context, FullScreenImageActivity::class.java)
-            val bundle = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                (context as AppCompatActivity),
-                holder.image,
-                holder.image.transitionName
-            ).toBundle()
-            context.startActivity(intent, bundle)
+            StfalconImageViewer.Builder<Drawable>(context, drawableArrayList) { view, drawable ->
+                view.setImageDrawable(drawable)
+
+            }
+                .withTransitionFrom(holder.image)
+                .show()
         }
     }
 

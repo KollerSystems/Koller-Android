@@ -17,11 +17,6 @@
         <item name="materialAlertDialogTheme">@style/Popup</item>
         <item name="toolbarStyle">@style/toolbar</item>
         <item name="checkboxStyle">@style/Checkbox</item>
-
-
-        <item name="android:windowSharedElementsUseOverlay">true</item>
-        <item name="android:windowSharedElementEnterTransition">@transition/smooth_transition</item>
-        <item name="android:windowSharedElementExitTransition">@transition/smooth_transition</item>
     </style>
 
     <style name="Checkbox" parent="@style/Widget.Material3.CompoundButton.CheckBox">

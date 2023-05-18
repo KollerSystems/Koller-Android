@@ -27,7 +27,6 @@ import com.example.koller.data.TodayData
 import com.example.koller.fragments.bottomsheet.BottomFragmentPostTypes
 import com.example.koller.recycleradapter.EventsRecyclerAdapter
 import com.example.koller.recycleradapter.TodayRecyclerAdapter
-import com.igreenwood.loupe.Loupe
 import java.util.*
 import kotlin.math.roundToInt
 
