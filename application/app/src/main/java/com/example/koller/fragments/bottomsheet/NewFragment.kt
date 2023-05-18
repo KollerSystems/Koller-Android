@@ -96,7 +96,7 @@ class NewFragment : BottomSheetDialogFragment() {
 
         val drawableArrayList = arrayListOf(
             AppCompatResources.getDrawable(requireContext(), R.drawable.hills)!!,
-            AppCompatResources.getDrawable(requireContext(), R.drawable.secret)!!,
+            AppCompatResources.getDrawable(requireContext(), R.drawable.sh_room)!!,
             AppCompatResources.getDrawable(requireContext(), R.drawable.group_picture)!!
             )
 

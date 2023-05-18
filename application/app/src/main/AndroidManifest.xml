@@ -20,6 +20,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.FullScreenImageActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.CreateNewPostActivity"
             android:exported="false" />
         <activity
