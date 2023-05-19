@@ -1,5 +1,6 @@
 package com.example.koller
 
+import UserData
 import android.app.Application
 import android.app.Dialog
 import android.content.ClipData
@@ -27,6 +28,10 @@ class MyApplication : Application() {
     companion object {
 
         const val minLengthBeforeDismiss : Int = 3
+
+        fun createUserDescription(userData : UserData): String{
+            return userData.Group + " • " + userData.RoomNumber  + " • " + userData.Class
+        }
 
         fun setupBottomSheet(dialog : Dialog){
             dialog.window!!.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);

@@ -1,10 +1,13 @@
 package com.example.koller.recycleradapter
 
+import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.R
@@ -12,7 +15,7 @@ import com.example.koller.data.TodayData
 import com.google.android.material.imageview.ShapeableImageView
 
 
-class UserRecycleAdapter (private var todayList : ArrayList<TodayData>) : RecyclerView.Adapter<UserRecycleAdapter.TodayViewHolder>(){
+class UserRecycleAdapter (private var todayList : ArrayList<TodayData>, var context : Context) : RecyclerView.Adapter<UserRecycleAdapter.TodayViewHolder>(){
 
     private val item: Int = 0
     private val loading: Int = 1
@@ -41,6 +44,12 @@ class UserRecycleAdapter (private var todayList : ArrayList<TodayData>) : Recycl
             holder.iconRight.background = currentItem.iconRight
             holder.iconRight.text = currentItem.charRight
         }
+
+        holder.itemView.setOnClickListener {
+
+            (context as AppCompatActivity).intent.putExtra("userID", currentItem.description)
+            holder.itemView.findNavController().navigate(R.id.action_usersFragment_to_userFragment)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -53,13 +62,6 @@ class UserRecycleAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         val title : TextView = itemView.findViewById(R.id.comment_user_name)
         val description : TextView = itemView.findViewById(R.id.comment_text)
         val iconRight : TextView = itemView.findViewById(R.id.notification_icon_end)
-
-        init {
-            itemView.setOnClickListener {
-
-                itemView.findNavController().navigate(R.id.action_usersFragment_to_userFragment)
-            }
-        }
     }
 
 }

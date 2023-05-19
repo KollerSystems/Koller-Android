@@ -84,9 +84,12 @@
                                         android:layout_gravity="center"
                                         android:layout_marginRight="@dimen/spacing"
                                         android:adjustViewBounds="true"
+                                        android:background="@drawable/circle"
+
+                                        android:backgroundTint="?attr/colorPrimaryContainer"
                                         android:scaleType="centerInside"
-                                        android:src="@drawable/norbert"
-                                        app:shapeAppearanceOverlay="@style/roundImageView" />
+                                        app:shapeAppearanceOverlay="@style/roundImageView"
+                                        app:srcCompat="@drawable/person" />
 
                                     <LinearLayout
                                         android:layout_width="match_parent"
@@ -703,7 +706,59 @@
                                                                 android:ellipsize="end"
                                                                 android:gravity="center_horizontal"
                                                                 android:maxLines="1"
-                                                                android:text="Windows" />
+                                                                android:text="Windows front-end" />
+                                                        </LinearLayout>
+
+                                                    </LinearLayout>
+                                                </com.google.android.material.card.MaterialCardView>
+                                                <com.google.android.material.card.MaterialCardView
+                                                    android:id="@+id/profile_card_david"
+                                                    style="@style/Card"
+                                                    android:layout_width="150dp"
+                                                    android:layout_height="225dp"
+                                                    android:clickable="true"
+                                                    app:cardBackgroundColor="?attr/colorSurfaceVariant"
+                                                    app:contentPadding="0dp">
+
+                                                    <LinearLayout
+                                                        android:layout_width="match_parent"
+                                                        android:layout_height="match_parent"
+                                                        android:clipChildren="false"
+                                                        android:clipToPadding="false"
+                                                        android:orientation="vertical">
+
+                                                        <ImageView
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="0dp"
+                                                            android:layout_weight="1"
+                                                            android:adjustViewBounds="true"
+                                                            android:cropToPadding="true"
+                                                            android:scaleType="centerCrop"
+                                                            app:shapeAppearanceOverlay="@style/roundedImageView"
+                                                            app:srcCompat="@drawable/pfp7" />
+
+                                                        <LinearLayout
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_margin="@dimen/text_container_margin"
+                                                            android:orientation="vertical">
+
+                                                            <TextView
+                                                                style="@style/Normal"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:gravity="center_horizontal"
+                                                                android:text="Fehér Dávid" />
+
+                                                            <TextView
+                                                                style="@style/Description"
+                                                                android:layout_width="match_parent"
+                                                                android:layout_height="wrap_content"
+                                                                android:layout_weight="0"
+                                                                android:ellipsize="end"
+                                                                android:gravity="center_horizontal"
+                                                                android:maxLines="1"
+                                                                android:text="Windows back-end" />
                                                         </LinearLayout>
 
                                                     </LinearLayout>

@@ -159,6 +159,14 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
+        val cardDavid: MaterialCardView = view.findViewById(R.id.profile_card_david)
+
+        cardDavid.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/TheBlueLines"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
+
 
         val fbtnEmail: MaterialCardView = view.findViewById(R.id.profile_fbtn_email)
 

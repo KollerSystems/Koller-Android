@@ -45,24 +45,6 @@ class CalendarDaysFragment : Fragment() {
                 ?.let { TooltipCompat.setTooltipText(it.view, null) }
         }
 
-        tabLayoutDays.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabSelected(tab: TabLayout.Tab) {
-                // Repeat of the code above -- tooltips reset themselves after any tab relayout, so I
-                // have to constantly keep turning them off again.
-                for (i in 0 until tabLayoutDays.tabCount) {
-                    Objects.requireNonNull(tabLayoutDays.getTabAt(i))?.let {
-                        TooltipCompat.setTooltipText(
-                            it.view,
-                            null
-                        )
-                    }
-                }
-            }
-
-            override fun onTabUnselected(tabLayoutDays: TabLayout.Tab) {}
-            override fun onTabReselected(tabLayoutDays: TabLayout.Tab) {}
-        })
-
         return view
     }
 

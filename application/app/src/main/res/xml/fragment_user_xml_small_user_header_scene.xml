@@ -14,7 +14,7 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/text_user_name"
+            android:id="@+id/user_text_name"
             motion:layout_constraintEnd_toEndOf="parent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             motion:layout_constraintBottom_toBottomOf="@id/view4"
             android:layout_marginBottom="@dimen/spacing"
             motion:layout_constraintVertical_bias="0"
-            motion:layout_constraintTop_toBottomOf="@+id/text_user_name"
+            motion:layout_constraintTop_toBottomOf="@+id/user_text_name"
             motion:layout_constraintHorizontal_bias="0.5"
             motion:layout_constraintStart_toStartOf="parent">
             <CustomAttribute
@@ -45,7 +45,7 @@
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/imageView12"
+            android:id="@+id/user_image_pfp"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginTop="0dp"
@@ -74,11 +74,11 @@
             android:alpha="0" />
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toEndOf="@+id/imageView12"
+            motion:layout_constraintStart_toEndOf="@+id/user_image_pfp"
             motion:layout_constraintBottom_toTopOf="@+id/user_text_description"
             motion:layout_constraintEnd_toEndOf="@+id/user_text_description"
             android:layout_width="wrap_content"
-            android:id="@+id/text_user_name"
+            android:id="@+id/user_text_name"
             motion:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="@dimen/spacing"
             motion:layout_constraintTop_toBottomOf="@+id/outline">
@@ -90,10 +90,10 @@
         </Constraint>
         <Constraint
             android:layout_height="wrap_content"
-            motion:layout_constraintStart_toEndOf="@+id/imageView12"
+            motion:layout_constraintStart_toEndOf="@+id/user_image_pfp"
             motion:layout_constraintEnd_toEndOf="@id/view4"
             android:layout_width="wrap_content"
-            motion:layout_constraintTop_toBottomOf="@+id/text_user_name"
+            motion:layout_constraintTop_toBottomOf="@+id/user_text_name"
             android:id="@+id/user_text_description"
             motion:layout_constraintHorizontal_bias="0.0"
             android:layout_marginStart="10dp"

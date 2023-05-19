@@ -66,4 +66,10 @@ interface APIInterface {
         @Query(value = "offset") offset : Int,
         @HeaderMap headers: Map<String, String>
     ) : Call<List<UserData>>
+
+    @GET("api/users/{id}")
+    fun getUser(
+        @Path("id") searchById:String,
+        @HeaderMap headers: Map<String, String>
+    ) : Call<UserData>
 }

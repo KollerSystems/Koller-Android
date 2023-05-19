@@ -57,13 +57,13 @@ class UsersFragment : Fragment() {
                                     TodayData(
                                         context?.getDrawable(R.drawable.person),
                                         usersData[i].Name,
-                                        usersData[i].Group,
+                                        usersData[i].ID.toString(),
                                         usersDataArrayList.size.toString()
                                     )
                                 )
                             }
 
-                            usersRecyclerView.adapter = UserRecycleAdapter(usersDataArrayList)
+                            usersRecyclerView.adapter = UserRecycleAdapter(usersDataArrayList, requireContext())
 
                         } else {
                             APIInterface.ServerErrorPopup(requireContext())

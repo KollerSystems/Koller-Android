@@ -59,7 +59,7 @@
                     android:clickable="true"
                     android:scaleType="centerInside"
                     app:shapeAppearanceOverlay="@style/roundImageView"
-                    app:srcCompat="@drawable/norbert" />
+                    app:srcCompat="@drawable/person" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>

@@ -35,19 +35,14 @@ class ImageRecyclerAdapter (private val imageList : ArrayList<Drawable>, val con
         val currentItem = imageList[position]
         holder.image.setImageDrawable(currentItem)
 
-        val drawableArrayList = arrayOf(
-            AppCompatResources.getDrawable(context, R.drawable.hills)!!,
-            AppCompatResources.getDrawable(context, R.drawable.sh_room)!!,
-            AppCompatResources.getDrawable(context, R.drawable.group_picture)!!
-        )
-
         holder.itemView.setOnClickListener{
             holder.image.transitionName = "smooth_transition"
 
-            StfalconImageViewer.Builder<Drawable>(context, drawableArrayList) { view, drawable ->
+            StfalconImageViewer.Builder(context, imageList) { view, drawable ->
                 view.setImageDrawable(drawable)
 
             }
+                .withStartPosition(position)
                 .withTransitionFrom(holder.image)
                 .show()
         }
