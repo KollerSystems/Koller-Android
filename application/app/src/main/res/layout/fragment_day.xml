@@ -532,7 +532,7 @@
         android:layout_height="wrap_content"
         android:elevation="2dp"
         app:behavior_hideable="false"
-        app:behavior_peekHeight="56dp"
+        app:behavior_peekHeight="54dp"
         app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
 
         <!-- Drag handle for accessibility -->

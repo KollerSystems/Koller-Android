@@ -8,11 +8,13 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -21,6 +23,7 @@ import com.example.koller.*
 import com.example.koller.activities.CreateNewPostActivity
 import com.example.koller.activities.MainActivity
 import com.example.koller.activities.SettingsActivity
+import com.example.koller.activities.navigateWithDefaultAnimation
 import com.example.koller.data.DefaultDayTimes
 import com.example.koller.data.EventsData
 import com.example.koller.data.TodayData
@@ -96,6 +99,11 @@ class HomeFragment : Fragment() {
         val cardLessons : View = view.findViewById(R.id.home_card_lessons)
         cardLessons.setOnClickListener{
             (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.calendarFragment
+        }
+
+        val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
+        buttonShowAllPosts.setOnClickListener{
+            findNavController().navigateWithDefaultAnimation(R.id.action_homeFragment_to_postsFragment)
         }
 
         fun setupHome(){

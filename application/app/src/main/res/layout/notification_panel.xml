@@ -62,14 +62,14 @@
 
             <TextView
                 android:id="@+id/comment_user_name"
-                style="@style/Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="none"
                 android:fadingEdgeLength="50dp"
                 android:requiresFadingEdge="horizontal"
                 android:singleLine="true"
-                android:text="@string/title" />
+                android:text="@string/title"
+                android:textAppearance="@style/Title" />
 
             <TextView
                 android:id="@+id/comment_text"

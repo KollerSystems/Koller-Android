@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,7 +17,6 @@ import com.example.koller.activities.MainActivity
 import com.example.koller.data.DefaultDayTimes
 import com.example.koller.data.FromTo
 import com.example.koller.data.TodayData
-import com.example.koller.recycleradapter.TodayRecyclerAdapter
 import com.example.koller.recycleradapter.UserRecycleAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -88,20 +88,28 @@ class DayFragment : Fragment() {
         bottomSheetDuty = view.findViewById(R.id.bottom_sheet_duty)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetDuty);
 
+
         panelDutyMax = view.findViewById(R.id.panel_duty_full)
         panelDutyMin = view.findViewById(R.id.panel_duty_min)
+
+        var navHeight = 0f
+        bottomSheetBehavior.peekHeight = panelDutyMin.height
+        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
+        if (resourceId > 0) {
+            navHeight = resources.getDimensionPixelSize(resourceId).toFloat()
+        }
+        bottomSheetDuty.translationY = navHeight
+
 
         bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
 
-
-                val drawerHeight = bottomSheet.height * slideOffset
-                var textMyDutyName = view.findViewById<TextView>(R.id.text_close_duty_name)
-
                 panelDutyMax.alpha = (slideOffset * 2) -1
                 panelDutyMin.alpha = (((slideOffset -1) * 2) * -1) -1
                 (parentFragment as CalendarDaysFragment).viewPager.isUserInputEnabled = false
+
+                bottomSheetDuty.translationY = (navHeight * (slideOffset * -1 + 1))
 
             }
 

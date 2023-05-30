@@ -4,13 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     android:label="@string/student_hostel"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/homeNest">
 
-    <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.koller.fragments.HomeFragment"
-        android:label="@string/home"
-        tools:layout="@layout/fragment_home" />
     <fragment
         android:id="@+id/notificationsFragment"
         android:name="com.example.koller.fragments.NotificationsFragment"
@@ -23,7 +18,7 @@
         tools:layout="@layout/fragment_calendar" />
     <navigation
         android:id="@+id/studentHostelNest"
-        android:label="Kollegium"
+        android:label="@string/student_hostel"
         app:startDestination="@id/studentHostelFragment">
         <fragment
             android:id="@+id/studentHostelFragment"
@@ -64,7 +59,7 @@
         <fragment
             android:id="@+id/roomsFragment"
             android:name="com.example.koller.fragments.RoomsFragment"
-            android:label="@string/rooms" >
+            android:label="@string/rooms">
             <action
                 android:id="@+id/action_roomsFragment_to_roomFragment"
                 app:destination="@id/roomFragment" />
@@ -112,6 +107,29 @@
             <action
                 android:id="@+id/action_roomFragment_to_userFragment"
                 app:destination="@id/userFragment" />
+        </fragment>
+    </navigation>
+    <navigation
+        android:id="@+id/homeNest"
+        android:label="@string/home"
+        app:startDestination="@id/homeFragment">
+        <fragment
+            android:id="@+id/homeFragment"
+            android:name="com.example.koller.fragments.HomeFragment"
+            android:label="@string/home"
+            tools:layout="@layout/fragment_home" >
+            <action
+                android:id="@+id/action_homeFragment_to_postsFragment"
+                app:destination="@id/postsFragment" />
+        </fragment>
+        <fragment
+            android:id="@+id/postsFragment"
+            android:name="com.example.koller.PostsFragment"
+            android:label="@string/posts"
+            tools:layout="@layout/fragment_posts">
+            <action
+                android:id="@+id/action_postsFragment_to_homeFragment"
+                app:destination="@id/homeFragment" />
         </fragment>
     </navigation>
 </navigation>

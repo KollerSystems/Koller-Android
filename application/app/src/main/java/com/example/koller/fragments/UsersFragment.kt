@@ -1,7 +1,7 @@
 package com.example.koller.fragments
 
 import APIInterface
-import UserData
+import com.example.koller.data.UserData
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater

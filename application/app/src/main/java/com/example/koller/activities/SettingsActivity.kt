@@ -5,6 +5,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
+import com.example.koller.MyApplication
 import com.example.koller.R
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.Slider

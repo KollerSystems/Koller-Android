@@ -203,4 +203,6 @@
     <string name="new_">New</string>
     <string name="mark_as_read">Mark as read</string>
     <string name="mark_as_unread">Mark as unread</string>
+    <string name="there_is_nothing_to_display">There is nothing to display</string>
+    <string name="scheduled">Scheduled</string>
 </resources>

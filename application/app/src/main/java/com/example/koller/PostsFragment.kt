@@ -1,21 +1,22 @@
-package com.example.koller.fragments
+package com.example.koller
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.fragment.findNavController
-import com.example.koller.R
-import com.example.koller.activities.navigateWithDefaultAnimation
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-class StudentHostelFragment : Fragment() {
+/**
+ * A simple [Fragment] subclass.
+ * Use the [PostsFragment.newInstance] factory method to
+ * create an instance of this fragment.
+ */
+class PostsFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -33,25 +34,22 @@ class StudentHostelFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view: View = inflater.inflate(R.layout.fragment_student_hostel, container, false)
-
-        val roomsButton: Button = view.findViewById(R.id.student_hostel_button_rooms)
-        val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
-
-        roomsButton.setOnClickListener{
-            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_roomsFragment2)
-        }
-
-        usersButton.setOnClickListener{
-            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_usersFragment2)
-        }
-
-        return view;
+        return inflater.inflate(R.layout.fragment_posts, container, false)
     }
 
     companion object {
+        /**
+         * Use this factory method to create a new instance of
+         * this fragment using the provided parameters.
+         *
+         * @param param1 Parameter 1.
+         * @param param2 Parameter 2.
+         * @return A new instance of fragment PostsFragment.
+         */
+        // TODO: Rename and change types and number of parameters
+        @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            StudentHostelFragment().apply {
+            PostsFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

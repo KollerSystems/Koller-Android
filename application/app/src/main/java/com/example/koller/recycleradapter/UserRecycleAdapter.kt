@@ -11,7 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.R
+import com.example.koller.activities.navigateWithDefaultAnimation
 import com.example.koller.data.TodayData
+import com.example.koller.data.UserData
+import com.example.koller.fragments.bottomsheet.ProfileBottomSheet
 import com.google.android.material.imageview.ShapeableImageView
 
 
@@ -47,8 +50,16 @@ class UserRecycleAdapter (private var todayList : ArrayList<TodayData>, var cont
 
         holder.itemView.setOnClickListener {
 
-            (context as AppCompatActivity).intent.putExtra("userID", currentItem.description)
-            holder.itemView.findNavController().navigate(R.id.action_usersFragment_to_userFragment)
+            if(currentItem.description == UserData.instance.ID.toString()){
+                val dialog = ProfileBottomSheet()
+                val fragmentManager = (context as AppCompatActivity)
+                dialog.show(fragmentManager.supportFragmentManager, ProfileBottomSheet.TAG)
+            }
+            else{
+                (context as AppCompatActivity).intent.putExtra("userID", currentItem.description)
+                holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
+            }
+
         }
     }
 

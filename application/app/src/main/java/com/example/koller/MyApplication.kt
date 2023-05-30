@@ -1,6 +1,6 @@
 package com.example.koller
 
-import UserData
+import com.example.koller.data.UserData
 import android.app.Application
 import android.app.Dialog
 import android.content.ClipData
@@ -9,9 +9,9 @@ import android.content.res.Resources
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import android.text.ClipboardManager
 import android.util.Log
 import android.util.TypedValue
+import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import com.google.android.material.color.DynamicColors
@@ -23,6 +23,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
+
     }
 
     companion object {
@@ -35,6 +36,13 @@ class MyApplication : Application() {
 
         fun setupBottomSheet(dialog : Dialog){
             dialog.window!!.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS, WindowManager.LayoutParams.FLAG_LAYOUT_IN_SCREEN);
+        }
+
+        fun setupActivity(window : Window){
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                window.setDecorFitsSystemWindows(false)
+                window.isNavigationBarContrastEnforced = false
+            }
         }
 
         fun setClipboard(context: Context, text: String) {

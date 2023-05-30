@@ -86,11 +86,11 @@
                             android:orientation="vertical">
 
                             <TextView
-                                style="@style/Normal"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/text_container_margin"
-                                android:text="Time offset" />
+                                android:text="Time offset"
+                                android:textAppearance="@style/Title" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -179,10 +179,10 @@
 
                                 <TextView
 
-                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/all" />
+                                    android:text="@string/all"
+                                    android:textAppearance="@style/Title" />
 
                                 <TextView
                                     android:id="@+id/dsadasd"
@@ -235,10 +235,10 @@
 
                                 <TextView
                                     android:id="@+id/gfdgdfgdfgdf"
-                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/arrival_reminder" />
+                                    android:text="@string/arrival_reminder"
+                                    android:textAppearance="@style/Title" />
 
                                 <TextView
                                     android:id="@+id/bnm"
@@ -290,10 +290,10 @@
 
                                 <TextView
 
-                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/occupation_reminder" />
+                                    android:text="@string/occupation_reminder"
+                                    android:textAppearance="@style/Title" />
 
                                 <TextView
                                     android:layout_width="match_parent"
@@ -342,10 +342,10 @@
 
                                 <TextView
                                     android:id="@+id/hhhhhh"
-                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/room_order" />
+                                    android:text="@string/room_order"
+                                    android:textAppearance="@style/Title" />
 
                                 <TextView
                                     android:id="@+id/hfghfg"
@@ -398,10 +398,10 @@
 
                                 <TextView
                                     android:id="@+id/gg"
-                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/commendation_warning" />
+                                    android:text="@string/commendation_warning"
+                                    android:textAppearance="@style/Title" />
 
                                 <TextView
                                     android:id="@+id/s"
@@ -454,10 +454,10 @@
 
                                 <TextView
                                     android:id="@+id/zturzrt"
-                                    style="@style/Normal"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/news" />
+                                    android:text="@string/news"
+                                    android:textAppearance="@style/Title" />
 
                                 <TextView
                                     android:id="@+id/ztrzrtrr"

@@ -97,7 +97,6 @@ class CreateNewPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
-
         scrollViewImage = findViewById(R.id.create_new_post_scroll_view_images)
         val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
@@ -170,6 +169,12 @@ class CreateNewPostActivity : AppCompatActivity() {
             }
         }
 
+        fun setAddressesToEveryoneIfEmpty(){
+            if((actvAddresse.text.length ?:0)==0 && chipsAddresse.childCount <= 1){
+                tilAddresse.editText!!.setText(getString(R.string.everyone))
+            }
+        }
+
         actvAddresse.setOnFocusChangeListener{ view, hasFocus ->
             if (hasFocus){
                 tilAddresse.editText!!.setText(" ")
@@ -177,9 +182,7 @@ class CreateNewPostActivity : AppCompatActivity() {
                 tilAddresse.error = " "
             } else
             {
-                if((actvAddresse.text.length ?:0)==0 && chipsAddresse.childCount <= 1){
-                    tilAddresse.editText!!.setText(null)
-                }
+                setAddressesToEveryoneIfEmpty()
                 tilAddresse.boxStrokeWidth = startBoxStrokeWidth
                 tilAddresse.error = null
             }
@@ -190,6 +193,10 @@ class CreateNewPostActivity : AppCompatActivity() {
 
         actvAddresse.setAdapter(addresseAdapter)
 
+        fun removeChip(chip : Chip){
+            chipsAddresse.removeView(chip)
+        }
+
         actvAddresse.setOnItemClickListener { parent, view, position, id ->
             val chip = Chip(this)
             chip.text = actvAddresse.text
@@ -198,12 +205,13 @@ class CreateNewPostActivity : AppCompatActivity() {
             chip.isCloseIconVisible = true
             chip.ensureAccessibleTouchTarget(0)
             chip.setOnCloseIconClickListener {
-                chipsAddresse.removeView(chip)
+                removeChip(chip)
+                setAddressesToEveryoneIfEmpty()
             }
             chipsAddresse.addView(chip, chipsAddresse.childCount-1)
         }
 
-        tilAddresse.requestFocus()
+        tilTitle.requestFocus()
 
 
         actvAddresse.setOnKeyListener { _, keyCode, event ->
@@ -216,7 +224,7 @@ class CreateNewPostActivity : AppCompatActivity() {
                         currentChip.isChecked = true
                         currentChip.isCheckable = false
                     } else {
-                        currentChip.performCloseIconClick()
+                        removeChip(currentChip)
                     }
                 }
             }

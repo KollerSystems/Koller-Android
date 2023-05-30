@@ -3,7 +3,7 @@ package com.example.koller.activities
 import APIInterface
 import ApiLoginTokensData
 import RetrofitHelper
-import UserData
+import com.example.koller.data.UserData
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -34,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
 
         val loginButton: Button = findViewById (R.id.login_button_login)
         val buttonNoAccount: Button = findViewById (R.id.login_button_no_account)

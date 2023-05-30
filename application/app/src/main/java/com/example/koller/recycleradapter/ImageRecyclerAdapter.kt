@@ -36,7 +36,6 @@ class ImageRecyclerAdapter (private val imageList : ArrayList<Drawable>, val con
         holder.image.setImageDrawable(currentItem)
 
         holder.itemView.setOnClickListener{
-            holder.image.transitionName = "smooth_transition"
 
             StfalconImageViewer.Builder(context, imageList) { view, drawable ->
                 view.setImageDrawable(drawable)

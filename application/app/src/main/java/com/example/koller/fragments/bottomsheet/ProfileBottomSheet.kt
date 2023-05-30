@@ -1,6 +1,6 @@
 package com.example.koller.fragments.bottomsheet
 
-import UserData
+import com.example.koller.data.UserData
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
