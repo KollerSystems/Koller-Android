@@ -1,9 +1,17 @@
 package com.example.koller.activities
 
 import android.R.attr.button
+import android.graphics.Color
+import android.graphics.Typeface
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.TextUtils
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
+import android.text.style.StyleSpan
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.constraintlayout.utils.widget.MotionLabel
@@ -11,6 +19,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.navigation.NavController
+import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navOptions
@@ -36,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var bottomNavigationView : BottomNavigationView
 
     public lateinit var userName : String
+    lateinit var mainTitle : TextView
 
     protected fun getNavOptions(): NavOptions {
         val navOptions = NavOptions.Builder()
@@ -48,19 +58,50 @@ class MainActivity : AppCompatActivity() {
         return navOptions
     }
 
+    private var currentTitle : CharSequence? = ""
+
+    fun setToolbarTitle(title : CharSequence?){
+
+        if (title == currentTitle) return
+        currentTitle = title
+
+        var destination : NavDestination = navHostFragment.navController.currentDestination!!
+
+        val ssTitle = SpannableString(title)
+        ssTitle.setSpan(StyleSpan(Typeface.BOLD), 0, title!!.length, 0)
+        ssTitle.setSpan(ForegroundColorSpan(MyApplication.getAttributeColor(this, R.attr.colorForeground)), 0, title!!.length, 0) // set color
+
+        val nestLabel = destination.parent?.label
+
+        if (nestLabel != null && nestLabel != destination.label && nestLabel != "main") {
+
+            val ssNest = SpannableString(nestLabel)
+            ssNest.setSpan(RelativeSizeSpan(0.666f), 0, nestLabel.length, 0) // set size
+
+            ssNest.setSpan(StyleSpan(0), 0, nestLabel.length, 0)
+            mainTitle.text = TextUtils.concat(ssNest, "\n", ssTitle)
+        }
+        else{
+            mainTitle.text = ssTitle
+        }
+
+    }
+
+    lateinit var navHostFragment : NavHostFragment
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         MyApplication.setupActivity(window)
 
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
         val appBar = findViewById<AppBarLayout>(R.id.appbar_user)
         val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
         val layoutCordinator = findViewById<CoordinatorLayout>(R.id.layout_cordinator)
-        val mainTitle : MotionLabel = findViewById(R.id.toolbar_title)
+        mainTitle = findViewById(R.id.toolbar_title)
 
         val backButton : Button = findViewById<Button>(R.id.toolbar_exit)
         backButton.setOnClickListener(){
@@ -85,16 +126,11 @@ class MainActivity : AppCompatActivity() {
         bottomNavigationView.setupWithNavController(navController)
 
         val defaultAppBarHeight = appBar.layoutParams.height
+        val defaultTitlePadding = mainTitle.paddingLeft
 
         navHostFragment.navController.addOnDestinationChangedListener{  controller, destination, arguments ->
 
-
-
-            mainTitle.setText(destination.label.toString())
-
-
-
-
+            setToolbarTitle(destination.label)
 
 
             if(destination.id == R.id.homeFragment ||
@@ -102,28 +138,19 @@ class MainActivity : AppCompatActivity() {
                 destination.id == R.id.studentHostelFragment ||
                 destination.id == R.id.notificationsFragment){
 
+                backButton.visibility = INVISIBLE
+                var dp15 : Int = MyApplication.convertDpToPixel(15, this)
+                mainTitle.setPadding(dp15,0,dp15,0)
 
             }
             else{
 
-
-
+                backButton.visibility = VISIBLE
+                mainTitle.setPadding(defaultTitlePadding,0,defaultTitlePadding,MyApplication.convertSpToPixel(7, this))
             }
 
+            appBar.setExpanded(false)
 
-            if(destination.id == R.id.userFragment){
-                appBar.setExpanded(true, false)
-                appBar.layoutParams.height = 0
-                layoutCordinator.fitsSystemWindows = false
-                appBar.visibility = INVISIBLE
-            }
-            else{
-                appBar.visibility = VISIBLE
-                layoutCordinator.fitsSystemWindows = true
-                appBar.layoutParams.height = defaultAppBarHeight
-                appBar.setExpanded(false, true)
-
-            }
         }
 
         val userButton = findViewById<ShapeableImageView>(R.id.user_button)

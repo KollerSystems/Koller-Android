@@ -24,7 +24,7 @@
             android:id="@+id/appbar_user"
 
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="@dimen/expandedToolbarHeight"
             android:background="@android:color/transparent"
             android:clickable="false"
             app:expanded="false">
@@ -51,37 +51,29 @@
                 <Button
 
                     android:id="@+id/toolbar_exit"
-                    style="@style/SimpleButton"
+                    style="@style/ToolbarNavigationButton"
                     android:layout_width="@dimen/header_footer_size"
                     android:layout_height="@dimen/header_footer_size"
-                    android:layout_gravity="bottom|left"
-                    android:alpha="0.666"
-                    android:minWidth="0dp"
-                    app:cornerRadius="1000dp"
-                    app:icon="@drawable/arrow_back"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconSize="25dp"
-                    app:iconTint="?android:attr/colorForeground"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/guideline" />
 
-                <androidx.constraintlayout.utils.widget.MotionLabel
+                <TextView
                     android:id="@+id/toolbar_title"
-                    style="@style/MainTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="5dp"
                     android:layout_marginEnd="5dp"
-                    android:fontFamily="@font/rubik_family"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="60dp"
+                    android:paddingRight="60dp"
                     android:text="@string/title"
-                    android:textStyle="bold"
+                    android:textColor="?attr/colorForeground066"
+                    android:textSize="@dimen/text_main_title"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@+id/user_button"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/toolbar_exit"
-                    app:layout_constraintTop_toTopOf="@+id/guideline"
-                    app:textPanX="-1" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline" />
 
                 <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/user_button"

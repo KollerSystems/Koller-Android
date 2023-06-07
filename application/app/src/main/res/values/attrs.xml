@@ -11,6 +11,7 @@
     <attr name="colorForeground075" format="reference|color" />
     <attr name="colorForeground05" format="reference|color" />
     <attr name="colorForeground025" format="reference|color" />
+    <attr name="colorForeground" format="reference|color" />
 
     <attr name="colorYellow" format="reference|color" />
     <attr name="colorRed" format="reference|color" />

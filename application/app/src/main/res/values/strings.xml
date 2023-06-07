@@ -239,4 +239,8 @@
     <string name="mark_as_unread">Megjelölés olvasatlannak</string>
     <string name="there_is_nothing_to_display">Nincs mit megjeleníteni</string>
     <string name="scheduled">Ütemezettek</string>
+    <string name="user">Felhasználó</string>
+    <string name="place_room">Helyiség</string>
+    <string name="student">Diák</string>
+    <string name="teacher">Tanár</string>
 </resources>

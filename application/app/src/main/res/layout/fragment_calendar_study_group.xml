@@ -115,21 +115,27 @@
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip34"
+                        style="@style/chipDropdownButtonFilterStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/state" />
+                        android:text="@string/state"
+                        app:closeIconEnabled="true" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip13"
+                        style="@style/chipDropdownButtonFilterStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Szakkör" />
+                        android:text="Szakkör"
+                        app:closeIconEnabled="true" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip"
+                        style="@style/chipDropdownButtonFilterStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/date" />
+                        android:text="@string/date"
+                        app:closeIconEnabled="true" />
 
                 </com.google.android.material.chip.ChipGroup>
 

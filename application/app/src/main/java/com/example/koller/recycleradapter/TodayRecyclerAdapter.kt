@@ -73,7 +73,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
             ).toFloat()
             holder.root.cardElevation = MyApplication.convertDpToPixel(1, holder.itemView.context).toFloat()
             holder.card_new_mark.visibility = VISIBLE
-            text = context.getString(R.string.mark_as_unread)
+            text = context.getString(R.string.mark_as_read)
             icon = AppCompatResources.getDrawable(holder.itemView.context, R.drawable.eye_off)
         }
         else{
@@ -83,7 +83,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
             ).toFloat()
             holder.root.cardElevation = MyApplication.convertDpToPixel(25, holder.itemView.context).toFloat()
             holder.card_new_mark.visibility = INVISIBLE
-            text = context.getString(R.string.mark_as_read)
+            text = context.getString(R.string.mark_as_unread)
             icon = AppCompatResources.getDrawable(holder.itemView.context, R.drawable.eye)
         }
 

@@ -12,6 +12,7 @@
         <item name="colorForeground033">#54FFFFFF</item>
         <item name="colorForeground066">#ABFFFFFF</item>
         <item name="colorForeground075">#BFFFFFFF</item>
+        <item name="colorForeground">#FFFFFF</item>
 
         <item name="colorYellow">@android:color/holo_orange_light</item>
         <item name="colorRed">@android:color/holo_red_light</item>

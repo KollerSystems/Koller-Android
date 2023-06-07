@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
 
@@ -7,142 +7,68 @@
     android:id="@+id/layout_coordinator_user"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:background="?android:attr/colorBackground">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_user"
-
-        android:layout_width="match_parent"
-        android:layout_height="415dp"
-        android:background="@android:color/transparent"
-        android:clipChildren="false"
-        android:clipToPadding="false">
-
-        <androidx.constraintlayout.motion.widget.MotionLayout
-            android:id="@+id/motion_layout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:minHeight="60dp"
-            app:layoutDescription="@xml/fragment_user_xml_small_user_header_scene"
-            app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
-
-
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/view4"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_margin="0dp"
-                android:alpha="0"
-                app:cardBackgroundColor="?attr/colorYellow"
-                app:cardCornerRadius="0dp"
-                app:cardElevation="0dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/outline"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginLeft="-25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="-25dp"
-                android:layout_marginBottom="@dimen/spacing"
-                android:alpha="1"
-                android:background="@drawable/artboard_1"
-                android:backgroundTint="?attr/colorYellow"
-                app:layout_constraintBottom_toTopOf="@+id/user_text_name"
-                app:layout_constraintEnd_toEndOf="@+id/user_image_pfp"
-                app:layout_constraintStart_toStartOf="@+id/user_image_pfp"
-                app:layout_constraintTop_toTopOf="@+id/view4"
-                app:shapeAppearanceOverlay="@style/roundImageView">
-
-            </com.google.android.material.imageview.ShapeableImageView>
-
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/user_image_pfp"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
-                android:layout_marginLeft="25dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginRight="25dp"
-                android:layout_marginBottom="25dp"
-                android:adjustViewBounds="true"
-                android:background="@drawable/circle"
-                android:backgroundTint="?attr/colorPrimaryContainer"
-                app:layout_constraintBottom_toBottomOf="@+id/outline"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/outline"
-                app:shapeAppearanceOverlay="@style/roundImageView"
-                app:srcCompat="@drawable/person" />
-
-
-            <TextView
-                android:id="@+id/user_text_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/application_padding"
-                android:layout_marginEnd="@dimen/application_padding"
-                android:text="@android:string/unknownName"
-                android:textAlignment="center"
-                android:textAppearance="@style/MainTitle"
-                app:layout_constraintBottom_toTopOf="@+id/user_text_description"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/user_text_description"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="@dimen/spacing"
-                android:text="@android:string/unknownName"
-                android:textAlignment="center"
-                android:textColor="?colorForeground066"
-                app:layout_constraintBottom_toBottomOf="@id/view4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/user_text_name" />
-
-            <androidx.constraintlayout.widget.Guideline
-                android:id="@+id/guideline3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="60dp"
-                android:orientation="horizontal"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintGuide_percent="0.85542166"
-                app:layout_constraintStart_toStartOf="parent" />
-
-
-        </androidx.constraintlayout.motion.widget.MotionLayout>
-
-    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        style="@style/nestedScrollView"
+        android:id="@+id/nested_scroll_view"
         android:layout_width="match_parent"
-
-
-        android:layout_height="match_parent"
-        android:background="?android:attr/colorBackground"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             style="@style/MainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
             android:orientation="vertical"
             tools:context=".fragments.UserFragment">
+
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/outline"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/application_padding"
+                android:layout_marginBottom="@dimen/application_padding"
+                android:alpha="1"
+                android:backgroundTint="?attr/colorYellow"
+                app:cardCornerRadius="9999dp"
+                app:contentPadding="25dp"
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_conversion_absoluteWidth="0dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/user_image_pfp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@drawable/circle"
+                    android:backgroundTint="?attr/colorPrimaryContainer"
+                    app:shapeAppearanceOverlay="@style/roundImageView"
+                    app:srcCompat="@drawable/person"
+                    tools:layout_conversion_absoluteHeight="0dp"
+                    tools:layout_conversion_absoluteWidth="0dp" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/user_text_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@android:string/unknownName"
+                android:textAlignment="center"
+                android:textAppearance="@style/MainTitle"
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_conversion_absoluteWidth="0dp" />
+
+            <TextView
+                android:id="@+id/user_text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing"
+                android:text="@android:string/unknownName"
+                android:textAlignment="center"
+                android:textColor="?colorForeground066"
+                tools:layout_conversion_absoluteHeight="0dp"
+                tools:layout_conversion_absoluteWidth="0dp" />
 
             <TextView
                 android:id="@+id/textView43"
@@ -201,11 +127,9 @@
                                 style="@style/Icon"
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:background="#5865F2"
-                                app:contentPadding="5dp"
                                 app:shapeAppearanceOverlay="@style/roundedImageView"
                                 app:srcCompat="@drawable/discord"
-                                app:tint="@color/white" />
+                                app:tint="@null" />
 
                             <TextView
                                 style="@style/Normal"
@@ -221,7 +145,6 @@
                                 style="@style/Normal"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_weight="1"
@@ -275,7 +198,6 @@
                                 style="@style/Normal"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_weight="1"
@@ -329,7 +251,6 @@
                                 style="@style/Normal"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_weight="1"
@@ -382,7 +303,6 @@
                                 style="@style/Normal"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
                                 android:layout_marginLeft="@dimen/spacing"
                                 android:layout_marginRight="@dimen/text_container_margin"
                                 android:layout_weight="1"
@@ -475,14 +395,13 @@
             </com.google.android.material.card.MaterialCardView>
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
         app:cardBackgroundColor="?android:attr/colorBackground"
         app:cardElevation="0dp"
         tools:visibility="gone">
@@ -496,4 +415,4 @@
     </androidx.cardview.widget.CardView>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

@@ -35,12 +35,12 @@
     </style>
 
     <style name="CategoryIcon" parent="@style/Icon">
-        <item name="android:layout_width">35dp</item>
-        <item name="android:layout_height">35dp</item>
-        <item name="android:layout_marginTop">@dimen/spacing</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_marginTop">15dp</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:alpha">0.666</item>
-        <item name="android:paddingRight">@dimen/spacing</item>
+        <item name="android:layout_marginRight">@dimen/spacing</item>
     </style>
 
     <style name="DefaultTextView">
@@ -279,7 +279,19 @@
         <item name="android:layout_margin">@dimen/text_container_margin</item>
     </style>
 
-
+    <style name="ToolbarNavigationButton" parent="SimpleButton">
+        <item name="android:layout_width">@dimen/header_footer_size</item>
+        <item name="android:layout_height">@dimen/header_footer_size</item>
+        <item name="android:alpha">0.666</item>
+        <item name="cornerRadius">9999dp</item>
+        <item name="icon">@drawable/arrow_back</item>
+        <item name="iconGravity">textStart</item>
+        <item name="iconPadding">0dp</item>
+        <item name="iconSize">25dp</item>
+        <item name="iconTint">?attr/colorForeground</item>
+        <item name="minWidth">0dp</item>
+    </style>
+    
     <style name="CornerRadius15">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopRight">15dp</item>
@@ -307,7 +319,7 @@
 
     <style name="toolbar" parent="@style/Widget.Material3.Toolbar">
         <item name="android:layout_height">@dimen/header_footer_size</item>
-        <item name="minHeight">0dp</item>
+        <item name="android:minHeight">0dp</item>
     </style>
 
     <style name="collapsing_toolbar_layout" parent="@style/Widget.Material3.CollapsingToolbar">

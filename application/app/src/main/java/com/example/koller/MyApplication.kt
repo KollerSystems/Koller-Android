@@ -67,6 +67,14 @@ class MyApplication : Application() {
             ).toInt()
         }
 
+        fun convertSpToPixel(sp: Int, context: Context): Int {
+            return TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_SP,
+                sp.toFloat(),
+                context.resources.displayMetrics
+            ).toInt()
+        }
+
         fun isOnline(context: Context): Boolean {
             val connectivityManager =
                 context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

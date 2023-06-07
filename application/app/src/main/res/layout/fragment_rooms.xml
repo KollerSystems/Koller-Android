@@ -37,34 +37,20 @@
                     app:chipSpacingVertical="0dp">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chip"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/rooms" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/classrooms" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip38"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/kitchenette" />
-
-                    <com.google.android.material.chip.Chip
                         android:id="@+id/chip40"
+                        style="@style/chipDropdownButtonFilterStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/gym" />
+                        android:text="@string/place_room"
+                        app:closeIconEnabled="true" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chip39"
+                        style="@style/chipDropdownButtonFilterStyle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/floor_level" />
+                        android:text="@string/floor_level"
+                        app:closeIconEnabled="true" />
 
                 </com.google.android.material.chip.ChipGroup>
 

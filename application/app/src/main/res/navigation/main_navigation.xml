@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    android:label="@string/student_hostel"
+    android:label="main"
     app:startDestination="@id/homeNest">
 
     <fragment
@@ -59,7 +59,7 @@
         <fragment
             android:id="@+id/roomsFragment"
             android:name="com.example.koller.fragments.RoomsFragment"
-            android:label="@string/rooms">
+            android:label="@string/places">
             <action
                 android:id="@+id/action_roomsFragment_to_roomFragment"
                 app:destination="@id/roomFragment" />
@@ -76,7 +76,7 @@
         <fragment
             android:id="@+id/userFragment"
             android:name="com.example.koller.fragments.UserFragment"
-            android:label="UserFragment">
+            android:label="@string/user">
             <action
                 android:id="@+id/action_userFragment_to_userGateFragment"
                 app:destination="@id/userGateFragment" />
@@ -117,7 +117,7 @@
             android:id="@+id/homeFragment"
             android:name="com.example.koller.fragments.HomeFragment"
             android:label="@string/home"
-            tools:layout="@layout/fragment_home" >
+            tools:layout="@layout/fragment_home">
             <action
                 android:id="@+id/action_homeFragment_to_postsFragment"
                 app:destination="@id/postsFragment" />

@@ -205,4 +205,8 @@
     <string name="mark_as_unread">Mark as unread</string>
     <string name="there_is_nothing_to_display">There is nothing to display</string>
     <string name="scheduled">Scheduled</string>
+    <string name="user">User</string>
+    <string name="place_room">Place</string>
+    <string name="student">Student</string>
+    <string name="teacher">Teacher</string>
 </resources>

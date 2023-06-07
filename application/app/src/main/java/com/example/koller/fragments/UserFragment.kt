@@ -4,20 +4,23 @@ import APIInterface
 import RetrofitHelper
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.res.Resources
+import android.graphics.Rect
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import com.example.koller.MyApplication
 import com.example.koller.R
+import com.example.koller.activities.MainActivity
 import com.example.koller.data.UserData
-import com.google.android.material.appbar.AppBarLayout
 import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
 import retrofit2.Callback
@@ -63,6 +66,30 @@ class UserFragment : Fragment() {
 
         val loadingOl : View = view.findViewById(R.id.loading_overlay)
 
+        val nestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
+
+        fun isVisible(view: View): Boolean {
+            if (!view.isShown) {
+                return false
+            }
+            val actualPosition = Rect()
+            view.getGlobalVisibleRect(actualPosition)
+            val screen = Rect(0, 0, Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels)
+            return actualPosition.intersect(screen)
+        }
+
+
+
+
+        nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
+            if (isVisible(textName)) {
+                (activity as MainActivity).setToolbarTitle(getString(R.string.user))
+
+            } else {
+                (activity as MainActivity).setToolbarTitle(textName.text)
+            }
+        }
+
         val userID : String? = requireActivity().intent.extras?.getString("userID")
         if(userID != null){
             val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
@@ -76,6 +103,7 @@ class UserFragment : Fragment() {
 
                             var userData: UserData = userResponse.body()!!
                             textName.text = userData.Name
+
                             textDescription.text = MyApplication.createUserDescription(userData)
 
                             showAndSetIfNotNull(discordCard, discordName, userData.Discord)
@@ -114,15 +142,6 @@ class UserFragment : Fragment() {
                 }
             )
         }
-
-
-        val appBar : AppBarLayout = view.findViewById(R.id.appbar_user)
-        val motionLayout : MotionLayout = view.findViewById(R.id.motion_layout)
-        val listener = AppBarLayout.OnOffsetChangedListener{appBar, verticalOffset ->
-            val seekPosition = -verticalOffset /appBar.totalScrollRange.toFloat()
-            motionLayout.progress = seekPosition
-        }
-        appBar.addOnOffsetChangedListener(listener)
 
 
 

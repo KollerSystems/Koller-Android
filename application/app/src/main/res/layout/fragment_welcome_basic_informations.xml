@@ -62,11 +62,9 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
-                                android:src="@drawable/person" />
+                                app:srcCompat="@drawable/user" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -116,8 +114,6 @@
                             <ImageView
 
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/cake" />
@@ -150,8 +146,6 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/home" />
@@ -302,8 +296,6 @@
                             <ImageView
 
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/building" />
@@ -335,8 +327,6 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/room" />
@@ -370,8 +360,6 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/phone" />
@@ -403,8 +391,6 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/mail" />
@@ -434,13 +420,13 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
-                                android:alpha="0.666"
-                                app:srcCompat="@drawable/mail" />
+                                android:alpha="1"
+                                app:shapeAppearanceOverlay="@style/roundedImageView"
+                                app:srcCompat="@drawable/discord"
+                                app:tint="@null" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -474,13 +460,17 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_marginRight="10dp"
                                 android:adjustViewBounds="true"
-                                android:alpha="0.666"
-                                app:srcCompat="@drawable/mail" />
+                                android:alpha="1"
+                                android:paddingRight="0dp"
+                                app:shapeAppearance="@style/roundedImageView"
+                                app:shapeAppearanceOverlay="@style/roundedImageView"
+                                app:srcCompat="@drawable/facebook"
+                                app:tint="@null" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -508,13 +498,13 @@
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
-                            <ImageView
+                            <com.google.android.material.imageview.ShapeableImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
-                                android:alpha="0.666"
-                                app:srcCompat="@drawable/mail" />
+                                android:alpha="1"
+                                app:shapeAppearanceOverlay="@style/roundedImageView"
+                                app:srcCompat="@drawable/instagram"
+                                app:tint="@null" />
 
                             <com.google.android.material.textfield.TextInputLayout
                                 android:layout_width="match_parent"
@@ -565,8 +555,6 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 android:src="@drawable/person" />
@@ -616,8 +604,6 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/phone" />
@@ -656,8 +642,6 @@
 
                             <ImageView
                                 style="@style/CategoryIcon"
-                                android:layout_width="40dp"
-                                android:layout_height="40dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
                                 android:src="@drawable/person"
