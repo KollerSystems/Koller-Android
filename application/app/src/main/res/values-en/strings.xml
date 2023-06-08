@@ -209,4 +209,6 @@
     <string name="place_room">Place</string>
     <string name="student">Student</string>
     <string name="teacher">Teacher</string>
+    <string name="group">Group</string>
+    <string name="class_">Class</string>
 </resources>

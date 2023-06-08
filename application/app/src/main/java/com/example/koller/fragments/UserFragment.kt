@@ -1,7 +1,7 @@
 package com.example.koller.fragments
 
-import APIInterface
-import RetrofitHelper
+import com.example.koller.api.APIInterface
+import com.example.koller.api.RetrofitHelper
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.res.Resources
@@ -12,7 +12,6 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.view.ViewTreeObserver
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView

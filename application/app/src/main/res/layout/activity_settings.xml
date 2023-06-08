@@ -25,7 +25,7 @@
 
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/toolbar_exit"
                 style="@style/ToolbarNavigationButton"
                 android:layout_gravity="bottom|left" />
 
@@ -104,7 +104,7 @@
                                     android:value="0"
                                     android:valueFrom="-24"
                                     android:valueTo="24"
-                                    app:labelBehavior="floating" />
+                                    app:labelBehavior="gone" />
 
                                 <com.google.android.material.textfield.TextInputLayout
                                     android:id="@+id/settings_til_hours"

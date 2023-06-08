@@ -1,16 +1,18 @@
 package com.example.koller.fragments
 
-import APIInterface
+import com.example.koller.api.APIInterface
 import com.example.koller.data.UserData
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.R
+import com.example.koller.api.RetrofitHelper
 import com.example.koller.data.TodayData
 import com.example.koller.recycleradapter.UserRecycleAdapter
 import retrofit2.Call
@@ -55,7 +57,7 @@ class UsersFragment : Fragment() {
                             for (i in usersData.indices) {
                                 usersDataArrayList.add(
                                     TodayData(
-                                        context?.getDrawable(R.drawable.person),
+                                        AppCompatResources.getDrawable(requireContext(), R.drawable.person),
                                         usersData[i].Name,
                                         usersData[i].ID.toString(),
                                         usersDataArrayList.size.toString()
@@ -84,7 +86,7 @@ class UsersFragment : Fragment() {
         }
 
 
-        usersRecyclerView = view.findViewById(R.id.users_recycleview)
+        usersRecyclerView = view.findViewById(R.id.recycler_view)
         usersRecyclerView.layoutManager = LinearLayoutManager(context)
         usersRecyclerView.setHasFixedSize(true)
 

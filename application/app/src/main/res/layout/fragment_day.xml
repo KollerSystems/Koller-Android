@@ -102,7 +102,7 @@
                                 <TextView
                                     android:id="@+id/calendar_day_text_sleep_end_time"
                                     style="@style/Description"
-                                    android:layout_width="35sp"
+                                    android:layout_width="40sp"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:lineSpacingExtra="-5sp"
@@ -178,7 +178,7 @@
                                 <TextView
                                     android:id="@+id/calendar_day_text_daytime_out_time"
                                     style="@style/Description"
-                                    android:layout_width="35sp"
+                                    android:layout_width="40sp"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:lineSpacingExtra="-5sp"
@@ -249,7 +249,7 @@
                                 <TextView
                                     android:id="@+id/calendar_day_text_daytime_in_time"
                                     style="@style/Description"
-                                    android:layout_width="35sp"
+                                    android:layout_width="40sp"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:lineSpacingExtra="-5sp"
@@ -357,7 +357,7 @@
                                 <TextView
                                     android:id="@+id/calendar_day_text_nighttime_out_time"
                                     style="@style/Description"
-                                    android:layout_width="35sp"
+                                    android:layout_width="40sp"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:lineSpacingExtra="-5sp"
@@ -421,7 +421,7 @@
                                 <TextView
                                     android:id="@+id/calendar_day_text_night_time_in_time"
                                     style="@style/Description"
-                                    android:layout_width="35sp"
+                                    android:layout_width="40sp"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:lineSpacingExtra="-5sp"
@@ -508,7 +508,7 @@
                                 <TextView
                                     android:id="@+id/calendar_day_text_sleep_start_time"
                                     style="@style/Description"
-                                    android:layout_width="35sp"
+                                    android:layout_width="40sp"
                                     android:layout_height="match_parent"
                                     android:gravity="center"
                                     android:lineSpacingExtra="-5sp"

@@ -25,6 +25,13 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
+                <TextView
+                    android:id="@+id/textView32"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:text="@string/filters" />
+
                 <com.google.android.material.chip.ChipGroup
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -42,6 +49,54 @@
                         android:layout_height="wrap_content"
                         android:text="@string/teacher" />
 
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip27"
+                        style="@style/chipDropdownButtonFilterStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/group"
+                        app:closeIconEnabled="true" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip33"
+                        style="@style/chipDropdownButtonFilterStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/class_"
+                        app:closeIconEnabled="true" />
+
+                </com.google.android.material.chip.ChipGroup>
+
+                <TextView
+                    android:id="@+id/textView33"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:text="@string/arrangement" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:checkedChip="@id/chip20"
+                    app:chipSpacingHorizontal="0dp"
+                    app:chipSpacingVertical="0dp"
+                    app:selectionRequired="true"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ABC elejétől"
+                        app:shapeAppearance="@style/overlayRoundedLeft" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="ABC végétől"
+                        app:shapeAppearance="@style/overlayRoundedRight" />
+
                 </com.google.android.material.chip.ChipGroup>
 
                 <View
@@ -58,7 +113,7 @@
                     android:layout_height="wrap_content">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/users_recycleview"
+                        android:id="@+id/recycler_view"
                         style="@style/MainCardLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

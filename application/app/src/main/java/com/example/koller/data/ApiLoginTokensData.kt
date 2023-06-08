@@ -1,3 +1,5 @@
+package com.example.koller.data
+
 data class ApiLoginTokensData (
         val access_token : String,
         val token_type : String,

@@ -1,35 +1,33 @@
 package com.example.koller.activities
 
-import APIInterface
-import ApiLoginTokensData
-import RetrofitHelper
-import com.example.koller.data.UserData
+import com.example.koller.api.APIInterface
+import com.example.koller.data.ApiLoginTokensData
+import com.example.koller.api.RetrofitHelper
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.View.*
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
+import com.example.koller.DataStoreManager
 import com.example.koller.MyApplication
 import com.example.koller.R
-import com.example.koller.WelcomeActivity
-import com.example.koller.api.ApiLoginData
+import com.example.koller.data.ApiLoginData
+import com.example.koller.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-
 class LoginActivity : AppCompatActivity() {
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -109,7 +107,10 @@ class LoginActivity : AppCompatActivity() {
                                 if(loginResponse.code() == 200) {
 
                                     ApiLoginTokensData.instance = loginResponse.body()!!
-                                    Log.d("ERROR", "Access token: "+ApiLoginTokensData.instance.access_token)
+
+                                    lifecycleScope.launch {
+                                        DataStoreManager.save(this@LoginActivity, DataStoreManager.REFRESH_TOKEN_NAME, ApiLoginTokensData.instance.refresh_token)
+                                    }
 
 
                                     val userResponse = RetrofitHelper.buildService(APIInterface::class.java)

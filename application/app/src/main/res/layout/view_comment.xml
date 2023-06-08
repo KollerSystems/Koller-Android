@@ -50,7 +50,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/comment_user_name"
+                    android:id="@+id/text_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -62,7 +62,7 @@
                     android:textAppearance="@style/Description" />
 
                 <TextView
-                    android:id="@+id/comment_text"
+                    android:id="@+id/text_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/lorem_short" />

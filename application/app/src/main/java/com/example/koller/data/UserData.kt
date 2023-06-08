@@ -1,5 +1,7 @@
 package com.example.koller.data
 
+import android.graphics.drawable.Drawable
+
 data class UserData (
     val ID : Int = -1,
     val OM : String? = null,
@@ -24,7 +26,10 @@ data class UserData (
     val Discord : String? = null,
     val Facebook : String? = null,
     val Instagram : String? = null
-){
+)
+{
+    constructor(Name : String?) : this(-1, null, Name)
+
     companion object {
         var instance: UserData = UserData()
     }

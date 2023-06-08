@@ -45,6 +45,14 @@
                         app:closeIconEnabled="true" />
 
                     <com.google.android.material.chip.Chip
+                        android:id="@+id/chip30"
+                        style="@style/chipDropdownButtonFilterStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/group"
+                        app:closeIconEnabled="true" />
+
+                    <com.google.android.material.chip.Chip
                         android:id="@+id/chip39"
                         style="@style/chipDropdownButtonFilterStyle"
                         android:layout_width="wrap_content"
@@ -105,7 +113,7 @@
                         android:layout_height="wrap_content">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycleview_notifications"
+                            android:id="@+id/recycler_view"
                             style="@style/MainCardLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

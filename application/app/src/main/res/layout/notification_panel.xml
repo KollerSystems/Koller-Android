@@ -43,11 +43,11 @@
         android:orientation="horizontal">
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/notification_icon_start"
+            android:id="@+id/iv_icon"
             style="@style/Icon"
             android:layout_width="@dimen/panel_icon"
             android:layout_height="@dimen/panel_icon"
-            android:layout_marginRight="@dimen/text_container_margin"
+            android:layout_marginRight="@dimen/spacing"
             android:alpha="0.666"
             app:srcCompat="@drawable/room" />
 
@@ -61,7 +61,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/comment_user_name"
+                android:id="@+id/text_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="none"
@@ -72,7 +72,7 @@
                 android:textAppearance="@style/Title" />
 
             <TextView
-                android:id="@+id/comment_text"
+                android:id="@+id/text_description"
                 style="@style/Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

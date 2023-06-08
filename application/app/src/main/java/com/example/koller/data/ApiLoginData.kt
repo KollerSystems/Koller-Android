@@ -1,4 +1,4 @@
-package com.example.koller.api
+package com.example.koller.data
 
 data class ApiLoginData (
     val grant_type : String,

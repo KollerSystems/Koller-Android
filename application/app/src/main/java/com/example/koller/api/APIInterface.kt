@@ -1,8 +1,10 @@
-
+package com.example.koller.api
 import android.content.Context
 import android.util.Log
-import com.example.koller.api.ApiLoginData
+import com.example.koller.data.ApiLoginData
 import com.example.koller.R
+import com.example.koller.data.ApiLoginRefreshData
+import com.example.koller.data.ApiLoginTokensData
 import com.example.koller.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.Call
@@ -15,8 +17,8 @@ interface APIInterface {
         fun getHeaderMap(): Map<String, String> {
             val headerMap = mutableMapOf<String, String>()
             headerMap["Content-Type"] = "application/json"
-            headerMap["Authorization"] = "Bearer ${ApiLoginTokensData.instance.access_token}"
-            Log.d("INFO", ApiLoginTokensData.instance.access_token)
+            headerMap["Authorization"] = "Bearer ${ApiLoginTokensData.instance!!.access_token}"
+            Log.d("INFO", ApiLoginTokensData.instance!!.access_token)
             return headerMap
         }
 
@@ -54,7 +56,14 @@ interface APIInterface {
 
 
     @POST("oauth/token")
-    fun postLogin(@Body requestModel: ApiLoginData) : Call<ApiLoginTokensData>
+    fun postLogin(
+        @Body requestModel: ApiLoginData,
+    ) : Call<ApiLoginTokensData>
+
+    @POST("oauth/token")
+    fun postLogin(
+        @Body requestModel: ApiLoginRefreshData,
+    ) : Call<ApiLoginTokensData>
 
     @GET("api/users/me")
     fun getCurrentUser(
@@ -73,4 +82,11 @@ interface APIInterface {
         @Path("id") searchById:String,
         @HeaderMap headers: Map<String, String>
     ) : Call<UserData>
+
+    @GET("api/crossings/me")
+    fun getCrossings(
+        @Query(value = "limit") limit : Int,
+        @Query(value = "offset") offset : Int,
+        @HeaderMap headers: Map<String, String>
+    ) : Call<List<UserData>>
 }

@@ -175,9 +175,9 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
 
     class TodayViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView)
     {
-        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.notification_icon_start)
-        val title : TextView = itemView.findViewById(R.id.comment_user_name)
-        val description : TextView = itemView.findViewById(R.id.comment_text)
+        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
+        val title : TextView = itemView.findViewById(R.id.text_text)
+        val description : TextView = itemView.findViewById(R.id.text_description)
         val iconRight : TextView = itemView.findViewById(R.id.notification_icon_end)
         val root : MaterialCardView = itemView as MaterialCardView
         val card_unread_overlay : MaterialCardView = itemView.findViewById(R.id.notification_card_unread_overlay)

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:cardCornerRadius="@null"
+    app:contentPadding="0dp"
+    app:shapeAppearance="@null">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_pfp_outline"
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            app:cardCornerRadius="9999dp"
+            app:contentPadding="5dp"
+            app:strokeColor="?attr/colorYellow"
+            app:strokeWidth="5dp">
+
+            <ImageView
+                android:id="@+id/image_pfp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/circle"
+                android:backgroundTint="?attr/colorPrimaryContainer"
+                app:srcCompat="@drawable/person" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginRight="-5dp"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            android:text="Katona\nMárton"
+            android:textAlignment="center" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

@@ -28,7 +28,7 @@ class NotificationsFragment : Fragment() {
 
         val view : View = inflater.inflate(R.layout.fragment_notifications, container, false)
 
-        notificsRecyclerView = view.findViewById(R.id.recycleview_notifications)
+        notificsRecyclerView = view.findViewById(R.id.recycler_view)
         notificsRecyclerView.layoutManager = LinearLayoutManager(context)
         notificsRecyclerView.setHasFixedSize(true)
 

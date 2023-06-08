@@ -9,14 +9,20 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
+import com.example.koller.DataStoreManager
 import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.activities.SettingsActivity
 import com.example.koller.activities.LoginActivity
 import com.example.koller.activities.MainActivity
+import com.example.koller.activities.navigateWithDefaultAnimation
+import com.example.koller.data.ApiLoginTokensData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import kotlinx.coroutines.launch
 
 
 class ProfileBottomSheet : BottomSheetDialogFragment() {
@@ -57,10 +63,22 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
                     "Igen"
                 )
                 { _, _ ->
-                    val intent = Intent(view.context, LoginActivity::class.java)
-                    startActivity(intent)
-                    requireActivity().finish()
-                    this.dismiss()
+                    val dialog = MaterialAlertDialogBuilder(view.context)
+                        .setTitle("Kijelentkezés...")
+                        .setCancelable(false)
+                        .show()
+
+                    lifecycleScope.launch{
+
+                        DataStoreManager.remove(requireActivity(), DataStoreManager.REFRESH_TOKEN_NAME)
+                        val intent = Intent(view.context, LoginActivity::class.java)
+                        startActivity(intent)
+                        requireActivity().finish()
+                        dialog.dismiss()
+                        dismiss()
+                    }
+
+
                 }
                 .setNegativeButton(
                     "Nem"
@@ -74,26 +92,31 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val btnManageAccount: Button = view.findViewById(R.id.profile_btn_manage_account)
 
         btnManageAccount.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId =
-                R.id.studentHostelNest
+
             this.dismiss()
         }
 
         val cardMyRoom: MaterialCardView = view.findViewById(R.id.profile_card_my_room)
 
         cardMyRoom.setOnClickListener{
+
+            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_roomFragment)
             this.dismiss()
         }
 
         val fbtnOutgoing: MaterialCardView = view.findViewById(R.id.profile_fbtn_outgoing)
 
         fbtnOutgoing.setOnClickListener{
+
+            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_userOutgoingFragment)
             this.dismiss()
         }
 
         val fbtnGate: MaterialCardView = view.findViewById(R.id.profile_fbtn_gate)
 
         fbtnGate.setOnClickListener{
+
+            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_userGateFragment)
             this.dismiss()
         }
 

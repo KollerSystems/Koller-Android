@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.example.koller.R
-import com.example.koller.WelcomeActivity
+import com.example.koller.activities.WelcomeActivity
 
 class WelcomeMainFragment : Fragment() {
 

@@ -243,4 +243,6 @@
     <string name="place_room">Helyiség</string>
     <string name="student">Diák</string>
     <string name="teacher">Tanár</string>
+    <string name="group">Csoport</string>
+    <string name="class_">Osztály</string>
 </resources>

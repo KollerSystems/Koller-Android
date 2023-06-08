@@ -14,16 +14,19 @@ import android.util.TypedValue
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 
 
 class MyApplication : Application() {
 
+
     override fun onCreate() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
-
     }
 
     companion object {

@@ -3,6 +3,7 @@ package com.example.koller.activities
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Button
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
 import com.example.koller.MyApplication
@@ -45,6 +46,11 @@ class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+
+        findViewById<Button>(R.id.toolbar_exit).setOnClickListener{
+            onBackPressed()
+        }
 
         val timeOffsetSlider : Slider = findViewById(R.id.settings_slider_time_offset)
         var c : Calendar = Calendar.getInstance()

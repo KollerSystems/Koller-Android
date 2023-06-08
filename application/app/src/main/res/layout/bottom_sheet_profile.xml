@@ -77,19 +77,26 @@
                                     android:layout_marginBottom="@dimen/spacing"
                                     android:orientation="horizontal">
 
-                                    <com.google.android.material.imageview.ShapeableImageView
-                                        android:id="@+id/profile_simage"
+                                    <com.google.android.material.card.MaterialCardView
+                                        android:id="@+id/card_pfp_outline"
                                         android:layout_width="50dp"
                                         android:layout_height="50dp"
-                                        android:layout_gravity="center"
                                         android:layout_marginRight="@dimen/spacing"
-                                        android:adjustViewBounds="true"
-                                        android:background="@drawable/circle"
+                                        app:cardCornerRadius="9999dp"
+                                        app:contentPadding="5dp"
+                                        app:strokeColor="?attr/colorYellow"
+                                        app:strokeWidth="5dp">
 
-                                        android:backgroundTint="?attr/colorPrimaryContainer"
-                                        android:scaleType="centerInside"
-                                        app:shapeAppearanceOverlay="@style/roundImageView"
-                                        app:srcCompat="@drawable/person" />
+                                        <ImageView
+                                            android:id="@+id/image_pfp"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:adjustViewBounds="true"
+                                            android:scaleType="centerInside"
+                                            android:background="@drawable/circle"
+                                            android:backgroundTint="?attr/colorPrimaryContainer"
+                                            app:srcCompat="@drawable/person" />
+                                    </com.google.android.material.card.MaterialCardView>
 
                                     <LinearLayout
                                         android:layout_width="match_parent"

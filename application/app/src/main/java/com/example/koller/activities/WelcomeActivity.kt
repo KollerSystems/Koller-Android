@@ -1,8 +1,10 @@
-package com.example.koller
+package com.example.koller.activities
 
 import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View.GONE
+import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.animation.PathInterpolator
 import android.widget.Button
@@ -10,10 +12,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
 import androidx.core.view.WindowCompat
+import androidx.core.view.size
 import androidx.viewpager2.widget.ViewPager2
+import com.example.koller.R
 import com.example.koller.fragments.WelcomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import kotlin.system.exitProcess
 
 
 class WelcomeActivity : AppCompatActivity() {
@@ -22,18 +27,16 @@ class WelcomeActivity : AppCompatActivity() {
     public lateinit var tabs: TabLayout
 
     public fun ScrollForward(){
-        viewPager!!.setCurrentItem(viewPager!!.currentItem+1, true)
+        viewPager.setCurrentItem(viewPager!!.currentItem+1, true)
     }
 
     public fun ScrollBackward(){
-        viewPager!!.setCurrentItem(viewPager!!.currentItem-1, true)
+        viewPager.setCurrentItem(viewPager!!.currentItem-1, true)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
-
-        WindowCompat.setDecorFitsSystemWindows(window, false)
 
         tabs = findViewById(R.id.welcome_tabs)
         val btnNavigation: CardView = findViewById(R.id.welcome_btn_navigation)
@@ -68,6 +71,7 @@ class WelcomeActivity : AppCompatActivity() {
                     tab.view.setPadding(0,0,0,0)
                 }
             }
+
         }.attach()
 
         val btnBackward : Button = findViewById(R.id.welcome_backward)
@@ -82,7 +86,6 @@ class WelcomeActivity : AppCompatActivity() {
         }
 
 
-        val defaultTabTransY : Float = tabs.translationY
         val defaultBtnNavigationTransY : Float = btnNavigation.translationY
 
         //val path = Path().cubicTo(10f, 10f, w, h/2, 10f, h-10f)
@@ -90,7 +93,9 @@ class WelcomeActivity : AppCompatActivity() {
         val easeOutInterpolator = PathInterpolator(0.215f, 0.610f, 0.355f, 1.000f)
 
         fun animateOutNavigation(){
-            ObjectAnimator.ofFloat(tabs, "translationY", defaultTabTransY).apply {
+            tabs.layoutParams.height = tabs.height
+
+            ObjectAnimator.ofFloat(tabs, "translationY", tabs.height * -1f).apply {
                 duration = 250
                 interpolator = easeInInterpolator
                 start()
@@ -102,8 +107,8 @@ class WelcomeActivity : AppCompatActivity() {
                 start()
 
                 doOnEnd {
-                    tabs.visibility = GONE
-                    btnNavigation.visibility = GONE
+                    tabs.visibility = INVISIBLE
+                    btnNavigation.visibility = INVISIBLE
                 }
             }
         }
@@ -151,7 +156,14 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
         if(viewPager.currentItem != 0) {
-            ScrollBackward()
+
+            if (viewPager.currentItem == tabs.tabCount-1){
+                finishAffinity()
+
+            }
+            else{
+                ScrollBackward()
+            }
         }
         else{
             finish()

@@ -21,5 +21,11 @@
     <attr name="colorRedInverse" format="reference|color" />
     <attr name="colorGreenInverse" format="reference|color" />
 
+    <declare-styleable name="simpleCardButton">
+        <attr name="text" format="string" />
+        <attr name="description" format="string" />
+        <attr name="icon" format="reference" />
+    </declare-styleable>
+
 
 </resources>
