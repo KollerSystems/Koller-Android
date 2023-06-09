@@ -1,6 +1,7 @@
 package com.example.koller.activities
 
 import android.R.attr.button
+import android.R.attr.colorForeground
 import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
@@ -69,7 +70,7 @@ class MainActivity : AppCompatActivity() {
 
         val ssTitle = SpannableString(title)
         ssTitle.setSpan(StyleSpan(Typeface.BOLD), 0, title!!.length, 0)
-        ssTitle.setSpan(ForegroundColorSpan(MyApplication.getAttributeColor(this, R.attr.colorForeground)), 0, title!!.length, 0) // set color
+        ssTitle.setSpan(ForegroundColorSpan(MyApplication.getAttributeColor(this, colorForeground)), 0, title!!.length, 0)
 
         val nestLabel = destination.parent?.label
 

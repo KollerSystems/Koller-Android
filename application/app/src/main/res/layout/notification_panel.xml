@@ -7,8 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:outlineProvider="none"
-    app:cardElevation="25dp">
+    android:outlineProvider="none">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/notification_card_new_mark"
@@ -115,6 +114,8 @@
         android:layout_marginRight="@dimen/n_panel_padding"
         android:layout_marginBottom="@dimen/n_panel_padding"
         android:outlineProvider="none"
+        android:visibility="gone"
         app:cardCornerRadius="0dp"
-        app:cardElevation="-24dp" />
+        app:cardElevation="24dp"
+        tools:visibility="visible" />
 </com.google.android.material.card.MaterialCardView>

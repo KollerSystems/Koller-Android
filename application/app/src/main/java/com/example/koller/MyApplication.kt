@@ -6,18 +6,22 @@ import android.app.Dialog
 import android.content.ClipData
 import android.content.Context
 import android.content.res.Resources
+import android.icu.text.SimpleDateFormat
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Log
 import android.util.TypedValue
+import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textfield.TextInputLayout
 
 
@@ -31,7 +35,119 @@ class MyApplication : Application() {
 
     companion object {
 
+
+        fun roundRecyclerItemsVerticallyWithSeparator(context : Context, view : View, position : Int, list : ArrayList<Any>){
+
+            if(position == list.size -1) {
+                roundCardBottom(context, view)
+                return
+            }
+
+            if (list[position - 1] is String && list[position + 1] !is String) {
+                roundCardTop(context, view)
+            } else if (list[position - 1] !is String && list[position + 1] is String) {
+                roundCardBottom(context, view)
+            } else if  (list[position - 1] is String && list[position + 1] is String){
+                roundCard(context, view)
+            }
+            else{
+                deroundCard(context, view)
+            }
+
+        }
+
+
+        fun roundRecyclerItemsVertically(context : Context, view : View, position : Int, size : Int){
+            if(position == 0){
+
+                roundCardTop(context, view)
+            }
+            else if (position == size-1){
+
+                roundCardBottom(context, view)
+            }
+            else if (size == 1) {
+
+                roundCard(context, view)
+
+            }
+
+        }
+
+        fun roundRecyclerItemsHorizontally(context : Context, view : View, position : Int, size : Int){
+            if(position == 0){
+
+                val shapeAppearance = ShapeAppearanceModel.builder(
+                    context, // A kontextusod
+                    R.style.overlayRoundedCardLeft,
+                    0
+                ).build()
+
+                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+            }
+            else if (position == size-1){
+
+                val shapeAppearance = ShapeAppearanceModel.builder(
+                    context,
+                    R.style.overlayRoundedCardRight,
+                    0
+                ).build()
+
+                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+            }
+            else if (size == 1){
+
+                val shapeAppearance = ShapeAppearanceModel.builder(
+                    context,
+                    R.style.overlayRoundedCard,
+                    0
+                ).build()
+
+                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+            }
+        }
+
+        fun roundCardBottom(context: Context, view : View){
+            val shapeAppearance = ShapeAppearanceModel.builder(
+                context,
+                R.style.overlayRoundedCardBottom,
+                0
+            ).build()
+
+            (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+        }
+
+        fun roundCardTop(context: Context, view : View){
+            val shapeAppearance = ShapeAppearanceModel.builder(
+                context,
+                R.style.overlayRoundedCardTop,
+                0
+            ).build()
+
+            (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+        }
+
+        fun roundCard(context: Context, view : View){
+            val shapeAppearance = ShapeAppearanceModel.builder(
+                context,
+                R.style.overlayRoundedCard,
+                0
+            ).build()
+
+            (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+        }
+
+        fun deroundCard(context: Context, view : View){
+
+            (view as MaterialCardView).shapeAppearanceModel = ShapeAppearanceModel()
+        }
+
+
         const val minLengthBeforeDismiss : Int = 3
+
+        val simpleLocalDateFormat = SimpleDateFormat("yyyy. MMM d.")
+        val simpleLocalMonthDay = SimpleDateFormat("MMMM d.")
+        val simpleTimeFormat = SimpleDateFormat("HH:mm")
 
         fun createUserDescription(userData : UserData): String{
             return userData.Group + " • " + userData.RoomNumber  + " • " + userData.Class

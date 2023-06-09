@@ -26,7 +26,6 @@ class RoomFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         var view : View = inflater.inflate(R.layout.fragment_room, container, false)
 
         usersRecyclerView = view.findViewById(R.id.recycler_view)

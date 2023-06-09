@@ -50,6 +50,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
 
+        holder.card_unread_overlay.visibility = VISIBLE
         holder.iconLeft.setImageDrawable(currentItem.iconLeft)
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description

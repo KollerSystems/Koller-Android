@@ -17,6 +17,17 @@
         <item name="materialAlertDialogTheme">@style/Popup</item>
         <item name="toolbarStyle">@style/toolbar</item>
         <item name="checkboxStyle">@style/Checkbox</item>
+        <item name="floatingActionButtonStyle">@style/floatingActionButtonC</item>
+    </style>
+
+    <style name="floatingActionButtonC" parent="@style/Widget.Material3.FloatingActionButton.Primary">
+        <item name="android:layout_gravity">bottom|right</item>
+        <item name="android:layout_margin">@null</item>
+        <item name="android:layout_marginLeft">@dimen/application_padding</item>
+        <item name="android:layout_marginBottom">@dimen/application_padding</item>
+        <item name="android:backgroundTint">?attr/colorSecondaryContainer</item>
+        <item name="android:tint">?attr/colorOnSecondaryContainer</item>
+        <item name="useCompatPadding">false</item>
     </style>
 
     <style name="Checkbox" parent="@style/Widget.Material3.CompoundButton.CheckBox">
@@ -218,6 +229,22 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <style name="overlayRoundedCardTop">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
+        <item name="cornerSizeTopRight">@dimen/panel_round</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="overlayRoundedCardBottom">
+        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
+        <item name="cornerSizeBottomRight">@dimen/panel_round</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
     <style name="overlayRoundedCard">
         <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
         <item name="cornerSizeBottomRight">@dimen/panel_round</item>
@@ -253,7 +280,8 @@
         <item name="contentPadding">@dimen/panel_padding</item>
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
-        <item name="cardCornerRadius">0dp</item>
+        <item name="cardCornerRadius">@null</item>
+        <item name="shapeAppearance">@null</item>
         <item name="android:layout_margin">0.75dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:outlineProvider">none</item>

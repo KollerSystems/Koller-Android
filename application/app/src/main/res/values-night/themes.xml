@@ -1,6 +1,8 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Color" parent="Theme.Material3.DayNight.NoActionBar">
+
+        <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="colorBackground05">#80000000</item>
         <item name="colorBackground025">#40000000</item>
         <item name="colorBackground033">#54000000</item>

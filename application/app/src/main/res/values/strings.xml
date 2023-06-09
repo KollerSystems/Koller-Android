@@ -15,7 +15,6 @@
     <string name="please_login">Kérlek jelentkezz be a folytatáshoz</string>
     <string name="action_sign_in_short">Temp</string>
     <string name="action_sign_in">Temp</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Helló üres fragment</string>
 
     <string-array name="languages">

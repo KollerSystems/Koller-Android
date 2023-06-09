@@ -4,24 +4,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     android:orientation="vertical"
-    tools:context=".fragments.AbsencesGateFragment" >
+    tools:context=".fragments.UserGateFragment">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <androidx.core.widget.NestedScrollView
-            style="@style/nestedScrollView"
+        <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:background="@null">
+
 
             <LinearLayout
-                style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/application_padding"
+                android:paddingTop="@dimen/application_padding"
+                app:layout_scrollFlags="scroll">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -94,7 +98,7 @@
                 </LinearLayout>
 
                 <View
-                    android:id="@+id/divider5"
+                    android:id="@+id/divider"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="5dp"
@@ -172,34 +176,62 @@
                 </com.google.android.material.chip.ChipGroup>
 
                 <View
-                    android:id="@+id/divider"
+                    android:id="@+id/divider3"
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
+                    android:layout_marginBottom="@dimen/text_container_margin"
                     android:background="?android:attr/listDivider" />
 
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/MainCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view"
-                            style="@style/MainCardLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:listitem="@layout/notification_panel" />
-                    </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
+        </com.google.android.material.appbar.AppBarLayout>
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/application_padding">
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/floatingActionButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|right"
+                    android:layout_marginBottom="@dimen/application_padding"
+                    android:clickable="true"
+                    android:src="@drawable/up" />
+
+                <TextView
+                    android:id="@+id/text_view_recycler_view_header"
+                    style="@style/CategoryCardName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@null"
+                    android:layout_marginTop="@null"
+                    android:background="?android:attr/windowBackground"
+                    android:outlineProvider="none"
+                    android:paddingHorizontal="@dimen/application_padding"
+                    android:paddingVertical="@dimen/text_container_margin"
+                    android:text="Július 12."
+                    android:translationZ="1dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    style="@style/MainCardLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="@dimen/text_container_margin"
+                    android:paddingBottom="85dp"
+                    tools:listitem="@layout/notification_panel" />
+            </FrameLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </LinearLayout>

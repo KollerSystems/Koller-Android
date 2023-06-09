@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.activities.navigateWithDefaultAnimation
 import com.example.koller.data.TodayData
@@ -35,36 +36,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
 
-        if(position == 0){
-
-            val shapeAppearance = ShapeAppearanceModel.builder(
-                context, // A kontextusod
-                R.style.overlayRoundedCardLeft,
-                0
-            ).build()
-
-            (holder.itemView as MaterialCardView).shapeAppearanceModel = shapeAppearance
-        }
-        else if (position == todayList.size-1){
-
-            val shapeAppearance = ShapeAppearanceModel.builder(
-                context,
-                R.style.overlayRoundedCardRight,
-                0
-            ).build()
-
-            (holder.itemView as MaterialCardView).shapeAppearanceModel = shapeAppearance
-        }
-        else if (todayList.size == 1){
-
-            val shapeAppearance = ShapeAppearanceModel.builder(
-                context,
-                R.style.overlayRoundedCard,
-                0
-            ).build()
-
-            (holder.itemView as MaterialCardView).shapeAppearanceModel = shapeAppearance
-        }
+        MyApplication.roundRecyclerItemsHorizontally(context, holder.itemView, position, todayList.size)
 
         holder.text.text = currentItem.Name!!.replace(" ", "\n")
 

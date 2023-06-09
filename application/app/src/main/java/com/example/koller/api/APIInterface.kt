@@ -84,7 +84,7 @@ interface APIInterface {
     ) : Call<UserData>
 
     @GET("api/crossings/me")
-    fun getCrossings(
+    fun getMyCrossings(
         @Query(value = "limit") limit : Int,
         @Query(value = "offset") offset : Int,
         @HeaderMap headers: Map<String, String>

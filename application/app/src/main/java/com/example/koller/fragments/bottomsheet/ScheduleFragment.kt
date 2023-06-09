@@ -10,6 +10,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.activities.CreateNewPostActivity
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -40,9 +41,7 @@ class ScheduleFragment : BottomSheetDialogFragment() {
             val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
             calendar.setTimeInMillis(parentActivity.scheduleDate)
 
-            val format = SimpleDateFormat("yyyy. MMM d.")
-
-            tilDate.editText!!.setText(format.format(calendar.time))
+            tilDate.editText!!.setText(MyApplication.simpleLocalDateFormat.format(calendar.time))
         }
         if(parentActivity.scheduleTime != 0){
 
