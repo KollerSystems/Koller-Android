@@ -114,7 +114,7 @@ class ScheduleFragment : BottomSheetDialogFragment() {
 
         parentActivity.scheduleTime = tpd.hour * 60 + tpd.minute
 
-            tilTime.editText!!.setText((tpd.hour).toString().padStart(2, '0')+":"+(tpd.minute).toString().padStart(2, '0'))
+            tilTime.editText!!.setText(MyApplication.timeToString(tpd.hour, tpd.minute))
         }
 
         return view

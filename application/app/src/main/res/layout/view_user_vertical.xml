@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:cardCornerRadius="@null"
+    app:shapeAppearance="@null">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_pfp_outline"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            app:cardCornerRadius="9999dp"
+            app:cardElevation="0dp"
+            app:contentPadding="5dp"
+            app:strokeColor="?attr/colorYellow"
+            app:strokeWidth="5dp">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/iv_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:background="@drawable/circle"
+                android:backgroundTint="?attr/colorPrimaryContainer"
+                app:srcCompat="@drawable/person" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/text_container_margin"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:singleLine="true"
+                android:text="Katona Márton"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginRight="-5dp"
+                android:singleLine="true"
+                android:text="F3 • 216 • 11.B"
+                android:textAlignment="center"
+                android:textAppearance="@style/Description" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

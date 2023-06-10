@@ -109,17 +109,6 @@
                 android:text="@string/people"
                 app:icon="@drawable/people" />
 
-            <Button
-                android:id="@+id/student_hostel_button_users2"
-                style="@style/panelButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:minWidth="58dip"
-                android:paddingLeft="6dp"
-                android:paddingRight="6dp"
-                app:icon="@drawable/more_horiz"
-                app:iconPadding="0dp" />
-
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 

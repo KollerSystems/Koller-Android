@@ -35,6 +35,22 @@
         <item name="android:minWidth">0dp</item>
     </style>
 
+    <style name="tricky_toolbar">
+        <item name="android:paddingHorizontal">@dimen/application_padding</item>
+        <item name="android:paddingTop">@dimen/application_padding</item>
+        <item name="layout_scrollFlags">scroll</item>
+    </style>
+
+    <style name="HorizontalUserRecyclerView" parent="@style/MainCardLayout">
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="layoutManager">androidx.recyclerview.widget.LinearLayoutManager</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingVertical">@dimen/text_container_margin</item>
+        <item name="android:layout_marginLeft">@dimen/n_panel_padding</item>
+        <item name="android:layout_marginRight">@dimen/n_panel_padding</item>
+    </style>
+    
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
         <item name="cardElevation">@dimen/default_card_elevation</item>
         <item name="cardCornerRadius">@dimen/panel_round</item>
@@ -348,8 +364,9 @@
     </style>
 
     <style name="ToolbarNavigationButton" parent="SimpleButton">
-        <item name="android:layout_width">@dimen/header_footer_size</item>
-        <item name="android:layout_height">@dimen/header_footer_size</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_margin">@dimen/text_container_margin</item>
         <item name="android:alpha">0.666</item>
         <item name="cornerRadius">9999dp</item>
         <item name="icon">@drawable/arrow_back</item>

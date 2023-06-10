@@ -244,4 +244,11 @@
     <string name="teacher">Tanár</string>
     <string name="group">Csoport</string>
     <string name="class_">Osztály</string>
+    <string name="from_date">Dátumtól</string>
+    <string name="to_date">Dátumig</string>
+    <string name="from_time">Időtől</string>
+    <string name="to_time">Ideig</string>
+    <string name="abc">ABC elejétől</string>
+    <string name="zyx">ABC végétől</string>
+    <string name="leaders">Vezetők</string>
 </resources>

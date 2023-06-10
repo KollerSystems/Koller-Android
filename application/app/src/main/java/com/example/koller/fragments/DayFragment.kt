@@ -17,6 +17,7 @@ import com.example.koller.activities.MainActivity
 import com.example.koller.data.DefaultDayTimes
 import com.example.koller.data.FromTo
 import com.example.koller.data.TodayData
+import com.example.koller.data.UserData
 import com.example.koller.recycleradapter.UserRecycleAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 
@@ -27,7 +28,7 @@ class DayFragment : Fragment() {
     }
 
     private lateinit var usersRecyclerView: RecyclerView
-    private lateinit var todayDataArrayList: ArrayList<TodayData>
+    private lateinit var todayDataArrayList: List<UserData>
 
     private lateinit var bottomSheetDuty: FrameLayout
 
@@ -76,11 +77,11 @@ class DayFragment : Fragment() {
         usersRecyclerView.layoutManager = LinearLayoutManager(context)
         usersRecyclerView.setHasFixedSize(true)
 
-        todayDataArrayList = arrayListOf(
-            TodayData(context?.getDrawable(R.drawable.person),"Nagy Gazsi", "F3"),
-            TodayData(context?.getDrawable(R.drawable.person),"Kis Péter", "F2"),
-            TodayData(context?.getDrawable(R.drawable.person),"Hatalmas Norbert", "L1"),
-            TodayData(context?.getDrawable(R.drawable.person),"Rogán Mátyás", "L3")
+        todayDataArrayList = listOf(
+            UserData("Nagy Gazsi"),
+            UserData("Kis Péter"),
+            UserData("Hatalmas Norbert"),
+            UserData("Rogán Mátyás")
         )
 
         usersRecyclerView.adapter = UserRecycleAdapter(todayDataArrayList, requireContext())

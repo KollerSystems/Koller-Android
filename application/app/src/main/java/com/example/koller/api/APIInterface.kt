@@ -36,7 +36,8 @@ interface APIInterface {
                 .show()
         }
 
-        fun ServerErrorPopup(context: Context, errorCode: String? = "No error message"){
+        fun ServerErrorPopup(context: Context?, errorCode: String? = "No error message"){
+            if(context == null) return
             MaterialAlertDialogBuilder(context)
                 .setTitle("Szerver hiba!")
                 .setMessage("Az applikáció és a szerver között hiba lépett fel.\n" +

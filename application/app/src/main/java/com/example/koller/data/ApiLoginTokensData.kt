@@ -1,17 +1,13 @@
 package com.example.koller.data
 
 data class ApiLoginTokensData (
-        val access_token : String,
-        val token_type : String,
-        val expires_in : Int,
-        val refresh_token : String
+        val access_token : String = "",
+        val token_type : String = "",
+        val expires_in : Int = -1,
+        val refresh_token : String = ""
 ){
         companion object {
-                lateinit var instance: ApiLoginTokensData
-        }
-
-        init {
-                instance = this
+                var instance = ApiLoginTokensData()
         }
 }
 

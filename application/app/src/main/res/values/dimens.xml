@@ -23,6 +23,8 @@
     <dimen name="panel_icon">45sp</dimen>
     <dimen name="panel_icon_smaller">30sp</dimen>
 
+    <dimen name="toolbar_button_size">50dp</dimen>
+
     <dimen name="header_footer_elevation">3dp</dimen>
 
     <dimen name="header_footer_size">60dp</dimen>

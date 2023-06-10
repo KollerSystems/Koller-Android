@@ -58,9 +58,10 @@
 
                     android:id="@+id/toolbar_exit"
                     style="@style/ToolbarNavigationButton"
-                    android:layout_width="@dimen/header_footer_size"
-                    android:layout_height="@dimen/header_footer_size"
+                    android:layout_width="@dimen/toolbar_button_size"
+                    android:layout_height="@dimen/toolbar_button_size"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/guideline" />
 
                 <TextView

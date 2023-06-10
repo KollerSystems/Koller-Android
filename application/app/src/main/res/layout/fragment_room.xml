@@ -26,18 +26,9 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
-                style="@style/MainCardLayout"
+                style="@style/HorizontalUserRecyclerView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginLeft="@dimen/n_panel_padding"
-                android:layout_marginRight="@dimen/n_panel_padding"
-                android:orientation="horizontal"
-                android:paddingLeft="20dp"
-                android:paddingTop="5dp"
-                android:paddingRight="20dp"
-                android:paddingBottom="5dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="3"
                 tools:listitem="@layout/view_user_preview" />
 

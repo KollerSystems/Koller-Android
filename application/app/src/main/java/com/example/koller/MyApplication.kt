@@ -36,7 +36,13 @@ class MyApplication : Application() {
     companion object {
 
 
+        fun timeToString(hours : Int, minutes : Int) : String{
+            return (hours).toString().padStart(2, '0')+":"+(minutes).toString().padStart(2, '0')
+        }
+
         fun roundRecyclerItemsVerticallyWithSeparator(context : Context, view : View, position : Int, list : ArrayList<Any>){
+
+            if(position == 0) return
 
             if(position == list.size -1) {
                 roundCardBottom(context, view)
@@ -56,6 +62,23 @@ class MyApplication : Application() {
 
         }
 
+
+        fun roundRecyclerItemsX(context : Context, view : View, position : Int, size : Int, startAppearance : Int, endAppearance : Int){
+            if(position == 0){
+
+                roundCardX(context, view, startAppearance)
+            }
+            else if (position == size-1){
+
+                roundCardX(context, view, endAppearance)
+            }
+            else if (size == 1) {
+
+                roundCard(context, view)
+
+            }
+
+        }
 
         fun roundRecyclerItemsVertically(context : Context, view : View, position : Int, size : Int){
             if(position == 0){
@@ -77,64 +100,46 @@ class MyApplication : Application() {
         fun roundRecyclerItemsHorizontally(context : Context, view : View, position : Int, size : Int){
             if(position == 0){
 
-                val shapeAppearance = ShapeAppearanceModel.builder(
-                    context, // A kontextusod
-                    R.style.overlayRoundedCardLeft,
-                    0
-                ).build()
-
-                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+                roundCardLeft(context, view)
             }
             else if (position == size-1){
 
-                val shapeAppearance = ShapeAppearanceModel.builder(
-                    context,
-                    R.style.overlayRoundedCardRight,
-                    0
-                ).build()
-
-                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+                roundCardRight(context, view)
             }
             else if (size == 1){
 
-                val shapeAppearance = ShapeAppearanceModel.builder(
-                    context,
-                    R.style.overlayRoundedCard,
-                    0
-                ).build()
-
-                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+                roundCard(context, view)
             }
         }
 
-        fun roundCardBottom(context: Context, view : View){
+        fun roundCardX(context: Context, view : View, overlay : Int){
             val shapeAppearance = ShapeAppearanceModel.builder(
                 context,
-                R.style.overlayRoundedCardBottom,
+                overlay,
                 0
             ).build()
 
             (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+        }
+
+        fun roundCardBottom(context: Context, view : View){
+            roundCardX(context, view, R.style.overlayRoundedCardBottom)
         }
 
         fun roundCardTop(context: Context, view : View){
-            val shapeAppearance = ShapeAppearanceModel.builder(
-                context,
-                R.style.overlayRoundedCardTop,
-                0
-            ).build()
+            roundCardX(context, view, R.style.overlayRoundedCardTop)
+        }
 
-            (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+        fun roundCardLeft(context: Context, view : View){
+            roundCardX(context, view, R.style.overlayRoundedCardLeft)
+        }
+
+        fun roundCardRight(context: Context, view : View){
+            roundCardX(context, view, R.style.overlayRoundedCardRight)
         }
 
         fun roundCard(context: Context, view : View){
-            val shapeAppearance = ShapeAppearanceModel.builder(
-                context,
-                R.style.overlayRoundedCard,
-                0
-            ).build()
-
-            (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+            roundCardX(context, view, R.style.overlayRoundedCard)
         }
 
         fun deroundCard(context: Context, view : View){
@@ -147,6 +152,7 @@ class MyApplication : Application() {
 
         val simpleLocalDateFormat = SimpleDateFormat("yyyy. MMM d.")
         val simpleLocalMonthDay = SimpleDateFormat("MMMM d.")
+        val simpleLocalShortMonthDay = SimpleDateFormat("MMM d.")
         val simpleTimeFormat = SimpleDateFormat("HH:mm")
 
         fun createUserDescription(userData : UserData): String{

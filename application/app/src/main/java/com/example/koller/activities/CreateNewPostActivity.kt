@@ -19,17 +19,22 @@ import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.fragments.bottomsheet.ScheduleFragment
 import com.example.koller.fragments.bottomsheet.BottomFragmentPostTypes
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.datepicker.CalendarConstraints
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputLayout
+import com.google.android.material.timepicker.MaterialTimePicker
+import java.sql.Timestamp
 
 
 class CreateNewPostActivity : AppCompatActivity() {
@@ -39,7 +44,6 @@ class CreateNewPostActivity : AppCompatActivity() {
     lateinit var chipsAddresse: ChipGroup
     lateinit var tilTitle: TextInputLayout
     lateinit var tilDescription: TextInputLayout
-    lateinit var cardDate: View
     lateinit var buttonAddImage : Button
     var date : Long = 0
     public var scheduleDate : Long = 0
@@ -94,6 +98,66 @@ class CreateNewPostActivity : AppCompatActivity() {
         }
     }
 
+    lateinit var tilDateFrom : TextInputLayout
+    lateinit var tilTimeFrom : TextInputLayout
+    lateinit var tilDateTo : TextInputLayout
+    lateinit var tilTimeTo : TextInputLayout
+
+    lateinit var dpdFrom : MaterialDatePicker<Long>
+    lateinit var dpdTo : MaterialDatePicker<Long>
+    lateinit var tpdFrom : MaterialTimePicker
+    lateinit var tpdTo : MaterialTimePicker
+
+    private fun setupDbd(til : TextInputLayout, unlockTils : ArrayList<TextInputLayout>, lockTils : ArrayList<TextInputLayout>) : MaterialDatePicker<Long>{
+        var dpd = MaterialDatePicker.Builder.datePicker()
+            .build()
+
+        til.isEndIconVisible = false
+
+        for (lockTil in lockTils){
+            lockTil.isEnabled = false
+        }
+
+        dpd.addOnPositiveButtonClickListener {selection ->
+
+            til.editText!!.setText(MyApplication.simpleLocalShortMonthDay.format(selection))
+
+            til.isEndIconVisible = true
+
+            val tils : ArrayList<TextInputLayout> = if(tilTimeFrom.editText!!.text.isEmpty()){
+                unlockTils
+            } else{
+                lockTils
+            }
+            for (unlockTil in tils){
+                unlockTil.isEnabled = true
+            }
+        }
+
+        return dpd
+    }
+
+
+    private fun setupTbd(til : TextInputLayout, lockTil : TextInputLayout?) : MaterialTimePicker{
+        var tpd = MaterialTimePicker.Builder()
+            .build()
+
+        til.isEndIconVisible = false
+
+        lockTil?.isEnabled = false
+
+        tpd.addOnPositiveButtonClickListener {
+
+            til.editText!!.setText(MyApplication.timeToString(tpd.hour, tpd.minute))
+
+            til.isEndIconVisible = true
+
+            lockTil?.isEnabled = true
+        }
+
+        return tpd
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
@@ -101,7 +165,6 @@ class CreateNewPostActivity : AppCompatActivity() {
         val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
         val buttonExit: Button = findViewById(R.id.toolbar_exit)
-        val buttonRemoveDate: Button = findViewById(R.id.create_new_post_button_remove_date)
         buttonAddImage = findViewById(R.id.create_new_post_button_add_image)
 
         tilAddresse = findViewById (R.id.create_new_post_til_addresse)
@@ -113,43 +176,76 @@ class CreateNewPostActivity : AppCompatActivity() {
         val tilBaseProgram : TextInputLayout = findViewById (R.id.create_new_post_til_base_program)
         val tilPlace : TextInputLayout = findViewById (R.id.create_new_post_til_place)
 
-        val textDate : TextView = findViewById(R.id.create_new_post_text_date)
+        tilDateFrom = findViewById(R.id.create_new_post_til_date_from)
+        tilTimeFrom = findViewById(R.id.create_new_post_til_time_from)
+        tilDateTo = findViewById(R.id.create_new_post_til_date_to)
+        tilTimeTo = findViewById(R.id.create_new_post_til_time_to)
+
+        val cardDateTime : MaterialCardView = findViewById (R.id.create_new_post_card_datetime)
+        val cardPlace : MaterialCardView = findViewById (R.id.create_new_post_card_place)
+        val cardBaseProgram : MaterialCardView = findViewById (R.id.create_new_post_card_base_program)
+
 
         buttonExit.setOnClickListener{
             beforeClose()
         }
 
-        val dpd =  MaterialDatePicker.Builder.datePicker()
-            .build()
+        val unlock : ArrayList<TextInputLayout> = arrayListOf(tilTimeFrom, tilDateTo)
+        val lock : ArrayList<TextInputLayout> = arrayListOf(tilTimeFrom, tilDateTo, tilTimeTo)
 
-        cardDate = findViewById(R.id.create_new_post_card_date_time)
-        cardDate.setOnClickListener{
-
-
-            dpd.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
-
+        dpdFrom = setupDbd(tilDateFrom, unlock, lock)
+        tilDateFrom.setEndIconOnClickListener{
+            tilDateFrom.editText!!.setText("")
+            dpdFrom = setupDbd(tilDateFrom, unlock, lock)
         }
 
-        dpd.addOnPositiveButtonClickListener{
-
-            textDate.text = dpd.headerText
-            date = it
-            buttonRemoveDate.visibility = VISIBLE
+        dpdTo = setupDbd(tilDateTo, arrayListOf(), arrayListOf())
+        tilDateTo.setEndIconOnClickListener{
+            tilDateTo.editText!!.setText("")
+            dpdTo = setupDbd(tilDateTo, arrayListOf(), arrayListOf())
         }
 
-        buttonRemoveDate.setOnClickListener{
-            textDate.text = getString(R.string.unset)
-            buttonRemoveDate.visibility = GONE
+        tpdFrom = setupTbd(tilTimeFrom, tilTimeTo)
+        tilTimeFrom.setEndIconOnClickListener{
+            tilTimeFrom.editText!!.setText("")
+            tpdFrom = setupTbd(tilTimeFrom, tilTimeTo)
+        }
+
+        tpdTo = setupTbd(tilTimeTo, null)
+        tilTimeTo.setEndIconOnClickListener{
+            tilTimeTo.editText!!.setText("")
+            tpdTo = setupTbd(tilTimeTo, null)
         }
 
 
-        findViewById<View>(R.id.create_new_post_card_place).setOnClickListener{
-            tilPlace.requestFocus()
+        tilDateFrom.editText!!.setOnClickListener{
+
+            currentFocus?.clearFocus()
+
+            dpdFrom.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
-        findViewById<View>(R.id.create_new_post_card_base_program).setOnClickListener{
-            tilBaseProgram.requestFocus()
+        tilDateTo.editText!!.setOnClickListener{
+
+            currentFocus?.clearFocus()
+
+            dpdTo.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
+
+        tilTimeFrom.editText!!.setOnClickListener{
+
+            currentFocus?.clearFocus()
+
+            tpdFrom.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+        }
+
+        tilTimeTo.editText!!.setOnClickListener{
+
+            currentFocus?.clearFocus()
+
+            tpdTo.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+        }
+
 
         val tilType: TextInputLayout = findViewById(R.id.create_new_post_til_type)
 
@@ -278,6 +374,9 @@ class CreateNewPostActivity : AppCompatActivity() {
 
 
         tilType.editText!!.setOnClickListener{
+
+            currentFocus?.clearFocus()
+
             val dialog = BottomFragmentPostTypes()
 
             dialog.show(supportFragmentManager, BottomFragmentPostTypes.TAG)
@@ -301,7 +400,26 @@ class CreateNewPostActivity : AppCompatActivity() {
 
 
         tilType.editText!!.addTextChangedListener {
+            when (tilType.editText!!.text.toString()) {
+                getString(R.string.news_one) -> {
+                    cardDateTime.visibility = VISIBLE
+                    cardPlace.visibility = VISIBLE
+                    cardBaseProgram.visibility = GONE
+                }
+                getString(R.string.program) -> {
+                    cardDateTime.visibility = VISIBLE
+                    cardPlace.visibility = VISIBLE
+                    cardBaseProgram.visibility = VISIBLE
+                }
+                getString(R.string.general_post) -> {
+                    cardDateTime.visibility = GONE
+                    cardPlace.visibility = VISIBLE
+                    cardBaseProgram.visibility = GONE
+                }
+                else -> {
 
+                }
+            }
         }
 
         if(intent.extras != null)

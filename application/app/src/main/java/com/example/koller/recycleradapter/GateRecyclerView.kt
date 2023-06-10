@@ -11,7 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.data.CrossingData
+import com.example.koller.data.DefaultDayTimes
 import com.google.android.material.imageview.ShapeableImageView
+import java.util.Calendar
+import java.util.Date
 
 
 class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var context : Context, var date : TextView) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
@@ -52,6 +55,22 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
         }
     }
 
+    fun late(timeInMillis : Long) : String{
+
+        val calendar = Calendar.getInstance()
+        calendar.time = Date(timeInMillis)
+        var hourOfDay : Int = calendar.get(Calendar.HOUR_OF_DAY)
+        var minutes : Int = calendar.get(Calendar.MINUTE)
+
+        val minutesOfArrive : Int = hourOfDay * 60 + minutes
+
+        val delay : Int = minutesOfArrive - DefaultDayTimes.instance.dayTimeGoInside
+        if(delay > 0){
+            return "Késtél"
+        }
+        return "Időben"
+    }
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val currentItem = crossingList[position]
 
@@ -70,7 +89,7 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
                 holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(context, icon))
 
                 holder.title.text = MyApplication.simpleTimeFormat.format(currentItem.Time)
-                holder.description.text = "Időben vagy nem időben? Ez itt a kérdés."
+                holder.description.text = late(currentItem.Time.time)
 
                 holder.itemView.setOnClickListener {
 

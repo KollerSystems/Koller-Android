@@ -14,6 +14,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.R
 import com.example.koller.api.RetrofitHelper
 import com.example.koller.data.TodayData
+import com.example.koller.recycleradapter.UserPreviewRecyclerAdapter
 import com.example.koller.recycleradapter.UserRecycleAdapter
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +24,9 @@ class UsersFragment : Fragment() {
 
     private lateinit var usersRecyclerView: RecyclerView
     private var usersDataArrayList: ArrayList<TodayData> = ArrayList()
+
+    private lateinit var leaderUsersRecyclerView: RecyclerView
+    private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +39,18 @@ class UsersFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_users, container, false)
 
-        val refresh : SwipeRefreshLayout = view.findViewById(R.id.users_refresh)
+
+        leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
+        leaderUsersRecyclerView.setHasFixedSize(false)
+
+        leaderUsersDataArrayList = arrayListOf(
+            UserData("Katona Márton"),
+            UserData("Härtlein Károly"),
+            UserData("Hatalmas Norbert")
+        )
+
+        leaderUsersRecyclerView.adapter = UserRecycleAdapter(leaderUsersDataArrayList, requireContext(), true)
+
 
         var isLoading: Boolean = false
         var isLastPage: Boolean = false
@@ -52,34 +67,21 @@ class UsersFragment : Fragment() {
                     ) {
                         if (userResponse.code() == 200) {
 
-                            var usersData: List<UserData> = userResponse.body()!!
+                            val usersData: List<UserData> = userResponse.body()!!
 
-                            for (i in usersData.indices) {
-                                usersDataArrayList.add(
-                                    TodayData(
-                                        AppCompatResources.getDrawable(requireContext(), R.drawable.person),
-                                        usersData[i].Name,
-                                        usersData[i].ID.toString(),
-                                        usersDataArrayList.size.toString()
-                                    )
-                                )
-                            }
-
-                            usersRecyclerView.adapter = UserRecycleAdapter(usersDataArrayList, requireContext())
+                            usersRecyclerView.adapter = UserRecycleAdapter(usersData, requireContext())
 
                         } else {
                             APIInterface.ServerErrorPopup(requireContext())
                         }
 
                         isLoading = false
-                        refresh.isRefreshing = false
                     }
 
                     override fun onFailure(call: Call<List<UserData>>, t: Throwable) {
-                        APIInterface.ServerErrorPopup(requireContext())
+                        APIInterface.ServerErrorPopup(context)
 
                         isLoading = false
-                        refresh.isRefreshing = false
                     }
                 }
             )
@@ -90,10 +92,6 @@ class UsersFragment : Fragment() {
         usersRecyclerView.layoutManager = LinearLayoutManager(context)
         usersRecyclerView.setHasFixedSize(true)
 
-        refresh.setOnRefreshListener{
-            usersDataArrayList = ArrayList()
-            loadNextPage()
-        }
 
 
         loadNextPage()

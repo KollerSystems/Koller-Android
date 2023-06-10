@@ -45,9 +45,8 @@
 
                 <Button
                     android:id="@+id/toolbar_exit"
-                    style="@style/SimpleButton"
-                    android:layout_width="@dimen/header_footer_size"
-                    android:layout_height="@dimen/header_footer_size"
+                    style="@style/ToolbarNavigationButton"
+                    android:layout_height="@dimen/toolbar_button_size"
                     android:layout_marginRight="@dimen/spacing"
                     android:alpha="0.666"
                     android:minWidth="0dp"
@@ -331,66 +330,116 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/create_new_post_card_date_time"
+                        android:id="@+id/create_new_post_card_datetime"
                         style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_width="match_parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                style="@style/CategoryIcon"
+                                android:adjustViewBounds="true"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/calendar" />
+
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
                                 android:orientation="vertical">
 
-                                <TextView
+                                <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/date_time" />
+                                    android:layout_height="match_parent"
+                                    android:orientation="horizontal">
 
-                                <TextView
-                                    style="@style/Description"
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/create_new_post_til_date_from"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:hint="@string/from_date"
+                                        app:endIconDrawable="@drawable/close_thick"
+                                        app:endIconMode="custom">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:editable="false"
+                                            android:focusable="false"
+                                            android:inputType="datetime|date"
+                                            android:textAppearance="@style/Normal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/create_new_post_til_time_from"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:hint="@string/from_time"
+                                        app:endIconDrawable="@drawable/close_thick"
+                                        app:endIconMode="custom">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:editable="false"
+                                            android:focusable="false"
+                                            android:inputType="datetime|time"
+                                            android:textAppearance="@style/Normal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
+
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/create_new_post_til_date_to"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:hint="@string/to_date"
+                                        app:endIconDrawable="@drawable/close_thick"
+                                        app:endIconMode="custom">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:editable="false"
+                                            android:focusable="false"
+                                            android:inputType="datetime|date"
+                                            android:textAppearance="@style/Normal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/create_new_post_til_time_to"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_weight="1"
+                                        android:hint="@string/to_time"
+                                        app:endIconDrawable="@drawable/close_thick"
+                                        app:endIconMode="custom">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:editable="false"
+                                            android:focusable="false"
+                                            android:inputType="datetime|time"
+                                            android:textAppearance="@style/Normal" />
+                                    </com.google.android.material.textfield.TextInputLayout>
+                                </LinearLayout>
 
                             </LinearLayout>
-
-                            <TextView
-                                android:id="@+id/create_new_post_text_date"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/text_container_margin"
-                                android:text="@string/unset" />
-
-                            <Button
-                                android:id="@+id/create_new_post_button_remove_date"
-                                style="@style/SimpleButton"
-                                android:layout_width="wrap_content"
-                                android:layout_height="match_parent"
-                                android:alpha="0.666"
-                                android:visibility="gone"
-                                app:icon="@drawable/close_thick"
-                                app:iconGravity="start|textStart"
-                                tools:visibility="visible" />
 
                         </LinearLayout>
 
@@ -399,74 +448,39 @@
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/create_new_post_card_place"
                         style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_width="match_parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                style="@style/CategoryIcon"
+                                android:adjustViewBounds="true"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/gps" />
+
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
                                 android:orientation="vertical">
 
-                                <TextView
-
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/create_new_post_til_place"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/place" />
+                                    android:layout_margin="@dimen/text_container_margin"
+                                    android:layout_weight="1"
+                                    android:hint="@string/place">
 
-                                <TextView
-
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textAppearance="@style/Normal" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/create_new_post_til_place"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginTop="-10dp"
-                                android:layout_marginRight="-5dp"
-                                android:layout_marginBottom="-10dp"
-                                android:minWidth="0dp"
-                                app:hintEnabled="false">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/dsadas"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:paddingStart="@dimen/spacing"
-                                    android:paddingLeft="@dimen/spacing"
-                                    android:paddingTop="@dimen/spacing"
-                                    android:paddingEnd="@dimen/spacing"
-                                    android:paddingRight="@dimen/spacing"
-                                    android:paddingBottom="@dimen/spacing"
-                                    android:selectAllOnFocus="true"
-                                    android:text="@string/unset"
-                                    android:textAppearance="@style/Normal" />
-                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
 
@@ -475,77 +489,47 @@
                     <com.google.android.material.card.MaterialCardView
                         android:id="@+id/create_new_post_card_base_program"
                         style="@style/Card"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_width="match_parent">
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
 
+                            <ImageView
+                                style="@style/CategoryIcon"
+                                android:adjustViewBounds="true"
+                                android:alpha="0.666"
+                                app:srcCompat="@drawable/fix_replace" />
+
                             <LinearLayout
-                                android:layout_width="0dp"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
                                 android:orientation="vertical">
 
-                                <TextView
+                                <com.google.android.material.textfield.TextInputLayout
+                                    android:id="@+id/create_new_post_til_base_program"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="@string/base_program_replacement" />
+                                    android:layout_margin="@dimen/text_container_margin"
+                                    android:layout_weight="1"
+                                    android:hint="@string/base_program_replacement">
 
-                                <TextView
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
+                                    <com.google.android.material.textfield.TextInputEditText
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:inputType="number|numberSigned"
+                                        android:maxLength="1"
+                                        android:selectAllOnFocus="true"
+                                        android:textAppearance="@style/Normal" />
+                                </com.google.android.material.textfield.TextInputLayout>
 
                             </LinearLayout>
-
-                            <com.google.android.material.textfield.TextInputLayout
-                                android:id="@+id/create_new_post_til_base_program"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_gravity="center_vertical"
-                                android:layout_marginTop="-10dp"
-                                android:layout_marginRight="-5dp"
-                                android:layout_marginBottom="-10dp"
-                                android:minWidth="0dp"
-                                app:hintEnabled="false">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:inputType="number|numberSigned"
-                                    android:maxLength="1"
-                                    android:paddingStart="@dimen/spacing"
-                                    android:paddingLeft="@dimen/spacing"
-                                    android:paddingTop="@dimen/spacing"
-                                    android:paddingEnd="@dimen/spacing"
-                                    android:paddingRight="@dimen/spacing"
-                                    android:paddingBottom="@dimen/spacing"
-                                    android:selectAllOnFocus="true"
-                                    android:text="0"
-                                    android:textAppearance="@style/Normal" />
-                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 

@@ -211,4 +211,11 @@
     <string name="teacher">Teacher</string>
     <string name="group">Group</string>
     <string name="class_">Class</string>
+    <string name="from_date">From date</string>
+    <string name="to_date">To date</string>
+    <string name="from_time">From time</string>
+    <string name="to_time">To time</string>
+    <string name="abc">ABC</string>
+    <string name="zyx">ZYX</string>
+    <string name="leaders">Leaders</string>
 </resources>
