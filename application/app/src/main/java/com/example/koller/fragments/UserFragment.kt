@@ -19,6 +19,7 @@ import androidx.fragment.app.Fragment
 import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.activities.MainActivity
+import com.example.koller.data.ApiLoginTokensData
 import com.example.koller.data.UserData
 import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
@@ -28,10 +29,10 @@ import retrofit2.Response
 
 class UserFragment : Fragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
+    companion object {
+        var userToGet : Int = -1
     }
+
 
     fun showAndSetIfNotNull(card : View, text : TextView, string : String?){
         if (!string.isNullOrBlank()) {
@@ -64,6 +65,7 @@ class UserFragment : Fragment() {
         var email : TextView = view.findViewById(R.id.user_text_email)
 
         val loadingOl : View = view.findViewById(R.id.loading_overlay)
+        loadingOl.visibility = VISIBLE
 
         val nestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
 
@@ -73,7 +75,7 @@ class UserFragment : Fragment() {
             }
             val actualPosition = Rect()
             view.getGlobalVisibleRect(actualPosition)
-            val screen = Rect(0, 0, Resources.getSystem().getDisplayMetrics().widthPixels, Resources.getSystem().getDisplayMetrics().heightPixels)
+            val screen = Rect(0, 0, Resources.getSystem().displayMetrics.widthPixels, Resources.getSystem().displayMetrics.heightPixels)
             return actualPosition.intersect(screen)
         }
 
@@ -89,10 +91,10 @@ class UserFragment : Fragment() {
             }
         }
 
-        val userID : String? = requireActivity().intent.extras?.getString("userID")
-        if(userID != null){
+
+
             val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
-            usersResponse.getUser(userID, APIInterface.getHeaderMap()).enqueue(
+            usersResponse.getUser(userToGet, APIInterface.getHeaderMap()).enqueue(
                 object : Callback<UserData> {
                     override fun onResponse(
                         call: Call<UserData>,
@@ -110,15 +112,15 @@ class UserFragment : Fragment() {
                             showAndSetIfNotNull(instagramCard, instagramName, userData.Instagram)
                             showAndSetIfNotNull(emailCard, email, userData.Email)
 
-                        imagePfp.setOnClickListener{
-                            StfalconImageViewer.Builder(context, listOf(imagePfp.drawable)) { view, drawable ->
-                                view.setImageDrawable(drawable)
+                            imagePfp.setOnClickListener{
+                                StfalconImageViewer.Builder(context, listOf(imagePfp.drawable)) { view, drawable ->
+                                    view.setImageDrawable(drawable)
 
+                                }
+                                    .withStartPosition(0)
+                                    .withTransitionFrom(imagePfp)
+                                    .show()
                             }
-                                .withStartPosition(0)
-                                .withTransitionFrom(imagePfp)
-                                .show()
-                        }
 
                             loadingOl.animate()
                                 .alpha(0.0f)
@@ -131,16 +133,17 @@ class UserFragment : Fragment() {
                                 })
 
                         } else {
-                            APIInterface.ServerErrorPopup(requireContext())
+                            APIInterface.ServerErrorPopup(context)
                         }
                     }
 
                     override fun onFailure(call: Call<UserData>, t: Throwable) {
-                        APIInterface.ServerErrorPopup(requireContext())
+                        APIInterface.ServerErrorPopup(context)
                     }
                 }
             )
-        }
+
+
 
 
 

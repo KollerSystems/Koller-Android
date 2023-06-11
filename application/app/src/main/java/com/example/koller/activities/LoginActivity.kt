@@ -17,12 +17,16 @@ import androidx.lifecycle.lifecycleScope
 import com.example.koller.DataStoreManager
 import com.example.koller.MyApplication
 import com.example.koller.R
+import com.example.koller.data.ApiErrorData
 import com.example.koller.data.ApiLoginData
 import com.example.koller.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
+import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -97,7 +101,8 @@ class LoginActivity : AppCompatActivity() {
                     loadingBar.visibility = VISIBLE
 
                     val loginResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                    loginResponse.postLogin(ApiLoginData("password", inpfID.text.toString(), inpfPassword.text.toString())).enqueue(
+                    val loginData = ApiLoginData("password", inpfID.text.toString(), inpfPassword.text.toString())
+                    loginResponse.postLogin(loginData).enqueue(
                         object : Callback<ApiLoginTokensData> {
 
                             override fun onResponse(
@@ -142,6 +147,14 @@ class LoginActivity : AppCompatActivity() {
                                     )
                                 }
                                 else{
+
+                                    var error : String?
+
+                                    val gson = Gson()
+                                    val type = object : TypeToken<ApiErrorData>() {}.type
+                                    var errorResponse: ApiErrorData? = gson.fromJson(loginResponse.errorBody()!!.charStream(), type)
+
+                                    APIInterface.ServerErrorPopup(this@LoginActivity, errorResponse!!.error)
                                     ReturnLoginLayoutToNormal()
                                     inplID.error = getString(R.string.invalid_id)
                                     inplPassword.error = getString(R.string.invalid_password)

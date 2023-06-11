@@ -7,6 +7,7 @@ import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.MyApplication
@@ -14,6 +15,7 @@ import com.example.koller.R
 import com.example.koller.activities.navigateWithDefaultAnimation
 import com.example.koller.data.TodayData
 import com.example.koller.data.UserData
+import com.example.koller.fragments.UserFragment
 import com.example.koller.fragments.bottomsheet.ProfileBottomSheet
 import com.google.android.material.imageview.ShapeableImageView
 
@@ -58,6 +60,7 @@ class UserRecycleAdapter (private var todayList : List<UserData>, var context : 
 
         MyApplication.roundRecyclerItemsX(context, holder.itemView, position, todayList.size, startAppearance, endAppearance)
 
+        holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(context,R.drawable.person))
         holder.title.text = currentItem.Name
         holder.description.text = MyApplication.createUserDescription(currentItem)
 
@@ -69,7 +72,7 @@ class UserRecycleAdapter (private var todayList : List<UserData>, var context : 
                 dialog.show(fragmentManager.supportFragmentManager, ProfileBottomSheet.TAG)
             }
             else{
-                (context as AppCompatActivity).intent.putExtra("userID", currentItem.ID)
+                UserFragment.userToGet = currentItem.ID
                 holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
             }
 

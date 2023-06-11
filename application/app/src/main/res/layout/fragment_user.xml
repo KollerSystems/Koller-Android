@@ -7,7 +7,8 @@
     android:id="@+id/layout_coordinator_user"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?android:attr/colorBackground">
+    android:background="?android:attr/colorBackground"
+    tools:context=".fragments.UserFragment">
 
 
     <androidx.core.widget.NestedScrollView

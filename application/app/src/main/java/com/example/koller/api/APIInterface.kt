@@ -55,12 +55,17 @@ interface APIInterface {
 
 
 
-
+    @Headers(
+        "Content-Type: application/json"
+    )
     @POST("oauth/token")
     fun postLogin(
         @Body requestModel: ApiLoginData,
     ) : Call<ApiLoginTokensData>
 
+    @Headers(
+        "Content-Type: application/json"
+    )
     @POST("oauth/token")
     fun postLogin(
         @Body requestModel: ApiLoginRefreshData,
@@ -80,7 +85,7 @@ interface APIInterface {
 
     @GET("api/users/{id}")
     fun getUser(
-        @Path("id") searchById:String,
+        @Path("id") searchById:Int,
         @HeaderMap headers: Map<String, String>
     ) : Call<UserData>
 

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.marginTop
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.MyApplication
@@ -25,16 +26,34 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
 
         recyclerView.setOnScrollChangeListener(){ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
 
-            val index : Int = (recyclerView!!.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+            val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
+            val firstVisibleItemIndex : Int = layoutManager.findFirstVisibleItemPosition()
+            val firstCompletelyVisibleIndex : Int = layoutManager.findFirstCompletelyVisibleItemPosition()
 
-            if(index != -1) {
-                val firstData = crossingList[index]
+            if(firstVisibleItemIndex != -1) {
+                val firstData = crossingList[firstVisibleItemIndex]
                 if (firstData is String) {
                     date.text = firstData
                 }
                 else{
                     firstData as CrossingData
                     date.text = MyApplication.simpleLocalMonthDay.format(firstData.Time).capitalize()
+                }
+            }
+
+            if(firstCompletelyVisibleIndex != -1){
+                val firstData = crossingList[firstCompletelyVisibleIndex]
+                if(firstData is String){
+                    val firstCompletelyVisibleItem : View = layoutManager.getChildAt(1)!!
+                    val top = firstCompletelyVisibleItem.top
+                    val y = top - firstCompletelyVisibleItem.marginTop
+                    val fullFirstViewHeight = firstCompletelyVisibleItem.height + firstCompletelyVisibleItem.marginTop * 2
+                    if(y < fullFirstViewHeight){
+                        date.translationY = (y - fullFirstViewHeight).toFloat()
+                    }
+                }
+                else{
+                    date.translationY = 0f
                 }
             }
         }

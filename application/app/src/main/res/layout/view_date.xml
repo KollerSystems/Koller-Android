@@ -4,8 +4,8 @@
     style="@style/CategoryCardName"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="@dimen/spacing"
-    android:layout_marginVertical="@dimen/text_container_margin"
+    android:layout_marginHorizontal="10.75dp"
+    android:layout_marginVertical="5.7dp"
     android:text="Lorem">
 
 </TextView>
