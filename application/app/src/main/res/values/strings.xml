@@ -251,4 +251,6 @@
     <string name="abc">ABC elejétől</string>
     <string name="zyx">ABC végétől</string>
     <string name="leaders">Vezetők</string>
+    <string name="type_of_post">Bejegyzés típusa</string>
+    <string name="sender">Feladó</string>
 </resources>

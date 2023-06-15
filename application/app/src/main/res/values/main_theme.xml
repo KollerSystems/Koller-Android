@@ -18,6 +18,12 @@
         <item name="toolbarStyle">@style/toolbar</item>
         <item name="checkboxStyle">@style/Checkbox</item>
         <item name="floatingActionButtonStyle">@style/floatingActionButtonC</item>
+        <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
+        <item name="appBarLayoutStyle">@style/appBarStyle</item>
+    </style>
+
+    <style name="appBarStyle">
+        <item name="background">@null</item>
     </style>
 
     <style name="floatingActionButtonC" parent="@style/Widget.Material3.FloatingActionButton.Primary">

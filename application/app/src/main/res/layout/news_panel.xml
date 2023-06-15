@@ -29,6 +29,50 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/hills"
                 tools:srcCompat="@drawable/hills" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/panel_padding"
+                android:layout_marginTop="@dimen/panel_padding"
+                android:clickable="true"
+                android:outlineProvider="none"
+                app:cardCornerRadius="9999dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:cardCornerRadius="999999dp"
+                    app:cardUseCompatPadding="false">
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="55dp"
+                        android:layout_marginTop="@dimen/spacing"
+                        android:layout_marginRight="@dimen/spacing"
+                        android:layout_marginBottom="@dimen/spacing"
+                        android:text="Kis Gazsi"
+                        android:textAppearance="@style/Title" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.example.koller.RoundedBadgeImageView
+                    android:id="@+id/roundedBadgeImageView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:translationZ="1dp">
+
+                </com.example.koller.RoundedBadgeImageView>
+
+            </FrameLayout>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout

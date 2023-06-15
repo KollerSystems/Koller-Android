@@ -124,7 +124,7 @@
         </fragment>
         <fragment
             android:id="@+id/postsFragment"
-            android:name="com.example.koller.PostsFragment"
+            android:name="com.example.koller.fragments.PostsFragment"
             android:label="@string/posts"
             tools:layout="@layout/fragment_posts">
             <action

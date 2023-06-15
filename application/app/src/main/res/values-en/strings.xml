@@ -218,4 +218,6 @@
     <string name="abc">ABC</string>
     <string name="zyx">ZYX</string>
     <string name="leaders">Leaders</string>
+    <string name="type_of_post">Type of post</string>
+    <string name="sender">Sender</string>
 </resources>

@@ -1,116 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground"
     tools:context=".fragments.UserOutgoingPermanentFragment">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <androidx.core.widget.NestedScrollView
-            style="@style/nestedScrollView"
+        <LinearLayout
+            style="@style/tricky_toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            <LinearLayout
-                style="@style/MainLayout"
+            <TextView
+                android:id="@+id/textView70"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginTop="@dimen/text_container_margin"
+                android:text="@string/filters" />
 
-                <TextView
-                    android:id="@+id/textView70"
-                    android:layout_width="match_parent"
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:chipSpacingVertical="0dp">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip37"
+                    style="@style/chipDropdownButtonFilterStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:text="@string/filters" />
+                    android:text="Hossz"
+                    app:closeIconEnabled="true" />
 
-                <com.google.android.material.chip.ChipGroup
-                    app:chipSpacingVertical="0dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip37"
-                        style="@style/chipDropdownButtonFilterStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hossz"
-                        app:closeIconEnabled="true" />
-
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip"
-                        style="@style/chipDropdownButtonFilterStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/date"
-                        app:closeIconEnabled="true" />
-
-                </com.google.android.material.chip.ChipGroup>
-
-                <TextView
-                    android:id="@+id/textView71"
-                    android:layout_width="match_parent"
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip"
+                    style="@style/chipDropdownButtonFilterStyle"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:text="@string/arrangement" />
+                    android:text="@string/date"
+                    app:closeIconEnabled="true" />
 
-                <com.google.android.material.chip.ChipGroup
-                    android:layout_width="match_parent"
+            </com.google.android.material.chip.ChipGroup>
+
+            <TextView
+                android:id="@+id/textView71"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_container_margin"
+                android:text="@string/arrangement" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkedChip="@id/chip20"
+                app:chipSpacingHorizontal="0dp"
+                app:chipSpacingVertical="0dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip20"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    app:checkedChip="@id/chip20"
-                    app:chipSpacingHorizontal="0dp"
-                    app:chipSpacingVertical="0dp"
-                    app:selectionRequired="true"
-                    app:singleSelection="true">
+                    android:text="@string/newest"
+                    app:shapeAppearance="@style/overlayRoundedLeft" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip20"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/newest"
-                        app:shapeAppearance="@style/overlayRoundedLeft" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/oldest"
+                    app:shapeAppearance="@style/overlayRoundedRight" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip22"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/oldest"
-                        app:shapeAppearance="@style/overlayRoundedRight" />
+            </com.google.android.material.chip.ChipGroup>
 
-                </com.google.android.material.chip.ChipGroup>
+            <View
+                android:id="@+id/divider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="?android:attr/listDivider" />
 
-                <View
-                    android:id="@+id/divider"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:background="?android:attr/listDivider" />
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
 
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/MainCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        style="@style/MainCardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+        tools:listitem="@layout/notification_panel" />
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/recycler_view"
-                            style="@style/MainCardLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:listitem="@layout/notification_panel" />
-                    </RelativeLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
