@@ -58,8 +58,7 @@
                         android:layout_marginTop="@dimen/spacing"
                         android:layout_marginRight="@dimen/spacing"
                         android:layout_marginBottom="@dimen/spacing"
-                        android:text="Kis Gazsi"
-                        android:textAppearance="@style/Title" />
+                        android:text="Nagy Árpád" />
 
                 </com.google.android.material.card.MaterialCardView>
 

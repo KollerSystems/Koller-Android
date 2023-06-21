@@ -20,6 +20,22 @@
         <item name="floatingActionButtonStyle">@style/floatingActionButtonC</item>
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
         <item name="appBarLayoutStyle">@style/appBarStyle</item>
+        <item name="materialButtonStyle">@style/button</item>
+    </style>
+
+    <style name="button" parent="@style/Widget.Material3.Button">
+        <item name="android:paddingTop">11dp</item>
+        <item name="android:paddingBottom">11dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:minHeight">0dp</item>
+    </style>
+
+    <style name="iconButton" parent="@style/button">
+        <item name="android:paddingLeft">11dp</item>
+        <item name="android:paddingRight">11dp</item>
+        <item name="iconPadding">0dp</item>
     </style>
 
     <style name="appBarStyle">
@@ -142,10 +158,8 @@
     </style>
 
 
-    <style name="panelButton">
+    <style name="panelButton" parent="@style/button">
         <item name="android:backgroundTint">?attr/colorSurface</item>
-        <item name="android:insetTop">@null</item>
-        <item name="android:insetBottom">@null</item>
         <item name="cornerRadius">0dp</item>
         <item name="android:elevation">@dimen/default_card_elevation</item>
         <item name="iconGravity">textStart</item>
@@ -360,13 +374,6 @@
         <item name="android:layout_marginTop">0dp</item>
         <item name="cardCornerRadius">@dimen/application_round</item>
         <item name="cardElevation" >-16dp</item>
-    </style>
-
-    <style name="ImagePreviewList">
-        <item name="shapeAppearanceOverlay">@style/CornerRadius15</item>
-        <item name="android:layout_height">150dp</item>
-        <item name="android:layout_width">150dp</item>
-        <item name="android:layout_margin">@dimen/text_container_margin</item>
     </style>
 
     <style name="ToolbarNavigationButton" parent="SimpleButton">

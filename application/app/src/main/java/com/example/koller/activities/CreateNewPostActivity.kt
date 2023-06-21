@@ -34,6 +34,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.timepicker.MaterialTimePicker
+import com.stfalcon.imageviewer.StfalconImageViewer
 import java.sql.Timestamp
 
 
@@ -49,6 +50,8 @@ class CreateNewPostActivity : AppCompatActivity() {
     public var scheduleDate : Long = 0
     public var scheduleTime : Int = 0
     lateinit var scrollViewImage : HorizontalScrollView
+
+    var imageUris : ArrayList<Uri> = ArrayList()
 
 
     fun beforeClose(){
@@ -74,9 +77,7 @@ class CreateNewPostActivity : AppCompatActivity() {
     private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         if (uri != null) {
 
-            val shapeableImageView = ShapeableImageView(ContextThemeWrapper(this,
-                R.style.ImagePreviewList
-            ))
+            val shapeableImageView = ShapeableImageView(this@CreateNewPostActivity)
             shapeableImageView.scaleType = ImageView.ScaleType.CENTER_CROP
 
             val layoutParams = ViewGroup.MarginLayoutParams(
@@ -89,11 +90,26 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             shapeableImageView.layoutParams = layoutParams
 
+            imageUris.add(uri)
             shapeableImageView.setImageURI(uri)
             val parent : LinearLayout = (buttonAddImage.parent as LinearLayout)
             parent.addView(shapeableImageView, parent.childCount-1)
             scrollViewImage.post {
                 scrollViewImage.scrollTo(scrollViewImage.getChildAt(0).width, 0)
+            }
+
+            val startIndex = parent.childCount-1-1
+
+            shapeableImageView.setOnClickListener{
+
+
+                StfalconImageViewer.Builder(this@CreateNewPostActivity, imageUris) { view, uri ->
+                    view.setImageURI(uri)
+
+                }
+                    .withStartPosition(startIndex)
+                    .withTransitionFrom(shapeableImageView)
+                    .show()
             }
         }
     }
