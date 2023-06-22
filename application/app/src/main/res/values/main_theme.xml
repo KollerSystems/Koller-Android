@@ -73,6 +73,17 @@
         <item name="android:layout_marginRight">@dimen/n_panel_padding</item>
     </style>
     
+    <style name="ImageAddButton" parent="button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="android:layout_width">@dimen/imageListHeight</item>
+        <item name="android:layout_height">@dimen/imageListHeight</item>
+        <item name="android:layout_margin">@dimen/CardMargin</item>
+        <item name="android:text">@string/plus_image</item>
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="android:textSize">20sp</item>
+        <item name="cornerRadius">15dp</item>
+    </style>
+    
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
         <item name="cardElevation">@dimen/default_card_elevation</item>
         <item name="cardCornerRadius">@dimen/panel_round</item>
@@ -159,6 +170,8 @@
 
 
     <style name="panelButton" parent="@style/button">
+         <item name="android:paddingTop">@dimen/panel_padding</item>
+        <item name="android:paddingBottom">@dimen/panel_padding</item>
         <item name="android:backgroundTint">?attr/colorSurface</item>
         <item name="cornerRadius">0dp</item>
         <item name="android:elevation">@dimen/default_card_elevation</item>

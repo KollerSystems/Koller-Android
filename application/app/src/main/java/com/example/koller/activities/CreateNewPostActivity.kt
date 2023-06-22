@@ -21,10 +21,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.MyApplication
 import com.example.koller.R
+import com.example.koller.data.EventsData
 import com.example.koller.fragments.bottomsheet.ScheduleFragment
 import com.example.koller.fragments.bottomsheet.BottomFragmentPostTypes
+import com.example.koller.recycleradapter.EditableImageRecyclerAdapter
+import com.example.koller.recycleradapter.EventsRecyclerAdapter
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -45,11 +50,9 @@ class CreateNewPostActivity : AppCompatActivity() {
     lateinit var chipsAddresse: ChipGroup
     lateinit var tilTitle: TextInputLayout
     lateinit var tilDescription: TextInputLayout
-    lateinit var buttonAddImage : Button
     var date : Long = 0
     public var scheduleDate : Long = 0
     public var scheduleTime : Int = 0
-    lateinit var scrollViewImage : HorizontalScrollView
 
     var imageUris : ArrayList<Uri> = ArrayList()
 
@@ -74,46 +77,6 @@ class CreateNewPostActivity : AppCompatActivity() {
         }
     }
 
-    private val launcher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
-        if (uri != null) {
-
-            val shapeableImageView = ShapeableImageView(this@CreateNewPostActivity)
-            shapeableImageView.scaleType = ImageView.ScaleType.CENTER_CROP
-
-            val layoutParams = ViewGroup.MarginLayoutParams(
-                MyApplication.convertDpToPixel(150, this),
-                MyApplication.convertDpToPixel(150, this)
-            )
-            val marginInDp = MyApplication.convertDpToPixel(5, this)
-            layoutParams.setMargins(marginInDp, marginInDp, marginInDp, marginInDp)
-
-
-            shapeableImageView.layoutParams = layoutParams
-
-            imageUris.add(uri)
-            shapeableImageView.setImageURI(uri)
-            val parent : LinearLayout = (buttonAddImage.parent as LinearLayout)
-            parent.addView(shapeableImageView, parent.childCount-1)
-            scrollViewImage.post {
-                scrollViewImage.scrollTo(scrollViewImage.getChildAt(0).width, 0)
-            }
-
-            val startIndex = parent.childCount-1-1
-
-            shapeableImageView.setOnClickListener{
-
-
-                StfalconImageViewer.Builder(this@CreateNewPostActivity, imageUris) { view, uri ->
-                    view.setImageURI(uri)
-
-                }
-                    .withStartPosition(startIndex)
-                    .withTransitionFrom(shapeableImageView)
-                    .show()
-            }
-        }
-    }
-
     lateinit var tilDateFrom : TextInputLayout
     lateinit var tilTimeFrom : TextInputLayout
     lateinit var tilDateTo : TextInputLayout
@@ -123,6 +86,8 @@ class CreateNewPostActivity : AppCompatActivity() {
     lateinit var dpdTo : MaterialDatePicker<Long>
     lateinit var tpdFrom : MaterialTimePicker
     lateinit var tpdTo : MaterialTimePicker
+
+    lateinit var textViewImageLimit : TextView
 
     private fun setupDbd(til : TextInputLayout, unlockTils : ArrayList<TextInputLayout>, lockTils : ArrayList<TextInputLayout>) : MaterialDatePicker<Long>{
         var dpd = MaterialDatePicker.Builder.datePicker()
@@ -177,11 +142,9 @@ class CreateNewPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
-        scrollViewImage = findViewById(R.id.create_new_post_scroll_view_images)
         val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
         val buttonExit: Button = findViewById(R.id.toolbar_exit)
-        buttonAddImage = findViewById(R.id.create_new_post_button_add_image)
 
         tilAddresse = findViewById (R.id.create_new_post_til_addresse)
         actvAddresse = findViewById (R.id.create_new_post_edt_addresse)
@@ -189,13 +152,12 @@ class CreateNewPostActivity : AppCompatActivity() {
         tilTitle = findViewById (R.id.create_new_post_til_title)
         tilDescription = findViewById (R.id.create_new_post_til_description)
 
-        val tilBaseProgram : TextInputLayout = findViewById (R.id.create_new_post_til_base_program)
-        val tilPlace : TextInputLayout = findViewById (R.id.create_new_post_til_place)
-
         tilDateFrom = findViewById(R.id.create_new_post_til_date_from)
         tilTimeFrom = findViewById(R.id.create_new_post_til_time_from)
         tilDateTo = findViewById(R.id.create_new_post_til_date_to)
         tilTimeTo = findViewById(R.id.create_new_post_til_time_to)
+
+        textViewImageLimit = findViewById(R.id.create_new_post_text_view_image_limit)
 
         val cardDateTime : MaterialCardView = findViewById (R.id.create_new_post_card_datetime)
         val cardPlace : MaterialCardView = findViewById (R.id.create_new_post_card_place)
@@ -441,11 +403,13 @@ class CreateNewPostActivity : AppCompatActivity() {
         if(intent.extras != null)
             tilType.editText!!.setText(intent.extras!!.getString("type"))
 
-        buttonAddImage.setOnClickListener{
+
+        val imageRecyclerView : RecyclerView = findViewById(R.id.recycler_view)
+
+        imageRecyclerView.setHasFixedSize(true)
 
 
-            launcher.launch("image/*")
-        }
+        imageRecyclerView.adapter = EditableImageRecyclerAdapter(imageUris, this@CreateNewPostActivity, 25, textViewImageLimit)
 
         publishButton.setOnClickListener{
             finish()

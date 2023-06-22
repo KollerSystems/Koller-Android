@@ -16,6 +16,7 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import androidx.core.content.ContextCompat
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
@@ -238,7 +239,7 @@ class MyApplication : Application() {
             val colorRes = typedValue.resourceId
             var color = -1
             try {
-                color = context.resources.getColor(colorRes)
+                color = ContextCompat.getColor(context, colorRes)
             } catch (e: Resources.NotFoundException) {
                 Log.w("ERROR", "Not found color resource by id: $colorRes")
             }
