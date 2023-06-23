@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="55dp"
                         android:layout_marginTop="@dimen/spacing"
-                        android:layout_marginRight="@dimen/spacing"
+                        android:layout_marginRight="@dimen/panel_padding"
                         android:layout_marginBottom="@dimen/spacing"
                         android:text="Nagy Árpád" />
 

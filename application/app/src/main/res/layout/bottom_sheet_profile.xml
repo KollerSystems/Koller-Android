@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
@@ -60,6 +61,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical">
+
+
 
                         <com.google.android.material.card.MaterialCardView
                             style="@style/Card"
@@ -142,295 +145,48 @@
                             </LinearLayout>
                         </com.google.android.material.card.MaterialCardView>
 
-                        <com.google.android.material.card.MaterialCardView
+                        <com.example.koller.SimpleCardButton
                             android:id="@+id/profile_card_my_room"
-                            style="@style/Card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="horizontal"
-                            app:cardCornerRadius="0dp">
+                            custom:icon="@drawable/room"
+                            custom:text="@string/my_room" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-
-                                    style="@style/Icon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="30dp"
-                                    android:alpha="0.666"
-                                    app:srcCompat="@drawable/room" />
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/my_room" />
-
-                                    <TextView
-                                        style="@style/Description"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0"
-                                        android:ellipsize="end"
-                                        android:maxLines="1"
-                                        android:text="@string/report_desc"
-                                        android:visibility="gone" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
+                        <com.example.koller.SimpleCardButton
                             android:id="@+id/profile_fbtn_outgoing"
-                            style="@style/Card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="horizontal"
-                            app:cardCornerRadius="0dp">
+                            custom:icon="@drawable/wave"
+                            custom:text="@string/outgoing" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-
-                                    style="@style/Icon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="30dp"
-                                    android:alpha="0.666"
-                                    app:srcCompat="@drawable/wave" />
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/outgoing" />
-
-                                    <TextView
-                                        style="@style/Description"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0"
-                                        android:ellipsize="end"
-                                        android:maxLines="1"
-                                        android:text="@string/report_desc"
-                                        android:visibility="gone" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
+                        <com.example.koller.SimpleCardButton
                             android:id="@+id/profile_fbtn_gate"
-                            style="@style/Card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="horizontal"
-                            app:cardCornerRadius="0dp">
+                            custom:icon="@drawable/gate"
+                            custom:text="@string/port_exits_and_entrances" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                        <com.example.koller.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            custom:icon="@drawable/devices"
+                            custom:text="@string/devices" />
 
-                                <ImageView
-
-                                    style="@style/Icon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="30dp"
-                                    android:alpha="0.666"
-                                    app:srcCompat="@drawable/gate" />
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="Portai ki- és belépések" />
-
-                                    <TextView
-                                        style="@style/Description"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0"
-                                        android:ellipsize="end"
-                                        android:maxLines="1"
-                                        android:text="@string/report_desc"
-                                        android:visibility="gone" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
+                        <com.example.koller.SimpleCardButton
                             android:id="@+id/profile_fbtn_settings"
-                            style="@style/Card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="horizontal"
-                            app:cardCornerRadius="0dp">
+                            custom:icon="@drawable/settings"
+                            custom:text="@string/settings" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
-
-                                <ImageView
-
-                                    style="@style/Icon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="30dp"
-                                    android:alpha="0.666"
-                                    app:srcCompat="@drawable/settings" />
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/settings" />
-
-                                    <TextView
-                                        style="@style/Description"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0"
-                                        android:ellipsize="end"
-                                        android:maxLines="1"
-                                        android:text="@string/report_desc"
-                                        android:visibility="gone" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
-
-                        <com.google.android.material.card.MaterialCardView
+                        <com.example.koller.SimpleCardButton
                             android:id="@+id/profile_fbtn_privacy_policy"
-                            style="@style/Card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="horizontal"
-                            app:cardCornerRadius="0dp">
+                            custom:icon="@drawable/policy"
+                            custom:text="@string/privacy_policy" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
 
-                                <ImageView
-
-                                    style="@style/Icon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="30dp"
-                                    android:alpha="0.666"
-                                    app:srcCompat="@drawable/policy" />
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/privacy_policy" />
-
-                                    <TextView
-                                        style="@style/Description"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0"
-                                        android:ellipsize="end"
-                                        android:maxLines="1"
-                                        android:text="@string/report_desc"
-                                        android:visibility="gone" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
 
 
                     </LinearLayout>
@@ -458,6 +214,8 @@
                         android:clipChildren="false"
                         android:clipToPadding="false"
                         android:orientation="vertical">
+
+
 
                         <com.google.android.material.card.MaterialCardView
                             style="@style/Card"
@@ -910,62 +668,24 @@
 
                         </com.google.android.material.card.MaterialCardView>
 
-                        <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/profile_fbtn_email"
-                            style="@style/Card"
+                        <com.example.koller.SimpleCardButton
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:clickable="true"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="horizontal"
-                            app:cardCornerRadius="0dp">
+                            custom:icon="@drawable/bug"
+                            custom:text="@string/bug_report" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:orientation="horizontal">
+                        <com.example.koller.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            custom:icon="@drawable/lamp"
+                            custom:text="@string/suggestion" />
 
-                                <ImageView
-                                    style="@style/Icon"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="30dp"
-                                    android:alpha="0.666"
-                                    app:srcCompat="@drawable/mail" />
-
-                                <LinearLayout
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="10dp"
-                                    android:layout_marginTop="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:clipChildren="false"
-                                    android:clipToPadding="false"
-                                    android:gravity="center_vertical"
-                                    android:orientation="vertical">
-
-                                    <TextView
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:text="Email küldése" />
-
-                                    <TextView
-                                        style="@style/Description"
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="0"
-                                        android:ellipsize="end"
-                                        android:maxLines="1"
-                                        android:text="@string/report_desc"
-                                        android:visibility="gone" />
-
-                                </LinearLayout>
-
-                            </LinearLayout>
-
-                        </com.google.android.material.card.MaterialCardView>
+                        <com.example.koller.SimpleCardButton
+                            android:id="@+id/profile_fbtn_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            custom:icon="@drawable/mail"
+                            custom:text="@string/email" />
 
 
                     </LinearLayout>

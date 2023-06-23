@@ -270,7 +270,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
-                    android:alpha="0.666"
                     android:text="Foglalkozások időkerete" />
 
                 <com.google.android.material.card.MaterialCardView

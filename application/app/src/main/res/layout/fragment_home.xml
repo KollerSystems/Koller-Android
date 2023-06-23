@@ -209,8 +209,7 @@
                                                 android:gravity="center|center_vertical"
                                                 android:text="n"
                                                 android:textAlignment="center"
-                                                android:textSize="38sp"
-                                                android:textStyle="bold" />
+                                                android:textSize="38sp" />
 
                                             <LinearLayout
                                                 android:layout_width="match_parent"
@@ -277,8 +276,7 @@
                                             android:text="n"
                                             android:textAlignment="center"
                                             android:textColor="?colorForeground066"
-                                            android:textSize="25.5sp"
-                                            android:textStyle="bold" />
+                                            android:textSize="25.5sp" />
 
                                         <LinearLayout
                                             android:layout_width="0dp"

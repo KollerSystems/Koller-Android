@@ -1,7 +1,15 @@
 package com.example.koller.fragments.bottomsheet
 
+import android.content.ContentResolver
+import android.content.ContentUris
+import android.content.ContentValues
 import android.content.DialogInterface
+import android.icu.text.SimpleDateFormat
+import android.icu.util.Calendar
+import android.icu.util.TimeZone
+import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -17,9 +25,11 @@ import com.example.koller.data.CommentData
 import com.example.koller.recycleradapter.CommentRecyclerAdapter
 import com.example.koller.recycleradapter.ImageRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import java.util.Date
 
 
 class NewFragment : BottomSheetDialogFragment() {
@@ -114,6 +124,39 @@ class NewFragment : BottomSheetDialogFragment() {
 
         commentRecyclerView.adapter = CommentRecyclerAdapter(commentDataArrayList, requireContext())
 
+
+        val chipAddToCalendar : Chip = view.findViewById(R.id.new_chip_add_to_calendar)
+
+        chipAddToCalendar.setOnClickListener{
+
+            val cr: ContentResolver = requireContext().contentResolver
+
+            if(chipAddToCalendar.isChecked){
+
+                val values = ContentValues()
+
+                values.put(CalendarContract.Events.DTSTART, "1687471200000")
+                values.put(CalendarContract.Events.DTEND, "1687471290000")
+                values.put(CalendarContract.Events.TITLE, "Title")
+                values.put(CalendarContract.Events.DESCRIPTION, getString(R.string.automatically_generated_event_text))
+                values.put(CalendarContract.Events.EVENT_LOCATION, "Valahol")
+
+                val timeZone: TimeZone = TimeZone.getDefault()
+                values.put(CalendarContract.Events.EVENT_TIMEZONE, timeZone.id)
+
+                values.put(CalendarContract.Events.CALENDAR_ID, 1)
+
+
+                values.put(CalendarContract.Events._ID, 1239999999)
+                values.put(CalendarContract.Events.CUSTOM_APP_PACKAGE, "com.example.koller")
+
+                cr.insert(CalendarContract.Events.CONTENT_URI, values)
+            }
+            else{
+                val eventUri: Uri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, 1239999999)
+                cr.delete(eventUri, null, null)
+            }
+        }
         return view
     }
 

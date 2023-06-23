@@ -12,9 +12,12 @@ import android.media.Image
 import android.media.MediaRouter.SimpleCallback
 import android.net.Uri
 import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
@@ -33,11 +36,13 @@ import com.example.koller.R
 import com.example.koller.activities.FullScreenImageActivity
 import com.example.koller.activities.MainActivity
 import com.example.koller.data.StarData
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 import com.stfalcon.imageviewer.StfalconImageViewer
 import org.w3c.dom.Text
 import java.util.ArrayList
 import java.util.Collections
+import kotlin.math.log
 
 class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val context : Context, val imageLimit : Int, val textViewLimit : TextView) : RecyclerView.Adapter<RecyclerView.ViewHolder>()
 {
@@ -53,7 +58,8 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
 
         var itemTouchHelper: ItemTouchHelper? = null
         val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT,0) {
-
+            var fromVeryFirstPosition : Int = -1
+            var toPosition : Int = -1
 
             override fun onMove(
                 recyclerView: RecyclerView,
@@ -61,11 +67,13 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
                 target: RecyclerView.ViewHolder
             ): Boolean {
 
-                val fromPosition : Int = viewHolder.bindingAdapterPosition
+                val fromPosition = viewHolder.bindingAdapterPosition
+                if(fromVeryFirstPosition == -1) fromVeryFirstPosition = fromPosition
 
                 if(fromPosition == imageList.size) return false
 
-                var toPosition : Int = target.bindingAdapterPosition
+                toPosition = target.bindingAdapterPosition
+
                 if(toPosition > imageList.size -1){
                     toPosition = imageList.size -1
                 }
@@ -73,10 +81,44 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
                 Collections.swap(imageList, fromPosition, toPosition)
                 recyclerView.adapter!!.notifyItemMoved(fromPosition, toPosition)
 
+
+
                 return true
             }
 
+            override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
+                super.onSelectedChanged(viewHolder, actionState)
+                when (actionState) {
+                    ItemTouchHelper.ACTION_STATE_DRAG -> {
+                        fromVeryFirstPosition = -1
+                        toPosition = -1
+                    }
+                    ItemTouchHelper.ACTION_STATE_SWIPE ->
+                        Log.d("DragTest","Start to swipe: $actionState")
+                    ItemTouchHelper.ACTION_STATE_IDLE -> {
+                        if(fromVeryFirstPosition == 0 || toPosition == 0){
+                            //recyclerView.adapter!!.notifyItemChanged(0)
+                            recyclerView.adapter!!.notifyItemChanged(toPosition)
+                            if(fromVeryFirstPosition < 2)
+                                recyclerView.adapter!!.notifyItemChanged(fromVeryFirstPosition)
+                            else
+                                recyclerView.adapter!!.notifyItemChanged(1)
+                        }
+                    }
+                }
+            }
+
+            override fun clearView(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ) {
+                super.clearView(recyclerView, viewHolder)
+
+            }
+
             override fun isLongPressDragEnabled(): Boolean {
+                if(imageList.size==1) return false
+
                 return draggable
             }
 
@@ -127,6 +169,13 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
 
                 holder as ImageViewHolder
 
+                if(position==0){
+                    holder.mcardCoverOverlay.visibility = VISIBLE
+                }
+                else{
+                    holder.mcardCoverOverlay.visibility = GONE
+                }
+
                 val currentItem = imageList[position]
                 holder.image.setImageURI(currentItem)
 
@@ -144,7 +193,19 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
                 holder.buttonRemove.setOnClickListener{
                     imageList.removeAt(holder.bindingAdapterPosition)
                     recyclerView!!.adapter!!.notifyItemRemoved(holder.bindingAdapterPosition)
+                    if(position == 0 && imageList.size != 0) {
+                        recyclerView!!.adapter!!.notifyItemChanged(0)
+                    }
                     updateLimit(textViewLimit, imageList.size, imageLimit)
+                }
+
+                holder.buttonRemove.setOnTouchListener { v, event ->
+                    when (event?.action) {
+                        MotionEvent.ACTION_DOWN ->
+                            draggable = false
+                    }
+
+                    v?.onTouchEvent(event) ?: true
                 }
 
                 holder.itemView.setOnTouchListener { v, event ->
@@ -216,6 +277,7 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
     class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val image : ImageView = itemView.findViewById(R.id.image_view)
+        val mcardCoverOverlay : MaterialCardView = itemView.findViewById(R.id.mcard_cover_overlay)
         val buttonRemove : Button = itemView.findViewById(R.id.button_remove)
     }
 

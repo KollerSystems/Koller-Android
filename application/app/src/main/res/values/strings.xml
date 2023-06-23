@@ -41,9 +41,9 @@
     <string name="notifications">Értesítések</string>
     <string name="all">Összes</string>
     <string name="arrival_reminder">Beérkezés emlékeztető</string>
-    <string name="arrival_reminder_description">Értesítést az utolsó egy és fél órádban</string>
+    <string name="arrival_reminder_description">Értesítés a kimenő végétől visszaszámított utolsó egy és fél órában, abban az esetben, ha kint vagy</string>
     <string name="occupation_reminder">Foglalkozás emlékeztető</string>
-    <string name="occupation_reminder_description">Értesítés negyed órával foglalkozás előtt</string>
+    <string name="occupation_reminder_description">Értesítés negyed órával a foglalkozások előtt</string>
     <string name="room_order">Szobarend</string>
     <string name="commendation_warning">Dícséret/Figyelmeztetés</string>
     <string name="news">Hírek</string>
@@ -253,4 +253,11 @@
     <string name="leaders">Vezetők</string>
     <string name="type_of_post">Bejegyzés típusa</string>
     <string name="sender">Feladó</string>
+    <string name="cover">Borító</string>
+    <string name="too_many_images">Túl sok kép</string>
+    <string name="devices">Eszközök</string>
+    <string name="port_exits_and_entrances">Portai ki- és belépések</string>
+    <string name="bug_report">Hiba jelentés</string>
+    <string name="suggestion">Javaslat</string>
+    <string name="automatically_generated_event_text">Automatikusan generált esemény a koller applikációból.</string>
 </resources>

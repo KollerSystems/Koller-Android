@@ -20,9 +20,9 @@
     <string name="notifications">Notifications</string>
     <string name="all">All</string>
     <string name="arrival_reminder">Arrival reminder</string>
-    <string name="arrival_reminder_description">Notification in the last one and half hour</string>
+    <string name="arrival_reminder_description">Notification in the last hour and last half hour from the end of the outgoing, in case you are out</string>
     <string name="occupation_reminder">Occupation reminder</string>
-    <string name="occupation_reminder_description">Notification fifteen minutes before occupation</string>
+    <string name="occupation_reminder_description">Notification fifteen minutes before occupations</string>
     <string name="room_order">Room order</string>
     <string name="commendation_warning">Commendation/Warning</string>
     <string name="news">News</string>
@@ -220,4 +220,11 @@
     <string name="leaders">Leaders</string>
     <string name="type_of_post">Type of post</string>
     <string name="sender">Sender</string>
+    <string name="cover">Cover</string>
+    <string name="too_many_images">Too many images</string>
+    <string name="devices">Devices</string>
+    <string name="port_exits_and_entrances">Gate exits and entrances</string>
+    <string name="bug_report">Bug report</string>
+    <string name="suggestion">Suggestion</string>
+    <string name="automatically_generated_event_text">Automatically generated event from the koller application.</string>
 </resources>

@@ -7,6 +7,16 @@
     android:orientation="vertical"
     tools:context=".fragments.CalendarDaysFragment" >
 
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/calendar_days_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_days_tabs" />
+
     <View
         android:id="@+id/calendar_days_divider"
         android:layout_width="match_parent"
@@ -23,8 +33,9 @@
         android:layout_width="40dp"
         android:layout_height="0dp"
         android:layout_marginBottom="-5dp"
-        android:text="≪"
         android:textStyle="bold"
+        app:icon="@drawable/double_arrow_left"
+        app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView16"
         app:layout_constraintEnd_toStartOf="@+id/calendar_days_tabs"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,21 +75,12 @@
         android:layout_width="40dp"
         android:layout_height="0dp"
         android:layout_marginBottom="-5dp"
-        android:text="≫"
         android:textStyle="bold"
+        app:icon="@drawable/double_arrow_right"
+        app:iconPadding="0dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/calendar_days_tabs"
         app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
-
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/calendar_days_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendar_days_tabs" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,12 +53,13 @@ class CreateNewPostActivity : AppCompatActivity() {
     var date : Long = 0
     public var scheduleDate : Long = 0
     public var scheduleTime : Int = 0
+    val imageLimit = 25
 
     var imageUris : ArrayList<Uri> = ArrayList()
 
 
     fun beforeClose(){
-        if(chipsAddresse.childCount > 1 || (tilTitle.editText!!.text?.length ?:0) > 0 || (tilDescription.editText!!.text?.length ?:0) > 0){
+        if(chipsAddresse.childCount > 1 || (tilTitle.editText!!.text?.length ?:0) > 0 || (tilDescription.editText!!.text?.length ?:0) > 0 || imageUris.size > 0){
             MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.are_you_sure_you_want_to_discard_the_post))
                 .setPositiveButton(getString(R.string.yes)) { _, _ ->
@@ -409,15 +410,30 @@ class CreateNewPostActivity : AppCompatActivity() {
         imageRecyclerView.setHasFixedSize(true)
 
 
-        imageRecyclerView.adapter = EditableImageRecyclerAdapter(imageUris, this@CreateNewPostActivity, 25, textViewImageLimit)
+        imageRecyclerView.adapter = EditableImageRecyclerAdapter(imageUris, this@CreateNewPostActivity, imageLimit, textViewImageLimit)
+
+        fun checkImages() : Boolean{
+            if(imageUris.size > imageLimit){
+                if(!textViewImageLimit.text.contains(" • ")) {
+                    textViewImageLimit.text =
+                        getString(R.string.too_many_images) + " • " + textViewImageLimit.text
+                }
+                return false
+            }
+            return true
+        }
 
         publishButton.setOnClickListener{
-            finish()
+            if(checkImages()) {
+                finish()
+            }
         }
 
         scheduleButton.setOnClickListener{
-            val dialog = ScheduleFragment()
-            dialog.show(supportFragmentManager, ScheduleFragment.TAG)
+            if(checkImages()) {
+                val dialog = ScheduleFragment()
+                dialog.show(supportFragmentManager, ScheduleFragment.TAG)
+            }
         }
     }
 

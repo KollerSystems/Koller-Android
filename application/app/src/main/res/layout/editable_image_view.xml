@@ -13,6 +13,28 @@
         android:scaleType="centerCrop"
         app:srcCompat="@drawable/artboard_1" />
 
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcard_cover_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp"
+        app:strokeColor="?attr/colorPrimary"
+        app:strokeWidth="3dp">
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?attr/colorPrimary"
+            android:padding="@dimen/text_container_margin"
+            android:text="@string/cover"
+            android:textAlignment="center"
+            android:textColor="?android:attr/colorBackground" />
+    </com.google.android.material.card.MaterialCardView>
+
     <Button
         android:id="@+id/button_remove"
         style="@style/iconButton"
@@ -22,4 +44,5 @@
         android:backgroundTint="?attr/colorTertiary"
         app:icon="@drawable/close_thick"
         app:iconTint="?attr/colorOnTertiary" />
+
 </com.google.android.material.card.MaterialCardView>

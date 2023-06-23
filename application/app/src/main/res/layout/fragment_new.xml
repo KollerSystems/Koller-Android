@@ -122,7 +122,7 @@
                             app:chipSpacingVertical="@dimen/spacing">
 
                             <com.google.android.material.chip.Chip
-                                android:id="@+id/chip6"
+                                android:id="@+id/new_chip_like"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layoutDirection="locale"
@@ -133,7 +133,7 @@
                                 app:chipMinTouchTargetSize="0dp" />
 
                             <com.google.android.material.chip.Chip
-                                android:id="@+id/chip7"
+                                android:id="@+id/new_chip_I_will_be_there"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layoutDirection="locale"
@@ -144,7 +144,7 @@
                                 app:chipMinTouchTargetSize="0dp" />
 
                             <com.google.android.material.chip.Chip
-                                android:id="@+id/chip5"
+                                android:id="@+id/new_chip_add_to_calendar"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layoutDirection="locale"

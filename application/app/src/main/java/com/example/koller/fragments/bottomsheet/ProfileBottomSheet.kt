@@ -96,7 +96,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val cardMyRoom: MaterialCardView = view.findViewById(R.id.profile_card_my_room)
+        val cardMyRoom: View = view.findViewById(R.id.profile_card_my_room)
 
         cardMyRoom.setOnClickListener{
 
@@ -104,7 +104,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val fbtnOutgoing: MaterialCardView = view.findViewById(R.id.profile_fbtn_outgoing)
+        val fbtnOutgoing: View = view.findViewById(R.id.profile_fbtn_outgoing)
 
         fbtnOutgoing.setOnClickListener{
 
@@ -112,7 +112,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val fbtnGate: MaterialCardView = view.findViewById(R.id.profile_fbtn_gate)
+        val fbtnGate: View = view.findViewById(R.id.profile_fbtn_gate)
 
         fbtnGate.setOnClickListener{
 
@@ -120,7 +120,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val fbtnSettings: MaterialCardView = view.findViewById(R.id.profile_fbtn_settings)
+        val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
 
         fbtnSettings.setOnClickListener{
             val intent = Intent(view.context, SettingsActivity::class.java)
@@ -128,7 +128,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val fbtnPrivacyPolicy: MaterialCardView = view.findViewById(R.id.profile_fbtn_privacy_policy)
+        val fbtnPrivacyPolicy: View = view.findViewById(R.id.profile_fbtn_privacy_policy)
 
         fbtnPrivacyPolicy.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/orgs/4E-6F-72-62-65-72-74"))
