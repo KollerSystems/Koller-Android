@@ -9,11 +9,15 @@ import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.koller.MyApplication
 import com.example.koller.R
@@ -23,6 +27,7 @@ import com.example.koller.fragments.bottomsheet.ItemListDialogFragment
 import com.example.koller.fragments.bottomsheet.RoomOrderBottomSheet
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
+import java.security.AccessController.getContext
 
 
 class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, private val context: Context) : RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>(){
@@ -49,6 +54,8 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
 
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
+
+        MyApplication.roundRecyclerItemsVertically(context, holder.itemView, holder.card_unread_overlay, position, todayList.size)
 
         holder.card_unread_overlay.visibility = VISIBLE
         holder.iconLeft.setImageDrawable(currentItem.iconLeft)
@@ -127,6 +134,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
+
         var itemTouchHelper: ItemTouchHelper? = null
         val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
 

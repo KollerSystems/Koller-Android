@@ -3,7 +3,7 @@
     <dimen name="panel_padding">15dp</dimen>
     <dimen name="n_panel_padding">-15dp</dimen>
     <dimen name="text_container_margin">5dp</dimen>
-    <dimen name="panel_margin_down">1.5dp</dimen>
+    <dimen name="panel_margin_down">1dp</dimen>
     <dimen name="panel_shadow">0dp</dimen>
     <dimen name="panel_round">20dp</dimen>
     <dimen name="n_panel_round">-20dp</dimen>
@@ -11,6 +11,8 @@
     <dimen name="application_padding">15dp</dimen>
     <dimen name="separator_margin_space">20dp</dimen>
     <dimen name="default_card_elevation">1dp</dimen>
+    <dimen name="card_margin">0.5dp</dimen>
+    <dimen name="card_full_margin">1dp</dimen>
 
     <!-- Texts -->
     <dimen name="text_main_title_expanded">30sp</dimen>
@@ -51,4 +53,7 @@
     <dimen name="list_item_spacing_half">8dp</dimen>
 
     <dimen name="imageListHeight">150dp</dimen>
+
+    <dimen name="button_vertical_padding">11dp</dimen>
+    <dimen name="button_horizontal_padding">24dp</dimen>
 </resources>

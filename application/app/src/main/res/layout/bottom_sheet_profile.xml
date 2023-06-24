@@ -60,14 +60,20 @@
                         style="@style/MainCardLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical">
-
+                        android:layout_marginLeft="0dp"
+                        android:layout_marginTop="0dp"
+                        android:layout_marginRight="0dp"
+                        android:layout_marginBottom="0dp"
+                        android:divider="@drawable/divider"
+                        android:orientation="vertical"
+                        android:showDividers="middle">
 
 
                         <com.google.android.material.card.MaterialCardView
                             style="@style/Card"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -95,9 +101,9 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="match_parent"
                                             android:adjustViewBounds="true"
-                                            android:scaleType="centerInside"
                                             android:background="@drawable/circle"
                                             android:backgroundTint="?attr/colorPrimaryContainer"
+                                            android:scaleType="centerInside"
                                             app:srcCompat="@drawable/person" />
                                     </com.google.android.material.card.MaterialCardView>
 
@@ -187,8 +193,6 @@
                             custom:text="@string/privacy_policy" />
 
 
-
-
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -216,10 +220,10 @@
                         android:orientation="vertical">
 
 
-
                         <com.google.android.material.card.MaterialCardView
                             style="@style/Card"
                             android:layout_width="match_parent"
+                            android:layout_margin="0dp"
                             android:clipChildren="false"
                             android:clipToPadding="false"
                             android:orientation="horizontal">
@@ -476,6 +480,7 @@
 
                                                     </LinearLayout>
                                                 </com.google.android.material.card.MaterialCardView>
+
                                                 <com.google.android.material.card.MaterialCardView
                                                     android:id="@+id/profile_card_david"
                                                     style="@style/Card"

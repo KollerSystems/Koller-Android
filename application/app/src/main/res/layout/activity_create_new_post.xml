@@ -273,7 +273,7 @@
                     <com.google.android.material.card.MaterialCardView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="1.5dp"
+                        android:layout_marginTop="@dimen/card_full_margin"
                         app:cardCornerRadius="0dp">
 
 

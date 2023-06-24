@@ -191,7 +191,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         }
 
 
-        val fbtnEmail: MaterialCardView = view.findViewById(R.id.profile_fbtn_email)
+        val fbtnEmail: View = view.findViewById(R.id.profile_fbtn_email)
 
         fbtnEmail.setOnClickListener{
 

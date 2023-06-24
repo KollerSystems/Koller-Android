@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.data.EventsData
 import com.example.koller.fragments.bottomsheet.NewFragment
@@ -19,6 +20,9 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
     }
 
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
+
+        MyApplication.roundRecyclerItemsVertically(holder.itemView.context, holder.itemView, position, eventsList.size)
+
         val currentItem = eventsList[position]
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description

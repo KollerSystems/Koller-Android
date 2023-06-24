@@ -23,9 +23,11 @@
         <item name="materialButtonStyle">@style/button</item>
     </style>
 
+
+
     <style name="button" parent="@style/Widget.Material3.Button">
-        <item name="android:paddingTop">11dp</item>
-        <item name="android:paddingBottom">11dp</item>
+        <item name="android:paddingTop">@dimen/button_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/button_vertical_padding</item>
         <item name="android:minWidth">0dp</item>
         <item name="android:insetBottom">0dp</item>
         <item name="android:insetTop">0dp</item>
@@ -33,8 +35,8 @@
     </style>
 
     <style name="iconButton" parent="@style/button">
-        <item name="android:paddingLeft">11dp</item>
-        <item name="android:paddingRight">11dp</item>
+        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
     </style>
 
@@ -179,10 +181,6 @@
         <item name="iconTint">?android:attr/colorForeground</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
         <item name="android:textSize">@dimen/text_normal</item>
-        <item name="android:layout_marginBottom">0.75dp</item>
-        <item name="android:layout_marginTop">0.75dp</item>
-        <item name="android:layout_marginLeft">0.75dp</item>
-        <item name="android:layout_marginRight">0.75dp</item>
     </style>
 
     <style name="MainTitleExpanded">
@@ -331,7 +329,6 @@
         <item name="android:clipToPadding">false</item>
         <item name="cardCornerRadius">@null</item>
         <item name="shapeAppearance">@null</item>
-        <item name="android:layout_margin">0.75dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:outlineProvider">none</item>
     </style>
@@ -369,14 +366,12 @@
     </style>
 
     <style name="MainCardLayout">
-        <item name="android:layout_marginBottom">-0.75dp</item>
-        <item name="android:layout_marginTop">-0.75dp</item>
-        <item name="android:layout_marginLeft">-0.75dp</item>
-        <item name="android:layout_marginRight">-0.75dp</item>
+        <item name="android:showDividers">middle</item>
+        <item name="android:divider">@drawable/divider</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:clipChildren">false</item>
-        <item name="android:overScrollMode">never</item>
+
     </style>
     
     <style name="BottomSheetMainLayout">

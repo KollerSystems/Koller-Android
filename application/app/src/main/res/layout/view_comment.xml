@@ -4,6 +4,7 @@
     style="@style/Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/card_full_margin"
     android:clickable="true"
     app:contentPadding="0dp">
 

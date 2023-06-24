@@ -1,6 +1,5 @@
 package com.example.koller
 
-import com.example.koller.data.UserData
 import android.app.Application
 import android.app.Dialog
 import android.content.ClipData
@@ -13,13 +12,12 @@ import android.os.Build
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
-import androidx.datastore.core.DataStore
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.preferencesDataStore
+import com.example.koller.data.UserData
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -58,42 +56,53 @@ class MyApplication : Application() {
                 roundCard(context, view)
             }
             else{
-                deroundCard(context, view)
+                deroundCardVertical(context, view)
             }
 
         }
 
 
-        fun roundRecyclerItemsX(context : Context, view : View, position : Int, size : Int, startAppearance : Int, endAppearance : Int){
+        fun roundRecyclerItemsX(context : Context, view : View, position : Int, size : Int, startAppearance : Int, endAppearance : Int, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
             if(position == 0){
 
-                roundCardX(context, view, startAppearance)
+                roundCardX(context, view, startAppearance, 0, 0, rightPadding, bottomPadding)
             }
             else if (position == size-1){
 
-                roundCardX(context, view, endAppearance)
+                roundCardX(context, view, endAppearance, leftPadding, topPadding, 0, 0)
             }
             else if (size == 1) {
 
                 roundCard(context, view)
 
+            }
+            else{
+                deroundCardX(context, view, leftPadding, topPadding, rightPadding, bottomPadding)
             }
 
         }
 
         fun roundRecyclerItemsVertically(context : Context, view : View, position : Int, size : Int){
+
+            roundRecyclerItemsVertically(context, view, null, position, size)
+        }
+
+        fun roundRecyclerItemsVertically(context : Context, view : View, view2 : View?, position : Int, size : Int){
             if(position == 0){
 
-                roundCardTop(context, view)
+                roundCardTop(context, view, view2)
             }
             else if (position == size-1){
 
-                roundCardBottom(context, view)
+                roundCardBottom(context, view, view2)
             }
             else if (size == 1) {
 
-                roundCard(context, view)
+                roundCard(context, view, view2)
 
+            }
+            else{
+                deroundCardVertical(context, view, view2)
             }
 
         }
@@ -111,9 +120,12 @@ class MyApplication : Application() {
 
                 roundCard(context, view)
             }
+            else{
+                deroundCardHorizontal(context, view)
+            }
         }
 
-        fun roundCardX(context: Context, view : View, overlay : Int){
+        fun roundCardX(context: Context, view : View, view2 : View?, overlay : Int, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
             val shapeAppearance = ShapeAppearanceModel.builder(
                 context,
                 overlay,
@@ -121,31 +133,59 @@ class MyApplication : Application() {
             ).build()
 
             (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+            if(view2 != null) (view2 as MaterialCardView).shapeAppearanceModel = shapeAppearance
+
+            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(leftPadding,topPadding,rightPadding,bottomPadding)
+            view.requestLayout()
         }
 
-        fun roundCardBottom(context: Context, view : View){
-            roundCardX(context, view, R.style.overlayRoundedCardBottom)
+        fun roundCardX(context: Context, view : View, overlay : Int, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
+            roundCardX(context, view, null, overlay, leftPadding, topPadding, rightPadding, bottomPadding)
         }
 
-        fun roundCardTop(context: Context, view : View){
-            roundCardX(context, view, R.style.overlayRoundedCardTop)
+        fun roundCardBottom(context: Context, view : View, view2 : View? = null){
+            roundCardX(context, view, view2, R.style.overlayRoundedCardBottom,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0)
+        }
+
+        fun roundCardTop(context: Context, view : View, view2 : View? = null){
+            roundCardX(context, view, view2, R.style.overlayRoundedCardTop,0,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun roundCardLeft(context: Context, view : View){
-            roundCardX(context, view, R.style.overlayRoundedCardLeft)
+            roundCardX(context, view, R.style.overlayRoundedCardLeft,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
         }
 
         fun roundCardRight(context: Context, view : View){
-            roundCardX(context, view, R.style.overlayRoundedCardRight)
+            roundCardX(context, view, R.style.overlayRoundedCardRight, context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,0)
         }
 
-        fun roundCard(context: Context, view : View){
-            roundCardX(context, view, R.style.overlayRoundedCard)
+        fun roundCard(context: Context, view : View, view2 : View? = null){
+            roundCardX(context, view, view2, R.style.overlayRoundedCard, 0,0,0,0)
         }
 
-        fun deroundCard(context: Context, view : View){
+        fun deroundCardX(context: Context, view : View, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
+
+            deroundCardX(context, view, null, leftPadding, topPadding, rightPadding, bottomPadding)
+        }
+
+        fun deroundCardX(context: Context, view : View, view2 : View?, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
 
             (view as MaterialCardView).shapeAppearanceModel = ShapeAppearanceModel()
+            if(view2 != null) (view2 as MaterialCardView).shapeAppearanceModel = ShapeAppearanceModel()
+
+            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(leftPadding,topPadding,rightPadding,bottomPadding)
+            view.requestLayout()
+        }
+
+
+        fun deroundCardVertical(context: Context, view : View, view2 : View? = null){
+
+            deroundCardX(context, view, view2,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+        }
+
+        fun deroundCardHorizontal(context: Context, view : View){
+
+            deroundCardX(context, view,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
         }
 
 

@@ -7,14 +7,15 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
-    android:outlineProvider="none">
+    android:outlineProvider="none"
+    app:contentPadding="0dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/notification_card_new_mark"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/n_spacing"
-        android:layout_marginTop="@dimen/n_spacing"
+        android:layout_marginLeft="@dimen/text_container_margin"
+        android:layout_marginTop="@dimen/text_container_margin"
         android:outlineProvider="none"
         android:visibility="invisible"
         app:cardBackgroundColor="?attr/colorPrimary"
@@ -39,7 +40,8 @@
         android:clipToPadding="false"
         android:elevation="50dp"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/panel_padding">
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/iv_icon"
@@ -109,10 +111,6 @@
         android:id="@+id/notification_card_unread_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/n_panel_padding"
-        android:layout_marginTop="@dimen/n_panel_padding"
-        android:layout_marginRight="@dimen/n_panel_padding"
-        android:layout_marginBottom="@dimen/n_panel_padding"
         android:outlineProvider="none"
         android:visibility="gone"
         app:cardCornerRadius="0dp"

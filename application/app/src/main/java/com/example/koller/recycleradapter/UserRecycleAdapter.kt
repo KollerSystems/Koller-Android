@@ -30,6 +30,10 @@ class UserRecycleAdapter (private var todayList : List<UserData>, var context : 
     private var viewToShow : Int = 0
     private var startAppearance : Int = 0
     private var endAppearance : Int = 0
+    private var paddingLeft : Int = 0
+    private var paddingTop : Int = 0
+    private var paddingRight : Int = 0
+    private var paddingBottom : Int = 0
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
@@ -38,11 +42,19 @@ class UserRecycleAdapter (private var todayList : List<UserData>, var context : 
             viewToShow = R.layout.notification_panel
             startAppearance = R.style.overlayRoundedCardTop
             endAppearance = R.style.overlayRoundedCardBottom
+            paddingLeft = 0
+            paddingTop = context.resources.getDimensionPixelSize(R.dimen.card_margin)
+            paddingRight = 0
+            paddingBottom = context.resources.getDimensionPixelSize(R.dimen.card_margin)
         }
         else{
             viewToShow = R.layout.view_user_vertical
             startAppearance = R.style.overlayRoundedCardLeft
             endAppearance = R.style.overlayRoundedCardRight
+            paddingLeft = context.resources.getDimensionPixelSize(R.dimen.card_margin)
+            paddingTop = 0
+            paddingRight = context.resources.getDimensionPixelSize(R.dimen.card_margin)
+            paddingBottom = 0
         }
     }
 
@@ -58,7 +70,7 @@ class UserRecycleAdapter (private var todayList : List<UserData>, var context : 
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
 
-        MyApplication.roundRecyclerItemsX(context, holder.itemView, position, todayList.size, startAppearance, endAppearance)
+        MyApplication.roundRecyclerItemsX(context, holder.itemView, position, todayList.size, startAppearance, endAppearance,paddingLeft,paddingTop,paddingRight,paddingBottom)
 
         holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(context,R.drawable.person))
         holder.title.text = currentItem.Name

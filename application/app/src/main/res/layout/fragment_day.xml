@@ -193,7 +193,9 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="bottom|center_horizontal"
                                 android:layout_weight="1"
-                                android:text="@string/open_ediary" />
+                                android:text="@string/open_ediary"
+                                app:icon="@drawable/open_in_new_thick"
+                                app:iconGravity="textEnd" />
 
                         </com.google.android.material.card.MaterialCardView>
 
@@ -452,11 +454,7 @@
                             style="@style/Card"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@null"
-                            android:layout_marginLeft="0.75dp"
-                            android:layout_marginTop="0.75dp"
-                            android:layout_marginRight="0.75dp"
-                            android:layout_marginBottom="-35dp"
+                            android:layout_marginBottom="@dimen/n_panel_round"
                             android:clipChildren="false"
                             android:clipToPadding="false"
                             android:orientation="horizontal">

@@ -227,4 +227,7 @@
     <string name="bug_report">Bug report</string>
     <string name="suggestion">Suggestion</string>
     <string name="automatically_generated_event_text">Automatically generated event from the koller application.</string>
+    <string name="send">Send</string>
+    <string name="already_reported">Already reported</string>
+    <string name="already_suggested">Already reported</string>
 </resources>

@@ -260,4 +260,7 @@
     <string name="bug_report">Hiba jelentés</string>
     <string name="suggestion">Javaslat</string>
     <string name="automatically_generated_event_text">Automatikusan generált esemény a koller applikációból.</string>
+    <string name="send">Küldés</string>
+    <string name="already_reported">Már reportolt</string>
+    <string name="already_suggested">Már javasolt</string>
 </resources>
