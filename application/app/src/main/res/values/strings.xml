@@ -263,4 +263,6 @@
     <string name="send">Küldés</string>
     <string name="already_reported">Már reportolt</string>
     <string name="already_suggested">Már javasolt</string>
+    <string name="pending">Folyamatban</string>
+    <string name="not_a_bug">Nem hiba</string>
 </resources>

@@ -12,6 +12,8 @@ import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.koller.DataStoreManager
+import com.example.koller.DevicesActivity
+import com.example.koller.FeedbackActivity
 import com.example.koller.MyApplication
 import com.example.koller.R
 import com.example.koller.activities.SettingsActivity
@@ -120,6 +122,14 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
+        val cardDevices: View = view.findViewById(R.id.profile_card_devices)
+
+        cardDevices.setOnClickListener{
+            val intent = Intent(view.context, DevicesActivity::class.java)
+            startActivity(intent)
+            this.dismiss()
+        }
+
         val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
 
         fbtnSettings.setOnClickListener{
@@ -190,6 +200,21 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
+        val cardBug: View = view.findViewById(R.id.profile_card_bug)
+
+        cardBug.setOnClickListener{
+            val intent = Intent(view.context, FeedbackActivity::class.java)
+            startActivity(intent)
+            this.dismiss()
+        }
+
+        val cardIdea: View = view.findViewById(R.id.profile_card_idea)
+
+        cardIdea.setOnClickListener{
+            val intent = Intent(view.context, FeedbackActivity::class.java)
+            startActivity(intent)
+            this.dismiss()
+        }
 
         val fbtnEmail: View = view.findViewById(R.id.profile_fbtn_email)
 

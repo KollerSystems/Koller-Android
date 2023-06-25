@@ -230,4 +230,6 @@
     <string name="send">Send</string>
     <string name="already_reported">Already reported</string>
     <string name="already_suggested">Already reported</string>
+    <string name="pending">Pending</string>
+    <string name="not_a_bug">Not a bug</string>
 </resources>

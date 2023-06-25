@@ -173,6 +173,7 @@
                             custom:text="@string/port_exits_and_entrances" />
 
                         <com.example.koller.SimpleCardButton
+                            android:id="@+id/profile_card_devices"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/devices"
@@ -674,12 +675,14 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.example.koller.SimpleCardButton
+                            android:id="@+id/profile_card_bug"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/bug"
                             custom:text="@string/bug_report" />
 
                         <com.example.koller.SimpleCardButton
+                            android:id="@+id/profile_card_idea"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/lamp"
