@@ -27,7 +27,7 @@ class CalendarProgramsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_calendar_programs, container, false)
 
-        eventsRecyclerView = view.findViewById(R.id.calendar_programs_recycle_view)
+        eventsRecyclerView = view.findViewById(R.id.recycler_view)
         eventsRecyclerView.layoutManager = LinearLayoutManager(context)
         eventsRecyclerView.setHasFixedSize(true)
 

@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
@@ -20,6 +22,7 @@ import com.example.koller.data.TodayData
 import com.example.koller.data.UserData
 import com.example.koller.recycleradapter.UserRecycleAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 
 class DayFragment : Fragment() {
 
@@ -34,6 +37,7 @@ class DayFragment : Fragment() {
 
     private lateinit var panelDutyMax: ViewGroup
     private lateinit var panelDutyMin: ViewGroup
+    private lateinit var panelDutyDragHandle: BottomSheetDragHandleView
 
     private lateinit var textSleepEnd : TextView
     private lateinit var textDaytimeOut : TextView
@@ -56,6 +60,7 @@ class DayFragment : Fragment() {
         textNighttimeOut = view.findViewById(R.id.calendar_day_text_nighttime_out_time)
         textNighttimeIn = view.findViewById(R.id.calendar_day_text_night_time_in_time)
         textSleepStart = view.findViewById(R.id.calendar_day_text_sleep_start_time)
+        panelDutyDragHandle = view.findViewById(R.id.drag_handle)
 
         textSleepEnd.text = MyApplication.timeTo(DefaultDayTimes.instance.dayTimeStart)
         textDaytimeOut.text = MyApplication.timeFromTo(DefaultDayTimes.instance.dayTimeStart, DefaultDayTimes.instance.dayTimeGoInside)
@@ -63,6 +68,7 @@ class DayFragment : Fragment() {
         textNighttimeOut.text = MyApplication.timeFromTo(DefaultDayTimes.instance.lessons[DefaultDayTimes.instance.lessons.size-1].to, DefaultDayTimes.instance.nightTimeGoInsideYellow)
         textNighttimeIn.text = MyApplication.timeFromTo(DefaultDayTimes.instance.nightTimeGoInsideYellow, DefaultDayTimes.instance.nightTimeEnd)
         textSleepStart.text = MyApplication.timeFrom(DefaultDayTimes.instance.nightTimeEnd)
+
 
 
 
@@ -89,17 +95,19 @@ class DayFragment : Fragment() {
         bottomSheetDuty = view.findViewById(R.id.bottom_sheet_duty)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetDuty);
 
+        bottomSheetDuty.post{
+            panelDutyMax = view.findViewById(R.id.panel_duty_full)
+            panelDutyMin = view.findViewById(R.id.panel_duty_min)
 
-        panelDutyMax = view.findViewById(R.id.panel_duty_full)
-        panelDutyMin = view.findViewById(R.id.panel_duty_min)
 
-        var navHeight = 0f
-        bottomSheetBehavior.peekHeight = panelDutyMin.height
-        val resourceId = resources.getIdentifier("status_bar_height", "dimen", "android")
-        if (resourceId > 0) {
-            navHeight = resources.getDimensionPixelSize(resourceId).toFloat()
+            val fullMinHeight = panelDutyMin.height + panelDutyDragHandle.height
+            bottomSheetBehavior.peekHeight = fullMinHeight
+
+            Toast.makeText(requireContext(), fullMinHeight.toString(), Toast.LENGTH_SHORT).show()
+
+            view.findViewById<LinearLayout>(R.id.mcard_night).setPadding(0,0,0,fullMinHeight)
         }
-        bottomSheetDuty.translationY = navHeight
+
 
 
         bottomSheetBehavior.addBottomSheetCallback(object :
@@ -110,7 +118,7 @@ class DayFragment : Fragment() {
                 panelDutyMin.alpha = (((slideOffset -1) * 2) * -1) -1
                 (parentFragment as CalendarDaysFragment).viewPager.isUserInputEnabled = false
 
-                bottomSheetDuty.translationY = (navHeight * (slideOffset * -1 + 1))
+                bottomSheetDuty.translationY = (slideOffset * -1 + 1)
 
             }
 
@@ -147,6 +155,7 @@ class LessonsRecyclerAdapter (private val lessonList : ArrayList<FromTo>) : Recy
 
     override fun onBindViewHolder(holder: LessonsViewHolder, position: Int) {
         val currentItem = lessonList[position]
+        MyApplication.roundRecyclerItemsVertically(holder.itemView.context, holder.itemView, position, lessonList.size)
         holder.title.text = "Title"
         holder.place.text = "Place"
         holder.index.text = (position+1).toString()+"."

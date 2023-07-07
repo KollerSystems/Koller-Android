@@ -27,7 +27,7 @@ class CalendarCanteenFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_calendar_canteen, container, false)
 
-        canteenRecyclerView = view.findViewById(R.id.canteen_recycle_view)
+        canteenRecyclerView = view.findViewById(R.id.recycler_view)
         canteenRecyclerView.layoutManager = LinearLayoutManager(context)
         canteenRecyclerView.setHasFixedSize(true)
 
