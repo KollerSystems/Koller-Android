@@ -1,8 +1,6 @@
 package com.example.koller.activities
 
-import android.R.attr.button
 import android.R.attr.colorForeground
-import android.graphics.Color
 import android.graphics.Typeface
 import android.os.Bundle
 import android.text.SpannableString
@@ -11,23 +9,17 @@ import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.widget.Button
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.constraintlayout.utils.widget.MotionLabel
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.navOptions
 import androidx.navigation.ui.setupWithNavController
-import com.example.koller.MyApplication
+import com.example.shared.MyApplication
 import com.example.koller.R
-import com.example.koller.fragments.bottomsheet.ProfileBottomSheet
+import com.example.shared.fragments.bottomsheet.ProfileBottomSheet
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.AppBarLayout.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -146,7 +138,8 @@ class MainActivity : AppCompatActivity() {
             else{
 
                 backButton.visibility = VISIBLE
-                mainTitle.setPadding(defaultTitlePadding,0,defaultTitlePadding,MyApplication.convertSpToPixel(7, this))
+                mainTitle.setPadding(defaultTitlePadding,0,defaultTitlePadding,
+                    MyApplication.convertSpToPixel(7, this))
             }
 
             appBar.setExpanded(false)
@@ -170,22 +163,11 @@ class MainActivity : AppCompatActivity() {
 
     public fun NFCSuccess(){
         MaterialAlertDialogBuilder(this@MainActivity)
-    .setTitle(R.string.nfc_success)
-    .setIcon(R.drawable.done_thick)
+    .setTitle(com.example.shared.R.string.nfc_success)
+    .setIcon(com.example.shared.R.drawable.done_thick)
     .setPositiveButton(
-        R.string.ok
+        com.example.shared.R.string.ok
     ) { dialogInterface, i -> }
     .show()
     }
-}
-
-fun NavController.navigateWithDefaultAnimation(directions: Int) {
-    navigate(directions, null, navOptions {
-        anim {
-            enter = androidx.navigation.ui.R.anim.nav_default_enter_anim
-            exit = androidx.navigation.ui.R.anim.nav_default_exit_anim
-            popEnter = androidx.navigation.ui.R.anim.nav_default_enter_anim
-            popExit = androidx.navigation.ui.R.anim.nav_default_exit_anim
-        }
-    })
 }

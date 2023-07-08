@@ -8,7 +8,7 @@
 
     <fragment
         android:id="@+id/notificationsFragment"
-        android:name="com.example.koller.fragments.NotificationsFragment"
+        android:name="com.example.shared.fragments.NotificationsFragment"
         android:label="@string/notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
@@ -58,7 +58,7 @@
         </fragment>
         <fragment
             android:id="@+id/roomsFragment"
-            android:name="com.example.koller.fragments.RoomsFragment"
+            android:name="com.example.shared.fragments.RoomsFragment"
             android:label="@string/places">
             <action
                 android:id="@+id/action_roomsFragment_to_roomFragment"
@@ -66,7 +66,7 @@
         </fragment>
         <fragment
             android:id="@+id/usersFragment"
-            android:name="com.example.koller.fragments.UsersFragment"
+            android:name="com.example.shared.fragments.UsersFragment"
             android:label="@string/people"
             tools:layout="@layout/fragment_rooms">
             <action
@@ -75,7 +75,7 @@
         </fragment>
         <fragment
             android:id="@+id/userFragment"
-            android:name="com.example.koller.fragments.UserFragment"
+            android:name="com.example.shared.fragments.UserFragment"
             android:label="@string/user">
             <action
                 android:id="@+id/action_userFragment_to_userGateFragment"
@@ -92,16 +92,16 @@
         </fragment>
         <fragment
             android:id="@+id/userOutgoingFragment"
-            android:name="com.example.koller.fragments.UserOutgoingFragment"
+            android:name="com.example.shared.fragments.UserOutgoingFragment"
             android:label="Kimenők"
             tools:layout="@layout/fragment_user_outgoing" />
         <fragment
             android:id="@+id/userGateFragment"
-            android:name="com.example.koller.fragments.UserGateFragment"
+            android:name="com.example.shared.fragments.UserGateFragment"
             android:label="Ki- és belépések" />
         <fragment
             android:id="@+id/roomFragment"
-            android:name="com.example.koller.fragments.RoomFragment"
+            android:name="com.example.shared.fragments.RoomFragment"
             android:label="Szoba"
             tools:layout="@layout/fragment_room">
             <action
@@ -124,7 +124,7 @@
         </fragment>
         <fragment
             android:id="@+id/postsFragment"
-            android:name="com.example.koller.fragments.PostsFragment"
+            android:name="com.example.shared.fragments.PostsFragment"
             android:label="@string/posts"
             tools:layout="@layout/fragment_posts">
             <action

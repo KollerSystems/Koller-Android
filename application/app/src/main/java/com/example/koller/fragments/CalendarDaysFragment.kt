@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.TooltipCompat
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.koller.R
+import com.example.shared.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.*
@@ -28,7 +28,7 @@ class CalendarDaysFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_calendar_days, container, false)
 
-        days = arrayOf(getString(com.example.koller.R.string.monday), getString(R.string.tuesday), getString(R.string.wednesday), getString(R.string.thursday), getString(R.string.friday), getString(R.string.saturday), getString(R.string.sunday))
+        days = arrayOf(getString(R.string.monday), getString(R.string.tuesday), getString(R.string.wednesday), getString(R.string.thursday), getString(R.string.friday), getString(R.string.saturday), getString(R.string.sunday))
 
         viewPager = view.findViewById(R.id.calendar_days_view_pager)
         viewPager.adapter = CalendarDayAdapter(this)

@@ -8,19 +8,17 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
-import androidx.core.view.marginBottom
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.koller.*
+import com.example.shared.R
 import com.example.koller.activities.MainActivity
-import com.example.koller.data.DefaultDayTimes
-import com.example.koller.data.FromTo
-import com.example.koller.data.TodayData
-import com.example.koller.data.UserData
-import com.example.koller.recycleradapter.UserRecycleAdapter
+import com.example.shared.MyApplication
+import com.example.shared.data.DefaultDayTimes
+import com.example.shared.data.FromTo
+import com.example.shared.data.UserData
+import com.example.shared.recycleradapter.UserRecycleAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 
@@ -52,15 +50,15 @@ class DayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view : View = inflater.inflate(R.layout.fragment_day, container, false)
+        val view : View = inflater.inflate(com.example.koller.R.layout.fragment_day, container, false)
 
-        textSleepEnd = view.findViewById(R.id.calendar_day_text_sleep_end_time)
-        textDaytimeOut = view.findViewById(R.id.calendar_day_text_daytime_out_time)
-        textDaytimeIn = view.findViewById(R.id.calendar_day_text_daytime_in_time)
-        textNighttimeOut = view.findViewById(R.id.calendar_day_text_nighttime_out_time)
-        textNighttimeIn = view.findViewById(R.id.calendar_day_text_night_time_in_time)
-        textSleepStart = view.findViewById(R.id.calendar_day_text_sleep_start_time)
-        panelDutyDragHandle = view.findViewById(R.id.drag_handle)
+        textSleepEnd = view.findViewById(com.example.koller.R.id.calendar_day_text_sleep_end_time)
+        textDaytimeOut = view.findViewById(com.example.koller.R.id.calendar_day_text_daytime_out_time)
+        textDaytimeIn = view.findViewById(com.example.koller.R.id.calendar_day_text_daytime_in_time)
+        textNighttimeOut = view.findViewById(com.example.koller.R.id.calendar_day_text_nighttime_out_time)
+        textNighttimeIn = view.findViewById(com.example.koller.R.id.calendar_day_text_night_time_in_time)
+        textSleepStart = view.findViewById(com.example.koller.R.id.calendar_day_text_sleep_start_time)
+        panelDutyDragHandle = view.findViewById(com.example.koller.R.id.drag_handle)
 
         textSleepEnd.text = MyApplication.timeTo(DefaultDayTimes.instance.dayTimeStart)
         textDaytimeOut.text = MyApplication.timeFromTo(DefaultDayTimes.instance.dayTimeStart, DefaultDayTimes.instance.dayTimeGoInside)
@@ -72,14 +70,14 @@ class DayFragment : Fragment() {
 
 
 
-        val ediaryButton: Button = view.findViewById(R.id.ediary_button)
+        val ediaryButton: Button = view.findViewById(com.example.koller.R.id.ediary_button)
 
         ediaryButton.setOnClickListener{
 
         }
 
 
-        usersRecyclerView = view.findViewById(R.id.on_duty_recycler_view)
+        usersRecyclerView = view.findViewById(com.example.koller.R.id.on_duty_recycler_view)
         usersRecyclerView.layoutManager = LinearLayoutManager(context)
         usersRecyclerView.setHasFixedSize(true)
 
@@ -92,20 +90,18 @@ class DayFragment : Fragment() {
 
         usersRecyclerView.adapter = UserRecycleAdapter(todayDataArrayList, requireContext())
 
-        bottomSheetDuty = view.findViewById(R.id.bottom_sheet_duty)
+        bottomSheetDuty = view.findViewById(com.example.koller.R.id.bottom_sheet_duty)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetDuty);
 
         bottomSheetDuty.post{
-            panelDutyMax = view.findViewById(R.id.panel_duty_full)
-            panelDutyMin = view.findViewById(R.id.panel_duty_min)
+            panelDutyMax = view.findViewById(com.example.koller.R.id.panel_duty_full)
+            panelDutyMin = view.findViewById(com.example.koller.R.id.panel_duty_min)
 
 
             val fullMinHeight = panelDutyMin.height + panelDutyDragHandle.height
             bottomSheetBehavior.peekHeight = fullMinHeight
 
-            Toast.makeText(requireContext(), fullMinHeight.toString(), Toast.LENGTH_SHORT).show()
-
-            view.findViewById<LinearLayout>(R.id.mcard_night).setPadding(0,0,0,fullMinHeight)
+            view.findViewById<LinearLayout>(com.example.koller.R.id.mcard_night).setPadding(0,0,0,fullMinHeight)
         }
 
 
@@ -129,13 +125,13 @@ class DayFragment : Fragment() {
             }
         })
 
-        var textCloseDutyName : TextView = view.findViewById(R.id.text_close_duty_name)
+        var textCloseDutyName : TextView = view.findViewById(com.example.koller.R.id.text_close_duty_name)
         textCloseDutyName.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = R.id.studentHostelNest
-            Navigation.findNavController(view).navigate(R.id.userFragment)
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = com.example.koller.R.id.studentHostelNest
+            Navigation.findNavController(view).navigate(com.example.koller.R.id.userFragment)
         }
 
-        lessonsRecyclerView = view.findViewById(R.id.calendar_day_recycleview)
+        lessonsRecyclerView = view.findViewById(com.example.koller.R.id.calendar_day_recycleview)
         lessonsRecyclerView.layoutManager = LinearLayoutManager(context)
         lessonsRecyclerView.setHasFixedSize(true)
 

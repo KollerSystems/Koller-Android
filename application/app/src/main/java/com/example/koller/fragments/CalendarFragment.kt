@@ -10,6 +10,9 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.koller.*
+import com.example.shared.R
+import com.example.shared.fragments.CalendarCanteenFragment
+import com.example.shared.fragments.CalendarProgramsFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 

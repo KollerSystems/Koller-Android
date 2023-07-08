@@ -14,7 +14,7 @@ import androidx.core.animation.doOnEnd
 import androidx.core.view.WindowCompat
 import androidx.core.view.size
 import androidx.viewpager2.widget.ViewPager2
-import com.example.koller.R
+import com.example.shared.R
 import com.example.koller.fragments.WelcomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -36,11 +36,11 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_welcome)
+        setContentView(com.example.koller.R.layout.activity_welcome)
 
-        tabs = findViewById(R.id.welcome_tabs)
-        val btnNavigation: CardView = findViewById(R.id.welcome_btn_navigation)
-        viewPager = findViewById(R.id.welcome_view_pager)
+        tabs = findViewById(com.example.koller.R.id.welcome_tabs)
+        val btnNavigation: CardView = findViewById(com.example.koller.R.id.welcome_btn_navigation)
+        viewPager = findViewById(com.example.koller.R.id.welcome_view_pager)
         viewPager.isUserInputEnabled = false
 
         val adapter = WelcomeFragmentAdapter(supportFragmentManager, lifecycle)
@@ -74,8 +74,8 @@ class WelcomeActivity : AppCompatActivity() {
 
         }.attach()
 
-        val btnBackward : Button = findViewById(R.id.welcome_backward)
-        val btnForward : Button = findViewById(R.id.welcome_foreward)
+        val btnBackward : Button = findViewById(com.example.koller.R.id.welcome_backward)
+        val btnForward : Button = findViewById(com.example.koller.R.id.welcome_foreward)
 
         btnBackward.setOnClickListener(){
             ScrollBackward()

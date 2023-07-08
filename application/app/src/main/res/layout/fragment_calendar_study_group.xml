@@ -178,7 +178,7 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.example.koller.SuperCoolRecyclerView
+    <com.example.shared.SuperCoolRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

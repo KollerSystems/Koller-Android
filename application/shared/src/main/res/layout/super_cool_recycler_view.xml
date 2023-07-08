@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_scroll_to_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="@dimen/application_padding"
+        android:layout_marginBottom="@dimen/application_padding"
+        android:clickable="true"
+        android:src="@drawable/up" />
+
+    <TextView
+        android:id="@+id/text_view_recycler_view_header"
+        style="@style/CategoryCardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@null"
+        android:layout_marginTop="@null"
+        android:background="?android:attr/windowBackground"
+        android:outlineProvider="none"
+        android:paddingHorizontal="30dp"
+        android:paddingVertical="@dimen/text_container_margin"
+        android:text="Július 12."
+        android:translationZ="1dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        style="@style/MainCardLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/full_card_padding"
+        android:paddingBottom="85dp"
+        tools:listitem="@layout/notification_panel" />
+</FrameLayout>

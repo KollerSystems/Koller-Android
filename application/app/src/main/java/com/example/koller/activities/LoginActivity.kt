@@ -1,8 +1,5 @@
 package com.example.koller.activities
 
-import com.example.koller.api.APIInterface
-import com.example.koller.data.ApiLoginTokensData
-import com.example.koller.api.RetrofitHelper
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -14,19 +11,21 @@ import android.widget.LinearLayout
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.example.koller.DataStoreManager
-import com.example.koller.MyApplication
-import com.example.koller.R
-import com.example.koller.data.ApiErrorData
-import com.example.koller.data.ApiLoginData
-import com.example.koller.data.UserData
+import com.example.shared.DataStoreManager
+import com.example.shared.MyApplication
+import com.example.shared.R
+import com.example.shared.api.APIInterface
+import com.example.shared.api.RetrofitHelper
+import com.example.shared.data.ApiErrorData
+import com.example.shared.data.ApiLoginData
+import com.example.shared.data.ApiLoginTokensData
+import com.example.shared.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import kotlinx.coroutines.launch
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

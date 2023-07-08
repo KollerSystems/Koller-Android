@@ -9,27 +9,26 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.example.koller.*
-import com.example.koller.activities.CreateNewPostActivity
+import com.example.koller.R
+import com.example.shared.R as Rs
+import com.example.shared.activities.CreateNewPostActivity
 import com.example.koller.activities.MainActivity
 import com.example.koller.activities.SettingsActivity
-import com.example.koller.activities.navigateWithDefaultAnimation
-import com.example.koller.data.DefaultDayTimes
-import com.example.koller.data.EventsData
-import com.example.koller.data.TodayData
-import com.example.koller.fragments.bottomsheet.BottomFragmentPostTypes
-import com.example.koller.recycleradapter.EventsRecyclerAdapter
-import com.example.koller.recycleradapter.TodayRecyclerAdapter
+import com.example.shared.MyApplication
+import com.example.shared.data.DefaultDayTimes
+import com.example.shared.data.EventsData
+import com.example.shared.data.TodayData
+import com.example.shared.fragments.bottomsheet.BottomFragmentPostTypes
+import com.example.shared.navigateWithDefaultAnimation
+import com.example.shared.recycleradapter.EventsRecyclerAdapter
+import com.example.shared.recycleradapter.TodayRecyclerAdapter
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -146,12 +145,12 @@ class HomeFragment : Fragment() {
                 var outStringId : Int = 0
                 var remainStringId : Int = 0
                 if(false){ // inside
-                    outStringId = R.string.go_out_text
-                    remainStringId = R.string.will_remain
+                    outStringId = Rs.string.go_out_text
+                    remainStringId = Rs.string.will_remain
                 }
                 else{
-                    outStringId = R.string.stay_out_text
-                    remainStringId = R.string.now_remain
+                    outStringId = Rs.string.stay_out_text
+                    remainStringId = Rs.string.now_remain
                 }
                 textStayOutTop.text = getString(outStringId, nightTimeGoInsideForText)
 
@@ -177,18 +176,18 @@ class HomeFragment : Fragment() {
                             var hoursString : String
                             if(minutesWithoutHoursUntilFinished != 0){
                                 if(hoursUntilFinished > 1) {
-                                    hoursString = getString(R.string.hours)
+                                    hoursString = getString(Rs.string.hours)
                                 }
                                 else{
-                                    hoursString = getString(R.string.hour)
+                                    hoursString = getString(Rs.string.hour)
                                 }
                             }
                             else{
                                 if(hoursUntilFinished > 1) {
-                                    hoursString = getString(R.string.hours_infelcted)
+                                    hoursString = getString(Rs.string.hours_infelcted)
                                 }
                                 else{
-                                    hoursString = getString(R.string.hour_inflected)
+                                    hoursString = getString(Rs.string.hour_inflected)
                                 }
                             }
                             remainText += "$hoursUntilFinished $hoursString "
@@ -197,10 +196,10 @@ class HomeFragment : Fragment() {
 
                             var minutesString : String
                             if(minutesWithoutHoursUntilFinished > 1) {
-                                minutesString = getString(R.string.minutes_infelcted)
+                                minutesString = getString(Rs.string.minutes_infelcted)
                             }
                             else{
-                                minutesString = getString(R.string.minute)
+                                minutesString = getString(Rs.string.minute)
                             }
 
                             remainText += "$minutesWithoutHoursUntilFinished $minutesString "
@@ -304,10 +303,10 @@ class HomeFragment : Fragment() {
                     textLessonsSilenceWarning.visibility = GONE
 
 
-                    textLessonsTitle.text = getText(R.string.pause)
-                    textLessonsDescription.text = getText(R.string.pause_description)
+                    textLessonsTitle.text = getText(Rs.string.pause)
+                    textLessonsDescription.text = getText(Rs.string.pause_description)
                     textLessonsNumber.text = ""
-                    textLessonsNumber.background = requireContext().getDrawable(R.drawable.pause)
+                    textLessonsNumber.background = requireContext().getDrawable(Rs.drawable.pause)
                     textLessonsTime.text = MyApplication.timeFromTo(currentLessonTime.to, nextLessonTime.from)
 
                     startTimerForLessons(viewLessonSlider, currentLessonTime.to, nextLessonTime.from)
@@ -342,8 +341,8 @@ class HomeFragment : Fragment() {
         todayRecyclerView.setHasFixedSize(true)
 
         todayDataArrayList = arrayListOf(
-            TodayData(false, context?.getDrawable(R.drawable.room), getString(R.string.room_order), "K, P", "4,"),
-            TodayData(false, context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
+            TodayData(false, context?.getDrawable(Rs.drawable.room), getString(Rs.string.room_order), "K, P", "4,"),
+            TodayData(false, context?.getDrawable(Rs.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
             )
         )
 
@@ -359,7 +358,7 @@ class HomeFragment : Fragment() {
         unreadRecyclerView.setHasFixedSize(true)
 
         unreadDataArrayList = arrayListOf(
-            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(R.string.perfect), "5")
+            TodayData(false, context?.getDrawable(Rs.drawable.room),getString(Rs.string.room_order), getString(Rs.string.perfect), "5")
             )
 
         unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList, requireContext())
@@ -379,14 +378,14 @@ class HomeFragment : Fragment() {
             }
 
             fabRoot.post(Runnable {
-                dialog.view?.findViewById<View>(R.id.post_type_ly_post)?.setOnClickListener{
-                    openCreateNewPostActivity(getString(R.string.general_post))
+                dialog.view?.findViewById<View>(Rs.id.post_type_ly_post)?.setOnClickListener{
+                    openCreateNewPostActivity(getString(Rs.string.general_post))
                 }
-                dialog.view?.findViewById<View>(R.id.post_type_ly_program)?.setOnClickListener{
-                    openCreateNewPostActivity(getString(R.string.program))
+                dialog.view?.findViewById<View>(Rs.id.post_type_ly_program)?.setOnClickListener{
+                    openCreateNewPostActivity(getString(Rs.string.program))
                 }
-                dialog.view?.findViewById<View>(R.id.post_type_ly_news)?.setOnClickListener{
-                    openCreateNewPostActivity(getString(R.string.news_one))
+                dialog.view?.findViewById<View>(Rs.id.post_type_ly_news)?.setOnClickListener{
+                    openCreateNewPostActivity(getString(Rs.string.news_one))
                 }
             })
 

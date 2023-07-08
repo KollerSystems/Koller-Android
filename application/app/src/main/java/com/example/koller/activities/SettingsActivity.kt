@@ -6,8 +6,7 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
-import com.example.koller.MyApplication
-import com.example.koller.R
+import com.example.shared.R
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputEditText
@@ -45,18 +44,18 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_settings)
+        setContentView(com.example.koller.R.layout.activity_settings)
 
 
         findViewById<Button>(R.id.toolbar_exit).setOnClickListener{
             onBackPressed()
         }
 
-        val timeOffsetSlider : Slider = findViewById(R.id.settings_slider_time_offset)
+        val timeOffsetSlider : Slider = findViewById(com.example.koller.R.id.settings_slider_time_offset)
         var c : Calendar = Calendar.getInstance()
         val hours : Float = (c.get(Calendar.SECOND)  / 60f / 60f+ c.get(Calendar.MINUTE) / 60f + c.get(Calendar.HOUR_OF_DAY))
-        var hoursTIL : TextInputLayout = findViewById(R.id.settings_til_hours)
-        var hoursTIET : TextInputEditText = findViewById(R.id.settings_tiet_hours)
+        var hoursTIL : TextInputLayout = findViewById(com.example.koller.R.id.settings_til_hours)
+        var hoursTIET : TextInputEditText = findViewById(com.example.koller.R.id.settings_tiet_hours)
         hoursTIET.setText((timeOffset).toString())
 
 
@@ -96,10 +95,10 @@ class SettingsActivity : AppCompatActivity() {
         })
 
 
-        val checkBoxParent: MaterialCheckBox = findViewById(R.id.notifics_all)
-        val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(R.id.notifics_arrival), findViewById(
-            R.id.notifics_new
-        ), findViewById(R.id.notifics_room), findViewById(R.id.notifics_occupation), findViewById(R.id.notifics_comm_or_warn))
+        val checkBoxParent: MaterialCheckBox = findViewById(com.example.koller.R.id.notifics_all)
+        val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(com.example.koller.R.id.notifics_arrival), findViewById(
+            com.example.koller.R.id.notifics_new
+        ), findViewById(com.example.koller.R.id.notifics_room), findViewById(com.example.koller.R.id.notifics_occupation), findViewById(com.example.koller.R.id.notifics_comm_or_warn))
 
         // Parent's checked state changed listener
         val parentOnCheckedStateChangedListener =

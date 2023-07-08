@@ -30,7 +30,9 @@
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/full_card_padding"
                 android:paddingTop="0dp"
+                android:paddingRight="@dimen/full_card_padding"
                 android:paddingBottom="0dp">
 
                 <com.google.android.material.card.MaterialCardView
@@ -175,7 +177,7 @@
                         android:layout_gravity="bottom|center_horizontal"
                         android:layout_weight="1"
                         android:text="@string/open_ediary"
-                        app:icon="@drawable/open_in_new_thick"
+                        app:icon="@drawable/open_in_new"
                         app:iconGravity="textEnd" />
 
                 </com.google.android.material.card.MaterialCardView>
