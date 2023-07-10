@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/outline"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_marginBottom="@dimen/application_padding"
+        app:cardCornerRadius="9999dp"
+        app:contentPadding="20dp"
+        app:strokeColor="?attr/colorYellow"
+        app:strokeWidth="20dp">
+
+        <ImageView
+            android:id="@+id/user_image_pfp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:background="@drawable/circle"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            app:srcCompat="@drawable/person" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/user_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        android:textAlignment="center"
+        android:textAppearance="@style/MainTitle" />
+
+    <TextView
+        android:id="@+id/user_text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/spacing"
+        android:text="@android:string/unknownName"
+        android:textAlignment="center"
+        android:textColor="?colorForeground066" />
+</LinearLayout>

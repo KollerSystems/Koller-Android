@@ -37,9 +37,6 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.FullScreenImageActivity"
-            android:exported="false" />
-        <activity
             android:name="com.example.shared.activities.CreateNewPostActivity"
             android:exported="false" />
         <activity

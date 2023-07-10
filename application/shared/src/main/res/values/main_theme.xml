@@ -34,6 +34,22 @@
         <item name="android:minHeight">0dp</item>
     </style>
 
+    <style name="button_outline" parent="@style/button">
+        <item name="backgroundTint">@android:color/transparent</item>
+        <item name="strokeColor">@color/m3_button_outline_color_selector</item>
+        <item name="android:textColor">?android:attr/colorPrimary</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+
+    <style name="button_icon" parent="@style/button">
+        <item name="android:paddingLeft">16dp</item>
+    </style>
+
+    <style name="button_outline_icon" parent="@style/button_outline">
+        <item name="android:paddingLeft">16dp</item>
+        <item name="iconTint">?android:attr/colorPrimary</item>
+    </style>
+
     <style name="iconButton" parent="@style/button">
         <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
         <item name="android:paddingRight">@dimen/button_vertical_padding</item>
@@ -117,6 +133,7 @@
         <item name="android:textAppearance">@style/chipButtonTextStyle</item>
         <item name="checkedIconEnabled">false</item>
         <item name="checkedIcon">@null</item>
+        <item name="chipMinTouchTargetSize">0dp</item>
     </style>
 
     <style name="chipDropdownButtonFilterStyle" parent="@style/chipButtonFilterStyle">
@@ -331,6 +348,7 @@
         <item name="shapeAppearance">@null</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:outlineProvider">none</item>
+        <item name="cardPreventCornerOverlap">false</item>
     </style>
 
     <style name="CardHeader" parent="Card">

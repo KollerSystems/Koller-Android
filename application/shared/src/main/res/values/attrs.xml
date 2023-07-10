@@ -21,10 +21,18 @@
     <attr name="colorRedInverse" format="reference|color" />
     <attr name="colorGreenInverse" format="reference|color" />
 
+
+    <attr name="text" format="string" />
+
     <declare-styleable name="simpleCardButton">
-        <attr name="text" format="string" />
+        <attr name="text"/>
         <attr name="description" format="string" />
+        <attr name="badge" format="integer" />
         <attr name="icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="tipView">
+        <attr name="text"/>
     </declare-styleable>
 
 

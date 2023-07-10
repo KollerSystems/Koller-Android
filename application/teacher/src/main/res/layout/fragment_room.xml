@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    custom:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
+    tools:context=".fragments.RoomFragment">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            style="@style/MainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            tools:context=".fragments.RoomFragment">
+
+            <include
+                layout="@layout/view_room_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/textView42"
+                style="@style/CategoryCardName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/manage_room" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/MainCard"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    style="@style/MainCardLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <com.example.shared.SimpleCardButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:icon="@drawable/clean"
+                        custom:text="@string/room_order">
+
+                    </com.example.shared.SimpleCardButton>
+
+                    <com.example.shared.SimpleCardButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:icon="@drawable/person_wave"
+                        custom:text="@string/presence">
+
+                    </com.example.shared.SimpleCardButton>
+
+                    <com.example.shared.SimpleCardButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:icon="@drawable/error"
+                        custom:text="@string/bug_report">
+
+                    </com.example.shared.SimpleCardButton>
+
+                    <com.example.shared.SimpleCardButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:badge="9"
+                        custom:icon="@drawable/flag"
+                        custom:text="@string/reports">
+
+                    </com.example.shared.SimpleCardButton>
+
+                    <com.example.shared.SimpleCardButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:icon="@drawable/pencil"
+                        custom:text="@string/edit">
+
+                    </com.example.shared.SimpleCardButton>
+
+                    <com.example.shared.SimpleCardButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:icon="@drawable/close"
+                        custom:text="@string/remove">
+
+                    </com.example.shared.SimpleCardButton>
+
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <include
+        layout="@layout/view_full_screen_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:visibility="gone" />
+
+
+</FrameLayout>

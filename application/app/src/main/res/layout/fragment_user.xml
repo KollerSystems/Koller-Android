@@ -25,47 +25,11 @@
             tools:context=".fragments.UserFragment">
 
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/outline"
+            <include
+                android:id="@+id/include_header"
+                layout="@layout/view_user_header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/application_padding"
-                android:layout_marginBottom="@dimen/application_padding"
-                app:cardCornerRadius="9999dp"
-                app:contentPadding="20dp"
-                app:strokeColor="?attr/colorYellow"
-                app:strokeWidth="20dp">
-
-                <ImageView
-                    android:id="@+id/user_image_pfp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@drawable/circle"
-                    android:backgroundTint="?attr/colorPrimaryContainer"
-                    app:srcCompat="@drawable/person" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <TextView
-                android:id="@+id/user_text_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@android:string/unknownName"
-                android:textAlignment="center"
-                android:textAppearance="@style/MainTitle"
-                tools:layout_conversion_absoluteHeight="0dp"
-                tools:layout_conversion_absoluteWidth="0dp" />
-
-            <TextView
-                android:id="@+id/user_text_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing"
-                android:text="@android:string/unknownName"
-                android:textAlignment="center"
-                android:textColor="?colorForeground066"
-                tools:layout_conversion_absoluteHeight="0dp"
-                tools:layout_conversion_absoluteWidth="0dp" />
+                android:layout_height="wrap_content" />
 
             <TextView
                 android:id="@+id/textView43"
@@ -346,21 +310,12 @@
     </androidx.core.widget.NestedScrollView>
 
 
-    <androidx.cardview.widget.CardView
+    <include
         android:id="@+id/loading_overlay"
+        layout="@layout/view_full_screen_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardBackgroundColor="?android:attr/colorBackground"
-        app:cardElevation="0dp"
-        tools:visibility="gone">
-
-        <ProgressBar
-            android:id="@+id/progressBar3"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" />
-    </androidx.cardview.widget.CardView>
+        tools:visibility="gone" />
 
 
 </FrameLayout>

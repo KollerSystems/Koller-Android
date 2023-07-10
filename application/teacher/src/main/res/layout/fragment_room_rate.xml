@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".fragments.RoomRateFragment" >
+
+    <com.example.shared.SuperCoolRecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </com.example.shared.SuperCoolRecyclerView>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/full_card_padding"
+        app:cardPreventCornerOverlap="false"
+        app:shapeAppearanceOverlay="@style/overlayRoundedCardBottom">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/text_container_margin"
+                android:text="Osztályzat"
+                android:textAppearance="@style/Title" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/create_new_post_til_place"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/spacing"
+                android:layout_marginRight="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:layout_weight="0"
+                app:endIconDrawable="@drawable/arrow_drop"
+                app:endIconMode="custom">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="-"
+                    android:textAppearance="@style/Title" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/header_footer_size"
+        android:layout_weight="0"
+        android:gravity="right|center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="@dimen/HeaderMarginHorizontal">
+
+        <Button
+            android:id="@+id/button_close"
+            style="@style/button_outline_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/remove"
+            app:icon="@drawable/close" />
+
+        <Space
+            android:layout_width="@dimen/spacing"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/button4"
+            style="@style/button_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/publish"
+            app:icon="@drawable/send" />
+    </LinearLayout>
+
+</LinearLayout>

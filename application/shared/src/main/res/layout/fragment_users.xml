@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,20 +24,30 @@
             android:clipToPadding="false"
             android:orientation="vertical">
 
+            <com.example.shared.TipView
+                android:id="@+id/tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:text="Egy NFC-s eszköz közelítésével azonnal meg tudod nyitni az ahhoz tartozó személy profilját." />
+
             <TextView
                 android:id="@+id/text_view_recycler_view_header2"
                 style="@style/CategoryCardName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/leaders" />
+                android:text="@string/leaders"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_header"
                 style="@style/HorizontalUserRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 tools:itemCount="3"
-                tools:listitem="@layout/view_user_vertical">
+                tools:listitem="@layout/view_user_vertical"
+                tools:visibility="visible">
 
             </androidx.recyclerview.widget.RecyclerView>
 
@@ -46,7 +57,9 @@
                 android:layout_height="1dp"
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"
-                android:background="?android:attr/listDivider" />
+                android:background="?android:attr/listDivider"
+                android:visibility="gone"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/textView32"

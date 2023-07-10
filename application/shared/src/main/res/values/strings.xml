@@ -166,7 +166,7 @@
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="manage_account">Fiók kezelése</string>
     <string name="places">Helyiségek</string>
-    <string name="search">Keresés és Szűrők</string>
+    <string name="search">Keresés</string>
     <string name="posts">Bejegyzések</string>
     <string name="from_student">Tanulótól</string>
     <string name="from_teacher">Tanártól</string>
@@ -268,4 +268,11 @@
     <string name="save">Mentés</string>
     <string name="present">Jelen van</string>
     <string name="not_present">Nincs jelen</string>
+    <string name="tip">Tipp</string>
+    <string name="commendations">Dicséretek</string>
+    <string name="edit">Szerkesztés</string>
+    <string name="reports">Jelentések</string>
+    <string name="port_exits_and_entrances_delays">Portai ki- és belépések / késések</string>
+    <string name="presence">Jelenlét</string>
+    <string name="to_do">Teendők</string>
 </resources>

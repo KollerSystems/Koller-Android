@@ -6,10 +6,13 @@ import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.R
+import com.example.shared.TipView
 import com.example.shared.api.RetrofitHelper
 import com.example.shared.data.TodayData
 import com.example.shared.recycleradapter.UserRecycleAdapter
@@ -36,6 +39,8 @@ class UsersFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_users, container, false)
 
+
+        val tipView : TipView = view.findViewById(R.id.tip)
 
         leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)

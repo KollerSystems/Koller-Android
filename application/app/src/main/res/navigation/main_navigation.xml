@@ -75,7 +75,7 @@
         </fragment>
         <fragment
             android:id="@+id/userFragment"
-            android:name="com.example.shared.fragments.UserFragment"
+            android:name="com.example.koller.fragments.UserFragment"
             android:label="@string/user">
             <action
                 android:id="@+id/action_userFragment_to_userGateFragment"
@@ -101,7 +101,7 @@
             android:label="Ki- és belépések" />
         <fragment
             android:id="@+id/roomFragment"
-            android:name="com.example.shared.fragments.RoomFragment"
+            android:name="com.example.koller.fragments.RoomFragment"
             android:label="Szoba"
             tools:layout="@layout/fragment_room">
             <action

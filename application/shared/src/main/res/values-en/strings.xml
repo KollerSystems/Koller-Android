@@ -133,7 +133,7 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="manage_account">Manage account</string>
     <string name="places">Places</string>
-    <string name="search">Search and Filters</string>
+    <string name="search">Search</string>
     <string name="posts">Posts</string>
     <string name="from_student">From student</string>
     <string name="from_teacher">From teacher</string>
@@ -235,4 +235,11 @@
     <string name="save">Save</string>
     <string name="present">Is present</string>
     <string name="not_present">Not present</string>
+    <string name="tip">Tip</string>
+    <string name="commendations">Commendations</string>
+    <string name="edit">Edit</string>
+    <string name="reports">Reports</string>
+    <string name="port_exits_and_entrances_delays">Gate exits and entrances / delays</string>
+    <string name="presence">Presence</string>
+    <string name="to_do">To do</string>
 </resources>

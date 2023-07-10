@@ -7,14 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.MyApplication
 import com.example.shared.R
 import com.example.shared.data.UserData
-import com.example.shared.fragments.UserFragment
 import com.example.shared.fragments.bottomsheet.ProfileBottomSheet
-import com.example.shared.navigateWithDefaultAnimation
 import com.google.android.material.imageview.ShapeableImageView
 
 
@@ -82,7 +79,7 @@ class UserRecycleAdapter (private var todayList : List<UserData>, var context : 
                 dialog.show(fragmentManager.supportFragmentManager, ProfileBottomSheet.TAG)
             }
             else{
-                UserFragment.userToGet = currentItem.ID
+                com.example.shared.fragments.UserFragment.userToGet = currentItem.ID
                 //holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
             }
 
