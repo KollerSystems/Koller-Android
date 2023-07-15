@@ -35,7 +35,7 @@
                     android:text="Osztály" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip8"
+                    android:id="@+id/view_new_chip_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Nem" />

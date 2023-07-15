@@ -37,7 +37,7 @@ class RoomRecyclerAdapter (private var todayList : ArrayList<TodayData>, var con
         holder.itemView.setOnClickListener {
 
             (context as AppCompatActivity).intent.putExtra("roomID", currentItem.description)
-            //holder.itemView.findNavController().navigateWithDefaultAnimation(com.example.koller.R.id.action_roomsFragment_to_roomFragment)
+            holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_roomsFragment_to_roomFragment)
 
         }
     }

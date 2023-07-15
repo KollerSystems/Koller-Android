@@ -6,6 +6,7 @@
     <dimen name="panel_margin_down">1dp</dimen>
     <dimen name="panel_shadow">0dp</dimen>
     <dimen name="panel_round">20dp</dimen>
+    <dimen name="panel_small_radius">15dp</dimen>
     <dimen name="n_panel_round">-20dp</dimen>
     <dimen name="application_round">25dp</dimen>
     <dimen name="application_padding">15dp</dimen>

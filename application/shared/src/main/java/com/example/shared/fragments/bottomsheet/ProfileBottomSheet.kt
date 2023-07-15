@@ -11,19 +11,28 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.DataStoreManager
 import com.example.shared.activities.DevicesActivity
 import com.example.shared.activities.FeedbackActivity
 import com.example.shared.MyApplication
 import com.example.shared.R
+import com.example.shared.activities.LoginActivity
+import com.example.shared.activities.SettingsActivity
+import com.example.shared.data.DevData
+import com.example.shared.data.EventsData
 import com.example.shared.navigateWithDefaultAnimation
+import com.example.shared.recycleradapter.DevRecyclerAdapter
+import com.example.shared.recycleradapter.EventsRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import kotlinx.coroutines.launch
+import java.util.Date
 
 
-class ProfileBottomSheet : BottomSheetDialogFragment() {
+open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
 
 
@@ -69,8 +78,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
                     lifecycleScope.launch{
 
                         DataStoreManager.remove(requireActivity(), DataStoreManager.REFRESH_TOKEN_NAME)
-                        //val intent = Intent(view.context, LoginActivity::class.java)
-                        //startActivity(intent)
+                        MyApplication.openLogin.invoke(requireContext())
                         requireActivity().finish()
                         dialog.dismiss()
                         dismiss()
@@ -98,7 +106,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         cardMyRoom.setOnClickListener{
 
-            //findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_roomFragment)
+            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_roomFragment)
             this.dismiss()
         }
 
@@ -106,7 +114,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         fbtnOutgoing.setOnClickListener{
 
-            //findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_userOutgoingFragment)
+            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_userOutgoingFragment)
             this.dismiss()
         }
 
@@ -114,7 +122,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         fbtnGate.setOnClickListener{
 
-            //findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_userGateFragment)
+            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_userGateFragment)
             this.dismiss()
         }
 
@@ -129,8 +137,7 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
         val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
 
         fbtnSettings.setOnClickListener{
-            //val intent = Intent(view.context, SettingsActivity::class.java)
-            //startActivity(intent)
+            MyApplication.openSettings.invoke(requireContext())
             this.dismiss()
         }
 
@@ -144,57 +151,21 @@ class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         //DEVS
 
-        val cardMarci: MaterialCardView = view.findViewById(R.id.profile_card_marci)
+        val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
 
-        cardMarci.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Marci599"))
-            startActivity(browserIntent)
-            this.dismiss()
-        }
+        recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        recyclerView.setHasFixedSize(true)
 
-        val cardAdam: MaterialCardView = view.findViewById(R.id.profile_card_adam)
+        val devArrayList = arrayListOf(
+            DevData("Katona Márton B.", "Menedzsment és Android", resources.getDrawable(R.drawable.pfp4), "https://github.com/Marci599"),
+            DevData("Bencsik Gergő B.", "API és Adatbázis", resources.getDrawable(R.drawable.pfp5), "https://github.com/lolfail"),
+            DevData("Zsiga Róbert", "Adatbázis", resources.getDrawable(R.drawable.pfp3), "https://github.com/IronNight007"),
+            DevData("Fehér Dávid", "Windows back-end", resources.getDrawable(R.drawable.pfp7), "https://github.com/TheBlueLines"),
+            DevData("Várnagy Miklós T.", "Windows front-end", resources.getDrawable(R.drawable.pfp1), "https://github.com/Ararakalari"),
+            DevData("Bende Ákos Gy.", "Szerver", resources.getDrawable(R.drawable.pfp6), "https://github.com/kutzlect"),
+        )
 
-        cardAdam.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Lukacs-Adam"))
-            startActivity(browserIntent)
-            this.dismiss()
-        }
-        val cardGergo: MaterialCardView = view.findViewById(R.id.profile_card_gergo)
-
-        cardGergo.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/lolfail"))
-            startActivity(browserIntent)
-            this.dismiss()
-        }
-        val cardGyuri: MaterialCardView = view.findViewById(R.id.profile_card_gyuri)
-
-        cardGyuri.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/kutzlect"))
-            startActivity(browserIntent)
-            this.dismiss()
-        }
-        val cardRobi: MaterialCardView = view.findViewById(R.id.profile_card_robi)
-
-        cardRobi.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/IronNight007"))
-            startActivity(browserIntent)
-            this.dismiss()
-        }
-        val cardMiki: MaterialCardView = view.findViewById(R.id.profile_card_miki)
-
-        cardMiki.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Ararakalari"))
-            startActivity(browserIntent)
-            this.dismiss()
-        }
-
-        val cardDavid: MaterialCardView = view.findViewById(R.id.profile_card_david)
-
-        cardDavid.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/TheBlueLines"))
-            startActivity(browserIntent)
-            this.dismiss()
-        }
+        recyclerView.adapter = DevRecyclerAdapter(devArrayList)
 
         val cardBug: View = view.findViewById(R.id.profile_card_bug)
 

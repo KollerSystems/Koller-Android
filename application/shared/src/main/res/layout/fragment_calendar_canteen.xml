@@ -24,13 +24,12 @@
                 android:id="@+id/textView68"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
                 android:text="@string/filters" />
 
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:chipSpacingVertical="0dp">
+                android:layout_height="wrap_content">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip13"
@@ -64,7 +63,8 @@
                 android:id="@+id/textView69"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/text_container_margin"
+                android:layout_marginTop="@dimen/spacing"
+                android:layout_marginBottom="@dimen/text_container_margin"
                 android:text="@string/arrangement" />
 
             <com.google.android.material.chip.ChipGroup
@@ -72,7 +72,6 @@
                 android:layout_height="match_parent"
                 app:checkedChip="@id/chip20"
                 app:chipSpacingHorizontal="0dp"
-                app:chipSpacingVertical="0dp"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 

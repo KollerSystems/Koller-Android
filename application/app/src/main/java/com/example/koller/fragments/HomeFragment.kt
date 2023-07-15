@@ -78,7 +78,7 @@ class HomeFragment : Fragment() {
         eventsRecyclerView.setHasFixedSize(true)
 
         eventsDataArrayList = arrayListOf(
-            EventsData("Túra a hegyen", "Ismét túrát szervezünk, azonban most a Shogelbogen hegyen. Nagyon szép az egész eg minden, nagyon jó lesz eskü. Gyertek sokan. Szép a táj meg minden. Eskü jó. Minden pacek lesz. Tuti fix.", "test"),
+            EventsData("Túra a hegyen", "Ismét túrát szervezünk, azonban most a Shogelbogen hegyen. Nagyon szép az egész eg minden, nagyon jó lesz eskü. Gyertek sokan. Szép a táj meg minden. Eskü jó. Minden pacek lesz. Tuti fix.", "test", "A hegy", Date(85965436), 2),
             EventsData("UI design verseny", "A Ralix megkereste a kollégiumunkot, hogy van-e igény egy user interface tervező versenyre. Állítólag egy kifejezetten nagy nyereménye lenne a versenynek. Kérek mindenkit aki érdeklődik ez iránt reagáljon egy like-al erre a bejegyzésre.", "test"),
             EventsData("Kovács Gábor az év kollégistája", "Az idei legjobb kollégista díjat Kovács Gábor, 11-es Pusksásos diák nyerte. Kovács Gábor egy olyan ember a Kollégisták szerint, aki ahol baj van ott segít. Ajtókat javít, gyorskötőzőzik és még fűrészel is ha kell.", "test"),
             EventsData("Jön a nyári szünet", "Az idei tanévnek is vége van, ugyan hosszú volt, de ez mindig így van. Most azonban elkezdődik a 2 és fél hómapőos nyári szünet, amire mindenki annyira várt. Mik voltak a kedvenc pillanataid a kollégiumban idén? Írd le a kommentek közé", "test"),

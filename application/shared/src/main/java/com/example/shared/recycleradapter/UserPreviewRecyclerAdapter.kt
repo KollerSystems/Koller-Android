@@ -44,7 +44,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
             }
             else{
                 (context as AppCompatActivity).intent.putExtra("UserPreviewID", currentItem.ID)
-                //holder.itemView.findNavController().navigateWithDefaultAnimation(com.example.koller.R.id.action_roomFragment_to_userFragment)
+                holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_roomFragment_to_userFragment)
             }
 
         }

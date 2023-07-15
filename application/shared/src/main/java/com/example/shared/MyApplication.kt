@@ -8,10 +8,13 @@ import android.content.res.Resources
 import android.icu.text.SimpleDateFormat
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.opengl.Visibility
 import android.os.Build
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
@@ -21,12 +24,15 @@ import androidx.navigation.NavController
 import androidx.navigation.navOptions
 import com.example.shared.data.UserData
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.textfield.TextInputLayout
+import java.util.Date
 
 
-class MyApplication : Application() {
+open class MyApplication : Application() {
 
 
     override fun onCreate() {
@@ -34,8 +40,53 @@ class MyApplication : Application() {
         DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
-    companion object {
 
+
+
+
+
+    companion object Comp{
+
+        lateinit var openSettings: (context : Context) -> Unit
+        lateinit var openLogin: (context : Context) -> Unit
+
+        val instance : MyApplication = MyApplication()
+
+        fun visibilityOn(boolean : Boolean) : Int{
+            return if(!boolean){
+                GONE
+            } else{
+                VISIBLE
+            }
+        }
+
+        fun visibilityOn(chip : Chip, int : Int){
+            if(int == 0){
+                chip.visibility = GONE
+            } else{
+                chip.visibility = VISIBLE
+                chip.text = int.toString()
+            }
+        }
+
+
+        fun visibilityOn(chip : Chip, string : String?){
+            if(string.isNullOrBlank()){
+                chip.visibility = GONE
+            } else{
+                chip.visibility = VISIBLE
+                chip.text = string
+            }
+        }
+
+        fun visibilityOn(chip : Chip, date : Date?){
+            if(date == null){
+                chip.visibility = GONE
+            } else{
+                chip.visibility = VISIBLE
+                chip.text = simpleLocalShortDateTimeFormat.format(date)
+            }
+        }
 
         fun timeToString(hours : Int, minutes : Int) : String{
             return (hours).toString().padStart(2, '0')+":"+(minutes).toString().padStart(2, '0')
@@ -65,18 +116,18 @@ class MyApplication : Application() {
 
 
         fun roundRecyclerItemsX(context : Context, view : View, position : Int, size : Int, startAppearance : Int, endAppearance : Int, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
-            if(position == 0){
+            if (size == 1) {
+
+                roundCard(context, view)
+
+            }
+            else if(position == 0){
 
                 roundCardX(context, view, startAppearance, 0, 0, rightPadding, bottomPadding)
             }
             else if (position == size-1){
 
                 roundCardX(context, view, endAppearance, leftPadding, topPadding, 0, 0)
-            }
-            else if (size == 1) {
-
-                roundCard(context, view)
-
             }
             else{
                 deroundCardX(context, view, leftPadding, topPadding, rightPadding, bottomPadding)
@@ -90,18 +141,18 @@ class MyApplication : Application() {
         }
 
         fun roundRecyclerItemsVertically(context : Context, view : View, view2 : View?, position : Int, size : Int){
-            if(position == 0){
+            if (size == 1) {
+
+                roundCard(context, view, view2)
+
+            }
+            else if(position == 0){
 
                 roundCardTop(context, view, view2)
             }
             else if (position == size-1){
 
                 roundCardBottom(context, view, view2)
-            }
-            else if (size == 1) {
-
-                roundCard(context, view, view2)
-
             }
             else{
                 deroundCardVertical(context, view, view2)
@@ -110,7 +161,11 @@ class MyApplication : Application() {
         }
 
         fun roundRecyclerItemsHorizontally(context : Context, view : View, position : Int, size : Int){
-            if(position == 0){
+            if (size == 1){
+
+                roundCard(context, view)
+            }
+            else if(position == 0){
 
                 roundCardLeft(context, view)
             }
@@ -118,14 +173,56 @@ class MyApplication : Application() {
 
                 roundCardRight(context, view)
             }
-            else if (size == 1){
-
-                roundCard(context, view)
-            }
             else{
                 deroundCardHorizontal(context, view)
             }
         }
+
+        fun roundRecyclerItemsHorizontallyWithHeaderImages(context : Context, view : View, view2: View, position : Int, size : Int){
+            if (size == 1){
+
+                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCard, 0).build()
+                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+
+                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardTop, 0).build()
+                (view2 as ShapeableImageView).shapeAppearanceModel = shapeAppearance
+
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,0,0,0)
+                view.requestLayout()
+            }
+            else if(position == 0){
+
+                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardLeft, 0).build()
+                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+
+                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardTopLeft, 0).build()
+                (view2 as ShapeableImageView).shapeAppearanceModel = shapeAppearance
+
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
+                view.requestLayout()
+            }
+            else if (position == size-1){
+
+                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardRight, 0).build()
+                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+
+                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardTopRight, 0).build()
+                (view2 as ShapeableImageView).shapeAppearanceModel = shapeAppearance
+
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,0)
+                view.requestLayout()
+            }
+            else{
+
+                var shapeAppearance = ShapeAppearanceModel()
+                (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+                (view2 as ShapeableImageView).shapeAppearanceModel = shapeAppearance
+
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(context.resources.getDimensionPixelSize(R.dimen.card_margin),0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
+                view.requestLayout()
+            }
+        }
+
 
         fun roundCardX(context: Context, view : View, view2 : View?, overlay : Int, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
             val shapeAppearance = ShapeAppearanceModel.builder(
@@ -193,6 +290,7 @@ class MyApplication : Application() {
 
         const val minLengthBeforeDismiss : Int = 3
 
+        val simpleLocalShortDateTimeFormat = SimpleDateFormat("MMM d. HH:mm")
         val simpleLocalDateFormat = SimpleDateFormat("yyyy. MMM d.")
         val simpleLocalMonthDay = SimpleDateFormat("MMMM d.")
         val simpleLocalShortMonthDay = SimpleDateFormat("MMM d.")

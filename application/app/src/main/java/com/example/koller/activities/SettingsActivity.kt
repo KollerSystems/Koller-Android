@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import java.util.*
 
-class SettingsActivity : AppCompatActivity() {
+class SettingsActivity : com.example.shared.activities.SettingsActivity(){
 
     companion object {
         var timeOffset : Float = 0f
@@ -44,91 +44,93 @@ class SettingsActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.example.koller.R.layout.activity_settings)
+            setContentView(com.example.koller.R.layout.activity_settings)
 
 
-        findViewById<Button>(R.id.toolbar_exit).setOnClickListener{
-            onBackPressed()
-        }
-
-        val timeOffsetSlider : Slider = findViewById(com.example.koller.R.id.settings_slider_time_offset)
-        var c : Calendar = Calendar.getInstance()
-        val hours : Float = (c.get(Calendar.SECOND)  / 60f / 60f+ c.get(Calendar.MINUTE) / 60f + c.get(Calendar.HOUR_OF_DAY))
-        var hoursTIL : TextInputLayout = findViewById(com.example.koller.R.id.settings_til_hours)
-        var hoursTIET : TextInputEditText = findViewById(com.example.koller.R.id.settings_tiet_hours)
-        hoursTIET.setText((timeOffset).toString())
-
-
-        timeOffsetSlider.value = timeOffset
-
-        hoursTIL.hint = (hours + timeOffset).toString()
-
-        timeOffsetSlider.addOnChangeListener { slider, value, fromUser ->
-            timeOffset = value
-            if(timeOffsetSlider.value.toString() != hoursTIET.text.toString())
-            hoursTIET.setText((timeOffset).toString())
-        }
-
-        hoursTIET.addTextChangedListener(object : TextWatcher {
-
-            override fun afterTextChanged(s: Editable) {}
-
-            override fun beforeTextChanged(s: CharSequence, start: Int,
-                                           count: Int, after: Int) {
+            findViewById<Button>(R.id.toolbar_exit).setOnClickListener{
+                onBackPressed()
             }
 
-            override fun onTextChanged(s: CharSequence, start: Int,
-                                       before: Int, count: Int) {
+            val timeOffsetSlider : Slider = findViewById(com.example.koller.R.id.settings_slider_time_offset)
+            var c : Calendar = Calendar.getInstance()
+            val hours : Float = (c.get(Calendar.SECOND)  / 60f / 60f+ c.get(Calendar.MINUTE) / 60f + c.get(Calendar.HOUR_OF_DAY))
+            var hoursTIL : TextInputLayout = findViewById(com.example.koller.R.id.settings_til_hours)
+            var hoursTIET : TextInputEditText = findViewById(com.example.koller.R.id.settings_tiet_hours)
+            hoursTIET.setText((timeOffset).toString())
+
+
+            timeOffsetSlider.value = timeOffset
+
+            hoursTIL.hint = (hours + timeOffset).toString()
+
+            timeOffsetSlider.addOnChangeListener { slider, value, fromUser ->
+                timeOffset = value
+                if(timeOffsetSlider.value.toString() != hoursTIET.text.toString())
+                    hoursTIET.setText((timeOffset).toString())
+            }
+
+            hoursTIET.addTextChangedListener(object : TextWatcher {
+
+                override fun afterTextChanged(s: Editable) {}
+
+                override fun beforeTextChanged(s: CharSequence, start: Int,
+                                               count: Int, after: Int) {
+                }
+
+                override fun onTextChanged(s: CharSequence, start: Int,
+                                           before: Int, count: Int) {
 
                     try {
                         if(hoursTIET.text.toString() == "") hoursTIET.setText("0")
                         if(hoursTIET.text.toString().toFloat() > 24) hoursTIET.setText((24).toString())
                         if(hoursTIET.text.toString().toFloat() < -24) hoursTIET.setText((-24).toString())
                         if(timeOffsetSlider.value.toString() != hoursTIET.text.toString())
-                        timeOffsetSlider.value = hoursTIET.text.toString().toFloat()
+                            timeOffsetSlider.value = hoursTIET.text.toString().toFloat()
                         hoursTIL.hint = (hours + timeOffset).toString()
                     }catch(asd : Exception){
 
                     }
 
-            }
-        })
+                }
+            })
 
 
-        val checkBoxParent: MaterialCheckBox = findViewById(com.example.koller.R.id.notifics_all)
-        val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(com.example.koller.R.id.notifics_arrival), findViewById(
-            com.example.koller.R.id.notifics_new
-        ), findViewById(com.example.koller.R.id.notifics_room), findViewById(com.example.koller.R.id.notifics_occupation), findViewById(com.example.koller.R.id.notifics_comm_or_warn))
+            val checkBoxParent: MaterialCheckBox = findViewById(com.example.koller.R.id.notifics_all)
+            val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(com.example.koller.R.id.notifics_arrival), findViewById(
+                com.example.koller.R.id.notifics_new
+            ), findViewById(com.example.koller.R.id.notifics_room), findViewById(com.example.koller.R.id.notifics_occupation), findViewById(com.example.koller.R.id.notifics_comm_or_warn))
 
-        // Parent's checked state changed listener
-        val parentOnCheckedStateChangedListener =
-            MaterialCheckBox.OnCheckedStateChangedListener { checkBox: MaterialCheckBox, state: Int ->
-                val isChecked = checkBox.isChecked
-                if (state != MaterialCheckBox.STATE_INDETERMINATE) {
-                    isUpdatingChildren = true
-                    for (child in childrenCheckBoxes) {
-                        child.isChecked = isChecked
+            // Parent's checked state changed listener
+            val parentOnCheckedStateChangedListener =
+                MaterialCheckBox.OnCheckedStateChangedListener { checkBox: MaterialCheckBox, state: Int ->
+                    val isChecked = checkBox.isChecked
+                    if (state != MaterialCheckBox.STATE_INDETERMINATE) {
+                        isUpdatingChildren = true
+                        for (child in childrenCheckBoxes) {
+                            child.isChecked = isChecked
+                        }
+                        isUpdatingChildren = false
                     }
-                    isUpdatingChildren = false
                 }
+
+            checkBoxParent.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
+
+            // Checked state changed listener for each child
+            val childOnCheckedStateChangedListener =
+                MaterialCheckBox.OnCheckedStateChangedListener { checkBox: MaterialCheckBox?, state: Int ->
+                    if (!isUpdatingChildren) {
+                        setParentState(
+                            checkBoxParent,
+                            childrenCheckBoxes,
+                            parentOnCheckedStateChangedListener
+                        )
+                    }
+                }
+            for (child in childrenCheckBoxes) {
+                (child as MaterialCheckBox)
+                    .addOnCheckedStateChangedListener(childOnCheckedStateChangedListener)
             }
 
-        checkBoxParent.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
-
-        // Checked state changed listener for each child
-        val childOnCheckedStateChangedListener =
-            MaterialCheckBox.OnCheckedStateChangedListener { checkBox: MaterialCheckBox?, state: Int ->
-                if (!isUpdatingChildren) {
-                    setParentState(
-                        checkBoxParent,
-                        childrenCheckBoxes,
-                        parentOnCheckedStateChangedListener
-                    )
-                }
-            }
-        for (child in childrenCheckBoxes) {
-            (child as MaterialCheckBox)
-                .addOnCheckedStateChangedListener(childOnCheckedStateChangedListener)
-        }
     }
+
 }
