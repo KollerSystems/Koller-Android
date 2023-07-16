@@ -1,4 +1,4 @@
 <resources>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="this_app_is_not_for_everyone_desc">Ez az alkalmazás olyan kollégiumidiákok készült, akiknek a kollégiuma használja a rendszerünket. Amennyiben az ön kollégiuma így tesz, akkor ha minden igaz, kapott egy emailt benne az ideiglenes jelszavával. Ha ez mégsem történt meg, kérem jelezze ezt a vezetőségnek.</string>
 </resources>

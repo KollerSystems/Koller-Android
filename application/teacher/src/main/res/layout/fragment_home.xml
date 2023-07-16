@@ -2,13 +2,13 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root"
+    android:id="@id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.HomeFragment" >
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/home_refresh"
+        android:id="@id/home_refresh"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,7 +29,7 @@
                 android:paddingBottom="80dp">
 
                 <TextView
-                    android:id="@+id/home_text_now"
+                    android:id="@id/home_text_now"
                     style="@style/CategoryCardName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -45,7 +45,110 @@
                         style="@style/MainCardLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"/>
+                        android:orientation="vertical">
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:id="@id/home_card_lessons"
+                            style="@style/Card"
+                            android:layout_width="match_parent"
+                            android:clickable="true"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="vertical">
+
+                                <com.google.android.material.card.MaterialCardView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="-7.5dp"
+                                    android:layout_marginTop="-7.5dp"
+                                    android:layout_marginRight="-7.5dp"
+                                    android:layout_marginBottom="7.5dp"
+                                    app:cardBackgroundColor="?attr/colorErrorContainer"
+                                    app:cardCornerRadius="15dp"
+                                    app:cardElevation="0dp">
+
+                                    <LinearLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center_vertical"
+                                        android:orientation="horizontal"
+                                        android:padding="7.5dp">
+
+                                        <TextView
+                                            android:id="@+id/home_text_lessons_number"
+                                            style="@style/Title"
+                                            android:layout_width="@dimen/panel_icon"
+                                            android:layout_height="@dimen/panel_icon"
+                                            android:layout_gravity="center_vertical"
+                                            android:backgroundTint="?android:attr/colorForeground"
+                                            android:gravity="center|center_vertical"
+                                            android:text="n"
+                                            android:textAlignment="center"
+                                            android:textSize="38sp" />
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginTop="@dimen/text_container_margin"
+                                            android:layout_marginRight="@dimen/text_container_margin"
+                                            android:layout_marginBottom="@dimen/text_container_margin"
+                                            android:orientation="horizontal">
+
+                                            <LinearLayout
+                                                android:layout_width="0dp"
+                                                android:layout_height="wrap_content"
+                                                android:layout_marginRight="10dp"
+                                                android:layout_weight="1"
+                                                android:orientation="vertical">
+
+                                                <TextView
+                                                    android:id="@+id/home_text_lessons_title"
+                                                    style="@style/Title"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/title" />
+
+                                                <TextView
+                                                    android:id="@+id/home_text_lessons_description"
+                                                    style="@style/Description"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:text="@string/description"
+                                                    android:textAlignment="textStart" />
+                                            </LinearLayout>
+
+                                            <TextView
+                                                android:id="@+id/home_text_lessons_time"
+                                                style="@style/Description"
+                                                android:layout_width="35sp"
+                                                android:layout_height="match_parent"
+                                                android:gravity="center"
+                                                android:lineSpacingExtra="-5sp"
+                                                android:text="@string/hours"
+                                                android:textAlignment="center" />
+
+                                        </LinearLayout>
+
+                                    </LinearLayout>
+                                </com.google.android.material.card.MaterialCardView>
+
+                                <include
+                                    layout="@layout/view_todo_time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="7.5dp" />
+
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+                    </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
                 <LinearLayout
@@ -54,7 +157,6 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView25"
                         style="@style/CategoryCardName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -75,7 +177,7 @@
                         android:layout_height="wrap_content">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/todayRecyclerView"
+                            android:id="@id/todayRecyclerView"
                             style="@style/MainCardLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -93,7 +195,7 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/home_text_unread"
+                        android:id="@id/home_text_unread"
                         style="@style/CategoryCardName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -114,7 +216,7 @@
                         android:layout_height="wrap_content">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/home_recycle_view_unread"
+                            android:id="@id/home_recycle_view_unread"
                             style="@style/MainCardLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -132,7 +234,6 @@
                     android:orientation="horizontal">
 
                     <TextView
-                        android:id="@+id/textView26"
                         style="@style/CategoryCardName"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
@@ -142,7 +243,7 @@
                         android:text="@string/posts" />
 
                     <Button
-                        android:id="@+id/home_button_show_all_posts"
+                        android:id="@id/home_button_show_all_posts"
                         style="@style/Widget.Material3.Button.TextButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -251,13 +352,13 @@
                                     android:orientation="horizontal">
 
                                     <TextView
-                                        android:id="@+id/simple_list_text_title"
+                                        android:id="@id/simple_list_text_title"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:text="@string/scheduled" />
 
                                     <TextView
-                                        android:id="@+id/simple_list_text_description"
+                                        android:id="@id/simple_list_text_description"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_marginLeft="@dimen/spacing"
@@ -266,7 +367,7 @@
                                 </LinearLayout>
 
                                 <ImageView
-                                    android:id="@+id/simple_list_image_icon"
+                                    android:id="@id/simple_list_image_icon"
                                     style="@style/SmallIcon"
                                     android:layout_marginLeft="@dimen/spacing"
                                     android:layout_weight="0"
@@ -281,7 +382,7 @@
                             android:layout_height="wrap_content">
 
                             <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/eventsRecyclerView"
+                                android:id="@id/eventsRecyclerView"
                                 style="@style/MainCardLayout"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -301,7 +402,7 @@
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/home_fab_root"
+        android:id="@id/home_fab_root"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
@@ -310,7 +411,7 @@
         android:src="@drawable/pencil" />
 
     <com.google.android.material.progressindicator.LinearProgressIndicator
-        android:id="@+id/progressBar"
+        android:id="@id/progressBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"

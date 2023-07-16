@@ -40,19 +40,22 @@ class CalendarFragment : Fragment() {
         TabLayoutMediator(tabs, viewPager){tab,position->
             when(position){
                 0->{
-                    tab.text = "Napok"
+                    tab.text = getString(R.string.days)
                 }
                 1->{
-                    tab.text = "Menza"
+                    tab.text = getString(R.string.canteen)
                 }
                 2->{
-                    tab.text = "Alapprogramok"
+                    tab.text = getString(R.string.base_programs)
                 }
                 3->{
-                    tab.text = "Szakkörök"
+                    tab.text = getString(R.string.study_groups)
                 }
                 4->{
-                    tab.text = "Programok"
+                    tab.text = getString(R.string.tutoring)
+                }
+                5->{
+                    tab.text = getString(R.string.programs)
                 }
             }
         }.attach()
@@ -72,15 +75,27 @@ class CalendarFragment : Fragment() {
 class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle)
 {
     override fun getItemCount(): Int {
-        return 5
+        return 6
     }
 
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                CalendarCanteenFragment()
+                Fragment()
             }
             1->{
+                CalendarCanteenFragment()
+            }
+            2->{
+                Fragment()
+            }
+            3->{
+                Fragment()
+            }
+            4->{
+                Fragment()
+            }
+            5->{
                 CalendarProgramsFragment()
             }
             else->{

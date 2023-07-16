@@ -1,12 +1,9 @@
-package com.example.koller
+package com.example.teacher
 
 import android.content.Context
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
-import com.example.koller.activities.LoginActivity
-import com.example.koller.activities.MainActivity
-import com.example.koller.activities.SettingsActivity
-import com.example.koller.fragments.bottomsheet.ProfileBottomSheet
+import com.example.teacher.activities.*
+import com.example.teacher.fragments.bottomsheet.ProfileBottomSheet
 
 class MyApplication : com.example.shared.MyApplication() {
 
@@ -30,4 +27,6 @@ class MyApplication : com.example.shared.MyApplication() {
             dialog.show((context as AppCompatActivity).supportFragmentManager, com.example.shared.fragments.bottomsheet.ProfileBottomSheet.TAG)
         }
     }
+
+
 }

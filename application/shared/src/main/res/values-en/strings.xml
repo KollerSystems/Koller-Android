@@ -193,7 +193,6 @@
     <string name="open_emails">Open emails</string>
     <string name="understood">Understood</string>
     <string name="this_app_is_not_for_everyone">This app is not for everyone</string>
-    <string name="this_app_is_not_for_everyone_desc">"This application is intended fordiákok whose student hostel use our system.\nIf you are a college student whose college does this, then if everything is right, you have received an email with your temporary password. If this did not happen, please report it to yourdiákok teacher."</string>
     <string name="drafts">Drafts</string>
     <string name="x_in_total">%1$i in total</string>
     <string name="unread">Unread</string>
@@ -242,4 +241,11 @@
     <string name="port_exits_and_entrances_delays">Gate exits and entrances / delays</string>
     <string name="presence">Presence</string>
     <string name="to_do">To do</string>
+    <string name="my_groups">My groups</string>
+    <string name="days">Days</string>
+    <string name="canteen">Canteen</string>
+    <string name="base_programs">Base programs</string>
+    <string name="study_groups">Study Group</string>
+    <string name="tutoring">Tutoring</string>
+    <string name="programs">Programs</string>
 </resources>

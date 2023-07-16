@@ -4,6 +4,7 @@ import android.app.Application
 import android.app.Dialog
 import android.content.ClipData
 import android.content.Context
+import android.content.Intent
 import android.content.res.Resources
 import android.icu.text.SimpleDateFormat
 import android.net.ConnectivityManager
@@ -20,6 +21,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import androidx.navigation.navOptions
 import com.example.shared.data.UserData
@@ -47,8 +49,16 @@ open class MyApplication : Application() {
 
     companion object Comp{
 
+        fun OpenActivity(context : Context, className : Class<*>){
+            val intent = Intent(context, className)
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent)
+        }
+
         lateinit var openSettings: (context : Context) -> Unit
         lateinit var openLogin: (context : Context) -> Unit
+        lateinit var openMain: (context : Context) -> Unit
+        lateinit var openProfile: (context : Context) -> Unit
 
         val instance : MyApplication = MyApplication()
 

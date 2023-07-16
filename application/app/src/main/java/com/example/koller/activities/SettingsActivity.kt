@@ -15,10 +15,6 @@ import java.util.*
 
 class SettingsActivity : com.example.shared.activities.SettingsActivity(){
 
-    companion object {
-        var timeOffset : Float = 0f
-    }
-
     private var isUpdatingChildren = false
 
     private fun setParentState(

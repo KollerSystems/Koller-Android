@@ -57,4 +57,21 @@
     <item name="action_postsFragment_to_homeFragment" type="id">
 
     </item>
+    <item name="home_refresh" type="id" />
+    <item name="home_text_now" type="id" />
+    <item name="todayRecyclerView" type="id" />
+    <item name="home_text_unread" type="id" />
+    <item name="home_recycle_view_unread" type="id" />
+    <item name="home_button_show_all_posts" type="id" />
+    <item name="eventsRecyclerView" type="id" />
+    <item name="home_fab_root" type="id" />
+    <item name="progressBar" type="id" />
+    <item name="profile_card_my_groups" type="id" />
+    <item name="profile_card_my_room" type="id" />
+    <item name="profile_fbtn_gate" type="id" />
+    <item name="profile_card_devices" type="id" />
+    <item name="profile_fbtn_settings" type="id" />
+    <item name="profile_fbtn_privacy_policy" type="id" />
+    <item name="home_card_lessons" type="id" />
+    <item name="home_text_silence_warning" type="id" />
 </resources>

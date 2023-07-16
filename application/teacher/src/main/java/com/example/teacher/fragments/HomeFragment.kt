@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.teacher.R
 
-class HomeFragment : Fragment() {
+class HomeFragment : com.example.shared.fragments.HomeFragment() {
 
 
     override fun onCreateView(
@@ -15,6 +15,9 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+
+        realView = inflater.inflate(R.layout.fragment_home, container, false)
+        super.onCreateView(inflater, container, savedInstanceState)
+        return realView
     }
 }

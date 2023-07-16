@@ -1,4 +1,4 @@
-package com.example.koller.activities
+package com.example.shared.activities
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.shared.R
 import com.example.shared.DataStoreManager
+import com.example.shared.MyApplication
 import com.example.shared.api.APIInterface
 import com.example.shared.api.RetrofitHelper
 import com.example.shared.data.ApiLoginRefreshData
@@ -44,8 +45,7 @@ class LaunchActivity : AppCompatActivity() {
             val refreshToken = DataStoreManager.read(this@LaunchActivity, DataStoreManager.REFRESH_TOKEN_NAME)
             var intent : Intent? = null
             if(refreshToken == null){
-                intent = Intent(this@LaunchActivity, LoginActivity::class.java)
-                startActivity(intent)
+                MyApplication.openLogin.invoke(this@LaunchActivity)
                 finish()
             }
             else{
@@ -76,36 +76,31 @@ class LaunchActivity : AppCompatActivity() {
 
                                                 UserData.instance = userResponse.body()!!
 
-                                                val intent = Intent(this@LaunchActivity, MainActivity::class.java)
-                                                startActivity(intent)
+                                                MyApplication.openMain.invoke(this@LaunchActivity)
                                                 finish()
                                             }
                                             else{
-                                                intent = Intent(this@LaunchActivity, LoginActivity::class.java)
-                                                startActivity(intent)
+                                                MyApplication.openLogin.invoke(this@LaunchActivity)
                                                 finish()
                                             }
                                         }
 
                                         override fun onFailure(call: Call<UserData>, t: Throwable) {
-                                            intent = Intent(this@LaunchActivity, LoginActivity::class.java)
-                                            startActivity(intent)
+                                            MyApplication.openLogin.invoke(this@LaunchActivity)
                                             finish()
                                         }
                                     }
                                 )
                             }
                             else{
-                                intent = Intent(this@LaunchActivity, LoginActivity::class.java)
-                                startActivity(intent)
+                                MyApplication.openLogin.invoke(this@LaunchActivity)
                                 finish()
                             }
 
                         }
 
                         override fun onFailure(call: Call<ApiLoginTokensData>, t: Throwable) {
-                            intent = Intent(this@LaunchActivity, LoginActivity::class.java)
-                            startActivity(intent)
+                            MyApplication.openLogin.invoke(this@LaunchActivity)
                             finish()
                         }
                     }

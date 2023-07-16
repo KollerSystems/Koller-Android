@@ -7,5 +7,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 
 open class SettingsActivity : AppCompatActivity() {
-
+    companion object {
+        var timeOffset : Float = 0f
+    }
 }

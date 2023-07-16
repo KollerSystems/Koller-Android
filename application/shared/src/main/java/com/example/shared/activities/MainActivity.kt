@@ -91,7 +91,7 @@ open class MainActivity : AppCompatActivity() {
 
         val userButton = findViewById<ShapeableImageView>(com.example.shared.R.id.user_button)
         userButton.setOnClickListener{
-            onProfileClick()
+            MyApplication.openProfile.invoke(this)
         }
     }
 
@@ -120,12 +120,6 @@ open class MainActivity : AppCompatActivity() {
             mainTitle.text = ssTitle
         }
 
-    }
-
-    fun onProfileClick(){
-
-        val dialog = ProfileBottomSheet()
-        dialog.show(supportFragmentManager, ProfileBottomSheet.TAG)
     }
 
     public fun NFCSuccess(){
