@@ -25,7 +25,7 @@
             android:orientation="vertical">
 
             <com.example.shared.TipView
-                android:id="@+id/tip"
+                android:id="@+id/tip_nfc_user_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:text="Egy NFC-s eszköz közelítésével azonnal meg tudod nyitni az ahhoz tartozó személy profilját." />
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="5dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="@dimen/spacing"
                 android:background="?android:attr/listDivider"
                 android:visibility="gone"
                 tools:visibility="visible" />
@@ -108,13 +108,14 @@
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/listDivider" />
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.example.shared.SuperCoolRecyclerView
+        android:id="@id/super_cool_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

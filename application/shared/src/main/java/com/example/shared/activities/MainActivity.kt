@@ -1,13 +1,18 @@
 package com.example.shared.activities
 
 import android.R
-import com.example.shared.R as Rs
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Canvas
 import android.graphics.Typeface
+import android.os.Environment
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -16,12 +21,15 @@ import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.example.shared.MyApplication
-import com.example.shared.fragments.bottomsheet.ProfileBottomSheet
+import com.example.shared.MyApplication.Comp.getPixelColorFromView
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import java.io.File
+import com.example.shared.R as Rs
+
 
 open class MainActivity : AppCompatActivity() {
 
@@ -31,7 +39,16 @@ open class MainActivity : AppCompatActivity() {
 
     lateinit var bottomNavigationView : BottomNavigationView
 
+    fun getPixelColor(xcoord: Int, ycoord: Int) {
+        Log.d(
+            "pixel color",
+            "TEsT"
+        )
+    }
+
     fun setupMainActivity(){
+
+        getPixelColor(0,0)
         navHostFragment = supportFragmentManager.findFragmentById(Rs.id.main_fragment) as NavHostFragment
         val navController = navHostFragment.navController
 
@@ -93,6 +110,13 @@ open class MainActivity : AppCompatActivity() {
         userButton.setOnClickListener{
             MyApplication.openProfile.invoke(this)
         }
+
+
+        bottomNavigationView.post{
+            val navViewColor = getPixelColorFromView(bottomNavigationView,0,0)
+            window.navigationBarColor = navViewColor
+        }
+
     }
 
     fun setToolbarTitle(title : CharSequence?){

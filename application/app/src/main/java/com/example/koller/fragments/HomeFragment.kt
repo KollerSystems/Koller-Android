@@ -49,7 +49,7 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
 
         textStayOutTop = realView.findViewById(R.id.home_text_outgoing_top)
         textStayOutBottom = realView.findViewById(R.id.home_text_outgoing_down)
-        realViewLessonSlider = realView.findViewById(R.id.home_view_lesson_slider)
+        realViewLessonSlider = realView.findViewById(Rs.id.home_view_lesson_slider)
         realViewStayOutSlider = realView.findViewById(com.example.shared.R.id.home_view_stay_slider)
 
 
@@ -204,16 +204,16 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
 
             var textLessonsSilenceWarning : TextView = realView.findViewById(R.id.home_text_silence_warning)
 
-            var textLessonsTitle : TextView = realView.findViewById(R.id.home_text_lessons_title)
-            var textLessonsDescription : TextView = realView.findViewById(R.id.home_text_lessons_description)
-            var textLessonsNumber : TextView = realView.findViewById(R.id.home_text_lessons_number)
-            var textLessonsTime : TextView = realView.findViewById(R.id.home_text_lessons_time)
+            var textLessonsTitle : TextView = realView.findViewById(Rs.id.home_text_lessons_title)
+            var textLessonsDescription : TextView = realView.findViewById(Rs.id.home_text_lessons_description)
+            var textLessonsNumber : TextView = realView.findViewById(Rs.id.home_text_lessons_number)
+            var textLessonsTime : TextView = realView.findViewById(Rs.id.home_text_lessons_time)
 
-            var realViewLessonsNext : View = realView.findViewById(R.id.home_layout_lessons_next)
-            var textSmallLessonsTitle : TextView = realView.findViewById(R.id.home_text_small_lessons_title)
-            var textSmallLessonsDescription : TextView = realView.findViewById(R.id.home_text_small_lessons_description)
-            var textSmallLessonsNumber : TextView = realView.findViewById(R.id.home_text_small_lessons_number)
-            var textSmallLessonsTime : TextView = realView.findViewById(R.id.home_text_small_lessons_time)
+            var realViewLessonsNext : View = realView.findViewById(Rs.id.home_layout_lessons_next)
+            var textSmallLessonsTitle : TextView = realView.findViewById(Rs.id.home_text_small_lessons_title)
+            var textSmallLessonsDescription : TextView = realView.findViewById(Rs.id.home_text_small_lessons_description)
+            var textSmallLessonsNumber : TextView = realView.findViewById(Rs.id.home_text_small_lessons_number)
+            var textSmallLessonsTime : TextView = realView.findViewById(Rs.id.home_text_small_lessons_time)
 
             fun NextLessonsGraphic(index : Int){
                 realViewLessonsNext.visibility = View.VISIBLE

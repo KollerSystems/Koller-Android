@@ -8,7 +8,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.card.MaterialCardView
+import kotlinx.coroutines.launch
 
 
 class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
@@ -19,6 +22,13 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
     val buttonClose: Button
 
     init {
+        (context as AppCompatActivity).lifecycleScope.launch {
+            val read = DataStoreManager.readBoolean(context, resources.getResourceEntryName(id))
+            if(read == true){
+                visibility = GONE
+            }
+        }
+
         val typedArray = context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.tipView,
@@ -39,6 +49,9 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
 
         buttonClose.setOnClickListener{
             visibility = GONE
+            context.lifecycleScope.launch {
+                DataStoreManager.save(context, resources.getResourceEntryName(id), true)
+            }
         }
     }
 

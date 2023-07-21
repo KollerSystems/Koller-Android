@@ -129,6 +129,13 @@ class CreateNewPostActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
+
+        val bottomView : View = findViewById(R.id.bottom_view)
+        bottomView.post{
+            val navViewColor = MyApplication.getPixelColorFromView(bottomView, 0, 0)
+            window.navigationBarColor = navViewColor
+        }
+
         val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
         val buttonExit: Button = findViewById(R.id.toolbar_exit)

@@ -74,4 +74,10 @@
     <item name="profile_fbtn_privacy_policy" type="id" />
     <item name="home_card_lessons" type="id" />
     <item name="home_text_silence_warning" type="id" />
+    <item name="user_view_email" type="id" />
+    <item name="user_view_instagram" type="id" />
+    <item name="user_view_facebook" type="id" />
+    <item name="user_view_discord" type="id" />
+    <item name="nested_scroll_view" type="id" />
+    <item name="super_cool_recycler_view" type="id" />
 </resources>

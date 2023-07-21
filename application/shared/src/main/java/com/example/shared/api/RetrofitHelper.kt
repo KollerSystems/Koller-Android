@@ -7,8 +7,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 object RetrofitHelper {
     private val client = OkHttpClient.Builder().build()
 
+    val gyIP =TITOK_HAHAHA
+    val grazIP = "http://192.168.0.100/"
+
     private val retrofit = Retrofit.Builder()
-       .baseUrl("http:/TITOK_HAHAHA/")
+        .baseUrl(grazIP)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

@@ -12,7 +12,7 @@ class ProfileBottomSheet : com.example.shared.fragments.bottomsheet.ProfileBotto
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         realView = inflater.inflate(R.layout.bottom_sheet_profile, container, false)
 
         super.onCreateView(inflater, container, savedInstanceState)

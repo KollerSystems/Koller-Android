@@ -13,7 +13,7 @@
 
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/nested_scroll_view"
+        android:id="@id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -65,7 +65,7 @@
                     android:orientation="vertical">
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/user_card_discord"
+                        android:id="@id/user_view_discord"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/user_card_facebook"
+                        android:id="@id/user_view_facebook"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/user_card_instagram"
+                        android:id="@id/user_view_instagram"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -223,7 +223,7 @@
                     </com.google.android.material.card.MaterialCardView>
 
                     <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/user_card_email"
+                        android:id="@id/user_view_email"
                         style="@style/Card"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

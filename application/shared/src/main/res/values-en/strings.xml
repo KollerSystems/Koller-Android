@@ -248,4 +248,5 @@
     <string name="study_groups">Study Group</string>
     <string name="tutoring">Tutoring</string>
     <string name="programs">Programs</string>
+    <string name="none">None</string>
 </resources>

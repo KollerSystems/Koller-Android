@@ -76,9 +76,7 @@ class UserRecycleAdapter (private var todayList : List<UserData>, var context : 
         holder.itemView.setOnClickListener {
 
             if(currentItem.ID == UserData.instance.ID){
-                val dialog = ProfileBottomSheet()
-                val fragmentManager = (context as AppCompatActivity)
-                dialog.show(fragmentManager.supportFragmentManager, ProfileBottomSheet.TAG)
+                MyApplication.openProfile(context)
             }
             else{
                 com.example.shared.fragments.UserFragment.userToGet = currentItem.ID

@@ -6,6 +6,8 @@ import android.content.ClipData
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.icu.text.SimpleDateFormat
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -48,6 +50,14 @@ open class MyApplication : Application() {
 
 
     companion object Comp{
+
+
+        fun getPixelColorFromView(view: View, x: Int, y: Int): Int {
+            val drawingCache = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
+            val canvas = Canvas(drawingCache)
+            view.draw(canvas)
+            return drawingCache.getPixel(x, y)
+        }
 
         fun OpenActivity(context : Context, className : Class<*>){
             val intent = Intent(context, className)

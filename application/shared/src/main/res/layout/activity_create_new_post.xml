@@ -546,6 +546,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottom_view"
         android:layout_width="match_parent"
         android:layout_height="@dimen/header_footer_size"
         android:layout_gravity="bottom"

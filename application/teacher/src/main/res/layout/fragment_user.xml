@@ -7,6 +7,7 @@
     tools:context=".fragments.UserFragment">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@id/nested_scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">
@@ -28,40 +29,46 @@
                 android:layout_margin="@dimen/CardMargin">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip15"
+                    android:id="@id/user_view_email"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkable="false"
-                    android:text="kis.gazsi@gmail.com"
+                    android:text="@string/none"
                     custom:chipIcon="@drawable/mail"
                     custom:chipIconVisible="true" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip12"
+                    android:id="@id/user_view_facebook"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:text="Kis Gazsi"
+                    android:visibility="gone"
                     custom:chipIcon="@drawable/facebook"
-                    custom:chipIconVisible="true" />
+                    custom:chipIconVisible="true"
+                    tools:visibility="visible" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip10"
+                    android:id="@id/user_view_instagram"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:text="\@kisgazsi"
+                    android:visibility="gone"
                     custom:chipIcon="@drawable/instagram"
-                    custom:chipIconVisible="true" />
+                    custom:chipIconVisible="true"
+                    tools:visibility="visible" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip9"
+                    android:id="@id/user_view_discord"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:checkable="false"
                     android:text="kisgazsi"
+                    android:visibility="gone"
                     custom:chipIcon="@drawable/discord"
-                    custom:chipIconVisible="true" />
+                    custom:chipIconVisible="true"
+                    tools:visibility="visible" />
             </com.google.android.material.chip.ChipGroup>
 
             <TextView
@@ -122,8 +129,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/flag"
-                        custom:text="@string/reports">
-                    </com.example.shared.SimpleCardButton>
+                        custom:text="@string/reports"></com.example.shared.SimpleCardButton>
 
                     <com.example.shared.SimpleCardButton
                         android:layout_width="match_parent"

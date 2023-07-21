@@ -43,7 +43,6 @@ class LaunchActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             val refreshToken = DataStoreManager.read(this@LaunchActivity, DataStoreManager.REFRESH_TOKEN_NAME)
-            var intent : Intent? = null
             if(refreshToken == null){
                 MyApplication.openLogin.invoke(this@LaunchActivity)
                 finish()
