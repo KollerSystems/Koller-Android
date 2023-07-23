@@ -98,7 +98,7 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
                 currentItem as CrossingData
                 holder as CrossingViewHolder
 
-                MyApplication.roundRecyclerItemsVerticallyWithSeparator(context, holder.itemView, position, crossingList)
+
 
                 val icon : Int = if(currentItem.Direction == 0.toByte()){
                     R.drawable.in_

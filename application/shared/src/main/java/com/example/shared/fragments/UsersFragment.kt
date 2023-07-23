@@ -7,14 +7,19 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.R
 import com.example.shared.SuperCoolRecyclerView
 import com.example.shared.TipView
+import com.example.shared.UserViewModel
 import com.example.shared.api.RetrofitHelper
 import com.example.shared.data.TodayData
 import com.example.shared.recycleradapter.UserRecycleAdapter
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -27,14 +32,13 @@ class UsersFragment : Fragment() {
     private lateinit var leaderUsersRecyclerView: RecyclerView
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+
+    private val viewModel by viewModels<UserViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_users, container, false)
 
@@ -48,62 +52,27 @@ class UsersFragment : Fragment() {
             UserData("Hatalmas Norbert")
         )
 
-        leaderUsersRecyclerView.adapter = UserRecycleAdapter(
-            leaderUsersDataArrayList,
-            requireContext(),
-            true
-        )
-
-
-        var isLoading: Boolean = false
-        var isLastPage: Boolean = false
-        var currentPage: Int = 0
-
-        fun loadNextPage() {
-            isLoading = true
-            val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
-            usersResponse.getUsers(25, currentPage * 25, APIInterface.getHeaderMap()).enqueue(
-                object : Callback<List<UserData>> {
-                    override fun onResponse(
-                        call: Call<List<UserData>>,
-                        userResponse: Response<List<UserData>>
-                    ) {
-                        if (userResponse.code() == 200) {
-
-                            val usersData: List<UserData> = userResponse.body()!!
-
-                            superCoolRecyclerView.recyclerView.adapter =
-                                UserRecycleAdapter(
-                                    usersData,
-                                    requireContext()
-                                )
-
-                        } else {
-                            APIInterface.ServerErrorPopup(requireContext())
-                        }
-
-                        isLoading = false
-                    }
-
-                    override fun onFailure(call: Call<List<UserData>>, t: Throwable) {
-                        APIInterface.ServerErrorPopup(context)
-
-                        isLoading = false
-                    }
-                }
-            )
-        }
+        leaderUsersRecyclerView.adapter = UserRecycleAdapter(true)
 
 
         superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
-        superCoolRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
-        superCoolRecyclerView.recyclerView.setHasFixedSize(true)
+
+        val userRecycleAdapter = UserRecycleAdapter()
+
+        superCoolRecyclerView.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = userRecycleAdapter
+        }
+
 
         superCoolRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
 
+        lifecycleScope.launch {
+            viewModel.pagingData.collectLatest { pagingData ->
+                userRecycleAdapter.submitData(pagingData)
+            }
+        }
 
-
-        loadNextPage()
 
         return view
     }

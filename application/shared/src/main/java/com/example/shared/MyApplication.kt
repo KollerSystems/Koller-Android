@@ -26,7 +26,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import androidx.navigation.navOptions
+import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.data.UserData
+import com.example.shared.recycleradapter.GateRecyclerAdapter
+import com.example.shared.recycleradapter.UserRecycleAdapter
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
@@ -112,20 +116,25 @@ open class MyApplication : Application() {
             return (hours).toString().padStart(2, '0')+":"+(minutes).toString().padStart(2, '0')
         }
 
-        fun roundRecyclerItemsVerticallyWithSeparator(context : Context, view : View, position : Int, list : ArrayList<Any>){
+        fun roundRecyclerItemsVerticallyWithSeparator(view : View, position : Int, pagingDataAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>){
 
-            if(position == 0) return
+            if(pagingDataAdapter.getItemViewType(position) == 1) return
 
-            if(position == list.size -1) {
+            val context = view.context
+
+            Log.d("INFO", position.toString() +": " + pagingDataAdapter.getItemViewType(position))
+
+            //TODO Lekezelni, ha alul semmi sincs felette pedig szöveg
+            if(position == pagingDataAdapter.itemCount -1) {
                 roundCardBottom(context, view)
                 return
             }
 
-            if (list[position - 1] is String && list[position + 1] !is String) {
+            if (pagingDataAdapter.getItemViewType(position - 1) == 1 && pagingDataAdapter.getItemViewType(position + 1) != 1) {
                 roundCardTop(context, view)
-            } else if (list[position - 1] !is String && list[position + 1] is String) {
+            } else if (pagingDataAdapter.getItemViewType(position - 1) != 1 && pagingDataAdapter.getItemViewType(position + 1) == 1) {
                 roundCardBottom(context, view)
-            } else if  (list[position - 1] is String && list[position + 1] is String){
+            } else if  (pagingDataAdapter.getItemViewType(position - 1) == 1 && pagingDataAdapter.getItemViewType(position + 1) == 1){
                 roundCard(context, view)
             }
             else{

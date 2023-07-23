@@ -8,6 +8,7 @@ import com.example.shared.data.ApiLoginTokensData
 import com.example.shared.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
 
 
@@ -77,11 +78,11 @@ interface APIInterface {
     ) : Call<UserData>
 
     @GET("api/users")
-    fun getUsers(
+    suspend fun getUsers(
         @Query(value = "limit") limit : Int,
         @Query(value = "offset") offset : Int,
         @HeaderMap headers: Map<String, String>
-    ) : Call<List<UserData>>
+    ) : Response<List<UserData>>
 
     @GET("api/users/{id}")
     fun getUser(
