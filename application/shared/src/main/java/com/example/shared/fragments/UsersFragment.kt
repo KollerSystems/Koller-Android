@@ -3,13 +3,16 @@ package com.example.shared.fragments
 import com.example.shared.api.APIInterface
 import com.example.shared.data.UserData
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.R
 import com.example.shared.SuperCoolRecyclerView
@@ -33,7 +36,7 @@ class UsersFragment : Fragment() {
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 
 
-    private val viewModel by viewModels<UserViewModel>()
+    lateinit var viewModel : UserViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,7 +44,6 @@ class UsersFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_users, container, false)
-
 
         leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)
@@ -52,12 +54,14 @@ class UsersFragment : Fragment() {
             UserData("Hatalmas Norbert")
         )
 
-        leaderUsersRecyclerView.adapter = UserRecycleAdapter(true)
+        leaderUsersRecyclerView.adapter = UserRecycleAdapter()
 
 
         superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
 
         val userRecycleAdapter = UserRecycleAdapter()
+
+        viewModel = UserViewModel(userRecycleAdapter)
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -72,6 +76,8 @@ class UsersFragment : Fragment() {
                 userRecycleAdapter.submitData(pagingData)
             }
         }
+
+
 
 
         return view

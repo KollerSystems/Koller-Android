@@ -126,15 +126,19 @@ open class MyApplication : Application() {
 
             //TODO Lekezelni, ha alul semmi sincs felette pedig szöveg
             if(position == pagingDataAdapter.itemCount -1) {
-                roundCardBottom(context, view)
-                return
-            }
+                if(pagingDataAdapter.getItemViewType(position - 1) != 0){
+                    roundCard(context, view)
+                }
+                else{
+                    roundCardBottom(context, view)
+                }
 
-            if (pagingDataAdapter.getItemViewType(position - 1) == 1 && pagingDataAdapter.getItemViewType(position + 1) != 1) {
+            }
+            else if (pagingDataAdapter.getItemViewType(position - 1) != 0 && pagingDataAdapter.getItemViewType(position + 1) == 0) {
                 roundCardTop(context, view)
-            } else if (pagingDataAdapter.getItemViewType(position - 1) != 1 && pagingDataAdapter.getItemViewType(position + 1) == 1) {
+            } else if (pagingDataAdapter.getItemViewType(position - 1) == 0 && pagingDataAdapter.getItemViewType(position + 1) != 0) {
                 roundCardBottom(context, view)
-            } else if  (pagingDataAdapter.getItemViewType(position - 1) == 1 && pagingDataAdapter.getItemViewType(position + 1) == 1){
+            } else if  (pagingDataAdapter.getItemViewType(position - 1) != 0 && pagingDataAdapter.getItemViewType(position + 1) != 0){
                 roundCard(context, view)
             }
             else{

@@ -88,7 +88,7 @@ class DayFragment : Fragment() {
             UserData("Rogán Mátyás")
         )
 
-        usersRecyclerView.adapter = UserRecycleAdapter()
+        //usersRecyclerView.adapter = UserRecycleAdapter()
 
         bottomSheetDuty = view.findViewById(com.example.koller.R.id.bottom_sheet_duty)
         val bottomSheetBehavior = BottomSheetBehavior.from(bottomSheetDuty);

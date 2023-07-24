@@ -3,6 +3,7 @@ package com.example.shared
 import android.app.Activity
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.MotionEvent
 import android.view.View
 import android.widget.TextView
@@ -17,8 +18,10 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.shared.activities.MainActivity
 import com.example.shared.data.CrossingData
 import com.example.shared.data.UserData
+import com.example.shared.recycleradapter.UserRecycleAdapter
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlin.math.abs
 
 
 class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefreshLayout(context, attrs) {
@@ -28,11 +31,16 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
     private val textHeader: TextView
     val recyclerView: RecyclerView
 
+    private lateinit var recyclerAdapter : UserRecycleAdapter
     init {
+
         View.inflate(context, R.layout.super_cool_recycler_view, this)
         FABScrollUp = findViewById(R.id.fab_scroll_to_top)
         textHeader = findViewById(R.id.text_view_recycler_view_header)
         recyclerView = findViewById(R.id.recycler_view)
+
+        textHeader.visibility = GONE
+
 
         FABScrollUp.setOnClickListener{
             recyclerView.smoothScrollToPosition(0)
@@ -40,7 +48,28 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
         }
 
 
-        recyclerView.setOnScrollChangeListener(){ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
+        recyclerView.post{
+            recyclerAdapter = (recyclerView.adapter as UserRecycleAdapter)
+            recyclerAdapter.addOnPagesUpdatedListener{
+                isRefreshing = false
+            }
+        }
+
+        setOnRefreshListener {
+
+
+            recyclerAdapter.refresh()
+
+
+        }
+
+
+
+
+        recyclerView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
+
+            if(abs(i3) >1)
+                textHeader.visibility = VISIBLE
 
             val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
             val firstVisibleItemIndex : Int = layoutManager.findFirstVisibleItemPosition()

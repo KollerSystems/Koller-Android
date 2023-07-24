@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -20,106 +21,123 @@ import com.example.shared.data.UserData
 import com.example.shared.fragments.bottomsheet.ProfileBottomSheet
 import com.example.shared.navigateWithDefaultAnimation
 import com.google.android.material.imageview.ShapeableImageView
+import java.util.Objects
+
+class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(UserComparator){
 
 
-class UserRecycleAdapter (var horizontal : Boolean = false) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(UserComparator){
+    public var onRetryClick: (() -> Unit)? = null
 
+    var lastMaxPosition : Int = -1
+    lateinit var recyclerView: RecyclerView
 
+    public var state : Int = STATE_NONE
 
-    private val item: Int = 0
-    private val loading: Int = 1
-
-    private var isLoadingAdded: Boolean = false
-    private var retryPageLoad: Boolean = false
-    private var viewToShow : Int = 0
-    private var startAppearance : Int = 0
-    private var endAppearance : Int = 0
-    private var paddingLeft : Int = 0
-    private var paddingTop : Int = 0
-    private var paddingRight : Int = 0
-    private var paddingBottom : Int = 0
-
-
-    var funny : Int = 0
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-
-
-        if(!horizontal){
-            viewToShow = R.layout.notification_panel
-            startAppearance = R.style.overlayRoundedCardTop
-            endAppearance = R.style.overlayRoundedCardBottom
-            paddingLeft = 0
-            paddingTop = recyclerView.context.resources.getDimensionPixelSize(R.dimen.card_margin)
-            paddingRight = 0
-            paddingBottom = recyclerView.context.resources.getDimensionPixelSize(R.dimen.card_margin)
-        }
-        else{
-            viewToShow = R.layout.view_user_vertical
-            startAppearance = R.style.overlayRoundedCardLeft
-            endAppearance = R.style.overlayRoundedCardRight
-            paddingLeft = recyclerView.context.resources.getDimensionPixelSize(R.dimen.card_margin)
-            paddingTop = 0
-            paddingRight = recyclerView.context.resources.getDimensionPixelSize(R.dimen.card_margin)
-            paddingBottom = 0
-        }
+        this.recyclerView = recyclerView
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-
-        return if (viewType == VIEW_TYPE_USER) {
-            val view = LayoutInflater.from(parent.context).inflate(viewToShow, parent, false)
-            UserViewHolder(view)
-        } else {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.view_date, parent, false)
-            GateRecyclerAdapter.DateViewHolder(view)
+        return when (viewType) {
+            VIEW_TYPE_USER -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
+                UserViewHolder(view)
+            }
+            VIEW_TYPE_SEPARATOR -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_date, parent, false)
+                GateRecyclerAdapter.DateViewHolder(view)
+            }
+            VIEW_TYPE_LOADING -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_loading, parent, false)
+                LoadingViewHolder(view)
+            }
+            else -> {
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.shit, parent, false)
+                ErrorViewHolder(view)
+            }
         }
     }
 
+
+
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
+        var item : Any? = null
 
-            val item = getItem(position)
-
+        if(!(state != STATE_NONE && position == itemCount -1)){
+            item = getItem(position)
+        }
 
         val context = holder.itemView.context
         if(item != null) {
+            when (getItemViewType(position)) {
+                VIEW_TYPE_USER -> {
 
-            if (holder is UserViewHolder) {
+                    holder as UserViewHolder
+                    if(position == itemCount-1) {
+                        lastMaxPosition = position
+                    }
 
-                item as UserData
-                holder.iconLeft.setImageDrawable(
-                    AppCompatResources.getDrawable(
-                        context,
-                        R.drawable.person
+                    if(position == lastMaxPosition+1){
+                        holder.itemView.post {
+                            recyclerView.adapter!!.notifyItemChanged(lastMaxPosition, Object())
+                        }
+                    }
+
+
+                    item as UserData
+                    holder.iconLeft.setImageDrawable(
+                        AppCompatResources.getDrawable(
+                            context,
+                            R.drawable.person
+                        )
                     )
-                )
-                holder.title.text = item.Name
-                holder.description.text = MyApplication.createUserDescription(item)
+                    holder.title.text = item.Name
+                    holder.description.text = MyApplication.createUserDescription(item)
 
-                holder.itemView.setOnClickListener {
+                    holder.itemView.setOnClickListener {
 
-                    if (item.ID == UserData.instance.ID) {
-                        MyApplication.openProfile(context)
-                    } else {
-                        com.example.shared.fragments.UserFragment.userToGet = item.ID
-                        holder.itemView.findNavController()
-                            .navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
+                        if (item.ID == UserData.instance.ID) {
+                            MyApplication.openProfile(context)
+                        } else {
+                            com.example.shared.fragments.UserFragment.userToGet = item.ID
+                            holder.itemView.findNavController()
+                                .navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
+                        }
+
                     }
 
                 }
+                VIEW_TYPE_SEPARATOR -> {
 
-            } else if (holder is GateRecyclerAdapter.DateViewHolder) {
+                    holder as GateRecyclerAdapter.DateViewHolder
 
-                item as String
+                    item as String
 
-                holder.text.text = item
+                    holder.text.text = item
 
+
+                }
             }
 
+
             MyApplication.roundRecyclerItemsVerticallyWithSeparator(holder.itemView, position, this)
+        }
+        else{
+            when (getItemViewType(position)) {
+                VIEW_TYPE_LOADING -> {
+                    // Töltő ikon megjelenítése
+                }
+                VIEW_TYPE_RETRY -> {
+                    // Hibaüzenet megjelenítése és újra próbálkozás gomb eseménykezelése
+                    val retryViewHolder = holder as ErrorViewHolder
+                    retryViewHolder.button.setOnClickListener {
+                        retry()
+                    }
+                }
+            }
         }
     }
 
@@ -136,21 +154,49 @@ class UserRecycleAdapter (var horizontal : Boolean = false) : PagingDataAdapter<
 
     }
 
+    class ErrorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
+        val button : Button = itemView.findViewById(R.id.button)
+    }
+
+    override fun getItemCount(): Int {
+
+        if(state != STATE_NONE){
+            return super.getItemCount() + 1
+        }
+
+        return super.getItemCount()
+    }
 
 
     override fun getItemViewType(position: Int): Int {
 
-        return when (getItem(position)) {
+        if(position == itemCount-1) {
+            if (state == STATE_LOADING) {
+                return VIEW_TYPE_LOADING
+            }
+            else if(state == STATE_ERROR){
+                return VIEW_TYPE_RETRY
+            }
+        }
+
+        return when (getItem(position)){
             is UserData -> VIEW_TYPE_USER
             is String -> VIEW_TYPE_SEPARATOR
             else -> throw IllegalArgumentException("Unknown item type")
         }
-
     }
 
+
     companion object {
+        const val STATE_NONE = 0
+        const val STATE_LOADING = 1
+        const val STATE_ERROR = 2
+
+
         const val VIEW_TYPE_USER = 0
         const val VIEW_TYPE_SEPARATOR = 1
         const val VIEW_TYPE_LOADING = 2
+        const val VIEW_TYPE_RETRY = 3
     }
 }
