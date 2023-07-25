@@ -330,7 +330,7 @@ open class MyApplication : Application() {
         val simpleTimeFormat = SimpleDateFormat("HH:mm")
 
         fun createUserDescription(userData : UserData): String{
-            return userData.Group + " • " + userData.RoomNumber  + " • " + userData.Class
+            return userData.Group + " • " + userData.RoomID  + " • " + userData.Class
         }
 
         fun setupBottomSheet(dialog : Dialog){

@@ -11,7 +11,7 @@ object RetrofitHelper {
     val grazIP = "http://192.168.0.100/"
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(grazIP)
+        .baseUrl(gyIP)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
