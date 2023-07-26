@@ -92,14 +92,14 @@
                     android:id="@+id/chip20"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ABC elejétől"
+                    android:text="@string/abc"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip22"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="ABC végétől"
+                    android:text="@string/zyx"
                     app:shapeAppearance="@style/overlayRoundedRight" />
 
             </com.google.android.material.chip.ChipGroup>

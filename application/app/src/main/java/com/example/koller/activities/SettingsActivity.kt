@@ -6,8 +6,11 @@ import android.text.TextWatcher
 import android.widget.Button
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
-import com.example.shared.R
+import com.example.koller.R
+import com.example.shared.api.APIInterface
+import com.example.shared.R as Rs
 import com.google.android.material.checkbox.MaterialCheckBox
+import com.google.android.material.slider.RangeSlider
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -40,18 +43,30 @@ class SettingsActivity : com.example.shared.activities.SettingsActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-            setContentView(com.example.koller.R.layout.activity_settings)
+        setContentView(R.layout.activity_settings)
+
+        val rangeSlider : RangeSlider = findViewById(R.id.settings_slider_list_loading_delay)
+
+        rangeSlider.setValues(APIInterface.loadingDelayFrom, APIInterface.loadingDelayTo)
+
+        rangeSlider.addOnChangeListener{ slider, value, fromUser ->
+
+            APIInterface.loadingDelayFrom = slider.values[0]
+            APIInterface.loadingDelayTo = slider.values[1]
+
+        }
+
 
 
             findViewById<Button>(R.id.toolbar_exit).setOnClickListener{
                 onBackPressed()
             }
 
-            val timeOffsetSlider : Slider = findViewById(com.example.koller.R.id.settings_slider_time_offset)
+            val timeOffsetSlider : Slider = findViewById(R.id.settings_slider_time_offset)
             var c : Calendar = Calendar.getInstance()
             val hours : Float = (c.get(Calendar.SECOND)  / 60f / 60f+ c.get(Calendar.MINUTE) / 60f + c.get(Calendar.HOUR_OF_DAY))
-            var hoursTIL : TextInputLayout = findViewById(com.example.koller.R.id.settings_til_hours)
-            var hoursTIET : TextInputEditText = findViewById(com.example.koller.R.id.settings_tiet_hours)
+            var hoursTIL : TextInputLayout = findViewById(R.id.settings_til_hours)
+            var hoursTIET : TextInputEditText = findViewById(R.id.settings_tiet_hours)
             hoursTIET.setText((timeOffset).toString())
 
 
@@ -91,10 +106,10 @@ class SettingsActivity : com.example.shared.activities.SettingsActivity(){
             })
 
 
-            val checkBoxParent: MaterialCheckBox = findViewById(com.example.koller.R.id.notifics_all)
-            val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(com.example.koller.R.id.notifics_arrival), findViewById(
+            val checkBoxParent: MaterialCheckBox = findViewById(R.id.notifics_all)
+            val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(R.id.notifics_arrival), findViewById(
                 com.example.koller.R.id.notifics_new
-            ), findViewById(com.example.koller.R.id.notifics_room), findViewById(com.example.koller.R.id.notifics_occupation), findViewById(com.example.koller.R.id.notifics_comm_or_warn))
+            ), findViewById(com.example.koller.R.id.notifics_room), findViewById(R.id.notifics_occupation), findViewById(R.id.notifics_comm_or_warn))
 
             // Parent's checked state changed listener
             val parentOnCheckedStateChangedListener =
@@ -123,7 +138,7 @@ class SettingsActivity : com.example.shared.activities.SettingsActivity(){
                     }
                 }
             for (child in childrenCheckBoxes) {
-                (child as MaterialCheckBox)
+                (child)
                     .addOnCheckedStateChangedListener(childOnCheckedStateChangedListener)
             }
 

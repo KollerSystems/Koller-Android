@@ -111,7 +111,7 @@
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0"
-                                    android:hint="offset">
+                                    android:hint="Offset">
 
                                     <com.google.android.material.textfield.TextInputEditText
                                         android:id="@+id/settings_tiet_hours"
@@ -120,6 +120,60 @@
                                         android:inputType="number" />
                                 </com.google.android.material.textfield.TextInputLayout>
 
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/Card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="@dimen/text_container_margin"
+                                android:text="List loading delay"
+                                android:textAppearance="@style/Title" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="@dimen/text_container_margin"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/textView9"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="0" />
+
+                                <com.google.android.material.slider.RangeSlider
+                                    android:id="@+id/settings_slider_list_loading_delay"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:stepSize="0.5"
+                                    android:valueFrom="0"
+                                    android:valueTo="10"
+                                    app:labelBehavior="floating" />
+
+                                <TextView
+                                    android:id="@+id/textView13"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="10" />
                             </LinearLayout>
 
                         </LinearLayout>

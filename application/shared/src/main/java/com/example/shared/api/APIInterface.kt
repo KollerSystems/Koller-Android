@@ -1,5 +1,6 @@
 package com.example.shared.api
 import android.content.Context
+import android.renderscript.Float2
 import android.util.Log
 import com.example.shared.R
 import com.example.shared.data.ApiLoginData
@@ -10,11 +11,17 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
+import java.util.Vector
 
 
 interface APIInterface {
 
     companion object {
+
+        var loadingDelayFrom : Float = 0f
+        var loadingDelayTo : Float = 0f
+
+
         fun getHeaderMap(): Map<String, String> {
             val headerMap = mutableMapOf<String, String>()
             headerMap["Content-Type"] = "application/json"

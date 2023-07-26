@@ -11,6 +11,7 @@ import com.example.shared.data.UserData
 import com.example.shared.recycleradapter.UserRecycleAdapter
 import kotlinx.coroutines.delay
 import retrofit2.Response
+import kotlin.random.Random
 
 
 class UserPagingSource(val recyclerAdapter: UserRecycleAdapter) : PagingSource<Int, Any>()  {
@@ -30,7 +31,7 @@ class UserPagingSource(val recyclerAdapter: UserRecycleAdapter) : PagingSource<I
         val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
         try {
             val response: Response<List<UserData>> = usersResponse.getUsers(params.loadSize, offset, APIInterface.getHeaderMap())
-            delay(1000L)
+            delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
             if(response.isSuccessful) {
 

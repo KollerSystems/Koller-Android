@@ -59,6 +59,7 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
 
 
             recyclerAdapter.refresh()
+            recyclerAdapter.state = UserRecycleAdapter.STATE_NONE
 
 
         }
