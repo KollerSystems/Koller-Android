@@ -1,32 +1,21 @@
 package com.example.shared.recycleradapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.navigation.findNavController
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.example.shared.MyApplication
 import com.example.shared.R
-import com.example.shared.UserComparator
-import com.example.shared.data.UserData
-import com.example.shared.fragments.bottomsheet.ProfileBottomSheet
+import com.example.shared.BaseComparator
 import com.example.shared.navigateWithDefaultAnimation
 import com.google.android.material.imageview.ShapeableImageView
-import java.util.Objects
 
-class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(UserComparator){
-
-
-    public var onRetryClick: (() -> Unit)? = null
+abstract class BaseRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
     var lastMaxPosition : Int = -1
     lateinit var recyclerView: RecyclerView
@@ -43,7 +32,7 @@ class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Use
         return when (viewType) {
             VIEW_TYPE_USER -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
-                UserViewHolder(view)
+                CustomViewHolder(view)
             }
             VIEW_TYPE_SEPARATOR -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.view_date, parent, false)
@@ -60,6 +49,8 @@ class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Use
         }
     }
 
+    abstract fun CustomViewHolder(view : View) : RecyclerView.ViewHolder
+
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
@@ -70,12 +61,14 @@ class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Use
             item = getItem(position)
         }
 
-        val context = holder.itemView.context
+
         if(item != null) {
             when (getItemViewType(position)) {
                 VIEW_TYPE_USER -> {
 
-                    holder as UserViewHolder
+                    onBindCustomViewHolder(holder, item, position)
+
+
                     if(position == itemCount-1) {
                         lastMaxPosition = position
                     }
@@ -85,30 +78,6 @@ class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Use
                             recyclerView.adapter!!.notifyItemChanged(lastMaxPosition, Object())
                         }
                     }
-
-
-                    item as UserData
-                    holder.iconLeft.setImageDrawable(
-                        AppCompatResources.getDrawable(
-                            context,
-                            R.drawable.person
-                        )
-                    )
-                    holder.title.text = item.Name
-                    holder.description.text = MyApplication.createUserDescription(item)
-
-                    holder.itemView.setOnClickListener {
-
-                        if (item.ID == UserData.instance.ID) {
-                            MyApplication.openProfile(context)
-                        } else {
-                            com.example.shared.fragments.UserFragment.userToGet = item.ID
-                            holder.itemView.findNavController()
-                                .navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
-                        }
-
-                    }
-
                 }
                 VIEW_TYPE_SEPARATOR -> {
 
@@ -141,13 +110,8 @@ class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Use
         }
     }
 
+    abstract fun onBindCustomViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int)
 
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
-        val title : TextView = itemView.findViewById(R.id.text_text)
-        val description : TextView = itemView.findViewById(R.id.text_description)
-    }
 
     class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
@@ -181,9 +145,8 @@ class UserRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Use
         }
 
         return when (getItem(position)){
-            is UserData -> VIEW_TYPE_USER
             is String -> VIEW_TYPE_SEPARATOR
-            else -> throw IllegalArgumentException("Unknown item type")
+            else -> VIEW_TYPE_USER
         }
     }
 

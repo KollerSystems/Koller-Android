@@ -2,11 +2,14 @@ package com.example.shared.api
 import android.content.Context
 import android.renderscript.Float2
 import android.util.Log
+import com.example.shared.BasePagingSource
 import com.example.shared.R
 import com.example.shared.data.ApiLoginData
 import com.example.shared.data.ApiLoginRefreshData
 import com.example.shared.data.ApiLoginTokensData
+import com.example.shared.data.BaseData
 import com.example.shared.data.UserData
+import com.example.shared.recycleradapter.BaseRecycleAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import retrofit2.Call
 import retrofit2.Response
@@ -103,4 +106,22 @@ interface APIInterface {
         @Query(value = "offset") offset : Int,
         @HeaderMap headers: Map<String, String>
     ) : Call<List<UserData>>
+}
+
+class UserPagingSource(recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(recyclerAdapter) {
+
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
+
+        val response: Response<List<UserData>> = apiResponse.getUsers(limit, offset, APIInterface.getHeaderMap())
+
+        if(response.isSuccessful) {
+
+            return response.body() as List<BaseData>
+        }
+        else{
+            throw Exception("API error: ${response.code()}")
+        }
+
+    }
+
 }

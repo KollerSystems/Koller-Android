@@ -1,7 +1,6 @@
 package com.example.shared.data
 
-data class UserData (
-    val ID : Int = -1,
+class UserData (
     val OM : String? = null,
     val Name : String? = null,
     val Picture : String? = null,
@@ -24,12 +23,16 @@ data class UserData (
     val Discord : String? = null,
     val Facebook : String? = null,
     val Instagram : String? = null
-)
+) : BaseData()
 {
-    constructor(Name : String?) : this(-1, null, Name)
+
 
     companion object {
         var instance: UserData = UserData()
+    }
+
+    override fun diffrentDecider(): String {
+        return Name!![0].toString()
     }
 
 

@@ -18,7 +18,6 @@ import com.example.shared.MyApplication
 import com.example.shared.data.DefaultDayTimes
 import com.example.shared.data.FromTo
 import com.example.shared.data.UserData
-import com.example.shared.recycleradapter.UserRecycleAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 

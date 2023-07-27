@@ -11,7 +11,6 @@ import android.graphics.Canvas
 import android.icu.text.SimpleDateFormat
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.opengl.Visibility
 import android.os.Build
 import android.util.Log
 import android.util.TypedValue
@@ -23,14 +22,11 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import androidx.navigation.NavController
 import androidx.navigation.navOptions
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.data.UserData
-import com.example.shared.recycleradapter.GateRecyclerAdapter
-import com.example.shared.recycleradapter.UserRecycleAdapter
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
