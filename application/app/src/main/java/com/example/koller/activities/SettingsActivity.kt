@@ -1,14 +1,16 @@
 package com.example.koller.activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import android.widget.CheckBox
-import androidx.appcompat.app.AppCompatActivity
 import com.example.koller.R
+import com.example.shared.SimpleCardButton
+import com.example.shared.SimpleCardButtonWithToggle
+import com.example.shared.activities.TestActivity
 import com.example.shared.api.APIInterface
-import com.example.shared.R as Rs
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.RangeSlider
 import com.google.android.material.slider.Slider
@@ -21,29 +23,37 @@ class SettingsActivity : com.example.shared.activities.SettingsActivity(){
     private var isUpdatingChildren = false
 
     private fun setParentState(
-        checkBoxParent: MaterialCheckBox,
-        childrenCheckBoxes: List<CheckBox>,
+        checkBoxParent: SimpleCardButtonWithToggle,
+        childrenCheckBoxes: List<SimpleCardButtonWithToggle>,
         parentOnCheckedStateChangedListener: MaterialCheckBox.OnCheckedStateChangedListener
     ) {
-        val checkedCount = childrenCheckBoxes.stream().filter { obj: CheckBox -> obj.isChecked }
+        val checkedCount = childrenCheckBoxes.stream().filter { obj: SimpleCardButtonWithToggle -> obj.checkBox.isChecked }
             .count()
             .toInt()
         val allChecked = checkedCount == childrenCheckBoxes.size
         val noneChecked = checkedCount == 0
-        checkBoxParent.removeOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
+        checkBoxParent.checkBox.removeOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
         if (allChecked) {
-            checkBoxParent.isChecked = true
+            checkBoxParent.checkBox.isChecked = true
         } else if (noneChecked) {
-            checkBoxParent.isChecked = false
+            checkBoxParent.checkBox.isChecked = false
         } else {
-            checkBoxParent.checkedState = MaterialCheckBox.STATE_INDETERMINATE
+            checkBoxParent.checkBox.checkedState = MaterialCheckBox.STATE_INDETERMINATE
         }
-        checkBoxParent.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
+        checkBoxParent.checkBox.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
+
+        val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
+
+        settingsSCB.setOnClickListener {
+            val intent = Intent(this, TestActivity::class.java)
+            startActivity(intent)
+        }
+
 
         val rangeSlider : RangeSlider = findViewById(R.id.settings_slider_list_loading_delay)
 
@@ -106,10 +116,13 @@ class SettingsActivity : com.example.shared.activities.SettingsActivity(){
             })
 
 
-            val checkBoxParent: MaterialCheckBox = findViewById(R.id.notifics_all)
-            val childrenCheckBoxes: ArrayList<MaterialCheckBox> = arrayListOf(findViewById(R.id.notifics_arrival), findViewById(
-                com.example.koller.R.id.notifics_new
-            ), findViewById(com.example.koller.R.id.notifics_room), findViewById(R.id.notifics_occupation), findViewById(R.id.notifics_comm_or_warn))
+            val checkBoxParent: SimpleCardButtonWithToggle = findViewById(R.id.notifics_all)
+            val childrenCheckBoxes: ArrayList<SimpleCardButtonWithToggle> = arrayListOf(
+                findViewById(R.id.notifics_arrival),
+                findViewById(R.id.notifics_new),
+                findViewById(R.id.notifics_room),
+                findViewById(R.id.notifics_occupation),
+                findViewById(R.id.notifics_comm_or_warn))
 
             // Parent's checked state changed listener
             val parentOnCheckedStateChangedListener =
@@ -118,13 +131,13 @@ class SettingsActivity : com.example.shared.activities.SettingsActivity(){
                     if (state != MaterialCheckBox.STATE_INDETERMINATE) {
                         isUpdatingChildren = true
                         for (child in childrenCheckBoxes) {
-                            child.isChecked = isChecked
+                            child.checkBox.isChecked = isChecked
                         }
                         isUpdatingChildren = false
                     }
                 }
 
-            checkBoxParent.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
+            checkBoxParent.checkBox.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
 
             // Checked state changed listener for each child
             val childOnCheckedStateChangedListener =
@@ -138,7 +151,7 @@ class SettingsActivity : com.example.shared.activities.SettingsActivity(){
                     }
                 }
             for (child in childrenCheckBoxes) {
-                (child)
+                (child.checkBox)
                     .addOnCheckedStateChangedListener(childOnCheckedStateChangedListener)
             }
 

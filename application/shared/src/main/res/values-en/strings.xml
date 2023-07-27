@@ -89,8 +89,8 @@
     <string name="successfull_exit">Successful exit!</string>
     <string name="go_out_text">You can go out until %1$s</string>
     <string name="stay_out_text">You can stay out until %1$s</string>
-    <string name="will_remain">You will have %1$sto get back</string>
-    <string name="now_remain">You have %1$sto get back</string>
+    <string name="will_remain">You will have %1$sto return</string>
+    <string name="now_remain">You have %1$sto return</string>
     <string name="education_ID_colon">Education ID:</string>
     <string name="education_teacher">Education teacher:</string>
     <string name="school">School:</string>
@@ -250,4 +250,11 @@
     <string name="programs">Programs</string>
     <string name="none">None</string>
     <string name="try_again">Try again</string>
+    <string name="attentive_teachers">Attentive teachers</string>
+    <string name="attentive_near_you">Attentive near you:</string>
+    <string name="daily_pastime">Daily pastime</string>
+    <string name="student_hostel_sessions">Student hostel sessions</string>
+    <string name="evening_pastime">Evening pastime</string>
+    <string name="sleeping_time">Sleeping time</string>
+    <string name="an_error_occurred">An error occurred</string>
 </resources>

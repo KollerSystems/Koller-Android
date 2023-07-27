@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
 
 
-class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
+open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
 
     private var mText: String = ""
     private var mDesc: String = ""
@@ -18,8 +18,8 @@ class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView
 
     private val textText: TextView
     private val textDesc: TextView
-    private val textBadge: TextView
-    private val imageViewIcon: ImageView
+    private val textBadge: TextView?
+    private val imageViewIcon: ImageView?
 
     init {
         val typedArray = context.theme.obtainStyledAttributes(
@@ -37,7 +37,8 @@ class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView
             typedArray.recycle()
         }
 
-        View.inflate(context, R.layout.simple_card_button, this)
+        inflate()
+
         textText = findViewById(R.id.text_text)
         textDesc = findViewById(R.id.text_description)
         textBadge = findViewById(R.id.badge)
@@ -51,16 +52,17 @@ class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView
         setContentPadding(padding,padding,padding,padding)
 
 
-        imageViewIcon.setImageDrawable(mIcon)
+        imageViewIcon?.setImageDrawable(mIcon)
 
         textText.text = mText
 
-        if(textBadge.text == "0"){
-            textBadge.visibility = GONE
-        }
-        else{
-            textBadge.visibility = VISIBLE
-            textBadge.text = mBadge.toString()
+        if(textBadge!=null) {
+            if (textBadge.text == "0") {
+                textBadge.visibility = GONE
+            } else {
+                textBadge.visibility = VISIBLE
+                textBadge.text = mBadge.toString()
+            }
         }
 
         if (mDesc.isEmpty()) {
@@ -69,6 +71,10 @@ class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView
             textDesc.text = mDesc
             textDesc.visibility = View.VISIBLE
         }
+    }
+
+    open fun inflate(){
+        View.inflate(context, R.layout.simple_card_button, this)
     }
 
 }

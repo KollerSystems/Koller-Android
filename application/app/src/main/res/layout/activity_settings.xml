@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context=".activities.SettingsActivity">
 
@@ -180,6 +181,13 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
+                    <com.example.shared.SimpleCardButton
+                        android:id="@+id/settings_scb_test_activity"
+                        custom:text="Open test Activity"
+                        custom:description="Hell yeah. Test activity!"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
 
@@ -201,335 +209,43 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
+                    <com.example.shared.SimpleCardButtonWithToggle
+                        android:id="@+id/notifics_all"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        custom:text="@string/all" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/all"
-                                    android:textAppearance="@style/Title" />
-
-                                <TextView
-                                    android:id="@+id/dsadasd"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_all"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
+                    <com.example.shared.SimpleCardButtonWithToggle
+                        android:id="@+id/notifics_arrival"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        custom:description="@string/arrival_reminder_description"
+                        custom:text="@string/arrival_reminder" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/gfdgdfgdfgdf"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/arrival_reminder"
-                                    android:textAppearance="@style/Title" />
-
-                                <TextView
-                                    android:id="@+id/bnm"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:ellipsize="end"
-                                    android:text="@string/arrival_reminder_description" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_arrival"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
+                    <com.example.shared.SimpleCardButtonWithToggle
+                        android:id="@+id/notifics_occupation"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        custom:description="@string/occupation_reminder_description"
+                        custom:text="@string/occupation_reminder" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/occupation_reminder"
-                                    android:textAppearance="@style/Title" />
-
-                                <TextView
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/occupation_reminder_description"
-                                    android:textAppearance="@style/Description" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_occupation"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
+                    <com.example.shared.SimpleCardButtonWithToggle
+                        android:id="@+id/notifics_room"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        custom:text="@string/room_order" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/hhhhhh"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/room_order"
-                                    android:textAppearance="@style/Title" />
-
-                                <TextView
-                                    android:id="@+id/hfghfg"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_room"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
+                    <com.example.shared.SimpleCardButtonWithToggle
+                        android:id="@+id/notifics_comm_or_warn"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
+                        android:layout_height="match_parent"
+                        custom:text="@string/commendation_warning" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/gg"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/commendation_warning"
-                                    android:textAppearance="@style/Title" />
-
-                                <TextView
-                                    android:id="@+id/s"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_comm_or_warn"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
+                    <com.example.shared.SimpleCardButtonWithToggle
+                        android:id="@+id/notifics_new"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:clickable="true"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="horizontal">
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:gravity="center_vertical"
-                            android:orientation="horizontal">
-
-                            <LinearLayout
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/text_container_margin"
-                                android:layout_marginTop="@dimen/text_container_margin"
-                                android:layout_marginRight="10dp"
-                                android:layout_marginBottom="@dimen/text_container_margin"
-                                android:layout_weight="1"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:gravity="center_vertical"
-                                android:orientation="vertical">
-
-                                <TextView
-                                    android:id="@+id/zturzrt"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:text="@string/news"
-                                    android:textAppearance="@style/Title" />
-
-                                <TextView
-                                    android:id="@+id/ztrzrtrr"
-                                    style="@style/Description"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="0"
-                                    android:ellipsize="end"
-                                    android:maxLines="1"
-                                    android:visibility="gone" />
-
-                            </LinearLayout>
-
-                            <com.google.android.material.checkbox.MaterialCheckBox
-                                android:id="@+id/notifics_new"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content" />
-
-                        </LinearLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
+                        android:layout_height="match_parent"
+                        custom:text="@string/news" />
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>

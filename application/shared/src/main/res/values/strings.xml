@@ -283,4 +283,11 @@
     <string name="programs">Programok</string>
     <string name="none">Nincs</string>
     <string name="try_again">Újraprobálkozás</string>
+    <string name="attentive_teachers">Ügyeletes tanárok</string>
+    <string name="attentive_near_you">Ügyeletes_a_közeledben:</string>
+    <string name="daily_pastime">Nappali időtöltés</string>
+    <string name="student_hostel_sessions">Kollégiumi foglalkozások</string>
+    <string name="evening_pastime">Esti időtöltés</string>
+    <string name="sleeping_time">Alvó idő</string>
+    <string name="an_error_occurred">Hiba történt</string>
 </resources>

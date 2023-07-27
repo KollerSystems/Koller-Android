@@ -103,7 +103,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:paddingVertical="@dimen/text_container_margin"
-                    android:text="Nappali időtöltés" />
+                    android:text="@string/daily_pastime" />
 
 
                 <com.google.android.material.card.MaterialCardView
@@ -254,7 +254,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:paddingVertical="@dimen/text_container_margin"
-                    android:text="Kollégiumi foglalkozások" />
+                    android:text="@string/student_hostel_sessions" />
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -275,7 +275,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:paddingVertical="@dimen/text_container_margin"
-                    android:text="Esti időtöltés" />
+                    android:text="@string/evening_pastime" />
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
@@ -417,7 +417,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="15dp"
                     android:paddingVertical="@dimen/text_container_margin"
-                    android:text="Alvó idő" />
+                    android:text="@string/sleeping_time" />
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
@@ -537,48 +537,22 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="@dimen/application_padding"
                             android:paddingRight="@dimen/application_padding"
-                            android:text="Ügyeletes tanárok:"
+                            android:text="@string/attentive_teachers"
                             android:textAppearance="@style/Title"
                             android:textStyle="bold" />
 
-                        <androidx.core.widget.NestedScrollView
-                            style="@style/nestedScrollView"
+                        <include
+                            layout="@layout/shit"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
+                            android:layout_height="wrap_content" />
 
-                            <LinearLayout
-                                style="@style/MainLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@null"
-                                android:elevation="3dp"
-                                android:orientation="vertical"
-                                android:padding="@null"
-                                android:paddingLeft="@dimen/application_padding"
-                                android:paddingTop="@dimen/application_padding"
-                                android:paddingRight="@dimen/application_padding">
-
-                                <androidx.cardview.widget.CardView
-                                    style="@style/MainCard"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content">
-
-                                    <RelativeLayout
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content">
-
-                                        <androidx.recyclerview.widget.RecyclerView
-                                            android:id="@+id/on_duty_recycler_view"
-                                            style="@style/MainCardLayout"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            tools:itemCount="4"
-                                            tools:listitem="@layout/notification_panel" />
-                                    </RelativeLayout>
-
-                                </androidx.cardview.widget.CardView>
-                            </LinearLayout>
-                        </androidx.core.widget.NestedScrollView>
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/on_duty_recycler_view"
+                            style="@style/MainCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            tools:itemCount="4"
+                            tools:listitem="@layout/notification_panel" />
 
                     </LinearLayout>
 
@@ -601,7 +575,7 @@
 
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="Ügyeletes a közeledben:"
+                                android:text="@string/attentive_near_you"
                                 android:textAppearance="@style/Normal"
                                 android:textStyle="bold" />
 
@@ -610,7 +584,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="Nagy Gazsi"
+                                android:text="@string/none"
                                 android:textAlignment="textEnd"
                                 android:textAppearance="@style/Normal" />
                         </LinearLayout>
