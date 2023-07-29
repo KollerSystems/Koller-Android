@@ -70,4 +70,8 @@
             android:resource="@array/preloaded_fonts" />
     </application>
 
+    <queries>
+        <package android:name="hu.ekreta.student" />
+    </queries>
+
 </manifest>

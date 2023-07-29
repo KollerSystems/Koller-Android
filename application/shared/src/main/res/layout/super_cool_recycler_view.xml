@@ -6,16 +6,6 @@
     android:nestedScrollingEnabled="true"
     android:orientation="vertical">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab_scroll_to_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="@dimen/application_padding"
-        android:layout_marginBottom="@dimen/application_padding"
-        android:clickable="true"
-        android:src="@drawable/up" />
-
     <TextView
         android:id="@+id/text_view_recycler_view_header"
         style="@style/CategoryCardName"
@@ -29,6 +19,16 @@
         android:paddingVertical="@dimen/text_container_margin"
         android:text="Július 12."
         android:translationZ="1dp" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab_scroll_to_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="@dimen/application_padding"
+        android:layout_marginBottom="@dimen/application_padding"
+        android:clickable="true"
+        android:src="@drawable/up" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

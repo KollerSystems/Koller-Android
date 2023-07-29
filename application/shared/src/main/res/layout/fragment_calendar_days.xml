@@ -32,7 +32,7 @@
         style="@style/SimpleButton"
         android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="-5dp"
+        android:layout_marginBottom="@dimen/n_spacing"
         android:textStyle="bold"
         app:icon="@drawable/double_arrow_left"
         app:iconPadding="0dp"
@@ -58,13 +58,9 @@
         android:id="@+id/textView16"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/text_container_margin"
-        android:layout_marginTop="@dimen/text_container_margin"
-        android:layout_marginEnd="@dimen/text_container_margin"
-        android:layout_marginBottom="@dimen/text_container_margin"
+        android:layout_margin="@dimen/spacing"
         android:textAlignment="center"
         android:textAppearance="@style/Title"
-        app:layout_constraintBottom_toTopOf="@+id/calendar_days_view_pager"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/calendar_days_tabs" />
@@ -74,7 +70,7 @@
         style="@style/SimpleButton"
         android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="-5dp"
+        android:layout_marginBottom="@dimen/n_spacing"
         android:textStyle="bold"
         app:icon="@drawable/double_arrow_right"
         app:iconPadding="0dp"
@@ -82,5 +78,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/calendar_days_tabs"
         app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/application_padding"
+        android:layout_marginBottom="@dimen/application_padding"
+        android:src="@drawable/replay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"></com.google.android.material.floatingactionbutton.FloatingActionButton>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

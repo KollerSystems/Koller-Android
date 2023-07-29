@@ -8,7 +8,7 @@ import com.example.shared.recycleradapter.BaseRecycleAdapter
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class BaseViewModel(pagingSource: BasePagingSource) : ViewModel() {
+class BaseViewModel(pagingSource: ()-> BasePagingSource) : ViewModel() {
 
     companion object{
         val pageSize : Int = 25
@@ -19,7 +19,7 @@ class BaseViewModel(pagingSource: BasePagingSource) : ViewModel() {
         initialLoadSize = pageSize,
         prefetchDistance = 1
     )) {
-        pagingSource
+        pagingSource()
     }.flow
 
 }

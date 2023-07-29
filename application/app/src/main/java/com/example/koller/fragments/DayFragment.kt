@@ -1,5 +1,8 @@
 package com.example.koller.fragments
 
+import android.content.Intent
+import android.icu.util.Calendar
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,16 +15,22 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shared.R
 import com.example.koller.activities.MainActivity
 import com.example.shared.MyApplication
+import com.example.koller.R
+import com.example.shared.R as Rs
 import com.example.shared.data.DefaultDayTimes
 import com.example.shared.data.FromTo
 import com.example.shared.data.UserData
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 
-class DayFragment : Fragment() {
+
+class DayFragment(val calendar: Calendar? = lastCalendar) : Fragment() {
+
+    companion object{
+        var lastCalendar : Calendar? = null
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,13 +75,25 @@ class DayFragment : Fragment() {
         textNighttimeIn.text = MyApplication.timeFromTo(DefaultDayTimes.instance.nightTimeGoInsideYellow, DefaultDayTimes.instance.nightTimeEnd)
         textSleepStart.text = MyApplication.timeFrom(DefaultDayTimes.instance.nightTimeEnd)
 
+        val textHeader : TextView = view.findViewById(R.id.calendar_text_header)
+
+        lastCalendar = calendar
+
+        textHeader.text = MyApplication.simpleLocalMonthDay.format(calendar)
 
 
 
-        val ediaryButton: Button = view.findViewById(com.example.koller.R.id.ediary_button)
+
+        val ediaryButton: Button = view.findViewById(R.id.ediary_button)
 
         ediaryButton.setOnClickListener{
+            val packageName = "hu.ekreta.student"
+            var intent: Intent? = requireContext().packageManager.getLaunchIntentForPackage(packageName)
 
+            if (intent == null) {
+                intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+            }
+            startActivity(intent)
         }
 
 
@@ -144,7 +165,7 @@ class DayFragment : Fragment() {
 class LessonsRecyclerAdapter (private val lessonList : ArrayList<FromTo>) : RecyclerView.Adapter<LessonsRecyclerAdapter.LessonsViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LessonsViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_lesson, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(Rs.layout.view_lesson, parent, false)
         return LessonsViewHolder(itemView)
     }
 
@@ -164,10 +185,10 @@ class LessonsRecyclerAdapter (private val lessonList : ArrayList<FromTo>) : Recy
 
     class LessonsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val title : TextView = itemView.findViewById(R.id.lesson_text_title)
-        val place : TextView = itemView.findViewById(R.id.lesson_text_place)
-        val index : TextView = itemView.findViewById(R.id.lesson_text_index)
-        val time : TextView = itemView.findViewById(R.id.lesson_text_time)
+        val title : TextView = itemView.findViewById(Rs.id.lesson_text_title)
+        val place : TextView = itemView.findViewById(Rs.id.lesson_text_place)
+        val index : TextView = itemView.findViewById(Rs.id.lesson_text_index)
+        val time : TextView = itemView.findViewById(Rs.id.lesson_text_time)
     }
 
 }

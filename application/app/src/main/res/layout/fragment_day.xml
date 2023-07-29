@@ -12,10 +12,10 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/text_view"
+            android:id="@+id/calendar_text_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_container_margin"
+            android:layout_margin="@dimen/spacing"
             android:paddingHorizontal="55dp"
             android:text="Március 15."
             android:textAlignment="center"
