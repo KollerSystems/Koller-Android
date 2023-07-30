@@ -40,9 +40,9 @@ class UsersFragment : Fragment() {
         leaderUsersRecyclerView.setHasFixedSize(false)
 
         leaderUsersDataArrayList = arrayListOf(
-            UserData("Katona Márton"),
-            UserData("Härtlein Károly"),
-            UserData("Hatalmas Norbert")
+            UserData(Name="Katona Márton"),
+            UserData(Name="Härtlein Károly"),
+            UserData(Name="Hatalmas Norbert")
         )
 
         leaderUsersRecyclerView.adapter = UserRecyclerAdapter()

@@ -1,6 +1,7 @@
 package com.example.shared.data
 
 class UserData (
+    var UID : Int = -1,
     val OM : String? = null,
     val Name : String? = null,
     val Picture : String? = null,
@@ -11,7 +12,7 @@ class UserData (
     val Birthdate : String? = null,
     val GuardiaName : String? = null,
     val GuardianPhone : String? = null,
-    val RoomID : String? = null,
+    val RID : String? = null,
     val Country : String ? = null,
     val City : String? = null,
     val Street : String? = null,
@@ -33,6 +34,10 @@ class UserData (
 
     override fun diffrentDecider(): String {
         return Name!![0].toString()
+    }
+
+    override fun getID(): Int {
+        return UID
     }
 
 

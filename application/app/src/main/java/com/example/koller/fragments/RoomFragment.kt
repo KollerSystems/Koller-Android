@@ -28,9 +28,9 @@ class RoomFragment : Fragment() {
         usersRecyclerView.setHasFixedSize(false)
 
         userDataArrayList = arrayListOf(
-            UserData("Katona Márton"),
-            UserData("Härtlein Károly"),
-            UserData("Hatalmas Norbert")
+            UserData(Name = "Katona Márton"),
+            UserData(Name = "Härtlein Károly"),
+            UserData(Name = "Hatalmas Norbert")
         )
 
         usersRecyclerView.adapter = UserPreviewRecyclerAdapter(

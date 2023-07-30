@@ -61,6 +61,7 @@
         android:layout_margin="@dimen/spacing"
         android:textAlignment="center"
         android:textAppearance="@style/Title"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@+id/calendar_days_tabs" />
@@ -79,13 +80,21 @@
         app:layout_constraintStart_toEndOf="@+id/calendar_days_tabs"
         app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <Button
+        android:id="@+id/button3"
+        style="@style/button_tonal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/application_padding"
-        android:layout_marginBottom="@dimen/application_padding"
-        android:src="@drawable/replay"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"></com.google.android.material.floatingactionbutton.FloatingActionButton>
+        android:layout_marginTop="@dimen/spacing"
+        android:paddingLeft="20dp"
+        android:paddingTop="8dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="8dp"
+        android:text="Jelenlegi napra"
+        android:textSize="@dimen/text_description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:shapeAppearance="@style/overlayRoundedCardBottom" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

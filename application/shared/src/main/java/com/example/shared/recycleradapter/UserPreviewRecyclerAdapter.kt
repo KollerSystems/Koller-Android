@@ -37,13 +37,13 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
 
         holder.itemView.setOnClickListener {
 
-            if(currentItem.ID == UserData.instance.ID){
+            if(currentItem.UID == UserData.instance.UID){
                 val dialog = ProfileBottomSheet()
                 val fragmentManager = (context as AppCompatActivity)
                 dialog.show(fragmentManager.supportFragmentManager, ProfileBottomSheet.TAG)
             }
             else{
-                (context as AppCompatActivity).intent.putExtra("UserPreviewID", currentItem.ID)
+                (context as AppCompatActivity).intent.putExtra("UserPreviewID", currentItem.UID)
                 holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_roomFragment_to_userFragment)
             }
 

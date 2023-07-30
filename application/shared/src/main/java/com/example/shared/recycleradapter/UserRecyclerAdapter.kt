@@ -34,10 +34,10 @@ class UserRecyclerAdapter : BaseRecycleAdapter() {
 
         holder.itemView.setOnClickListener {
 
-            if (item.ID == UserData.instance.ID) {
+            if (item.UID == UserData.instance.UID) {
                 MyApplication.openProfile(context)
             } else {
-                com.example.shared.fragments.UserFragment.userToGet = item.ID
+                com.example.shared.fragments.UserFragment.userToGet = item.UID
                 holder.itemView.findNavController()
                     .navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
             }

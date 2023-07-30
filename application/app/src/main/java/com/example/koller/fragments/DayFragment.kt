@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -26,10 +27,10 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 
 
-class DayFragment(val calendar: Calendar? = lastCalendar) : Fragment() {
+class DayFragment() : Fragment() {
 
     companion object{
-        var lastCalendar : Calendar? = null
+        var currentFragment : DayFragment? = null
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,7 +40,7 @@ class DayFragment(val calendar: Calendar? = lastCalendar) : Fragment() {
     private lateinit var usersRecyclerView: RecyclerView
     private lateinit var todayDataArrayList: List<UserData>
 
-    private lateinit var bottomSheetDuty: FrameLayout
+    lateinit var bottomSheetDuty: FrameLayout
 
     private lateinit var panelDutyMax: ViewGroup
     private lateinit var panelDutyMin: ViewGroup
@@ -53,12 +54,19 @@ class DayFragment(val calendar: Calendar? = lastCalendar) : Fragment() {
     private lateinit var textSleepStart : TextView
     private lateinit var lessonsRecyclerView : RecyclerView
 
+    override fun onResume() {
+        super.onResume()
+        currentFragment = this
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
         val view : View = inflater.inflate(com.example.koller.R.layout.fragment_day, container, false)
+
 
         textSleepEnd = view.findViewById(com.example.koller.R.id.calendar_day_text_sleep_end_time)
         textDaytimeOut = view.findViewById(com.example.koller.R.id.calendar_day_text_daytime_out_time)
@@ -77,9 +85,9 @@ class DayFragment(val calendar: Calendar? = lastCalendar) : Fragment() {
 
         val textHeader : TextView = view.findViewById(R.id.calendar_text_header)
 
-        lastCalendar = calendar
 
-        textHeader.text = MyApplication.simpleLocalMonthDay.format(calendar)
+
+        //textHeader.text = MyApplication.simpleLocalMonthDay.format(myCalendar)
 
 
 
@@ -102,10 +110,10 @@ class DayFragment(val calendar: Calendar? = lastCalendar) : Fragment() {
         usersRecyclerView.setHasFixedSize(true)
 
         todayDataArrayList = listOf(
-            UserData("Nagy Gazsi"),
-            UserData("Kis Péter"),
-            UserData("Hatalmas Norbert"),
-            UserData("Rogán Mátyás")
+            UserData(Name = "Nagy Gazsi"),
+            UserData(Name = "Kis Péter"),
+            UserData(Name = "Hatalmas Norbert"),
+            UserData(Name = "Rogán Mátyás")
         )
 
         //usersRecyclerView.adapter = UserRecycleAdapter()

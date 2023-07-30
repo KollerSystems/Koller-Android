@@ -34,6 +34,11 @@
         <item name="android:minHeight">0dp</item>
     </style>
 
+    <style name="button_tonal" parent="@style/button">
+        <item name="android:backgroundTint">?attr/colorSecondaryContainer</item>
+        <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
+    </style>
+
     <style name="button_outline" parent="@style/button">
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="strokeColor">@color/m3_button_outline_color_selector</item>

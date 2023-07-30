@@ -59,7 +59,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         textName.text = UserData.instance.Name
 
         textDescription = realView.findViewById(R.id.profile_text_description)
-        textDescription.text = UserData.instance.Group + " • " + UserData.instance.RoomID  + " • " + UserData.instance.Class
+        textDescription.text = MyApplication.createUserDescription(UserData.instance)
 
 
         val buttonLogout: Button = realView.findViewById(R.id.button_logout)
