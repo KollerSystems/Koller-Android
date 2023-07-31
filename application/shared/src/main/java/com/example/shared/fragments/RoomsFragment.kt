@@ -6,16 +6,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shared.BaseViewModel
 import com.example.shared.R
+import com.example.shared.SuperCoolRecyclerView
+import com.example.shared.api.RoomPagingSource
+import com.example.shared.api.UserPagingSource
 import com.example.shared.data.TodayData
 import com.example.shared.recycleradapter.RoomRecyclerAdapter
+import com.example.shared.recycleradapter.UserRecyclerAdapter
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class RoomsFragment : Fragment() {
 
-    private lateinit var roomsRecyclerView: RecyclerView
-    private lateinit var todayDataArrayList: ArrayList<TodayData>
+    private lateinit var roomsRecyclerView: SuperCoolRecyclerView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,23 +35,27 @@ class RoomsFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_rooms, container, false)
 
-        roomsRecyclerView = view.findViewById(R.id.recycler_view)
-        roomsRecyclerView.layoutManager = LinearLayoutManager(context)
-        roomsRecyclerView.setHasFixedSize(true)
+        roomsRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
+        roomsRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
 
-        todayDataArrayList = arrayListOf(
-            TodayData(AppCompatResources.getDrawable(requireContext(), R.drawable.bed), "254", "K. Márton, H. Károly, N. Norbert"),
-            TodayData(AppCompatResources.getDrawable(requireContext(), R.drawable.bed),"255", "K. Gábor, A. Norbert"),
-            TodayData(AppCompatResources.getDrawable(requireContext(), R.drawable.bed),"256", "K. Gábor, A. Norbert"),
-            TodayData(AppCompatResources.getDrawable(requireContext(), R.drawable.bed),"257", "K. Gábor, A. Norbert"),
-            TodayData(AppCompatResources.getDrawable(requireContext(), R.drawable.monitor),"Ügyeletes terem", "2. emelet, A oldal"),
-            TodayData(AppCompatResources.getDrawable(requireContext(), R.drawable.kitchen),"Teakonyha", "2. emelet, A oldal",)
-        )
 
-        roomsRecyclerView.adapter = RoomRecyclerAdapter(
-            todayDataArrayList,
-            requireContext()
-        )
+        val roomRecycleAdapter = RoomRecyclerAdapter()
+        val viewModel = BaseViewModel { RoomPagingSource(roomRecycleAdapter) }
+
+
+        roomsRecyclerView.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = roomRecycleAdapter
+        }
+
+
+        roomsRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
+
+        lifecycleScope.launch {
+            viewModel.pagingData.collectLatest { pagingData ->
+                roomRecycleAdapter.submitData(pagingData)
+            }
+        }
 
         return view
     }

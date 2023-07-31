@@ -13,6 +13,7 @@ import com.example.shared.fragments.bottomsheet.ProfileBottomSheet
 import com.example.shared.MyApplication
 import com.example.shared.R
 import com.example.shared.data.UserData
+import com.example.shared.fragments.UserFragment
 import com.example.shared.navigateWithDefaultAnimation
 import com.google.android.material.card.MaterialCardView
 
@@ -33,17 +34,18 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
 
         MyApplication.roundRecyclerItemsHorizontally(context, holder.itemView, position, todayList.size)
 
-        holder.text.text = currentItem.Name!!.replace(" ", "\n")
+        val nameParts : List<String> = currentItem.Name!!.split(" ")
+        val name = nameParts[0] + " " + nameParts [1]
+
+        holder.text.text = name.replace(" ", "\n")
 
         holder.itemView.setOnClickListener {
 
             if(currentItem.UID == UserData.instance.UID){
-                val dialog = ProfileBottomSheet()
-                val fragmentManager = (context as AppCompatActivity)
-                dialog.show(fragmentManager.supportFragmentManager, ProfileBottomSheet.TAG)
+                MyApplication.openProfile.invoke(holder.itemView.context)
             }
             else{
-                (context as AppCompatActivity).intent.putExtra("UserPreviewID", currentItem.UID)
+                UserFragment.userToGet = currentItem.UID
                 holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_roomFragment_to_userFragment)
             }
 

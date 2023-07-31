@@ -12,7 +12,7 @@ class UserData (
     val Birthdate : String? = null,
     val GuardiaName : String? = null,
     val GuardianPhone : String? = null,
-    val RID : String? = null,
+    val RID : Int? = null,
     val Country : String ? = null,
     val City : String? = null,
     val Street : String? = null,

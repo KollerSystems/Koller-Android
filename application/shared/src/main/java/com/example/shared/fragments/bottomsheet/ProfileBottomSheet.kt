@@ -22,6 +22,7 @@ import com.example.shared.activities.LoginActivity
 import com.example.shared.activities.SettingsActivity
 import com.example.shared.data.DevData
 import com.example.shared.data.EventsData
+import com.example.shared.fragments.RoomFragment
 import com.example.shared.navigateWithDefaultAnimation
 import com.example.shared.recycleradapter.DevRecyclerAdapter
 import com.example.shared.recycleradapter.EventsRecyclerAdapter
@@ -108,7 +109,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         cardMyRoom.setOnClickListener{
 
-            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_roomFragment)
+            RoomFragment.open(this, UserData.instance.RID!!)
             this.dismiss()
         }
 

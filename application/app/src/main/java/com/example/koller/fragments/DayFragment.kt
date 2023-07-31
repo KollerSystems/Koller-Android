@@ -30,7 +30,7 @@ import com.google.android.material.bottomsheet.BottomSheetDragHandleView
 class DayFragment() : Fragment() {
 
     companion object{
-        var currentFragment : DayFragment? = null
+
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +56,6 @@ class DayFragment() : Fragment() {
 
     override fun onResume() {
         super.onResume()
-        currentFragment = this
 
     }
 

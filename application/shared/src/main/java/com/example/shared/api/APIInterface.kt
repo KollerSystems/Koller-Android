@@ -8,6 +8,7 @@ import com.example.shared.data.ApiLoginData
 import com.example.shared.data.ApiLoginRefreshData
 import com.example.shared.data.ApiLoginTokensData
 import com.example.shared.data.BaseData
+import com.example.shared.data.RoomData
 import com.example.shared.data.UserData
 import com.example.shared.recycleradapter.BaseRecycleAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -94,11 +95,24 @@ interface APIInterface {
         @HeaderMap headers: Map<String, String>
     ) : Response<List<UserData>>
 
+    @GET("api/rooms")
+    suspend fun getRooms(
+        @Query(value = "limit") limit : Int,
+        @Query(value = "offset") offset : Int,
+        @HeaderMap headers: Map<String, String>
+    ) : Response<List<RoomData>>
+
     @GET("api/users/{id}")
     fun getUser(
         @Path("id") searchById:Int,
         @HeaderMap headers: Map<String, String>
     ) : Call<UserData>
+
+    @GET("api/rooms/{id}")
+    fun getRoom(
+        @Path("id") searchById:Int,
+        @HeaderMap headers: Map<String, String>
+    ) : Call<RoomData>
 
     @GET("api/crossings/me")
     fun getMyCrossings(
@@ -113,6 +127,24 @@ class UserPagingSource(recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(r
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
 
         val response: Response<List<UserData>> = apiResponse.getUsers(limit, offset, APIInterface.getHeaderMap())
+
+        if(response.isSuccessful) {
+
+            return response.body() as List<BaseData>
+        }
+        else{
+            throw Exception("API error: ${response.code()}")
+        }
+
+    }
+
+}
+
+class RoomPagingSource(recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(recyclerAdapter) {
+
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
+
+        val response: Response<List<RoomData>> = apiResponse.getRooms(limit, offset, APIInterface.getHeaderMap())
 
         if(response.isSuccessful) {
 

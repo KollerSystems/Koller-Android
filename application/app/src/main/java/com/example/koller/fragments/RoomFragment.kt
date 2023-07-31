@@ -6,38 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shared.R
+import com.example.koller.R
 import com.example.shared.data.UserData
 import com.example.shared.recycleradapter.UserPreviewRecyclerAdapter
 
 
-class RoomFragment : Fragment() {
-
-
-    private lateinit var usersRecyclerView: RecyclerView
-    private lateinit var userDataArrayList: ArrayList<UserData>
+class RoomFragment : com.example.shared.fragments.RoomFragment() {
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view : View = inflater.inflate(com.example.koller.R.layout.fragment_room, container, false)
-
-        usersRecyclerView = view.findViewById(R.id.recycler_view)
-        usersRecyclerView.setHasFixedSize(false)
-
-        userDataArrayList = arrayListOf(
-            UserData(Name = "Katona Márton"),
-            UserData(Name = "Härtlein Károly"),
-            UserData(Name = "Hatalmas Norbert")
-        )
-
-        usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
-            userDataArrayList,
-            requireContext()
-        )
-
+        var view : View = inflater.inflate(R.layout.fragment_room, container, false)
 
 
         return view

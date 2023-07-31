@@ -14,7 +14,7 @@
 
 
     <TextView
-        android:id="@+id/user_text_name2"
+        android:id="@+id/room_text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="216"
@@ -23,7 +23,7 @@
 />
 
     <Button
-        android:id="@+id/login_button_forgot_password2"
+        android:id="@+id/room_button_description"
         style="@style/textButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

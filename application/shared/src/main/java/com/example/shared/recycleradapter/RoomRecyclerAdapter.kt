@@ -9,44 +9,55 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.R
+import com.example.shared.data.RoomData
 import com.example.shared.data.TodayData
+import com.example.shared.data.UserData
+import com.example.shared.fragments.RoomFragment
 import com.example.shared.navigateWithDefaultAnimation
 import com.google.android.material.imageview.ShapeableImageView
 
 
-class RoomRecyclerAdapter (private var todayList : ArrayList<TodayData>, var context : Context) : RecyclerView.Adapter<RoomRecyclerAdapter.TodayViewHolder>(){
+class RoomRecyclerAdapter() : BaseRecycleAdapter(){
 
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
-
-
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
-        return TodayViewHolder(view)
-
-
+    override fun CustomViewHolder(view: View): RecyclerView.ViewHolder {
+        return RoomsViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
-        val currentItem = todayList[position]
+    fun getShortName(name : String) : String{
+        val nameParts : List<String> = name.split(" ")
+        return nameParts[0][0] + ". " + nameParts[1]
+    }
 
-        holder.iconLeft.setImageDrawable(currentItem.iconLeft)
-        holder.title.text = currentItem.title
-        holder.description.text = currentItem.description
+    override fun onBindCustomViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
+        holder as RoomsViewHolder
+
+        item as RoomData
+
+        holder.iconLeft.setImageDrawable(holder.itemView.context.getDrawable(R.drawable.bed))
+        holder.title.text = item.RID.toString()
+
+        if(item.residents !=null ) {
+
+            var desc = getShortName(item.residents!![0].Name!!)
+            for (i in 1 until item.residents!!.size){
+
+
+                desc += ", " + getShortName(item.residents!![i].Name!!)
+            }
+            holder.description.text = desc
+        }
 
         holder.itemView.setOnClickListener {
 
-            (context as AppCompatActivity).intent.putExtra("roomID", currentItem.description)
+            RoomFragment.toGet = item.RID
             holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_roomsFragment_to_roomFragment)
 
         }
     }
 
-    override fun getItemCount(): Int {
-        return todayList.size
-    }
 
-    class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class RoomsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
         val title : TextView = itemView.findViewById(R.id.text_text)
