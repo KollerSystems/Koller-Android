@@ -52,7 +52,7 @@ class UsersFragment : Fragment() {
 
         val userRecycleAdapter = UserRecyclerAdapter()
 
-        viewModel = BaseViewModel { UserPagingSource(userRecycleAdapter) }
+        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter) }
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

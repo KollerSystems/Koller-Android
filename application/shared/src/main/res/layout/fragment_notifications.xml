@@ -32,27 +32,11 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip"
+                    style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/room_order" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/praises" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/warnings" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/posts" />
+                    android:text="@string/type_"
+                    app:closeIconEnabled="true" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip11"
@@ -100,7 +84,7 @@
                 android:id="@+id/divider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="5dp"
                 android:background="?android:attr/listDivider" />
 

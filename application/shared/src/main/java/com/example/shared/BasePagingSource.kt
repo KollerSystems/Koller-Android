@@ -1,7 +1,9 @@
 package com.example.shared
 
+import android.content.Context
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.shared.api.APIInterface
@@ -14,7 +16,7 @@ import retrofit2.Response
 import kotlin.random.Random
 
 
-open class BasePagingSource(val recyclerAdapter: BaseRecycleAdapter) : PagingSource<Int, Any>()  {
+open class BasePagingSource(val context : Context, val recyclerAdapter: BaseRecycleAdapter) : PagingSource<Int, Any>()  {
 
     var lastFirstChar : String? = null
     var lastListSize : Int = BaseViewModel.pageSize + 1
@@ -47,7 +49,7 @@ open class BasePagingSource(val recyclerAdapter: BaseRecycleAdapter) : PagingSou
 
 
             for (data in response) {
-                val firstChar = data.diffrentDecider()
+                val firstChar = data.diffrentDecider(context)
                 if (firstChar != lastFirstChar) {
                     items.add(firstChar)
                     lastFirstChar = firstChar
@@ -65,6 +67,7 @@ open class BasePagingSource(val recyclerAdapter: BaseRecycleAdapter) : PagingSou
         }catch(e: Exception){
             recyclerAdapter.state = BaseRecycleAdapter.STATE_ERROR
             recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount-1)
+            Log.e("ERROR", e.toString())
             return LoadResult.Error(e)
         }
     }

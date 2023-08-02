@@ -1,5 +1,7 @@
 package com.example.shared.data
 
+import android.content.Context
+
 class UserData (
     var UID : Int = -1,
     val OM : String? = null,
@@ -32,7 +34,7 @@ class UserData (
         var instance: UserData = UserData()
     }
 
-    override fun diffrentDecider(): String {
+    override fun diffrentDecider(context: Context): String {
         return Name!![0].toString()
     }
 

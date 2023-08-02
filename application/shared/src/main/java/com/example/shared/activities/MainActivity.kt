@@ -17,6 +17,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
@@ -39,6 +40,9 @@ open class MainActivity : AppCompatActivity() {
 
     lateinit var bottomNavigationView : BottomNavigationView
 
+    lateinit var navController : NavController
+
+
     fun getPixelColor(xcoord: Int, ycoord: Int) {
         Log.d(
             "pixel color",
@@ -50,7 +54,7 @@ open class MainActivity : AppCompatActivity() {
 
         getPixelColor(0,0)
         navHostFragment = supportFragmentManager.findFragmentById(Rs.id.main_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
+        navController = navHostFragment.navController
 
         val appBar = findViewById<AppBarLayout>(Rs.id.appbar_user)
         val mainBackground = findViewById<MaterialCardView>(Rs.id.main_background)

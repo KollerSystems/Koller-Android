@@ -52,6 +52,20 @@ open class MyApplication : Application() {
     companion object Comp{
 
 
+        fun orderSingleNumber(context : Context, number : String) : String{
+            val lastDigit : Char = number.last()
+
+
+
+            return when (lastDigit){
+                '1' -> number + context.getString(R.string.st)
+                '2' -> number + context.getString(R.string.nd)
+                '3' -> number + context.getString(R.string.rd)
+                else -> number + context.getString(R.string.th)
+            }
+        }
+
+
         fun getPixelColorFromView(view: View, x: Int, y: Int): Int {
             val drawingCache = Bitmap.createBitmap(view.width, view.height, Bitmap.Config.ARGB_8888)
             val canvas = Canvas(drawingCache)
@@ -70,7 +84,7 @@ open class MyApplication : Application() {
         lateinit var openMain: (context : Context) -> Unit
         lateinit var openProfile: (context : Context) -> Unit
 
-        val instance : MyApplication = MyApplication()
+
 
         fun visibilityOn(boolean : Boolean) : Int{
             return if(!boolean){

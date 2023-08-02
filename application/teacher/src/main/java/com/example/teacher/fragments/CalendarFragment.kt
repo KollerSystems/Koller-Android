@@ -52,7 +52,7 @@ class CalendarFragment : Fragment() {
                     tab.text = getString(R.string.study_groups)
                 }
                 4->{
-                    tab.text = getString(R.string.tutoring)
+                    tab.text = getString(R.string.tutorings)
                 }
                 5->{
                     tab.text = getString(R.string.programs)

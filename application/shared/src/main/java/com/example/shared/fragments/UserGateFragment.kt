@@ -1,5 +1,6 @@
 package com.example.shared.fragments
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +11,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.MyApplication
 import com.example.shared.R
+import com.example.shared.activities.MainActivity
 import com.example.shared.data.CrossingData
+import com.example.shared.navigateWithDefaultAnimation
 import com.example.shared.recycleradapter.GateRecyclerAdapter
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -20,6 +23,20 @@ import java.time.LocalDateTime
 import java.time.ZoneId
 
 class UserGateFragment : Fragment() {
+
+    companion object {
+        var toGet : Int = -1
+
+        fun open(context : Context, RID : Int){
+            toGet = RID
+
+            context as MainActivity
+            context.bottomNavigationView.selectedItemId =R.id.studentHostelNest
+            context.navController.navigateWithDefaultAnimation(R.id.userGateFragment)
+        }
+    }
+
+
 
 
 

@@ -34,9 +34,12 @@ open class RoomFragment : Fragment() {
     companion object {
         var toGet : Int = -1
 
-        fun open(fragment : Fragment, RID : Int){
+        fun open(context : Context, RID : Int){
             toGet = RID
-            fragment.findNavController().navigateWithDefaultAnimation(R.id.action_roomsFragment_to_roomFragment)
+
+            context as MainActivity
+            context.bottomNavigationView.selectedItemId =R.id.studentHostelNest
+            context.navController.navigateWithDefaultAnimation(R.id.roomFragment)
         }
     }
 

@@ -279,7 +279,7 @@
     <string name="canteen">Menza</string>
     <string name="base_programs">Alapprogramok</string>
     <string name="study_groups">Szakkörök</string>
-    <string name="tutoring">Korrepetálások</string>
+    <string name="tutorings">Korrepetálások</string>
     <string name="programs">Programok</string>
     <string name="none">Nincs</string>
     <string name="try_again">Újraprobálkozás</string>
@@ -290,4 +290,14 @@
     <string name="evening_pastime">Esti időtöltés</string>
     <string name="sleeping_time">Alvó idő</string>
     <string name="an_error_occurred">Hiba történt</string>
+    <string name="type_">Típus</string>
+    <string name="tutoring">Korrepetálás</string>
+    <string name="study_group">Szakkör</string>
+    <string name="girl_side">Lány oldal</string>
+    <string name="boy_side">Fiú oldal</string>
+    <string name="st">.</string>
+    <string name="nd">.</string>
+    <string name="rd">.</string>
+    <string name="th">.</string>
+    <string name="to_current_day">Jelenlegi napra</string>
 </resources>

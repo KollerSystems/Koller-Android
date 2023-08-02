@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.koller.R
+import com.example.shared.data.UserData
+import com.example.shared.fragments.UserOutgoingFragment
 import com.example.shared.navigateWithDefaultAnimation
 
 class ProfileBottomSheet : com.example.shared.fragments.bottomsheet.ProfileBottomSheet() {
@@ -23,7 +25,7 @@ class ProfileBottomSheet : com.example.shared.fragments.bottomsheet.ProfileBotto
 
         fbtnOutgoing.setOnClickListener{
 
-            findNavController().navigateWithDefaultAnimation(com.example.shared.R.id.action_studentHostelFragment_to_userOutgoingFragment)
+            UserOutgoingFragment.open(requireContext(), UserData.instance.UID)
             this.dismiss()
         }
 

@@ -55,7 +55,7 @@
     <string name="november">November</string>
     <string name="december">December</string>
     <string name="now">Now</string>
-    <string name="silence_warning">There is silence, be quiet!</string>
+    <string name="silence_warning">It\'s silence, be quiet!</string>
     <string name="doing_things">Free occupation</string>
     <string name="title">Title</string>
     <string name="description">Description</string>
@@ -245,8 +245,8 @@
     <string name="days">Days</string>
     <string name="canteen">Canteen</string>
     <string name="base_programs">Base programs</string>
-    <string name="study_groups">Study Group</string>
-    <string name="tutoring">Tutoring</string>
+    <string name="study_groups">Study Groups</string>
+    <string name="tutorings">Tutorings</string>
     <string name="programs">Programs</string>
     <string name="none">None</string>
     <string name="try_again">Try again</string>
@@ -257,4 +257,14 @@
     <string name="evening_pastime">Evening pastime</string>
     <string name="sleeping_time">Sleeping time</string>
     <string name="an_error_occurred">An error occurred</string>
+    <string name="type_">Type</string>
+    <string name="tutoring">Tutoring</string>
+    <string name="study_group">Study Group</string>
+    <string name="boy_side">Boy side</string>
+    <string name="girl_side">Girl side</string>
+    <string name="st">st</string>
+    <string name="nd">nd</string>
+    <string name="rd">rd</string>
+    <string name="th">th</string>
+    <string name="to_current_day">To current day</string>
 </resources>

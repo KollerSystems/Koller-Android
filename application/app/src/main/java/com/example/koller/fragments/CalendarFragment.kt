@@ -7,10 +7,11 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
-import com.example.koller.*
 import com.example.shared.R
+import com.example.shared.TutoringFragment
 import com.example.shared.fragments.CalendarCanteenFragment
 import com.example.shared.fragments.CalendarProgramsFragment
 import com.google.android.material.tabs.TabLayout
@@ -49,7 +50,7 @@ class CalendarFragment : Fragment() {
                     tab.text = getString(R.string.study_groups)
                 }
                 4->{
-                    tab.text = getString(R.string.tutoring)
+                    tab.text = getString(R.string.tutorings)
                 }
                 5->{
                     tab.text = getString(R.string.programs)
@@ -90,7 +91,7 @@ class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Life
                 CalendarStudyGroupFragment()
             }
             4->{
-                Fragment()
+                TutoringFragment()
             }
             5->{
                 CalendarProgramsFragment()

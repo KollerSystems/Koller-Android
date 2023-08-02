@@ -1,5 +1,6 @@
 package com.example.shared.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,14 +11,23 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.shared.R
+import com.example.shared.activities.MainActivity
+import com.example.shared.navigateWithDefaultAnimation
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
 class UserOutgoingFragment : Fragment() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
+    companion object {
+        var toGet : Int = -1
 
+        fun open(context : Context, RID : Int){
+            toGet = RID
+
+            context as MainActivity
+            context.bottomNavigationView.selectedItemId = R.id.studentHostelNest
+            context.navController.navigateWithDefaultAnimation(R.id.userOutgoingFragment)
+        }
+    }
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

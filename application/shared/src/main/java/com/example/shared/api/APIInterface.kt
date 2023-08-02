@@ -122,7 +122,7 @@ interface APIInterface {
     ) : Call<List<UserData>>
 }
 
-class UserPagingSource(recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(recyclerAdapter) {
+class UserPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(context, recyclerAdapter) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
 
@@ -140,7 +140,7 @@ class UserPagingSource(recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(r
 
 }
 
-class RoomPagingSource(recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(recyclerAdapter) {
+class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(context, recyclerAdapter) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
 

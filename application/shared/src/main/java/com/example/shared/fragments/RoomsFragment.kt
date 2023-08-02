@@ -40,7 +40,7 @@ class RoomsFragment : Fragment() {
 
 
         val roomRecycleAdapter = RoomRecyclerAdapter()
-        val viewModel = BaseViewModel { RoomPagingSource(roomRecycleAdapter) }
+        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter) }
 
 
         roomsRecyclerView.recyclerView.apply {

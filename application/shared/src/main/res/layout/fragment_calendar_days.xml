@@ -4,8 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:elevation="@dimen/header_footer_elevation"
     android:orientation="vertical"
-    tools:context=".fragments.CalendarDaysFragment" >
+    tools:context=".fragments.CalendarDaysFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_header_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:outlineProvider="none"
+        app:cardCornerRadius="0dp"
+        app:cardElevation="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/calendar_days_view_pager"
+        app:layout_constraintTop_toTopOf="@+id/calendar_days_tabs" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/calendar_days_view_pager"
@@ -90,11 +103,12 @@
         android:paddingTop="8dp"
         android:paddingRight="20dp"
         android:paddingBottom="8dp"
-        android:text="Jelenlegi napra"
+        android:text="@string/to_current_day"
         android:textSize="@dimen/text_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16"
         app:shapeAppearance="@style/overlayRoundedCardBottom" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -113,6 +113,13 @@
                         custom:icon="@drawable/gate"
                         custom:text="@string/port_exits_and_entrances_delays" />
 
+
+                    <com.example.shared.SimpleCardButton
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:icon="@drawable/calendar"
+                        custom:text="@string/calendar" />
+
                     <com.example.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
