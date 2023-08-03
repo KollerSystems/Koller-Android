@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import com.example.shared.MyApplication
 import com.example.koller.R
 import com.example.shared.data.UserData
-import com.example.shared.fragments.UserFragment.Companion.userToGet
+
 import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
 import retrofit2.Callback

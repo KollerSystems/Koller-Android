@@ -105,6 +105,7 @@
                 android:id="@+id/textView70"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_container_margin"
                 android:layout_marginBottom="@dimen/text_container_margin"
                 android:text="@string/filters" />
 
@@ -125,7 +126,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Késés"
+                    android:text="@string/lateness"
                     app:closeIconEnabled="true" />
 
                 <com.google.android.material.chip.Chip
@@ -174,7 +175,7 @@
                 android:id="@+id/divider3"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="@dimen/text_container_margin"
                 android:background="?android:attr/listDivider" />
 

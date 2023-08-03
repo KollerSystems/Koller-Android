@@ -9,6 +9,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -153,15 +155,23 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         recyclerView.setHasFixedSize(true)
 
         val devArrayList = arrayListOf(
-            DevData("Katona Márton B.", "Menedzsment és Android", resources.getDrawable(R.drawable.pfp4), "https://github.com/Marci599"),
-            DevData("Bencsik Gergő B.", "API és Adatbázis", resources.getDrawable(R.drawable.pfp5), "https://github.com/lolfail"),
-            DevData("Zsiga Róbert", "Adatbázis", resources.getDrawable(R.drawable.pfp3), "https://github.com/IronNight007"),
-            DevData("Fehér Dávid", "Windows back-end", resources.getDrawable(R.drawable.pfp7), "https://github.com/TheBlueLines"),
-            DevData("Várnagy Miklós T.", "Windows front-end", resources.getDrawable(R.drawable.pfp1), "https://github.com/Ararakalari"),
-            DevData("Bende Ákos Gy.", "Szerver", resources.getDrawable(R.drawable.pfp6), "https://github.com/kutzlect"),
+            DevData("Katona Márton B.", "Menedzsment és Android", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp4)!!, "https://github.com/Marci599"),
+            DevData("Bencsik Gergő B.", "API és Adatbázis", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp5)!!, "https://github.com/lolfail"),
+            DevData("Zsiga Róbert", "Adatbázis", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp3)!!, "https://github.com/IronNight007"),
+            DevData("Fehér Dávid", "Windows back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp7)!!, "https://github.com/TheBlueLines"),
+            DevData("Várnagy Miklós T.", "Windows front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp1)!!, "https://github.com/Ararakalari"),
+            DevData("Bende Ákos Gy.", "Szerver", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp6)!!, "https://github.com/kutzlect"),
         )
 
         recyclerView.adapter = DevRecyclerAdapter(devArrayList)
+
+        val cardSupport: View = realView.findViewById(R.id.profile_card_support)
+
+        cardSupport.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/"))
+            startActivity(browserIntent)
+            this.dismiss()
+        }
 
         val cardBug: View = realView.findViewById(R.id.profile_card_bug)
 

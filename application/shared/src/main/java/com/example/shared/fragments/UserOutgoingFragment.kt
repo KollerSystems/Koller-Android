@@ -46,10 +46,10 @@ class UserOutgoingFragment : Fragment() {
         TabLayoutMediator(tabs, viewPager){tab,position->
             when(position){
                 0->{
-                    tab.text = "Ideiglenes"
+                    tab.text = requireContext().getString(R.string.temporary)
                 }
                 1->{
-                    tab.text = "Folyamatos\u200A"
+                    tab.text = requireContext().getString(R.string.continuous)
                 }
             }
         }.attach()

@@ -8,6 +8,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
@@ -230,7 +231,7 @@ class CreateNewPostActivity : AppCompatActivity() {
         checkInputsRefreshButton()
 
 
-        var startBoxStrokeWidth = tilTitle.boxStrokeWidth
+        val startBoxStrokeWidth = tilTitle.boxStrokeWidth
         tilAddresse.editText!!.setOnFocusChangeListener{ view, hasFocus ->
             if (hasFocus) {
                 actvAddresse.requestFocus()
@@ -245,6 +246,8 @@ class CreateNewPostActivity : AppCompatActivity() {
 
         actvAddresse.setOnFocusChangeListener{ view, hasFocus ->
             if (hasFocus){
+                val imm = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.showSoftInput(actvAddresse, InputMethodManager.SHOW_IMPLICIT)
                 tilAddresse.editText!!.setText(" ")
                 tilAddresse.boxStrokeWidth = tilAddresse.boxStrokeWidthFocused
                 tilAddresse.error = " "

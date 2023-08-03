@@ -24,9 +24,11 @@
                 android:layout_height="wrap_content" />
 
             <com.google.android.material.chip.ChipGroup
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/CardMargin">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginHorizontal="@dimen/CardMargin"
+                android:layout_marginBottom="@dimen/spacing">
 
                 <com.google.android.material.chip.Chip
                     android:id="@id/user_view_email"
@@ -99,13 +101,13 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/person_wave"
-                        custom:text="Jelenlét" />
+                        custom:text="@string/presence" />
 
                     <com.example.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/wave"
-                        custom:text="@string/outgoing" />
+                        custom:text="@string/outgoings" />
 
                     <com.example.shared.SimpleCardButton
                         android:layout_width="match_parent"

@@ -93,16 +93,16 @@
         <fragment
             android:id="@+id/userOutgoingFragment"
             android:name="com.example.shared.fragments.UserOutgoingFragment"
-            android:label="Kimenők"
+            android:label="@string/outgoings"
             tools:layout="@layout/fragment_user_outgoing" />
         <fragment
             android:id="@+id/userGateFragment"
             android:name="com.example.shared.fragments.UserGateFragment"
-            android:label="Ki- és belépések" />
+            android:label="@string/exits_and_entrances" />
         <fragment
             android:id="@+id/roomFragment"
             android:name="com.example.koller.fragments.RoomFragment"
-            android:label="Szoba"
+            android:label="@string/room"
             tools:layout="@layout/fragment_room">
             <action
                 android:id="@+id/action_roomFragment_to_userFragment"

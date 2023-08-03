@@ -80,4 +80,8 @@
     <item name="user_view_discord" type="id" />
     <item name="nested_scroll_view" type="id" />
     <item name="super_cool_recycler_view" type="id" />
+    <item name="settings_slider_time_offset" type="id" />
+    <item name="settings_til_hours" type="id" />
+    <item name="settings_slider_list_loading_delay" type="id" />
+    <item name="settings_scb_test_activity" type="id" />
 </resources>

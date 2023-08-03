@@ -45,11 +45,10 @@
         style="@style/SimpleButton"
         android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/n_spacing"
         android:textStyle="bold"
         app:icon="@drawable/double_arrow_left"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintBottom_toBottomOf="@+id/calendar_days_text_day_at_the_moment"
         app:layout_constraintEnd_toStartOf="@+id/calendar_days_tabs"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
@@ -60,7 +59,7 @@
         android:layout_width="0dp"
         android:fadingEdgeLength="50dp"
         android:requiresFadingEdge="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/textView16"
+        app:layout_constraintBottom_toTopOf="@+id/calendar_days_text_day_at_the_moment"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toEndOf="@+id/button"
         app:layout_constraintTop_toBottomOf="@id/calendar_days_divider"
@@ -68,10 +67,10 @@
         app:tabIndicatorFullWidth="true" />
 
     <TextView
-        android:id="@+id/textView16"
+        android:id="@+id/calendar_days_text_day_at_the_moment"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing"
+        android:padding="@dimen/spacing"
         android:textAlignment="center"
         android:textAppearance="@style/Title"
         app:layout_constraintBottom_toTopOf="@+id/button3"
@@ -84,11 +83,10 @@
         style="@style/SimpleButton"
         android:layout_width="40dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/n_spacing"
         android:textStyle="bold"
         app:icon="@drawable/double_arrow_right"
         app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView16"
+        app:layout_constraintBottom_toBottomOf="@+id/calendar_days_text_day_at_the_moment"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/calendar_days_tabs"
         app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
@@ -98,7 +96,6 @@
         style="@style/button_tonal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing"
         android:paddingLeft="20dp"
         android:paddingTop="8dp"
         android:paddingRight="20dp"
@@ -107,7 +104,7 @@
         android:textSize="@dimen/text_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/calendar_days_text_day_at_the_moment"
         app:shapeAppearance="@style/overlayRoundedCardBottom" />
 
 

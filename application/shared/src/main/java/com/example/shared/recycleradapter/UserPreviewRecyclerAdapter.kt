@@ -45,8 +45,8 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
                 MyApplication.openProfile.invoke(holder.itemView.context)
             }
             else{
-                UserFragment.userToGet = currentItem.UID
-                holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_roomFragment_to_userFragment)
+                UserFragment.open(context, currentItem.UID)
+
             }
 
         }

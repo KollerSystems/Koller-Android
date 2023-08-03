@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.marginTop
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -31,13 +32,14 @@ class CalendarDaysFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_calendar_days, container, false)
+        val view: View = inflater.inflate(R.layout.fragment_calendar_days, container, false)
 
 
         val calendar = Calendar.getInstance()
         val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
 
-        val dayOfWeekButNotInRetardOrder : Int = when (dayOfWeek) {
+
+        val dayOfWeekButNotInRetardOrder: Int = when (dayOfWeek) {
             Calendar.SUNDAY -> 7
             Calendar.MONDAY -> 1
             Calendar.TUESDAY -> 2
@@ -58,21 +60,25 @@ class CalendarDaysFragment : Fragment() {
 
 
 
-        viewPager.setCurrentItem(dayOfWeekButNotInRetardOrder-1, false)
+        viewPager.setCurrentItem(dayOfWeekButNotInRetardOrder - 1, false)
 
-        val tabLayoutDays : TabLayout = view.findViewById(R.id.calendar_days_tabs)
+        val tabLayoutDays: TabLayout = view.findViewById(R.id.calendar_days_tabs)
         TabLayoutMediator(tabLayoutDays,
             viewPager,
             { tab, position -> tab.text = days[position] }).attach()
 
+        tabLayoutDays.post {
 
-        viewPager.adapter
+            val currentTab : View = tabLayoutDays.getTabAt(dayOfWeekButNotInRetardOrder - 1)!!.view
+            tabLayoutDays.scrollX = currentTab.x.toInt() - tabLayoutDays.width / 2 + currentTab.width / 2
+
+        }
 
 
 
 
 
-            return view
+        return view
     }
 
 }

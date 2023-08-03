@@ -124,7 +124,7 @@
                     android:paddingTop="0dp"
                     android:paddingRight="0dp"
                     android:paddingBottom="0dp"
-                    android:text="Elfelejtett jelszó"
+                    android:text="@string/forgotten_password"
                     android:textAppearance="@style/Description" />
 
                 <LinearLayout
@@ -248,8 +248,7 @@
             android:layout_height="match_parent"
             android:clickable="true"
             android:paddingBottom="@dimen/text_container_margin"
-            android:visibility="gone"
-            tools:visibility="visible">
+            android:visibility="gone">
 
             <ProgressBar
                 android:layout_width="wrap_content"

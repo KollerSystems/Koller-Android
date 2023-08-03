@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.MyApplication
 import com.example.shared.R
 import com.example.shared.data.UserData
+import com.example.shared.fragments.UserFragment
 import com.example.shared.navigateWithDefaultAnimation
 import com.google.android.material.imageview.ShapeableImageView
 
@@ -37,9 +38,7 @@ class UserRecyclerAdapter : BaseRecycleAdapter() {
             if (item.UID == UserData.instance.UID) {
                 MyApplication.openProfile(context)
             } else {
-                com.example.shared.fragments.UserFragment.userToGet = item.UID
-                holder.itemView.findNavController()
-                    .navigateWithDefaultAnimation(R.id.action_usersFragment_to_userFragment)
+                UserFragment.open(context, item.UID)
             }
 
         }

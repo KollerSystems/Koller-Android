@@ -69,11 +69,20 @@
             </com.google.android.material.card.MaterialCardView>
 
             <com.example.shared.SimpleCardButton
+                android:id="@+id/profile_card_support"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:icon="@drawable/support_us"
+                custom:text="@string/support_us" />
+
+            <com.example.shared.SimpleCardButton
                 android:id="@+id/profile_card_bug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:icon="@drawable/bug"
-                custom:text="@string/bug_report" />
+                custom:text="@string/bug_report" >
+
+            </com.example.shared.SimpleCardButton>
 
             <com.example.shared.SimpleCardButton
                 android:id="@+id/profile_card_idea"

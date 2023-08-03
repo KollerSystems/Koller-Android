@@ -112,8 +112,8 @@
     <string name="calendar">Naptár</string>
     <string name="absence">Késések</string>
     <string name="everyone">Mindenki</string>
-    <string name="appdu_description">appdu_description</string>
-    <string name="service_description">service_description</string>
+    <string name="appdu_description" translatable="false">appdu_description</string>
+    <string name="service_description" translatable="false">service_description</string>
     <string name="ok">Okés</string>
     <string name="nfc_success">Sikeres belépés!</string>
     <string name="expand">Több</string>
@@ -161,7 +161,7 @@
     <string name="arrangement">Rendezés</string>
     <string name="oldest">Legrégebbi</string>
     <string name="newest">Legújabb</string>
-    <string name="outgoing">Kimenők</string>
+    <string name="outgoings">Kimenők</string>
     <string name="settings">Beállítások</string>
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="manage_account">Fiók kezelése</string>
@@ -193,7 +193,7 @@
     <string name="publish">Közzététel</string>
     <string name="options">Beállítások</string>
     <string name="place">Helyszín</string>
-    <string name="base_program_replacement">Alap program pótlás</string>
+    <string name="base_program_replacement">Alapprogram pótlás</string>
     <string name="date_time">Időpont</string>
     <string name="addressee">Címzett</string>
     <string name="unset">Nincs beállítva</string>
@@ -256,7 +256,7 @@
     <string name="too_many_images">Túl sok kép</string>
     <string name="devices">Eszközök</string>
     <string name="port_exits_and_entrances">Portai ki- és belépések</string>
-    <string name="bug_report">Hiba jelentés</string>
+    <string name="bug_report">Hibajelentés</string>
     <string name="suggestion">Javaslat</string>
     <string name="automatically_generated_event_text">Automatikusan generált esemény a koller applikációból.</string>
     <string name="send">Küldés</string>
@@ -300,4 +300,15 @@
     <string name="rd">.</string>
     <string name="th">.</string>
     <string name="to_current_day">Jelenlegi napra</string>
+    <string name="create_new_x_first_part">Új</string>
+    <string name="create_new_x_last_part">létrehozása</string>
+    <string name="lateness">Késés</string>
+    <string name="length">Hossz</string>
+    <string name="temporary">Ideiglenes</string>
+    <string name="continuous">Folyamatos</string>
+    <string name="support_us">Támogass minket</string>
+    <string name="room">Szoba</string>
+    <string name="exits_and_entrances">Ki- és belépések</string>
+    <string name="forgotten_password">Elfelejtett jelszó</string>
+    <string name="error_report">Hibajelentés</string>
 </resources>

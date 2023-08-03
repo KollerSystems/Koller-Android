@@ -57,13 +57,13 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
 
         val cardOutgoing : View = realView.findViewById(R.id.home_card_outgoing)
         cardOutgoing.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = com.example.shared.R.id.studentHostelNest
-            findNavController().navigate(com.example.shared.R.id.action_studentHostelFragment_to_userOutgoingFragment)
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.studentHostelNest
+            findNavController().navigate(Rs.id.userOutgoingFragment)
         }
 
         val cardLessons : View = realView.findViewById(R.id.home_card_lessons)
         cardLessons.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = com.example.shared.R.id.calendarFragment
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.calendarFragment
         }
 
         fun setupHome(){

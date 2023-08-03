@@ -63,7 +63,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/error"
-                        custom:text="@string/bug_report">
+                        custom:text="@string/error_report">
 
                     </com.example.shared.SimpleCardButton>
 

@@ -2,6 +2,7 @@ package com.example.shared.fragments
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
+import android.content.Context
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
@@ -18,6 +19,7 @@ import com.example.shared.activities.MainActivity
 import com.example.shared.api.APIInterface
 import com.example.shared.api.RetrofitHelper
 import com.example.shared.data.UserData
+import com.example.shared.navigateWithDefaultAnimation
 import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
 import retrofit2.Callback
@@ -26,7 +28,15 @@ import retrofit2.Response
 abstract class UserFragment : Fragment() {
 
     companion object {
-        var userToGet : Int = -1
+        var toGet : Int = -1
+
+        fun open(context : Context, RID : Int){
+            toGet = RID
+
+            context as MainActivity
+            context.bottomNavigationView.selectedItemId =R.id.studentHostelNest
+            context.navController.navigateWithDefaultAnimation(R.id.userFragment)
+        }
     }
 
     abstract fun showAndSetIfNotNull(card : View, string : String?)
@@ -73,7 +83,7 @@ abstract class UserFragment : Fragment() {
 
 
         val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
-        usersResponse.getUser(userToGet, APIInterface.getHeaderMap()).enqueue(
+        usersResponse.getUser(toGet, APIInterface.getHeaderMap()).enqueue(
             object : Callback<UserData> {
                 override fun onResponse(
                     call: Call<UserData>,

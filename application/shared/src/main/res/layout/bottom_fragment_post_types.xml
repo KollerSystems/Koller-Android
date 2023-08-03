@@ -73,21 +73,12 @@
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="none"
-                                android:fadingEdgeLength="50dp"
-                                android:requiresFadingEdge="horizontal"
-                                android:singleLine="true"
                                 android:text="@string/news_one" />
 
                             <TextView
                                 style="@style/Description"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:ellipsize="none"
-                                android:fadingEdgeLength="50dp"
-                                android:requiresFadingEdge="horizontal"
-                                android:singleLine="true"
                                 android:text="@string/news_desc" />
 
                             <TextView
@@ -95,11 +86,6 @@
                                 style="@style/Description"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:ellipsize="none"
-                                android:fadingEdgeLength="50dp"
-                                android:requiresFadingEdge="horizontal"
-                                android:singleLine="true"
                                 android:text="@string/high_priority_highlighting"
                                 android:textColor="?attr/colorRed" />
 
@@ -143,17 +129,12 @@
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="none"
-                                android:fadingEdgeLength="50dp"
-                                android:requiresFadingEdge="horizontal"
-                                android:singleLine="true"
                                 android:text="@string/program" />
 
                             <TextView
                                 style="@style/Description"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:requiresFadingEdge="horizontal"
                                 android:text="@string/program_desc" />
 
                             <TextView
@@ -161,7 +142,6 @@
                                 style="@style/Description"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:requiresFadingEdge="horizontal"
                                 android:text="@string/medium_priority_highlighting"
                                 android:textColor="?attr/colorYellow" />
 
@@ -207,10 +187,6 @@
                                 style="@style/Title"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:ellipsize="none"
-                                android:fadingEdgeLength="50dp"
-                                android:requiresFadingEdge="horizontal"
-                                android:singleLine="true"
                                 android:text="@string/general_post" />
 
                             <TextView
@@ -218,11 +194,6 @@
                                 style="@style/Description"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:ellipsize="none"
-                                android:fadingEdgeLength="50dp"
-                                android:requiresFadingEdge="horizontal"
-                                android:singleLine="true"
                                 android:text="@string/general_post_desc" />
 
                             <TextView
@@ -231,10 +202,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0"
-                                android:ellipsize="none"
-                                android:fadingEdgeLength="50dp"
-                                android:requiresFadingEdge="horizontal"
-                                android:singleLine="true"
                                 android:text="@string/low_priority_highlighting"
                                 android:textColor="?attr/colorGreen" />
 

@@ -86,6 +86,10 @@ open class RoomFragment : Fragment() {
 
                         buttonDesc.text = roomData.Group
 
+                        buttonDesc.setOnClickListener{
+                            (context as MainActivity).navController.navigateWithDefaultAnimation(R.id.usersFragment)
+                        }
+
                         loadingOl.animate()
                             .alpha(0.0f)
                             .setDuration(300)

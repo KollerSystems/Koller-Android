@@ -50,8 +50,7 @@ class RoomRecyclerAdapter() : BaseRecycleAdapter(){
 
         holder.itemView.setOnClickListener {
 
-            RoomFragment.toGet = item.RID
-            holder.itemView.findNavController().navigateWithDefaultAnimation(R.id.action_roomsFragment_to_roomFragment)
+            RoomFragment.open(holder.itemView.context, item.RID)
 
         }
     }
