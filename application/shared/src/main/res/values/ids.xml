@@ -84,4 +84,5 @@
     <item name="settings_til_hours" type="id" />
     <item name="settings_slider_list_loading_delay" type="id" />
     <item name="settings_scb_test_activity" type="id" />
+    <item name="drag_handle" type="id" />
 </resources>

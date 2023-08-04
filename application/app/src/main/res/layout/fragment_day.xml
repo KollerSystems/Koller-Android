@@ -1,51 +1,92 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:elevation="-3dp"
-    tools:context=".fragments.DayFragment">
+    android:layout_height="wrap_content"
+    tools:context=".fragments.DayFragment"
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/calendar_text_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing"
-            android:paddingHorizontal="55dp"
-            android:text="Március 15."
-            android:textAlignment="center"
-            android:textAppearance="@style/Title" />
 
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:fillViewport="true">
 
-            <LinearLayout
                 style="@style/MainLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 android:paddingLeft="@dimen/full_card_padding"
                 android:paddingTop="0dp"
                 android:paddingRight="@dimen/full_card_padding"
                 android:paddingBottom="0dp">
 
+
+
+
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
                     android:layout_width="match_parent"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="-20dp"
+                    android:layout_marginTop="@dimen/card_margin"
+                    android:layout_marginRight="-20dp"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    app:cardPreventCornerOverlap="false"
+                    app:contentPadding="@null"
+>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+                        <TextView
+                            android:layout_marginTop="@dimen/text_container_margin"
+                            android:layout_marginHorizontal="@dimen/spacing"
+                            style="@style/Title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_weight="1"
+                            android:text="Augusztus 5. péntek"
+                            android:textAlignment="center" />
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="@null"
+                            app:cardElevation="0dp"
+                            app:contentPadding="@dimen/text_container_margin">
+                            <TextView
+                                style="@style/Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_weight="1"
+                                android:text="Legközelebbi ügyeletestanár:\nKis Gazsi (F3)"
+                                android:textAlignment="center" />
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="match_parent"
+                                android:src="@drawable/arrow_drop"
+                                android:layout_gravity="right"/>
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/card_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
                     app:cardPreventCornerOverlap="false"
                     app:shapeAppearance="@style/overlayRoundedCardBottom">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:gravity="center_vertical"
                         android:orientation="horizontal">
 
                         <com.google.android.material.imageview.ShapeableImageView
@@ -53,547 +94,911 @@
                             android:layout_width="@dimen/panel_icon"
                             android:layout_height="@dimen/panel_icon"
                             android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/spacing"
                             android:src="@drawable/moon" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="@dimen/text_container_margin"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="@dimen/text_container_margin"
+                        <TextView
+                            style="@style/Title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
                             android:layout_weight="1"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/Title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/sleeping" />
-
-                            <TextView
-                                style="@style/Description"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:text="@string/in" />
-
-                        </LinearLayout>
+                            android:text="@string/sleeping_time" />
 
                         <TextView
-                            android:id="@+id/calendar_day_text_sleep_end_time"
+
                             style="@style/Description"
-                            android:layout_width="40sp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginLeft="@dimen/spacing"
                             android:lineSpacingExtra="-5sp"
-                            android:text="-\n6:00"
+                            android:text="6:00"
                             android:textAlignment="center" />
 
                     </LinearLayout>
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:id="@+id/textView41"
-                    style="@style/CategoryCardName"
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:paddingVertical="@dimen/text_container_margin"
-                    android:text="@string/daily_pastime" />
-
-
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Card"
-                    android:layout_width="match_parent"
-                    android:layout_height="195dp"
-                    android:layout_marginBottom="@dimen/card_margin"
+                    android:layout_marginVertical="@dimen/text_container_margin"
                     android:clipChildren="false"
                     android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    app:cardPreventCornerOverlap="false"
-                    app:shapeAppearance="@style/overlayRoundedCardTop">
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                    <View
 
-                        <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
-                            android:layout_gravity="center"
-                            android:src="@drawable/moon_fill" />
+                        android:layout_width="@dimen/spacing"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider" />
 
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="@dimen/text_container_margin"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-
-                                style="@style/Title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/doing_things" />
-
-                            <TextView
-                                style="@style/Description"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:text="@string/out_in" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/calendar_day_text_daytime_out_time"
-                            style="@style/Description"
-                            android:layout_width="40sp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:lineSpacingExtra="-5sp"
-                            android:text="6:00\n-\n15:45"
-                            android:textAlignment="center" />
-
-                    </LinearLayout>
-
-                    <Button
-                        android:id="@+id/ediary_button"
+                    <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="bottom|center_horizontal"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+                        android:text="Kilépés lehetőségének megkezdése"
+                        android:textAppearance="@style/Description" />
+
+                    <View
+
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
                         android:layout_weight="1"
-                        android:text="@string/open_ediary"
-                        app:icon="@drawable/open_in_new"
-                        app:iconGravity="textEnd" />
+                        android:background="?android:attr/listDivider" />
 
-                </com.google.android.material.card.MaterialCardView>
+                    <TextView
+
+                        style="@style/Description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+                        android:text="6:00" />
+
+                    <View
+
+                        android:layout_width="@dimen/spacing"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider" />
+                </LinearLayout>
+
+
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/card_margin"
-                    android:clipChildren="false"
-                    android:orientation="horizontal"
-                    app:cardPreventCornerOverlap="false"
-                    app:shapeAppearance="@style/overlayRoundedCardBottom">
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    app:cardCornerRadius="@dimen/panel_round"
+                    app:cardPreventCornerOverlap="false">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
-                            android:layout_gravity="center"
-                            android:src="@drawable/home_with_person" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="@dimen/text_container_margin"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/Title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/doing_things" />
-
-                            <TextView
-
-                                style="@style/Description"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:text="@string/in" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/calendar_day_text_daytime_in_time"
-                            style="@style/Description"
-                            android:layout_width="40sp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:lineSpacingExtra="-5sp"
-                            android:text="15:45\n-\n16:00"
-                            android:textAlignment="center" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    android:id="@+id/textView31"
-                    style="@style/CategoryCardName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:paddingVertical="@dimen/text_container_margin"
-                    android:text="@string/student_hostel_sessions" />
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/calendar_day_recycleview"
-                        style="@style/MainCardLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        tools:itemCount="4"
-                        tools:listitem="@layout/view_lesson" />
-                </RelativeLayout>
-
-                <TextView
-                    style="@style/CategoryCardName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:paddingVertical="@dimen/text_container_margin"
-                    android:text="@string/evening_pastime" />
-
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/card_margin"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    app:cardPreventCornerOverlap="false"
-                    app:shapeAppearance="@style/overlayRoundedCardTop">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
-                            android:layout_gravity="center"
-                            android:src="@drawable/moon_fill" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="@dimen/text_container_margin"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-
-                                style="@style/Title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/doing_things" />
-
-                            <TextView
-
-                                style="@style/Description"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:text="@string/out_in" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/calendar_day_text_nighttime_out_time"
-                            style="@style/Description"
-                            android:layout_width="40sp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:lineSpacingExtra="-5sp"
-                            android:text="19:15\n-\n21:00"
-                            android:textAlignment="center" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/card_margin"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
-                    app:cardPreventCornerOverlap="false"
-                    app:shapeAppearance="@style/overlayRoundedCardBottom">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
-                            android:layout_gravity="center"
-                            android:src="@drawable/home_with_person" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="@dimen/text_container_margin"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-
-                                style="@style/Title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/doing_things" />
-
-                            <TextView
-
-                                style="@style/Description"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:text="@string/in" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/calendar_day_text_night_time_in_time"
-                            style="@style/Description"
-                            android:layout_width="40sp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:lineSpacingExtra="-5sp"
-                            android:text="21:00\n-\n22:00"
-                            android:textAlignment="center" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <TextView
-                    style="@style/CategoryCardName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
-                    android:paddingVertical="@dimen/text_container_margin"
-                    android:text="@string/sleeping_time" />
-
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    app:cardPreventCornerOverlap="false"
-                    app:shapeAppearance="@style/overlayRoundedCardTop">
-
-                    <LinearLayout
-                        android:id="@+id/mcard_night"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
-                            android:layout_gravity="center"
-                            android:src="@drawable/moon" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="@dimen/text_container_margin"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:gravity="center_vertical"
-                            android:orientation="vertical">
-
-                            <TextView
-
-                                style="@style/Title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="@string/sleeping" />
-
-                            <TextView
-
-                                style="@style/Description"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:text="@string/in" />
-
-                        </LinearLayout>
-
-                        <TextView
-                            android:id="@+id/calendar_day_text_sleep_start_time"
-                            style="@style/Description"
-                            android:layout_width="40sp"
-                            android:layout_height="match_parent"
-                            android:gravity="center"
-                            android:lineSpacingExtra="-5sp"
-                            android:text="22:00\n-"
-                            android:textAlignment="center" />
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-    </LinearLayout>
-
-    <FrameLayout
-        android:id="@+id/bottom_sheet_duty"
-        style="@style/CustomBottomSheet"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:elevation="2dp"
-        app:behavior_hideable="false"
-        app:behavior_peekHeight="0dp"
-        app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
-
-        <!-- Drag handle for accessibility -->
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/BottomSheetMainLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardElevation="0dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                    android:id="@+id/drag_handle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minWidth="@null"
-                    android:minHeight="@null"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp" />
-
-                <FrameLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        android:id="@+id/panel_duty_full"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:alpha="0"
                         android:orientation="vertical">
 
                         <TextView
 
+                            style="@style/Description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingLeft="@dimen/application_padding"
-                            android:paddingRight="@dimen/application_padding"
-                            android:text="@string/attentive_teachers"
-                            android:textAppearance="@style/Title"
-                            android:textStyle="bold" />
-
-                        <include
-                            layout="@layout/shit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@+id/on_duty_recycler_view"
-                            style="@style/MainCardLayout"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            tools:itemCount="4"
-                            tools:listitem="@layout/notification_panel" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/panel_duty_min"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:alpha="1"
-                        android:orientation="vertical"
-                        android:paddingLeft="@dimen/application_padding"
-                        android:paddingRight="@dimen/application_padding">
+                            android:text="6:00"
+                            android:textAlignment="textEnd" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/text_container_margin"
+                            android:layout_marginVertical="@dimen/text_container_margin"
+                            android:layout_marginLeft="@dimen/n_panel_padding"
+                            android:layout_marginRight="@dimen/n_panel_padding"
+                            android:gravity="center_vertical"
                             android:orientation="horizontal">
 
-                            <TextView
+                            <View
 
+                                android:layout_width="@dimen/spacing"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/attentive_near_you"
-                                android:textAppearance="@style/Normal"
-                                android:textStyle="bold" />
+                                android:layout_marginHorizontal="@dimen/text_container_margin"
+                                android:text="Szobapontozás"
+                                android:textAppearance="@style/Description" />
+
+
+                            <View
+
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1"
+                                android:background="?android:attr/listDivider" />
 
                             <TextView
-                                android:id="@+id/text_close_duty_name"
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/text_container_margin"
+                                android:text="8:00" />
+
+                            <View
+
+                                android:layout_width="@dimen/spacing"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                style="@style/Icon"
+                                android:layout_width="@dimen/panel_icon"
+                                android:layout_height="@dimen/panel_icon"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/spacing"
+                                android:src="@drawable/moon_fill" />
+
+                            <TextView
+                                style="@style/Title"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:text="@string/none"
-                                android:textAlignment="textEnd"
-                                android:textAppearance="@style/Normal" />
+                                android:text="@string/doing_things" />
+
+
                         </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/text_container_margin"
+                            android:layout_marginLeft="@dimen/n_panel_padding"
+                            android:layout_marginRight="@dimen/n_panel_padding"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+
+                                android:layout_width="@dimen/spacing"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/text_container_margin"
+                                android:text="Elvárt beérkezés"
+                                android:textAppearance="@style/Description" />
+
+
+                            <View
+
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1"
+                                android:background="?android:attr/listDivider" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/text_container_margin"
+                                android:text="15:45" />
+
+                            <View
+
+                                android:layout_width="@dimen/spacing"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+                        </LinearLayout>
+
+                        <TextView
+
+                            style="@style/Description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="16:00"
+                            android:textAlignment="textEnd" />
                     </LinearLayout>
-                </FrameLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:shapeAppearance="@style/overlayRoundedCardTop"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/card_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            style="@style/Title"
+                            android:layout_width="@dimen/panel_icon"
+                            android:layout_height="@dimen/panel_icon"
+                            android:gravity="center"
+                            android:text="1."
+                            android:textAlignment="center"
+                            android:textSize="40sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_container_margin"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Önálló tanulás" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="216" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="16:00" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="16:45" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/card_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:contentPadding="@null"
+                    app:contentPaddingBottom="@dimen/text_container_margin"
+                    app:contentPaddingLeft="@dimen/panel_padding"
+                    app:contentPaddingRight="@dimen/panel_padding"
+                    app:contentPaddingTop="@dimen/text_container_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Szünet" />
+
+
+                        <TextView
+
+                            style="@style/Description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="5 perc" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:layout_marginVertical="@dimen/card_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            style="@style/Title"
+                            android:layout_width="@dimen/panel_icon"
+                            android:layout_height="@dimen/panel_icon"
+                            android:gravity="center"
+                            android:text="2."
+                            android:textAlignment="center"
+                            android:textSize="40sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_container_margin"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Önálló tanulás" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="216" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="16:50" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="17:35" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/card_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:contentPadding="@null"
+                    app:contentPaddingBottom="@dimen/text_container_margin"
+                    app:contentPaddingLeft="@dimen/panel_padding"
+                    app:contentPaddingRight="@dimen/panel_padding"
+                    app:contentPaddingTop="@dimen/text_container_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Szünet" />
+
+
+                        <TextView
+
+                            style="@style/Description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="5 perc" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:layout_marginVertical="@dimen/card_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            style="@style/Title"
+                            android:layout_width="@dimen/panel_icon"
+                            android:layout_height="@dimen/panel_icon"
+                            android:gravity="center"
+                            android:text="3."
+                            android:textAlignment="center"
+                            android:textSize="40sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_container_margin"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Önálló tanulás" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="216" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="17:40" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="18:25" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/card_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:contentPadding="@null"
+                    app:contentPaddingBottom="@dimen/text_container_margin"
+                    app:contentPaddingLeft="@dimen/panel_padding"
+                    app:contentPaddingRight="@dimen/panel_padding"
+                    app:contentPaddingTop="@dimen/text_container_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+
+                        <TextView
+
+
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Szünet" />
+
+
+                        <TextView
+
+                            style="@style/Description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="5 perc" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    app:shapeAppearance="@style/overlayRoundedCardBottom"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginTop="@dimen/card_margin">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+
+                            style="@style/Title"
+                            android:layout_width="@dimen/panel_icon"
+                            android:layout_height="@dimen/panel_icon"
+                            android:gravity="center"
+                            android:text="4."
+                            android:textAlignment="center"
+                            android:textSize="40sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="@dimen/text_container_margin"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:gravity="center_vertical"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Önálló tanulás" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="216" />
+
+                        </LinearLayout>
+
+                        <androidx.appcompat.widget.LinearLayoutCompat
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="0dp"
+                                android:layout_weight="1"
+                                android:text="18:30" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="19:15" />
+                        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+
+                        android:layout_width="@dimen/spacing"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+                        android:text="Kilépés lehetőségének megkezdése"
+                        android:textAppearance="@style/Description" />
+
+                    <View
+
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+
+                        style="@style/Description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+                        android:text="19:15" />
+
+                    <View
+
+                        android:layout_width="@dimen/spacing"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider" />
+                </LinearLayout>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    app:cardCornerRadius="@dimen/panel_round"
+                    app:cardPreventCornerOverlap="false">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            style="@style/Description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="19:15"
+                            android:textAlignment="textEnd" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.imageview.ShapeableImageView
+                                style="@style/Icon"
+                                android:layout_width="@dimen/panel_icon"
+                                android:layout_height="@dimen/panel_icon"
+                                android:layout_gravity="center"
+                                android:layout_marginRight="@dimen/spacing"
+                                android:src="@drawable/moon_fill" />
+
+                            <TextView
+                                style="@style/Title"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/doing_things" />
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginVertical="@dimen/text_container_margin"
+                            android:layout_marginLeft="@dimen/n_panel_padding"
+                            android:layout_marginRight="@dimen/n_panel_padding"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <View
+
+                                android:layout_width="@dimen/spacing"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/text_container_margin"
+                                android:text="Elvárt beérkezés"
+                                android:textAppearance="@style/Description" />
+
+
+                            <View
+
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1"
+                                android:background="?android:attr/listDivider" />
+
+                            <TextView
+
+                                style="@style/Description"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginHorizontal="@dimen/text_container_margin"
+                                android:text="21:00" />
+
+                            <View
+
+                                android:layout_width="@dimen/spacing"
+                                android:layout_height="1dp"
+                                android:background="?android:attr/listDivider" />
+                        </LinearLayout>
+
+                        <TextView
+
+                            style="@style/Description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="22:00"
+                            android:textAlignment="textEnd" />
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+
+                        android:layout_width="@dimen/spacing"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+                        android:text="Létszámellenőrzés"
+                        android:textAppearance="@style/Description" />
+
+                    <View
+
+                        android:layout_width="0dp"
+                        android:layout_height="1dp"
+                        android:layout_weight="1"
+                        android:background="?android:attr/listDivider" />
+
+                    <TextView
+
+                        style="@style/Description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+                        android:text="22:00" />
+
+                    <View
+
+                        android:layout_width="@dimen/spacing"
+                        android:layout_height="1dp"
+                        android:background="?android:attr/listDivider" />
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/card_margin"
+                    app:cardPreventCornerOverlap="false"
+                    app:shapeAppearance="@style/overlayRoundedCardTop">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            style="@style/Icon"
+                            android:layout_width="@dimen/panel_icon"
+                            android:layout_height="@dimen/panel_icon"
+                            android:layout_gravity="center"
+                            android:layout_marginRight="@dimen/spacing"
+                            android:src="@drawable/moon" />
+
+                        <TextView
+                            style="@style/Title"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/sleeping_time" />
+
+                        <TextView
+
+                            style="@style/Description"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="top"
+                            android:layout_marginLeft="@dimen/spacing"
+                            android:lineSpacingExtra="-5sp"
+                            android:text="22:00"
+                            android:textAlignment="center" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
 
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-    </FrameLayout>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>

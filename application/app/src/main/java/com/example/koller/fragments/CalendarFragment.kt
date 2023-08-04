@@ -58,12 +58,6 @@ class CalendarFragment : Fragment() {
             }
         }.attach()
 
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                viewPager.isUserInputEnabled = position != 0
-                super.onPageSelected(position)
-            }
-        })
 
         return view;
     }

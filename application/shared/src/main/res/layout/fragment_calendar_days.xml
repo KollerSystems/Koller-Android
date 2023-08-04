@@ -1,111 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:elevation="@dimen/header_footer_elevation"
     android:orientation="vertical"
     tools:context=".fragments.CalendarDaysFragment">
 
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_weight="0"
+        android:background="?android:attr/listDivider" />
+
+    <com.example.shared.TipView
+
+        android:id="@+id/tip_return_to_current_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        custom:text="Ha ismét megérinted a Napok fület, akkor automatikkusan visszatérhetsz a jelenlegi naphoz." />
+
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_header_background"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
         android:outlineProvider="none"
         app:cardCornerRadius="0dp"
-        app:cardElevation="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/calendar_days_view_pager"
-        app:layout_constraintTop_toTopOf="@+id/calendar_days_tabs" />
+        app:cardElevation="@dimen/header_footer_elevation"
+        app:contentPadding="@dimen/spacing">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/calendar_days_view_pager"
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="18dp"
+            android:text="Augusztus 4. péntek"
+            android:textAlignment="center" />
+
+        <ImageView
+            android:id="@+id/button2"
+            android:layout_width="18dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="right"
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/arrow_drop" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendar_days_tabs" />
-
-    <View
-        android:id="@+id/calendar_days_divider"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@id/calendar_days_tabs"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/button"
-        style="@style/SimpleButton"
-        android:layout_width="40dp"
-        android:layout_height="0dp"
-        android:textStyle="bold"
-        app:icon="@drawable/double_arrow_left"
-        app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/calendar_days_text_day_at_the_moment"
-        app:layout_constraintEnd_toStartOf="@+id/calendar_days_tabs"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/calendar_days_tabs"
-        style="@style/tab"
-        android:layout_width="0dp"
-        android:fadingEdgeLength="50dp"
-        android:requiresFadingEdge="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/calendar_days_text_day_at_the_moment"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@id/calendar_days_divider"
-        app:tabIndicator="@drawable/m3_tabs_line_indicator"
-        app:tabIndicatorFullWidth="true" />
-
-    <TextView
-        android:id="@+id/calendar_days_text_day_at_the_moment"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/spacing"
-        android:textAlignment="center"
-        android:textAppearance="@style/Title"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_days_tabs" />
-
-    <Button
-        android:id="@+id/button2"
-        style="@style/SimpleButton"
-        android:layout_width="40dp"
-        android:layout_height="0dp"
-        android:textStyle="bold"
-        app:icon="@drawable/double_arrow_right"
-        app:iconPadding="0dp"
-        app:layout_constraintBottom_toBottomOf="@+id/calendar_days_text_day_at_the_moment"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/calendar_days_tabs"
-        app:layout_constraintTop_toBottomOf="@id/calendar_days_divider" />
-
-    <Button
-        android:id="@+id/button3"
-        style="@style/button_tonal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="20dp"
-        android:paddingTop="8dp"
-        android:paddingRight="20dp"
-        android:paddingBottom="8dp"
-        android:text="@string/to_current_day"
-        android:textSize="@dimen/text_description"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendar_days_text_day_at_the_moment"
-        app:shapeAppearance="@style/overlayRoundedCardBottom" />
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:background="?android:attr/windowBackground" />
+</LinearLayout>

@@ -9,9 +9,14 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.view.marginTop
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
+import com.example.koller.DayRecyclerAdapter
 import com.example.shared.R
+import com.example.shared.data.TodayData
+import com.example.shared.recycleradapter.TodayRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
@@ -21,8 +26,6 @@ class CalendarDaysFragment : Fragment() {
 
 
     private lateinit var days : Array<String>
-    lateinit var viewPager : ViewPager2
-    lateinit var fab : FloatingActionButton
 
 
 
@@ -36,66 +39,36 @@ class CalendarDaysFragment : Fragment() {
 
 
         val calendar = Calendar.getInstance()
-        val dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
 
-
-        val dayOfWeekButNotInRetardOrder: Int = when (dayOfWeek) {
-            Calendar.SUNDAY -> 7
-            Calendar.MONDAY -> 1
-            Calendar.TUESDAY -> 2
-            Calendar.WEDNESDAY -> 3
-            Calendar.THURSDAY -> 4
-            Calendar.FRIDAY -> 5
-            Calendar.SATURDAY -> 6
-            else -> -1
-        }
 
 
 
         days = arrayOf(getString(R.string.monday), getString(R.string.tuesday), getString(R.string.wednesday), getString(R.string.thursday), getString(R.string.friday), getString(R.string.saturday), getString(R.string.sunday))
 
-        viewPager = view.findViewById(R.id.calendar_days_view_pager)
-        val adapter = CalendarDayAdapter(this, calendar, dayOfWeekButNotInRetardOrder)
-        viewPager.adapter = adapter
+        val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
 
+        recyclerView.layoutManager = LinearLayoutManager(context)
+        recyclerView.setHasFixedSize(true)
 
+        val datas = arrayListOf(
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
+            TodayData(context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mivel találkoztam vele a Mondoconon"
+            )
+        )
 
-        viewPager.setCurrentItem(dayOfWeekButNotInRetardOrder - 1, false)
-
-        val tabLayoutDays: TabLayout = view.findViewById(R.id.calendar_days_tabs)
-        TabLayoutMediator(tabLayoutDays,
-            viewPager,
-            { tab, position -> tab.text = days[position] }).attach()
-
-        tabLayoutDays.post {
-
-            val currentTab : View = tabLayoutDays.getTabAt(dayOfWeekButNotInRetardOrder - 1)!!.view
-            tabLayoutDays.scrollX = currentTab.x.toInt() - tabLayoutDays.width / 2 + currentTab.width / 2
-
-        }
-
+        recyclerView.adapter = DayRecyclerAdapter(datas)
 
 
 
 
         return view
     }
-
-}
-
-class CalendarDayAdapter(fragment: Fragment, private val calendar: Calendar, private val dayOfWeek : Int) : FragmentStateAdapter(fragment)
-{
-
-    override fun getItemCount(): Int {
-        return 7
-    }
-
-    override fun createFragment(position: Int): Fragment {
-        val offsetCalendar = Calendar.getInstance()
-        offsetCalendar.timeInMillis = calendar.timeInMillis
-        offsetCalendar.add(Calendar.DAY_OF_MONTH, (dayOfWeek - 1 - position) * -1)
-        return DayFragment()
-    }
-
 
 }
