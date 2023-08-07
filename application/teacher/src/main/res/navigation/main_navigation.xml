@@ -21,6 +21,11 @@
         android:label="@string/student_hostel"
         app:startDestination="@id/studentHostelFragment">
         <fragment
+            android:id="@+id/roomRateFragment"
+            android:name="com.example.teacher.fragments.RoomRateFragment"
+            android:label="fragment_room_rate"
+            tools:layout="@layout/fragment_room_rate" />
+        <fragment
             android:id="@id/studentHostelFragment"
             android:name="com.example.shared.fragments.StudentHostelFragment"
             android:label="@string/student_hostel"
@@ -38,23 +43,19 @@
             <action
                 android:id="@id/action_studentHostelFragment_to_userGateFragment"
                 app:destination="@id/userGateFragment"
-                app:popUpTo="@id/studentHostelNest"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelNest" />
             <action
                 android:id="@id/action_studentHostelFragment_to_userOutgoingFragment"
                 app:destination="@id/userOutgoingFragment"
-                app:popUpTo="@id/studentHostelNest"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelNest" />
             <action
                 android:id="@id/action_studentHostelFragment_to_userFragment"
                 app:destination="@id/userFragment"
-                app:popUpTo="@id/studentHostelFragment"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelFragment" />
             <action
                 android:id="@id/action_studentHostelFragment_to_roomFragment"
                 app:destination="@id/roomFragment"
-                app:popUpTo="@id/studentHostelFragment"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelFragment" />
         </fragment>
         <fragment
             android:id="@id/roomsFragment"
@@ -132,4 +133,5 @@
                 app:destination="@id/homeFragment" />
         </fragment>
     </navigation>
+
 </navigation>

@@ -24,8 +24,8 @@
     <dimen name="text_normal">14sp</dimen><!-- 18sp -->
     <dimen name="text_description">13sp</dimen> <!-- 15sp -->
     <dimen name="text_description_smaller">8.666sp</dimen>
-    <dimen name="panel_icon">45sp</dimen>
-    <dimen name="panel_icon_smaller">30sp</dimen>
+    <dimen name="panel_icon">45dp</dimen>
+    <dimen name="panel_icon_smaller">30dp</dimen>
 
     <dimen name="toolbar_button_size">50dp</dimen>
 

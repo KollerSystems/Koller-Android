@@ -1,10 +1,10 @@
 package com.example.shared.activities
 
-import android.R
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Typeface
+import android.os.Bundle
 import android.os.Environment
 import android.text.SpannableString
 import android.text.TextUtils
@@ -29,10 +29,10 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import java.io.File
-import com.example.shared.R as Rs
+import com.example.shared.R
 
 
-open class MainActivity : AppCompatActivity() {
+abstract class MainActivity : AppCompatActivity() {
 
     private var currentTitle : CharSequence? = ""
     lateinit var navHostFragment : NavHostFragment
@@ -50,17 +50,18 @@ open class MainActivity : AppCompatActivity() {
         )
     }
 
-    fun setupMainActivity(){
+    fun onCreated() {
+
 
         getPixelColor(0,0)
-        navHostFragment = supportFragmentManager.findFragmentById(Rs.id.main_fragment) as NavHostFragment
+        navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
-        val appBar = findViewById<AppBarLayout>(Rs.id.appbar_user)
-        val mainBackground = findViewById<MaterialCardView>(Rs.id.main_background)
+        val appBar = findViewById<AppBarLayout>(R.id.appbar_user)
+        val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
         mainTitle = findViewById(com.example.shared.R.id.toolbar_title)
 
-        val backButton : Button = findViewById(Rs.id.toolbar_exit)
+        val backButton : Button = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{
             onBackPressed()
         }
@@ -78,7 +79,7 @@ open class MainActivity : AppCompatActivity() {
         }
         appBar.addOnOffsetChangedListener(listener)
 
-        bottomNavigationView = findViewById(Rs.id.bottom_navigation_view)
+        bottomNavigationView = findViewById(R.id.bottom_navigation_view)
         bottomNavigationView.setupWithNavController(navController)
 
         val defaultAppBarHeight = appBar.layoutParams.height
@@ -89,10 +90,10 @@ open class MainActivity : AppCompatActivity() {
             setToolbarTitle(destination.label)
 
 
-            if(destination.id == Rs.id.homeFragment ||
-                destination.id == Rs.id.calendarFragment ||
-                destination.id == Rs.id.studentHostelFragment ||
-                destination.id == Rs.id.notificationsFragment){
+            if(destination.id == R.id.homeFragment ||
+                destination.id == R.id.calendarFragment ||
+                destination.id == R.id.studentHostelFragment ||
+                destination.id == R.id.notificationsFragment){
 
                 backButton.visibility = AppBarLayout.INVISIBLE
                 var dp15 : Int = MyApplication.convertDpToPixel(15, this)

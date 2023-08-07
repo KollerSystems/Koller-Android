@@ -90,7 +90,7 @@
                                 android:padding="@dimen/panel_padding">
 
                                 <ImageView
-                                    android:id="@id/imageView5"
+                                    android:id="@id/image_icon"
                                     android:layout_width="@dimen/panel_icon"
                                     android:layout_height="@dimen/panel_icon"
                                     android:layout_gravity="center_vertical"

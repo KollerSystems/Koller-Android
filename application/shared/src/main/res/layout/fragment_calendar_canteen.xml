@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@null">
-        ű
+
 
         <LinearLayout
             style="@style/tricky_toolbar"
@@ -83,7 +83,7 @@
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip22"
+                    android:id="@+id/chip_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/oldest"

@@ -44,6 +44,7 @@
                     android:orientation="vertical">
 
                     <com.example.shared.SimpleCardButton
+                        android:id="@+id/room_scb_room_order"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/clean"

@@ -57,20 +57,20 @@
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:checkedChip="@id/chip20"
+                app:checkedChip="@id/chip_none"
                 app:chipSpacingHorizontal="0dp"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip20"
+                    android:id="@+id/chip_none"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/newest"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip22"
+                    android:id="@+id/chip_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/oldest"

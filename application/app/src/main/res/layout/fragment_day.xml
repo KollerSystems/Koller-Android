@@ -52,7 +52,11 @@
                             android:layout_height="wrap_content"
                             app:cardCornerRadius="@null"
                             app:cardElevation="0dp"
-                            app:contentPadding="@dimen/text_container_margin">
+                            app:contentPaddingBottom="@dimen/text_container_margin"
+                            app:contentPaddingLeft="@dimen/spacing"
+                            app:contentPaddingRight="@dimen/spacing"
+                            app:contentPaddingTop="@dimen/text_container_margin">
+
                             <TextView
                                 style="@style/Description"
                                 android:layout_width="match_parent"
@@ -61,11 +65,12 @@
                                 android:layout_weight="1"
                                 android:text="Legközelebbi ügyeletestanár:\nKis Gazsi (F3)"
                                 android:textAlignment="center" />
+
                             <ImageView
                                 android:layout_width="18dp"
                                 android:layout_height="match_parent"
-                                android:src="@drawable/arrow_drop"
-                                android:layout_gravity="right"/>
+                                android:layout_gravity="right"
+                                android:src="@drawable/arrow_drop" />
                         </com.google.android.material.card.MaterialCardView>
 
                     </LinearLayout>

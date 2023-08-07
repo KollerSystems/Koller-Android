@@ -32,7 +32,6 @@ import kotlin.math.roundToInt
 
 open class HomeFragment : Fragment() {
 
-    lateinit var realView : View
     
     
     private lateinit var eventsRecyclerView: RecyclerView
@@ -56,15 +55,11 @@ open class HomeFragment : Fragment() {
     lateinit var lessonTimer : CountDownTimer
     var lessonsTimerRunning = false
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
 
-
-        eventsRecyclerView = realView.findViewById(R.id.eventsRecyclerView)
+        eventsRecyclerView = view.findViewById(R.id.eventsRecyclerView)
 
         eventsRecyclerView.layoutManager = LinearLayoutManager(context)
         eventsRecyclerView.setHasFixedSize(true)
@@ -79,16 +74,16 @@ open class HomeFragment : Fragment() {
 
         eventsRecyclerView.adapter = EventsRecyclerAdapter(eventsDataArrayList)
 
-        refresh = realView.findViewById(R.id.home_refresh)
+        refresh = view.findViewById(R.id.home_refresh)
 
 
 
-        val buttonShowAllPosts : Button = realView.findViewById(R.id.home_button_show_all_posts)
+        val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
         buttonShowAllPosts.setOnClickListener{
             findNavController().navigateWithDefaultAnimation(R.id.action_homeFragment_to_postsFragment)
         }
 
-        todayRecyclerView = realView.findViewById(R.id.todayRecyclerView)
+        todayRecyclerView = view.findViewById(R.id.todayRecyclerView)
         todayRecyclerView.layoutManager = LinearLayoutManager(context)
         todayRecyclerView.setHasFixedSize(true)
 
@@ -105,7 +100,7 @@ open class HomeFragment : Fragment() {
 
 
 
-        unreadRecyclerView = realView.findViewById(R.id.home_recycle_view_unread)
+        unreadRecyclerView = view.findViewById(R.id.home_recycle_view_unread)
         unreadRecyclerView.layoutManager = LinearLayoutManager(context)
         unreadRecyclerView.setHasFixedSize(true)
 
@@ -116,7 +111,7 @@ open class HomeFragment : Fragment() {
 
         unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList, requireContext())
 
-        val fabRoot: View = realView.findViewById(R.id.home_fab_root)
+        val fabRoot: View = view.findViewById(R.id.home_fab_root)
 
         fabRoot.setOnClickListener{
             val dialog = BottomFragmentPostTypes()
@@ -124,7 +119,7 @@ open class HomeFragment : Fragment() {
             dialog.show(requireActivity().supportFragmentManager, BottomFragmentPostTypes.TAG)
 
             fun openCreateNewPostActivity(type : String){
-                val intent = Intent(realView.context, CreateNewPostActivity::class.java)
+                val intent = Intent(view.context, CreateNewPostActivity::class.java)
                 intent.putExtra("type", type)
                 startActivity(intent)
                 dialog.dismiss()
@@ -146,7 +141,5 @@ open class HomeFragment : Fragment() {
 
 
         }
-
-        return realView
     }
 }

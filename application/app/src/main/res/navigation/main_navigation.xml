@@ -38,23 +38,19 @@
             <action
                 android:id="@+id/action_studentHostelFragment_to_userGateFragment"
                 app:destination="@id/userGateFragment"
-                app:popUpTo="@id/studentHostelNest"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelNest" />
             <action
                 android:id="@+id/action_studentHostelFragment_to_userOutgoingFragment"
                 app:destination="@id/userOutgoingFragment"
-                app:popUpTo="@id/studentHostelNest"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelNest" />
             <action
                 android:id="@+id/action_studentHostelFragment_to_userFragment"
                 app:destination="@id/userFragment"
-                app:popUpTo="@id/studentHostelFragment"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelFragment" />
             <action
                 android:id="@+id/action_studentHostelFragment_to_roomFragment"
                 app:destination="@id/roomFragment"
-                app:popUpTo="@id/studentHostelFragment"
-                app:popUpToInclusive="true" />
+                app:popUpTo="@id/studentHostelFragment" />
         </fragment>
         <fragment
             android:id="@+id/roomsFragment"

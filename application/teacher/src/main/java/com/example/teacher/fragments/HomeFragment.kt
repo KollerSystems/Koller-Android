@@ -16,8 +16,7 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        realView = inflater.inflate(R.layout.fragment_home, container, false)
-        super.onCreateView(inflater, container, savedInstanceState)
-        return realView
+        return inflater.inflate(R.layout.fragment_home, container, false)
     }
+
 }

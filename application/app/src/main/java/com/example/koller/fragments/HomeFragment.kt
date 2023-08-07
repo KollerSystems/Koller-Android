@@ -43,25 +43,27 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?): View? {
-        realView = inflater.inflate(R.layout.fragment_home, container, false)
 
-        super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.fragment_home, container, false)
+    }
 
-        textStayOutTop = realView.findViewById(R.id.home_text_outgoing_top)
-        textStayOutBottom = realView.findViewById(R.id.home_text_outgoing_down)
-        realViewLessonSlider = realView.findViewById(Rs.id.home_view_lesson_slider)
-        realViewStayOutSlider = realView.findViewById(com.example.shared.R.id.home_view_stay_slider)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        textStayOutTop = view.findViewById(R.id.home_text_outgoing_top)
+        textStayOutBottom = view.findViewById(R.id.home_text_outgoing_down)
+        realViewLessonSlider = view.findViewById(Rs.id.home_view_lesson_slider)
+        realViewStayOutSlider = view.findViewById(com.example.shared.R.id.home_view_stay_slider)
 
 
 
 
-        val cardOutgoing : View = realView.findViewById(R.id.home_card_outgoing)
+        val cardOutgoing : View = view.findViewById(R.id.home_card_outgoing)
         cardOutgoing.setOnClickListener{
             (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.studentHostelNest
             findNavController().navigate(Rs.id.userOutgoingFragment)
         }
 
-        val cardLessons : View = realView.findViewById(R.id.home_card_lessons)
+        val cardLessons : View = view.findViewById(R.id.home_card_lessons)
         cardLessons.setOnClickListener{
             (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.calendarFragment
         }
@@ -202,18 +204,18 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
 
             var lessonTime : Boolean = false
 
-            var textLessonsSilenceWarning : TextView = realView.findViewById(R.id.home_text_silence_warning)
+            var textLessonsSilenceWarning : TextView = view.findViewById(R.id.home_text_silence_warning)
 
-            var textLessonsTitle : TextView = realView.findViewById(Rs.id.home_text_lessons_title)
-            var textLessonsDescription : TextView = realView.findViewById(Rs.id.home_text_lessons_description)
-            var textLessonsNumber : TextView = realView.findViewById(Rs.id.home_text_lessons_number)
-            var textLessonsTime : TextView = realView.findViewById(Rs.id.home_text_lessons_time)
+            var textLessonsTitle : TextView = view.findViewById(Rs.id.home_text_lessons_title)
+            var textLessonsDescription : TextView = view.findViewById(Rs.id.home_text_lessons_description)
+            var textLessonsNumber : TextView = view.findViewById(Rs.id.home_text_lessons_number)
+            var textLessonsTime : TextView = view.findViewById(Rs.id.home_text_lessons_time)
 
-            var realViewLessonsNext : View = realView.findViewById(Rs.id.home_layout_lessons_next)
-            var textSmallLessonsTitle : TextView = realView.findViewById(Rs.id.home_text_small_lessons_title)
-            var textSmallLessonsDescription : TextView = realView.findViewById(Rs.id.home_text_small_lessons_description)
-            var textSmallLessonsNumber : TextView = realView.findViewById(Rs.id.home_text_small_lessons_number)
-            var textSmallLessonsTime : TextView = realView.findViewById(Rs.id.home_text_small_lessons_time)
+            var realViewLessonsNext : View = view.findViewById(Rs.id.home_layout_lessons_next)
+            var textSmallLessonsTitle : TextView = view.findViewById(Rs.id.home_text_small_lessons_title)
+            var textSmallLessonsDescription : TextView = view.findViewById(Rs.id.home_text_small_lessons_description)
+            var textSmallLessonsNumber : TextView = view.findViewById(Rs.id.home_text_small_lessons_number)
+            var textSmallLessonsTime : TextView = view.findViewById(Rs.id.home_text_small_lessons_time)
 
             fun NextLessonsGraphic(index : Int){
                 realViewLessonsNext.visibility = View.VISIBLE
@@ -280,7 +282,7 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
             }
 
 
-            val textNow : TextView = realView.findViewById(com.example.shared.R.id.home_text_now)
+            val textNow : TextView = view.findViewById(com.example.shared.R.id.home_text_now)
 
             if(cardOutgoing.visibility == View.VISIBLE || cardLessons.visibility == View.VISIBLE){
                 textNow.visibility = View.VISIBLE
@@ -297,8 +299,6 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
             setupHome()
             refresh.isRefreshing = false
         }
-
-        return realView
     }
 
     fun cancelIfNeeded(){

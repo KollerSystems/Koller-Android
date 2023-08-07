@@ -37,7 +37,7 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
         var teacherName: TextView = view.findViewById(R.id.room_order_fragment_text_rater_name)
         var date: TextView = view.findViewById(R.id.room_order_fragment_text_date)
 
-        var finalGradeFloat : Float = RoomOrderData.instance[0].finalGrade.toFloat() / 2
+        var finalGradeFloat : Float = RoomOrderData.instance[0].FinalGrade.toFloat() / 2
         if(finalGradeFloat != (finalGradeFloat).roundToInt().toFloat()){
             finalGrade.text = (finalGradeFloat + 0.5f).roundToInt().toString() + ","
         }
@@ -48,7 +48,7 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
         teacherName.text = "Name"
 
         val format = SimpleDateFormat("MM. dd.")
-        date.text = format.format(RoomOrderData.instance[0].date)
+        date.text = format.format(RoomOrderData.instance[0].Date)
 
         val recyclerView : RecyclerView = view.findViewById(R.id.room_order_recycler_view)
 

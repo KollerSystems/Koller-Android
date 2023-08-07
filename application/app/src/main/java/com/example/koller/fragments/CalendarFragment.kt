@@ -17,25 +17,27 @@ import com.example.shared.fragments.CalendarProgramsFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class CalendarFragment : Fragment() {
+class CalendarFragment : com.example.shared.fragments.CalendarFragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_calendar, container, false)
+        return inflater.inflate(R.layout.fragment_calendar, container, false)
 
 
-        val tabs : TabLayout = view.findViewById(R.id.calendar_tabs)
-        val viewPager : ViewPager2 = view.findViewById(R.id.calendar_view_pager)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val adapter = CalendarViewPagerAdapter(childFragmentManager, lifecycle)
 
         viewPager.adapter = adapter
 
 
-        TabLayoutMediator(tabs, viewPager){tab,position->
+        TabLayoutMediator(tabLayout, viewPager){tab,position->
             when(position){
                 0->{
                     tab.text = getString(R.string.days)
@@ -57,11 +59,7 @@ class CalendarFragment : Fragment() {
                 }
             }
         }.attach()
-
-
-        return view;
     }
-
 }
 
 class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle)

@@ -2,52 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/create_new_post_card_place"
         style="@style/Card"
         android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/card_margin"
         app:shapeAppearanceOverlay="@style/overlayRoundedCardBottom">
 
-        <LinearLayout
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/create_new_post_til_place"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content"
+            android:hint="Egyéb megjegyzés">
 
-            <ImageView
-                style="@style/CategoryIcon"
-                android:adjustViewBounds="true"
-                android:alpha="0.666"
-                app:srcCompat="@drawable/more_horiz" />
-
-            <LinearLayout
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_new_post_til_place"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/text_container_margin"
-                    android:layout_marginRight="@dimen/text_container_margin"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:layout_weight="1"
-                    android:hint="Egyéb megjegyzés">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="top"
-                        android:minLines="2"
-                        android:textAppearance="@style/Normal" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </LinearLayout>
-
-        </LinearLayout>
+                android:gravity="top"
+                android:inputType="text|textCapSentences|textMultiLine"
+                android:minLines="3"
+                android:textAppearance="@style/Normal" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </com.google.android.material.card.MaterialCardView>
 
@@ -56,6 +34,7 @@
         style="@style/CategoryCardName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/spacing"
         android:paddingVertical="@dimen/text_container_margin"
         android:text="Végső értékelés" />
 
@@ -78,10 +57,12 @@
                 android:layout_weight="1"
                 android:text="Automatikus" />
 
-            <Switch
+            <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:minHeight="0dp"
+                app:switchPadding="0dp" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
