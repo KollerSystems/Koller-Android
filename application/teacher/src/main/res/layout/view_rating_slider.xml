@@ -42,6 +42,7 @@
             android:clipToPadding="false">
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -80,10 +81,11 @@
                 android:layout_width="100dp"
                 android:layout_height="match_parent"
                 android:layout_gravity="right|center_vertical"
+                android:alpha="0.5"
                 android:stepSize="1"
-                android:value="10"
+                android:value="1"
                 android:valueFrom="1"
-                android:valueTo="10"
+                android:valueTo="5"
                 app:labelBehavior="floating" />
         </FrameLayout>
     </LinearLayout>

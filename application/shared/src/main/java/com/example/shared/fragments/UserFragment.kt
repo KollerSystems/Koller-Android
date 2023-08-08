@@ -35,7 +35,7 @@ abstract class UserFragment : Fragment() {
 
             context as MainActivity
             context.bottomNavigationView.selectedItemId =R.id.studentHostelNest
-            context.navController.navigateWithDefaultAnimation(R.id.userFragment)
+            context.navController.navigateWithDefaultAnimation(R.id.action_global_userFragment)
         }
     }
 

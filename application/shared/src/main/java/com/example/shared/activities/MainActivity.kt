@@ -43,23 +43,16 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var navController : NavController
 
 
-    fun getPixelColor(xcoord: Int, ycoord: Int) {
-        Log.d(
-            "pixel color",
-            "TEsT"
-        )
-    }
 
     fun onCreated() {
 
 
-        getPixelColor(0,0)
         navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
         navController = navHostFragment.navController
 
         val appBar = findViewById<AppBarLayout>(R.id.appbar_user)
         val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
-        mainTitle = findViewById(com.example.shared.R.id.toolbar_title)
+        mainTitle = findViewById(R.id.toolbar_title)
 
         val backButton : Button = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{
@@ -72,7 +65,7 @@ abstract class MainActivity : AppCompatActivity() {
             mainBackground.alpha = verticalOffset / collapsedSize
         }
 
-        val motionLayout : MotionLayout = findViewById(com.example.shared.R.id.main_motion_layout)
+        val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
         val listener = AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
             val seekPosition = -verticalOffset / appBar.totalScrollRange.toFloat()
             motionLayout.progress = seekPosition
@@ -111,7 +104,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         }
 
-        val userButton = findViewById<ShapeableImageView>(com.example.shared.R.id.user_button)
+        val userButton = findViewById<ShapeableImageView>(R.id.user_button)
         userButton.setOnClickListener{
             MyApplication.openProfile.invoke(this)
         }

@@ -29,68 +29,20 @@
             android:id="@id/studentHostelFragment"
             android:name="com.example.shared.fragments.StudentHostelFragment"
             android:label="@string/student_hostel"
-            tools:layout="@layout/fragment_student_hostel">
-            <action
-                android:id="@id/action_studentHostelFragment_to_roomsFragment2"
-                app:destination="@id/roomsFragment" />
-            <action
-                android:id="@id/action_studentHostelFragment_to_usersFragment2"
-                app:destination="@id/usersFragment"
-                app:enterAnim="@anim/nav_default_enter_anim"
-                app:exitAnim="@anim/nav_default_exit_anim"
-                app:popEnterAnim="@anim/nav_default_pop_enter_anim"
-                app:popExitAnim="@anim/nav_default_pop_exit_anim" />
-            <action
-                android:id="@id/action_studentHostelFragment_to_userGateFragment"
-                app:destination="@id/userGateFragment"
-                app:popUpTo="@id/studentHostelNest" />
-            <action
-                android:id="@id/action_studentHostelFragment_to_userOutgoingFragment"
-                app:destination="@id/userOutgoingFragment"
-                app:popUpTo="@id/studentHostelNest" />
-            <action
-                android:id="@id/action_studentHostelFragment_to_userFragment"
-                app:destination="@id/userFragment"
-                app:popUpTo="@id/studentHostelFragment" />
-            <action
-                android:id="@id/action_studentHostelFragment_to_roomFragment"
-                app:destination="@id/roomFragment"
-                app:popUpTo="@id/studentHostelFragment" />
-        </fragment>
+            tools:layout="@layout/fragment_student_hostel"/>
         <fragment
             android:id="@id/roomsFragment"
             android:name="com.example.shared.fragments.RoomsFragment"
-            android:label="@string/places">
-            <action
-                android:id="@id/action_roomsFragment_to_roomFragment"
-                app:destination="@id/roomFragment" />
-        </fragment>
+            android:label="@string/places"/>
         <fragment
             android:id="@id/usersFragment"
             android:name="com.example.shared.fragments.UsersFragment"
             android:label="@string/people"
-            tools:layout="@layout/fragment_rooms">
-            <action
-                android:id="@id/action_usersFragment_to_userFragment"
-                app:destination="@id/userFragment" />
-        </fragment>
+            tools:layout="@layout/fragment_rooms"/>
         <fragment
             android:id="@id/userFragment"
             android:name="com.example.teacher.fragments.UserFragment"
-            android:label="@string/user">
-            <action
-                android:id="@id/action_userFragment_to_userGateFragment"
-                app:destination="@id/userGateFragment" />
-            <action
-                android:id="@id/action_userFragment_to_userGateFragment2"
-                app:destination="@id/userGateFragment" />
-            <action
-                android:id="@id/action_userFragment_to_userOutgoingFragment"
-                app:destination="@id/userOutgoingFragment" />
-            <action
-                android:id="@id/action_userFragment_to_roomFragment"
-                app:destination="@id/roomFragment" />
-        </fragment>
+            android:label="@string/user"/>
         <fragment
             android:id="@id/userOutgoingFragment"
             android:name="com.example.shared.fragments.UserOutgoingFragment"
@@ -104,11 +56,7 @@
             android:id="@id/roomFragment"
             android:name="com.example.teacher.fragments.RoomFragment"
             android:label="@string/room"
-            tools:layout="@layout/fragment_room">
-            <action
-                android:id="@id/action_roomFragment_to_userFragment"
-                app:destination="@id/userFragment" />
-        </fragment>
+            tools:layout="@layout/fragment_room"/><action android:id="@id/action_global_roomRateFragment" app:destination="@id/roomRateFragment"/><action android:id="@id/action_global_userGateFragment" app:destination="@id/userGateFragment"/><action android:id="@id/action_global_userOutgoingFragment" app:destination="@id/userOutgoingFragment"/><action android:id="@id/action_global_userFragment" app:destination="@id/userFragment"/><action android:id="@id/action_global_roomFragment" app:destination="@id/roomFragment"/><action android:id="@id/action_global_roomsFragment" app:destination="@id/roomsFragment"/><action android:id="@id/action_global_usersFragment" app:destination="@id/usersFragment"/>
     </navigation>
     <navigation
         android:id="@id/homeNest"
@@ -118,20 +66,12 @@
             android:id="@id/homeFragment"
             android:name="com.example.teacher.fragments.HomeFragment"
             android:label="@string/home"
-            tools:layout="@layout/fragment_home">
-            <action
-                android:id="@id/action_homeFragment_to_postsFragment"
-                app:destination="@id/postsFragment" />
-        </fragment>
+            tools:layout="@layout/fragment_home"/>
         <fragment
             android:id="@id/postsFragment"
             android:name="com.example.shared.fragments.PostsFragment"
             android:label="@string/posts"
-            tools:layout="@layout/fragment_posts">
-            <action
-                android:id="@id/action_postsFragment_to_homeFragment"
-                app:destination="@id/homeFragment" />
-        </fragment>
+            tools:layout="@layout/fragment_posts"/><action android:id="@id/action_global_postsFragment" app:destination="@id/postsFragment"/>
     </navigation>
 
 </navigation>

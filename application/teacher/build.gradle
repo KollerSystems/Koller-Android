@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace 'com.example.teacher'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.teacher"
         minSdk 26
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -48,7 +48,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
-    implementation 'androidx.recyclerview:recyclerview:1.3.0'
+    implementation 'androidx.recyclerview:recyclerview:1.3.1'
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.core:core-ktx:1.10.1'
@@ -59,8 +59,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation "androidx.paging:paging-runtime-ktx:3.1.1"
-    implementation "androidx.paging:paging-common-ktx:3.1.1"
+    implementation "androidx.paging:paging-runtime-ktx:3.2.0"
+    implementation "androidx.paging:paging-common-ktx:3.2.0"
 
     implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
 

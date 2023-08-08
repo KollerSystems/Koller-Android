@@ -40,11 +40,11 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
+        android:id="@+id/ly_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="true"
         android:orientation="vertical"
-        android:paddingBottom="159.5dp"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <TextView
@@ -69,6 +69,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ly_fixed_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

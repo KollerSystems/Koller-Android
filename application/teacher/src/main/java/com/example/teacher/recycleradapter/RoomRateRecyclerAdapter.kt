@@ -1,7 +1,7 @@
 package com.example.teacher.recycleradapter
 
-import android.content.Context
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -11,19 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.example.shared.MyApplication
 import com.example.teacher.R
-import com.example.shared.data.RoomData
 import com.example.shared.data.RoomOrderConditionsBase
 import com.example.shared.data.RoomOrderConditionsBoolean
 import com.example.shared.data.RoomOrderConditionsInt
-import com.example.shared.data.RoomOrderData
-import com.example.shared.data.UserData
-import com.example.shared.fragments.UserFragment
-import com.example.shared.recycleradapter.GateRecyclerAdapter
-import com.example.shared.recycleradapter.UserPreviewRecyclerAdapter
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.slider.Slider
-import org.w3c.dom.Text
 
 class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<RoomOrderConditionsBase>) :  RecyclerView.Adapter<ViewHolder>(){
 
@@ -58,33 +51,75 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
             R.layout.view_rating_rv_footer -> {
 
             }
-            else->{
-                holder as RoomOrderConditionsBaseViewHolder
+            R.layout.view_rating_checkbox -> {
 
-                val currentItem = roomOrderConditionsData[position]
+                setupRatingView(holder, position)
 
-                val context = holder.itemView.context
-                if (roomOrderConditionsData.size == 1) {
+            }
+            R.layout.view_rating_slider -> {
 
-                    MyApplication.roundCard(context, holder.itemView)
+                holder as RoomOrderConditionsIntViewHolder
 
-                }
-                else if(position == 0){
+                setupRatingView(holder, position)
 
-                    MyApplication.roundCardTop(context, holder.itemView)
-                }
-                else{
-                    MyApplication.deroundCardVertical(context, holder.itemView)
+
+                fun selectSliderChip(){
+                    holder.chipGroup.check(R.id.chip_slider)
+                    holder.slider.alpha = 1f
                 }
 
+                holder.slider.addOnChangeListener{slider, value, bool ->
+                    selectSliderChip()
+                }
 
 
-                holder.title.text = currentItem.title
-                holder.icon.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, currentItem.icon))
+                holder.slider.setOnTouchListener { view, motionEvent ->
+
+
+                    when(motionEvent.action){
+                        MotionEvent.ACTION_UP ->{
+                            selectSliderChip()
+                        }
+                    }
+
+
+                    return@setOnTouchListener holder.slider.onTouchEvent(motionEvent)
+                }
+
+                holder.chipNone.setOnClickListener{
+                    holder.slider.alpha = 0.5f
+                }
+
             }
         }
 
 
+    }
+
+
+    fun setupRatingView(holder: ViewHolder, position: Int){
+        holder as RoomOrderConditionsBaseViewHolder
+
+        val currentItem = roomOrderConditionsData[position]
+
+        val context = holder.itemView.context
+        if (roomOrderConditionsData.size == 1) {
+
+            MyApplication.roundCard(context, holder.itemView)
+
+        }
+        else if(position == 0){
+
+            MyApplication.roundCardTop(context, holder.itemView)
+        }
+        else{
+            MyApplication.deroundCardVertical(context, holder.itemView)
+        }
+
+
+
+        holder.title.text = currentItem.title
+        holder.icon.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, currentItem.icon))
     }
 
     override fun getItemCount(): Int {
@@ -129,6 +164,7 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
     {
         val icon : ImageView = itemView.findViewById(R.id.image_icon)
         val title : TextView = itemView.findViewById(R.id.text_title)
+        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
         val chipNone : Chip = itemView.findViewById(R.id.chip_none)
     }
 

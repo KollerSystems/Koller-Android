@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -38,6 +39,15 @@ class RoomRateFragment : Fragment() {
 
 
         recyclerView.adapter = RoomRateRecyclerAdapter(data)
+
+        val lyContent : LinearLayout = view.findViewById(R.id.ly_content)
+
+        val lyFooter : LinearLayout = view.findViewById(R.id.ly_fixed_footer)
+
+        lyContent.post{
+            lyContent.setPadding(0,0,0,lyFooter.height)
+        }
+
 
     }
 }

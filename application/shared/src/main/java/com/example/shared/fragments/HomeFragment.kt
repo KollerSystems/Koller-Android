@@ -80,7 +80,7 @@ open class HomeFragment : Fragment() {
 
         val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
         buttonShowAllPosts.setOnClickListener{
-            findNavController().navigateWithDefaultAnimation(R.id.action_homeFragment_to_postsFragment)
+            findNavController().navigateWithDefaultAnimation(R.id.action_global_postsFragment)
         }
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)

@@ -85,4 +85,12 @@
     <item name="settings_slider_list_loading_delay" type="id" />
     <item name="settings_scb_test_activity" type="id" />
     <item name="drag_handle" type="id" />
+    <item name="action_global_postsFragment" type="id" />
+    <item name="action_global_usersFragment" type="id" />
+    <item name="action_global_roomsFragment" type="id" />
+    <item name="action_global_roomFragment" type="id" />
+    <item name="action_global_userFragment" type="id" />
+    <item name="action_global_userOutgoingFragment" type="id" />
+    <item name="action_global_userGateFragment" type="id" />
+    <item name="action_global_roomRateFragment" type="id" />
 </resources>

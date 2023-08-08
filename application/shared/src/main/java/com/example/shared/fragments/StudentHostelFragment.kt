@@ -23,11 +23,11 @@ open class StudentHostelFragment : Fragment() {
         val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
 
         roomsButton.setOnClickListener{
-            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_roomsFragment2)
+            findNavController().navigateWithDefaultAnimation(R.id.action_global_roomsFragment)
         }
 
         usersButton.setOnClickListener{
-            findNavController().navigateWithDefaultAnimation(R.id.action_studentHostelFragment_to_usersFragment2)
+            findNavController().navigateWithDefaultAnimation(R.id.action_global_usersFragment)
         }
 
         return view;

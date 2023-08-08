@@ -54,7 +54,7 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
             }
 
 
-            return@setOnTouchListener super.onTouchEvent(motionEvent)
+            return@setOnTouchListener FABScrollUp.onTouchEvent(motionEvent)
         }
 
         //TODO: ennek a törlése, ha minden recycler view fasza
