@@ -83,7 +83,7 @@
                 android:layout_gravity="right|center_vertical"
                 android:alpha="0.5"
                 android:stepSize="1"
-                android:value="1"
+                android:value="3"
                 android:valueFrom="1"
                 android:valueTo="5"
                 app:labelBehavior="floating" />
