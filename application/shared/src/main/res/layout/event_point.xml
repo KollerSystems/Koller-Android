@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/text_container_margin"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+        <View
+
+            android:layout_width="@dimen/spacing"
+            android:layout_height="1dp"
+            android:background="?attr/colorForeground025" />
+
+        <TextView
+            android:id="@+id/text_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:text="@string/start_of_optional_leaving_period"
+            android:textAppearance="@style/Description" />
+
+        <View
+
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="?attr/colorForeground025" />
+
+        <TextView
+
+            android:id="@+id/text_time"
+            style="@style/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:text="6:00" />
+
+        <View
+
+            android:layout_width="@dimen/spacing"
+            android:layout_height="1dp"
+            android:background="?attr/colorForeground025" />
+</LinearLayout>

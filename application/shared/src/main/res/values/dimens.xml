@@ -3,6 +3,7 @@
     <dimen name="panel_padding">15dp</dimen>
     <dimen name="n_panel_padding">-15dp</dimen>
     <dimen name="text_container_margin">5dp</dimen>
+    <dimen name="n_text_container_margin">-5dp</dimen>
     <dimen name="panel_margin_down">1dp</dimen>
     <dimen name="panel_shadow">0dp</dimen>
     <dimen name="panel_round">20dp</dimen>

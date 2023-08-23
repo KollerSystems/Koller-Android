@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <!-- Alsó negyed kör -->
+    <item android:gravity="bottom|center_horizontal"
+        android:width="20dp"
+        android:height="20dp"
+        android:right="-19.5dp">
+
+        <shape
+            android:shape="oval">
+            <stroke android:color="?attr/colorForeground025" android:width="1dp"/>
+        </shape>
+
+    </item>
+
+    <item android:gravity="top|center_horizontal"
+        android:width="20dp"
+        android:height="20dp"
+        android:right="-19.5dp">
+
+        <shape
+            android:shape="oval">
+            <stroke android:color="?attr/colorForeground025" android:width="1dp"/>
+        </shape>
+
+    </item>
+
+
+    <item android:width="10.5dp"
+        android:bottom="10dp"
+        android:top="10dp"
+        android:gravity="right">
+        <shape android:shape="rectangle" >
+
+            <solid android:color="?android:attr/windowBackground"/>
+
+        </shape>
+
+    </item>
+    <item android:width="1dp"
+        android:bottom="10dp"
+        android:top="10dp"
+        android:right="-0.5dp"
+        android:gravity="center_horizontal">
+        <shape android:shape="rectangle" >
+
+            <solid android:color="?attr/colorForeground025"/>
+
+        </shape>
+
+    </item>
+
+</layer-list>

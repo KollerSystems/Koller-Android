@@ -311,4 +311,12 @@
     <string name="exits_and_entrances">Ki- és belépések</string>
     <string name="forgotten_password">Elfelejtett jelszó</string>
     <string name="error_report">Hibajelentés</string>
+    <string name="room_scoring">Szoba pontozás</string>
+    <string name="dummy_date_MMddw">Augusztus 5. péntek</string>
+    <string name="expected_arrival">Elvárt beérkezés</string>
+    <string name="break_">Szünet</string>
+    <string name="start_of_optional_leaving_period">Kilépés lehetőségének megkezdése</string>
+    <string name="independent_study">Önálló tanulás</string>
+    <string name="headcount_check">Létszámellenőrzés</string>
+    <string name="time_frame_of_student_hostel_sessions">Kollégiumi foglalkozások időkerete</string>
 </resources>

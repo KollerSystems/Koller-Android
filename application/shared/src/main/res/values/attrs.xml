@@ -35,5 +35,10 @@
         <attr name="text"/>
     </declare-styleable>
 
+    <declare-styleable name="eventPoint">
+        <attr name="text"/>
+        <attr name="time" format="string" />
+    </declare-styleable>
+
 
 </resources>

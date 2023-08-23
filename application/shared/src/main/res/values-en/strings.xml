@@ -276,4 +276,12 @@
     <string name="exits_and_entrances">Exits and entrances</string>
     <string name="forgotten_password">Forgotten password</string>
     <string name="error_report">Error report</string>
+    <string name="room_scoring">Room scoring</string>
+    <string name="dummy_date_MMddw">August 5th friday</string>
+    <string name="expected_arrival">Expected arrival</string>
+    <string name="break_">Break</string>
+    <string name="start_of_optional_leaving_period">Start of optional leaving period</string>
+    <string name="independent_study">Independent study</string>
+    <string name="headcount_check">Headcount check</string>
+    <string name="time_frame_of_student_hostel_sessions">Time frame of student hostel sessions</string>
 </resources>
