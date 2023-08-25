@@ -31,7 +31,9 @@ import com.example.shared.data.UserData
 import com.example.shared.fragments.CalendarFragment
 import com.example.shared.fragments.HomeFragment
 import com.example.shared.fragments.NotificationsFragment
+import com.example.shared.fragments.RoomFragment
 import com.example.shared.fragments.StudentHostelFragment
+import com.example.shared.fragments.UserFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
@@ -55,6 +57,18 @@ open class MyApplication : Application() {
 
 
     companion object Comp{
+
+        lateinit var openSettings: (context : Context) -> Unit
+        lateinit var openLogin: (context : Context) -> Unit
+        lateinit var openMain: (context : Context) -> Unit
+        lateinit var openProfile: (context : Context) -> Unit
+
+        lateinit var homeFragment: () -> HomeFragment
+        lateinit var calendarFragment: () -> CalendarFragment
+        lateinit var studentHostelFragment: () -> StudentHostelFragment
+        lateinit var notificationFragment: () -> NotificationsFragment
+        lateinit var roomFragment: () -> RoomFragment
+        lateinit var userFragment: () -> UserFragment
 
 
         fun orderSingleNumber(context : Context, number : String) : String{
@@ -83,16 +97,6 @@ open class MyApplication : Application() {
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             context.startActivity(intent)
         }
-
-        lateinit var openSettings: (context : Context) -> Unit
-        lateinit var openLogin: (context : Context) -> Unit
-        lateinit var openMain: (context : Context) -> Unit
-        lateinit var openProfile: (context : Context) -> Unit
-
-        lateinit var homeFragment: () -> HomeFragment
-        lateinit var calendarFragment: () -> CalendarFragment
-        lateinit var studentHostelFragment: () -> StudentHostelFragment
-        lateinit var notificationFragment: () -> NotificationsFragment
 
         fun visibilityOn(boolean : Boolean) : Int{
             return if(!boolean){

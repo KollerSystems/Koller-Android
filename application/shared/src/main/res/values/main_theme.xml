@@ -602,6 +602,7 @@
         <item name="tabTextColor">?colorForeground066</item>
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
         <item name="tabUnboundedRipple">false</item>
+
     </style>
 
     <style name="nestedScrollView">

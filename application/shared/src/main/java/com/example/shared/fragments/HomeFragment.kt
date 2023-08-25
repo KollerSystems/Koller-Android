@@ -17,6 +17,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.shared.MyApplication
 import com.example.shared.R
 import com.example.shared.activities.CreateNewPostActivity
+import com.example.shared.activities.MainActivity
 import com.example.shared.activities.SettingsActivity
 import com.example.shared.data.DefaultDayTimes
 import com.example.shared.data.EventsData
@@ -82,7 +83,7 @@ abstract class HomeFragment : Fragment() {
 
         val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
         buttonShowAllPosts.setOnClickListener{
-            findNavController().navigateWithDefaultAnimation(R.id.action_global_postsFragment)
+            (context as MainActivity).ChangeFragment(PostsFragment())
         }
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)

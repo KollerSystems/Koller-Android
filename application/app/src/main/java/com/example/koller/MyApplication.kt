@@ -10,7 +10,9 @@ import com.example.koller.activities.MainActivity
 import com.example.koller.activities.SettingsActivity
 import com.example.koller.fragments.CalendarFragment
 import com.example.koller.fragments.HomeFragment
+import com.example.koller.fragments.RoomFragment
 import com.example.koller.fragments.StudentHostelFragment
+import com.example.koller.fragments.UserFragment
 import com.example.koller.fragments.bottomsheet.ProfileBottomSheet
 import com.example.shared.fragments.NotificationsFragment
 
@@ -40,5 +42,7 @@ class MyApplication : com.example.shared.MyApplication() {
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
         notificationFragment = { NotificationsFragment() }
+        roomFragment = { RoomFragment() }
+        userFragment = { UserFragment() }
     }
 }

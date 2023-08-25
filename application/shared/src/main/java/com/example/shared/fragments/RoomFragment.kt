@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.example.shared.MyApplication
 import com.example.shared.R
 import com.example.shared.activities.MainActivity
 import com.example.shared.api.APIInterface
@@ -22,7 +23,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-open class RoomFragment : Fragment() {
+abstract class RoomFragment : Fragment() {
 
     companion object {
         var toGet : Int = -1
@@ -31,8 +32,8 @@ open class RoomFragment : Fragment() {
             toGet = RID
 
             context as MainActivity
-            context.bottomNavigationView.selectedItemId =R.id.studentHostel
-            context.navController.navigateWithDefaultAnimation(R.id.action_global_roomFragment)
+
+            context.ChangeFragment(MyApplication.roomFragment())
         }
     }
 
