@@ -6,9 +6,7 @@ import android.content.Context
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
@@ -34,7 +32,7 @@ abstract class UserFragment : Fragment() {
             toGet = RID
 
             context as MainActivity
-            context.bottomNavigationView.selectedItemId =R.id.studentHostelNest
+            context.bottomNavigationView.selectedItemId =R.id.studentHostel
             context.navController.navigateWithDefaultAnimation(R.id.action_global_userFragment)
         }
     }

@@ -30,7 +30,7 @@ import java.util.Calendar
 import java.util.Date
 import kotlin.math.roundToInt
 
-open class HomeFragment : Fragment() {
+abstract class HomeFragment : Fragment() {
 
     
     
@@ -54,6 +54,8 @@ open class HomeFragment : Fragment() {
     var outgoingTimerRunning = false
     lateinit var lessonTimer : CountDownTimer
     var lessonsTimerRunning = false
+
+    abstract fun ResponsibleLayout() : Int
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

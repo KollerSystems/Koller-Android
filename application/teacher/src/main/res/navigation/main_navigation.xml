@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@id/main_navigation"
     android:label="main"
-    app:startDestination="@id/homeNest">
+    app:startDestination="@id/home">
 
     <fragment
-        android:id="@id/notificationsFragment"
+        android:id="@id/notifications"
         android:name="com.example.shared.fragments.NotificationsFragment"
         android:label="@string/notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@id/calendarFragment"
+        android:id="@id/calendar"
         android:name="com.example.teacher.fragments.CalendarFragment"
         android:label="@string/calendar"
         tools:layout="@layout/fragment_calendar" />
     <navigation
-        android:id="@id/studentHostelNest"
+        android:id="@id/studentHostel"
         android:label="@string/student_hostel"
         app:startDestination="@id/studentHostelFragment">
         <fragment
@@ -59,7 +59,7 @@
             tools:layout="@layout/fragment_room"/><action android:id="@id/action_global_roomRateFragment" app:destination="@id/roomRateFragment"/><action android:id="@id/action_global_userGateFragment" app:destination="@id/userGateFragment"/><action android:id="@id/action_global_userOutgoingFragment" app:destination="@id/userOutgoingFragment"/><action android:id="@id/action_global_userFragment" app:destination="@id/userFragment"/><action android:id="@id/action_global_roomFragment" app:destination="@id/roomFragment"/><action android:id="@id/action_global_roomsFragment" app:destination="@id/roomsFragment"/><action android:id="@id/action_global_usersFragment" app:destination="@id/usersFragment"/>
     </navigation>
     <navigation
-        android:id="@id/homeNest"
+        android:id="@id/home"
         android:label="@string/home"
         app:startDestination="@id/homeFragment">
         <fragment

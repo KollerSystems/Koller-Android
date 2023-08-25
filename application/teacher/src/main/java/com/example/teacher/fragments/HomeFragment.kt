@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.example.teacher.R
 
 class HomeFragment : com.example.shared.fragments.HomeFragment() {
+    override fun ResponsibleLayout(): Int {
+        return R.layout.fragment_home
+    }
 
 
     override fun onCreateView(

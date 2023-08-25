@@ -4,18 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.shared.MyApplication
 import com.example.shared.R
 import com.example.shared.activities.MainActivity
 import com.example.shared.api.APIInterface
@@ -24,7 +18,6 @@ import com.example.shared.data.RoomData
 import com.example.shared.data.UserData
 import com.example.shared.navigateWithDefaultAnimation
 import com.example.shared.recycleradapter.UserPreviewRecyclerAdapter
-import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -38,7 +31,7 @@ open class RoomFragment : Fragment() {
             toGet = RID
 
             context as MainActivity
-            context.bottomNavigationView.selectedItemId =R.id.studentHostelNest
+            context.bottomNavigationView.selectedItemId =R.id.studentHostel
             context.navController.navigateWithDefaultAnimation(R.id.action_global_roomFragment)
         }
     }

@@ -4,20 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
     android:label="main"
-    app:startDestination="@id/homeNest">
+    app:startDestination="@id/home">
 
     <fragment
-        android:id="@+id/notificationsFragment"
+        android:id="@+id/notifications"
         android:name="com.example.shared.fragments.NotificationsFragment"
         android:label="@string/notifications"
         tools:layout="@layout/fragment_notifications" />
     <fragment
-        android:id="@+id/calendarFragment"
+        android:id="@+id/calendar"
         android:name="com.example.koller.fragments.CalendarFragment"
         android:label="@string/calendar"
         tools:layout="@layout/fragment_calendar" />
     <navigation
-        android:id="@+id/studentHostelNest"
+        android:id="@+id/studentHostel"
         android:label="@string/student_hostel"
         app:startDestination="@id/studentHostelFragment">
         <fragment
@@ -38,11 +38,11 @@
             <action
                 android:id="@+id/action_studentHostelFragment_to_userGateFragment"
                 app:destination="@id/userGateFragment"
-                app:popUpTo="@id/studentHostelNest" />
+                app:popUpTo="@id/studentHostel" />
             <action
                 android:id="@+id/action_studentHostelFragment_to_userOutgoingFragment"
                 app:destination="@id/userOutgoingFragment"
-                app:popUpTo="@id/studentHostelNest" />
+                app:popUpTo="@id/studentHostel" />
             <action
                 android:id="@+id/action_studentHostelFragment_to_userFragment"
                 app:destination="@id/userFragment"
@@ -106,7 +106,7 @@
         </fragment>
     </navigation>
     <navigation
-        android:id="@+id/homeNest"
+        android:id="@+id/home"
         android:label="@string/home"
         app:startDestination="@id/homeFragment">
         <fragment

@@ -1,34 +1,18 @@
 package com.example.koller.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.koller.R
 import com.example.shared.R as Rs
-import com.example.shared.activities.CreateNewPostActivity
 import com.example.koller.activities.MainActivity
-import com.example.koller.activities.SettingsActivity
 import com.example.shared.MyApplication
 import com.example.shared.data.DefaultDayTimes
-import com.example.shared.data.EventsData
-import com.example.shared.data.TodayData
-import com.example.shared.fragments.bottomsheet.BottomFragmentPostTypes
-import com.example.shared.navigateWithDefaultAnimation
-import com.example.shared.recycleradapter.EventsRecyclerAdapter
-import com.example.shared.recycleradapter.TodayRecyclerAdapter
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -47,6 +31,10 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    override fun ResponsibleLayout(): Int {
+        return R.layout.fragment_home
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         textStayOutTop = view.findViewById(R.id.home_text_outgoing_top)
@@ -59,13 +47,13 @@ class HomeFragment : com.example.shared.fragments.HomeFragment() {
 
         val cardOutgoing : View = view.findViewById(R.id.home_card_outgoing)
         cardOutgoing.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.studentHostelNest
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.studentHostel
             findNavController().navigate(Rs.id.userOutgoingFragment)
         }
 
         val cardLessons : View = view.findViewById(R.id.home_card_lessons)
         cardLessons.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.calendarFragment
+            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.calendar
         }
 
         fun setupHome(){

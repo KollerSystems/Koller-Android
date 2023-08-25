@@ -22,11 +22,16 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.navOptions
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.data.UserData
+import com.example.shared.fragments.CalendarFragment
+import com.example.shared.fragments.HomeFragment
+import com.example.shared.fragments.NotificationsFragment
+import com.example.shared.fragments.StudentHostelFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
@@ -84,7 +89,10 @@ open class MyApplication : Application() {
         lateinit var openMain: (context : Context) -> Unit
         lateinit var openProfile: (context : Context) -> Unit
 
-
+        lateinit var homeFragment: () -> HomeFragment
+        lateinit var calendarFragment: () -> CalendarFragment
+        lateinit var studentHostelFragment: () -> StudentHostelFragment
+        lateinit var notificationFragment: () -> NotificationsFragment
 
         fun visibilityOn(boolean : Boolean) : Int{
             return if(!boolean){

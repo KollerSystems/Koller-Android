@@ -1,41 +1,36 @@
 package com.example.shared.activities
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Canvas
 import android.graphics.Typeface
-import android.os.Bundle
-import android.os.Environment
 import android.text.SpannableString
 import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.setupWithNavController
 import com.example.shared.MyApplication
 import com.example.shared.MyApplication.Comp.getPixelColorFromView
+import com.example.shared.R
+import com.example.shared.fragments.HomeFragment
+import com.example.shared.fragments.UsersFragment
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
-import java.io.File
-import com.example.shared.R
 
 
 abstract class MainActivity : AppCompatActivity() {
 
     private var currentTitle : CharSequence? = ""
-    lateinit var navHostFragment : NavHostFragment
+    lateinit var fragmentManager : FragmentContainerView
     lateinit var mainTitle : TextView
 
     lateinit var bottomNavigationView : BottomNavigationView
@@ -47,8 +42,7 @@ abstract class MainActivity : AppCompatActivity() {
     fun onCreated() {
 
 
-        navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment) as NavHostFragment
-        navController = navHostFragment.navController
+        fragmentManager = findViewById(R.id.main_fragment)
 
         val appBar = findViewById<AppBarLayout>(R.id.appbar_user)
         val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
@@ -73,20 +67,57 @@ abstract class MainActivity : AppCompatActivity() {
         appBar.addOnOffsetChangedListener(listener)
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
-        bottomNavigationView.setupWithNavController(navController)
 
-        val defaultAppBarHeight = appBar.layoutParams.height
         val defaultTitlePadding = mainTitle.paddingLeft
 
-        navHostFragment.navController.addOnDestinationChangedListener{  controller, destination, arguments ->
+        fun ChangeFragment(localizedName : Int, fragment: Fragment){
+            setToolbarTitle(getString(localizedName))
+            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.setCustomAnimations(
+                androidx.navigation.ui.R.anim.nav_default_enter_anim,
+                androidx.navigation.ui.R.anim.nav_default_exit_anim,
+                androidx.navigation.ui.R.anim.nav_default_enter_anim,
+                androidx.navigation.ui.R.anim.nav_default_exit_anim
+            )
+            fragmentTransaction.replace(R.id.main_fragment, fragment)
+            fragmentTransaction.addToBackStack(null)
+            fragmentTransaction.setReorderingAllowed(true)
+            fragmentTransaction.commit()
+        }
+
+        val selectedListener = bottomNavigationView.setOnItemSelectedListener() { menuItem ->
+            when (menuItem.itemId) {
+                R.id.home -> {
+                    ChangeFragment(R.string.home, MyApplication.homeFragment())
+                    return@setOnItemSelectedListener true
+                }
+                R.id.calendar -> {
+                    ChangeFragment(R.string.calendar, MyApplication.calendarFragment())
+                    return@setOnItemSelectedListener true
+                }
+                R.id.studentHostel -> {
+                    ChangeFragment(R.string.student_hostel, MyApplication.studentHostelFragment())
+                    return@setOnItemSelectedListener true
+                }
+                R.id.notifications -> {
+                    ChangeFragment(R.string.notifications, MyApplication.notificationFragment())
+                    return@setOnItemSelectedListener true
+                }
+
+
+            }
+            false
+        }
+
+        /*navHostFragment.navController.addOnDestinationChangedListener{  controller, destination, arguments ->
 
             setToolbarTitle(destination.label)
 
 
             if(destination.id == R.id.homeFragment ||
-                destination.id == R.id.calendarFragment ||
+                destination.id == R.id.calendar ||
                 destination.id == R.id.studentHostelFragment ||
-                destination.id == R.id.notificationsFragment){
+                destination.id == R.id.notifications){
 
                 backButton.visibility = AppBarLayout.INVISIBLE
                 var dp15 : Int = MyApplication.convertDpToPixel(15, this)
@@ -102,7 +133,7 @@ abstract class MainActivity : AppCompatActivity() {
 
             appBar.setExpanded(false)
 
-        }
+        }*/
 
         val userButton = findViewById<ShapeableImageView>(R.id.user_button)
         userButton.setOnClickListener{
@@ -122,15 +153,15 @@ abstract class MainActivity : AppCompatActivity() {
         if (title == currentTitle) return
         currentTitle = title
 
-        var destination : NavDestination = navHostFragment.navController.currentDestination!!
+        //var destination : NavDestination = navHostFragment.navController.currentDestination!!
 
         val ssTitle = SpannableString(title)
         ssTitle.setSpan(StyleSpan(Typeface.BOLD), 0, title!!.length, 0)
         ssTitle.setSpan(ForegroundColorSpan(MyApplication.getAttributeColor(this, R.attr.colorForeground)), 0, title!!.length, 0)
 
-        val nestLabel = destination.parent?.label
+        //val nestLabel = destination.parent?.label
 
-        if (nestLabel != null && nestLabel != destination.label && nestLabel != "main") {
+        /*if (nestLabel != null && nestLabel != destination.label && nestLabel != "main") {
 
             val ssNest = SpannableString(nestLabel)
             ssNest.setSpan(RelativeSizeSpan(0.666f), 0, nestLabel.length, 0) // set size
@@ -140,7 +171,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
         else{
             mainTitle.text = ssTitle
-        }
+        }*/
 
     }
 

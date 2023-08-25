@@ -31,7 +31,7 @@ class UserGateFragment : Fragment() {
             toGet = RID
 
             context as MainActivity
-            context.bottomNavigationView.selectedItemId =R.id.studentHostelNest
+            context.bottomNavigationView.selectedItemId =R.id.studentHostel
             context.navController.navigateWithDefaultAnimation(R.id.action_global_userGateFragment)
         }
     }
