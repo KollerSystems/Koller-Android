@@ -25,7 +25,7 @@ class UserOutgoingFragment : Fragment() {
 
             context as MainActivity
 
-            context.ChangeFragment(UserOutgoingFragment())
+            context.changeFragment(UserOutgoingFragment())
         }
     }
     override fun onCreateView(
@@ -34,6 +34,10 @@ class UserOutgoingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_user_outgoing, container, false)
+
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.outgoings), mainActivity.getString(R.string.student_hostel))
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         val tabs : TabLayout = view.findViewById(R.id.user_outgoing_tabs)
         val viewPager : ViewPager2 = view.findViewById(R.id.user_outgoing_viewpager)

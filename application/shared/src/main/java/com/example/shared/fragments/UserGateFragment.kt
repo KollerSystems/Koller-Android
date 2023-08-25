@@ -32,7 +32,7 @@ class UserGateFragment : Fragment() {
 
             context as MainActivity
 
-            context.ChangeFragment(UserGateFragment())
+            context.changeFragment(UserGateFragment())
         }
     }
 
@@ -49,6 +49,10 @@ class UserGateFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val view : View = inflater.inflate(R.layout.fragment_user_gate, container, false)
+
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.exits_and_entrances), mainActivity.getString(R.string.student_hostel))
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         crossingRecyclerView = view.findViewById(R.id.recycler_view)
         crossingRecyclerView.layoutManager = LinearLayoutManager(context)

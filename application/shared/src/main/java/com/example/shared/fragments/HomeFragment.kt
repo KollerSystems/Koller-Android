@@ -61,6 +61,9 @@ abstract class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.home), null)
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.home)
 
         eventsRecyclerView = view.findViewById(R.id.eventsRecyclerView)
 
@@ -83,7 +86,7 @@ abstract class HomeFragment : Fragment() {
 
         val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
         buttonShowAllPosts.setOnClickListener{
-            (context as MainActivity).ChangeFragment(PostsFragment())
+            (context as MainActivity).changeFragment(PostsFragment())
         }
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)

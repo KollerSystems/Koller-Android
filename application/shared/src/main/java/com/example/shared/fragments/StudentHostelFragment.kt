@@ -20,16 +20,19 @@ open class StudentHostelFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_student_hostel, container, false)
 
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.student_hostel), null)
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         val roomsButton: Button = view.findViewById(R.id.student_hostel_button_rooms)
         val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
 
         roomsButton.setOnClickListener{
-            (context as MainActivity).ChangeFragment(RoomsFragment())
+            (context as MainActivity).changeFragment(RoomsFragment())
         }
 
         usersButton.setOnClickListener{
-            (context as MainActivity).ChangeFragment(UsersFragment())
+            (context as MainActivity).changeFragment(UsersFragment())
         }
 
         return view;

@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.BaseViewModel
 import com.example.shared.R
 import com.example.shared.SuperCoolRecyclerView
+import com.example.shared.activities.MainActivity
 import com.example.shared.api.UserPagingSource
 import com.example.shared.data.TodayData
 import com.example.shared.recycleradapter.UserRecyclerAdapter
@@ -35,6 +36,10 @@ class UsersFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_users, container, false)
+
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.people), mainActivity.getString(R.string.student_hostel))
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)

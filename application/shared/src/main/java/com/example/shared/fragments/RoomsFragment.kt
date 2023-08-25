@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.shared.BaseViewModel
 import com.example.shared.R
 import com.example.shared.SuperCoolRecyclerView
+import com.example.shared.activities.MainActivity
 import com.example.shared.api.RoomPagingSource
 import com.example.shared.api.UserPagingSource
 import com.example.shared.data.TodayData
@@ -34,6 +35,10 @@ class RoomsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_rooms, container, false)
+
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.rooms), mainActivity.getString(R.string.student_hostel))
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         roomsRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
         roomsRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)

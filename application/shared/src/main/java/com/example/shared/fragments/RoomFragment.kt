@@ -33,7 +33,8 @@ abstract class RoomFragment : Fragment() {
 
             context as MainActivity
 
-            context.ChangeFragment(MyApplication.roomFragment())
+            context.changeFragment(MyApplication.roomFragment())
+
         }
     }
 
@@ -47,7 +48,9 @@ abstract class RoomFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.room), mainActivity.getString(R.string.student_hostel))
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         textTitle = view.findViewById(R.id.room_text_title)
         buttonDesc = view.findViewById(R.id.room_button_description)

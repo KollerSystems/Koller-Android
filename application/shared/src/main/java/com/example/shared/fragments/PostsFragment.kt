@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.shared.R
+import com.example.shared.activities.MainActivity
 
 
 class PostsFragment : Fragment() {
@@ -16,5 +17,12 @@ class PostsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_posts, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.posts), mainActivity.getString(R.string.home))
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.home)
     }
 }

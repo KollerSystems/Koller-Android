@@ -32,7 +32,7 @@ abstract class UserFragment : Fragment() {
             toGet = RID
 
             context as MainActivity
-            context.ChangeFragment(MyApplication.userFragment())
+            context.changeFragment(MyApplication.userFragment())
         }
     }
 
@@ -40,6 +40,10 @@ abstract class UserFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.user), mainActivity.getString(R.string.student_hostel))
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         var textName : TextView = view.findViewById(R.id.user_text_name)
         var textDescription : TextView = view.findViewById(R.id.user_text_description)
@@ -70,10 +74,10 @@ abstract class UserFragment : Fragment() {
 
         nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
             if (isVisible(textName)) {
-                (activity as MainActivity).setToolbarTitle(getString(R.string.user))
+                (activity as MainActivity).setToolbarTitle(getString(R.string.user),getString(R.string.student_hostel))
 
             } else {
-                (activity as MainActivity).setToolbarTitle(textName.text)
+                (activity as MainActivity).setToolbarTitle(textName.text,getString(R.string.student_hostel))
             }
         }
 

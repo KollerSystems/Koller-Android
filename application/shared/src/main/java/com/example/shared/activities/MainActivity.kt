@@ -6,8 +6,11 @@ import android.text.TextUtils
 import android.text.style.ForegroundColorSpan
 import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
+import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
@@ -41,7 +44,16 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var appBar : AppBarLayout
     lateinit var backButton : Button
 
-    public fun ChangeFragment(fragment: Fragment){
+
+    var onlyIcon : Boolean = false
+
+    fun changeSelectedBottomNavigationIcon(selectedItemId : Int){
+        onlyIcon = true
+        bottomNavigationView.selectedItemId = selectedItemId
+        onlyIcon = false
+    }
+
+    public fun changeFragment(fragment: Fragment){
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
             androidx.navigation.ui.R.anim.nav_default_enter_anim,
@@ -74,6 +86,7 @@ abstract class MainActivity : AppCompatActivity() {
         appBar.setExpanded(false)
     }
 
+
     fun onCreated() {
 
 
@@ -105,24 +118,26 @@ abstract class MainActivity : AppCompatActivity() {
 
         defaultTitlePadding = mainTitle.paddingLeft
 
+       bottomNavigationView.setOnItemSelectedListener { menuItem ->
 
+           if(onlyIcon) return@setOnItemSelectedListener true
 
-       bottomNavigationView.setOnItemSelectedListener() { menuItem ->
             when (menuItem.itemId) {
+
                 R.id.home -> {
-                    ChangeFragment(MyApplication.homeFragment())
+                    changeFragment(MyApplication.homeFragment())
                     return@setOnItemSelectedListener true
                 }
                 R.id.calendar -> {
-                    ChangeFragment(MyApplication.calendarFragment())
+                    changeFragment(MyApplication.calendarFragment())
                     return@setOnItemSelectedListener true
                 }
                 R.id.studentHostel -> {
-                    ChangeFragment(MyApplication.studentHostelFragment())
+                    changeFragment(MyApplication.studentHostelFragment())
                     return@setOnItemSelectedListener true
                 }
                 R.id.notifications -> {
-                    ChangeFragment(MyApplication.notificationFragment())
+                    changeFragment(MyApplication.notificationFragment())
                     return@setOnItemSelectedListener true
                 }
 
@@ -142,6 +157,8 @@ abstract class MainActivity : AppCompatActivity() {
             window.navigationBarColor = navViewColor
         }
 
+        bottomNavigationView.selectedItemId = R.id.home
+
     }
 
     fun setToolbarTitle(title : CharSequence?, description : CharSequence?){
@@ -153,14 +170,13 @@ abstract class MainActivity : AppCompatActivity() {
         ssTitle.setSpan(StyleSpan(Typeface.BOLD), 0, title!!.length, 0)
         ssTitle.setSpan(ForegroundColorSpan(MyApplication.getAttributeColor(this, R.attr.colorForeground)), 0, title!!.length, 0)
 
-        val nestLabel = description
 
-        if (nestLabel != null && nestLabel != description && nestLabel != "main") {
+        if (description != null) {
 
-            val ssNest = SpannableString(nestLabel)
-            ssNest.setSpan(RelativeSizeSpan(0.666f), 0, nestLabel.length, 0) // set size
+            val ssNest = SpannableString(description)
+            ssNest.setSpan(RelativeSizeSpan(0.666f), 0, description.length, 0) // set size
 
-            ssNest.setSpan(StyleSpan(0), 0, nestLabel.length, 0)
+            ssNest.setSpan(StyleSpan(0), 0, description.length, 0)
             mainTitle.text = TextUtils.concat(ssNest, "\n", ssTitle)
         }
         else{

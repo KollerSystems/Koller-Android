@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.shared.R
 import com.example.shared.SuperCoolRecyclerView
+import com.example.shared.activities.MainActivity
 import com.example.shared.data.TodayData
 import com.example.shared.recycleradapter.TodayRecyclerAdapter
 
@@ -28,6 +29,10 @@ class NotificationsFragment : Fragment() {
 
         val view : View = inflater.inflate(R.layout.fragment_notifications, container, false)
 
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.notifications), null)
+        mainActivity.changeSelectedBottomNavigationIcon(R.id.notifications)
+
         notificsRecyclerView = view.findViewById(R.id.sc_recycler_view)
         notificsRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
         notificsRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
@@ -43,4 +48,6 @@ class NotificationsFragment : Fragment() {
 
         return view
     }
+
+
 }
