@@ -49,6 +49,21 @@
             android:layout_width="40dp"
             motion:layout_constraintTop_toBottomOf="@id/guideline"
             android:id="@+id/user_button" />
+        <Constraint
+            android:id="@+id/toolbar_ly_text_container"
+            motion:layout_constraintEnd_toEndOf="parent"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="5dp"
+            android:layout_marginStart="5dp"
+            motion:layout_constraintTop_toTopOf="parent"
+            motion:layout_constraintHorizontal_bias="0.5"
+            android:scaleX="1.4"
+            android:scaleY="1.4"/>
+
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
@@ -85,5 +100,15 @@
             android:layout_width="40dp"
             motion:layout_constraintTop_toBottomOf="@id/guideline"
             android:id="@+id/user_button" />
+        <Constraint
+            android:id="@+id/toolbar_ly_text_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            motion:layout_constraintBottom_toBottomOf="parent"
+            motion:layout_constraintTop_toTopOf="@+id/guideline"
+            motion:layout_constraintHorizontal_bias="0"
+            motion:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="5dp"
+            motion:layout_constraintEnd_toEndOf="parent"/>
     </ConstraintSet>
 </MotionScene>

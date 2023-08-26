@@ -23,9 +23,15 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
 
     init {
         (context as AppCompatActivity).lifecycleScope.launch {
-            val read = DataStoreManager.readBoolean(context, resources.getResourceEntryName(id))
-            if(read == true){
+            var read : Int = 0
+            val data = DataStoreManager.readInt(context, resources.getResourceEntryName(id))
+            if(data != null) read = data
+            if(read == -1 || read < 2){
                 visibility = GONE
+            }
+            if(read != -1){
+                read++
+                DataStoreManager.save(context, resources.getResourceEntryName(id), read)
             }
         }
 
@@ -50,7 +56,7 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
         buttonClose.setOnClickListener{
             visibility = GONE
             context.lifecycleScope.launch {
-                DataStoreManager.save(context, resources.getResourceEntryName(id), true)
+                DataStoreManager.save(context, resources.getResourceEntryName(id), -1)
             }
         }
     }

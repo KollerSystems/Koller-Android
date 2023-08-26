@@ -21,6 +21,16 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing"
+                android:drawableLeft="@drawable/info"
+                android:drawablePadding="@dimen/text_container_margin"
+                android:text="Az alábbi képek nem biztos hogy megegyeznek a kiszolgált ételekkel."
+                android:textAppearance="@style/Description" />
+
+            <TextView
                 android:id="@+id/textView68"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,22 +42,12 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Reggeli" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip14"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Ebéd" />
-
-                <com.google.android.material.chip.Chip
                     android:id="@+id/chip18"
+                    style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Vacsora" />
+                    android:text="@string/type_"
+                    app:closeIconEnabled="true" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip"

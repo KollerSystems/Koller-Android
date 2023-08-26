@@ -10,27 +10,17 @@
     tools:context=".fragments.DayFragment">
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
+    <View
+        android:layout_width="20dp"
         android:layout_height="108dp"
-        android:layout_marginHorizontal="9.5dp"
-        android:translationY="772.5dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:strokeColor="?attr/colorForeground025"
-        app:strokeWidth="1dp"></com.google.android.material.card.MaterialCardView>
+        android:background="@drawable/connector"
+        android:translationY="772.5dp" />
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="match_parent"
+    <View
+        android:layout_width="20dp"
         android:layout_height="134dp"
-        android:layout_marginHorizontal="9.5dp"
-        android:translationY="160dp"
-        app:cardBackgroundColor="@android:color/transparent"
-        app:cardCornerRadius="10dp"
-        app:cardElevation="0dp"
-        app:strokeColor="?attr/colorForeground025"
-        app:strokeWidth="1dp"></com.google.android.material.card.MaterialCardView>
+        android:background="@drawable/connector"
+        android:translationY="160dp" />
 
     <LinearLayout
         style="@style/MainLayout"

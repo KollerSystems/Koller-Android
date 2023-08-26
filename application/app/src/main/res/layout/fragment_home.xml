@@ -83,7 +83,7 @@
                             </com.google.android.material.card.MaterialCardView>
 
                             <LinearLayout
-                                android:id="@+id/linearLayout"
+                                android:id="@+id/toolbar_ly_text_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"

@@ -8,7 +8,10 @@ import android.text.style.RelativeSizeSpan
 import android.text.style.StyleSpan
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -21,7 +24,10 @@ import androidx.navigation.NavDestination
 import com.example.shared.MyApplication
 import com.example.shared.MyApplication.Comp.getPixelColorFromView
 import com.example.shared.R
+import com.example.shared.fragments.CalendarFragment
 import com.example.shared.fragments.HomeFragment
+import com.example.shared.fragments.NotificationsFragment
+import com.example.shared.fragments.StudentHostelFragment
 import com.example.shared.fragments.UsersFragment
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -32,9 +38,10 @@ import com.google.android.material.imageview.ShapeableImageView
 
 abstract class MainActivity : AppCompatActivity() {
 
-    private var currentTitle : CharSequence? = ""
     lateinit var fragmentManager : FragmentContainerView
-    lateinit var mainTitle : TextView
+    lateinit var toolbarContainer : LinearLayout
+    lateinit var toolbarTitle : TextView
+    lateinit var toolbarDescription : TextView
 
     lateinit var bottomNavigationView : BottomNavigationView
 
@@ -66,24 +73,22 @@ abstract class MainActivity : AppCompatActivity() {
         fragmentTransaction.setReorderingAllowed(true)
         fragmentTransaction.commit()
 
-        if(0 == R.string.home ||
-            0 == R.string.calendar ||
-            0 == R.string.student_hostel ||
-            0 == R.string.notifications){
+        appBar.setExpanded(false)
+    }
+
+    fun ShowBackButton(show : Boolean){
+        if(!show){
 
             backButton.visibility = AppBarLayout.INVISIBLE
             var dp15 : Int = MyApplication.convertDpToPixel(15, this)
-            mainTitle.setPadding(dp15,0,dp15,0)
+            toolbarContainer.setPadding(dp15,0,dp15,0)
 
         }
         else{
 
             backButton.visibility = AppBarLayout.VISIBLE
-            mainTitle.setPadding(defaultTitlePadding,0,defaultTitlePadding,
-                MyApplication.convertSpToPixel(7, this))
+            toolbarContainer.setPadding(defaultTitlePadding,0,defaultTitlePadding, 0)
         }
-
-        appBar.setExpanded(false)
     }
 
 
@@ -94,7 +99,9 @@ abstract class MainActivity : AppCompatActivity() {
 
         appBar = findViewById<AppBarLayout>(R.id.appbar_user)
         val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
-        mainTitle = findViewById(R.id.toolbar_title)
+        toolbarContainer = findViewById(R.id.toolbar_ly_text_container)
+        toolbarTitle = findViewById(R.id.toolbar_title)
+        toolbarDescription = findViewById(R.id.toolbar_description)
 
         backButton = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{
@@ -116,7 +123,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
 
-        defaultTitlePadding = mainTitle.paddingLeft
+        defaultTitlePadding = toolbarContainer.paddingLeft
 
        bottomNavigationView.setOnItemSelectedListener { menuItem ->
 
@@ -157,31 +164,22 @@ abstract class MainActivity : AppCompatActivity() {
             window.navigationBarColor = navViewColor
         }
 
-        bottomNavigationView.selectedItemId = R.id.home
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.main_fragment, MyApplication.homeFragment())
+        fragmentTransaction.commit()
 
     }
 
-    fun setToolbarTitle(title : CharSequence?, description : CharSequence?){
+    fun setToolbarTitle(title : String?, description : String?){
 
-        if (title == currentTitle) return
-        currentTitle = title
-
-        val ssTitle = SpannableString(title)
-        ssTitle.setSpan(StyleSpan(Typeface.BOLD), 0, title!!.length, 0)
-        ssTitle.setSpan(ForegroundColorSpan(MyApplication.getAttributeColor(this, R.attr.colorForeground)), 0, title!!.length, 0)
-
-
-        if (description != null) {
-
-            val ssNest = SpannableString(description)
-            ssNest.setSpan(RelativeSizeSpan(0.666f), 0, description.length, 0) // set size
-
-            ssNest.setSpan(StyleSpan(0), 0, description.length, 0)
-            mainTitle.text = TextUtils.concat(ssNest, "\n", ssTitle)
+        if (description.isNullOrBlank()) {
+            toolbarDescription.visibility = GONE
         }
         else{
-            mainTitle.text = ssTitle
+            toolbarDescription.visibility = VISIBLE
+            toolbarDescription.text = description
         }
+        toolbarTitle.text = title
 
     }
 

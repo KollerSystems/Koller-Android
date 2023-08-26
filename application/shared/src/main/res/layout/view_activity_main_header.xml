@@ -33,25 +33,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/guideline" />
 
-    <TextView
-        android:id="@+id/toolbar_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginEnd="5dp"
-        android:gravity="center_vertical"
-        android:paddingLeft="60dp"
-        android:paddingRight="60dp"
-        android:text="@string/title"
-        android:textColor="?attr/colorForeground066"
-        android:textSize="@dimen/text_main_title"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        <LinearLayout
+            android:id="@+id/toolbar_ly_text_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:text="@string/title"
+            android:textColor="?attr/colorForeground066"
+            android:textSize="@dimen/text_main_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/guideline">
 
-    <com.google.android.material.imageview.ShapeableImageView
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textAppearance="@style/MainTitle" />
+
+            <TextView
+                android:id="@+id/toolbar_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/title"
+                android:textColor="?attr/colorForeground066" />
+        </LinearLayout>
+
+        <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/user_button"
         android:layout_width="40dp"
         android:layout_height="40dp"

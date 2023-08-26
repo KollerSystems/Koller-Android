@@ -77,7 +77,7 @@ abstract class UserFragment : Fragment() {
                 (activity as MainActivity).setToolbarTitle(getString(R.string.user),getString(R.string.student_hostel))
 
             } else {
-                (activity as MainActivity).setToolbarTitle(textName.text,getString(R.string.student_hostel))
+                (activity as MainActivity).setToolbarTitle(textName.text.toString(),getString(R.string.student_hostel))
             }
         }
 

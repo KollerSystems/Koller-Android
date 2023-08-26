@@ -22,7 +22,7 @@ abstract class CalendarFragment : Fragment() {
 
         val mainActivity = context as MainActivity
         mainActivity.setToolbarTitle(mainActivity.getString(R.string.calendar), null)
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.calendar)
+
 
         tabLayout = view.findViewById(R.id.calendar_tabs)
         viewPager = view.findViewById(R.id.calendar_view_pager)

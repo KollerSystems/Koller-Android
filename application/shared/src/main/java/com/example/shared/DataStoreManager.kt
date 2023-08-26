@@ -5,6 +5,7 @@ import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.first
@@ -35,6 +36,14 @@ class DataStoreManager {
             }
         }
 
+        suspend fun save(context: Context, key: String, value: Int) {
+            val dataStoreKey = intPreferencesKey(key)
+            context.dataStore.edit { login_data ->
+                login_data[dataStoreKey] = value
+
+            }
+        }
+
         suspend fun remove(context: Context, key: String) {
             val dataStoreKey = stringPreferencesKey(key)
             context.dataStore.edit { login_data ->
@@ -51,6 +60,12 @@ class DataStoreManager {
 
         suspend fun readBoolean(context: Context, key: String): Boolean? {
             val dataStoreKey = booleanPreferencesKey(key)
+            val preferences = context.dataStore.data.first()
+            return preferences[dataStoreKey]
+        }
+
+        suspend fun readInt(context: Context, key: String): Int? {
+            val dataStoreKey = intPreferencesKey(key)
             val preferences = context.dataStore.data.first()
             return preferences[dataStoreKey]
         }
