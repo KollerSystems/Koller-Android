@@ -5,12 +5,14 @@
     <attr name="colorBackground075" format="reference|color" />
     <attr name="colorBackground05" format="reference|color" />
     <attr name="colorBackground025" format="reference|color" />
+    <attr name="colorBackground01" format="reference|color" />
 
     <attr name="colorForeground066" format="reference|color" />
     <attr name="colorForeground033" format="reference|color" />
     <attr name="colorForeground075" format="reference|color" />
     <attr name="colorForeground05" format="reference|color" />
     <attr name="colorForeground025" format="reference|color" />
+    <attr name="colorForeground01" format="reference|color" />
     <attr name="colorForeground" format="reference|color" />
 
     <attr name="colorYellow" format="reference|color" />

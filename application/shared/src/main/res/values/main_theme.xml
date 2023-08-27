@@ -23,6 +23,12 @@
         <item name="materialButtonStyle">@style/button</item>
     </style>
 
+    <style name="separator_line">
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:background">?attr/colorForeground01</item>
+    </style>
+
     <style name="separator" parent="@style/CategoryCardName">
         <item name="android:layout_marginHorizontal">@null</item>
         <item name="android:layout_marginTop">@null</item>
@@ -63,7 +69,13 @@
         <item name="iconTint">?android:attr/colorPrimary</item>
     </style>
 
-    <style name="iconButton" parent="@style/button">
+    <style name="icon_button" parent="@style/button">
+        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="icon_button_outline" parent="@style/button_outline_icon">
         <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
         <item name="android:paddingRight">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>

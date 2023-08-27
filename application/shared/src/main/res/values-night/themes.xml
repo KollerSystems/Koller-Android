@@ -1,15 +1,17 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Theme.Color" parent="Theme.Material3.DayNight.NoActionBar">
-
+        <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
         <item name="colorBackground05">#80000000</item>
+        <item name="colorBackground01">#1A000000</item>
         <item name="colorBackground025">#40000000</item>
         <item name="colorBackground033">#54000000</item>
         <item name="colorBackground066">#AB000000</item>
         <item name="colorBackground075">#BF000000</item>
 
         <item name="colorForeground05">#80FFFFFF</item>
+        <item name="colorForeground01">#1AFFFFFF</item>
         <item name="colorForeground025">#40FFFFFF</item>
         <item name="colorForeground033">#54FFFFFF</item>
         <item name="colorForeground066">#ABFFFFFF</item>

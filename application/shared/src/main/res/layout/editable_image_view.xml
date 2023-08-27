@@ -37,7 +37,7 @@
 
     <Button
         android:id="@+id/button_remove"
-        style="@style/iconButton"
+        style="@style/icon_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right|top"

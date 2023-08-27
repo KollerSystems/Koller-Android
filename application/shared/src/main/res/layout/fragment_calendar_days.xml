@@ -8,12 +8,7 @@
     android:orientation="vertical"
     tools:context=".fragments.CalendarDaysFragment">
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="0"
-        android:background="?android:attr/listDivider" />
+    <View style="@style/separator_line" />
 
     <com.norbert.koller.shared.TipView
 

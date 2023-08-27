@@ -9,7 +9,7 @@ import com.norbert.koller.shared.data.TodayData
 class DayRecyclerAdapter  (private val dayList : ArrayList<TodayData>) : RecyclerView.Adapter<DayRecyclerAdapter.TodayViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(com.norbert.koller.student.R.layout.fragment_day, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.fragment_day, parent, false)
         return TodayViewHolder(itemView)
     }
 

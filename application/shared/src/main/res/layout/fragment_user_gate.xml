@@ -172,12 +172,10 @@
             </com.google.android.material.chip.ChipGroup>
 
             <View
-                android:id="@+id/divider3"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
+                android:id="@+id/divider"
+                style="@style/separator_line"
                 android:layout_marginTop="@dimen/spacing"
-                android:layout_marginBottom="@dimen/text_container_margin"
-                android:background="?android:attr/listDivider" />
+                android:layout_marginBottom="@dimen/text_container_margin" />
 
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>

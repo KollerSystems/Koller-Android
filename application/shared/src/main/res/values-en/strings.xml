@@ -289,4 +289,5 @@
     <string name="other_comment">Other comment</string>
     <string name="final_grade">Final grade</string>
     <string name="automatic">Automatic</string>
+    <string name="publish_all">Publish all</string>
 </resources>

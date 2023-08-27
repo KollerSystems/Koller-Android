@@ -4,12 +4,14 @@
         <item name="android:windowLightStatusBar">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">true</item>
         <item name="colorBackground05">#80FFFFFF</item>
+        <item name="colorBackground01">#1AFFFFFF</item>
         <item name="colorBackground025">#40FFFFFF</item>
         <item name="colorBackground033">#54FFFFFF</item>
         <item name="colorBackground066">#ABFFFFFF</item>
         <item name="colorBackground075">#BFFFFFFF</item>
 
         <item name="colorForeground05">#80000000</item>
+        <item name="colorForeground01">#1A000000</item>
         <item name="colorForeground025">#40000000</item>
         <item name="colorForeground033">#54000000</item>
         <item name="colorForeground066">#AB000000</item>

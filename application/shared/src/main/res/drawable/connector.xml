@@ -11,7 +11,7 @@
 
         <shape
             android:shape="oval">
-            <stroke android:color="?attr/colorForeground025" android:width="1dp"/>
+            <stroke android:color="?attr/colorForeground01" android:width="1dp"/>
         </shape>
 
     </item>
@@ -23,7 +23,7 @@
 
         <shape
             android:shape="oval">
-            <stroke android:color="?attr/colorForeground025" android:width="1dp"/>
+            <stroke android:color="?attr/colorForeground01" android:width="1dp"/>
         </shape>
 
     </item>
@@ -47,7 +47,7 @@
         android:gravity="center_horizontal">
         <shape android:shape="rectangle" >
 
-            <solid android:color="?attr/colorForeground025"/>
+            <solid android:color="?attr/colorForeground01"/>
 
         </shape>
 
