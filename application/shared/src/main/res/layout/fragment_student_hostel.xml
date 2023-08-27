@@ -21,7 +21,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="20dp"
+            android:paddingStart="20dp"
             app:boxBackgroundMode="outline"
             app:boxStrokeWidth="0dp"
             app:endIconMode="dropdown_menu"
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
-                android:tint="?android:attr/colorForeground"
+                app:tint="?android:attr/colorForeground"
                 app:srcCompat="@drawable/studnet_hostel_map" />
         </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>

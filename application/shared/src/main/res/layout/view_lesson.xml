@@ -24,10 +24,11 @@
             android:gravity="center"
             android:text="n."
             android:textAlignment="center"
-            android:textSize="40sp" />
+            android:textSize="40sp"
+            tools:ignore="HardcodedText" />
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="@dimen/text_container_margin"
@@ -51,7 +52,6 @@
                 style="@style/Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="0"
                 android:text="@string/description" />
 
         </LinearLayout>
@@ -63,7 +63,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:lineSpacingExtra="-5sp"
-            android:text="from\n-\nto"
+            android:text="@string/time"
             android:textAlignment="center" />
 
     </LinearLayout>

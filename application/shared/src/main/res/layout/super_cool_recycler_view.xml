@@ -17,7 +17,7 @@
         android:outlineProvider="none"
         android:paddingHorizontal="30dp"
         android:paddingVertical="@dimen/text_container_margin"
-        android:text="Július 12."
+        android:text="@string/title"
         android:translationZ="1dp" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton

@@ -20,7 +20,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/text_container_margin"
-            android:text="@string/start_of_optional_leaving_period"
+            android:text="@string/unset"
             android:textAppearance="@style/Description" />
 
         <View
@@ -37,7 +37,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/text_container_margin"
-            android:text="6:00" />
+            android:text="@string/unset" />
 
         <View
 

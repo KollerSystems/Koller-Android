@@ -55,7 +55,7 @@
             android:id="@+id/text_key"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="xxxx"
+            android:text="-"
             android:textAlignment="center" />
     </LinearLayout>
 

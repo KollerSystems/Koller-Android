@@ -20,7 +20,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                    android:id="@+id/drag_handle2"
+                    android:id="@+id/drag_handle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -43,7 +43,7 @@
                     app:layout_constraintTop_toTopOf="parent">
 
                     <LinearLayout
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="@dimen/text_container_margin"
@@ -60,7 +60,7 @@
                             style="@style/Title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Szobarend" />
+                            android:text="@string/room_order" />
 
                     </LinearLayout>
 
@@ -90,26 +90,14 @@
             android:orientation="vertical"
             android:padding="@dimen/application_padding">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/room_order_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_margin="2.5dp"
-                android:orientation="vertical">
+                tools:listitem="@layout/view_rate_byte">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/room_order_recycler_view"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        tools:listitem="@layout/view_rate_byte">
-
-                    </androidx.recyclerview.widget.RecyclerView>
-                </RelativeLayout>
-
-            </LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
 
             <LinearLayout
                 android:layout_width="match_parent"

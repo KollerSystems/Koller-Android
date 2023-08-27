@@ -58,7 +58,8 @@
                 style="@style/CategoryCardName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Developer Settings" />
+                android:text="Developer Settings"
+                tools:ignore="HardcodedText" />
 
             <androidx.cardview.widget.CardView
                 style="@style/MainCard"
@@ -89,7 +90,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/text_container_margin"
                                 android:text="Time offset"
-                                android:textAppearance="@style/Title" />
+                                android:textAppearance="@style/Title"
+                                tools:ignore="HardcodedText" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -112,7 +114,8 @@
                                     android:layout_width="75dp"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="0"
-                                    android:hint="Offset">
+                                    android:hint="Offset"
+                                    tools:ignore="HardcodedText">
 
                                     <com.google.android.material.textfield.TextInputEditText
                                         android:layout_width="match_parent"
@@ -144,7 +147,8 @@
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/text_container_margin"
                                 android:text="List loading delay"
-                                android:textAppearance="@style/Title" />
+                                android:textAppearance="@style/Title"
+                                tools:ignore="HardcodedText" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -157,7 +161,8 @@
                                     android:id="@id/textView9"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="0" />
+                                    android:text="0"
+                                    tools:ignore="HardcodedText" />
 
                                 <com.google.android.material.slider.RangeSlider
                                     android:id="@id/settings_slider_list_loading_delay"
@@ -173,14 +178,15 @@
                                     android:id="@id/textView13"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:text="10" />
+                                    android:text="10"
+                                    tools:ignore="HardcodedText" />
                             </LinearLayout>
 
                         </LinearLayout>
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:id="@id/settings_scb_test_activity"
                         custom:text="Open test Activity"
                         custom:description="Hell yeah. Test activity!"
@@ -208,39 +214,39 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.example.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_all"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:text="@string/all" />
 
-                    <com.example.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_arrival"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:description="@string/arrival_reminder_description"
                         custom:text="@string/arrival_reminder" />
 
-                    <com.example.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_occupation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:description="@string/occupation_reminder_description"
                         custom:text="@string/occupation_reminder" />
 
-                    <com.example.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_room"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:text="@string/room_order" />
 
-                    <com.example.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_comm_or_warn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:text="@string/commendation_warning" />
 
-                    <com.example.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_new"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FeedbackActivity">
+    tools:context=".activities.FeedbackActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_user"
@@ -61,7 +61,7 @@
             android:paddingTop="@dimen/application_padding"
             android:paddingRight="@dimen/application_padding"
             android:paddingBottom="75dp"
-            tools:context="com.example.shared.activities.CreateNewPostActivity">
+            tools:context="com.norbert.koller.shared.activities.CreateNewPostActivity">
 
 
             <TextView
@@ -179,7 +179,7 @@
                                 android:id="@+id/text_view_image_limit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="25/25"
+                                tools:text="25/25"
                                 android:textAlignment="textEnd"
                                 android:textAppearance="@style/Description" />
 

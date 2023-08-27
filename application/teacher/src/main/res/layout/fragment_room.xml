@@ -43,55 +43,55 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:id="@+id/room_scb_room_order"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/clean"
                         custom:text="@string/room_order">
 
-                    </com.example.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.SimpleCardButton>
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/person_wave"
                         custom:text="@string/presence">
 
-                    </com.example.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.SimpleCardButton>
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/error"
                         custom:text="@string/error_report">
 
-                    </com.example.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.SimpleCardButton>
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:badge="9"
                         custom:icon="@drawable/flag"
                         custom:text="@string/reports">
 
-                    </com.example.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.SimpleCardButton>
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/pencil"
                         custom:text="@string/edit">
 
-                    </com.example.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.SimpleCardButton>
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/close"
                         custom:text="@string/remove">
 
-                    </com.example.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.SimpleCardButton>
 
                 </LinearLayout>
 

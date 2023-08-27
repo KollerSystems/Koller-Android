@@ -18,7 +18,7 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "Koller"
-include ':app'
+include ':student'
 include ':reader'
 include ':shared'
 include ':teacher'

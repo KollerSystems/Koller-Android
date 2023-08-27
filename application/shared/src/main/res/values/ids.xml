@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <item name="layout_cordinator" type="id" />
-    <item name="main_fragment" type="id"></item>
-    <item name="main_background" type="id"></item>
-    <item name="bottom_navigation_view" type="id"></item>
-    <item name="studentHostelFragment" type="id"></item>
-    <item name="main_navigation" type="id"></item>
+    <item name="main_fragment" type="id" />
+    <item name="main_background" type="id" />
+    <item name="bottom_navigation_view" type="id" />
+    <item name="studentHostelFragment" type="id" />
+    <item name="main_navigation" type="id" />
     <item name="action_studentHostelFragment_to_roomsFragment2" type="id">
 
     </item>
-    <item name="roomsFragment" type="id"></item>
+    <item name="roomsFragment" type="id" />
     <item name="action_studentHostelFragment_to_usersFragment2" type="id">
 
     </item>
-    <item name="usersFragment" type="id"></item>
+    <item name="usersFragment" type="id" />
     <item name="action_studentHostelFragment_to_userGateFragment" type="id">
 
     </item>
-    <item name="userGateFragment" type="id"></item>
+    <item name="userGateFragment" type="id" />
     <item name="action_studentHostelFragment_to_userOutgoingFragment" type="id">
 
     </item>
-    <item name="userOutgoingFragment" type="id"></item>
+    <item name="userOutgoingFragment" type="id" />
     <item name="action_studentHostelFragment_to_userFragment" type="id">
 
     </item>
-    <item name="userFragment" type="id"></item>
+    <item name="userFragment" type="id" />
     <item name="action_studentHostelFragment_to_roomFragment" type="id">
 
     </item>
-    <item name="roomFragment" type="id"></item>
+    <item name="roomFragment" type="id" />
     <item name="action_roomsFragment_to_roomFragment" type="id">
 
     </item>
@@ -49,11 +49,11 @@
     </item>
     <item name="action_roomFragment_to_userFragment" type="id">
     </item>
-    <item name="homeFragment" type="id"></item>
+    <item name="homeFragment" type="id" />
     <item name="action_homeFragment_to_postsFragment" type="id">
 
     </item>
-    <item name="postsFragment" type="id"></item>
+    <item name="postsFragment" type="id" />
     <item name="action_postsFragment_to_homeFragment" type="id">
 
     </item>

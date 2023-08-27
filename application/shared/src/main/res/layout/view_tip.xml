@@ -34,7 +34,7 @@
             android:id="@+id/text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Egy NFC-s eszköz közelítésével azonnal meg tudod nyitni a hozzátartozó személy profilját."
+            android:text="@string/description"
             android:textAppearance="@style/Title" />
     </LinearLayout>
 

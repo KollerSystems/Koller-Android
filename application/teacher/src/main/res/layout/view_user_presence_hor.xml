@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -17,7 +18,7 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <com.example.shared.RoundedBadgeImageView
+            <com.norbert.koller.shared.RoundedBadgeImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="@dimen/spacing" />
@@ -32,14 +33,14 @@
                     android:id="@+id/textView7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Andrásosfi Norberto"
+                    tools:text="Andrásosfi Norberto"
                     android:textAppearance="@style/Title" />
 
                 <TextView
                     android:id="@+id/text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="210 • 1.B • F9"
+                    tools:text="210 • 1.B • F9"
                     android:textAppearance="@style/Description" />
             </LinearLayout>
 
@@ -57,11 +58,11 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableLeft="@drawable/out"
+                app:drawableLeftCompat="@drawable/out"
                 android:drawablePadding="@dimen/text_container_margin"
                 android:gravity="center_vertical"
                 android:padding="@dimen/text_container_margin"
-                android:text="Kint" />
+                tools:text="Kint" />
 
             <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"

@@ -65,12 +65,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="@dimen/spacing"
-                    android:drawableBottom="@null"
                     android:text="@string/create_new_x_first_part"
                     android:textAppearance="@style/Title"
                     android:textColorHint="@android:color/transparent"
                     android:textStyle="bold"
-                    app:drawableBottomCompat="@null" />
+                   />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/create_new_post_til_type"
@@ -105,7 +104,7 @@
                         android:text="@string/unset"
                         android:textAppearance="@style/Title"
                         android:textColor="?attr/colorOnSecondaryContainer"
-                        android:textStyle="bold"></com.google.android.material.textfield.TextInputEditText>
+                        android:textStyle="bold" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -176,7 +175,8 @@
                         android:gravity="top"
                         android:inputType="text"
                         android:text="@string/everyone"
-                        android:textAppearance="@style/Normal" />
+                        android:textAppearance="@style/Normal"
+                        android:importantForAutofill="no" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.chip.ChipGroup
@@ -306,7 +306,7 @@
                                 android:id="@+id/create_new_post_text_view_image_limit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="25/25"
+                                tools:text="25/25"
                                 android:textAlignment="textEnd"
                                 android:textAppearance="@style/Description" />
 
@@ -361,7 +361,8 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:baselineAligned="false">
 
                                     <com.google.android.material.textfield.TextInputLayout
                                         android:id="@+id/create_new_post_til_date_from"
@@ -406,7 +407,8 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal">
+                                    android:orientation="horizontal"
+                                    android:baselineAligned="false">
 
                                     <com.google.android.material.textfield.TextInputLayout
                                         android:id="@+id/create_new_post_til_date_to"
@@ -469,26 +471,19 @@
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/gps" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/create_new_post_til_place"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:layout_margin="@dimen/text_container_margin"
+                                android:layout_weight="1"
+                                android:hint="@string/place">
 
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/create_new_post_til_place"
+                                <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:hint="@string/place">
-
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:textAppearance="@style/Normal" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                            </LinearLayout>
+                                    android:textAppearance="@style/Normal" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
 
@@ -510,29 +505,22 @@
                                 android:alpha="0.666"
                                 app:srcCompat="@drawable/fix_replace" />
 
-                            <LinearLayout
-                                android:layout_width="match_parent"
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/create_new_post_til_base_program"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:orientation="vertical">
+                                android:layout_margin="@dimen/text_container_margin"
+                                android:layout_weight="1"
+                                android:hint="@string/base_program_replacement">
 
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/create_new_post_til_base_program"
+                                <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_margin="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:hint="@string/base_program_replacement">
-
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:inputType="number|numberSigned"
-                                        android:maxLength="1"
-                                        android:selectAllOnFocus="true"
-                                        android:textAppearance="@style/Normal" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                            </LinearLayout>
+                                    android:inputType="number|numberSigned"
+                                    android:maxLength="1"
+                                    android:selectAllOnFocus="true"
+                                    android:textAppearance="@style/Normal" />
+                            </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
 
@@ -568,7 +556,7 @@
                 android:text="@string/scheduling"
                 app:icon="@drawable/calendar" />
 
-            <Space
+            <android.widget.Space
                 android:layout_width="@dimen/spacing"
                 android:layout_height="wrap_content" />
 

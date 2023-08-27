@@ -107,7 +107,7 @@
     <string name="manage_student">Manage student</string>
     <string name="add_calendar">Add to calendar</string>
     <string name="like">Like</string>
-    <string name="write_comment">Write comment...</string>
+    <string name="write_comment">Write comment</string>
     <string name="i_will_be_there">I\'ll be there</string>
     <string name="welcome">Hello!</string>
     <string name="you_are_new_here">Seems like you\'re new in the system.</string>
@@ -284,4 +284,9 @@
     <string name="independent_study">Independent study</string>
     <string name="headcount_check">Headcount check</string>
     <string name="time_frame_of_student_hostel_sessions">Time frame of student hostel sessions</string>
+    <string name="your_profile">Your profile</string>
+    <string name="schedule_post">Schedule post</string>
+    <string name="other_comment">Other comment</string>
+    <string name="final_grade">Final grade</string>
+    <string name="automatic">Automatic</string>
 </resources>

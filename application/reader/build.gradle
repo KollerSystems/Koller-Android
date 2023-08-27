@@ -4,13 +4,13 @@ plugins {
 }
 
 android {
-    namespace 'hu.norbert.reader'
-    compileSdk 33
+    namespace 'com.norbert.koller.reader'
+    compileSdk 34
 
     defaultConfig {
-        applicationId "hu.norbert.reader"
+        applicationId "com.norbert.koller.reader"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 

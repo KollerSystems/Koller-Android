@@ -20,5 +20,5 @@
         android:layout_height="match_parent"
         android:layout_weight="0"
         android:src="@drawable/done_thick"
-        android:tint="?attr/colorPrimary" />
+        app:tint="?attr/colorPrimary" />
 </LinearLayout>

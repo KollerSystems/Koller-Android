@@ -49,7 +49,7 @@
                 android:layout_marginLeft="-5dp"
                 android:layout_marginRight="-5dp"
                 android:singleLine="true"
-                android:text="Katona Márton"
+                tools:text="Katona Márton"
                 android:textAlignment="center" />
 
             <TextView
@@ -59,7 +59,7 @@
                 android:layout_marginLeft="-5dp"
                 android:layout_marginRight="-5dp"
                 android:singleLine="true"
-                android:text="F3 • 216 • 11.B"
+                tools:text="F3 • 216 • 11.B"
                 android:textAlignment="center"
                 android:textAppearance="@style/Description" />
         </LinearLayout>

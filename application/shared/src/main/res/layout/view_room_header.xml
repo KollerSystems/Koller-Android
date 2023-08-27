@@ -17,7 +17,7 @@
         android:id="@+id/room_text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="216"
+        tools:text="216"
         android:textAlignment="center"
         android:textAppearance="@style/MainTitle"
 />
@@ -28,5 +28,5 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="F3" />
+        tools:text="F3" />
 </LinearLayout>

@@ -15,7 +15,7 @@
         android:layout_weight="0"
         android:background="?android:attr/listDivider" />
 
-    <com.example.shared.TipView
+    <com.norbert.koller.shared.TipView
 
         android:id="@+id/tip_return_to_current_day"
         android:layout_width="match_parent"

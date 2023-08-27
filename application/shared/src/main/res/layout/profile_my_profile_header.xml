@@ -49,7 +49,7 @@
                         android:id="@+id/profile_text_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Név"
+                        android:text="@string/none"
                         android:textAppearance="@style/MainTitle" />
 
                     <TextView

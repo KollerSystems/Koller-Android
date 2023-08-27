@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="this_app_is_not_for_everyone_desc">same in english</string>
+    <string name="room_rate">Room rate</string>
 </resources>

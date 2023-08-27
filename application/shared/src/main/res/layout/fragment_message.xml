@@ -18,57 +18,26 @@
             android:layout_height="@dimen/header_footer_size"
             app:cardElevation="@dimen/header_footer_elevation">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                    android:id="@+id/drag_handle2"
+                    android:id="@+id/drag_handle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    android:layout_height="wrap_content" />
 
-                <LinearLayout
-                    android:id="@+id/linearLayout2"
+                <TextView
+                    android:id="@+id/text_text"
+                    style="@style/Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal"
+                    android:layout_gravity="center_vertical"
+                    android:layout_margin="@dimen/text_container_margin"
                     android:padding="@dimen/panel_padding"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    android:text="@string/title" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginLeft="@dimen/text_container_margin"
-                        android:layout_marginTop="@dimen/text_container_margin"
-                        android:layout_marginRight="10dp"
-                        android:layout_marginBottom="@dimen/text_container_margin"
-                        android:layout_weight="1"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:id="@+id/text_text"
-                            style="@style/Title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/title" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </FrameLayout>
 
         </com.google.android.material.card.MaterialCardView>
 

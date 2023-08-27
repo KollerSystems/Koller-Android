@@ -24,7 +24,7 @@
             android:clipToPadding="false"
             android:orientation="vertical">
 
-            <com.example.shared.TipView
+            <com.norbert.koller.shared.TipView
                 android:id="@+id/tip_nfc_user_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -114,7 +114,7 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.example.shared.SuperCoolRecyclerView
+    <com.norbert.koller.shared.SuperCoolRecyclerView
         android:id="@id/super_cool_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

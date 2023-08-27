@@ -1,16 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
     <application
         android:theme="@style/Theme.MainTheme">
+        <activity
+            android:name=".activities.LaunchActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <activity
-            android:name=".activities.SettingsActivity"
+            android:name=".activities.DevicesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.FeedbackActivity"
             android:exported="false" />
         <activity
             android:name=".activities.TestActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".activities.CreateNewPostActivity"
+            android:exported="false" />
+
+        <service
+            android:name="com.norbert.koller.shared.api.KollerHostApduService"
+            android:exported="true"
+            android:permission="android.permission.BIND_NFC_SERVICE">
+            <intent-filter>
+                <action android:name="android.nfc.cardemulation.action.HOST_APDU_SERVICE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.nfc.cardemulation.host_apdu_service"
+                android:resource="@xml/apduservice" />
+        </service>
     </application>
 </manifest>

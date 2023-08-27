@@ -16,7 +16,7 @@
             android:id="@+id/create_new_post_til_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Egyéb megjegyzés">
+            android:hint="@string/other_comment">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/spacing"
         android:paddingVertical="@dimen/text_container_margin"
-        android:text="Végső értékelés" />
+        android:text="@string/final_grade" />
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Card"
@@ -55,7 +55,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Automatikus" />
+                android:text="@string/automatic" />
 
             <com.google.android.material.materialswitch.MaterialSwitch
                 android:id="@+id/switch1"

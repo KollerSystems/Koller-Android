@@ -91,62 +91,62 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/key"
                         custom:text="Teakonyha kulcs" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/person_wave"
                         custom:text="@string/presence" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/wave"
                         custom:text="@string/outgoings" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/gate"
                         custom:text="@string/port_exits_and_entrances_delays" />
 
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/calendar"
                         custom:text="@string/calendar" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/award"
                         custom:text="@string/commendations" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/report"
                         custom:text="@string/warnings" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/flag"
-                        custom:text="@string/reports"></com.example.shared.SimpleCardButton>
+                        custom:text="@string/reports" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/pencil"
                         custom:text="@string/edit" />
 
-                    <com.example.shared.SimpleCardButton
+                    <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/close"

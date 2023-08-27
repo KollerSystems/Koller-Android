@@ -44,7 +44,7 @@
             android:layout_marginTop="@dimen/spacing"
             android:layout_marginRight="-5dp"
             android:layout_marginBottom="@dimen/text_container_margin"
-            android:text="Katona\nMárton"
+            tools:text="Katona\nMárton"
             android:textAlignment="center" />
 
     </LinearLayout>

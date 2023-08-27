@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing"
-                android:drawableLeft="@drawable/info"
+                app:drawableLeftCompat="@drawable/info"
                 android:drawablePadding="@dimen/text_container_margin"
                 android:text="Az alábbi képek nem biztos hogy megegyeznek a kiszolgált ételekkel."
                 android:textAppearance="@style/Description" />
@@ -103,7 +103,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.example.shared.SuperCoolRecyclerView
+    <com.norbert.koller.shared.SuperCoolRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
