@@ -1,14 +1,155 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragment_room_rate_content">
+    android:paddingTop="@dimen/application_padding"
+    tools:context=".fragments.FragmentRoomRateContent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <LinearLayout
+        android:id="@+id/ly_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:clipToPadding="true"
+        android:orientation="vertical"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <TextView
+            android:id="@+id/textView14"
+            style="@style/separator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Értékelési szempontok"
+            android:translationZ="1dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:paddingHorizontal="@dimen/full_card_padding"
+            android:paddingBottom="@dimen/card_margin"
+            tools:listitem="@layout/view_rating_slider" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ly_fixed_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="?android:attr/windowBackground"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/Card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/full_card_padding"
+            android:layout_marginBottom="@dimen/full_card_padding"
+            app:cardElevation="@dimen/header_footer_elevation"
+            app:cardPreventCornerOverlap="false"
+            app:shapeAppearanceOverlay="@style/overlayRoundedCardBottom">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView23"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing"
+                        android:layout_weight="0"
+                        android:text="Értékelés" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip_final_rate_none"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:checked="true"
+                                app:chipEndPadding="0dp"
+                                app:chipIcon="@drawable/line_thick"
+                                app:chipIconVisible="true"
+                                app:chipMinTouchTargetSize="0dp"
+                                app:shapeAppearance="@style/overlayRoundedLeft"
+                                app:textEndPadding="2dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip_final_rate_slider"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:chipEndPadding="0dp"
+                                app:chipIconVisible="true"
+                                app:chipMinTouchTargetSize="0dp"
+                                app:shapeAppearance="@style/overlayRoundedRight"
+                                app:textEndPadding="2dp" />
+                        </LinearLayout>
+
+                        <com.google.android.material.slider.Slider
+                            android:id="@+id/slider_final_rate"
+                            style="@style/Widget.AppCompat.SeekBar.Discrete"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_gravity="right|center_vertical"
+                            android:layout_marginLeft="34dp"
+                            android:layout_marginTop="-20dp"
+                            android:layout_marginBottom="-20dp"
+                            android:alpha="0.25"
+                            android:stepSize="0.5"
+                            android:value="3"
+                            android:valueFrom="1"
+                            android:valueTo="5"
+                            app:labelBehavior="gone" />
+                    </FrameLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/text_final_rate"
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_weight="0"
+                    android:autoSizeMinTextSize="1sp"
+                    android:autoSizeTextType="uniform"
+                    android:background="@drawable/circle_outline"
+                    android:ellipsize="none"
+                    android:gravity="center"
+                    android:lines="1"
+                    android:padding="@dimen/spacing"
+                    android:text="@string/none"
+                    android:textAppearance="@style/MainTitleExpanded"
+                    android:textColor="?attr/colorOnSurface" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </LinearLayout>
 
 </FrameLayout>

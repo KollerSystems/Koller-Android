@@ -10,7 +10,7 @@ class MainActivity : com.norbert.koller.shared.activities.MainActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        onCreated()
+        onCreated(savedInstanceState)
     }
 
 

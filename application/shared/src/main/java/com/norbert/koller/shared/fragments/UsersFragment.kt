@@ -39,7 +39,7 @@ class UsersFragment : Fragment() {
 
         val mainActivity = context as MainActivity
         mainActivity.setToolbarTitle(mainActivity.getString(R.string.people), mainActivity.getString(R.string.student_hostel))
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
+
 
         leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)

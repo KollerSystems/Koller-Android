@@ -34,12 +34,53 @@
         android:textAlignment="center"
         android:textAppearance="@style/MainTitle" />
 
-    <TextView
-        android:id="@+id/user_text_description"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/spacing"
-        android:text="@android:string/unknownName"
-        android:textAlignment="center"
-        android:textColor="?colorForeground066" />
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/user_button_group"
+            style="@style/textButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="@string/group"
+            android:textAppearance="@style/Normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            android:text="•"
+            android:textAlignment="center"
+            android:textColor="?colorForeground066" />
+
+        <Button
+            android:id="@+id/user_button_room"
+            style="@style/textButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="@string/room"
+            android:textAppearance="@style/Normal" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            android:text="•"
+            android:textAlignment="center"
+            android:textColor="?colorForeground066" />
+
+        <Button
+            android:id="@+id/user_button_class"
+            style="@style/textButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="@string/class_"
+            android:textAppearance="@style/Normal" />
+    </LinearLayout>
 </LinearLayout>

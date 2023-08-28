@@ -21,7 +21,7 @@
         android:paddingHorizontal="@dimen/HeaderMarginHorizontal">
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/user_button_room"
             style="@style/button_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

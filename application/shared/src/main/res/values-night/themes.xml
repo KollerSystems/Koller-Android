@@ -25,5 +25,17 @@
         <item name="colorYellowInverse">@android:color/holo_orange_dark</item>
         <item name="colorRedInverse">@android:color/holo_red_dark</item>
         <item name="colorGreenInverse">@android:color/holo_green_dark</item>
+
+        <item name="colorBest">@color/teal_200</item>
+        <item name="colorGood">@android:color/holo_green_light</item>
+        <item name="colorOk">@android:color/holo_orange_light</item>
+        <item name="colorBad">@android:color/holo_orange_dark</item>
+        <item name="colorWorst">@android:color/holo_red_light</item>
+
+        <item name="colorBestInverse">@color/teal_700</item>
+        <item name="colorGoodInverse">@android:color/holo_green_dark</item>
+        <item name="colorOkInverse">@android:color/holo_orange_light</item>
+        <item name="colorBadInverse">@android:color/holo_orange_dark</item>
+        <item name="colorWorstInverse">@android:color/holo_red_dark</item>
     </style>
 </resources>

@@ -26,9 +26,7 @@ class NotificationsFragment : Fragment() {
 
         val view : View = inflater.inflate(R.layout.fragment_notifications, container, false)
 
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.notifications), null)
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.notifications)
+
 
         notificsRecyclerView = view.findViewById(R.id.sc_recycler_view)
         notificsRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
@@ -46,5 +44,11 @@ class NotificationsFragment : Fragment() {
         return view
     }
 
+
+    override fun onResume() {
+        super.onResume()
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.notifications), null)
+    }
 
 }

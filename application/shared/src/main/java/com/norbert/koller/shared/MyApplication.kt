@@ -428,10 +428,7 @@ open class MyApplication : Application() {
             imm.showSoftInput(edittext, InputMethodManager.SHOW_IMPLICIT)
         }
 
-        fun getAttributeColor(
-            context: Context,
-            attributeId: Int
-        ): Int {
+        fun getAttributeColor(context: Context, attributeId: Int): Int {
             val typedValue = TypedValue()
             context.theme.resolveAttribute(attributeId, typedValue, true)
             val colorRes = typedValue.resourceId

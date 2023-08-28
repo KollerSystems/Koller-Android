@@ -143,17 +143,6 @@
                                 app:chipIconVisible="true"
                                 app:chipMinTouchTargetSize="0dp" />
 
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/new_chip_add_to_calendar"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layoutDirection="locale"
-                                android:text="@string/add_calendar"
-                                app:checkedIconEnabled="false"
-                                app:chipIcon="@drawable/calendar_icon"
-                                app:chipIconVisible="true"
-                                app:chipMinTouchTargetSize="0dp" />
-
                         </com.google.android.material.chip.ChipGroup>
 
                         <com.google.android.material.card.MaterialCardView
@@ -240,13 +229,6 @@
                                             android:layout_height="wrap_content"
                                             android:layout_gravity="bottom"
                                             android:enabled="false"
-                                            android:insetLeft="0dp"
-                                            android:insetTop="0dp"
-                                            android:insetRight="0dp"
-                                            android:insetBottom="0dp"
-                                            android:maxWidth="@null"
-                                            android:minWidth="0dp"
-                                            android:minHeight="0dp"
                                             app:icon="@drawable/send" />
                                     </LinearLayout>
 

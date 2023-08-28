@@ -36,7 +36,6 @@ class UserOutgoingFragment : Fragment() {
 
         val mainActivity = context as MainActivity
         mainActivity.setToolbarTitle(mainActivity.getString(R.string.outgoings), mainActivity.getString(R.string.student_hostel))
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
 
         val tabs : TabLayout = view.findViewById(R.id.user_outgoing_tabs)
         val viewPager : ViewPager2 = view.findViewById(R.id.user_outgoing_viewpager)

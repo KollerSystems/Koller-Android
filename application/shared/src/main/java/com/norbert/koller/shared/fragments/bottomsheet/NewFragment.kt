@@ -122,9 +122,8 @@ class NewFragment : BottomSheetDialogFragment() {
         commentRecyclerView.adapter = CommentRecyclerAdapter(commentDataArrayList, requireContext())
 
 
-        val chipAddToCalendar : Chip = view.findViewById(R.id.new_chip_add_to_calendar)
 
-        chipAddToCalendar.setOnClickListener{
+        /*chipAddToCalendar.setOnClickListener{
 
             val cr: ContentResolver = requireContext().contentResolver
 
@@ -153,7 +152,7 @@ class NewFragment : BottomSheetDialogFragment() {
                 val eventUri: Uri = ContentUris.withAppendedId(CalendarContract.Events.CONTENT_URI, 1239999999)
                 cr.delete(eventUri, null, null)
             }
-        }
+        }*/
         return view
     }
 

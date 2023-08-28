@@ -4,7 +4,6 @@
 
         <item name="fontFamily">@font/rubik_family</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
         <item name="android:spinnerStyle">@style/kollerSpinnerStyle</item>
         <item name="spinnerDropDownItemStyle">@style/kollerSpinnerDropdownItemStyle</item>
@@ -21,6 +20,16 @@
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
         <item name="appBarLayoutStyle">@style/appBarStyle</item>
         <item name="materialButtonStyle">@style/button</item>
+        <item name="android:navigationBarColor">?android:attr/windowBackground</item>
+    </style>
+
+    <style name="main_background" parent="@style/Widget.Material3.CardView.Filled">
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="cardCornerRadius">0dp</item>
+        <item name="cardElevation">@dimen/header_footer_elevation</item>
+
     </style>
 
     <style name="separator_line">
@@ -73,6 +82,10 @@
         <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
         <item name="android:paddingRight">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="icon_button_transparent" parent="@style/icon_button">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
     <style name="icon_button_outline" parent="@style/button_outline_icon">
@@ -159,6 +172,18 @@
         <item name="checkedIconEnabled">false</item>
         <item name="checkedIcon">@null</item>
         <item name="chipMinTouchTargetSize">0dp</item>
+        <item name="chipMinHeight">0dp</item>
+        <item name="android:paddingVertical">8dp</item>
+    </style>
+
+    <style name="iconLikeText">
+        <item name="autoSizeTextType">uniform</item>
+        <item name="android:scaleX">1.2</item>
+        <item name="android:scaleY">1.2</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:layout_height">@dimen/panel_icon</item>
+        <item name="android:layout_width">@dimen/panel_icon</item>
     </style>
 
     <style name="chipDropdownButtonFilterStyle" parent="@style/chipButtonFilterStyle">

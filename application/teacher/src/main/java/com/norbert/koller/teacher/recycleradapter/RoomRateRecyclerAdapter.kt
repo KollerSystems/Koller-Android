@@ -89,7 +89,7 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
                 }
 
                 holder.chipNone.setOnClickListener{
-                    holder.slider.alpha = 0.5f
+                    holder.slider.alpha = 0.25f
                 }
 
             }

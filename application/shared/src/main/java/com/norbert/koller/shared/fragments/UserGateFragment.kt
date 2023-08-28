@@ -51,7 +51,7 @@ class UserGateFragment : Fragment() {
 
         val mainActivity = context as MainActivity
         mainActivity.setToolbarTitle(mainActivity.getString(R.string.exits_and_entrances), mainActivity.getString(R.string.student_hostel))
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
+
 
         crossingRecyclerView = view.findViewById(R.id.recycler_view)
         crossingRecyclerView.layoutManager = LinearLayoutManager(context)

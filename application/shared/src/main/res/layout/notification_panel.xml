@@ -87,19 +87,10 @@
 
         <TextView
             android:id="@+id/notification_icon_end"
-            style="@style/Title"
-            android:layout_width="wrap_content"
-            android:layout_height="@dimen/panel_icon"
-            android:layout_gravity="center"
+            style="@style/iconLikeText"
             android:layout_marginLeft="@dimen/text_container_margin"
-            android:backgroundTint="?android:attr/colorForeground"
-            android:foregroundGravity="center"
-            android:gravity="center"
-            android:minWidth="@dimen/panel_icon"
             android:text="C"
-            android:textAlignment="center"
             android:textColor="#00BF9F"
-            android:textSize="40sp"
             android:textStyle="bold"
             android:visibility="gone"
             tools:visibility="visible" />

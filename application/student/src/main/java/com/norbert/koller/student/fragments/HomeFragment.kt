@@ -207,7 +207,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                 realViewLessonsNext.visibility = View.VISIBLE
 
                 val lesson = DefaultDayTimes.instance.lessons[index + 1]
-                textSmallLessonsNumber.text = MyApplication.orderSingleNumber(requireContext(), (index + 1 + 1).toString())
+                textSmallLessonsNumber.text = (index + 1 + 1).toString()
                 textSmallLessonsTime.text = MyApplication.timeFromTo(lesson.from, lesson.to)
             }
 
@@ -222,7 +222,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                     cardLessons.visibility = View.VISIBLE
                     textLessonsSilenceWarning.visibility = View.VISIBLE
 
-                    textLessonsNumber.text = MyApplication.orderSingleNumber(requireContext(), (i + 1).toString())
+                    textLessonsNumber.text = (i + 1).toString()
                     textLessonsNumber.background = null
 
                     textLessonsTime.text = MyApplication.timeFromTo(currentLessonTime.from, currentLessonTime.to)

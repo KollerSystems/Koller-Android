@@ -50,7 +50,7 @@ abstract class RoomFragment : Fragment() {
 
         val mainActivity = context as MainActivity
         mainActivity.setToolbarTitle(mainActivity.getString(R.string.room), mainActivity.getString(R.string.student_hostel))
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
+
 
         textTitle = view.findViewById(R.id.room_text_title)
         buttonDesc = view.findViewById(R.id.room_button_description)
@@ -84,7 +84,7 @@ abstract class RoomFragment : Fragment() {
                         buttonDesc.text = roomData.Group
 
                         buttonDesc.setOnClickListener{
-                            (context as MainActivity).navController.navigateWithDefaultAnimation(R.id.usersFragment)
+                            (context as MainActivity).changeFragment(UsersFragment())
                         }
 
                         loadingOl.animate()

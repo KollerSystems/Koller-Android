@@ -17,11 +17,15 @@ abstract class CalendarFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.calendar), null)
 
 
         tabLayout = view.findViewById(R.id.calendar_tabs)
         viewPager = view.findViewById(R.id.calendar_view_pager)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.calendar), null)
     }
 }

@@ -34,7 +34,7 @@
         android:id="@+id/recycler_view"
         style="@style/MainCardLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:paddingHorizontal="@dimen/full_card_padding"
         android:paddingBottom="85dp"
         tools:listitem="@layout/notification_panel" />

@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.activities
 
+import android.os.Bundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Button
@@ -19,6 +20,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.FragmentHolderFragment
+import com.norbert.koller.shared.fragments.CalendarFragment
+import com.norbert.koller.shared.fragments.HomeFragment
+import com.norbert.koller.shared.fragments.NotificationsFragment
+import com.norbert.koller.shared.fragments.StudentHostelFragment
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -36,6 +42,8 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var appBar : AppBarLayout
     lateinit var backButton : Button
 
+    var mainFragmentList : ArrayList<Int> = arrayListOf(0)
+
 
     var onlyIcon : Boolean = false
 
@@ -45,21 +53,6 @@ abstract class MainActivity : AppCompatActivity() {
         onlyIcon = false
     }
 
-    fun changeFragment(fragment: Fragment){
-        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.setCustomAnimations(
-            androidx.navigation.ui.R.anim.nav_default_enter_anim,
-            androidx.navigation.ui.R.anim.nav_default_exit_anim,
-            androidx.navigation.ui.R.anim.nav_default_enter_anim,
-            androidx.navigation.ui.R.anim.nav_default_exit_anim
-        )
-        fragmentTransaction.replace(R.id.main_fragment, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.setReorderingAllowed(true)
-        fragmentTransaction.commit()
-
-        appBar.setExpanded(false)
-    }
 
     fun showBackButton(show : Boolean){
         if(!show){
@@ -76,22 +69,115 @@ abstract class MainActivity : AppCompatActivity() {
         }
     }
 
+    private lateinit var homeFragment: FragmentHolderFragment
+    private lateinit var calendarFragment: FragmentHolderFragment
+    private lateinit var studentHostelFragment: FragmentHolderFragment
+    private lateinit var notificationsFragment: FragmentHolderFragment
 
-    fun onCreated() {
+    companion object{
+        private var selectedIndex = 0
+    }
 
 
-        fragmentManager = findViewById(R.id.main_fragment)
 
-        appBar = findViewById(R.id.appbar_user)
-        val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
-        toolbarContainer = findViewById(R.id.toolbar_ly_text_container)
-        toolbarTitle = findViewById(R.id.toolbar_title)
-        toolbarDescription = findViewById(R.id.toolbar_description)
+    private val fragments: Array<FragmentHolderFragment>
+        get() = arrayOf(
+            homeFragment,
+            calendarFragment,
+            studentHostelFragment,
+            notificationsFragment
+        )
+
+    override fun onBackPressed() {
+
+        if(fragments[selectedIndex].childFragmentManager.backStackEntryCount > 0) {
+
+            fragments[selectedIndex].childFragmentManager.popBackStack()
+            if (fragments[selectedIndex].childFragmentManager.backStackEntryCount == 1) {
+                showBackButton(false)
+            }
+        }
+        else{
+            if (mainFragmentList.size == 1) {
+
+                if(selectedIndex != 0){
+                    selectFragment(0)
+                    mainFragmentList = arrayListOf(0)
+                    return
+                }
+                finish()
+                return
+            }
+
+            mainFragmentList.removeLast()
+            selectFragment(mainFragmentList.last())
+        }
+    }
+
+
+    fun changeFragment(fragment: Fragment){
+        val fragmentTransaction: FragmentTransaction = fragments[selectedIndex].childFragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(
+            androidx.navigation.ui.R.anim.nav_default_enter_anim,
+            androidx.navigation.ui.R.anim.nav_default_exit_anim,
+            androidx.navigation.ui.R.anim.nav_default_enter_anim,
+            androidx.navigation.ui.R.anim.nav_default_exit_anim
+        )
+        fragmentTransaction.replace(R.id.inner_fragment_container_view, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.setReorderingAllowed(true)
+        fragmentTransaction.commit()
+
+        appBar.setExpanded(false)
+
+        showBackButton(true)
+    }
+
+    fun onCreated(savedInstanceState: Bundle?) {
 
         backButton = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{
             onBackPressed()
         }
+
+        appBar = findViewById(R.id.appbar)
+        val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
+        toolbarContainer = findViewById(R.id.toolbar_ly_text_container)
+        toolbarTitle = findViewById(R.id.toolbar_title)
+        toolbarDescription = findViewById(R.id.toolbar_description)
+        defaultTitlePadding = toolbarContainer.paddingLeft
+
+        if (savedInstanceState == null) {
+            val homeFragment = FragmentHolderFragment().also { this.homeFragment = it }
+            val calendarFragment = FragmentHolderFragment().also { this.calendarFragment = it }
+            val studentHostelFragment = FragmentHolderFragment().also { this.studentHostelFragment = it }
+            val notificationsFragment = FragmentHolderFragment().also { this.notificationsFragment = it }
+
+
+            supportFragmentManager.beginTransaction()
+                .add(R.id.main_fragment, homeFragment, "homeFragment")
+                .add(R.id.main_fragment, calendarFragment, "calendarFragment")
+                .add(R.id.main_fragment, studentHostelFragment, "studentHostelFragment")
+                .add(R.id.main_fragment, notificationsFragment, "notificationsFragment")
+                .selectFragment(selectedIndex)
+                .commit()
+        } else {
+            homeFragment = supportFragmentManager.findFragmentByTag("homeFragment") as FragmentHolderFragment
+            calendarFragment = supportFragmentManager.findFragmentByTag("calendarFragment") as FragmentHolderFragment
+            studentHostelFragment = supportFragmentManager.findFragmentByTag("studentHostelFragment") as FragmentHolderFragment
+            notificationsFragment = supportFragmentManager.findFragmentByTag("notificationsFragment") as FragmentHolderFragment
+        }
+
+        homeFragment.startFragment = MyApplication.homeFragment()
+        calendarFragment.startFragment = MyApplication.calendarFragment()
+        studentHostelFragment.startFragment = MyApplication.studentHostelFragment()
+        notificationsFragment.startFragment = NotificationsFragment()
+
+        fragmentManager = findViewById(R.id.main_fragment)
+
+
+
+
 
 
         appBar.addOnOffsetChangedListener { _, verticalOffset ->
@@ -108,34 +194,41 @@ abstract class MainActivity : AppCompatActivity() {
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
 
-        defaultTitlePadding = toolbarContainer.paddingLeft
 
-       bottomNavigationView.setOnItemSelectedListener { menuItem ->
 
-           if(onlyIcon) return@setOnItemSelectedListener true
+        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+
+            if(onlyIcon) return@setOnItemSelectedListener true
 
             when (menuItem.itemId) {
 
                 R.id.home -> {
-                    changeFragment(MyApplication.homeFragment())
-                    return@setOnItemSelectedListener true
+
+                    selectedIndex = 0
                 }
                 R.id.calendar -> {
-                    changeFragment(MyApplication.calendarFragment())
-                    return@setOnItemSelectedListener true
+
+                    selectedIndex = 1
                 }
                 R.id.studentHostel -> {
-                    changeFragment(MyApplication.studentHostelFragment())
-                    return@setOnItemSelectedListener true
+
+                    selectedIndex = 2
                 }
                 R.id.notifications -> {
-                    changeFragment(MyApplication.notificationFragment())
-                    return@setOnItemSelectedListener true
+
+                    selectedIndex = 3
                 }
 
 
             }
-            false
+
+            selectFragment(selectedIndex)
+            return@setOnItemSelectedListener true
+        }
+
+        bottomNavigationView.setOnItemReselectedListener { menuItem ->
+
+            fragments[selectedIndex].toDefaultFragment()
         }
 
         val userButton = findViewById<ShapeableImageView>(R.id.user_button)
@@ -149,9 +242,6 @@ abstract class MainActivity : AppCompatActivity() {
             window.navigationBarColor = navViewColor
         }
 
-        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.main_fragment, MyApplication.homeFragment())
-        fragmentTransaction.commit()
 
     }
 
@@ -176,6 +266,67 @@ abstract class MainActivity : AppCompatActivity() {
                 R.string.ok
             ) { dialogInterface, i -> }
             .show()
+    }
+
+    private fun selectFragment(indexToSelect: Int) {
+        selectedIndex = indexToSelect
+
+
+        supportFragmentManager.beginTransaction()
+            .setCustomAnimations(
+                androidx.navigation.ui.R.anim.nav_default_enter_anim,
+                androidx.navigation.ui.R.anim.nav_default_exit_anim,
+                androidx.navigation.ui.R.anim.nav_default_enter_anim,
+                androidx.navigation.ui.R.anim.nav_default_exit_anim
+            )
+
+            .selectFragment(indexToSelect)
+            .commit()
+
+        if(mainFragmentList.contains(indexToSelect)) mainFragmentList.remove(indexToSelect)
+        mainFragmentList.add(indexToSelect)
+
+        val selectedId = when (indexToSelect) {
+
+            0 -> {
+
+                R.id.home
+            }
+            1 -> {
+
+                R.id.calendar
+            }
+            2 -> {
+
+                R.id.studentHostel
+            }
+            3 -> {
+
+                R.id.notifications
+            }
+            else -> 0
+        }
+        changeSelectedBottomNavigationIcon(selectedId)
+
+        appBar.setExpanded(false)
+        if(fragments[selectedIndex].childFragmentManager.backStackEntryCount == 0){
+            showBackButton(false)
+        }
+        else{
+            showBackButton(true)
+        }
+    }
+
+    private fun FragmentTransaction.selectFragment(selectedIndex: Int): FragmentTransaction {
+        fragments.forEachIndexed { index, fragment ->
+            if (index == selectedIndex) {
+                attach(fragment)
+            } else {
+                detach(fragment)
+            }
+        }
+
+        return this
     }
 
 }

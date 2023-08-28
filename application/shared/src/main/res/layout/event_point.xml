@@ -13,6 +13,7 @@
 
             android:layout_width="@dimen/spacing"
             android:layout_height="1dp"
+            android:layout_weight="0"
             android:background="?attr/colorForeground01" />
 
         <TextView
@@ -20,6 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:layout_weight="0"
             android:text="@string/unset"
             android:textAppearance="@style/Description" />
 
@@ -28,7 +30,8 @@
             android:layout_width="0dp"
             android:layout_height="1dp"
             android:layout_weight="1"
-            android:background="?attr/colorForeground01" />
+            android:background="?attr/colorForeground01"
+            android:minWidth="@dimen/spacing" />
 
         <TextView
 
@@ -37,11 +40,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:layout_weight="0"
             android:text="@string/unset" />
 
         <View
 
             android:layout_width="@dimen/spacing"
             android:layout_height="1dp"
+            android:layout_weight="0"
             android:background="?attr/colorForeground01" />
 </LinearLayout>

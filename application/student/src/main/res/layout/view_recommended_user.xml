@@ -12,7 +12,7 @@
 
             <Button
                 android:id="@+id/button9"
-                style="@style/Widget.Material3.Button.icon_button"
+                style="@style/icon_button_transparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/expand_toggle"

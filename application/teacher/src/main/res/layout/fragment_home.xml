@@ -81,12 +81,7 @@
 
                                         <TextView
                                             android:id="@+id/home_text_lessons_number"
-                                            style="@style/Title"
-                                            android:layout_width="@dimen/panel_icon"
-                                            android:layout_height="@dimen/panel_icon"
-                                            android:layout_gravity="center_vertical"
-                                            android:backgroundTint="?android:attr/colorForeground"
-                                            android:gravity="center|center_vertical"
+                                            style="@style/iconLikeText"
                                             android:text="n"
                                             android:textAlignment="center"
                                             android:textSize="38sp" />

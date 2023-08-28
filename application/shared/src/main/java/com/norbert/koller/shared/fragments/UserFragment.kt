@@ -7,6 +7,7 @@ import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
@@ -35,23 +36,30 @@ abstract class UserFragment : Fragment() {
         }
     }
 
+    override fun onResume() {
+        super.onResume()
+        val mainActivity = context as MainActivity
+        mainActivity.setToolbarTitle(mainActivity.getString(R.string.user),null)
+    }
+
     abstract fun showAndSetIfNotNull(card : View, string : String?)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.user), mainActivity.getString(R.string.student_hostel))
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
+
+
 
         val textName : TextView = view.findViewById(R.id.user_text_name)
-        val textDescription : TextView = view.findViewById(R.id.user_text_description)
+        val buttonGroup : Button = view.findViewById(R.id.user_button_group)
+        val buttonRoom : Button = view.findViewById(R.id.user_button_room)
+        val buttonClass : Button = view.findViewById(R.id.user_button_class)
         val imagePfp : ImageView = view.findViewById(R.id.user_image_pfp)
 
-        val discordCard : TextView = view.findViewById(R.id.user_view_discord)
-        val facebookCard : TextView = view.findViewById(R.id.user_view_facebook)
-        val instagramCard : TextView = view.findViewById(R.id.user_view_instagram)
-        val emailCard : TextView = view.findViewById(R.id.user_view_email)
+        val discordCard : View = view.findViewById(R.id.user_view_discord)
+        val facebookCard : View = view.findViewById(R.id.user_view_facebook)
+        val instagramCard : View = view.findViewById(R.id.user_view_instagram)
+        val emailCard : View = view.findViewById(R.id.user_view_email)
 
         val loadingOl : View = view.findViewById(R.id.loading_overlay)
         loadingOl.visibility = View.VISIBLE
@@ -71,14 +79,7 @@ abstract class UserFragment : Fragment() {
 
 
 
-        nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
-            if (isVisible(textName)) {
-                (activity as MainActivity).setToolbarTitle(getString(R.string.user),getString(R.string.student_hostel))
 
-            } else {
-                (activity as MainActivity).setToolbarTitle(textName.text.toString(),getString(R.string.student_hostel))
-            }
-        }
 
 
 
@@ -94,7 +95,22 @@ abstract class UserFragment : Fragment() {
                         val userData: UserData = userResponse.body()!!
                         textName.text = userData.Name
 
-                        textDescription.text = MyApplication.createUserDescription(userData)
+                        buttonGroup.text = userData.Group
+                        buttonRoom.text = userData.RID.toString()
+                        buttonClass.text = userData.Class
+
+                        nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
+                            if (isVisible(textName)) {
+                                (activity as MainActivity).setToolbarTitle(getString(R.string.user),null)
+
+                            } else {
+                                (activity as MainActivity).setToolbarTitle(userData.Name,MyApplication.createUserDescription(userData))
+                            }
+                        }
+
+                        buttonRoom.setOnClickListener{
+                            RoomFragment.open(requireContext(), userData.RID!!)
+                        }
 
                         showAndSetIfNotNull(discordCard, userData.Discord)
                         showAndSetIfNotNull(facebookCard, userData.Facebook)

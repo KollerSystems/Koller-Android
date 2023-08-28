@@ -30,7 +30,7 @@ class RoomsFragment : Fragment() {
 
         val mainActivity = context as MainActivity
         mainActivity.setToolbarTitle(mainActivity.getString(R.string.rooms), mainActivity.getString(R.string.student_hostel))
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.studentHostel)
+
 
         roomsRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
         roomsRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)

@@ -23,6 +23,18 @@
     <attr name="colorRedInverse" format="reference|color" />
     <attr name="colorGreenInverse" format="reference|color" />
 
+    <attr name="colorBest" format="reference|color" />
+    <attr name="colorGood" format="reference|color" />
+    <attr name="colorOk" format="reference|color" />
+    <attr name="colorBad" format="reference|color" />
+    <attr name="colorWorst" format="reference|color" />
+
+    <attr name="colorBestInverse" format="reference|color" />
+    <attr name="colorGoodInverse" format="reference|color" />
+    <attr name="colorOkInverse" format="reference|color" />
+    <attr name="colorBadInverse" format="reference|color" />
+    <attr name="colorWorstInverse" format="reference|color" />
+
 
     <attr name="text" format="string" />
 

@@ -23,6 +23,6 @@ class PostsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val mainActivity = context as MainActivity
         mainActivity.setToolbarTitle(mainActivity.getString(R.string.posts), mainActivity.getString(R.string.home))
-        mainActivity.changeSelectedBottomNavigationIcon(R.id.home)
+
     }
 }

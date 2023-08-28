@@ -64,7 +64,7 @@
 
                         <Button
                             android:id="@+id/button7"
-                            style="@style/Widget.Material3.Button.icon_button"
+                            style="@style/icon_button_transparent"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:insetLeft="0dp"
