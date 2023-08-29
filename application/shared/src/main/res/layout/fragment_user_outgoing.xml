@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".fragments.UserOutgoingFragment">
+    tools:context=".fragments.UserOutgoingsFragment">
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/user_outgoing_tabs"

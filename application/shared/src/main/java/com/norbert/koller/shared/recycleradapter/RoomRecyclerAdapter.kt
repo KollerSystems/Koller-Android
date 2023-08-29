@@ -4,13 +4,16 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.fragments.RoomFragment
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.activities.MainActivity
 
 
-class RoomRecyclerAdapter : BaseRecycleAdapter(){
+class RoomRecyclerAdapter(chipGroup: ChipGroup?) : BaseRecycleAdapter(chipGroup){
 
     override fun serverErrorPopup(view: View): RecyclerView.ViewHolder {
         return RoomsViewHolder(view)
@@ -30,20 +33,20 @@ class RoomRecyclerAdapter : BaseRecycleAdapter(){
         holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, R.drawable.bed))
         holder.title.text = item.RID.toString()
 
-        if(item.residents !=null ) {
+        if(item.Residents !=null ) {
 
-            var desc = getShortName(item.residents!![0].Name!!)
-            for (i in 1 until item.residents!!.size){
+            var desc = "${item.Residents!![0].Group} • ${getShortName(item.Residents!![0].Name!!)}"
+            for (i in 1 until item.Residents!!.size){
 
 
-                desc += ", " + getShortName(item.residents!![i].Name!!)
+                desc += ", " + getShortName(item.Residents!![i].Name!!)
             }
             holder.description.text = desc
         }
 
         holder.itemView.setOnClickListener {
 
-            RoomFragment.open(holder.itemView.context, item.RID)
+            (holder.itemView.context as MainActivity).changeFragment(MyApplication.roomFragment(item.RID))
 
         }
     }

@@ -8,7 +8,7 @@ class RoomData(
     var RID : Int = -1,
     var Gender : Int?,
     var Group : String?,
-    var residents : ArrayList<UserData>?,
+    var Residents : ArrayList<UserData>?,
 ) : BaseData() {
     override fun diffrentDecider(context: Context): String {
 

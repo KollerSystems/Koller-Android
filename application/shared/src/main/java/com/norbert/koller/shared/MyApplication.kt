@@ -35,6 +35,7 @@ import com.norbert.koller.shared.fragments.StudentHostelFragment
 import com.norbert.koller.shared.fragments.UserFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
@@ -66,8 +67,9 @@ open class MyApplication : Application() {
         lateinit var calendarFragment: () -> CalendarFragment
         lateinit var studentHostelFragment: () -> StudentHostelFragment
         lateinit var notificationFragment: () -> NotificationsFragment
-        lateinit var roomFragment: () -> RoomFragment
-        lateinit var userFragment: () -> UserFragment
+
+        lateinit var roomFragment: (RID : Int) -> RoomFragment
+        lateinit var userFragment: (UID : Int) -> UserFragment
 
         fun setToolbarToBottomViewColor(bottomView : View, window:Window){
             bottomView.post{
@@ -461,7 +463,35 @@ open class MyApplication : Application() {
 
             return (hours.toString()+":"+minutesWithoutHours.toString().padStart(2, '0'))
         }
+
+
+        fun getStringResourceByName(context : Context, stringName: String): String? {
+            val resId = context.resources.getIdentifier(stringName, "string", context.packageName)
+            return context.getString(resId)
+        }
+
+        fun camelToSnakeCase(string : String) = string.fold(StringBuilder(string.length)) { acc, c ->
+            if (c in 'A'..'Z') (if (acc.isNotEmpty()) acc.append('_') else acc).append(c + ('a' - 'A'))
+            else acc.append(c)
+        }.toString()
+
+
+        fun prefixLetterToSymbol(letter : String) : Char{
+            if(letter == "n") return '-'
+            return '+'
+        }
+
+        fun prefixIntigerToSymbol(index : Int) : Char{
+            if(index == 0) return '+'
+            return '-'
+        }
+
+        fun createApiSortString(chipGroup : ChipGroup, basedOn : String) : String{
+            val chip : Chip = chipGroup.findViewById(chipGroup.checkedChipId)
+            return prefixIntigerToSymbol((chip.parent as ViewGroup).indexOfChild(chip)) + basedOn
+        }
     }
+
 
 }
 
@@ -474,4 +504,7 @@ fun NavController.navigateWithDefaultAnimation(directions: Int) {
             popExit = androidx.navigation.ui.R.anim.nav_default_exit_anim
         }
     })
+
+
+
 }

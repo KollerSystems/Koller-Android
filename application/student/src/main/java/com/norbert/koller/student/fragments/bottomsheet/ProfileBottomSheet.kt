@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.student.R
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.UserOutgoingFragment
+import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 
 class ProfileBottomSheet : com.norbert.koller.shared.fragments.bottomsheet.ProfileBottomSheet() {
 
@@ -23,7 +23,7 @@ class ProfileBottomSheet : com.norbert.koller.shared.fragments.bottomsheet.Profi
 
         fbtnOutgoing.setOnClickListener{
 
-            UserOutgoingFragment.open(requireContext(), UserData.instance.UID)
+            UserOutgoingsFragment.open(requireContext(), UserData.instance.UID)
             this.dismiss()
         }
 

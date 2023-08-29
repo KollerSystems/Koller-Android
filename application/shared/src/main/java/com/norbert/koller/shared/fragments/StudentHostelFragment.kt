@@ -33,10 +33,4 @@ open class StudentHostelFragment : Fragment() {
 
         return view
     }
-
-    override fun onResume() {
-        super.onResume()
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.student_hostel), null)
-    }
 }

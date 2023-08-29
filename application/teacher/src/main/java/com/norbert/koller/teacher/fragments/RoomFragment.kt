@@ -9,7 +9,7 @@ import com.norbert.koller.shared.SimpleCardButton
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.RoomRateActivity
 
-class RoomFragment : com.norbert.koller.shared.fragments.RoomFragment()  {
+class RoomFragment(RID : Int) : com.norbert.koller.shared.fragments.RoomFragment(RID)  {
 
 
     override fun onCreateView(

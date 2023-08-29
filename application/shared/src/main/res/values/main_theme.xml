@@ -20,7 +20,7 @@
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
         <item name="appBarLayoutStyle">@style/appBarStyle</item>
         <item name="materialButtonStyle">@style/button</item>
-        <item name="android:navigationBarColor">?android:attr/windowBackground</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
     <style name="main_background" parent="@style/Widget.Material3.CardView.Filled">

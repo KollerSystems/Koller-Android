@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.BaseViewModel
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.SuperCoolRecyclerView
 import com.norbert.koller.shared.activities.MainActivity
@@ -37,8 +39,7 @@ class UsersFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_users, container, false)
 
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.people), mainActivity.getString(R.string.student_hostel))
+
 
 
         leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
@@ -50,14 +51,18 @@ class UsersFragment : Fragment() {
             UserData(Name="Hatalmas Norbert")
         )
 
-        leaderUsersRecyclerView.adapter = UserRecyclerAdapter()
+        leaderUsersRecyclerView.adapter = UserRecyclerAdapter(null)
 
 
         superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
 
-        val userRecycleAdapter = UserRecyclerAdapter()
+        val chipGroup : ChipGroup = view.findViewById(R.id.chip_group_sort)
 
-        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter) }
+        val userRecycleAdapter = UserRecyclerAdapter(chipGroup)
+
+
+
+        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter, MyApplication.createApiSortString(chipGroup, "Name")) }
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

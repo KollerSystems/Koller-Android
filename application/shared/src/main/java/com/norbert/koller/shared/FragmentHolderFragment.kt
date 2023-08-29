@@ -40,6 +40,7 @@ class FragmentHolderFragment : Fragment() {
             .replace(R.id.inner_fragment_container_view, startFragment)
             .commit()
         mainActivity.showBackButton(false)
+        mainActivity.changeToolbarTitleToCurrentFragmentName(startFragment)
     }
 
     lateinit var startFragment : Fragment

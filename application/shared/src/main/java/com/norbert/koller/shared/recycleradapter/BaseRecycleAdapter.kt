@@ -2,15 +2,23 @@ package com.norbert.koller.shared.recycleradapter
 
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.INVISIBLE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.BaseComparator
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
-abstract class BaseRecycleAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
+abstract class BaseRecycleAdapter(val chipGroup: ChipGroup?) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
     private var lastMaxPosition : Int = -1
     lateinit var recyclerView: RecyclerView
@@ -20,7 +28,21 @@ abstract class BaseRecycleAdapter : PagingDataAdapter<Any, RecyclerView.ViewHold
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView
+
+        if(chipGroup!=null){
+            chipGroup.setOnCheckedStateChangeListener{ chipGroup: ChipGroup, ints: MutableList<Int> ->
+
+
+                lastMaxPosition = -1
+                recyclerView.scrollToPosition(0)
+
+                refresh()
+
+            }
+        }
     }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -49,6 +71,8 @@ abstract class BaseRecycleAdapter : PagingDataAdapter<Any, RecyclerView.ViewHold
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+
+
 
         var item : Any? = null
 

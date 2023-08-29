@@ -11,6 +11,8 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.MyApplication.Comp.getPixelColorFromView
@@ -25,6 +27,7 @@ import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.fragments.StudentHostelFragment
+import kotlinx.coroutines.launch
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -90,30 +93,44 @@ abstract class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        if(fragments[selectedIndex].childFragmentManager.backStackEntryCount > 0) {
+            if (fragments[selectedIndex].childFragmentManager.backStackEntryCount > 0) {
 
-            fragments[selectedIndex].childFragmentManager.popBackStack()
-            if (fragments[selectedIndex].childFragmentManager.backStackEntryCount == 1) {
-                showBackButton(false)
-            }
-        }
-        else{
-            if (mainFragmentList.size == 1) {
-
-                if(selectedIndex != 0){
-                    selectFragment(0)
-                    mainFragmentList = arrayListOf(0)
-                    return
+                fragments[selectedIndex].childFragmentManager.popBackStack()
+                backButton.post {
+                    changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
+                    if (fragments[selectedIndex].childFragmentManager.backStackEntryCount == 0) {
+                        showBackButton(false)
+                    }
                 }
-                finish()
-                return
+
+            } else {
+                if (mainFragmentList.size == 1) {
+
+                    if (selectedIndex != 0) {
+                        selectFragment(0)
+                        mainFragmentList = arrayListOf(0)
+                    }
+                    else{
+                        finish()
+                    }
+
+                }
+                else{
+
+                    mainFragmentList.removeLast()
+                    selectFragment(mainFragmentList.last())
+                }
+
             }
 
-            mainFragmentList.removeLast()
-            selectFragment(mainFragmentList.last())
-        }
+
+
+        changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
     }
 
+    fun changeToolbarTitleToCurrentFragmentName(fragment: Fragment){
+        setToolbarTitle(MyApplication.getStringResourceByName(this@MainActivity, MyApplication.camelToSnakeCase(fragment.javaClass.simpleName.replace("Fragment", ""))), null)
+    }
 
     fun changeFragment(fragment: Fragment){
         val fragmentTransaction: FragmentTransaction = fragments[selectedIndex].childFragmentManager.beginTransaction()
@@ -131,6 +148,8 @@ abstract class MainActivity : AppCompatActivity() {
         appBar.setExpanded(false)
 
         showBackButton(true)
+
+        changeToolbarTitleToCurrentFragmentName(fragment)
     }
 
     fun onCreated(savedInstanceState: Bundle?) {
@@ -272,7 +291,7 @@ abstract class MainActivity : AppCompatActivity() {
         selectedIndex = indexToSelect
 
 
-        supportFragmentManager.beginTransaction()
+        val transaction = supportFragmentManager.beginTransaction()
             .setCustomAnimations(
                 androidx.navigation.ui.R.anim.nav_default_enter_anim,
                 androidx.navigation.ui.R.anim.nav_default_exit_anim,
@@ -282,6 +301,10 @@ abstract class MainActivity : AppCompatActivity() {
 
             .selectFragment(indexToSelect)
             .commit()
+
+        if(fragments[selectedIndex].childFragmentManager.fragments.size != 0)
+            changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
+
 
         if(mainFragmentList.contains(indexToSelect)) mainFragmentList.remove(indexToSelect)
         mainFragmentList.add(indexToSelect)
@@ -324,6 +347,7 @@ abstract class MainActivity : AppCompatActivity() {
             } else {
                 detach(fragment)
             }
+
         }
 
         return this

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="?android:attr/windowBackground"
     android:orientation="vertical"
-    tools:context=".fragments.UserGateFragment">
+    tools:context=".fragments.UserExitsAndEntrancesFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appbar_layout"

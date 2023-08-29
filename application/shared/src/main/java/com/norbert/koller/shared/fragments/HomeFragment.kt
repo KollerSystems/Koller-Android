@@ -47,12 +47,6 @@ abstract class HomeFragment : Fragment() {
 
     abstract fun responsibleLayout() : Int
 
-    override fun onResume() {
-        super.onResume()
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.home), null)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -80,7 +74,7 @@ abstract class HomeFragment : Fragment() {
 
         val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
         buttonShowAllPosts.setOnClickListener{
-            //(context as MainActivity).changeFragment(PostsFragment())
+            (context as MainActivity).changeFragment(PostsFragment())
         }
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)

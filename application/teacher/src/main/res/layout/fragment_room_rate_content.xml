@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/spacing"
                         android:layout_weight="0"
-                        android:text="Értékelés" />
+                        android:text="Osztályzat" />
 
                     <FrameLayout
                         android:layout_width="match_parent"
@@ -80,35 +80,14 @@
                         android:clipChildren="false"
                         android:clipToPadding="false">
 
-                        <LinearLayout
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_final_rate_slider"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
-
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/chip_final_rate_none"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="0"
-                                android:checked="true"
-                                app:chipEndPadding="0dp"
-                                app:chipIcon="@drawable/line_thick"
-                                app:chipIconVisible="true"
-                                app:chipMinTouchTargetSize="0dp"
-                                app:shapeAppearance="@style/overlayRoundedLeft"
-                                app:textEndPadding="2dp" />
-
-                            <com.google.android.material.chip.Chip
-                                android:id="@+id/chip_final_rate_slider"
-                                android:layout_width="0dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                app:chipEndPadding="0dp"
-                                app:chipIconVisible="true"
-                                app:chipMinTouchTargetSize="0dp"
-                                app:shapeAppearance="@style/overlayRoundedRight"
-                                app:textEndPadding="2dp" />
-                        </LinearLayout>
+                            app:chipEndPadding="0dp"
+                            app:chipIconVisible="true"
+                            app:chipMinTouchTargetSize="0dp"
+                            app:textEndPadding="2dp" />
 
                         <com.google.android.material.slider.Slider
                             android:id="@+id/slider_final_rate"
@@ -116,7 +95,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_gravity="right|center_vertical"
-                            android:layout_marginLeft="34dp"
                             android:layout_marginTop="-20dp"
                             android:layout_marginBottom="-20dp"
                             android:alpha="0.25"

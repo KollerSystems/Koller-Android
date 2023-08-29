@@ -49,7 +49,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
         val cardOutgoing : View = view.findViewById(R.id.home_card_outgoing)
         cardOutgoing.setOnClickListener{
             (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.studentHostel
-            findNavController().navigate(Rs.id.userOutgoingFragment)
+            findNavController().navigate(Rs.id.userOutgoingsFragment)
         }
 
         val cardLessons : View = view.findViewById(R.id.home_card_lessons)

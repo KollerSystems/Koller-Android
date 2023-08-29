@@ -128,7 +128,7 @@
     <string name="mothers_phone_number_colon">Anyja telefonszáma:</string>
     <string name="accurate_address_colon">Pontos lakcím:</string>
     <string name="instagram" translatable="false">Instagram</string>
-    <string name="people">Emberek</string>
+    <string name="users">Emberek</string>
     <string name="sunday">Vasárnap</string>
     <string name="no_account_yet">Nincs fiókom</string>
     <string name="report">Jelentés</string>
@@ -161,7 +161,7 @@
     <string name="arrangement">Rendezés</string>
     <string name="oldest">Legrégebbi</string>
     <string name="newest">Legújabb</string>
-    <string name="outgoings">Kimenők</string>
+    <string name="user_outgoings">Kimenők</string>
     <string name="settings">Beállítások</string>
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="manage_account">Fiók kezelése</string>
@@ -308,7 +308,7 @@
     <string name="continuous">Folyamatos</string>
     <string name="support_us">Támogass minket</string>
     <string name="room">Szoba</string>
-    <string name="exits_and_entrances">Ki- és belépések</string>
+    <string name="user_exits_and_entrances">Ki- és belépések</string>
     <string name="forgotten_password">Elfelejtett jelszó</string>
     <string name="error_report">Hibajelentés</string>
     <string name="room_scoring">Szoba pontozás</string>

@@ -66,30 +66,46 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
 
 
                 fun selectSliderChip(){
-                    holder.chipGroup.check(R.id.chip_slider)
+
+                    holder.chipSlider.isChecked = true
                     holder.slider.alpha = 1f
                 }
 
                 holder.slider.addOnChangeListener{slider, value, bool ->
                     selectSliderChip()
+                    (roomOrderConditionsData[position] as RoomOrderConditionsInt).value = holder.slider.value.toInt()
+                    (roomOrderConditionsData[position] as RoomOrderConditionsInt).changed = true
                 }
 
 
                 holder.slider.setOnTouchListener { view, motionEvent ->
 
 
-                    when(motionEvent.action){
-                        MotionEvent.ACTION_UP ->{
-                            selectSliderChip()
+                    when (motionEvent.action) {
+                        MotionEvent.ACTION_UP -> {
+
+                            holder.slider.post {
+                                if (!(roomOrderConditionsData[position] as RoomOrderConditionsInt).changed) {
+
+                                    if (!holder.chipSlider.isChecked) {
+                                        selectSliderChip()
+                                    } else {
+                                        holder.chipSlider.isChecked = false
+                                        holder.slider.alpha = 0.25f
+                                    }
+
+                                } else {
+                                    (roomOrderConditionsData[position] as RoomOrderConditionsInt).changed = false
+                                }
+                            }
                         }
                     }
 
 
-                    return@setOnTouchListener holder.slider.onTouchEvent(motionEvent)
-                }
 
-                holder.chipNone.setOnClickListener{
-                    holder.slider.alpha = 0.25f
+
+
+                    return@setOnTouchListener holder.slider.onTouchEvent(motionEvent)
                 }
 
             }
@@ -153,6 +169,7 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
 
     class RoomOrderConditionsBooleanViewHolder(itemView: View) : RoomOrderConditionsBaseViewHolder(itemView)
     {
+        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
         val chipYes : Chip = itemView.findViewById(R.id.chip_yes)
         val chipNo : Chip = itemView.findViewById(R.id.chip_no)
     }
@@ -163,8 +180,6 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
     {
         val icon : ImageView = itemView.findViewById(R.id.image_icon)
         val title : TextView = itemView.findViewById(R.id.text_title)
-        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
-        val chipNone : Chip = itemView.findViewById(R.id.chip_none)
     }
 
 }

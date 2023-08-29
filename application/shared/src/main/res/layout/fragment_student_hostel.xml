@@ -107,7 +107,7 @@
                 android:layout_weight="1"
                 android:paddingLeft="0dp"
                 android:paddingRight="0dp"
-                android:text="@string/people"
+                android:text="@string/users"
                 app:icon="@drawable/people" />
 
         </LinearLayout>

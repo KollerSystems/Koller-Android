@@ -18,6 +18,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.slider.Slider
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.data.RoomOrderConditionsBase
+import com.norbert.koller.shared.data.RoomOrderConditionsInt
 import com.norbert.koller.shared.data.RoomOrderData
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.recycleradapter.RoomRateRecyclerAdapter
@@ -53,11 +54,10 @@ class FragmentRoomRateContent : Fragment() {
         val lyFooter : LinearLayout = view.findViewById(R.id.ly_fixed_footer)
 
 
-
-        val chipFinalRateNone : Chip = view.findViewById(R.id.chip_final_rate_none)
         val chipFinalRateSlider : Chip = view.findViewById(R.id.chip_final_rate_slider)
         val sliderFinalRate : Slider = view.findViewById(R.id.slider_final_rate)
         val textFinalRate : TextView = view.findViewById(R.id.text_final_rate)
+        var finalRateChanged : Boolean = false
 
         lyContent.post {
             lyContent.setPadding(0, 0, 0, lyFooter.height)
@@ -66,15 +66,10 @@ class FragmentRoomRateContent : Fragment() {
         }
 
 
-        chipFinalRateNone.setOnClickListener{
-            chipFinalRateNone.isChecked = true
-            chipFinalRateSlider.isChecked = false
-            sliderFinalRate.alpha = 0.25f
-            textFinalRate.text = getString(com.norbert.koller.shared.R.string.none)
-            textFinalRate.background = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.circle_outline)
-            textFinalRate.backgroundTintList = null
 
-        }
+
+
+
 
 
         fun setValue(){
@@ -86,7 +81,6 @@ class FragmentRoomRateContent : Fragment() {
                 textFinalRate.text = roundedToInt.toString()
             }
 
-            chipFinalRateNone.isChecked = false
             chipFinalRateSlider.isChecked = true
             sliderFinalRate.alpha = 1f
 
@@ -121,6 +115,7 @@ class FragmentRoomRateContent : Fragment() {
 
         sliderFinalRate.addOnChangeListener{slider, value, bool ->
             setValue()
+            finalRateChanged = true
         }
 
 
@@ -129,7 +124,32 @@ class FragmentRoomRateContent : Fragment() {
 
             when(motionEvent.action){
                 MotionEvent.ACTION_UP ->{
-                    setValue()
+
+                    chipFinalRateSlider.post{
+
+                        if(!finalRateChanged) {
+
+                            if (!chipFinalRateSlider.isChecked) {
+                                setValue()
+                            } else {
+                                chipFinalRateSlider.isChecked = false
+                                sliderFinalRate.alpha = 0.25f
+                                textFinalRate.text = getString(com.norbert.koller.shared.R.string.none)
+                                textFinalRate.background = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.circle_outline)
+                                textFinalRate.backgroundTintList = null
+                            }
+
+
+                        }
+                        else{
+                            finalRateChanged = false
+                        }
+                    }
+
+
+
+
+
                 }
             }
 

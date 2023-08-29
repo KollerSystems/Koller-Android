@@ -44,5 +44,6 @@ class RoomOrderConditionsBoolean(
 ) : RoomOrderConditionsBase()
 
 class RoomOrderConditionsInt(
-    var value : Int? = null
+    var value : Int? = null,
+    var changed : Boolean = false
 ) : RoomOrderConditionsBase()

@@ -79,7 +79,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/wave"
-                            custom:text="@string/outgoings" />
+                            custom:text="@string/user_outgoings" />
 
                         <com.norbert.koller.shared.SimpleCardButton
                             android:id="@id/profile_fbtn_gate"

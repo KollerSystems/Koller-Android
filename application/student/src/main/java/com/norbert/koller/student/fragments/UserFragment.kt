@@ -10,7 +10,7 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.student.R
 
 
-class UserFragment : com.norbert.koller.shared.fragments.UserFragment() {
+class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment(UID) {
 
 
     override fun showAndSetIfNotNull(card : View, string : String?){

@@ -45,10 +45,6 @@ class NotificationsFragment : Fragment() {
     }
 
 
-    override fun onResume() {
-        super.onResume()
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.notifications), null)
-    }
+
 
 }

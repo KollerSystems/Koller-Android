@@ -8,7 +8,7 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.teacher.R
 import com.google.android.material.chip.Chip
 
-class UserFragment : com.norbert.koller.shared.fragments.UserFragment() {
+class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment(UID) {
 
     override fun showAndSetIfNotNull(card : View, string : String?){
         if (!string.isNullOrBlank()) {

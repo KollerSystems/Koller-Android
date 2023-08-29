@@ -15,7 +15,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-class UserOutgoingFragment : Fragment() {
+class UserOutgoingsFragment : Fragment() {
     companion object {
         var toGet : Int = -1
 
@@ -24,7 +24,7 @@ class UserOutgoingFragment : Fragment() {
 
             context as MainActivity
 
-            context.changeFragment(UserOutgoingFragment())
+            context.changeFragment(UserOutgoingsFragment())
         }
     }
     override fun onCreateView(
@@ -33,9 +33,6 @@ class UserOutgoingFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_user_outgoing, container, false)
-
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.outgoings), mainActivity.getString(R.string.student_hostel))
 
         val tabs : TabLayout = view.findViewById(R.id.user_outgoing_tabs)
         val viewPager : ViewPager2 = view.findViewById(R.id.user_outgoing_viewpager)

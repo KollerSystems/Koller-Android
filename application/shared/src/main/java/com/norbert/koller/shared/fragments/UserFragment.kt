@@ -23,24 +23,8 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-abstract class UserFragment : Fragment() {
+abstract class UserFragment(val UID : Int) : Fragment() {
 
-    companion object {
-        var toGet : Int = -1
-
-        fun open(context : Context, RID : Int){
-            toGet = RID
-
-            context as MainActivity
-            context.changeFragment(MyApplication.userFragment())
-        }
-    }
-
-    override fun onResume() {
-        super.onResume()
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.user),null)
-    }
 
     abstract fun showAndSetIfNotNull(card : View, string : String?)
 
@@ -84,7 +68,7 @@ abstract class UserFragment : Fragment() {
 
 
         val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
-        usersResponse.getUser(toGet, APIInterface.getHeaderMap()).enqueue(
+        usersResponse.getUser(UID, APIInterface.getHeaderMap()).enqueue(
             object : Callback<UserData> {
                 override fun onResponse(
                     call: Call<UserData>,
@@ -109,7 +93,7 @@ abstract class UserFragment : Fragment() {
                         }
 
                         buttonRoom.setOnClickListener{
-                            RoomFragment.open(requireContext(), userData.RID!!)
+                            (requireContext() as MainActivity).changeFragment(MyApplication.roomFragment(userData.RID!!))
                         }
 
                         showAndSetIfNotNull(discordCard, userData.Discord)

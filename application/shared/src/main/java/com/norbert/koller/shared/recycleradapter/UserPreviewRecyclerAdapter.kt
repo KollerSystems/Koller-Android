@@ -12,6 +12,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.UserFragment
 import com.google.android.material.card.MaterialCardView
+import com.norbert.koller.shared.activities.MainActivity
 
 
 class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, var context : Context) : RecyclerView.Adapter<UserPreviewRecyclerAdapter.TodayViewHolder>(){
@@ -41,7 +42,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
                 MyApplication.openProfile.invoke(holder.itemView.context)
             }
             else{
-                UserFragment.open(context, currentItem.UID)
+                (context as MainActivity).changeFragment(MyApplication.userFragment(currentItem.UID))
 
             }
 

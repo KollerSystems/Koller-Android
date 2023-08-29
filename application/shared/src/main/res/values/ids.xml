@@ -18,10 +18,10 @@
 
     </item>
     <item name="userGateFragment" type="id" />
-    <item name="action_studentHostelFragment_to_userOutgoingFragment" type="id">
+    <item name="action_studentHostelFragment_to_userOutgoingsFragment" type="id">
 
     </item>
-    <item name="userOutgoingFragment" type="id" />
+    <item name="userOutgoingsFragment" type="id" />
     <item name="action_studentHostelFragment_to_userFragment" type="id">
 
     </item>
@@ -42,7 +42,7 @@
     <item name="action_userFragment_to_userGateFragment2" type="id">
 
     </item>
-    <item name="action_userFragment_to_userOutgoingFragment" type="id">
+    <item name="action_userFragment_to_userOutgoingsFragment" type="id">
 
     </item>
     <item name="action_userFragment_to_roomFragment" type="id">
@@ -90,7 +90,7 @@
     <item name="action_global_roomsFragment" type="id" />
     <item name="action_global_roomFragment" type="id" />
     <item name="action_global_userFragment" type="id" />
-    <item name="action_global_userOutgoingFragment" type="id" />
+    <item name="action_global_userOutgoingsFragment" type="id" />
     <item name="action_global_userGateFragment" type="id" />
     <item name="action_global_roomRateFragment" type="id" />
 </resources>

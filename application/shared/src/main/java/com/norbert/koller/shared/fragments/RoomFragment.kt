@@ -23,20 +23,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-abstract class RoomFragment : Fragment() {
-
-    companion object {
-        var toGet : Int = -1
-
-        fun open(context : Context, RID : Int){
-            toGet = RID
-
-            context as MainActivity
-
-            context.changeFragment(MyApplication.roomFragment())
-
-        }
-    }
+abstract class RoomFragment(val RID : Int) : Fragment() {
 
     lateinit var usersRecyclerView: RecyclerView
     lateinit var userDataArrayList: ArrayList<UserData>
@@ -45,11 +32,12 @@ abstract class RoomFragment : Fragment() {
     lateinit var loadingOl : View
 
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.room), mainActivity.getString(R.string.student_hostel))
+
 
 
         textTitle = view.findViewById(R.id.room_text_title)
@@ -61,7 +49,7 @@ abstract class RoomFragment : Fragment() {
         usersRecyclerView.setHasFixedSize(false)
 
         val roomResponse = RetrofitHelper.buildService(APIInterface::class.java)
-        roomResponse.getRoom(toGet, APIInterface.getHeaderMap()).enqueue(
+        roomResponse.getRoom(RID, APIInterface.getHeaderMap()).enqueue(
             object : Callback<RoomData> {
                 override fun onResponse(
                     call: Call<RoomData>,
@@ -72,9 +60,9 @@ abstract class RoomFragment : Fragment() {
                         val roomData: RoomData = userResponse.body()!!
 
 
-                        if(roomData.residents != null) {
+                        if(roomData.Residents != null) {
                             usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
-                                roomData.residents!!,
+                                roomData.Residents!!,
                                 requireContext()
                             )
                         }

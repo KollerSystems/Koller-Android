@@ -21,7 +21,7 @@ import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
 
-class UserGateFragment : Fragment() {
+class UserExitsAndEntrancesFragment : Fragment() {
 
     companion object {
         var toGet : Int = -1
@@ -31,7 +31,7 @@ class UserGateFragment : Fragment() {
 
             context as MainActivity
 
-            context.changeFragment(UserGateFragment())
+            context.changeFragment(UserExitsAndEntrancesFragment())
         }
     }
 
@@ -49,8 +49,6 @@ class UserGateFragment : Fragment() {
     ): View? {
         val view : View = inflater.inflate(R.layout.fragment_user_gate, container, false)
 
-        val mainActivity = context as MainActivity
-        mainActivity.setToolbarTitle(mainActivity.getString(R.string.exits_and_entrances), mainActivity.getString(R.string.student_hostel))
 
 
         crossingRecyclerView = view.findViewById(R.id.recycler_view)

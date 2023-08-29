@@ -19,11 +19,11 @@ import com.norbert.koller.shared.activities.FeedbackActivity
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.DevData
-import com.norbert.koller.shared.fragments.RoomFragment
-import com.norbert.koller.shared.fragments.UserGateFragment
+import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
 import com.norbert.koller.shared.recycleradapter.DevRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.norbert.koller.shared.activities.MainActivity
 import kotlinx.coroutines.launch
 
 
@@ -103,7 +103,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         cardMyRoom.setOnClickListener{
 
-            RoomFragment.open(requireContext(), UserData.instance.RID!!)
+            (requireContext() as MainActivity).changeFragment(MyApplication.roomFragment(UserData.instance.RID!!))
             this.dismiss()
         }
 
@@ -111,7 +111,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         fbtnGate.setOnClickListener{
 
-            UserGateFragment.open(requireContext(), UserData.instance.UID)
+            UserExitsAndEntrancesFragment.open(requireContext(), UserData.instance.UID)
             this.dismiss()
         }
 
