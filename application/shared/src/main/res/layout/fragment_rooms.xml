@@ -28,6 +28,7 @@
                 android:text="@string/filters" />
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -36,6 +37,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
                     android:text="@string/place_room"
                     app:closeIconEnabled="true" />
 
@@ -44,6 +46,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
                     android:text="@string/group"
                     app:closeIconEnabled="true" />
 
@@ -52,7 +55,17 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
                     android:text="@string/floor_level"
+                    app:closeIconEnabled="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_side"
+                    style="@style/chipDropdownButtonFilterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:text="@string/side"
                     app:closeIconEnabled="true" />
 
             </com.google.android.material.chip.ChipGroup>
@@ -79,6 +92,7 @@
                     android:id="@+id/p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="asc"
                     android:text="@string/from_down"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
@@ -86,6 +100,7 @@
                     android:id="@+id/n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="desc"
                     android:text="@string/from_up"
                     app:shapeAppearance="@style/overlayRoundedRight" />
 

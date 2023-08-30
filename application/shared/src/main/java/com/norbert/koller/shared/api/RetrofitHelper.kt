@@ -1,11 +1,19 @@
 package com.norbert.koller.shared.api
 
 import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+
 object RetrofitHelper {
-    private val client = OkHttpClient.Builder().build()
+    private val loggingInterceptor = HttpLoggingInterceptor().apply {
+        level = HttpLoggingInterceptor.Level.BODY
+    }
+
+    private val client = OkHttpClient.Builder()
+        .addInterceptor(loggingInterceptor)
+        .build()
 
     val gyIP =TITOK_HAHAHA
     val grazIP = "http://192.168.0.100/"

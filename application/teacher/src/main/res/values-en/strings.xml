@@ -2,4 +2,8 @@
 <resources>
     <string name="this_app_is_not_for_everyone_desc">same in english</string>
     <string name="room_rate">Room rate</string>
+    <string name="are_you_sure_publish_all_grade">Are you sure you want to publish all grades?</string>
+    <string name="are_you_sure_delete_all_grade">Are you sure you want to delete all grades?</string>
+
+    <string name="are_you_sure_discard_all_grade">Are you sure you want to discard all grades?</string>
 </resources>

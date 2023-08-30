@@ -4,6 +4,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.RoomData
@@ -13,7 +14,7 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.activities.MainActivity
 
 
-class RoomRecyclerAdapter(chipGroup: ChipGroup?) : BaseRecycleAdapter(chipGroup){
+class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips){
 
     override fun serverErrorPopup(view: View): RecyclerView.ViewHolder {
         return RoomsViewHolder(view)

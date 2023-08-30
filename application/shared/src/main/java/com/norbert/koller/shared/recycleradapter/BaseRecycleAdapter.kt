@@ -6,9 +6,12 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.widget.doBeforeTextChanged
+import androidx.core.widget.doOnTextChanged
 import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
@@ -18,7 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-abstract class BaseRecycleAdapter(val chipGroup: ChipGroup?) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
+abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val chips: List<Chip> = listOf()) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
     private var lastMaxPosition : Int = -1
     lateinit var recyclerView: RecyclerView
@@ -29,17 +32,24 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup?) : PagingDataAdapter
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView
 
-        if(chipGroup!=null){
-            chipGroup.setOnCheckedStateChangeListener{ chipGroup: ChipGroup, ints: MutableList<Int> ->
-
-
-                lastMaxPosition = -1
-                recyclerView.scrollToPosition(0)
-
-                refresh()
-
+        for (chip in chips){
+            chip.doBeforeTextChanged{text, start, before, count ->
+                refreshFully()
             }
         }
+
+
+        chipGroup?.setOnCheckedStateChangeListener { chipGroup: ChipGroup, ints: MutableList<Int> ->
+            refreshFully()
+        }
+    }
+
+    fun refreshFully(){
+        lastMaxPosition = -1
+        recyclerView.scrollToPosition(0)
+        refresh()
+
+        state = STATE_NONE
     }
 
 
@@ -141,9 +151,14 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup?) : PagingDataAdapter
 
     override fun getItemCount(): Int {
 
+        if (state == STATE_EMPTY) {
+            return 0
+        }
+
         if(state != STATE_NONE){
             return super.getItemCount() + 1
         }
+
 
         return super.getItemCount()
     }
@@ -171,6 +186,7 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup?) : PagingDataAdapter
         const val STATE_NONE = 0
         const val STATE_LOADING = 1
         const val STATE_ERROR = 2
+        const val STATE_EMPTY = 3
 
 
         const val VIEW_TYPE_USER = 0

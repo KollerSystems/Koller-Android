@@ -69,8 +69,20 @@
                 android:text="@string/filters" />
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_filter"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_gender"
+                    style="@style/chipDropdownButtonFilterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:tag="asc"
+                    android:text="@string/gender"
+                    app:closeIconEnabled="true" />
+            </com.google.android.material.chip.ChipGroup>
 
             <TextView
                 android:id="@+id/textView33"
@@ -93,6 +105,7 @@
                     android:id="@+id/chip_none"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="asc"
                     android:text="@string/abc"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
@@ -100,6 +113,7 @@
                     android:id="@+id/chip_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="desc"
                     android:text="@string/zyx"
                     app:shapeAppearance="@style/overlayRoundedRight" />
 

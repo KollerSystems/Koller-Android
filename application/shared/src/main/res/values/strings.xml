@@ -325,4 +325,11 @@
     <string name="final_grade">Végső értékelés</string>
     <string name="automatic">Automatikus</string>
     <string name="publish_all">Az összes közzététele</string>
+    <string name="side">Oldal</string>
+    <string name="gender">Nem</string>
+    <string name="man">Férfi</string>
+    <string name="woman">Nő</string>
+    <string name="girl">Lány</string>
+    <string name="boy">Fiú</string>
+    <string name="delete_all">Összes törlése</string>
 </resources>

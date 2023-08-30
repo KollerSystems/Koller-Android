@@ -14,12 +14,12 @@ import kotlinx.coroutines.delay
 import kotlin.random.Random
 
 
-open class BasePagingSource(val context : Context, private val recyclerAdapter: BaseRecycleAdapter, val sort : String) : PagingSource<Int, Any>()  {
+open class BasePagingSource(val context: Context, private val recyclerAdapter: BaseRecycleAdapter, val sort: String, val filter: String? = null) : PagingSource<Int, Any>()  {
 
     private var lastFirstChar : String? = null
     private var lastListSize : Int = BaseViewModel.pageSize + 1
 
-    open suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int, sort : String) : List<BaseData>{
+    open suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : List<BaseData>{
         throw Exception("Nem lett felülírva a getApiResponse függvény 💀")
     }
 
@@ -34,7 +34,7 @@ open class BasePagingSource(val context : Context, private val recyclerAdapter: 
 
         val apiResponse = RetrofitHelper.buildService(APIInterface::class.java)
         try {
-            val response: List<BaseData> = getApiResponse(apiResponse, params.loadSize, offset, sort)
+            val response: List<BaseData> = getApiResponse(apiResponse, params.loadSize, offset)
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
             recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)
@@ -73,4 +73,6 @@ open class BasePagingSource(val context : Context, private val recyclerAdapter: 
     override fun getRefreshKey(state: PagingState<Int, Any>): Int? {
         return state.anchorPosition
     }
+
+
 }

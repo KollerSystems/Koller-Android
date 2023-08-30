@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingTop="@dimen/application_padding"
-    tools:context=".fragments.FragmentRoomRateContent">
+    tools:context=".fragments.RoomRateContentFragment">
 
     <LinearLayout
         android:id="@+id/ly_content"

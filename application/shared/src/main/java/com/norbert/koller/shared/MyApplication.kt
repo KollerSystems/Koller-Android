@@ -26,6 +26,7 @@ import androidx.navigation.NavController
 import androidx.navigation.navOptions
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.appbar.AppBarLayout
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
@@ -489,6 +490,48 @@ open class MyApplication : Application() {
         fun createApiSortString(chipGroup : ChipGroup, basedOn : String) : String{
             val chip : Chip = chipGroup.findViewById(chipGroup.checkedChipId)
             return prefixIntigerToSymbol((chip.parent as ViewGroup).indexOfChild(chip)) + basedOn
+        }
+
+        fun getApiSortString(chipGroup : ChipGroup, basedOn : String) : String{
+            val chip : Chip = chipGroup.findViewById(chipGroup.checkedChipId)
+            return "${basedOn}:${chip.tag}"
+        }
+
+        fun createApiFilter(filter : String, vararg argumentsOfArguments : ArrayList<String>) : String{
+            var finalString = ""
+
+            for (arguments in argumentsOfArguments) {
+                for (argument in arguments) {
+                    finalString += "${filter}:${argument},"
+                }
+            }
+            finalString.dropLast(1)
+
+            return finalString
+        }
+
+        fun editChipBasedOnResponse(context: Context, chip : Chip, values : ArrayList<String>, locNames : String, defaultNameID : Int){
+            val hasValues = values.size != 0
+            chip.isCheckable = true
+            chip.isChecked = hasValues
+            chip.isCheckable = false
+            if(hasValues) {
+                if(chip.text.toString() != locNames)
+                    chip.text = locNames
+            }
+            else{
+                val string = context.getString(defaultNameID)
+                if(chip.text.toString() != string)
+                    chip.text = string
+            }
+        }
+
+        fun setupActivityToolbar(backgroundCard : MaterialCardView, appBarLayout: AppBarLayout){
+
+            appBarLayout.addOnOffsetChangedListener { _, verticalOffset ->
+                val collapsedSize: Float = -570f
+                backgroundCard.alpha = verticalOffset / collapsedSize
+            }
         }
     }
 

@@ -88,9 +88,10 @@ interface APIInterface {
 
     @GET("api/users")
     suspend fun getUsers(
-        @Query(value = "sort") sort : String = "+Name",
         @Query(value = "limit") limit : Int,
         @Query(value = "offset") offset : Int,
+        @Query(value = "sort") sort : String = "Name:asc",
+        @Query(value = "filter") filter : String? = null,
         @HeaderMap headers: Map<String, String>
     ) : Response<List<UserData>>
 
@@ -98,6 +99,8 @@ interface APIInterface {
     suspend fun getRooms(
         @Query(value = "limit") limit : Int,
         @Query(value = "offset") offset : Int,
+        @Query(value = "sort") sort : String = "RID:asc",
+        @Query(value = "filter") filter : String? = null,
         @HeaderMap headers: Map<String, String>
     ) : Response<List<RoomData>>
 
@@ -121,11 +124,13 @@ interface APIInterface {
     ) : Call<List<UserData>>
 }
 
-class UserPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String) : BasePagingSource(context, recyclerAdapter, sort) {
+class UserPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, sort: String, filter: String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int, sort : String): List<BaseData> {
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
 
-        val response: Response<List<UserData>> = apiResponse.getUsers(sort, limit, offset, APIInterface.getHeaderMap())
+        val response: Response<List<UserData>> = apiResponse.getUsers(limit, offset, sort, filter, APIInterface.getHeaderMap())
+
+        Log.d("APIINFO", "user filter: $filter")
 
         if(response.isSuccessful) {
 
@@ -139,11 +144,15 @@ class UserPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, s
 
 }
 
-class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String) : BasePagingSource(context, recyclerAdapter, sort) {
+class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String, filter : String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int, sort : String): List<BaseData> {
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
 
-        val response: Response<List<RoomData>> = apiResponse.getRooms(limit, offset, APIInterface.getHeaderMap())
+        val response: Response<List<RoomData>> = apiResponse.getRooms(limit, offset, sort, filter, APIInterface.getHeaderMap())
+
+        Log.d("APIINFO", "user filter: $filter")
+
+
 
         if(response.isSuccessful) {
 

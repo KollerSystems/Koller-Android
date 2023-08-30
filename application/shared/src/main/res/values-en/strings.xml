@@ -290,4 +290,11 @@
     <string name="final_grade">Final grade</string>
     <string name="automatic">Automatic</string>
     <string name="publish_all">Publish all</string>
+    <string name="side">Side</string>
+    <string name="gender">Gender</string>
+    <string name="man">Man</string>
+    <string name="woman">Woman</string>
+    <string name="girl">Girl</string>
+    <string name="boy">Boy</string>
+    <string name="delete_all">Delete all</string>
 </resources>
