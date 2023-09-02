@@ -59,7 +59,7 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
         return when (viewType) {
             VIEW_TYPE_USER -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
-                serverErrorPopup(view)
+                createViewHolder(view)
             }
             VIEW_TYPE_SEPARATOR -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.view_date, parent, false)
@@ -76,7 +76,7 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
         }
     }
 
-    abstract fun serverErrorPopup(view : View) : RecyclerView.ViewHolder
+    abstract fun createViewHolder(view : View) : RecyclerView.ViewHolder
 
 
 
@@ -95,7 +95,7 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
             when (getItemViewType(position)) {
                 VIEW_TYPE_USER -> {
 
-                    onBindserverErrorPopup(holder, item, position)
+                    onBindViewHolder(holder, item, position)
 
 
                     if(position == itemCount-1) {
@@ -139,7 +139,7 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
         }
     }
 
-    abstract fun onBindserverErrorPopup(holder: RecyclerView.ViewHolder, item : Any, position: Int)
+    abstract fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int)
 
 
     class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

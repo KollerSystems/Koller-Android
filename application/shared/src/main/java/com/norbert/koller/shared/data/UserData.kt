@@ -38,7 +38,7 @@ class UserData (
         return Name!![0].toString()
     }
 
-    override fun getID(): Int {
+    override fun getMainID(): Int {
         return UID
     }
 

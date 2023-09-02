@@ -92,7 +92,7 @@
                     android:id="@+id/p"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:tag="asc"
+                    android:tag="RID:asc"
                     android:text="@string/from_down"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
@@ -100,7 +100,7 @@
                     android:id="@+id/n"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:tag="desc"
+                    android:tag="RID:desc"
                     android:text="@string/from_up"
                     app:shapeAppearance="@style/overlayRoundedRight" />
 

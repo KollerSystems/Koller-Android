@@ -92,7 +92,7 @@ class UsersFragment : Fragment() {
 
 
 
-        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter, MyApplication.getApiSortString(chipGroupSort, "Name"), MyApplication.createApiFilter("Gender", filterValues)) }
+        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter, MyApplication.getApiSortString(chipGroupSort), MyApplication.createApiFilter("Gender", filterValues)) }
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

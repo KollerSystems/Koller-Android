@@ -123,6 +123,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:text="@string/state"
                     app:closeIconEnabled="true" />
 
@@ -131,6 +132,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:text="@string/teacher"
                     app:closeIconEnabled="true" />
 
@@ -139,6 +141,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:clickable="false"
                     android:text="@string/date"
                     app:closeIconEnabled="true" />
 
@@ -153,25 +156,28 @@
                 android:text="@string/arrangement" />
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_sort"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:checkedChip="@id/chip_none"
+                app:checkedChip="@id/asc"
                 app:chipSpacingHorizontal="0dp"
                 app:chipSpacingVertical="0dp"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_none"
+                    android:id="@+id/asc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="Date:asc,Lesson:asc"
                     android:text="@string/newest"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
                 <com.google.android.material.chip.Chip
-
+                    android:id="@+id/desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="Date:desc,Lesson:desc"
                     android:text="@string/oldest"
                     app:shapeAppearance="@style/overlayRoundedRight" />
 
@@ -190,6 +196,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.norbert.koller.shared.SuperCoolRecyclerView
+        android:id="@+id/sc_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

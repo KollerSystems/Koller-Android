@@ -492,9 +492,9 @@ open class MyApplication : Application() {
             return prefixIntigerToSymbol((chip.parent as ViewGroup).indexOfChild(chip)) + basedOn
         }
 
-        fun getApiSortString(chipGroup : ChipGroup, basedOn : String) : String{
+        fun getApiSortString(chipGroup : ChipGroup) : String{
             val chip : Chip = chipGroup.findViewById(chipGroup.checkedChipId)
-            return "${basedOn}:${chip.tag}"
+            return chip.tag.toString()
         }
 
         fun createApiFilter(filter : String, vararg argumentsOfArguments : ArrayList<String>) : String{

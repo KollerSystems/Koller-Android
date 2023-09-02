@@ -57,8 +57,8 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
-    implementation "androidx.paging:paging-runtime-ktx:3.2.0"
-    implementation "androidx.paging:paging-common-ktx:3.2.0"
+    implementation 'androidx.paging:paging-runtime-ktx:3.2.0'
+    implementation 'androidx.paging:paging-common-ktx:3.2.0'
 
     implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
 

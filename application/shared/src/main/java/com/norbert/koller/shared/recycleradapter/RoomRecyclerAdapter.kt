@@ -16,7 +16,7 @@ import com.norbert.koller.shared.activities.MainActivity
 
 class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips){
 
-    override fun serverErrorPopup(view: View): RecyclerView.ViewHolder {
+    override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return RoomsViewHolder(view)
     }
 
@@ -25,7 +25,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
         return nameParts[0][0] + ". " + nameParts[1]
     }
 
-    override fun onBindserverErrorPopup(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
         holder as RoomsViewHolder
 

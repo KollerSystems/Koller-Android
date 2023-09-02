@@ -11,6 +11,7 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.BasePagingSource
+import com.norbert.koller.shared.data.BaseProgramData
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -104,6 +105,15 @@ interface APIInterface {
         @HeaderMap headers: Map<String, String>
     ) : Response<List<RoomData>>
 
+    @GET("api/timetable/mandatory")
+    suspend fun getBasePrograms(
+        @Query(value = "limit") limit : Int,
+        @Query(value = "offset") offset : Int,
+        @Query(value = "sort") sort : String = "Date:asc,Lesson:asc",
+        @Query(value = "filter") filter : String? = null,
+        @HeaderMap headers: Map<String, String>
+    ) : Response<List<BaseProgramData>>
+
     @GET("api/users/{id}")
     fun getUser(
         @Path("id") searchById:Int,
@@ -157,6 +167,28 @@ class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, s
         if(response.isSuccessful) {
 
             return response.body() as List<BaseData>
+        }
+        else{
+            throw Exception("API error: ${response.code()}")
+        }
+
+    }
+
+}
+
+class BaseProgramPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String, filter : String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
+
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseProgramData> {
+
+        val response: Response<List<BaseProgramData>> = apiResponse.getBasePrograms(limit, offset, sort, filter, APIInterface.getHeaderMap())
+
+        Log.d("APIINFO", "user filter: $filter")
+
+
+
+        if(response.isSuccessful) {
+
+            return response.body() as List<BaseProgramData>
         }
         else{
             throw Exception("API error: ${response.code()}")

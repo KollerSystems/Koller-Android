@@ -332,4 +332,6 @@
     <string name="girl">Lány</string>
     <string name="boy">Fiú</string>
     <string name="delete_all">Összes törlése</string>
+    <string name="lesson">Óra</string>
+    <string name="and">és</string>
 </resources>

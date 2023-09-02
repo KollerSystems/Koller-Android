@@ -12,40 +12,59 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.UserFragment
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.data.BaseProgramData
 
-class UserRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips) {
+class BaseProgramRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips) {
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
-        return UserViewHolder(view)
+        return ViewHolder(view)
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int) {
 
 
         val context = holder.itemView.context
-        holder as UserViewHolder
+        holder as ViewHolder
 
-        item as UserData
+        item as BaseProgramData
         holder.iconLeft.setImageDrawable(
             AppCompatResources.getDrawable(
                 context,
                 R.drawable.person
             )
         )
-        holder.title.text = item.Name
-        holder.description.text = MyApplication.createUserDescription(item)
+        holder.title.text = item.Topic
+
+        var description ="${item.TUID} • "
+
+
+
+            for (i in item.Lesson..item.Lesson){
+
+                val orderedNumber = MyApplication.orderSingleNumber(context, i.toString())
+
+                if(i < item.Lesson-1-1) {
+
+                    description += "${orderedNumber}, "
+                }
+                else if (i < item.Lesson-1){
+                    description += "${orderedNumber} ${context.getString(R.string.and)} "
+                }
+                else{
+                    description += "${orderedNumber} ${context.getString(R.string.lesson)}"
+                }
+            }
+
+
+        holder.description.text = description
+
+
 
         holder.itemView.setOnClickListener {
-
-            if (item.UID == UserData.instance.UID) {
-                MyApplication.openProfile(context)
-            } else {
-                (context as MainActivity).changeFragment(MyApplication.userFragment(item.UID))
-            }
 
         }
     }
 
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
         val title : TextView = itemView.findViewById(R.id.text_text)

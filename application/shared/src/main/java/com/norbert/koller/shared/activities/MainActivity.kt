@@ -78,7 +78,7 @@ abstract class MainActivity : AppCompatActivity() {
     private lateinit var notificationsFragment: FragmentHolderFragment
 
     companion object{
-        private var selectedIndex = 0
+        var selectedIndex = 0
     }
 
 

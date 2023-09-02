@@ -64,7 +64,7 @@ class RoomsFragment : Fragment() {
 
 
         val roomRecycleAdapter = RoomRecyclerAdapter(chipGroup, listOf(chipSide))
-        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter, MyApplication.getApiSortString(chipGroup, "RID") , MyApplication.createApiFilter("Gender", filterValues)) }
+        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter, MyApplication.getApiSortString(chipGroup) , MyApplication.createApiFilter("Gender", filterValues)) }
 
 
         roomsRecyclerView.recyclerView.apply {

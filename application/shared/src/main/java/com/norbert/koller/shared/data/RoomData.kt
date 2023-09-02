@@ -25,7 +25,7 @@ class RoomData(
         return MyApplication.orderSingleNumber(context, RID.toString()[0].toString()) + " " + context.getString(R.string.floor_level).lowercase() + " • " + genderString
     }
 
-    override fun getID(): Int {
+    override fun getMainID(): Int {
         return RID
     }
 }

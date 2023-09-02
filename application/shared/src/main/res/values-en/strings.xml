@@ -297,4 +297,6 @@
     <string name="girl">Girl</string>
     <string name="boy">Boy</string>
     <string name="delete_all">Delete all</string>
+    <string name="lesson">Lesson</string>
+    <string name="and">and</string>
 </resources>
