@@ -20,11 +20,16 @@ import com.norbert.koller.shared.recycleradapter.BaseProgramRecyclerAdapter
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
 import com.norbert.koller.student.R
+import com.norbert.koller.shared.R as Rs
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 class CalendarBaseProgramsFragment : Fragment() {
 
+
+    var lengthFilters : ArrayList<String> = arrayListOf()
+
+    var lengthOption : ArrayList<Boolean> = arrayListOf(false, false)
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,28 +45,44 @@ class CalendarBaseProgramsFragment : Fragment() {
 
         val scRecyclerView : SuperCoolRecyclerView = view.findViewById(R.id.sc_recycler_view)
 
-        val chipGroupSort : ChipGroup = view.findViewById(com.norbert.koller.shared.R.id.chip_group_sort)
+        val chipLength : Chip = view.findViewById(R.id.chip_length)
 
-        val baseProgramRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, listOf())
+        val chipGroupSort : ChipGroup = view.findViewById(Rs.id.chip_group_sort)
 
-        /*chipGender.setOnClickListener {
+        val baseProgramRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, listOf(chipLength))
+
+
+        chipLength.setOnClickListener {
             val dialog = ItemListDialogFragment()
             dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
 
-            dialog.list = arrayListOf(
+            val lessonLocalName : String = requireContext().getString(Rs.string.lesson)
 
+            dialog.list = arrayListOf(
+                ListItem(
+                    { isChecked ->
+                        lengthOption[0] = isChecked
+                    },
+                    "1 ${lessonLocalName}", null, null, lengthOption[0], "1"),
+                ListItem(
+                    { isChecked ->
+                        lengthOption[1] = isChecked
+                    },
+                    "2 ${lessonLocalName}", null, null, lengthOption[1], "2")
             )
 
             dialog.getValuesOnFinish = {values, locNames ->
 
+                lengthFilters = values
 
+                MyApplication.editChipBasedOnResponse(requireContext(),chipLength,values,locNames, com.norbert.koller.shared.R.string.length)
 
             }
-        }*/
+        }
 
 
 
-        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), BaseProgramRecyclerAdapter(), MyApplication.getApiSortString(chipGroupSort)) }
+        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), BaseProgramRecyclerAdapter(), MyApplication.getApiSortString(chipGroupSort),  MyApplication.createApiFilter("Length", lengthFilters)) }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

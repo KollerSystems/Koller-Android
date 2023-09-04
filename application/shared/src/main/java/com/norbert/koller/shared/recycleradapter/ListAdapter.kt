@@ -64,7 +64,14 @@ class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem 
             holder.description.visibility = VISIBLE
             holder.description.text = currentItem.description
         }
-        holder.icon.setImageDrawable(currentItem.icon)
+
+        if(currentItem.icon != null) {
+            holder.icon.visibility = VISIBLE
+            holder.icon.setImageDrawable(currentItem.icon)
+        }
+        else{
+            holder.icon.visibility = GONE
+        }
     }
 
     override fun getItemCount(): Int {

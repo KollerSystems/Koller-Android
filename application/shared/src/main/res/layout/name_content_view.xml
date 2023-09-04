@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+
+
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+
+    android:orientation="horizontal"
+
+    android:padding="@dimen/text_container_margin">
+
+
+    <TextView
+
+        android:id="@+id/text_name"
+
+        android:layout_width="0dp"
+
+        android:layout_height="wrap_content"
+
+        android:layout_weight="1"
+
+        android:drawableLeft="@drawable/calendar"
+
+        android:drawablePadding="@dimen/spacing"
+
+        android:text="@string/date" />
+
+
+
+
+    <TextView
+
+        android:id="@+id/text_content"
+
+        android:layout_width="wrap_content"
+
+        android:layout_height="wrap_content"
+
+        android:layout_weight="0"
+
+        android:text="2023. Július 4."
+
+        android:textAlignment="textEnd" />
+
+</LinearLayout>

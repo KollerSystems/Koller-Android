@@ -2,6 +2,7 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     style="@style/BottomSheetMainLayout">
 
     <LinearLayout
@@ -35,17 +36,19 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
-                    android:layout_margin="@dimen/text_container_margin"
                     android:layout_weight="1"
-                    android:text="@string/room_order" />
+                    android:padding="@dimen/text_container_margin"
+                    android:text="@string/title" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/room_order_fragment_text_final_rate"
-                    style="@style/iconLikeText"
+                    style="@style/Icon"
+                    android:layout_width="@dimen/panel_icon"
+                    android:layout_height="@dimen/panel_icon"
+                    android:layout_gravity="center_vertical"
                     android:layout_marginStart="@dimen/spacing"
-                    android:text="4"
-                    android:textColor="#00BF9F"
-                    android:textStyle="bold" />
+                    android:gravity="center_vertical"
+                    app:srcCompat="@drawable/close" />
 
             </LinearLayout>
 
@@ -57,41 +60,49 @@
             android:orientation="vertical"
             android:padding="@dimen/application_padding">
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/room_order_recycler_view"
+            <com.norbert.koller.shared.NameContentView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="2.5dp"
-                tools:listitem="@layout/view_rate_byte">
+                android:layout_height="match_parent"
+                custom:detail="-"
+                custom:icon="@drawable/question_box"
+                custom:name="@string/state" />
 
-            </androidx.recyclerview.widget.RecyclerView>
-
-            <LinearLayout
+            <com.norbert.koller.shared.NameContentView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/separator_margin_space"
-                android:orientation="horizontal">
+                android:layout_height="match_parent"
+                custom:detail="Július 22."
+                custom:icon="@drawable/calendar"
+                custom:name="@string/date" />
 
-                <TextView
-                    android:id="@+id/room_order_fragment_text_rater_name"
-                    style="@style/Description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Kis Gazsi"
-                    android:textAlignment="textStart" />
+            <com.norbert.koller.shared.NameContentView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                custom:detail="1. és 2. óra."
+                custom:icon="@drawable/clock"
+                custom:name="@string/lesson" />
 
-                <TextView
-                    android:id="@+id/room_order_fragment_text_date"
-                    style="@style/Description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Október 11."
-                    android:textAlignment="textEnd" />
+            <com.norbert.koller.shared.NameContentView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                custom:detail="F6"
+                custom:icon="@drawable/room"
+                custom:name="@string/classroom" />
 
-            </LinearLayout>
+            <com.norbert.koller.shared.NameContentView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                custom:detail="11.B"
+                custom:icon="@drawable/groups"
+                custom:name="@string/class_" />
 
+            <com.norbert.koller.shared.NameContentView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                custom:name="@string/teacher"
+                custom:detail="Kis Gazsi"
+                custom:icon="@drawable/user">
+
+            </com.norbert.koller.shared.NameContentView>
         </LinearLayout>
     </LinearLayout>
 

@@ -16,6 +16,7 @@
     <dimen name="default_card_elevation">1dp</dimen>
     <dimen name="card_margin">0.5dp</dimen>
     <dimen name="card_full_margin">1dp</dimen>
+    <dimen name="text_drawable_size">15dp</dimen>
 
     <!-- Texts -->
     <dimen name="text_main_title_expanded">30sp</dimen>

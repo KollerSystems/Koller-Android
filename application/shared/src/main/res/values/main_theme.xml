@@ -189,6 +189,7 @@
     <style name="chipDropdownButtonFilterStyle" parent="@style/chipButtonFilterStyle">
         <item name="closeIcon">@drawable/arrow_drop</item>
         <item name="closeIconEnabled">true</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
     <style name="chipButtonTextStyle" parent="@style/Description">

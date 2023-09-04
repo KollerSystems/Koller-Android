@@ -35,14 +35,14 @@
     <attr name="colorBadInverse" format="reference|color" />
     <attr name="colorWorstInverse" format="reference|color" />
 
-
     <attr name="text" format="string" />
+    <attr name="icon" format="reference" />
 
     <declare-styleable name="simpleCardButton">
         <attr name="text"/>
         <attr name="description" format="string" />
         <attr name="badge" format="integer" />
-        <attr name="icon" format="reference" />
+        <attr name="icon" />
     </declare-styleable>
 
     <declare-styleable name="tipView">
@@ -52,6 +52,12 @@
     <declare-styleable name="eventPoint">
         <attr name="text"/>
         <attr name="time" format="string" />
+    </declare-styleable>
+
+    <declare-styleable name="nameContentView">
+        <attr name="name" format="string" />
+        <attr name="detail" format="string" />
+        <attr name="icon" />
     </declare-styleable>
 
 

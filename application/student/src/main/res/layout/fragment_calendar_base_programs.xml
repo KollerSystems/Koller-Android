@@ -123,8 +123,17 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:checkable="false"
                     android:text="@string/state"
+                    app:closeIconEnabled="true" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_length"
+                    style="@style/chipDropdownButtonFilterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:text="@string/length"
                     app:closeIconEnabled="true" />
 
                 <com.google.android.material.chip.Chip
@@ -132,7 +141,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:checkable="false"
                     android:text="@string/teacher"
                     app:closeIconEnabled="true" />
 
@@ -141,7 +150,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:clickable="false"
+                    android:checkable="false"
                     android:text="@string/date"
                     app:closeIconEnabled="true" />
 

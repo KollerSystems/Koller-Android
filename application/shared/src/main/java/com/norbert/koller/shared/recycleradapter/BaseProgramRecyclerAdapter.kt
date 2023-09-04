@@ -3,6 +3,7 @@ package com.norbert.koller.shared.recycleradapter
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -11,8 +12,10 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.UserFragment
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.BaseProgramDetailsFragment
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseProgramData
+import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 
 class BaseProgramRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips) {
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
@@ -60,6 +63,9 @@ class BaseProgramRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip>
 
 
         holder.itemView.setOnClickListener {
+
+            val dialog = BaseProgramDetailsFragment(snapshot()[position] as BaseProgramData)
+            dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBottomSheet.TAG)
 
         }
     }
