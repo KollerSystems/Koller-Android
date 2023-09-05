@@ -37,26 +37,7 @@ class BaseProgramRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip>
         )
         holder.title.text = item.Topic
 
-        var description ="${item.TUID} • "
-
-
-
-            for (i in item.Lesson..item.Lesson){
-
-                val orderedNumber = MyApplication.orderSingleNumber(context, i.toString())
-
-                if(i < item.Lesson-1-1) {
-
-                    description += "${orderedNumber}, "
-                }
-                else if (i < item.Lesson-1){
-                    description += "${orderedNumber} ${context.getString(R.string.and)} "
-                }
-                else{
-                    description += "${orderedNumber} ${context.getString(R.string.lesson)}"
-                }
-            }
-
+        var description ="${item.TUID} • ${MyApplication.createClassesText(context, item.Lesson, item.Length)}"
 
         holder.description.text = description
 

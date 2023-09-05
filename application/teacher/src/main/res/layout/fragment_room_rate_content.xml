@@ -73,55 +73,87 @@
                         android:layout_weight="0"
                         android:text="Osztályzat" />
 
-                    <FrameLayout
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chip_group"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:clipChildren="false"
-                        android:clipToPadding="false">
+                        android:layout_height="match_parent"
+                        android:layout_weight="0"
+                        app:chipSpacingHorizontal="0dp"
+                        app:chipSpacingVertical="0dp"
+                        app:singleSelection="true">
 
                         <com.google.android.material.chip.Chip
-                            android:id="@+id/chip_final_rate_slider"
-                            android:layout_width="match_parent"
+                            android:id="@+id/chip_dislike"
+                            android:layout_width="96px"
                             android:layout_height="wrap_content"
+                            android:text="1"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Title"
+                            app:chipBackgroundColor="@color/color_worst_toggle"
                             app:chipEndPadding="0dp"
-                            app:chipIconVisible="true"
-                            app:chipMinTouchTargetSize="0dp"
-                            app:textEndPadding="2dp" />
+                            app:chipStartPadding="0dp"
+                            app:shapeAppearance="@style/overlayRoundedLeft"
+                            app:textEndPadding="0dp"
+                            app:textStartPadding="0dp" />
 
-                        <com.google.android.material.slider.Slider
-                            android:id="@+id/slider_final_rate"
-                            style="@style/Widget.AppCompat.SeekBar.Discrete"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_gravity="right|center_vertical"
-                            android:layout_marginTop="-20dp"
-                            android:layout_marginBottom="-20dp"
-                            android:alpha="0.25"
-                            android:stepSize="0.5"
-                            android:value="3"
-                            android:valueFrom="1"
-                            android:valueTo="5"
-                            app:labelBehavior="gone" />
-                    </FrameLayout>
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip_like"
+                            android:layout_width="96px"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Title"
+                            app:chipBackgroundColor="@color/color_bad_toggle"
+                            app:chipEndPadding="0dp"
+                            app:chipStartPadding="0dp"
+                            app:shapeAppearance="@null"
+                            app:textEndPadding="0dp"
+                            app:textStartPadding="0dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip8"
+                            android:layout_width="96px"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Title"
+                            app:chipBackgroundColor="@color/color_ok_toggle"
+                            app:chipEndPadding="0dp"
+                            app:chipStartPadding="0dp"
+                            app:shapeAppearance="@null"
+                            app:textEndPadding="0dp"
+                            app:textStartPadding="0dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip10"
+                            android:layout_width="96px"
+                            android:layout_height="wrap_content"
+                            android:text="4"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Title"
+                            app:chipBackgroundColor="@color/color_good_toggle"
+                            app:chipEndPadding="0dp"
+                            app:chipStartPadding="0dp"
+                            app:shapeAppearance="@null"
+                            app:textEndPadding="0dp"
+                            app:textStartPadding="0dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip13"
+                            android:layout_width="96px"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textAlignment="center"
+                            android:textAppearance="@style/Title"
+                            app:chipBackgroundColor="@color/color_best_toggle"
+                            app:chipEndPadding="0dp"
+                            app:chipStartPadding="0dp"
+                            app:shapeAppearance="@style/overlayRoundedRight"
+                            app:textEndPadding="0dp"
+                            app:textStartPadding="0dp" />
+                    </com.google.android.material.chip.ChipGroup>
+
                 </LinearLayout>
-
-                <TextView
-                    android:id="@+id/text_final_rate"
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/panel_padding"
-                    android:layout_weight="0"
-                    android:autoSizeMinTextSize="1sp"
-                    android:autoSizeTextType="uniform"
-                    android:background="@drawable/circle_outline"
-                    android:ellipsize="none"
-                    android:gravity="center"
-                    android:lines="1"
-                    android:padding="@dimen/spacing"
-                    android:text="@string/none"
-                    android:textAppearance="@style/MainTitleExpanded"
-                    android:textColor="?attr/colorOnSurface" />
 
             </LinearLayout>
 

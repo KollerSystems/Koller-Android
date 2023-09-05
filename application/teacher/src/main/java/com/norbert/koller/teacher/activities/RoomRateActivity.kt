@@ -3,10 +3,13 @@ package com.norbert.koller.teacher.activities
 import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
@@ -23,6 +26,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.Slider
 import com.google.android.material.tabs.TabLayout
@@ -148,105 +152,24 @@ class RoomRateViewPagerAdapter() : RecyclerView.Adapter<RoomRateViewPagerAdapter
         holder.recyclerView.adapter = RoomRateRecyclerAdapter(data)
 
 
-        var finalRateChanged : Boolean = false
-
         holder.lyContent.post {
+
+
+            for (i in 0 until holder.chipGroup.childCount) {
+                val child = holder.chipGroup.getChildAt(i) as Chip
+
+                Log.d("TEST", (holder.chipGroup.width).toString())
+                Log.d("TEST", (holder.chipGroup.width / holder.chipGroup.childCount).toString())
+                Log.d("TEST", (child.layoutParams.width).toString())
+                child.layoutParams = LayoutParams(holder.chipGroup.width / holder.chipGroup.childCount, holder.chipGroup.height)
+                Log.d("TEST", (child.layoutParams.width).toString())
+            }
+
             holder.lyContent.setPadding(0, 0, 0, holder.lyFooter.height)
-            holder.textFinalRate.layoutParams.width = holder.textFinalRate.height
-            holder.textFinalRate.requestLayout()
         }
 
 
 
-
-
-
-
-
-        fun setValue(){
-            val roundedToInt = holder.sliderFinalRate.value.roundToInt()
-            if(holder.sliderFinalRate.value != roundedToInt.toFloat()){
-                holder.textFinalRate.text = "${(holder.sliderFinalRate.value + 0.5f).roundToInt()},"
-            }
-            else{
-                holder.textFinalRate.text = roundedToInt.toString()
-            }
-
-            holder.chipFinalRateSlider.isChecked = true
-            holder.sliderFinalRate.alpha = 1f
-
-            holder.textFinalRate.background = AppCompatResources.getDrawable(holder.itemView.context, com.norbert.koller.shared.R.drawable.circle)
-
-            var textDrawable: Drawable = holder.textFinalRate.background
-            textDrawable = DrawableCompat.wrap(textDrawable)
-            var colorAttr = 0
-
-
-            when(roundedToInt){
-                1 ->{
-                    colorAttr = com.norbert.koller.shared.R.attr.colorWorstInverse
-                }
-                2 ->{
-                    colorAttr = com.norbert.koller.shared.R.attr.colorBadInverse
-                }
-                3 ->{
-                    colorAttr = com.norbert.koller.shared.R.attr.colorOkInverse
-                }
-                4 ->{
-                    colorAttr = com.norbert.koller.shared.R.attr.colorGoodInverse
-                }
-                5 ->{
-                    colorAttr = com.norbert.koller.shared.R.attr.colorBestInverse
-                }
-            }
-            val color = MyApplication.getAttributeColor(holder.itemView.context, colorAttr)
-            DrawableCompat.setTint(textDrawable, Color.argb(122, Color.red(color), Color.green(color), Color.blue(color)))
-            holder.textFinalRate.background = textDrawable
-        }
-
-        holder.sliderFinalRate.addOnChangeListener{slider, value, bool ->
-            setValue()
-            finalRateChanged = true
-        }
-
-
-        holder.sliderFinalRate.setOnTouchListener { view, motionEvent ->
-
-
-            when(motionEvent.action){
-                MotionEvent.ACTION_UP ->{
-
-                    holder.chipFinalRateSlider.post{
-
-                        if(!finalRateChanged) {
-
-                            if (!holder.chipFinalRateSlider.isChecked) {
-                                setValue()
-                            } else {
-                                holder.chipFinalRateSlider.isChecked = false
-                                holder.sliderFinalRate.alpha = 0.25f
-                                holder.textFinalRate.text = holder.itemView.context.getString(com.norbert.koller.shared.R.string.none)
-                                holder.textFinalRate.background = AppCompatResources.getDrawable(holder.itemView.context, com.norbert.koller.shared.R.drawable.circle_outline)
-                                holder.textFinalRate.backgroundTintList = null
-                            }
-
-
-                        }
-                        else{
-                            finalRateChanged = false
-                        }
-                    }
-
-
-
-
-
-                }
-            }
-
-
-            return@setOnTouchListener holder.sliderFinalRate.onTouchEvent(motionEvent)
-        }
     }
 
     override fun getItemCount(): Int {
@@ -261,9 +184,7 @@ class RoomRateViewPagerAdapter() : RecyclerView.Adapter<RoomRateViewPagerAdapter
         val lyFooter : LinearLayout = itemView.findViewById(R.id.ly_fixed_footer)
 
 
-        val chipFinalRateSlider : Chip = itemView.findViewById(R.id.chip_final_rate_slider)
-        val sliderFinalRate : Slider = itemView.findViewById(R.id.slider_final_rate)
-        val textFinalRate : TextView = itemView.findViewById(R.id.text_final_rate)
+        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
     }
 
 

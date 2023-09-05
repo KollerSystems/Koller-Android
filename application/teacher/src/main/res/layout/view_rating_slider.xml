@@ -32,36 +32,46 @@
             android:padding="@dimen/text_container_margin"
             android:text="Ágy" />
 
-        <FrameLayout
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group"
             android:layout_width="125dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="right"
-            android:layout_marginLeft="@dimen/spacing"
+            android:layout_height="wrap_content"
             android:layout_weight="0"
-            android:clipChildren="false"
-            android:clipToPadding="false">
+            app:chipSpacingHorizontal="0dp"
+            app:chipSpacingVertical="0dp"
+            app:singleSelection="true">
 
             <com.google.android.material.chip.Chip
-                android:id="@+id/chip_slider"
-                android:layout_width="match_parent"
+                android:id="@+id/chip_dislike"
+                android:layout_width="41.5dp"
                 android:layout_height="wrap_content"
-                app:chipEndPadding="0dp"
+                android:textAlignment="center"
+                app:chipIcon="@drawable/dislike_icon"
                 app:chipIconVisible="true"
-                app:chipMinTouchTargetSize="0dp" />
+                app:chipStartPadding="11dp"
+                app:shapeAppearance="@style/overlayRoundedLeft" />
 
-            <com.google.android.material.slider.Slider
-                android:id="@+id/slider"
-                style="@style/Widget.AppCompat.SeekBar.Discrete"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_gravity="right|center_vertical"
-                android:alpha="0.25"
-                android:stepSize="1"
-                android:value="3"
-                android:valueFrom="1"
-                android:valueTo="5"
-                app:labelBehavior="floating" />
-        </FrameLayout>
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_middlelike"
+                android:layout_width="41.5dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:chipIcon="@drawable/middlelike_icon"
+                app:chipIconVisible="true"
+                app:chipStartPadding="11dp"
+                app:shapeAppearance="@null" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_like"
+                android:layout_width="41.5dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                app:chipIcon="@drawable/like_icon"
+                app:chipIconVisible="true"
+                app:chipStartPadding="11dp"
+                app:shapeAppearance="@style/overlayRoundedRight" />
+        </com.google.android.material.chip.ChipGroup>
+
     </LinearLayout>
 
 </com.google.android.material.card.MaterialCardView>

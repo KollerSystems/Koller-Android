@@ -56,7 +56,7 @@ class CalendarBaseProgramsFragment : Fragment() {
             val dialog = ItemListDialogFragment()
             dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
 
-            val lessonLocalName : String = requireContext().getString(Rs.string.lesson)
+            val lessonLocalName : String = requireContext().getString(Rs.string.lesson).lowercase()
 
             dialog.list = arrayListOf(
                 ListItem(

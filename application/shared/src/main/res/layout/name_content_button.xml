@@ -3,13 +3,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
 
     android:layout_height="wrap_content"
 
-    android:orientation="horizontal"
-
-    android:padding="@dimen/text_container_margin">
+    android:layout_marginRight="-7dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
 
 
     <TextView
@@ -26,21 +29,18 @@
 
         android:drawablePadding="@dimen/spacing"
 
+        android:padding="@dimen/text_container_margin"
         android:text="@string/date" />
 
 
-    <TextView
-
-        android:id="@+id/text_content"
-
+    <Button
+        android:id="@+id/button_content"
+        style="@style/textButton"
         android:layout_width="wrap_content"
-
         android:layout_height="wrap_content"
-
+        android:layout_gravity="center_vertical"
         android:layout_weight="0"
-
         android:text="2023. Július 4."
-
-        android:textAlignment="textEnd" />
+        android:textAppearance="@style/Normal" />
 
 </LinearLayout>

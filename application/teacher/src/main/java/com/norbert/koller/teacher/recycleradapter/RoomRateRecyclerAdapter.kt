@@ -65,49 +65,6 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
                 setupRatingView(holder, position)
 
 
-                fun selectSliderChip(){
-
-                    holder.chipSlider.isChecked = true
-                    holder.slider.alpha = 1f
-                }
-
-                holder.slider.addOnChangeListener{slider, value, bool ->
-                    selectSliderChip()
-                    (roomOrderConditionsData[position] as RoomOrderConditionsInt).value = holder.slider.value.toInt()
-                    (roomOrderConditionsData[position] as RoomOrderConditionsInt).changed = true
-                }
-
-
-                holder.slider.setOnTouchListener { view, motionEvent ->
-
-
-                    when (motionEvent.action) {
-                        MotionEvent.ACTION_UP -> {
-
-                            holder.slider.post {
-                                if (!(roomOrderConditionsData[position] as RoomOrderConditionsInt).changed) {
-
-                                    if (!holder.chipSlider.isChecked) {
-                                        selectSliderChip()
-                                    } else {
-                                        holder.chipSlider.isChecked = false
-                                        holder.slider.alpha = 0.25f
-                                    }
-
-                                } else {
-                                    (roomOrderConditionsData[position] as RoomOrderConditionsInt).changed = false
-                                }
-                            }
-                        }
-                    }
-
-
-
-
-
-                    return@setOnTouchListener holder.slider.onTouchEvent(motionEvent)
-                }
-
             }
         }
 
@@ -163,13 +120,13 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
 
     class RoomOrderConditionsIntViewHolder(itemView: View) : RoomOrderConditionsBaseViewHolder(itemView)
     {
-        val chipSlider : Chip = itemView.findViewById(R.id.chip_slider)
-        val slider : Slider = itemView.findViewById(R.id.slider)
+        val chipDislike : Chip = itemView.findViewById(R.id.chip_dislike)
+        val chipMiddlelike : Chip = itemView.findViewById(R.id.chip_middlelike)
+        val chipLike : Chip = itemView.findViewById(R.id.chip_like)
     }
 
     class RoomOrderConditionsBooleanViewHolder(itemView: View) : RoomOrderConditionsBaseViewHolder(itemView)
     {
-        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
         val chipYes : Chip = itemView.findViewById(R.id.chip_yes)
         val chipNo : Chip = itemView.findViewById(R.id.chip_no)
     }
@@ -178,6 +135,7 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
 
     abstract class RoomOrderConditionsBaseViewHolder(itemView: View) : ViewHolder(itemView)
     {
+        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
         val icon : ImageView = itemView.findViewById(R.id.image_icon)
         val title : TextView = itemView.findViewById(R.id.text_title)
     }

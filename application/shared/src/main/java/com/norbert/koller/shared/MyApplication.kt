@@ -533,6 +533,29 @@ open class MyApplication : Application() {
                 backgroundCard.alpha = verticalOffset / collapsedSize
             }
         }
+
+        fun createClassesText(context: Context, lesson : Int, length : Int) : String{
+
+            var description = ""
+
+            for (i in lesson..<lesson+length){
+
+                val orderedNumber = MyApplication.orderSingleNumber(context, (i + 1).toString())
+
+                if(i < length-1-1) {
+
+                    description += "${orderedNumber}, "
+                }
+                else if (i < length-1){
+                    description += "${orderedNumber} ${context.getString(R.string.and)} "
+                }
+                else{
+                    description += "${orderedNumber} ${ context.getString(R.string.lesson).lowercase()}"
+                }
+            }
+
+            return description
+        }
     }
 
 
