@@ -1,9 +1,11 @@
 package com.norbert.koller.shared.recycleradapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
@@ -13,6 +15,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.EventsData
 import com.norbert.koller.shared.fragments.bottomsheet.NewFragment
 import com.google.android.material.chip.Chip
+import com.norbert.koller.shared.activities.MainActivity
 
 class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>()
 {
@@ -23,7 +26,9 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
 
     override fun onBindViewHolder(holder: EventsViewHolder, position: Int) {
 
-        MyApplication.roundRecyclerItemsVertically(holder.itemView.context, holder.itemView, position, eventsList.size)
+        val mainActivity : MainActivity = holder.itemView.context as MainActivity
+
+        MyApplication.roundRecyclerItemsVertically(holder.itemView, position, eventsList.size)
 
         val currentItem = eventsList[position]
         holder.title.text = currentItem.title
@@ -36,6 +41,10 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
         val isAnyChildVisible = holder.chipPlace.visibility == VISIBLE || holder.chipDateTime.visibility == VISIBLE || holder.chipBPR.visibility == VISIBLE
 
         (holder.chipPlace.parent as ViewGroup).visibility = MyApplication.visibilityOn(isAnyChildVisible)
+
+        holder.posterUser.setOnClickListener{
+            mainActivity.changeFragment(MyApplication.userFragment(currentItem.UID))
+        }
 
     }
 
@@ -52,6 +61,8 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
         val chipPlace : Chip = itemView.findViewById(R.id.view_new_chip_place)
         val chipDateTime : Chip = itemView.findViewById(R.id.view_new_chip_date_time)
         val chipBPR : Chip = itemView.findViewById(R.id.view_new_chip_base_program_replacement)
+
+        val posterUser : FrameLayout = itemView.findViewById(R.id.frame_layout_user)
 
         init {
             itemView.setOnClickListener {

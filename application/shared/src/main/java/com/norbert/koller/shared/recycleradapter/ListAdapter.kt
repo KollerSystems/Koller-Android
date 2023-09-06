@@ -28,7 +28,7 @@ class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem 
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
-        MyApplication.roundRecyclerItemsVertically(holder.itemView.context, holder.itemView, position, itemCount)
+        MyApplication.roundRecyclerItemsVertically(holder.itemView, position, itemCount)
 
         val currentItem = listItem[position]
         holder.title.text = currentItem.title

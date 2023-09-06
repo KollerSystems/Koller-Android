@@ -27,7 +27,7 @@ class DevRecyclerAdapter (private var devList : ArrayList<DevData>) : RecyclerVi
     override fun onBindViewHolder(holder: DevViewHolder, position: Int) {
         val currentItem = devList[position]
 
-        MyApplication.roundRecyclerItemsHorizontallyWithHeaderImages(holder.itemView.context, holder.itemView, holder.image, position, devList.size)
+        MyApplication.roundRecyclerItemsHorizontallyWithHeaderImages(holder.itemView, holder.image, position, devList.size)
 
         holder.name.text = currentItem.name
         holder.description.text = currentItem.description

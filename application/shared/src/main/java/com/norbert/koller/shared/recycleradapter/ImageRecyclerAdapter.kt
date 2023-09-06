@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.stfalcon.imageviewer.StfalconImageViewer
 import java.util.ArrayList
@@ -19,6 +20,9 @@ class ImageRecyclerAdapter (private val imageList : ArrayList<Drawable>, val con
     }
 
     override fun onBindViewHolder(holder: ImageViewHolder, position: Int) {
+
+        MyApplication.roundRecyclerItemsHorizontally(holder.itemView, holder.image, position, itemCount)
+
         val currentItem = imageList[position]
         holder.image.setImageDrawable(currentItem)
 

@@ -146,21 +146,14 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <TextView
+                    style="@style/CategoryCardName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/CategoryCardName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginLeft="@dimen/panel_padding"
-                        android:layout_weight="1"
-                        android:text="@string/today" />
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@null"
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_weight="1"
+                    android:text="@string/today" />
 
                 <androidx.cardview.widget.CardView
                     style="@style/MainCard"
@@ -184,22 +177,15 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <TextView
+                    android:id="@id/home_text_unread"
+                    style="@style/CategoryCardName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@id/home_text_unread"
-                        style="@style/CategoryCardName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginLeft="@dimen/panel_padding"
-                        android:layout_weight="1"
-                        android:text="@string/unread" />
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@null"
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_weight="1"
+                    android:text="@string/unread" />
 
                 <androidx.cardview.widget.CardView
                     style="@style/MainCard"
@@ -223,44 +209,14 @@
 
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <TextView
+                    style="@style/CategoryCardName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/CategoryCardName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginLeft="@dimen/panel_padding"
-                        android:layout_weight="1"
-                        android:text="@string/posts" />
-
-                    <Button
-                        android:id="@id/home_button_show_all_posts"
-                        style="@style/Widget.Material3.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginRight="@dimen/panel_padding"
-                        android:layout_weight="0"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:layoutDirection="rtl"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
-                        android:paddingVertical="0dp"
-                        android:paddingLeft="0dp"
-                        android:paddingTop="0dp"
-                        android:paddingRight="@dimen/text_container_margin"
-                        android:paddingBottom="0dp"
-                        android:text="@string/all"
-                        android:textAlignment="textEnd"
-                        android:textAppearance="@style/Normal"
-                        app:icon="@drawable/navigate_right_thick" />
-                </LinearLayout>
+                    android:layout_marginHorizontal="@null"
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_weight="1"
+                    android:text="@string/posts" />
 
                 <androidx.cardview.widget.CardView
                     style="@style/MainCard"

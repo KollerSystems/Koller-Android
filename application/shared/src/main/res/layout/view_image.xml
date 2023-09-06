@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
     android:layout_height="match_parent"
-    android:layout_margin="@dimen/text_container_margin"
-    android:clickable="true">
+    android:clickable="true"
+    app:cardCornerRadius="@null">
 
-    <ImageView
+    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image_image"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"

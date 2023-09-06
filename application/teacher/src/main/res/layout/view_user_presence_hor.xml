@@ -53,42 +53,75 @@
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
-            <TextView
-                android:id="@+id/textView10"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                app:drawableLeftCompat="@drawable/out"
-                android:drawablePadding="@dimen/text_container_margin"
-                android:gravity="center_vertical"
-                android:padding="@dimen/text_container_margin"
-                tools:text="Kint" />
+                android:orientation="vertical"
+                android:padding="@dimen/text_container_margin">
 
-            <com.google.android.material.chip.ChipGroup
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawablePadding="@dimen/text_container_margin"
+                    android:gravity="center_vertical"
+                    app:drawableLeftCompat="@drawable/out"
+                    tools:text="Kint" />
+
+                <TextView
+                    android:id="@+id/textView27"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:drawablePadding="@dimen/text_container_margin"
+                    android:gravity="center_vertical"
+                    android:textAppearance="@style/Description"
+                    tools:text="Engedéllyel" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:chipSpacingHorizontal="0dp"
-                app:chipSpacingVertical="0dp"
-                app:selectionRequired="true"
-                app:singleSelection="true">
+                android:orientation="vertical">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_none"
+                <TextView
+                    android:id="@+id/textView16"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:text="@string/presence" />
+
+                <com.google.android.material.chip.ChipGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/not_present"
-                    app:chipMinTouchTargetSize="0dp"
-                    app:shapeAppearance="@style/overlayRoundedLeft" />
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    app:chipSpacingHorizontal="0dp"
+                    app:chipSpacingVertical="0dp"
+                    app:singleSelection="true">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_yes"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/present"
-                    app:chipMinTouchTargetSize="0dp"
-                    app:shapeAppearance="@style/overlayRoundedRight" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_none"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipIcon="@drawable/close"
+                        app:chipIconEnabled="true"
+                        app:iconStartPadding="12dp"
+                        app:shapeAppearance="@style/overlayRoundedLeft" />
 
-            </com.google.android.material.chip.ChipGroup>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_yes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:chipIcon="@drawable/check"
+                        app:chipIconEnabled="true"
+                        app:chipMinTouchTargetSize="0dp"
+                        app:iconStartPadding="12dp"
+                        app:shapeAppearance="@style/overlayRoundedRight" />
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

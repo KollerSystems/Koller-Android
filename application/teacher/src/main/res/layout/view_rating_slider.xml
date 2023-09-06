@@ -46,7 +46,7 @@
                 android:layout_width="41.5dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                app:chipIcon="@drawable/dislike_icon"
+                app:chipIcon="@drawable/dead_icon"
                 app:chipIconVisible="true"
                 app:chipStartPadding="11dp"
                 app:shapeAppearance="@style/overlayRoundedLeft" />
@@ -56,7 +56,7 @@
                 android:layout_width="41.5dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                app:chipIcon="@drawable/middlelike_icon"
+                app:chipIcon="@drawable/neutural_icon"
                 app:chipIconVisible="true"
                 app:chipStartPadding="11dp"
                 app:shapeAppearance="@null" />
@@ -66,7 +66,7 @@
                 android:layout_width="41.5dp"
                 android:layout_height="wrap_content"
                 android:textAlignment="center"
-                app:chipIcon="@drawable/like_icon"
+                app:chipIcon="@drawable/happy_icon"
                 app:chipIconVisible="true"
                 app:chipStartPadding="11dp"
                 app:shapeAppearance="@style/overlayRoundedRight" />

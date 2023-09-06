@@ -112,6 +112,32 @@
                 android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="5dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/spacing"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button3"
+                    style="@style/button_tonal_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szoba hozzáadása"
+                    app:icon="@drawable/add"
+                    app:iconGravity="textStart" />
+
+                <Button
+                    android:id="@+id/button4"
+                    style="@style/icon_button_outline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing"
+                    app:icon="@drawable/more_thick" />
+            </LinearLayout>
+
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

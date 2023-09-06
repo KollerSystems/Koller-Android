@@ -60,6 +60,11 @@
     <style name="button_tonal" parent="@style/button">
         <item name="android:backgroundTint">?attr/colorSecondaryContainer</item>
         <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
+        <item name="iconTint">?attr/colorOnSecondaryContainer</item>
+    </style>
+
+    <style name="button_tonal_icon" parent="@style/button_tonal">
+        <item name="android:paddingLeft">16dp</item>
     </style>
 
     <style name="button_outline" parent="@style/button">

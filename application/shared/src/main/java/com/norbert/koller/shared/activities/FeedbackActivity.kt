@@ -76,7 +76,7 @@ class FeedbackActivity : AppCompatActivity() {
             TodayData(getDrawable(R.drawable.block), "Szar a WC", getString(R.string.not_a_bug) + " • Ezt kérlek a kollégimnak jelezd.")
             )
 
-        recyclerViewAlready.adapter = TodayRecyclerAdapter(arrayListAlready, this)
+        recyclerViewAlready.adapter = TodayRecyclerAdapter(arrayListAlready)
 
 
         tilTitle.editText!!.addTextChangedListener(object : TextWatcher {

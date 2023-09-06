@@ -164,65 +164,59 @@
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <TextView
+                    style="@style/CategoryCardName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/CategoryCardName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginLeft="@dimen/panel_padding"
-                        android:layout_weight="1"
-                        android:text="@string/today" />
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@null"
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_weight="1"
+                    android:text="@string/today" />
 
                 <androidx.cardview.widget.CardView
                     style="@style/MainCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
 
-                        <androidx.recyclerview.widget.RecyclerView
-                            android:id="@id/todayRecyclerView"
-                            style="@style/MainCardLayout"
+
+                        <RelativeLayout
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:isScrollContainer="false"
-                            android:nestedScrollingEnabled="false"
-                            tools:itemCount="2"
-                            tools:listitem="@layout/notification_panel" />
-                    </RelativeLayout>
+                            android:layout_height="wrap_content">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@id/todayRecyclerView"
+                                style="@style/MainCardLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:isScrollContainer="false"
+                                android:nestedScrollingEnabled="false"
+                                tools:itemCount="2"
+                                tools:listitem="@layout/notification_panel" />
+                        </RelativeLayout>
+
 
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <TextView
+                    android:id="@id/home_text_unread"
+                    style="@style/CategoryCardName"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:id="@id/home_text_unread"
-                        style="@style/CategoryCardName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginLeft="@dimen/panel_padding"
-                        android:layout_weight="1"
-                        android:text="@string/unread" />
-
-                </LinearLayout>
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@null"
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_weight="1"
+                    android:text="@string/unread" />
 
                 <androidx.cardview.widget.CardView
                     style="@style/MainCard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
@@ -239,46 +233,54 @@
                             tools:listitem="@layout/notification_panel" />
                     </RelativeLayout>
 
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1.5dp"
+                            android:clickable="true"
+                            android:outlineProvider="none"
+                            app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                            app:cardCornerRadius="0dp"
+                            tools:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/panel_padding">
+
+                                <TextView
+                                    android:id="@id/simple_list_text_title"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="@dimen/text_container_margin"
+                                    android:text="@string/all" />
+
+                                <ImageView
+                                    android:id="@id/simple_list_image_icon"
+                                    style="@style/SmallIcon"
+                                    android:layout_marginLeft="@dimen/spacing"
+                                    android:layout_weight="0"
+                                    android:alpha="0.666"
+                                    app:srcCompat="@drawable/navigate_right_thick" />
+
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
+                <TextView
+                    style="@style/CategoryCardName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        style="@style/CategoryCardName"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginLeft="@dimen/panel_padding"
-                        android:layout_weight="1"
-                        android:text="@string/posts" />
-
-                    <Button
-                        android:id="@id/home_button_show_all_posts"
-                        style="@style/Widget.Material3.Button.TextButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@null"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginRight="@dimen/panel_padding"
-                        android:layout_weight="0"
-                        android:insetTop="0dp"
-                        android:insetBottom="0dp"
-                        android:layoutDirection="rtl"
-                        android:minWidth="0dp"
-                        android:minHeight="0dp"
-                        android:paddingVertical="0dp"
-                        android:paddingLeft="0dp"
-                        android:paddingTop="0dp"
-                        android:paddingRight="@dimen/text_container_margin"
-                        android:paddingBottom="0dp"
-                        android:text="@string/all"
-                        android:textAlignment="textEnd"
-                        android:textAppearance="@style/Normal"
-                        app:icon="@drawable/navigate_right_thick" />
-                </LinearLayout>
+                    android:layout_marginHorizontal="@null"
+                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_weight="1"
+                    android:text="@string/posts" />
 
                 <androidx.cardview.widget.CardView
                     style="@style/MainCard"
@@ -296,7 +298,6 @@
                             android:layout_marginBottom="1.5dp"
                             android:clickable="true"
                             android:outlineProvider="none"
-                            android:visibility="gone"
                             app:cardBackgroundColor="?attr/colorPrimaryContainer"
                             app:cardCornerRadius="0dp"
                             tools:visibility="visible">
@@ -308,30 +309,25 @@
                                 android:orientation="horizontal"
                                 android:padding="@dimen/panel_padding">
 
-                                <LinearLayout
-                                    android:layout_width="0dp"
+                                <TextView
+                                    android:id="@+id/textView25"
+                                    android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/text_container_margin"
                                     android:layout_weight="1"
-                                    android:orientation="horizontal">
+                                    android:text="@string/drafts" />
 
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/drafts" />
-
-                                    <TextView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="@dimen/spacing"
-                                        android:text="@string/x_in_total"
-                                        android:textAppearance="@style/Description" />
-                                </LinearLayout>
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/text_container_margin"
+                                    android:text="@string/x_in_total"
+                                    android:textAppearance="@style/Description" />
 
                                 <ImageView
 
                                     style="@style/SmallIcon"
-                                    android:layout_marginLeft="@dimen/spacing"
+                                    android:layout_marginLeft="@dimen/text_container_margin"
                                     android:layout_weight="0"
                                     android:alpha="0.666"
                                     app:srcCompat="@drawable/navigate_right_thick" />
@@ -345,7 +341,6 @@
                             android:layout_marginBottom="1.5dp"
                             android:clickable="true"
                             android:outlineProvider="none"
-                            android:visibility="gone"
                             app:cardBackgroundColor="?attr/colorPrimaryContainer"
                             app:cardCornerRadius="0dp"
                             tools:visibility="visible">
@@ -357,32 +352,26 @@
                                 android:orientation="horizontal"
                                 android:padding="@dimen/panel_padding">
 
-                                <LinearLayout
+                                <TextView
+                                    android:id="@id/simple_list_text_title"
                                     android:layout_width="0dp"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/text_container_margin"
                                     android:layout_weight="1"
-                                    android:orientation="horizontal">
+                                    android:text="@string/scheduled" />
 
-                                    <TextView
-                                        android:id="@id/simple_list_text_title"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:text="@string/scheduled" />
-
-                                    <TextView
-                                        android:id="@id/simple_list_text_description"
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginLeft="@dimen/spacing"
-                                        android:text="@string/x_in_total"
-                                        android:textAppearance="@style/Description" />
-                                </LinearLayout>
+                                <TextView
+                                    android:id="@id/simple_list_text_description"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_margin="@dimen/text_container_margin"
+                                    android:text="@string/x_in_total"
+                                    android:textAppearance="@style/Description" />
 
                                 <ImageView
                                     android:id="@id/simple_list_image_icon"
                                     style="@style/SmallIcon"
-                                    android:layout_marginLeft="@dimen/spacing"
+                                    android:layout_marginLeft="@dimen/text_container_margin"
                                     android:layout_weight="0"
                                     android:alpha="0.666"
                                     app:srcCompat="@drawable/navigate_right_thick" />
@@ -405,6 +394,42 @@
                                 tools:listitem="@layout/news_panel" />
 
                         </RelativeLayout>
+
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="1.5dp"
+                            android:clickable="true"
+                            android:outlineProvider="none"
+                            app:cardBackgroundColor="?attr/colorSecondaryContainer"
+                            app:cardCornerRadius="0dp"
+                            tools:visibility="visible">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="@dimen/panel_padding">
+
+                                <TextView
+                                    android:id="@id/simple_list_text_title"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:padding="@dimen/text_container_margin"
+                                    android:text="@string/all" />
+
+                                <ImageView
+                                    android:id="@id/simple_list_image_icon"
+                                    style="@style/SmallIcon"
+                                    android:layout_marginLeft="@dimen/spacing"
+                                    android:layout_weight="0"
+                                    android:alpha="0.666"
+                                    app:srcCompat="@drawable/navigate_right_thick" />
+
+                            </LinearLayout>
+                        </com.google.android.material.card.MaterialCardView>
 
                     </LinearLayout>
 

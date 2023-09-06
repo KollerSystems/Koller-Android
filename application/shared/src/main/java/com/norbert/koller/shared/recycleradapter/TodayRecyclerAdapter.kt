@@ -25,7 +25,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 
 
-class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, private val context: Context) : RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>(){
+class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>(){
 
     private val item: Int = 0
     private val loading: Int = 1
@@ -41,7 +41,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
 
         val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
 
-        return TodayViewHolder(view, context)
+        return TodayViewHolder(view)
 
 
     }
@@ -50,7 +50,9 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
 
-        MyApplication.roundRecyclerItemsVertically(context, holder.itemView, holder.card_unread_overlay, position, todayList.size)
+        val context = holder.itemView.context
+
+        MyApplication.roundRecyclerItemsVertically(holder.itemView, holder.itemView, position, todayList.size)
 
         holder.card_unread_overlay.visibility = VISIBLE
         holder.iconLeft.setImageDrawable(currentItem.iconLeft)
@@ -179,7 +181,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>, privat
     }
 
 
-    class TodayViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView)
+    class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
         val title : TextView = itemView.findViewById(R.id.text_text)

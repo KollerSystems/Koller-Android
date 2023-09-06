@@ -80,15 +80,15 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
         val context = holder.itemView.context
         if (roomOrderConditionsData.size == 1) {
 
-            MyApplication.roundCard(context, holder.itemView)
+            MyApplication.roundCard(holder.itemView)
 
         }
         else if(position == 0){
 
-            MyApplication.roundCardTop(context, holder.itemView)
+            MyApplication.roundCardTop(holder.itemView)
         }
         else{
-            MyApplication.deroundCardVertical(context, holder.itemView)
+            MyApplication.deroundCardVertical(holder.itemView)
         }
 
 

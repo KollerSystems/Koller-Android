@@ -39,7 +39,7 @@ class NotificationsFragment : Fragment() {
             )
         )
 
-        notificsRecyclerView.recyclerView.adapter = TodayRecyclerAdapter(notificationDataArrayList, requireContext())
+        notificsRecyclerView.recyclerView.adapter = TodayRecyclerAdapter(notificationDataArrayList)
 
         return view
     }

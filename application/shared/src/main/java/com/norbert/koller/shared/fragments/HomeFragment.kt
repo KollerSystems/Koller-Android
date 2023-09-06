@@ -72,10 +72,10 @@ abstract class HomeFragment : Fragment() {
 
 
 
-        val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
+        /*val buttonShowAllPosts : Button = view.findViewById(R.id.home_button_show_all_posts)
         buttonShowAllPosts.setOnClickListener{
             (context as MainActivity).changeFragment(PostsFragment())
-        }
+        }*/
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)
         todayRecyclerView.layoutManager = LinearLayoutManager(context)
@@ -87,7 +87,7 @@ abstract class HomeFragment : Fragment() {
             )
         )
 
-        val adapter = TodayRecyclerAdapter(todayDataArrayList, requireContext())
+        val adapter = TodayRecyclerAdapter(todayDataArrayList)
         todayRecyclerView.adapter = adapter
 
 
@@ -100,10 +100,17 @@ abstract class HomeFragment : Fragment() {
 
         unreadDataArrayList = arrayListOf(
             TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
-                R.string.perfect), "5")
+                R.string.perfect), "5"),
+            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
+                R.string.perfect), "4"),
+            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
+            R.string.perfect), "5"),
+            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
+            R.string.perfect), "4"),
+            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(R.string.perfect), "4"),
         )
 
-        unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList, requireContext())
+        unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList)
 
         val fabRoot: View = view.findViewById(R.id.home_fab_root)
 
