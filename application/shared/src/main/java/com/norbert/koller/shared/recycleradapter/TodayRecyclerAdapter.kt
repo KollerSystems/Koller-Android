@@ -1,6 +1,6 @@
 package com.norbert.koller.shared.recycleradapter
-
-import android.content.Context
+import android.animation.AnimatorSet
+import android.animation.ValueAnimator
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -9,9 +9,13 @@ import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.animation.PathInterpolator
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.marginLeft
+import androidx.core.view.setMargins
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -27,14 +31,11 @@ import com.google.android.material.imageview.ShapeableImageView
 
 class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>(){
 
-    private val item: Int = 0
-    private val loading: Int = 1
 
-    private var isLoadingAdded: Boolean = false
-    private var retryPageLoad: Boolean = false
+    lateinit var recyclerView : RecyclerView
 
-    private var errorMsg: String? = "Szar"
-
+    var smallerSizeDp : Int = 0
+    var smallerMarginDp : Int = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
 
@@ -54,7 +55,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
 
         MyApplication.roundRecyclerItemsVertically(holder.itemView, holder.itemView, position, todayList.size)
 
-        holder.card_unread_overlay.visibility = VISIBLE
+        holder.cardUnreadOverlay.visibility = VISIBLE
         holder.iconLeft.setImageDrawable(currentItem.iconLeft)
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
@@ -70,24 +71,35 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         val text : String?
         val icon : Drawable?
 
-        holder.card_unread_overlay.translationX = 0f
-        holder.card_new_mark.translationX = 0f
+        holder.cardUnreadOverlay.translationX = 0f
+        holder.cardNewMark.translationX = 0f
 
         if(!currentItem.read){
-            holder.card_unread_overlay.cardElevation = MyApplication.convertDpToPixel(24, holder.itemView.context
+            holder.cardUnreadOverlay.cardElevation = MyApplication.convertDpToPixel(24, holder.itemView.context
             ).toFloat()
             holder.root.cardElevation = MyApplication.convertDpToPixel(1, holder.itemView.context).toFloat()
-            holder.card_new_mark.visibility = VISIBLE
+            holder.cardNewMark.visibility = VISIBLE
             text = context.getString(R.string.mark_as_read)
             icon = AppCompatResources.getDrawable(holder.itemView.context, R.drawable.eye)
+
+            holder.cardNewMark.layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+            val params = (holder.cardNewMark as ViewGroup).layoutParams as ViewGroup.MarginLayoutParams
+            params.setMargins(MyApplication.convertDpToPixel(5, holder.itemView.context))
+            holder.cardNewMark.layoutParams = params
+            holder.cardNewMark.getChildAt(0).alpha = 1f
+            
+            if(waitingDone){
+                waitToHideText(holder.absoluteAdapterPosition)
+            }
+
         }
         else{
-            holder.card_unread_overlay.cardElevation = MyApplication.convertDpToPixel(
+            holder.cardUnreadOverlay.cardElevation = MyApplication.convertDpToPixel(
                 -24,
                 holder.itemView.context
             ).toFloat()
             holder.root.cardElevation = MyApplication.convertDpToPixel(25, holder.itemView.context).toFloat()
-            holder.card_new_mark.visibility = INVISIBLE
+            holder.cardNewMark.visibility = INVISIBLE
             text = context.getString(R.string.mark_as_unread)
             icon = AppCompatResources.getDrawable(holder.itemView.context, R.drawable.eye_off)
         }
@@ -131,8 +143,111 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         return todayList.size
     }
 
+    fun changeSizeAnimation(view: ViewGroup, textView: View, newWidth: Int, newHeight: Int, newMargin : Int) {
+
+        val cubicInterpolator = PathInterpolator(0.65f, 0f, 0.35f, 1f)
+
+        val widthAnimator = ValueAnimator.ofInt(
+            view.width,
+            newWidth
+        )
+
+        widthAnimator.addUpdateListener { animation ->
+            val params = view.layoutParams
+            params.width = animation.animatedValue as Int
+            view.layoutParams = params
+        }
+
+        widthAnimator.interpolator = cubicInterpolator
+
+        val heightAnimator = ValueAnimator.ofInt(
+            view.height,
+            newHeight
+        )
+
+        heightAnimator.addUpdateListener { animation ->
+            val params = view.layoutParams
+            params.height = animation.animatedValue as Int
+            view.layoutParams = params
+        }
+
+        heightAnimator.interpolator = cubicInterpolator
+
+        val marginAnimator = ValueAnimator.ofInt(
+            view.marginLeft,
+            newMargin
+        )
+
+        marginAnimator.addUpdateListener { animation ->
+            val params = view.layoutParams as ViewGroup.MarginLayoutParams
+            params.setMargins(animation.animatedValue as Int)
+            view.layoutParams = params
+        }
+
+        marginAnimator.interpolator = cubicInterpolator
+
+        val alphaAnimator = ValueAnimator.ofFloat(
+            textView.alpha,
+            0f
+        )
+
+        alphaAnimator.addUpdateListener { animation ->
+            textView.alpha = animation.animatedValue as Float
+        }
+
+        alphaAnimator.interpolator = cubicInterpolator
+
+        val animatorSet = AnimatorSet()
+        animatorSet.playTogether(widthAnimator, heightAnimator, marginAnimator, alphaAnimator)
+
+        animatorSet.duration = 250
+
+        animatorSet.start()
+    }
+
+    var waitingDone : Boolean = false
+
+
+    fun waitToHideAllText(recyclerView : RecyclerView){
+
+
+        recyclerView.postDelayed({
+
+            waitingDone = true
+            for (i in 0 until recyclerView.childCount) {
+                val view: View? = recyclerView.getChildAt(i)
+                if (view != null) {
+                    val card : ViewGroup = view.findViewById(R.id.notification_card_new_mark)
+                    changeSizeAnimation(card, card.getChildAt(0), smallerSizeDp, smallerSizeDp, smallerMarginDp)
+                }
+            }
+
+        }, 1000*3)
+    }
+
+    fun waitToHideText(position: Int){
+
+
+        recyclerView.postDelayed({
+
+            val card : ViewGroup = recyclerView.getChildAt(position).findViewById(R.id.notification_card_new_mark)
+            changeSizeAnimation(card, card.getChildAt(0), smallerSizeDp, smallerSizeDp, smallerMarginDp)
+
+        }, 1000*3)
+    }
+
+
+
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+
+        this.recyclerView = recyclerView
+
         super.onAttachedToRecyclerView(recyclerView)
+
+        smallerSizeDp = MyApplication.convertDpToPixel(15,recyclerView.context)
+        smallerMarginDp = MyApplication.convertDpToPixel(10,recyclerView.context)
+
+        waitToHideAllText(recyclerView)
 
         var itemTouchHelper: ItemTouchHelper? = null
         val itemTouchCallback = object : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT) {
@@ -188,8 +303,10 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         val description : TextView = itemView.findViewById(R.id.text_description)
         val iconRight : TextView = itemView.findViewById(R.id.notification_icon_end)
         val root : MaterialCardView = itemView as MaterialCardView
-        val card_unread_overlay : MaterialCardView = itemView.findViewById(R.id.notification_card_unread_overlay)
-        val card_new_mark : MaterialCardView = itemView.findViewById(R.id.notification_card_new_mark)
+        val cardUnreadOverlay : MaterialCardView = itemView.findViewById(R.id.notification_card_unread_overlay)
+        val cardNewMark : MaterialCardView = itemView.findViewById(R.id.notification_card_new_mark)
+
+
     }
 
 }
