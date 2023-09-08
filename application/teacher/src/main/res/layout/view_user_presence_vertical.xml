@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <com.norbert.koller.shared.RoundedBadgeImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginBottom="@dimen/spacing" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAlignment="center"
+            android:textAppearance="@style/Title"
+            tools:text="Andrásosfi Norberto" />
+
+        <TextView
+            android:id="@+id/text_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            android:textAlignment="center"
+            android:textAppearance="@style/Description"
+            tools:text="210 • 1.B • F9" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/text_container_margin"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            app:drawableLeftCompat="@drawable/out"
+            tools:text="Kint" />
+
+        <TextView
+            android:id="@+id/textView27"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            android:drawablePadding="@dimen/text_container_margin"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textAppearance="@style/Description"
+            tools:text="Engedéllyel" />
+
+        <TextView
+            android:id="@+id/textView16"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            android:text="@string/presence"
+            android:textAlignment="center" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipSpacingHorizontal="0dp"
+            app:chipSpacingVertical="0dp"
+            app:singleSelection="true">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_none"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipIcon="@drawable/close"
+                app:chipIconEnabled="true"
+                app:iconStartPadding="12dp"
+                app:shapeAppearance="@style/overlayRoundedLeft" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_yes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipIcon="@drawable/check"
+                app:chipIconEnabled="true"
+                app:chipMinTouchTargetSize="0dp"
+                app:iconStartPadding="12dp"
+                app:shapeAppearance="@style/overlayRoundedRight" />
+
+        </com.google.android.material.chip.ChipGroup>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>
