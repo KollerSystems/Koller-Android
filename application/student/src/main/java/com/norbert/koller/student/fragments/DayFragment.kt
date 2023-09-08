@@ -31,7 +31,7 @@ class LessonsRecyclerAdapter (private val lessonList : ArrayList<FromTo>) : Recy
 
     override fun onBindViewHolder(holder: LessonsViewHolder, position: Int) {
         val currentItem = lessonList[position]
-        MyApplication.roundRecyclerItemsVertically(holder.itemView.context, holder.itemView, position, lessonList.size)
+        MyApplication.roundRecyclerItemsVertically(holder.itemView, position, lessonList.size)
         holder.index.text = MyApplication.orderSingleNumber(holder.itemView.context, (position+1).toString())
         val currentLessonTime = DefaultDayTimes.instance.lessons[position]
         holder.time.text = MyApplication.timeFromTo(currentLessonTime.from, currentLessonTime.to)

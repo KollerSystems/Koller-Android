@@ -72,7 +72,7 @@ abstract class RoomFragment(val RID : Int) : Fragment() {
                         buttonDesc.text = roomData.Group
 
                         buttonDesc.setOnClickListener{
-                            (context as MainActivity).changeFragment(UsersFragment())
+                            (context as MainActivity).changeFragment(MyApplication.usersFragment())
                         }
 
                         loadingOl.animate()

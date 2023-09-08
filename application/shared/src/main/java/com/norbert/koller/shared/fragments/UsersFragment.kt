@@ -24,7 +24,7 @@ import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class UsersFragment : Fragment() {
+open class UsersFragment : Fragment() {
 
     private lateinit var superCoolRecyclerView: SuperCoolRecyclerView
     private var usersDataArrayList: ArrayList<TodayData> = ArrayList()

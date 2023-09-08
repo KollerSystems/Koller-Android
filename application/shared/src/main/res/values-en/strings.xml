@@ -237,7 +237,7 @@
     <string name="edit">Edit</string>
     <string name="reports">Reports</string>
     <string name="port_exits_and_entrances_delays">Gate exits and entrances / delays</string>
-    <string name="presence">Presence</string>
+    <string name="presence">Presence:</string>
     <string name="to_do">To do</string>
     <string name="my_groups">My groups</string>
     <string name="days">Days</string>

@@ -22,7 +22,7 @@ import com.norbert.koller.shared.recycleradapter.RoomRecyclerAdapter
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class RoomsFragment : Fragment() {
+open class RoomsFragment : Fragment() {
 
     private lateinit var roomsRecyclerView: SuperCoolRecyclerView
 

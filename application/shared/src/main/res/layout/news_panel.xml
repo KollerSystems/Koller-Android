@@ -65,8 +65,8 @@
 
                 <com.norbert.koller.shared.RoundedBadgeImageView
                     android:id="@+id/roundedBadgeImageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
                     android:translationZ="1dp">
 
                 </com.norbert.koller.shared.RoundedBadgeImageView>

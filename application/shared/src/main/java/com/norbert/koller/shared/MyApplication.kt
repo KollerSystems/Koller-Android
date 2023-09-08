@@ -42,6 +42,8 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.fragments.RoomsFragment
+import com.norbert.koller.shared.fragments.UsersFragment
 import java.util.Date
 
 
@@ -72,6 +74,9 @@ open class MyApplication : Application() {
 
         lateinit var roomFragment: (RID : Int) -> RoomFragment
         lateinit var userFragment: (UID : Int) -> UserFragment
+
+        var roomsFragment: () -> RoomsFragment = { RoomsFragment() }
+        var usersFragment: () -> UsersFragment = { UsersFragment() }
 
         fun setToolbarToBottomViewColor(bottomView : View, window:Window){
             bottomView.post{

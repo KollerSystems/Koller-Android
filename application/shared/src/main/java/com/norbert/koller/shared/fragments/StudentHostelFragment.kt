@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 
@@ -24,11 +25,11 @@ open class StudentHostelFragment : Fragment() {
         val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
 
         roomsButton.setOnClickListener{
-            (context as MainActivity).changeFragment(RoomsFragment())
+            (context as MainActivity).changeFragment(MyApplication.roomsFragment())
         }
 
         usersButton.setOnClickListener{
-            (context as MainActivity).changeFragment(UsersFragment())
+            (context as MainActivity).changeFragment(MyApplication.usersFragment())
         }
 
         return view

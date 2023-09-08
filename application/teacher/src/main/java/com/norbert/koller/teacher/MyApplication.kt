@@ -7,8 +7,10 @@ import com.norbert.koller.teacher.activities.*
 import com.norbert.koller.teacher.fragments.CalendarFragment
 import com.norbert.koller.teacher.fragments.HomeFragment
 import com.norbert.koller.teacher.fragments.RoomFragment
+import com.norbert.koller.teacher.fragments.RoomsFragment
 import com.norbert.koller.teacher.fragments.StudentHostelFragment
 import com.norbert.koller.teacher.fragments.UserFragment
+import com.norbert.koller.teacher.fragments.UsersFragment
 import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBottomSheet
 
 class MyApplication : com.norbert.koller.shared.MyApplication() {
@@ -37,10 +39,10 @@ class MyApplication : com.norbert.koller.shared.MyApplication() {
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
         notificationFragment = { NotificationsFragment() }
-        roomFragment = {RID : Int ->
-            RoomFragment(RID) }
-        userFragment = {UID : Int ->
-            UserFragment(UID) }
+        roomFragment = {RID : Int -> RoomFragment(RID) }
+        userFragment = {UID : Int -> UserFragment(UID) }
+        roomsFragment = {RoomsFragment()}
+        usersFragment = {UsersFragment()}
     }
 
 
