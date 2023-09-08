@@ -3,6 +3,8 @@ import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -89,7 +91,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
             holder.cardNewMark.getChildAt(0).alpha = 1f
             
             if(waitingDone){
-                waitToHideText(holder.absoluteAdapterPosition)
+                waitToHideText(holder)
             }
 
         }
@@ -225,12 +227,13 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         }, 1000*3)
     }
 
-    fun waitToHideText(position: Int){
+    fun waitToHideText(holder: TodayViewHolder){
 
 
-        recyclerView.postDelayed({
+        holder.handler.removeCallbacksAndMessages(null)
+        holder.handler.postDelayed({
 
-            val card : ViewGroup = recyclerView.getChildAt(position).findViewById(R.id.notification_card_new_mark)
+            val card : ViewGroup = recyclerView.getChildAt(holder.absoluteAdapterPosition).findViewById(R.id.notification_card_new_mark)
             changeSizeAnimation(card, card.getChildAt(0), smallerSizeDp, smallerSizeDp, smallerMarginDp)
 
         }, 1000*3)
@@ -298,6 +301,8 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
 
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
+
+        val handler : Handler = Handler(Looper.myLooper()!!)
         val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
         val title : TextView = itemView.findViewById(R.id.text_text)
         val description : TextView = itemView.findViewById(R.id.text_description)
