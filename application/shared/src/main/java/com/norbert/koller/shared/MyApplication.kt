@@ -43,6 +43,8 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.fragments.RoomsFragment
+import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
+import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import java.util.Date
 
@@ -77,6 +79,9 @@ open class MyApplication : Application() {
 
         var roomsFragment: () -> RoomsFragment = { RoomsFragment() }
         var usersFragment: () -> UsersFragment = { UsersFragment() }
+
+        var userOutgoingTemporaryFragment: (UID : Int) -> UserOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
+        var userOutgoingPermanentFragment: (UID : Int) -> UserOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
 
         fun setToolbarToBottomViewColor(bottomView : View, window:Window){
             bottomView.post{
@@ -482,8 +487,10 @@ open class MyApplication : Application() {
 
 
         fun getStringResourceByName(context : Context, stringName: String): String? {
-            val resId = context.resources.getIdentifier(stringName, "string", context.packageName)
-            return context.getString(resId)
+
+                val resId = context.resources.getIdentifier(stringName, "string", context.packageName)
+                return context.getString(resId)
+
         }
 
         fun camelToSnakeCase(string : String) = string.fold(StringBuilder(string.length)) { acc, c ->

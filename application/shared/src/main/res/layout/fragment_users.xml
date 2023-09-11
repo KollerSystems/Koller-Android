@@ -94,6 +94,16 @@
                     app:closeIconEnabled="true" />
 
                 <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_gender4"
+                    style="@style/chipDropdownButtonFilterStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:tag="asc"
+                    android:text="@string/group"
+                    custom:closeIconEnabled="true" />
+
+                <com.google.android.material.chip.Chip
                     android:id="@+id/chip_gender3"
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"

@@ -87,6 +87,36 @@
                 android:layout_marginBottom="@dimen/text_container_margin"
                 android:background="?android:attr/listDivider" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <Button
+                    android:id="@+id/button_add_new"
+                    style="@style/button_tonal_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ideiglenes kimenő hozzáadása"
+                    app:icon="@drawable/add"
+                    app:iconGravity="textStart" />
+
+                <Button
+                    android:id="@+id/button4"
+                    style="@style/icon_button_outline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing"
+                    android:visibility="gone"
+                    app:icon="@drawable/more_thick"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 

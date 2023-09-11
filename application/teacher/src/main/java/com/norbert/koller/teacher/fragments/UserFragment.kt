@@ -7,6 +7,11 @@ import android.view.ViewGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.teacher.R
 import com.google.android.material.chip.Chip
+import com.norbert.koller.shared.SimpleCardButton
+import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
+import com.norbert.koller.shared.fragments.UserOutgoingsFragment
+import com.norbert.koller.shared.fragments.WelcomeBasicInformationsFragment
 
 class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment(UID) {
 
@@ -26,5 +31,27 @@ class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val scbOutgoings : SimpleCardButton = view.findViewById(R.id.scb_outgoings)
+
+        scbOutgoings.setOnClickListener {
+            (context as MainActivity).changeFragment(UserOutgoingsFragment())
+        }
+
+        val scbGate : SimpleCardButton = view.findViewById(R.id.scb_gate)
+
+        scbGate.setOnClickListener {
+            (context as MainActivity).changeFragment(UserExitsAndEntrancesFragment())
+        }
+
+        val scbEdit : SimpleCardButton = view.findViewById(R.id.scb_edit)
+
+        scbEdit.setOnClickListener {
+
+        }
     }
 }

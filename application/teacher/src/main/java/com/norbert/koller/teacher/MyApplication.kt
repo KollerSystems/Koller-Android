@@ -10,6 +10,8 @@ import com.norbert.koller.teacher.fragments.RoomFragment
 import com.norbert.koller.teacher.fragments.RoomsFragment
 import com.norbert.koller.teacher.fragments.StudentHostelFragment
 import com.norbert.koller.teacher.fragments.UserFragment
+import com.norbert.koller.teacher.fragments.UserOutgoingPermanentFragment
+import com.norbert.koller.teacher.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.teacher.fragments.UsersFragment
 import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBottomSheet
 
@@ -43,6 +45,9 @@ class MyApplication : com.norbert.koller.shared.MyApplication() {
         userFragment = {UID : Int -> UserFragment(UID) }
         roomsFragment = {RoomsFragment()}
         usersFragment = {UsersFragment()}
+
+        userOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
+        userOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
     }
 
 

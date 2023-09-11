@@ -104,12 +104,14 @@
                         custom:text="@string/presence" />
 
                     <com.norbert.koller.shared.SimpleCardButton
+                        android:id="@+id/scb_outgoings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/wave"
                         custom:text="@string/user_outgoings" />
 
                     <com.norbert.koller.shared.SimpleCardButton
+                        android:id="@+id/scb_gate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/gate"
@@ -141,6 +143,7 @@
                         custom:text="@string/reports" />
 
                     <com.norbert.koller.shared.SimpleCardButton
+                        android:id="@+id/scb_edit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/pencil"

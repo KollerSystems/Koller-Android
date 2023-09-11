@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
 
-class UserOutgoingPermanentFragment : Fragment() {
+open class UserOutgoingPermanentFragment : Fragment() {
 
 
 

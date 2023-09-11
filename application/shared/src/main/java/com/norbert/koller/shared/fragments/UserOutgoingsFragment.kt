@@ -14,6 +14,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.norbert.koller.shared.MyApplication
 
 class UserOutgoingsFragment : Fragment() {
     companion object {
@@ -66,10 +67,10 @@ class UserOutgoingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: 
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                UserOutgoingTemporaryFragment()
+                MyApplication.userOutgoingTemporaryFragment(1)
             }
             1->{
-                UserOutgoingPermanentFragment()
+                MyApplication.userOutgoingPermanentFragment(1)
             }
             else->{
                 Fragment()
