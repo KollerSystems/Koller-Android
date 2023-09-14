@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/text_container_margin"
-                    android:text="@string/presence" />
+                    android:text="@string/presence_colon" />
 
                 <com.google.android.material.chip.ChipGroup
                     android:layout_width="wrap_content"

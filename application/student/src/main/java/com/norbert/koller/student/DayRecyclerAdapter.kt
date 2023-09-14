@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.data.TodayData
 
 class DayRecyclerAdapter  (private val dayList : ArrayList<TodayData>) : RecyclerView.Adapter<DayRecyclerAdapter.TodayViewHolder>(){
@@ -15,6 +16,9 @@ class DayRecyclerAdapter  (private val dayList : ArrayList<TodayData>) : Recycle
 
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = dayList[position]
+        holder.mcardDutyTeachers.setOnClickListener{
+
+        }
 
     }
 
@@ -22,6 +26,10 @@ class DayRecyclerAdapter  (private val dayList : ArrayList<TodayData>) : Recycle
         return dayList.size
     }
 
-    class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+
+        val mcardDutyTeachers : MaterialCardView = itemView.findViewById(R.id.mcard_duty_teachers)
+
+    }
 
 }

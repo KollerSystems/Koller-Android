@@ -23,6 +23,14 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
     </style>
 
+    <style name="card_outline" parent="@style/SimpleCard">
+        <item name="android:outlineProvider">none</item>
+        <item name="cardBackgroundColor">@android:color/transparent</item>
+        <item name="strokeWidth">1dp</item>
+        <item name="contentPadding">@dimen/panel_padding</item>
+        <item name="android:layout_margin">@dimen/CardMargin</item>
+    </style>
+
     <style name="main_background" parent="@style/Widget.Material3.CardView.Filled">
         <item name="cardBackgroundColor">?attr/colorSurface</item>
         <item name="android:layout_height">match_parent</item>

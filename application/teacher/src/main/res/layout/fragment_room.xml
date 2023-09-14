@@ -56,7 +56,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/person_wave"
-                        custom:text="@string/presence">
+                        custom:text="@string/presence_colon">
 
                     </com.norbert.koller.shared.SimpleCardButton>
 
