@@ -177,7 +177,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/key"
-                        custom:text="Teakonyha kulcs" />
+                        custom:text="Kölcsön kulcsok" />
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
