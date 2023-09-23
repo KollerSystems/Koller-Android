@@ -5,15 +5,17 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
+import android.view.ViewGroup
 import android.widget.TextView
 import androidx.core.view.marginTop
+import androidx.core.view.size
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
 import kotlin.math.abs
 
 
@@ -80,16 +82,12 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
 
 
 
+                recyclerView.setOnScrollChangeListener { view: View, x: Int, y: Int, i2: Int, i3: Int ->
 
-                recyclerView.setOnScrollChangeListener { view: View, i: Int, i1: Int, i2: Int, i3: Int ->
-
-                    if (abs(i3) > 1)
-                        textHeader.visibility = VISIBLE
 
                     val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
                     val firstVisibleItemIndex: Int = layoutManager.findFirstVisibleItemPosition()
-                    val firstCompletelyVisibleIndex: Int =
-                        layoutManager.findFirstCompletelyVisibleItemPosition()
+                    val firstCompletelyVisibleIndex: Int = layoutManager.findFirstCompletelyVisibleItemPosition()
 
                     val pagingAdapter = (recyclerView.adapter as PagingDataAdapter<*, *>)
 
@@ -113,17 +111,25 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
 
                     if (firstCompletelyVisibleIndex != -1) {
                         val firstData = pagingAdapter.getItemViewType(firstCompletelyVisibleIndex)
-                        if (firstData == 1 && firstCompletelyVisibleIndex != 0) {
-                            val firstCompletelyVisibleItem: View = layoutManager.getChildAt(1)!!
-                            val top = firstCompletelyVisibleItem.top
-                            val y = top - firstCompletelyVisibleItem.marginTop
-                            val fullFirstViewHeight =
-                                firstCompletelyVisibleItem.height + firstCompletelyVisibleItem.marginTop * 2
-                            if (y < fullFirstViewHeight) {
-                                textHeader.translationY = (y - fullFirstViewHeight).toFloat()
+                        if(firstCompletelyVisibleIndex != 0) {
+                            textHeader.visibility = VISIBLE
+                            if (firstData == 1) {
+
+                                val firstCompletelyVisibleItem: View = layoutManager.getChildAt(1)!!
+                                val top = firstCompletelyVisibleItem.top
+                                val y = top - firstCompletelyVisibleItem.marginTop
+                                val fullFirstViewHeight =
+                                    firstCompletelyVisibleItem.height + firstCompletelyVisibleItem.marginTop * 2
+                                if (y < fullFirstViewHeight) {
+                                    textHeader.translationY = (y - fullFirstViewHeight).toFloat()
+                                }
+                            } else {
+                                textHeader.translationY = 0f
                             }
-                        } else {
+                        }
+                        else{
                             textHeader.translationY = 0f
+                            textHeader.visibility = GONE
                         }
                     }
                 }

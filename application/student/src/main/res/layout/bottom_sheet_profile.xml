@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -92,8 +93,10 @@
                             android:id="@id/profile_card_devices"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:visibility="gone"
                             custom:icon="@drawable/devices"
-                            custom:text="@string/devices" />
+                            custom:text="@string/devices"
+                            tools:visibility="visible" />
 
                         <com.norbert.koller.shared.SimpleCardButton
                             android:id="@id/profile_fbtn_settings"

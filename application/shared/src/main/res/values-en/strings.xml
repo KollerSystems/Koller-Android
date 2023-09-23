@@ -300,5 +300,6 @@
     <string name="lesson">Lesson</string>
     <string name="and">and</string>
     <string name="classroom">Classroom</string>
-    <string name="presence">Jelenlét</string>
+    <string name="presence">Presence</string>
+    <string name="role">Role</string>
 </resources>

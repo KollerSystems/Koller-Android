@@ -12,9 +12,11 @@ import com.google.android.material.card.MaterialCardView
 open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
 
     private var mText: String = ""
+    private var mRounded: Boolean = false
     private var mDesc: String = ""
     private var mBadge: Int = 0
     private var mIcon: Drawable? = null
+    private var mSwapDescriptionAndText = false
 
     private val textText: TextView
     private val textDesc: TextView
@@ -33,6 +35,8 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
             mDesc = typedArray.getString(R.styleable.simpleCardButton_description) ?: ""
             mBadge = typedArray.getInt(R.styleable.simpleCardButton_badge, 0)
             mIcon = typedArray.getDrawable(R.styleable.simpleCardButton_icon)
+            mSwapDescriptionAndText = typedArray.getBoolean(R.styleable.simpleCardButton_swap_description_and_text, false)
+            mRounded = typedArray.getBoolean(R.styleable.simpleCardButton_rounded, false)
         } finally {
             typedArray.recycle()
         }
@@ -44,7 +48,9 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
         textBadge = findViewById(R.id.badge)
         imageViewIcon = findViewById(R.id.iv_icon)
 
-        this.radius = 0f
+        if(!mRounded) {
+            this.radius = 0f
+        }
         this.outlineProvider = null
 
         val padding = resources.getDimensionPixelSize(R.dimen.panel_padding)
@@ -70,7 +76,15 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
         } else {
             textDesc.text = mDesc
             textDesc.visibility = View.VISIBLE
+
+            if(!mSwapDescriptionAndText){
+                textDesc.bringToFront()
+            }
+            else{
+                textText.bringToFront()
+            }
         }
+
     }
 
     open fun inflate(){

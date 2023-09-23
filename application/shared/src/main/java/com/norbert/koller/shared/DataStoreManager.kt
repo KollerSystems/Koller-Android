@@ -17,7 +17,7 @@ class DataStoreManager {
     companion object {
 
         val LOGIN_DATA_NAME = "login_data"
-        val REFRESH_TOKEN_NAME = "refresh_token"
+        val TOKENS = "tokens"
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = LOGIN_DATA_NAME)
 
         suspend fun save(context: Context, key: String, value: String) {

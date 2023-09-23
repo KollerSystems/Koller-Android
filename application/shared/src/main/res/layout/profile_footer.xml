@@ -79,8 +79,10 @@
                 android:id="@+id/profile_card_bug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 custom:icon="@drawable/bug"
-                custom:text="@string/bug_report" >
+                custom:text="@string/bug_report"
+                tools:visibility="visible">
 
             </com.norbert.koller.shared.SimpleCardButton>
 
@@ -88,8 +90,10 @@
                 android:id="@+id/profile_card_idea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 custom:icon="@drawable/lamp"
-                custom:text="@string/suggestion" />
+                custom:text="@string/suggestion"
+                tools:visibility="visible" />
 
             <com.norbert.koller.shared.SimpleCardButton
                 android:id="@+id/profile_fbtn_email"

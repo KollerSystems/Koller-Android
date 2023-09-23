@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CanteenData
 
@@ -17,6 +18,9 @@ class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) 
     }
 
     override fun onBindViewHolder(holder: CanteenViewHolder, position: Int) {
+
+
+
         val currentItem = canteenList[position]
         holder.category.text = currentItem.category
         holder.time.text = currentItem.time

@@ -39,6 +39,8 @@
     <attr name="icon" format="reference" />
 
     <declare-styleable name="simpleCardButton">
+        <attr name="swap_description_and_text" format="boolean"/>
+        <attr name="rounded" format="boolean"/>
         <attr name="text"/>
         <attr name="description" format="string" />
         <attr name="badge" format="integer" />

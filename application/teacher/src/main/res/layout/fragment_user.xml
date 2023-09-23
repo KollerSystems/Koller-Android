@@ -23,137 +23,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <androidx.constraintlayout.helper.widget.Flow
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_marginHorizontal="@dimen/CardMargin"
-                    android:layout_marginBottom="@dimen/spacing"
-                    android:orientation="horizontal"
-                    custom:constraint_referenced_ids="user_view_email,user_view_facebook,user_view_instagram,user_view_discord"
-                    custom:flow_horizontalAlign="center"
-                    custom:flow_horizontalGap="@dimen/spacing"
-                    custom:flow_horizontalStyle="packed"
-                    custom:flow_verticalGap="@dimen/spacing"
-                    custom:flow_wrapMode="chain"
-                    custom:layout_constraintBottom_toBottomOf="parent"
-                    custom:layout_constraintEnd_toEndOf="parent"
-                    custom:layout_constraintStart_toStartOf="parent"
-                    custom:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@id/user_view_email"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="@string/none"
-                    custom:chipIcon="@drawable/mail"
-                    custom:chipIconVisible="true"
-                    tools:layout_editor_absoluteX="38dp" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@id/user_view_facebook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="Kis Gazsi"
-                    android:visibility="gone"
-                    custom:chipIcon="@drawable/facebook"
-                    custom:chipIconVisible="true"
-                    tools:layout_editor_absoluteX="127dp"
-                    tools:visibility="visible" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@id/user_view_instagram"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="\@kisgazsi"
-                    android:visibility="gone"
-                    custom:chipIcon="@drawable/instagram"
-                    custom:chipIconVisible="true"
-                    tools:layout_editor_absoluteX="236dp"
-                    tools:visibility="visible" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@id/user_view_discord"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checkable="false"
-                    android:text="kisgazsi"
-                    android:visibility="gone"
-                    custom:chipIcon="@drawable/discord"
-                    custom:chipIconVisible="true"
-                    tools:layout_editor_absoluteX="38dp"
-                    tools:layout_editor_absoluteY="39dp"
-                    tools:visibility="visible" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <TextView
-                android:id="@+id/badge"
-                style="@style/CategoryCardName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Állapot" />
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/card_outline"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:clipToPadding="false">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:orientation="horizontal">
-
-                    <ImageView
-                        android:id="@+id/imageView2"
-                        android:layout_width="@dimen/panel_icon_smaller"
-                        android:layout_height="@dimen/panel_icon_smaller"
-                        android:layout_gravity="center_vertical"
-                        android:layout_marginRight="@dimen/text_container_margin"
-
-                        custom:srcCompat="@drawable/out" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:clipChildren="false"
-                        android:clipToPadding="false"
-                        android:orientation="vertical"
-                        android:padding="@dimen/CardMargin">
-
-                        <TextView
-                            android:id="@+id/textView10"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="@dimen/text_container_margin"
-                            android:gravity="center_vertical"
-                            android:text="Kint (16:34 óta)"
-                            android:textAppearance="@style/Normal" />
-
-                        <TextView
-                            android:id="@+id/textView36"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:ellipsize="end"
-                            android:gravity="center_vertical"
-                            android:text="Bevásárlás (16:30 - 19:15) • Kis Gazsi"
-                            android:textAppearance="@style/Description" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
             <TextView
                 android:id="@+id/badge2"
                 style="@style/CategoryCardName"
@@ -203,26 +72,41 @@
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:visibility="gone"
                         custom:icon="@drawable/calendar"
-                        custom:text="@string/calendar" />
+                        custom:text="@string/calendar"
+                        tools:visibility="visible" />
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:visibility="gone"
                         custom:icon="@drawable/award"
-                        custom:text="@string/commendations" />
+                        custom:text="@string/commendations"
+                        tools:visibility="visible" />
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:visibility="gone"
                         custom:icon="@drawable/report"
-                        custom:text="@string/warnings" />
+                        custom:text="@string/warnings"
+                        tools:visibility="visible" />
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:visibility="gone"
                         custom:icon="@drawable/flag"
-                        custom:text="@string/reports" />
+                        custom:text="@string/reports"
+                        tools:visibility="visible" />
+
+                    <com.norbert.koller.shared.SimpleCardButton
+                        android:id="@+id/scb_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        custom:icon="@drawable/data"
+                        custom:text="Személyes adatok" />
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:id="@+id/scb_edit"
@@ -240,6 +124,7 @@
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
+
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

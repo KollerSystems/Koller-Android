@@ -12,6 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
@@ -26,8 +27,6 @@ import retrofit2.Response
 abstract class UserFragment(val UID : Int) : Fragment() {
 
 
-    abstract fun showAndSetIfNotNull(card : View, string : String?)
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -40,10 +39,10 @@ abstract class UserFragment(val UID : Int) : Fragment() {
         val buttonClass : Button = view.findViewById(R.id.user_button_class)
         val imagePfp : ImageView = view.findViewById(R.id.user_image_pfp)
 
-        val discordCard : View = view.findViewById(R.id.user_view_discord)
-        val facebookCard : View = view.findViewById(R.id.user_view_facebook)
-        val instagramCard : View = view.findViewById(R.id.user_view_instagram)
-        val emailCard : View = view.findViewById(R.id.user_view_email)
+        val discordCard : Chip = view.findViewById(R.id.user_view_discord)
+        val facebookCard : Chip = view.findViewById(R.id.user_view_facebook)
+        val instagramCard : Chip = view.findViewById(R.id.user_view_instagram)
+        val emailCard : Chip = view.findViewById(R.id.user_view_email)
 
         val loadingOl : View = view.findViewById(R.id.loading_overlay)
         loadingOl.visibility = View.VISIBLE
@@ -62,7 +61,14 @@ abstract class UserFragment(val UID : Int) : Fragment() {
 
 
 
-
+        fun showAndSetIfNotNull(chip : Chip, string : String?){
+            if (!string.isNullOrBlank()) {
+                chip.visibility = View.VISIBLE
+                chip.setOnClickListener{
+                    MyApplication.setClipboard(requireContext(), string)
+                }
+            }
+        }
 
 
 
@@ -81,7 +87,7 @@ abstract class UserFragment(val UID : Int) : Fragment() {
 
                         buttonGroup.text = userData.Group
                         buttonRoom.text = userData.RID.toString()
-                        buttonClass.text = userData.Class
+                        buttonClass.text = userData.Class?.Class
 
                         nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
                             if (isVisible(textName)) {

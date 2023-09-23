@@ -20,7 +20,7 @@
         android:layout_width="20dp"
         android:layout_height="134dp"
         android:background="@drawable/connector"
-        android:translationY="160dp" />
+        android:translationY="165.5dp" />
 
     <LinearLayout
         style="@style/MainLayout"

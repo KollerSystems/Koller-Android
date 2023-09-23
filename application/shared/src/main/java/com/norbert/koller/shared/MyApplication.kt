@@ -42,6 +42,7 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
@@ -378,7 +379,7 @@ open class MyApplication : Application() {
         val simpleTimeFormat = SimpleDateFormat("HH:mm")
 
         fun createUserDescription(userData : UserData): String{
-            return userData.Group + " • " + userData.RID  + " • " + userData.Class
+            return userData.Group + " • " + userData.RID  + " • " + userData.Class?.Class
         }
 
         fun setupBottomSheet(dialog : Dialog){
@@ -519,12 +520,17 @@ open class MyApplication : Application() {
             return chip.tag.toString()
         }
 
-        fun createApiFilter(filter : String, vararg argumentsOfArguments : ArrayList<String>) : String{
+        fun createApiFilter(vararg filterGroups : FiltersData) : String{
             var finalString = ""
 
-            for (arguments in argumentsOfArguments) {
-                for (argument in arguments) {
-                    finalString += "${filter}:${argument},"
+            for (filterGroup in filterGroups) {
+
+                val filterName = filterGroup.filterName
+
+                for (argument in filterGroup.filterTo) {
+
+                        finalString += "${filterName}:${argument},"
+
                 }
             }
             finalString.dropLast(1)

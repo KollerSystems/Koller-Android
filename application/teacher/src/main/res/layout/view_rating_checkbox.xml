@@ -39,7 +39,7 @@
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="@dimen/spacing"
             android:layout_weight="0"
-            app:checkedChip="@id/chip_none"
+            app:checkedChip="@id/chip_yes"
             app:chipSpacingHorizontal="0dp"
             app:chipSpacingVertical="0dp"
             app:singleSelection="true">

@@ -145,8 +145,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/title"
                         android:textColor="?colorForeground066"
-                        android:textSize="@dimen/text_title_smaller"
-                        android:textStyle="bold" />
+                        android:textSize="@dimen/text_title_smaller" />
 
                     <TextView
                         android:id="@+id/home_text_small_lessons_description"

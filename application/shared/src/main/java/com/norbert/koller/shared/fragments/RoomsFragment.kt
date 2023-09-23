@@ -16,6 +16,7 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.RoomPagingSource
+import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.RoomRecyclerAdapter
@@ -64,7 +65,7 @@ open class RoomsFragment : Fragment() {
 
 
         val roomRecycleAdapter = RoomRecyclerAdapter(chipGroup, listOf(chipSide))
-        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter, MyApplication.getApiSortString(chipGroup) , MyApplication.createApiFilter("Gender", filterValues)) }
+        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter, MyApplication.getApiSortString(chipGroup) , MyApplication.createApiFilter(FiltersData("Gender", filterValues))) }
 
 
         roomsRecyclerView.recyclerView.apply {

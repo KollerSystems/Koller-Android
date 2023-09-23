@@ -19,11 +19,18 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
     private var lastFirstChar : String? = null
     private var lastListSize : Int = BaseViewModel.pageSize + 1
 
+
+
     open suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : List<BaseData>{
         throw Exception("Nem lett felülírva a getApiResponse függvény 💀")
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {
+
+        if(recyclerAdapter.beingEmptied) {
+            return LoadResult.Page(listOf(), null, null)
+        }
+
         if(lastListSize < BaseViewModel.pageSize) return LoadResult.Page(emptyList(), null,null)
 
         val offset = params.key ?: 0

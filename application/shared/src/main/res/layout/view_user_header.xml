@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
@@ -83,4 +86,107 @@
             android:text="@string/class_"
             android:textAppearance="@style/Normal" />
     </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_container_margin">
+
+        <androidx.constraintlayout.helper.widget.Flow
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginHorizontal="@dimen/CardMargin"
+            android:orientation="horizontal"
+            app:constraint_referenced_ids="user_view_email,user_view_phone,user_view_facebook,user_view_instagram,user_view_discord"
+            app:flow_horizontalAlign="center"
+            app:flow_horizontalGap="@dimen/spacing"
+            app:flow_horizontalStyle="packed"
+            app:flow_verticalGap="@dimen/spacing"
+            app:flow_wrapMode="chain"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            android:text="@string/none"
+            custom:chipIcon="@drawable/mail"
+            custom:chipIconVisible="true"
+            tools:layout_editor_absoluteX="38dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_view_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            android:text="+36 30 783 6989"
+            android:visibility="gone"
+            custom:chipIcon="@drawable/phone"
+            custom:chipIconVisible="true"
+            tools:layout_editor_absoluteX="38dp"
+            tools:visibility="visible" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            android:text="Kis Gazsi"
+            android:visibility="gone"
+            custom:chipIcon="@drawable/facebook"
+            custom:chipIconVisible="true"
+            tools:layout_editor_absoluteX="127dp"
+            tools:visibility="visible" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            android:text="\@kisgazsi"
+            android:visibility="gone"
+            custom:chipIcon="@drawable/instagram"
+            custom:chipIconVisible="true"
+            tools:layout_editor_absoluteX="236dp"
+            tools:visibility="visible" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_discord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="false"
+            android:text="kisgazsi"
+            android:visibility="gone"
+            custom:chipIcon="@drawable/discord"
+            custom:chipIconVisible="true"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="39dp"
+            tools:visibility="visible" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/badge2"
+        style="@style/CategoryCardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Állapot" />
+
+    <com.norbert.koller.shared.SimpleCardButton
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/CardMargin"
+        android:outlineProvider="background"
+        custom:cardBackgroundColor="@android:color/transparent"
+        custom:description="Bevásárlás (16:30 - 19:15) • Kis Gazsi"
+        custom:icon="@drawable/out"
+        custom:rounded="true"
+        custom:strokeWidth="1dp"
+        custom:text="Kint (16:34 óta)" />
+
 </LinearLayout>

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.widget.doBeforeTextChanged
 import androidx.core.widget.doOnTextChanged
+import androidx.datastore.dataStore
 import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -44,12 +45,19 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
         }
     }
 
+    public var beingEmptied : Boolean = false
+
     fun refreshFully(){
+
         lastMaxPosition = -1
-        recyclerView.scrollToPosition(0)
+
+        beingEmptied = true
         refresh()
 
-        state = STATE_NONE
+        recyclerView.scrollToPosition(0)
+
+        beingEmptied = false
+        refresh()
     }
 
 

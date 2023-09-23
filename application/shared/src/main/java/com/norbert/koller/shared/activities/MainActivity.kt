@@ -93,6 +93,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
+        appBar.setExpanded(false)
             if (fragments[selectedIndex].childFragmentManager.backStackEntryCount > 0) {
 
                 fragments[selectedIndex].childFragmentManager.popBackStack()
@@ -130,6 +131,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun changeToolbarTitleToCurrentFragmentName(fragment: Fragment){
         setToolbarTitle(MyApplication.getStringResourceByName(this@MainActivity, MyApplication.camelToSnakeCase(fragment.javaClass.simpleName.replace("Fragment", ""))), null)
+
     }
 
     fun changeFragment(fragment: Fragment){
@@ -202,6 +204,8 @@ abstract class MainActivity : AppCompatActivity() {
         appBar.addOnOffsetChangedListener { _, verticalOffset ->
             val collapsedSize: Float = -570f
             mainBackground.alpha = verticalOffset / collapsedSize
+
+
         }
 
         val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
@@ -274,6 +278,7 @@ abstract class MainActivity : AppCompatActivity() {
             toolbarDescription.text = description
         }
         toolbarTitle.text = title
+        toolbarTitle.requestLayout()
 
     }
 
@@ -338,6 +343,8 @@ abstract class MainActivity : AppCompatActivity() {
         else{
             showBackButton(true)
         }
+
+
     }
 
     private fun FragmentTransaction.selectFragment(selectedIndex: Int): FragmentTransaction {

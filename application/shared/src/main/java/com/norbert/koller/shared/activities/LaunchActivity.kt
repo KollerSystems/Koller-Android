@@ -41,7 +41,7 @@ class LaunchActivity : AppCompatActivity() {
         )
 
         lifecycleScope.launch {
-            val refreshToken = DataStoreManager.read(this@LaunchActivity, DataStoreManager.REFRESH_TOKEN_NAME)
+            val refreshToken = DataStoreManager.read(this@LaunchActivity, DataStoreManager.TOKENS)
             if(refreshToken == null){
                 MyApplication.openLogin.invoke(this@LaunchActivity)
                 finish()
@@ -59,7 +59,7 @@ class LaunchActivity : AppCompatActivity() {
                                 ApiLoginTokensData.instance = loginResponse.body()!!
 
                                 lifecycleScope.launch {
-                                    DataStoreManager.save(this@LaunchActivity, DataStoreManager.REFRESH_TOKEN_NAME, ApiLoginTokensData.instance.refresh_token)
+                                    DataStoreManager.save(this@LaunchActivity, DataStoreManager.TOKENS, ApiLoginTokensData.instance.refresh_token)
                                 }
 
 

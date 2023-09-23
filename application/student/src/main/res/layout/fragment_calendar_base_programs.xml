@@ -168,7 +168,7 @@
                 android:id="@+id/chip_group_sort"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:checkedChip="@id/asc"
+                app:checkedChip="@id/desc"
                 app:chipSpacingHorizontal="0dp"
                 app:chipSpacingVertical="0dp"
                 app:selectionRequired="true"

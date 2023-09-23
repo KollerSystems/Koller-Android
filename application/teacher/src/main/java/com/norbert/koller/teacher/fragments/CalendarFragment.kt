@@ -72,13 +72,13 @@ class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Life
                 CalendarCanteenFragment()
             }
             2->{
-                Fragment()
+                CalendarBaseProgramsFragment()
             }
             3->{
-                Fragment()
+                CalendarStudyGroupsFragment()
             }
             4->{
-                Fragment()
+                CalendarTutoringsFragment()
             }
             5->{
                 CalendarProgramsFragment()

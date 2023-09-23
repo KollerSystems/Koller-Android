@@ -13,15 +13,6 @@ import com.norbert.koller.student.R
 class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment(UID) {
 
 
-    override fun showAndSetIfNotNull(card : View, string : String?){
-        if (!string.isNullOrBlank()) {
-            card.visibility = VISIBLE
-            (((card as ViewGroup).getChildAt(0) as ViewGroup).getChildAt(2) as TextView).text = string
-            card.setOnClickListener{
-                MyApplication.setClipboard(requireContext(), string)
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

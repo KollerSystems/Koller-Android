@@ -17,6 +17,7 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.UserPagingSource
+import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.recycleradapter.ListItem
@@ -35,6 +36,11 @@ open class UsersFragment : Fragment() {
     var filterMan : Boolean = false
     var filterWoman : Boolean = false
     var filterValues : ArrayList<String> = arrayListOf()
+
+
+    var filterStudent : Boolean = false
+    var filterTeacher : Boolean = false
+    var filterRoleValues : ArrayList<String> = arrayListOf()
 
 
     lateinit var viewModel : BaseViewModel
@@ -67,7 +73,9 @@ open class UsersFragment : Fragment() {
 
         val chipGender : Chip = view.findViewById(R.id.chip_gender)
 
-        val userRecycleAdapter = UserRecyclerAdapter(chipGroupSort, listOf(chipGender))
+        val chipRole : Chip = view.findViewById(R.id.chip_role)
+
+        val userRecycleAdapter = UserRecyclerAdapter(chipGroupSort, listOf(chipGender, chipRole))
 
         chipGender.setOnClickListener {
             val dialog = ItemListDialogFragment()
@@ -91,8 +99,32 @@ open class UsersFragment : Fragment() {
         }
 
 
+        chipRole.setOnClickListener {
+            val dialog = ItemListDialogFragment()
+            dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
 
-        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter, MyApplication.getApiSortString(chipGroupSort), MyApplication.createApiFilter("Gender", filterValues)) }
+            dialog.list = arrayListOf(
+                ListItem({isChecked ->
+                    filterStudent = isChecked
+                }, getString(R.string.student), null, null, filterStudent, "1"),
+                ListItem({isChecked ->
+                    filterTeacher = isChecked
+                }, getString(R.string.teacher), null, null, filterTeacher, "2")
+            )
+
+            dialog.getValuesOnFinish = {values, locNames ->
+
+                filterRoleValues = values
+                MyApplication.editChipBasedOnResponse(requireContext(), chipRole, values, locNames, R.string.role)
+
+            }
+        }
+
+
+        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter, MyApplication.getApiSortString(chipGroupSort),
+            MyApplication.createApiFilter(
+                FiltersData("Gender", filterValues),
+                FiltersData("Role", filterRoleValues))) }
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

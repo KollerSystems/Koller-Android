@@ -74,7 +74,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
                     lifecycleScope.launch{
 
-                        DataStoreManager.remove(requireActivity(), DataStoreManager.REFRESH_TOKEN_NAME)
+                        DataStoreManager.remove(requireActivity(), DataStoreManager.TOKENS)
                         MyApplication.openLogin.invoke(requireContext())
                         requireActivity().finish()
                         dialog.dismiss()

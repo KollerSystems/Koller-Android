@@ -122,7 +122,7 @@ open class LoginActivity : AppCompatActivity() {
                                     ApiLoginTokensData.instance = loginResponse.body()!!
 
                                     lifecycleScope.launch {
-                                        DataStoreManager.save(this@LoginActivity, DataStoreManager.REFRESH_TOKEN_NAME, ApiLoginTokensData.instance.refresh_token)
+                                        DataStoreManager.save(this@LoginActivity, DataStoreManager.TOKENS, ApiLoginTokensData.instance.refresh_token)
                                     }
 
 

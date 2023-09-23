@@ -56,24 +56,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/person_wave"
-                        custom:text="@string/presence_colon">
+                        custom:text="@string/presence">
 
                     </com.norbert.koller.shared.SimpleCardButton>
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:visibility="gone"
                         custom:icon="@drawable/error"
-                        custom:text="@string/error_report">
+                        custom:text="@string/error_report"
+                        tools:visibility="visible">
 
                     </com.norbert.koller.shared.SimpleCardButton>
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
+                        android:visibility="gone"
                         custom:badge="9"
                         custom:icon="@drawable/flag"
-                        custom:text="@string/reports">
+                        custom:text="@string/reports"
+                        tools:visibility="visible">
 
                     </com.norbert.koller.shared.SimpleCardButton>
 

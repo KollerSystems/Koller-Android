@@ -15,15 +15,6 @@ import com.norbert.koller.shared.fragments.WelcomeBasicInformationsFragment
 
 class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment(UID) {
 
-    override fun showAndSetIfNotNull(card : View, string : String?){
-        if (!string.isNullOrBlank()) {
-            card.visibility = View.VISIBLE
-            (card as Chip).text = string
-            card.setOnClickListener{
-                MyApplication.setClipboard(requireContext(), string)
-            }
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

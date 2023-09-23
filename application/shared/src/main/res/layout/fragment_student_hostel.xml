@@ -8,72 +8,29 @@
     android:orientation="vertical"
     tools:context="fragments.StudentHostelFragment">
 
-    <com.google.android.material.card.MaterialCardView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_margin="5dp"
-        android:background="?attr/colorSurface"
-        android:elevation="1dp"
-        app:cardBackgroundColor="?attr/colorSurface"
-        app:cardElevation="1dp">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            app:boxBackgroundMode="outline"
-            app:boxStrokeWidth="0dp"
-            app:endIconMode="dropdown_menu"
-            app:hintEnabled="false">
-
-            <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                style="@style/Normal"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:focusable="false"
-                android:text="1. emelet" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="1">
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView11"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Táncsics Mihály Tehetséggondozó Kollégium"
-            android:textAlignment="center"
-            android:textAppearance="@style/MainTitle"
-            app:layout_constraintBottom_toTopOf="@+id/layout_sh"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/layout_sh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:text="Táncsics Mihály Tehettséggondozó Kollégium"
+            android:textAlignment="center"
+            android:textAppearance="@style/MainTitle" />
 
-            <ImageView
-                android:id="@+id/imageView11"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                app:tint="?android:attr/colorForeground"
-                app:srcCompat="@drawable/studnet_hostel_map" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Fejlesztés alatt álló menü"
+            android:textAlignment="center"
+            android:textAppearance="@style/Description" />
+    </LinearLayout>
 
     <androidx.cardview.widget.CardView
         style="@style/MainCard"
