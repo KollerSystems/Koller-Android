@@ -17,7 +17,6 @@ import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.navigateWithDefaultAnimation
 import com.norbert.koller.shared.recycleradapter.UserPreviewRecyclerAdapter
 import retrofit2.Call
 import retrofit2.Callback

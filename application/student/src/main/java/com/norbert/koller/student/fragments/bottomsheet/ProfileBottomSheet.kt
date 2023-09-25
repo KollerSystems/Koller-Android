@@ -14,20 +14,23 @@ class ProfileBottomSheet : com.norbert.koller.shared.fragments.bottomsheet.Profi
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        realView = inflater.inflate(R.layout.bottom_sheet_profile, container, false)
+    ): View {
 
         super.onCreateView(inflater, container, savedInstanceState)
+        return inflater.inflate(R.layout.bottom_sheet_profile, container, false)
 
-        val fbtnOutgoing: View = realView.findViewById(R.id.profile_fbtn_outgoing)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val fbtnOutgoing: View = view.findViewById(R.id.profile_fbtn_outgoing)
 
         fbtnOutgoing.setOnClickListener{
 
             UserOutgoingsFragment.open(requireContext(), UserData.instance.UID)
             this.dismiss()
         }
-
-        return  realView
     }
 
 }

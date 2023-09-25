@@ -21,6 +21,11 @@
         <item name="appBarLayoutStyle">@style/appBarStyle</item>
         <item name="materialButtonStyle">@style/button</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="editTextStyle">@style/edit_text</item>
+    </style>
+
+    <style name="edit_text">
+        <item name="android:textAppearance">@style/Normal</item>
     </style>
 
     <style name="card_outline" parent="@style/SimpleCard">

@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.navigation.fragment.findNavController
+
 import com.norbert.koller.student.R
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.student.activities.MainActivity
@@ -49,7 +49,6 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
         val cardOutgoing : View = view.findViewById(R.id.home_card_outgoing)
         cardOutgoing.setOnClickListener{
             (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.studentHostel
-            findNavController().navigate(Rs.id.userOutgoingsFragment)
         }
 
         val cardLessons : View = view.findViewById(R.id.home_card_lessons)

@@ -7,4 +7,6 @@
     <string name="are_you_sure_discard_all_grade">Biztosan el akarja vetni az összes értékelést?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="app_name">Koller Tanároknak</string>
 </resources>

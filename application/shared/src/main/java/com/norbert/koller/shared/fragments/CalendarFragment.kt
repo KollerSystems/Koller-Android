@@ -21,5 +21,17 @@ abstract class CalendarFragment : Fragment() {
 
         tabLayout = view.findViewById(R.id.calendar_tabs)
         viewPager = view.findViewById(R.id.calendar_view_pager)
+
+
+        val mainActivity = context as MainActivity
+
+        /*mainActivity.bottomNavigationView.setOnItemReselectedListener {item ->
+
+            if(item.itemId == R.id.calendar){
+                tabLayout.getTabAt(0)!!.select()
+            }
+
+        }*/
+
     }
 }

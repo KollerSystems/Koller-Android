@@ -170,7 +170,7 @@
                     style="@style/button_tonal_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Felhasználó hozzáadása"
+                    android:text="Felhasználó felvétele"
                     app:icon="@drawable/add"
                     app:iconGravity="textStart" />
 
@@ -179,7 +179,7 @@
                     style="@style/icon_button_outline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/spacing"
+                    android:layout_marginStart="@dimen/spacing"
                     android:visibility="gone"
                     app:icon="@drawable/more_thick"
                     tools:visibility="visible" />

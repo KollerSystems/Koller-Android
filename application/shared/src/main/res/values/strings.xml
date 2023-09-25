@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Koller</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Jelszó</string>
@@ -337,4 +337,5 @@
     <string name="classroom">Terem</string>
     <string name="presence">Jelenlét</string>
     <string name="role">Szerepkör</string>
+    <string name="app_name_base" translatable="false">Koller</string>
 </resources>

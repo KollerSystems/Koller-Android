@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.WelcomeBasicInformationsFragment">
-
-    <ScrollView
+    tools:context=".fragments.WelcomeBasicInformationsFragment"
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -73,6 +69,7 @@
                                     android:hint="Vezetéknév">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:inputType="textPersonName" />
@@ -86,6 +83,7 @@
                                     android:hint="Keresztnév">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:inputType="textPersonName" />
@@ -120,6 +118,7 @@
                                 android:hint="Születési idő">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    style="@style/edit_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="date" />
@@ -158,6 +157,7 @@
                                     android:hint="@string/country">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:inputType="textPostalAddress" />
@@ -179,6 +179,7 @@
                                         android:hint="Város">
 
                                         <com.google.android.material.textfield.TextInputEditText
+                                            style="@style/edit_text"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:inputType="textPostalAddress" />
@@ -193,6 +194,7 @@
                                         android:hint="Irányítószám">
 
                                         <com.google.android.material.textfield.TextInputEditText
+                                            style="@style/edit_text"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:inputType="textPostalAddress" />
@@ -216,6 +218,7 @@
                                         android:hint="Utca">
 
                                         <com.google.android.material.textfield.TextInputEditText
+                                            style="@style/edit_text"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:inputType="textPostalAddress" />
@@ -230,6 +233,7 @@
                                         android:hint="Házszám">
 
                                         <com.google.android.material.textfield.TextInputEditText
+                                            style="@style/edit_text"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:inputType="textPostalAddress" />
@@ -253,6 +257,7 @@
                                         app:helperText="@string/optional">
 
                                         <com.google.android.material.textfield.TextInputEditText
+                                            style="@style/edit_text"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:inputType="textPostalAddress" />
@@ -269,6 +274,7 @@
                                         app:helperText="@string/optional">
 
                                         <com.google.android.material.textfield.TextInputEditText
+                                            style="@style/edit_text"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:inputType="textPostalAddress" />
@@ -305,6 +311,7 @@
                                 android:hint="Iskola">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    style="@style/edit_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content" />
                             </com.google.android.material.textfield.TextInputLayout>
@@ -336,6 +343,7 @@
                                 android:hint="Osztály">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    style="@style/edit_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="number"
@@ -368,6 +376,7 @@
                                 android:hint="Telefonszám">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    style="@style/edit_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="phone" />
@@ -399,6 +408,7 @@
                                 android:hint="Email">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    style="@style/edit_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="textEmailAddress" />
@@ -438,6 +448,7 @@
                                     app:helperText="@string/optional">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -459,8 +470,6 @@
 
                             <com.google.android.material.imageview.ShapeableImageView
                                 style="@style/CategoryIcon"
-                                android:layout_marginTop="15dp"
-                                android:layout_marginRight="10dp"
                                 android:adjustViewBounds="true"
                                 android:alpha="1"
 
@@ -477,6 +486,7 @@
                                 app:helperText="@string/optional">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    style="@style/edit_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="textEmailAddress" />
@@ -511,6 +521,7 @@
                                 app:helperText="@string/optional">
 
                                 <com.google.android.material.textfield.TextInputEditText
+                                    style="@style/edit_text"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:inputType="textEmailAddress" />
@@ -569,6 +580,7 @@
                                     android:hint="Vezetéknév">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -581,6 +593,7 @@
                                     android:hint="Keresztnév">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -618,6 +631,7 @@
                                     android:hint="Telefonszám">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -657,6 +671,7 @@
                                     android:hint="Email">
 
                                     <com.google.android.material.textfield.TextInputEditText
+                                        style="@style/edit_text"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content" />
                                 </com.google.android.material.textfield.TextInputLayout>
@@ -681,6 +696,6 @@
                 />
 
         </LinearLayout>
-    </ScrollView>
 
-</FrameLayout>
+
+</ScrollView>

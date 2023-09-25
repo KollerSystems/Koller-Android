@@ -22,8 +22,6 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import androidx.core.content.ContextCompat
-import androidx.navigation.NavController
-import androidx.navigation.navOptions
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
@@ -585,20 +583,6 @@ open class MyApplication : Application() {
             return description
         }
     }
-
-
-}
-
-fun NavController.navigateWithDefaultAnimation(directions: Int) {
-    navigate(directions, null, navOptions {
-        anim {
-            enter = androidx.navigation.ui.R.anim.nav_default_enter_anim
-            exit = androidx.navigation.ui.R.anim.nav_default_exit_anim
-            popEnter = androidx.navigation.ui.R.anim.nav_default_enter_anim
-            popExit = androidx.navigation.ui.R.anim.nav_default_exit_anim
-        }
-    })
-
 
 
 }

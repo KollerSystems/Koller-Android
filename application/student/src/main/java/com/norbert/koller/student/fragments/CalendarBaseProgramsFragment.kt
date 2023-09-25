@@ -15,6 +15,7 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.BaseProgramPagingSource
 import com.norbert.koller.shared.api.UserPagingSource
+import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.recycleradapter.BaseProgramRecyclerAdapter
 import com.norbert.koller.shared.recycleradapter.ListItem
@@ -82,7 +83,7 @@ class CalendarBaseProgramsFragment : Fragment() {
 
 
 
-        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), BaseProgramRecyclerAdapter(), MyApplication.getApiSortString(chipGroupSort),  MyApplication.createApiFilter("Length", lengthFilters)) }
+        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter, MyApplication.getApiSortString(chipGroupSort),  MyApplication.createApiFilter(FiltersData("Length", lengthFilters))) }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

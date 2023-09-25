@@ -13,7 +13,6 @@ import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import androidx.lifecycle.lifecycleScope
-import androidx.navigation.NavController
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.MyApplication.Comp.getPixelColorFromView
 import com.norbert.koller.shared.R
@@ -39,7 +38,6 @@ abstract class MainActivity : AppCompatActivity() {
 
     lateinit var bottomNavigationView : BottomNavigationView
 
-    lateinit var navController : NavController
     var defaultTitlePadding : Int = 0
 
     lateinit var appBar : AppBarLayout
@@ -137,10 +135,10 @@ abstract class MainActivity : AppCompatActivity() {
     fun changeFragment(fragment: Fragment){
         val fragmentTransaction: FragmentTransaction = fragments[selectedIndex].childFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
-            androidx.navigation.ui.R.anim.nav_default_enter_anim,
-            androidx.navigation.ui.R.anim.nav_default_exit_anim,
-            androidx.navigation.ui.R.anim.nav_default_enter_anim,
-            androidx.navigation.ui.R.anim.nav_default_exit_anim
+            R.anim.anim_in,
+            R.anim.anim_out,
+            R.anim.anim_in,
+            R.anim.anim_out
         )
         fragmentTransaction.replace(R.id.inner_fragment_container_view, fragment)
         fragmentTransaction.addToBackStack(null)
@@ -298,10 +296,10 @@ abstract class MainActivity : AppCompatActivity() {
 
         val transaction = supportFragmentManager.beginTransaction()
             .setCustomAnimations(
-                androidx.navigation.ui.R.anim.nav_default_enter_anim,
-                androidx.navigation.ui.R.anim.nav_default_exit_anim,
-                androidx.navigation.ui.R.anim.nav_default_enter_anim,
-                androidx.navigation.ui.R.anim.nav_default_exit_anim
+                R.anim.anim_in,
+                R.anim.anim_out,
+                R.anim.anim_in,
+                R.anim.anim_out
             )
 
             .selectFragment(indexToSelect)

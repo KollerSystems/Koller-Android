@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapter
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
@@ -45,19 +46,22 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
         }
     }
 
-    public var beingEmptied : Boolean = false
+    var beingEmptied : Boolean = false
 
     fun refreshFully(){
 
         lastMaxPosition = -1
 
         beingEmptied = true
+        Log.d("INFO", "START TO EMPTY")
         refresh()
 
         recyclerView.scrollToPosition(0)
 
         beingEmptied = false
+        Log.d("INFO", "START TO LOAD")
         refresh()
+
     }
 
 

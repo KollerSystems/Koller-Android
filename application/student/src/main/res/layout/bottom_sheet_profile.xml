@@ -72,8 +72,10 @@
                             android:id="@id/profile_card_my_groups"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
+                            android:visibility="gone"
                             custom:icon="@drawable/groups"
-                            custom:text="@string/my_groups" />
+                            custom:text="@string/my_groups"
+                            tools:visibility="visible" />
 
                         <com.norbert.koller.shared.SimpleCardButton
                             android:id="@+id/profile_fbtn_outgoing"

@@ -40,34 +40,28 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
     private lateinit var textName : TextView
     private lateinit var textDescription : TextView
 
-    lateinit var realView : View
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         MyApplication.setupBottomSheet(dialog!!)
-        textName = realView.findViewById(R.id.profile_text_name)
+        textName = view.findViewById(R.id.profile_text_name)
         textName.text = UserData.instance.Name
 
-        textDescription = realView.findViewById(R.id.profile_text_description)
+        textDescription = view.findViewById(R.id.profile_text_description)
         textDescription.text = MyApplication.createUserDescription(UserData.instance)
 
 
-        val buttonLogout: Button = realView.findViewById(R.id.button_logout)
+        val buttonLogout: Button = view.findViewById(R.id.button_logout)
         buttonLogout.setOnClickListener{
 
-            MaterialAlertDialogBuilder(realView.context, R.style.ImagePopup)
+            MaterialAlertDialogBuilder(view.context, R.style.ImagePopup)
                 .setTitle("Biztosan ki akarsz jelentkezni?")
                 .setIcon(R.drawable.surpriesd)
                 .setPositiveButton(
                     "Igen"
                 )
                 { _, _ ->
-                    val dialog = MaterialAlertDialogBuilder(realView.context)
+                    val dialog = MaterialAlertDialogBuilder(view.context)
                         .setTitle("Kijelentkezés...")
                         .setCancelable(false)
                         .show()
@@ -92,14 +86,14 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
                 .show()
         }
 
-        val btnManageAccount: Button = realView.findViewById(R.id.profile_btn_manage_account)
+        val btnManageAccount: Button = view.findViewById(R.id.profile_btn_manage_account)
 
         btnManageAccount.setOnClickListener{
 
             this.dismiss()
         }
 
-        val cardMyRoom: View = realView.findViewById(R.id.profile_card_my_room)
+        val cardMyRoom: View = view.findViewById(R.id.profile_card_my_room)
 
         cardMyRoom.setOnClickListener{
 
@@ -107,7 +101,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val fbtnGate: View = realView.findViewById(R.id.profile_fbtn_gate)
+        val fbtnGate: View = view.findViewById(R.id.profile_fbtn_gate)
 
         fbtnGate.setOnClickListener{
 
@@ -115,22 +109,22 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val cardDevices: View = realView.findViewById(R.id.profile_card_devices)
+        val cardDevices: View = view.findViewById(R.id.profile_card_devices)
 
         cardDevices.setOnClickListener{
-            val intent = Intent(realView.context, DevicesActivity::class.java)
+            val intent = Intent(view.context, DevicesActivity::class.java)
             startActivity(intent)
             this.dismiss()
         }
 
-        val fbtnSettings: View = realView.findViewById(R.id.profile_fbtn_settings)
+        val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
 
         fbtnSettings.setOnClickListener{
             MyApplication.openSettings.invoke(requireContext())
             this.dismiss()
         }
 
-        val fbtnPrivacyPolicy: View = realView.findViewById(R.id.profile_fbtn_privacy_policy)
+        val fbtnPrivacyPolicy: View = view.findViewById(R.id.profile_fbtn_privacy_policy)
 
         fbtnPrivacyPolicy.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/orgs/4E-6F-72-62-65-72-74"))
@@ -140,7 +134,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         //DEVS
 
-        val recyclerView : RecyclerView = realView.findViewById(R.id.recycler_view)
+        val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
 
         recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         recyclerView.setHasFixedSize(true)
@@ -156,7 +150,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         recyclerView.adapter = DevRecyclerAdapter(devArrayList)
 
-        val cardSupport: View = realView.findViewById(R.id.profile_card_support)
+        val cardSupport: View = view.findViewById(R.id.profile_card_support)
 
         cardSupport.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/"))
@@ -164,23 +158,23 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val cardBug: View = realView.findViewById(R.id.profile_card_bug)
+        val cardBug: View = view.findViewById(R.id.profile_card_bug)
 
         cardBug.setOnClickListener{
-            val intent = Intent(realView.context, FeedbackActivity::class.java)
+            val intent = Intent(view.context, FeedbackActivity::class.java)
             startActivity(intent)
             this.dismiss()
         }
 
-        val cardIdea: View = realView.findViewById(R.id.profile_card_idea)
+        val cardIdea: View = view.findViewById(R.id.profile_card_idea)
 
         cardIdea.setOnClickListener{
-            val intent = Intent(realView.context, FeedbackActivity::class.java)
+            val intent = Intent(view.context, FeedbackActivity::class.java)
             startActivity(intent)
             this.dismiss()
         }
 
-        val fbtnEmail: View = realView.findViewById(R.id.profile_fbtn_email)
+        val fbtnEmail: View = view.findViewById(R.id.profile_fbtn_email)
 
         fbtnEmail.setOnClickListener{
 
@@ -190,9 +184,8 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
             startActivity(intent)
             this.dismiss()
         }
-
-        return realView
     }
+
 
     companion object {
         const val TAG = "ProfileBottomSheet"

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="this_app_is_not_for_everyone_desc">Ez az alkalmazás olyan kollégistáknak készült, akiknek a kollégiuma használja a rendszerünket. Amennyiben te egy olyan kollégista vagy, akinek a kollégiuma így tesz, akkor ha minden igaz, kaptál egy emailt benne az ideiglenes jelszavaddal. Ha ez mégsem történt meg, kérlek jelezd ezt nevelőtanárodnak.</string>
-    <string name="sure_publish_all_grade">Biztosan közzé akarja tenni az összes értékelést?</string>
+    <string name="app_name">Koller Diákoknak</string>
 </resources>
