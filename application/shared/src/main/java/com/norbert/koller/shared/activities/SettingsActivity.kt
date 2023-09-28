@@ -50,7 +50,7 @@ open class SettingsActivity : AppCompatActivity() {
         val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
 
         settingsSCB.setOnClickListener {
-            val intent = Intent(this, TestActivity::class.java)
+            val intent = Intent(this, CreateNewPostActivity::class.java)
             startActivity(intent)
         }
 

@@ -58,6 +58,4 @@ dependencies {
     implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
 
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
-
-
 }

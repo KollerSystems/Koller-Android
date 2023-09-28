@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:nestedScrollingEnabled="true"
-    android:orientation="vertical">
+    android:nestedScrollingEnabled="false">
 
     <TextView
         android:id="@+id/text_view_recycler_view_header"
@@ -30,12 +29,19 @@
         android:clickable="true"
         android:src="@drawable/up" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        style="@style/MainCardLayout"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_to_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingHorizontal="@dimen/full_card_padding"
-        android:paddingBottom="85dp"
-        tools:listitem="@layout/notification_panel" />
-</FrameLayout>
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            style="@style/MainCardLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="@dimen/full_card_padding"
+            android:paddingBottom="85dp"
+            tools:listitem="@layout/notification_panel" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</merge>

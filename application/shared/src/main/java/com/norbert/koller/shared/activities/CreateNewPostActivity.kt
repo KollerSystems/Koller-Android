@@ -70,22 +70,11 @@ class CreateNewPostActivity : AppCompatActivity() {
     private lateinit var tilDateTo : TextInputLayout
     private lateinit var tilTimeTo : TextInputLayout
 
-    private lateinit var dpdFrom : MaterialDatePicker<Long>
-    private lateinit var dpdTo : MaterialDatePicker<Long>
-    private lateinit var tpdFrom : MaterialTimePicker
-    private lateinit var tpdTo : MaterialTimePicker
-
     private lateinit var textViewImageLimit : TextView
 
-    private fun setupDbd(til : TextInputLayout, unlockTils : ArrayList<TextInputLayout>, lockTils : ArrayList<TextInputLayout>) : MaterialDatePicker<Long>{
+    private fun setupDbd(til : TextInputLayout) : MaterialDatePicker<Long>{
         val dpd = MaterialDatePicker.Builder.datePicker()
             .build()
-
-        til.isEndIconVisible = false
-
-        for (lockTil in lockTils){
-            lockTil.isEnabled = false
-        }
 
         dpd.addOnPositiveButtonClickListener {selection ->
 
@@ -93,27 +82,15 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             til.isEndIconVisible = true
 
-            val tils : ArrayList<TextInputLayout> = if(tilTimeFrom.editText!!.text.isEmpty()){
-                unlockTils
-            } else{
-                lockTils
-            }
-            for (unlockTil in tils){
-                unlockTil.isEnabled = true
-            }
         }
 
         return dpd
     }
 
 
-    private fun setupTbd(til : TextInputLayout, lockTil : TextInputLayout?) : MaterialTimePicker{
+    private fun setupTbd(til : TextInputLayout) : MaterialTimePicker{
         val tpd = MaterialTimePicker.Builder()
             .build()
-
-        til.isEndIconVisible = false
-
-        lockTil?.isEnabled = false
 
         tpd.addOnPositiveButtonClickListener {
 
@@ -121,7 +98,6 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             til.isEndIconVisible = true
 
-            lockTil?.isEnabled = true
         }
 
         return tpd
@@ -148,9 +124,13 @@ class CreateNewPostActivity : AppCompatActivity() {
         tilDescription = findViewById (R.id.create_new_post_til_description)
 
         tilDateFrom = findViewById(R.id.create_new_post_til_date_from)
+        tilDateFrom.isEndIconVisible = false
         tilTimeFrom = findViewById(R.id.create_new_post_til_time_from)
+        tilTimeFrom.isEndIconVisible = false
         tilDateTo = findViewById(R.id.create_new_post_til_date_to)
+        tilDateTo.isEndIconVisible = false
         tilTimeTo = findViewById(R.id.create_new_post_til_time_to)
+        tilTimeTo.isEndIconVisible = false
 
         textViewImageLimit = findViewById(R.id.create_new_post_text_view_image_limit)
 
@@ -163,31 +143,24 @@ class CreateNewPostActivity : AppCompatActivity() {
             beforeClose()
         }
 
-        val unlock : ArrayList<TextInputLayout> = arrayListOf(tilTimeFrom, tilDateTo)
-        val lock : ArrayList<TextInputLayout> = arrayListOf(tilTimeFrom, tilDateTo, tilTimeTo)
-
-        dpdFrom = setupDbd(tilDateFrom, unlock, lock)
         tilDateFrom.setEndIconOnClickListener{
             tilDateFrom.editText!!.setText("")
-            dpdFrom = setupDbd(tilDateFrom, unlock, lock)
+            tilDateFrom.isEndIconVisible = false
         }
 
-        dpdTo = setupDbd(tilDateTo, arrayListOf(), arrayListOf())
         tilDateTo.setEndIconOnClickListener{
             tilDateTo.editText!!.setText("")
-            dpdTo = setupDbd(tilDateTo, arrayListOf(), arrayListOf())
+            tilDateTo.isEndIconVisible = false
         }
 
-        tpdFrom = setupTbd(tilTimeFrom, tilTimeTo)
         tilTimeFrom.setEndIconOnClickListener{
             tilTimeFrom.editText!!.setText("")
-            tpdFrom = setupTbd(tilTimeFrom, tilTimeTo)
+            tilTimeFrom.isEndIconVisible = false
         }
 
-        tpdTo = setupTbd(tilTimeTo, null)
         tilTimeTo.setEndIconOnClickListener{
             tilTimeTo.editText!!.setText("")
-            tpdTo = setupTbd(tilTimeTo, null)
+            tilTimeTo.isEndIconVisible = false
         }
 
 
@@ -195,28 +168,28 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            dpdFrom.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+            setupDbd(tilDateFrom).show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
         tilDateTo.editText!!.setOnClickListener{
 
             currentFocus?.clearFocus()
 
-            dpdTo.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+            setupDbd(tilDateTo).show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
         tilTimeFrom.editText!!.setOnClickListener{
 
             currentFocus?.clearFocus()
 
-            tpdFrom.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+            setupTbd(tilTimeFrom).show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
         tilTimeTo.editText!!.setOnClickListener{
 
             currentFocus?.clearFocus()
 
-            tpdTo.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+            setupTbd(tilTimeTo).show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
 

@@ -11,27 +11,26 @@
         app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
 
 
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintGuide_end="60dp"
+            app:layout_constraintStart_toStartOf="parent" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="60dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintGuide_end="60dp"
-        app:layout_constraintStart_toStartOf="parent" />
+        <Button
 
-    <Button
-
-        android:id="@+id/toolbar_exit"
-        style="@style/ToolbarNavigationButton"
-        android:layout_width="@dimen/toolbar_button_size"
-        android:layout_height="@dimen/toolbar_button_size"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline" />
+            android:id="@+id/toolbar_exit"
+            style="@style/ToolbarNavigationButton"
+            android:layout_width="@dimen/toolbar_button_size"
+            android:layout_height="@dimen/toolbar_button_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline" />
 
         <LinearLayout
             android:id="@+id/toolbar_ly_text_container"
@@ -70,24 +69,24 @@
         </LinearLayout>
 
         <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/user_button"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="@dimen/spacing"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="@dimen/spacing"
-        android:background="@drawable/circle"
-        android:backgroundTint="?attr/colorPrimaryContainer"
-        android:clickable="true"
-        android:scaleType="centerInside"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/toolbar_title"
-        app:layout_constraintTop_toBottomOf="@id/guideline"
-        app:shapeAppearanceOverlay="@style/roundImageView"
-        app:srcCompat="@drawable/person" />
+            android:id="@+id/user_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="@dimen/spacing"
+            android:background="@drawable/circle"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/toolbar_title"
+            app:layout_constraintTop_toBottomOf="@id/guideline"
+            app:shapeAppearanceOverlay="@style/roundImageView"
+            app:srcCompat="@drawable/person" />
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
     </merge>

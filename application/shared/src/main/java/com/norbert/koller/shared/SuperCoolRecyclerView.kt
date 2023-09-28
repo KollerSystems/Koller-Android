@@ -6,6 +6,8 @@ import android.util.AttributeSet
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.FrameLayout
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.marginTop
 import androidx.core.view.size
@@ -20,12 +22,13 @@ import kotlin.math.abs
 
 
 @SuppressLint("ClickableViewAccessibility")
-class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefreshLayout(context, attrs) {
+class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
     var appBar : AppBarLayout? = null
     private val FABScrollUp : FloatingActionButton
     private val textHeader: TextView
     val recyclerView: RecyclerView
+    val swipeToRefresh : SwipeRefreshLayout
 
     private lateinit var recyclerAdapter : BaseRecycleAdapter
     init {
@@ -34,6 +37,7 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
         FABScrollUp = findViewById(R.id.fab_scroll_to_top)
         textHeader = findViewById(R.id.text_view_recycler_view_header)
         recyclerView = findViewById(R.id.recycler_view)
+        swipeToRefresh = findViewById(R.id.swipe_to_refresh)
 
         textHeader.visibility = GONE
 
@@ -43,34 +47,18 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : SwipeRefres
             appBar?.setExpanded(true)
         }
 
-        FABScrollUp.setOnTouchListener { view, motionEvent ->
-
-
-            when(motionEvent.action){
-                MotionEvent.ACTION_DOWN ->{
-                    isEnabled = false
-                }
-                MotionEvent.ACTION_UP ->{
-                    isEnabled = true
-                }
-            }
-
-
-            return@setOnTouchListener FABScrollUp.onTouchEvent(motionEvent)
-        }
-
         //TODO: ennek a törlése, ha minden recycler view fasza
         recyclerView.post {
             if (recyclerView.adapter is BaseRecycleAdapter) {
                 recyclerView.post {
                     recyclerAdapter = (recyclerView.adapter as BaseRecycleAdapter)
                     recyclerAdapter.addOnPagesUpdatedListener {
-                        isRefreshing = false
+                        swipeToRefresh.isRefreshing = false
                     }
                 }
 
 
-                setOnRefreshListener {
+                swipeToRefresh.setOnRefreshListener {
 
 
                     recyclerAdapter.refresh()
