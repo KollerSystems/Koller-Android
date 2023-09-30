@@ -1,13 +1,7 @@
 package com.norbert.koller.shared.fragments.bottomsheet
 
-import android.content.ContentResolver
-import android.content.ContentUris
-import android.content.ContentValues
 import android.content.DialogInterface
-import android.icu.util.TimeZone
-import android.net.Uri
 import android.os.Bundle
-import android.provider.CalendarContract
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
@@ -23,7 +17,6 @@ import com.norbert.koller.shared.data.CommentData
 import com.norbert.koller.shared.recycleradapter.CommentRecyclerAdapter
 import com.norbert.koller.shared.recycleradapter.ImageRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
@@ -79,7 +72,7 @@ class NewFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_new, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_bshd_post, container, false)
         MyApplication.setupBottomSheet(dialog!!)
         commentTil = view.findViewById(R.id.news_til_comment)
         val buttonPost : Button = view.findViewById(R.id.news_button_post_comment)

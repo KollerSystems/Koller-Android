@@ -16,11 +16,6 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.MyApplication
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.bottomsheet.BottomFragmentPostTypes
-import com.norbert.koller.shared.fragments.bottomsheet.ScheduleFragment
-import com.norbert.koller.shared.recycleradapter.EditableImageRecyclerAdapter
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
@@ -28,6 +23,19 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.timepicker.MaterialTimePicker
+import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.R
+import com.norbert.koller.shared.fragments.bottomsheet.BottomFragmentPostTypes
+import com.norbert.koller.shared.fragments.bottomsheet.ScheduleFragment
+import com.norbert.koller.shared.recycleradapter.EditableImageRecyclerAdapter
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.LocalDateTime
+import java.time.ZoneId
+import java.time.format.DateTimeFormatter
+import java.time.temporal.ChronoField
+import java.util.Calendar
+import java.util.TimeZone
 
 
 class CreateNewPostActivity : AppCompatActivity() {
@@ -37,7 +45,7 @@ class CreateNewPostActivity : AppCompatActivity() {
     lateinit var chipsAddresse: ChipGroup
     private lateinit var tilTitle: TextInputLayout
     private lateinit var tilDescription: TextInputLayout
-    var date : Long = 0
+
     var scheduleDate : Long = 0
     var scheduleTime : Int = 0
     private val imageLimit = 25
@@ -72,13 +80,21 @@ class CreateNewPostActivity : AppCompatActivity() {
 
     private lateinit var textViewImageLimit : TextView
 
+
     private fun setupDbd(til : TextInputLayout) : MaterialDatePicker<Long>{
-        val dpd = MaterialDatePicker.Builder.datePicker()
-            .build()
+
+        val dpdb = MaterialDatePicker.Builder.datePicker()
+
+        if(!til.editText!!.text.isNullOrEmpty()){
+            dpdb.setSelection(til.tag as Long)
+        }
+
+        val dpd = dpdb.build()
 
         dpd.addOnPositiveButtonClickListener {selection ->
 
-            til.editText!!.setText(MyApplication.simpleLocalShortMonthDay.format(selection))
+            til.editText!!.setText(SimpleDateFormat(MyApplication.shortMonthDayFormat).format(selection))
+            til.tag = selection
 
             til.isEndIconVisible = true
 
@@ -89,7 +105,11 @@ class CreateNewPostActivity : AppCompatActivity() {
 
 
     private fun setupTbd(til : TextInputLayout) : MaterialTimePicker{
+
+
+        val time : Pair<Int, Int> = MyApplication.timeFromString(til.editText!!.text.toString())
         val tpd = MaterialTimePicker.Builder()
+            .setHour(time.first).setMinute(time.second)
             .build()
 
         tpd.addOnPositiveButtonClickListener {
@@ -145,11 +165,13 @@ class CreateNewPostActivity : AppCompatActivity() {
 
         tilDateFrom.setEndIconOnClickListener{
             tilDateFrom.editText!!.setText("")
+            tilDateFrom.tag = 0
             tilDateFrom.isEndIconVisible = false
         }
 
         tilDateTo.setEndIconOnClickListener{
             tilDateTo.editText!!.setText("")
+            tilDateTo.tag = 0
             tilDateTo.isEndIconVisible = false
         }
 
@@ -233,7 +255,7 @@ class CreateNewPostActivity : AppCompatActivity() {
         }
 
         val addresseItems = listOf("Nagy Géza", "Andrásosfi Norberto", "Kovács Gábor", "Nagy Norbert", "Lányok", "Fiúk", "F1", "F2", "F3", "L1", "L2", "L3")
-        val addresseAdapter = ArrayAdapter(this, R.layout.list_item_text, addresseItems)
+        val addresseAdapter = ArrayAdapter(this, R.layout.view_list_item_text, addresseItems)
 
         actvAddresse.setAdapter(addresseAdapter)
 

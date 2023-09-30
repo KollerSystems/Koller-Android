@@ -38,7 +38,7 @@
                 style="@style/MainCardLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/fragment_item_list_dialog_list_dialog_item" />
+                tools:listitem="@layout/view_item_list_item" />
 
         </androidx.cardview.widget.CardView>
 

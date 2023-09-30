@@ -18,7 +18,7 @@ class MessageFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        val view : View = inflater.inflate(R.layout.fragment_message, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_bshd_message, container, false)
 
         MyApplication.setupBottomSheet(dialog!!)
 

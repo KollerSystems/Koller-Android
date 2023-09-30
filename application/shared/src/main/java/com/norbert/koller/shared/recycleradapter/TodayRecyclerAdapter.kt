@@ -42,7 +42,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
 
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_readable_item, parent, false)
 
         return TodayViewHolder(view)
 

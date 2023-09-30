@@ -130,7 +130,7 @@
                     app:closeIconEnabled="true" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip"
+                    android:id="@+id/chip_date"
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -221,7 +221,7 @@
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="20dp"
                 android:paddingBottom="85dp"
-                tools:listitem="@layout/notification_panel" />
+                tools:listitem="@layout/view_readable_item" />
         </FrameLayout>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

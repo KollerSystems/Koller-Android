@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.timepicker.MaterialTimePicker
+import java.text.SimpleDateFormat
 
 class ScheduleFragment : BottomSheetDialogFragment() {
 
@@ -26,7 +27,7 @@ class ScheduleFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_schedule, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_bshd_schedule, container, false)
 
         val tilDate : TextInputLayout = view.findViewById(R.id.schedule_til_date)
         val tilTime : TextInputLayout = view.findViewById(R.id.schedule_til_time)
@@ -37,7 +38,7 @@ class ScheduleFragment : BottomSheetDialogFragment() {
             val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
             calendar.timeInMillis = parentActivity.scheduleDate
 
-            tilDate.editText!!.setText(MyApplication.simpleLocalDateFormat.format(calendar.time))
+            tilDate.editText!!.setText(SimpleDateFormat(MyApplication.shortMonthDayFormat).format(calendar.time))
         }
         if(parentActivity.scheduleTime != 0){
 

@@ -46,6 +46,7 @@ import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import java.util.Date
+import java.util.Vector
 
 
 open class MyApplication : Application() {
@@ -146,12 +147,23 @@ open class MyApplication : Application() {
                 chip.visibility = GONE
             } else{
                 chip.visibility = VISIBLE
-                chip.text = simpleLocalShortDateTimeFormat.format(date)
+                chip.text = SimpleDateFormat(shortMonthDayTimeFormat).format(date)
             }
         }
 
         fun timeToString(hours : Int, minutes : Int) : String{
             return (hours).toString().padStart(2, '0')+":"+(minutes).toString().padStart(2, '0')
+        }
+
+        fun timeFromString(time : String?) : Pair<Int, Int>{
+
+            if(time.isNullOrEmpty()) return Pair(12,0)
+
+            val values : List<String> = time.split(":")
+            val hours : Int = values[0].toInt()
+            val minutes : Int = values[1].toInt()
+
+            return Pair(hours, minutes)
         }
 
         fun roundRecyclerItemsVerticallyWithSeparator(view : View, position : Int, pagingDataAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>){
@@ -370,11 +382,11 @@ open class MyApplication : Application() {
 
         const val minLengthBeforeDismiss : Int = 3
 
-        val simpleLocalShortDateTimeFormat = SimpleDateFormat("MMM d. HH:mm")
-        val simpleLocalDateFormat = SimpleDateFormat("yyyy. MMM d.")
-        val simpleLocalMonthDay = SimpleDateFormat("MMMM d.")
-        val simpleLocalShortMonthDay = SimpleDateFormat("MMM d.")
-        val simpleTimeFormat = SimpleDateFormat("HH:mm")
+        val shortMonthDayTimeFormat = "MMM d. HH:mm"
+        val yearShortMonthDayFormat = "yyyy. MMM d."
+        val monthDay = "MMMM d."
+        val shortMonthDayFormat = "MMM d."
+        val timeFormat = "HH:mm"
 
         fun createUserDescription(userData : UserData): String{
             return userData.Group + " • " + userData.RID  + " • " + userData.Class?.Class

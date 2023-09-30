@@ -17,7 +17,7 @@ class BottomFragmentPostTypes : BottomSheetDialogFragment() {
         // Inflate the layout for this fragment
 
 
-        return inflater.inflate(R.layout.bottom_fragment_post_types, container, false)
+        return inflater.inflate(R.layout.fragment_bshd_post_types, container, false)
     }
 
 

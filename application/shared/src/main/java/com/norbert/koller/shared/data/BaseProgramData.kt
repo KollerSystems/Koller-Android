@@ -2,6 +2,7 @@ package com.norbert.koller.shared.data
 
 import android.content.Context
 import com.norbert.koller.shared.MyApplication
+import java.text.SimpleDateFormat
 import java.util.Date
 
 class BaseProgramData(
@@ -19,7 +20,7 @@ class BaseProgramData(
 ) : BaseData() {
 
     override fun diffrentDecider(context: Context): String {
-        return MyApplication.simpleLocalMonthDay.format(Date)
+        return SimpleDateFormat(MyApplication.monthDay).format(Date)
     }
 
     override fun getMainID(): Int {

@@ -31,6 +31,8 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
     val swipeToRefresh : SwipeRefreshLayout
 
     private lateinit var recyclerAdapter : BaseRecycleAdapter
+
+
     init {
 
         View.inflate(context, R.layout.super_cool_recycler_view, this)
@@ -50,12 +52,12 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
         //TODO: ennek a törlése, ha minden recycler view fasza
         recyclerView.post {
             if (recyclerView.adapter is BaseRecycleAdapter) {
-                recyclerView.post {
+
                     recyclerAdapter = (recyclerView.adapter as BaseRecycleAdapter)
                     recyclerAdapter.addOnPagesUpdatedListener {
                         swipeToRefresh.isRefreshing = false
                     }
-                }
+
 
 
                 swipeToRefresh.setOnRefreshListener {

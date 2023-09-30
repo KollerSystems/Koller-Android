@@ -26,6 +26,7 @@
 
     <style name="edit_text">
         <item name="android:textAppearance">@style/Normal</item>
+        <item name="android:drawablePadding">-15dp</item>
     </style>
 
     <style name="card_outline" parent="@style/SimpleCard">

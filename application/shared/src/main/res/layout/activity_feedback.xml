@@ -82,7 +82,7 @@
                     style="@style/MainCardLayout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    tools:listitem="@layout/notification_panel" />
+                    tools:listitem="@layout/view_readable_item" />
             </com.google.android.material.card.MaterialCardView>
 
             <TextView

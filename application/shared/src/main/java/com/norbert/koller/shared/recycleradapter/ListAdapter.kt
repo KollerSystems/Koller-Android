@@ -22,7 +22,7 @@ class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem 
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_item_list_dialog_list_dialog_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_item_list_item, parent, false)
         return ListViewHolder(view)
     }
 

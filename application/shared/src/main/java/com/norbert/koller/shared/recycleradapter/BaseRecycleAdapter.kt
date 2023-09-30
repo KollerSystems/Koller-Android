@@ -3,14 +3,9 @@ package com.norbert.koller.shared.recycleradapter
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.core.widget.doBeforeTextChanged
-import androidx.core.widget.doOnTextChanged
-import androidx.datastore.dataStore
-import androidx.paging.PagingData
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
@@ -18,10 +13,6 @@ import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.BaseComparator
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 
 abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val chips: List<Chip> = listOf()) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
@@ -70,7 +61,7 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
 
         return when (viewType) {
             VIEW_TYPE_USER -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_readable_item, parent, false)
                 createViewHolder(view)
             }
             VIEW_TYPE_SEPARATOR -> {

@@ -9,7 +9,7 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayou
 
 
     init {
-        View.inflate(context, R.layout.rounded_badge_image_view, this)
+        View.inflate(context, R.layout.view_rounded_badge_image, this)
     }
 
 }

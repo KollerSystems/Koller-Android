@@ -12,6 +12,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.fragments.UserFragment
+import java.text.SimpleDateFormat
 
 class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : BottomSheetDialogFragment() {
 
@@ -40,7 +41,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
             textTitle.text = baseProgram.Topic
 
             ncwState.visibility = GONE
-            ncwDate.textContent.text = MyApplication.simpleLocalMonthDay.format(baseProgram.Date)
+            ncwDate.textContent.text = SimpleDateFormat(MyApplication.monthDay).format(baseProgram.Date)
             ncwTime.textContent.text = MyApplication.createClassesText(requireContext(), baseProgram.Lesson, baseProgram.Length)
             ncbClassroom.buttonContent.text = baseProgram.RID.toString()
             ncbClass.buttonContent.text = baseProgram.Group

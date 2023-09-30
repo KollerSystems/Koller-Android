@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.content.res.AppCompatResources
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.recycleradapter.ListAdapter
 import com.norbert.koller.shared.recycleradapter.ListItem
@@ -28,7 +27,7 @@ class ItemListDialogFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_item_list_dialog_list_dialog, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_bshd_item_list, container, false)
 
         recycleView = view.findViewById(R.id.simple_list_bottom_fragment_recycle_view)
 

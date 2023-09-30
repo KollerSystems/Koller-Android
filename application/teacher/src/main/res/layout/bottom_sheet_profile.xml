@@ -59,7 +59,7 @@
 
 
                         <include
-                            layout="@layout/profile_my_profile_header"
+                            layout="@layout/fragment_bshd_profile_header"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
@@ -114,7 +114,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <include
-                    layout="@layout/profile_footer"
+                    layout="@layout/fragment_bshd_profile_footer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

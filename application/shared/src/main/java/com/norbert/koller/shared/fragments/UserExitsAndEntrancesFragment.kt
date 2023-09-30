@@ -17,6 +17,7 @@ import com.norbert.koller.shared.recycleradapter.GateRecyclerAdapter
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import java.sql.Timestamp
+import java.text.SimpleDateFormat
 import java.time.Instant
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -129,7 +130,7 @@ class UserExitsAndEntrancesFragment : Fragment() {
                     val currentLocalDate = LocalDateTime.ofInstant(instant, ZoneId.systemDefault()).toLocalDate()
 
                     if(!oldLocalDate.isEqual(currentLocalDate)){
-                        crossingDataArrayList.add(i+1, MyApplication.simpleLocalMonthDay.format(oldCrossing.Time).replaceFirstChar(Char::titlecase))
+                        crossingDataArrayList.add(i+1, SimpleDateFormat( MyApplication.monthDay).format(oldCrossing.Time).replaceFirstChar(Char::titlecase))
                     }
                 }
 
@@ -139,7 +140,7 @@ class UserExitsAndEntrancesFragment : Fragment() {
 
         }
 
-        crossingDataArrayList.add(0, MyApplication.simpleLocalMonthDay.format((crossingDataArrayList[0] as CrossingData).Time).replaceFirstChar(Char::titlecase))
+        crossingDataArrayList.add(0, SimpleDateFormat( MyApplication.monthDay).format((crossingDataArrayList[0] as CrossingData).Time).replaceFirstChar(Char::titlecase))
 
         crossingRecyclerView.adapter = GateRecyclerAdapter(crossingDataArrayList, requireContext(), text)
 

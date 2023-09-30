@@ -36,7 +36,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
 
         if(item.Residents !=null ) {
 
-            var desc = "${item.Residents!![0].Group} • ${getShortName(item.Residents!![0].Name!!)}"
+            var desc = "${item.Group} • ${getShortName(item.Residents!![0].Name!!)}"
             for (i in 1 until item.Residents!!.size){
 
 

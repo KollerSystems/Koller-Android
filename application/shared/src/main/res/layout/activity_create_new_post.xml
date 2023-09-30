@@ -134,7 +134,7 @@
         <LinearLayout
             style="@style/MainLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"
@@ -173,10 +173,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:gravity="top"
+                        android:importantForAutofill="no"
                         android:inputType="text"
                         android:text="@string/everyone"
-                        android:textAppearance="@style/Normal"
-                        android:importantForAutofill="no" />
+                        android:textAppearance="@style/Normal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.chip.ChipGroup
@@ -306,9 +306,9 @@
                                 android:id="@+id/create_new_post_text_view_image_limit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                tools:text="25/25"
                                 android:textAlignment="textEnd"
-                                android:textAppearance="@style/Description" />
+                                android:textAppearance="@style/Description"
+                                tools:text="25/25" />
 
                         </LinearLayout>
 
@@ -329,7 +329,7 @@
             <androidx.cardview.widget.CardView
                 style="@style/MainCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     style="@style/MainCardLayout"
@@ -344,7 +344,7 @@
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="wrap_content"
                             android:orientation="horizontal">
 
                             <ImageView
@@ -360,15 +360,17 @@
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
-                                    android:layout_height="match_parent"
-                                    android:orientation="horizontal"
-                                    android:baselineAligned="false">
+                                    android:layout_height="wrap_content"
+                                    android:baselineAligned="false"
+                                    android:orientation="horizontal">
 
                                     <com.google.android.material.textfield.TextInputLayout
                                         android:id="@+id/create_new_post_til_date_from"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_marginLeft="@dimen/text_container_margin"
+                                        android:layout_marginRight="@dimen/text_container_margin"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
                                         android:layout_weight="1"
                                         android:hint="@string/from_date"
                                         app:endIconDrawable="@drawable/close_thick"
@@ -377,6 +379,7 @@
                                         <com.google.android.material.textfield.TextInputEditText
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:drawablePadding="-15dp"
                                             android:editable="false"
                                             android:focusable="false"
                                             android:inputType="datetime|date"
@@ -387,7 +390,9 @@
                                         android:id="@+id/create_new_post_til_time_from"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_marginLeft="@dimen/text_container_margin"
+                                        android:layout_marginRight="@dimen/text_container_margin"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
                                         android:layout_weight="1"
                                         android:hint="@string/from_time"
                                         app:endIconDrawable="@drawable/close_thick"
@@ -397,9 +402,11 @@
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:layout_weight="1"
+                                            android:drawablePadding="-15dp"
                                             android:editable="false"
                                             android:focusable="false"
                                             android:inputType="datetime|time"
+                                            android:singleLine="false"
                                             android:textAppearance="@style/Normal" />
                                     </com.google.android.material.textfield.TextInputLayout>
                                 </LinearLayout>
@@ -407,14 +414,16 @@
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:orientation="horizontal"
-                                    android:baselineAligned="false">
+                                    android:baselineAligned="false"
+                                    android:orientation="horizontal">
 
                                     <com.google.android.material.textfield.TextInputLayout
                                         android:id="@+id/create_new_post_til_date_to"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_marginLeft="@dimen/text_container_margin"
+                                        android:layout_marginRight="@dimen/text_container_margin"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
                                         android:layout_weight="1"
                                         android:hint="@string/to_date"
                                         app:endIconDrawable="@drawable/close_thick"
@@ -423,9 +432,11 @@
                                         <com.google.android.material.textfield.TextInputEditText
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:drawablePadding="-15dp"
                                             android:editable="false"
                                             android:focusable="false"
                                             android:inputType="datetime|date"
+                                            android:singleLine="false"
                                             android:textAppearance="@style/Normal" />
                                     </com.google.android.material.textfield.TextInputLayout>
 
@@ -433,7 +444,9 @@
                                         android:id="@+id/create_new_post_til_time_to"
                                         android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:layout_margin="@dimen/text_container_margin"
+                                        android:layout_marginLeft="@dimen/text_container_margin"
+                                        android:layout_marginRight="@dimen/text_container_margin"
+                                        android:layout_marginBottom="@dimen/text_container_margin"
                                         android:layout_weight="1"
                                         android:hint="@string/to_time"
                                         app:endIconDrawable="@drawable/close_thick"
@@ -442,9 +455,11 @@
                                         <com.google.android.material.textfield.TextInputEditText
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
+                                            android:drawablePadding="-15dp"
                                             android:editable="false"
                                             android:focusable="false"
                                             android:inputType="datetime|time"
+                                            android:singleLine="false"
                                             android:textAppearance="@style/Normal" />
                                     </com.google.android.material.textfield.TextInputLayout>
                                 </LinearLayout>
@@ -475,7 +490,9 @@
                                 android:id="@+id/create_new_post_til_place"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/text_container_margin"
+                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_marginRight="@dimen/text_container_margin"
+                                android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:hint="@string/place">
 
@@ -509,7 +526,9 @@
                                 android:id="@+id/create_new_post_til_base_program"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/text_container_margin"
+                                android:layout_marginLeft="@dimen/text_container_margin"
+                                android:layout_marginRight="@dimen/text_container_margin"
+                                android:layout_marginBottom="@dimen/text_container_margin"
                                 android:layout_weight="1"
                                 android:hint="@string/base_program_replacement">
 

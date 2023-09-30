@@ -145,23 +145,10 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="1000dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/boom" />
-    </androidx.core.widget.NestedScrollView>
-
     <com.norbert.koller.shared.SuperCoolRecyclerView
         android:id="@+id/super_cool_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone" />
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 </com.norbert.koller.shared.NestedCoordinatorLayout>

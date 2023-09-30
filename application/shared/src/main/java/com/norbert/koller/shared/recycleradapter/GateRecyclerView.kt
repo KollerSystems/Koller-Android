@@ -14,9 +14,9 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CrossingData
 import com.norbert.koller.shared.data.DefaultDayTimes
 import com.google.android.material.imageview.ShapeableImageView
+import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
-import java.util.Locale
 
 
 class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var context : Context, var date : TextView) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
@@ -38,7 +38,7 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
                 }
                 else{
                     firstData as CrossingData
-                    date.text = MyApplication.simpleLocalMonthDay.format(firstData.Time).replaceFirstChar(Char::titlecase)
+                    date.text = SimpleDateFormat( MyApplication.monthDay).format(firstData.Time).replaceFirstChar(Char::titlecase)
                 }
             }
 
@@ -65,7 +65,7 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
 
         return when (viewType) {
             0 -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.notification_panel, parent, false)
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_readable_item, parent, false)
                 CrossingViewHolder(view)
             }
 
@@ -109,7 +109,7 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
                 }
                 holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(context, icon))
 
-                holder.title.text = MyApplication.simpleTimeFormat.format(currentItem.Time)
+                holder.title.text = SimpleDateFormat(MyApplication.timeFormat).format(currentItem.Time)
                 holder.description.text = late(currentItem.Time.time)
 
                 holder.itemView.setOnClickListener {

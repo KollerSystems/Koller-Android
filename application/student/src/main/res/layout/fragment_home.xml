@@ -192,7 +192,7 @@
                                 android:isScrollContainer="false"
                                 android:nestedScrollingEnabled="false"
                                 tools:itemCount="2"
-                                tools:listitem="@layout/notification_panel" />
+                                tools:listitem="@layout/view_readable_item" />
                         </RelativeLayout>
 
 
@@ -230,7 +230,7 @@
                             android:isScrollContainer="false"
                             android:nestedScrollingEnabled="false"
                             tools:itemCount="2"
-                            tools:listitem="@layout/notification_panel" />
+                            tools:listitem="@layout/view_readable_item" />
                     </RelativeLayout>
 
                     </LinearLayout>

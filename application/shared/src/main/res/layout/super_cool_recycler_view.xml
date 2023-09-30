@@ -41,7 +41,7 @@
             android:layout_height="match_parent"
             android:paddingHorizontal="@dimen/full_card_padding"
             android:paddingBottom="85dp"
-            tools:listitem="@layout/notification_panel" />
+            tools:listitem="@layout/view_readable_item" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </merge>

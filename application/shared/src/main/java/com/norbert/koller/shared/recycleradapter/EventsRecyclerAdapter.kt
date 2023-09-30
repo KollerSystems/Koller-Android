@@ -1,6 +1,5 @@
 package com.norbert.koller.shared.recycleradapter
 
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
@@ -20,7 +19,7 @@ import com.norbert.koller.shared.activities.MainActivity
 class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.news_panel, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_post, parent, false)
         return EventsViewHolder(itemView)
     }
 
