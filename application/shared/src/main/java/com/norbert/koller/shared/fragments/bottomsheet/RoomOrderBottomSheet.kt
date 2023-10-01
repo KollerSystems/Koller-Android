@@ -28,7 +28,7 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.bottom_sheet_room_order, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_bshd_room_order, container, false)
         MyApplication.setupBottomSheet(dialog!!)
         val finalGrade: TextView = view.findViewById(R.id.room_order_fragment_text_final_rate)
         val teacherName: TextView = view.findViewById(R.id.room_order_fragment_text_rater_name)
