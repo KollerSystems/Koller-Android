@@ -1,6 +1,5 @@
 package com.norbert.koller.student.fragments
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +16,7 @@ import com.norbert.koller.shared.BaseViewModel
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.BaseProgramPagingSource
+import com.norbert.koller.shared.data.FilterDateData
 import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.recycleradapter.BaseProgramRecyclerAdapter
@@ -51,16 +51,16 @@ class CalendarBaseProgramsFragment : Fragment() {
             if(selection.first != selection.second){
                 stringForChip += " - ${SimpleDateFormat(MyApplication.shortMonthDayFormat).format(selection.second)}"
             }
-            chip.text = stringForChip
             chip.tag = selection
+            chip.text = stringForChip
             chip.isCheckable = true
             chip.isChecked = true
             chip.isCheckable = false
             chip.closeIcon = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.close_thick)
             chip.setOnCloseIconClickListener{
                 chip.closeIcon = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.arrow_drop)
-                chip.text = getString(com.norbert.koller.shared.R.string.date)
                 chip.tag = null
+                chip.text = getString(com.norbert.koller.shared.R.string.date)
                 chip.isCheckable = true
                 chip.isChecked = false
                 chip.isCheckable = false
@@ -96,11 +96,13 @@ class CalendarBaseProgramsFragment : Fragment() {
         val chipDate : Chip = view.findViewById(R.id.chip_date)
 
         chipDate.setOnClickListener{
-            setupDrpd(chipDate)
+            setupDrpd(chipDate).addOnPositiveButtonClickListener {
+
+            }
         }
 
 
-        val baseProgramRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, listOf(chipLength))
+        val baseProgramRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, listOf(chipLength, chipDate))
 
 
         chipLength.setOnClickListener {
@@ -132,8 +134,11 @@ class CalendarBaseProgramsFragment : Fragment() {
         }
 
 
-
-        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter, MyApplication.getApiSortString(chipGroupSort),  MyApplication.createApiFilter(FiltersData("Length", lengthFilters))) }
+        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter,
+            MyApplication.getApiSortString(chipGroupSort),
+            MyApplication.createApiFilter(
+                arrayOf(FiltersData("Length", lengthFilters)),
+                    arrayOf(FilterDateData("Date", (chipDate.tag as Pair<Long, Long>?))))) }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

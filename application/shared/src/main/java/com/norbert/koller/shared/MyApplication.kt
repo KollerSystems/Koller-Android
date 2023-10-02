@@ -36,17 +36,16 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.color.DynamicColors
-import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.data.FilterDateData
 import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import java.util.Date
-import java.util.Vector
 
 
 open class MyApplication : Application() {
@@ -387,6 +386,7 @@ open class MyApplication : Application() {
         val monthDay = "MMMM d."
         val shortMonthDayFormat = "MMM d."
         val timeFormat = "HH:mm"
+        val apiFormat = "YYYY-MM-dd"
 
         fun createUserDescription(userData : UserData): String{
             return userData.Group + " • " + userData.RID  + " • " + userData.Class?.Class
@@ -531,6 +531,12 @@ open class MyApplication : Application() {
         }
 
         fun createApiFilter(vararg filterGroups : FiltersData) : String{
+
+            return createApiFilter(filterGroups)
+        }
+
+
+        fun createApiFilter(filterGroups: Array<out FiltersData>, filterDateGroups: Array<out FilterDateData>? = null) : String{
             var finalString = ""
 
             for (filterGroup in filterGroups) {
@@ -540,6 +546,18 @@ open class MyApplication : Application() {
                 for (argument in filterGroup.filterTo) {
 
                         finalString += "${filterName}:${argument},"
+
+                }
+            }
+            if(filterDateGroups!=null) {
+                for (filterGroup in filterDateGroups) {
+
+
+                    if(filterGroup.filterFrom != null) {
+
+                        val filterName = filterGroup.filterName
+                        finalString += "${filterName}[gte]:${SimpleDateFormat(apiFormat).format(filterGroup.filterFrom!!.first)+ "T00:00:00.000Z"},${filterName}[lte]:${SimpleDateFormat(apiFormat).format(filterGroup.filterFrom!!.second) + "T00:00:00.000Z"},"
+                    }
 
                 }
             }
