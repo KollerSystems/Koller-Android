@@ -6,6 +6,10 @@ plugins {
 android {
     signingConfigs {
         release {
+            storeFile file('C:\\GitHub\\Koller-Android\\keystore.jks')
+            storePassword''
+           keyAlias = ''
+            keyPassword''
         }
     }
     namespace 'com.norbert.koller.reader'
@@ -27,6 +31,11 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildTypes {
+        release {
+            signingConfig signingConfigs.release
+        }
     }
 }
 
