@@ -1,74 +1,86 @@
 package com.norbert.koller.reader
 
 import android.app.PendingIntent
-import android.content.Intent
-import android.nfc.NdefMessage
+import android.content.IntentFilter
 import android.nfc.NfcAdapter
 import android.nfc.Tag
+import android.nfc.tech.MifareClassic
 import android.nfc.tech.NfcA
+
 import android.os.Bundle
 import android.util.Log
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import java.io.IOException
 
 class MainActivity : AppCompatActivity() {
-
-    private var nfcAdapter: NfcAdapter? = null
-    private lateinit var pendingIntent: PendingIntent
     private lateinit var textKey : TextView
+    private lateinit var nfcAdapter: NfcAdapter
+    private lateinit var pendingIntent: PendingIntent
+    private var myTag: Tag? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
 
-        textKey = findViewById(R.id.text_key)
 
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+        val mifareClassic = MifareClassic.get(tag)
 
-        val intent = Intent(this, javaClass).apply {
-            addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP)
+        try {
+            mifareClassic.connect()
+
+            val sectorCount = mifareClassic.sectorCount
+
+            var textToDisplay = ""
+
+            for (sectorIndex in 0 until sectorCount) {
+                mifareClassic.authenticateSectorWithKeyA(sectorIndex, MifareClassic.KEY_DEFAULT)
+
+                val blockCount = mifareClassic.getBlockCountInSector(sectorIndex)
+                textToDisplay += "Szektor $sectorIndex\n"
+                for (blockIndex in 0 until blockCount) {
+                    val blockNumber = mifareClassic.sectorToBlock(sectorIndex) + blockIndex
+                    val blockData = mifareClassic.readBlock(blockNumber)
+                    val hexData = bytesToHex(blockData)
+                    textToDisplay += "$hexData\n"
+                }
+            }
+
+            textKey.post {
+                textKey.text = textToDisplay
+            }
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } finally {
+            mifareClassic.close()
+
         }
-        pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+    }
+
+    private fun bytesToHex(bytes: ByteArray): String {
+        val hexChars = CharArray(bytes.size * 2)
+        for (i in bytes.indices) {
+            val v = bytes[i].toInt() and 0xFF
+            hexChars[i * 2] = "0123456789ABCDEF"[v shr 4]
+            hexChars[i * 2 + 1] = "0123456789ABCDEF"[v and 0x0F]
+        }
+        return String(hexChars)
     }
 
     override fun onResume() {
         super.onResume()
 
-        nfcAdapter?.enableForegroundDispatch(this, pendingIntent, null, null)
+        nfcAdapter.enableReaderMode(this, callback, NfcAdapter.FLAG_READER_NFC_A, null)
     }
 
     override fun onPause() {
         super.onPause()
-
-        nfcAdapter?.disableForegroundDispatch(this)
+        nfcAdapter.disableReaderMode(this)
     }
 
-    override fun onNewIntent(intent: Intent) {
-        super.onNewIntent(intent)
-        handleNFCIntent(intent)
-    }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        textKey = findViewById(R.id.text_key)
 
-    private fun handleNFCIntent(intent: Intent) {
-        Log.d("ASD", intent.action.toString())
-        if (NfcAdapter.ACTION_TAG_DISCOVERED == intent.action) {
-            val tag = intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
-            if (tag != null) {
-                val nfcA = NfcA.get(tag)
-                nfcA.connect()
-                val data = nfcA.transceive(byteArrayOf(/* parancsok */))
-                nfcA.close()
-
-                val hexData = bytesToHex(data)
-                textKey.text = tag.toString()
-            }
-        }
-    }
-
-    private fun bytesToHex(bytes: ByteArray): String {
-        val stringBuilder = StringBuilder()
-        for (byte in bytes) {
-            stringBuilder.append(String.format("%02X", byte))
-        }
-        return stringBuilder.toString()
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
     }
 }
