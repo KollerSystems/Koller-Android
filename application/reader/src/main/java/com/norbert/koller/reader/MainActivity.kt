@@ -27,22 +27,20 @@ class MainActivity : AppCompatActivity() {
         try {
             mifareClassic.connect()
 
-            val sectorCount = mifareClassic.sectorCount
-
             var textToDisplay = ""
 
-            for (sectorIndex in 0 until sectorCount) {
-                mifareClassic.authenticateSectorWithKeyA(sectorIndex, MifareClassic.KEY_DEFAULT)
+            val sectorSector = 1
+            mifareClassic.authenticateSectorWithKeyA(sectorSector, MifareClassic.KEY_DEFAULT)
 
-                val blockCount = mifareClassic.getBlockCountInSector(sectorIndex)
-                textToDisplay += "Szektor $sectorIndex\n"
-                for (blockIndex in 0 until blockCount) {
-                    val blockNumber = mifareClassic.sectorToBlock(sectorIndex) + blockIndex
-                    val blockData = mifareClassic.readBlock(blockNumber)
-                    val hexData = bytesToHex(blockData)
-                    textToDisplay += "$hexData\n"
-                }
+            val blockCount = mifareClassic.getBlockCountInSector(sectorSector)
+            textToDisplay += "Szektor $sectorSector\n"
+            for (blockIndex in 0 until blockCount) {
+                val blockNumber = mifareClassic.sectorToBlock(sectorSector) + blockIndex
+                val blockData = mifareClassic.readBlock(blockNumber)
+                val hexData = bytesToHex(blockData)
+                textToDisplay += "$hexData\n"
             }
+
 
             textKey.post {
                 textKey.text = textToDisplay
