@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var pendingIntent: PendingIntent
     private var myTag: Tag? = null
 
+    @OptIn(ExperimentalStdlibApi::class)
     private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
 
 
@@ -30,7 +31,7 @@ class MainActivity : AppCompatActivity() {
             var textToDisplay = ""
 
             val sectorSector = 1
-            mifareClassic.authenticateSectorWithKeyA(sectorSector, MifareClassic.KEY_DEFAULT)
+            mifareClassic.authenticateSectorWithKeyA(sectorSector, "A0A1A2A3A4A5".hexToByteArray())
 
             val blockCount = mifareClassic.getBlockCountInSector(sectorSector)
             textToDisplay += "Szektor $sectorSector\n"
@@ -80,5 +81,7 @@ class MainActivity : AppCompatActivity() {
         textKey = findViewById(R.id.text_key)
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+
+
     }
 }

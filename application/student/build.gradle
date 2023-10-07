@@ -6,7 +6,7 @@ plugins {
 android {
     signingConfigs {
         release {
-            storeFile file('C:\\GitHub\\Koller-Android\\keystore.jks')
+            storeFile file('C:\\Users\\katon\\GitHub\\Android\\Koller-Android\\keystore.jks')
             storePassword''
            keyAlias = ''
             keyPassword''

@@ -6,6 +6,10 @@ plugins {
 android {
     signingConfigs {
         release {
+            storeFile file('C:\\Users\\katon\\GitHub\\Android\\Koller-Android\\keystore.jks')
+            storePassword''
+           keyAlias = ''
+            keyPassword''
         }
     }
     namespace 'com.norbert.koller.teacher'
