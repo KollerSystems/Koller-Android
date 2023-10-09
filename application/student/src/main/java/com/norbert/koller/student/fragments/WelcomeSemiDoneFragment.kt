@@ -19,16 +19,8 @@ class WelcomeSemiDoneFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_welcome_semi_done, container, false)
+        return inflater.inflate(R.layout.fragment_welcome_institution_id, container, false)
 
-        val btnEnter : Button = view.findViewById(R.id.welcome_semi_done_btn_enter)
 
-        btnEnter.setOnClickListener {
-            val intent = Intent(activity, MainActivity::class.java)
-            startActivity(intent)
-            requireActivity().finishAffinity()
-        }
-
-        return view
     }
 }

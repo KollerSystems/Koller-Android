@@ -19,7 +19,7 @@ class WelcomeMainFragment : Fragment() {
         // Inflate the layout for this fragment
         val view : View =  inflater.inflate(R.layout.fragment_welcome_main, container, false)
 
-        val btnStart : Button = view.findViewById(R.id.welcome_semi_done_btn_enter)
+        val btnStart : Button = view.findViewById(R.id.button_exit)
         val btnBack : Button = view.findViewById(R.id.welcome_main_btn_back)
 
         btnStart.setOnClickListener {

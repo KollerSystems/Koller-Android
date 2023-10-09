@@ -102,7 +102,7 @@
                         tools:visibility="visible" />
 
                     <com.norbert.koller.shared.SimpleCardButton
-                        android:id="@+id/scb_edit"
+                        android:id="@+id/scb_personal_info"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/data"

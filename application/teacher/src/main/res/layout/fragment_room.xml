@@ -9,12 +9,13 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
             style="@style/MainLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"
@@ -35,18 +36,18 @@
             <com.google.android.material.card.MaterialCardView
                 style="@style/MainCard"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="wrap_content">
 
                 <LinearLayout
                     style="@style/MainCardLayout"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:id="@+id/room_scb_room_order"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         custom:icon="@drawable/clean"
                         custom:text="@string/room_order">
 
@@ -54,7 +55,7 @@
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         custom:icon="@drawable/person_wave"
                         custom:text="@string/presence">
 
@@ -62,7 +63,7 @@
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:visibility="gone"
                         custom:icon="@drawable/error"
                         custom:text="@string/error_report"
@@ -72,7 +73,7 @@
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:visibility="gone"
                         custom:badge="9"
                         custom:icon="@drawable/flag"
@@ -83,7 +84,7 @@
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         custom:icon="@drawable/pencil"
                         custom:text="@string/edit">
 
@@ -91,7 +92,7 @@
 
                     <com.norbert.koller.shared.SimpleCardButton
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         custom:icon="@drawable/close"
                         custom:text="@string/remove">
 

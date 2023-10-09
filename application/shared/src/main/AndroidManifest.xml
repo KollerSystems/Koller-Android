@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
-    <uses-permission android:name="android.permission.NFC"/>
+    <uses-permission android:name="android.permission.NFC" />
 
     <application
-        android:theme="@style/Theme.MainTheme"
         android:enableOnBackInvokedCallback="false"
+        android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu">
+        <activity
+            android:name=".ManageAccountActivity"
+            android:exported="false" />
         <activity
             android:name=".activities.LaunchActivity"
             android:exported="true">
@@ -22,7 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".activities.DevicesActivity"
             android:exported="false" />
@@ -32,13 +34,12 @@
         <activity
             android:name=".activities.TestActivity"
             android:exported="false" />
-
         <activity
             android:name=".activities.CreateNewPostActivity"
             android:exported="false" />
 
         <service
-            android:name="com.norbert.koller.shared.api.KollerHostApduService"
+            android:name=".api.KollerHostApduService"
             android:exported="true"
             android:permission="android.permission.BIND_NFC_SERVICE">
             <intent-filter>
@@ -50,4 +51,5 @@
                 android:resource="@xml/apduservice" />
         </service>
     </application>
+
 </manifest>

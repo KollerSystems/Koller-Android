@@ -31,9 +31,9 @@ import retrofit2.Response
 open class LoginActivity : AppCompatActivity() {
 
     lateinit var loginButton: Button
+    lateinit var buttonNoAccount: Button
     lateinit var inplPassword: TextInputLayout
     lateinit var inplID: TextInputLayout
-    var textIDNotForEveryone : Int = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,7 +49,7 @@ open class LoginActivity : AppCompatActivity() {
         }
 
         loginButton = findViewById (R.id.login_button_login)
-        val buttonNoAccount: Button = findViewById (R.id.login_button_no_account)
+        buttonNoAccount = findViewById (R.id.login_button_no_account)
         inplID = findViewById(R.id.login_inpl_id)
         inplPassword = findViewById(R.id.login_inpl_password)
 
@@ -222,28 +222,8 @@ open class LoginActivity : AppCompatActivity() {
             }
         }
 
-        buttonNoAccount.setOnClickListener{
 
-            MaterialAlertDialogBuilder(this@LoginActivity)
-                .setTitle(getString(R.string.this_app_is_not_for_everyone))
-                .setMessage(getString(textIDNotForEveryone))
-                .setPositiveButton(
-                    getString(R.string.understood)
-                )
-                { _, _ ->
-
-                }
-                .setNeutralButton(getString(R.string.open_emails))
-                { _, _ ->
-                    val intent = Intent(Intent.ACTION_MAIN)
-                    intent.addCategory(Intent.CATEGORY_APP_EMAIL)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-                    this.startActivity(intent)
-                }
-                .show()
-        }
-
-        buttonNoAccount.setOnLongClickListener {
+        loginButton.setOnLongClickListener {
             Toast.makeText(this, "Csak téged csak most kivételesen beengedlek", Toast.LENGTH_SHORT).show()
 
             MyApplication.openMain.invoke(this@LoginActivity)

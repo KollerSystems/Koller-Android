@@ -6,14 +6,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center_vertical"
-    android:orientation="vertical"
-    tools:context=".fragments.WelcomeNewPasswordFragment">
+    android:orientation="vertical">
 
     <TextView
         android:id="@+id/textView54"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jelszó a fiókodhoz"
+        android:text="Intézményed azonosítója"
         android:textAlignment="center"
         android:textAppearance="@style/MainTitle" />
 
@@ -21,7 +20,7 @@
         android:id="@+id/textView55"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=" Kérlek ügyelj arra, hogy minél erősebb legyen."
+        android:text="A kollégiumod weboldalán a jelentkezés menüpontban találsz egy kódot. Azt másold be az alábbi mezőbe."
         android:textAlignment="center" />
 
     <com.google.android.material.card.MaterialCardView
@@ -44,7 +43,7 @@
                 <ImageView
                     android:id="@+id/imageView21"
                     style="@style/CategoryIcon"
-                    app:srcCompat="@drawable/key" />
+                    app:srcCompat="@drawable/tag" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -56,41 +55,18 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
                         android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="Jelszó"
-                        app:passwordToggleEnabled="true">
+                        android:hint="Intézmény azonosító">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPassword" />
+                            android:inputType="number|numberSigned" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/text_container_margin"
-                        android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="Jelszó mégegyszer"
-                        app:passwordToggleEnabled="true">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPassword" />
-                    </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/textView36"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:text="Erős"
-                android:textAlignment="textEnd"
-                android:textAppearance="@style/Description"
-                android:textColor="?attr/colorGreen" />
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>

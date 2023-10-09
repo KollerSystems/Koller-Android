@@ -9,13 +9,11 @@ class LoginActivity : com.norbert.koller.shared.activities.LoginActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        textIDNotForEveryone = R.string.this_app_is_not_for_everyone_desc
+        buttonNoAccount.text = "Jelentkezés"
 
-        loginButton.setOnLongClickListener {
+        buttonNoAccount.setOnClickListener {
             val intent = Intent(this, WelcomeActivity::class.java)
             startActivity(intent)
-
-            return@setOnLongClickListener true
         }
     }
 }

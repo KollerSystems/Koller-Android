@@ -29,6 +29,8 @@ class WelcomeActivity : AppCompatActivity() {
         viewPager.setCurrentItem(viewPager.currentItem-1, true)
     }
 
+    var navigatedAtLEastOnce : Boolean = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.norbert.koller.student.R.layout.activity_welcome)
@@ -47,22 +49,29 @@ class WelcomeActivity : AppCompatActivity() {
             when(position){
                 0->{
                     tab.view.minimumWidth = 1
+                    tab.view.post{
+                        tab.view.layoutParams.width = 1
+                    }
+
                     tab.view.setPadding(0,0,0,0)
                 }
                 1->{
-                    tab.text = "Új jelszó"
+                    tab.text = "Intézmény azonosító"
                 }
                 2->{
-                    tab.text = "Alapvető adatok"
+                    tab.text = "Adatok"
                 }
                 3->{
-                    tab.text = "Érdeklődési köre"
+                    tab.text = "Jelszó"
                 }
                 4->{
-                    tab.text = "Személyiséged"
+                    tab.text = "Személyes preferenciák"
                 }
                 5->{
                     tab.view.minimumWidth = 1
+                    tab.view.post{
+                        tab.view.layoutParams.width = 1
+                    }
                     tab.view.setPadding(0,0,0,0)
                 }
             }
@@ -90,7 +99,7 @@ class WelcomeActivity : AppCompatActivity() {
         fun animateOutNavigation(){
             tabs.layoutParams.height = tabs.height
 
-            ObjectAnimator.ofFloat(tabs, "translationY", tabs.height * -1f).apply {
+            ObjectAnimator.ofFloat(tabs, "translationY", tabs.layoutParams.height * -1f).apply {
                 duration = 250
                 interpolator = easeInInterpolator
                 start()
@@ -111,7 +120,8 @@ class WelcomeActivity : AppCompatActivity() {
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 if (position == 0 || position == viewPager.adapter!!.itemCount - 1) {
-                    animateOutNavigation()
+                    if(navigatedAtLEastOnce)
+                        animateOutNavigation()
                 }
                 else{
 
@@ -143,9 +153,13 @@ class WelcomeActivity : AppCompatActivity() {
                         start()
                     }
                 }
+
+                navigatedAtLEastOnce = true
                 super.onPageSelected(position)
 
             }
+
+
         })
     }
 

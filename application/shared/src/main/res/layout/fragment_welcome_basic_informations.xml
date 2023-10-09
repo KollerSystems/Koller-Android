@@ -14,14 +14,16 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView53"
+                android:id="@+id/text_info_about_gray"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_container_margin"
-                app:drawableLeftCompat="@drawable/info"
                 android:drawablePadding="@dimen/text_container_margin"
                 android:text="A kiszürkített mezőket csak a nevelőtanárral egyeztetve lehet módosítani."
-                android:textAppearance="@style/Description" />
+                android:textAppearance="@style/Description"
+                android:visibility="gone"
+                app:drawableLeftCompat="@drawable/info"
+                tools:visibility="visible" />
 
             <TextView
                 android:id="@+id/textView52"
@@ -65,7 +67,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/text_container_margin"
-                                    android:enabled="false"
+                                    
                                     android:hint="Vezetéknév">
 
                                     <com.google.android.material.textfield.TextInputEditText
@@ -79,7 +81,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_margin="@dimen/text_container_margin"
-                                    android:enabled="false"
+                                    
                                     android:hint="Keresztnév">
 
                                     <com.google.android.material.textfield.TextInputEditText
@@ -114,7 +116,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/text_container_margin"
-                                android:enabled="false"
+                                
                                 android:hint="Születési idő">
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -153,7 +155,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/text_container_margin"
-                                    android:enabled="false"
+                                    
                                     android:hint="@string/country">
 
                                     <com.google.android.material.textfield.TextInputEditText
@@ -175,7 +177,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/text_container_margin"
                                         android:layout_weight="1"
-                                        android:enabled="false"
+                                        
                                         android:hint="Város">
 
                                         <com.google.android.material.textfield.TextInputEditText
@@ -190,7 +192,7 @@
                                         android:layout_width="100dp"
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/text_container_margin"
-                                        android:enabled="false"
+                                        
                                         android:hint="Irányítószám">
 
                                         <com.google.android.material.textfield.TextInputEditText
@@ -214,7 +216,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/text_container_margin"
                                         android:layout_weight="1"
-                                        android:enabled="false"
+                                        
                                         android:hint="Utca">
 
                                         <com.google.android.material.textfield.TextInputEditText
@@ -229,7 +231,7 @@
                                         android:layout_width="100dp"
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/text_container_margin"
-                                        android:enabled="false"
+                                        
                                         android:hint="Házszám">
 
                                         <com.google.android.material.textfield.TextInputEditText
@@ -252,7 +254,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/text_container_margin"
                                         android:layout_weight="1"
-                                        android:enabled="false"
+                                        
                                         android:hint="Emelet"
                                         app:helperText="@string/optional">
 
@@ -269,7 +271,7 @@
                                         android:layout_height="wrap_content"
                                         android:layout_margin="@dimen/text_container_margin"
                                         android:layout_weight="1"
-                                        android:enabled="false"
+                                        
                                         android:hint="Ajtó"
                                         app:helperText="@string/optional">
 
@@ -307,7 +309,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/text_container_margin"
-                                android:enabled="false"
+                                
                                 android:hint="Iskola">
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -339,7 +341,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_margin="@dimen/text_container_margin"
-                                android:enabled="false"
+                                
                                 android:hint="Osztály">
 
                                 <com.google.android.material.textfield.TextInputEditText
@@ -565,7 +567,7 @@
                                 style="@style/CategoryIcon"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
-                                android:src="@drawable/person" />
+                                app:srcCompat="@drawable/user" />
 
                             <LinearLayout
                                 android:layout_width="match_parent"
@@ -576,7 +578,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/text_container_margin"
-                                    android:enabled="false"
+                                    
                                     android:hint="Vezetéknév">
 
                                     <com.google.android.material.textfield.TextInputEditText
@@ -589,7 +591,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_margin="@dimen/text_container_margin"
-                                    android:enabled="false"
+                                    
                                     android:hint="Keresztnév">
 
                                     <com.google.android.material.textfield.TextInputEditText
@@ -627,7 +629,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/text_container_margin"
-                                    android:enabled="false"
+                                    
                                     android:hint="Telefonszám">
 
                                     <com.google.android.material.textfield.TextInputEditText
@@ -655,7 +657,6 @@
                                 style="@style/CategoryIcon"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
-                                android:src="@drawable/person"
                                 app:srcCompat="@drawable/mail" />
 
                             <LinearLayout
@@ -667,7 +668,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_margin="@dimen/text_container_margin"
-                                    android:enabled="false"
+                                    
                                     android:hint="Email">
 
                                     <com.google.android.material.textfield.TextInputEditText
@@ -691,7 +692,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:enabled="false"
+                
                 android:text="Nevelő hozzáadása"
                 />
 

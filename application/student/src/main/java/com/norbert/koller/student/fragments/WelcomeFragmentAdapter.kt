@@ -17,19 +17,19 @@ class WelcomeFragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecy
                 WelcomeMainFragment()
             }
             1->{
-                WelcomeNewPasswordFragment()
+                WelcomeSemiDoneFragment()
             }
             2->{
                 WelcomeBasicInformationsFragment()
             }
             3->{
-                WelcomeInterestsFragment()
+                WelcomeNewPasswordFragment()
             }
             4->{
                 WelcomePersonalityFragment()
             }
             5->{
-                WelcomeSemiDoneFragment()
+                WelcomeFinalDoneFragment()
             }
             else->{
                 Fragment()
