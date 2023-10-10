@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.student.DayRecyclerAdapter
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
@@ -28,8 +31,10 @@ class CalendarDaysFragment : Fragment() {
         val view: View = inflater.inflate(R.layout.fragment_calendar_days, container, false)
 
 
-        val calendar = Calendar.getInstance()
-
+        val mcardDate : MaterialCardView = view.findViewById(R.id.mcard_date)
+        mcardDate.setOnClickListener{
+            MyApplication.setupDbd(mcardDate.getChildAt(0) as TextView).show(parentFragmentManager,  "MATERIAL_DATE_PICKER")
+        }
 
 
 

@@ -21,6 +21,7 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -36,6 +37,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.color.DynamicColors
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.google.android.material.textfield.TextInputLayout
@@ -98,6 +100,28 @@ open class MyApplication : Application() {
                 '3' -> number + context.getString(R.string.rd)
                 else -> number + context.getString(R.string.th)
             }
+        }
+
+        fun setupDbd(textView : TextView) : MaterialDatePicker<Long> {
+
+            val dpdb = MaterialDatePicker.Builder.datePicker()
+
+            if(textView.text.isNullOrEmpty()){
+                dpdb.setSelection(textView.tag as Long)
+            }
+
+            val dpd = dpdb.build()
+
+            dpd.addOnPositiveButtonClickListener {selection ->
+
+                textView.setText(java.text.SimpleDateFormat(shortMonthDayFormat).format(selection))
+                textView.tag = selection
+
+
+
+            }
+
+            return dpd
         }
 
 

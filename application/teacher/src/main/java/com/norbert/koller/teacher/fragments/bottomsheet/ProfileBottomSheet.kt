@@ -32,7 +32,6 @@ class ProfileBottomSheet : com.norbert.koller.shared.fragments.bottomsheet.Profi
 
             val usersFragment = UsersFragment()
             mainActivity.changeFragment(usersFragment)
-            //usersFragment.
         }
 
     }

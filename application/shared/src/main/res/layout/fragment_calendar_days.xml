@@ -19,6 +19,7 @@
         custom:text="Ha ismét megérinted a Napok fület, akkor automatikkusan visszatérhetsz a jelenlegi naphoz." />
 
     <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcard_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"

@@ -4,9 +4,7 @@ import com.norbert.koller.shared.data.UserData
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -23,6 +21,7 @@ import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
 import com.norbert.koller.shared.recycleradapter.DevRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.norbert.koller.shared.ManageAccountActivity
 import com.norbert.koller.shared.activities.MainActivity
 import kotlinx.coroutines.launch
 
@@ -86,11 +85,13 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
                 .show()
         }
 
-        val btnManageAccount: Button = view.findViewById(R.id.profile_btn_manage_account)
+        val btnManageAccount: Button = view.findViewById(R.id.btn_manage_account)
 
         btnManageAccount.setOnClickListener{
 
-            this.dismiss()
+
+            val intent = Intent(view.context, ManageAccountActivity::class.java)
+            startActivity(intent)
         }
 
         val cardMyRoom: View = view.findViewById(R.id.profile_card_my_room)
@@ -114,14 +115,12 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         cardDevices.setOnClickListener{
             val intent = Intent(view.context, DevicesActivity::class.java)
             startActivity(intent)
-            this.dismiss()
         }
 
         val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
 
         fbtnSettings.setOnClickListener{
             MyApplication.openSettings.invoke(requireContext())
-            this.dismiss()
         }
 
         val fbtnPrivacyPolicy: View = view.findViewById(R.id.profile_fbtn_privacy_policy)
@@ -129,7 +128,6 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         fbtnPrivacyPolicy.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/orgs/4E-6F-72-62-65-72-74"))
             startActivity(browserIntent)
-            this.dismiss()
         }
 
         //DEVS
@@ -155,7 +153,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         cardSupport.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/"))
             startActivity(browserIntent)
-            this.dismiss()
+
         }
 
         val cardBug: View = view.findViewById(R.id.profile_card_bug)
@@ -163,7 +161,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         cardBug.setOnClickListener{
             val intent = Intent(view.context, FeedbackActivity::class.java)
             startActivity(intent)
-            this.dismiss()
+
         }
 
         val cardIdea: View = view.findViewById(R.id.profile_card_idea)
@@ -171,7 +169,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         cardIdea.setOnClickListener{
             val intent = Intent(view.context, FeedbackActivity::class.java)
             startActivity(intent)
-            this.dismiss()
+
         }
 
         val fbtnEmail: View = view.findViewById(R.id.profile_fbtn_email)
@@ -182,7 +180,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
             intent.data = Uri.parse("mailto:contact@norbert.hu?body=Felhasználó azonosítója:")
 
             startActivity(intent)
-            this.dismiss()
+
         }
     }
 

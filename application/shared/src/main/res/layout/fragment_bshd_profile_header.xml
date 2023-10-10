@@ -64,7 +64,7 @@
             </LinearLayout>
 
             <Button
-                android:id="@+id/profile_btn_manage_account"
+                android:id="@+id/btn_manage_account"
                 style="@style/Widget.Material3.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

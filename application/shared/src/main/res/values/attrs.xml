@@ -62,5 +62,9 @@
         <attr name="icon" />
     </declare-styleable>
 
+    <declare-styleable name="roundedBadgeImageView">
+        <attr name="stroke_width" format="dimension" />
+    </declare-styleable>
+
 
 </resources>

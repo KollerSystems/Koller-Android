@@ -81,28 +81,6 @@ class CreateNewPostActivity : AppCompatActivity() {
     private lateinit var textViewImageLimit : TextView
 
 
-    private fun setupDbd(til : TextInputLayout) : MaterialDatePicker<Long>{
-
-        val dpdb = MaterialDatePicker.Builder.datePicker()
-
-        if(!til.editText!!.text.isNullOrEmpty()){
-            dpdb.setSelection(til.tag as Long)
-        }
-
-        val dpd = dpdb.build()
-
-        dpd.addOnPositiveButtonClickListener {selection ->
-
-            til.editText!!.setText(SimpleDateFormat(MyApplication.shortMonthDayFormat).format(selection))
-            til.tag = selection
-
-            til.isEndIconVisible = true
-
-        }
-
-        return dpd
-    }
-
 
     private fun setupTbd(til : TextInputLayout) : MaterialTimePicker{
 
@@ -190,14 +168,22 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            setupDbd(tilDateFrom).show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+            val dpd = MyApplication.setupDbd(tilDateFrom.editText!!)
+            dpd.addOnPositiveButtonClickListener {
+                tilDateFrom.isEndIconVisible = true
+            }
+            dpd.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
         tilDateTo.editText!!.setOnClickListener{
 
             currentFocus?.clearFocus()
 
-            setupDbd(tilDateTo).show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
+            val dpd = MyApplication.setupDbd(tilDateTo.editText!!)
+            dpd.addOnPositiveButtonClickListener {
+                tilDateTo.isEndIconVisible = true
+            }
+            dpd.show(supportFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
         tilTimeFrom.editText!!.setOnClickListener{
