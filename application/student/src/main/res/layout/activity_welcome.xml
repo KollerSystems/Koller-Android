@@ -18,7 +18,12 @@
         android:elevation="@dimen/header_footer_elevation"
         android:fitsSystemWindows="true"
         android:translationY="-40dp"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        app:tabIndicator="@drawable/inner_panel"
+        app:tabIndicatorColor="?attr/colorSecondaryContainer"
+        app:tabIndicatorGravity="center"
+        app:tabIndicatorHeight="25sp"
+        app:tabSelectedTextColor="?attr/colorOnSecondaryContainer" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/welcome_view_pager"

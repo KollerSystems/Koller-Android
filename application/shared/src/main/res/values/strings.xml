@@ -338,4 +338,5 @@
     <string name="presence">Jelenlét</string>
     <string name="role">Szerepkör</string>
     <string name="app_name_base" translatable="false">Koller</string>
+    <string name="cancel">Mégsem</string>
 </resources>

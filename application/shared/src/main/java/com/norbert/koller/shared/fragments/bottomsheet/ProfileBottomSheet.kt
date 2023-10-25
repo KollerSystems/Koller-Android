@@ -21,7 +21,7 @@ import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
 import com.norbert.koller.shared.recycleradapter.DevRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.norbert.koller.shared.ManageAccountActivity
+import com.norbert.koller.shared.activities.ManageAccountActivity
 import com.norbert.koller.shared.activities.MainActivity
 import kotlinx.coroutines.launch
 

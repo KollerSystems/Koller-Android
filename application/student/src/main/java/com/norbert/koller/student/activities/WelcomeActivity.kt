@@ -10,10 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
 import androidx.viewpager2.widget.ViewPager2
-import com.norbert.koller.shared.R
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.norbert.koller.student.R
+import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.student.fragments.WelcomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayout.TabView
 import com.google.android.material.tabs.TabLayoutMediator
+import com.norbert.koller.shared.MyApplication
 
 
 class WelcomeActivity : AppCompatActivity() {
@@ -33,7 +37,7 @@ class WelcomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(com.norbert.koller.student.R.layout.activity_welcome)
+        setContentView(R.layout.activity_welcome)
 
         tabs = findViewById(com.norbert.koller.student.R.id.welcome_tabs)
         val btnNavigation: CardView = findViewById(com.norbert.koller.student.R.id.welcome_btn_navigation)
@@ -50,7 +54,7 @@ class WelcomeActivity : AppCompatActivity() {
                 0->{
                     tab.view.minimumWidth = 1
                     tab.view.post{
-                        tab.view.layoutParams.width = 1
+                        tab.view.layoutParams.width = MyApplication.convertDpToPixel(10, tab.view.context)
                     }
 
                     tab.view.setPadding(0,0,0,0)
@@ -70,11 +74,13 @@ class WelcomeActivity : AppCompatActivity() {
                 5->{
                     tab.view.minimumWidth = 1
                     tab.view.post{
-                        tab.view.layoutParams.width = 1
+                        tab.view.layoutParams.width = MyApplication.convertDpToPixel(10, tab.view.context)
                     }
                     tab.view.setPadding(0,0,0,0)
                 }
             }
+
+            tab.view.isClickable = false
 
         }.attach()
 
@@ -86,7 +92,21 @@ class WelcomeActivity : AppCompatActivity() {
         }
 
         btnForward.setOnClickListener {
-            scrollForward()
+            if(viewPager.currentItem != viewPager.adapter!!.itemCount - 1 - 1) {
+                scrollForward()
+            }
+            else{
+                MaterialAlertDialogBuilder(this@WelcomeActivity)
+                    .setTitle("Mindent megnéztél kétszer is?")
+                    .setMessage("Amint a befejezés gombra nyomsz, adataid elküldésre kerülnek, amiket egészen addig nem fogsz tudni módosítani, amíg fel nem vesznek.")
+                    .setPositiveButton(getString(Rs.string.finnish)) { _, _ ->
+                        scrollForward()
+                    }
+                    .setNegativeButton(getString(Rs.string.cancel)) { _, _ ->
+
+                    }
+                    .show()
+            }
         }
 
 
@@ -126,16 +146,16 @@ class WelcomeActivity : AppCompatActivity() {
                 else{
 
                     if (position == 0 + 1){
-                        btnBackward.text = getString(R.string.back)
-                        btnForward.text = getString(R.string.next)
+                        btnBackward.text = getString(Rs.string.back)
+                        btnForward.text = getString(Rs.string.next)
                     }
                     else if (position == viewPager.adapter!!.itemCount - 1 - 1){
-                        btnForward.text = getString(R.string.finnish)
-                        btnBackward.text = getString(R.string.backward)
+                        btnForward.text = getString(Rs.string.finnish)
+                        btnBackward.text = getString(Rs.string.backward)
                     }
                     else{
-                        btnBackward.text = getString(R.string.backward)
-                        btnForward.text = getString(R.string.next)
+                        btnBackward.text = getString(Rs.string.backward)
+                        btnForward.text = getString(Rs.string.next)
                     }
 
                     tabs.visibility = VISIBLE

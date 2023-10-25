@@ -14,7 +14,7 @@
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".ManageAccountActivity"
+            android:name=".activities.ManageAccountActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LaunchActivity"

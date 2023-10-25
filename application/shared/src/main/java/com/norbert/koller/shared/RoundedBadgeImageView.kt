@@ -18,7 +18,7 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayou
         )
 
         try {
-            mStrokeWidth = typedArray.getDimension(R.styleable.roundedBadgeImageView_stroke_width, 5f)
+            mStrokeWidth = typedArray.getDimension(R.styleable.roundedBadgeImageView_stroke_width, MyApplication.convertDpToPixel(5, context).toFloat())
         } finally {
             typedArray.recycle()
         }

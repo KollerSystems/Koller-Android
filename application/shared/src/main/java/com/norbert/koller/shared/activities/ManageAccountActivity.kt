@@ -1,8 +1,9 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import com.norbert.koller.shared.R
 
 class ManageAccountActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

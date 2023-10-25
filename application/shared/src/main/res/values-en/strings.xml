@@ -302,4 +302,5 @@
     <string name="classroom">Classroom</string>
     <string name="presence">Presence</string>
     <string name="role">Role</string>
+    <string name="cancel">Cancel</string>
 </resources>
