@@ -2,54 +2,133 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragments.WelcomePersonalityFragment"
     android:id="@+id/scrollView2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent">
+    app:layout_constraintTop_toTopOf="parent"
+    tools:context=".fragments.WelcomePersonalityFragment">
 
-        <LinearLayout
-            style="@style/MainLayoutWelcome"
+    <LinearLayout
+        style="@style/MainLayoutWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:background="@null"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:id="@+id/textView54"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@null"
-            android:orientation="vertical">
+            android:text="A megálmodott szobaközösséged"
+            android:textAlignment="center"
+            android:textAppearance="@style/MainTitle" />
 
-            <TextView
-                android:id="@+id/textView52"
-                style="@style/CategoryCardName"
+        <TextView
+            android:id="@+id/textView55"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Az alábbiakban megadthatod, hogy milyen szobatársakkal lennél szívesen."
+            android:textAlignment="center" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MainCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp">
+
+            <LinearLayout
+                style="@style/MainCardLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Lorem" />
+                android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                style="@style/MainCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    style="@style/MainCardLayout"
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal">
 
-                    <com.google.android.material.card.MaterialCardView
-                        style="@style/Card"
+                    <LinearLayout
                         android:layout_width="match_parent"
-                        android:clickable="true">
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:orientation="horizontal" />
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/text_container_margin"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
-                    </com.google.android.material.card.MaterialCardView>
+                            <TextView
+                                android:id="@+id/textView9"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Intorvertált"
+                                tools:ignore="HardcodedText" />
 
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                            <com.google.android.material.slider.RangeSlider
+                                android:id="@+id/settings_slider_list_loading_delay"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/n_spacing"
+                                android:layout_marginBottom="@dimen/n_spacing"
+                                android:layout_weight="1"
+                                android:stepSize="1"
+                                android:valueFrom="0"
+                                android:valueTo="10"
+                                app:labelBehavior="floating" />
 
-        </LinearLayout>
+                            <TextView
+                                android:id="@+id/textView13"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Extrovertált"
+                                tools:ignore="HardcodedText" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/textView23"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing"
+                            android:drawablePadding="@dimen/text_container_margin"
+                            android:text="Introvertált: Nem egy partyarc, csöndes, el van magával."
+                            android:textAppearance="@style/Description"
+                            app:drawableLeftCompat="@drawable/info" />
+
+                        <TextView
+                            android:id="@+id/textView25"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/text_container_margin"
+                            android:drawablePadding="@dimen/text_container_margin"
+                            android:text="Extrovertált: Partyarc, nyüzsgő, folyamatosan társaságban van."
+                            android:textAppearance="@style/Description"
+                            app:drawableLeftCompat="@drawable/info" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 </ScrollView>

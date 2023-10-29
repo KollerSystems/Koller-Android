@@ -2,7 +2,6 @@ package com.norbert.koller.shared.fragments
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.content.Context
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
@@ -13,6 +12,7 @@ import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import com.google.android.material.chip.Chip
+import com.norbert.koller.shared.FullScreenLoading
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
@@ -44,8 +44,7 @@ abstract class UserFragment(val UID : Int) : Fragment() {
         val instagramCard : Chip = view.findViewById(R.id.user_view_instagram)
         val emailCard : Chip = view.findViewById(R.id.user_view_email)
 
-        val loadingOl : View = view.findViewById(R.id.loading_overlay)
-        loadingOl.visibility = View.VISIBLE
+        val loadingOl : FullScreenLoading = view.findViewById(R.id.loading_overlay)
 
         val nestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
 
@@ -70,73 +69,67 @@ abstract class UserFragment(val UID : Int) : Fragment() {
             }
         }
 
+        fun loadData(){
 
+            val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
+            usersResponse.getUser(UID, APIInterface.getHeaderMap()).enqueue(
+                object : Callback<UserData> {
+                    override fun onResponse(
+                        call: Call<UserData>,
+                        userResponse: Response<UserData>
+                    ) {
+                        if (userResponse.code() == 200) {
 
+                            val userData: UserData = userResponse.body()!!
+                            textName.text = userData.Name
 
-        val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
-        usersResponse.getUser(UID, APIInterface.getHeaderMap()).enqueue(
-            object : Callback<UserData> {
-                override fun onResponse(
-                    call: Call<UserData>,
-                    userResponse: Response<UserData>
-                ) {
-                    if (userResponse.code() == 200) {
+                            buttonGroup.text = userData.Group
+                            buttonRoom.text = userData.RID.toString()
+                            buttonClass.text = userData.Class?.Class
 
-                        val userData: UserData = userResponse.body()!!
-                        textName.text = userData.Name
+                            nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
+                                if (isVisible(textName)) {
+                                    (activity as MainActivity).setToolbarTitle(getString(R.string.user),null)
 
-                        buttonGroup.text = userData.Group
-                        buttonRoom.text = userData.RID.toString()
-                        buttonClass.text = userData.Class?.Class
-
-                        nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
-                            if (isVisible(textName)) {
-                                (activity as MainActivity).setToolbarTitle(getString(R.string.user),null)
-
-                            } else {
-                                (activity as MainActivity).setToolbarTitle(userData.Name,MyApplication.createUserDescription(userData))
-                            }
-                        }
-
-                        buttonRoom.setOnClickListener{
-                            (requireContext() as MainActivity).changeFragment(MyApplication.roomFragment(userData.RID!!))
-                        }
-
-                        showAndSetIfNotNull(discordCard, userData.Discord)
-                        showAndSetIfNotNull(facebookCard, userData.Facebook)
-                        showAndSetIfNotNull(instagramCard, userData.Instagram)
-                        showAndSetIfNotNull(emailCard, userData.Email)
-
-                        imagePfp.setOnClickListener{
-                            StfalconImageViewer.Builder(context, listOf(imagePfp.drawable)) { view, drawable ->
-                                view.setImageDrawable(drawable)
-
-                            }
-                                .withStartPosition(0)
-                                .withTransitionFrom(imagePfp)
-                                .show()
-                        }
-
-                        loadingOl.animate()
-                            .alpha(0.0f)
-                            .setDuration(300)
-                            .setListener(object : AnimatorListenerAdapter() {
-                                override fun onAnimationEnd(animation: Animator) {
-                                    super.onAnimationEnd(animation)
-                                    loadingOl.visibility = View.GONE
+                                } else {
+                                    (activity as MainActivity).setToolbarTitle(userData.Name,MyApplication.createUserDescription(userData))
                                 }
-                            })
+                            }
 
-                    } else {
-                        APIInterface.serverErrorPopup(context)
+                            buttonRoom.setOnClickListener{
+                                (requireContext() as MainActivity).changeFragment(MyApplication.roomFragment(userData.RID!!))
+                            }
+
+                            showAndSetIfNotNull(discordCard, userData.Discord)
+                            showAndSetIfNotNull(facebookCard, userData.Facebook)
+                            showAndSetIfNotNull(instagramCard, userData.Instagram)
+                            showAndSetIfNotNull(emailCard, userData.Email)
+
+                            imagePfp.setOnClickListener{
+                                StfalconImageViewer.Builder(context, listOf(imagePfp.drawable)) { view, drawable ->
+                                    view.setImageDrawable(drawable)
+
+                                }
+                                    .withStartPosition(0)
+                                    .withTransitionFrom(imagePfp)
+                                    .show()
+                            }
+
+                            loadingOl.setState(FullScreenLoading.NONE)
+
+                        } else {
+                            loadingOl.setState(FullScreenLoading.ERROR)
+                        }
+                    }
+
+                    override fun onFailure(call: Call<UserData>, t: Throwable) {
+                        loadingOl.setState(FullScreenLoading.ERROR)
                     }
                 }
+            )
+        }
 
-                override fun onFailure(call: Call<UserData>, t: Throwable) {
-                    APIInterface.serverErrorPopup(context)
-                }
-            }
-        )
+        loadingOl.loadData = {loadData()}
     }
 
 }

@@ -107,7 +107,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <include
-        layout="@layout/view_full_screen_loading"
+        layout="@layout/full_screen_loading"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:visibility="gone" />

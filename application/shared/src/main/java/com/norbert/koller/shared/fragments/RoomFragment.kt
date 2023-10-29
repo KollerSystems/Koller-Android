@@ -2,7 +2,6 @@ package com.norbert.koller.shared.fragments
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
-import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
@@ -41,7 +40,7 @@ abstract class RoomFragment(val RID : Int) : Fragment() {
 
         textTitle = view.findViewById(R.id.room_text_title)
         buttonDesc = view.findViewById(R.id.room_button_description)
-        loadingOl = view.findViewById(R.id.loading_overlay)
+        loadingOl = view.findViewById(R.id.overlay)
         loadingOl.visibility = VISIBLE
 
         usersRecyclerView = view.findViewById(R.id.recycler_view)
