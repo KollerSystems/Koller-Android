@@ -30,7 +30,7 @@
                 android:paddingLeft="@dimen/application_padding"
                 android:paddingTop="0dp"
                 android:paddingRight="@dimen/application_padding"
-                android:paddingBottom="@dimen/application_padding">
+                android:paddingBottom="0dp">
 
                 <TextView
                     style="@style/CategoryCardName"

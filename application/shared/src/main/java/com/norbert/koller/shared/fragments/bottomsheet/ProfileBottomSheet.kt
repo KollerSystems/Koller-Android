@@ -41,8 +41,11 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         MyApplication.setupBottomSheet(dialog!!)
+
+        val textVersion : TextView = view.findViewById(R.id.text_version)
+        textVersion.text = MyApplication.version
+
         textName = view.findViewById(R.id.profile_text_name)
         textName.text = UserData.instance.Name
 
@@ -139,7 +142,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         val devArrayList = arrayListOf(
             DevData("Katona Márton B.", "Menedzsment és Android", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp4)!!, "https://github.com/Marci599"),
-            DevData("Bencsik Gergő B.", "API és Adatbázis", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp5)!!, "https://github.com/lolfail"),
+            DevData("Bencsik Gergő", "API és Adatbázis", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp5)!!, "https://github.com/lolfail"),
             DevData("Zsiga Róbert", "Adatbázis", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp3)!!, "https://github.com/IronNight007"),
             DevData("Fehér Dávid", "Windows back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp7)!!, "https://github.com/TheBlueLines"),
             DevData("Várnagy Miklós T.", "Windows front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp1)!!, "https://github.com/Ararakalari"),

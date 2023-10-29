@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
+import com.norbert.koller.shared.FullScreenLoading
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
@@ -27,7 +28,7 @@ abstract class RoomFragment(val RID : Int) : Fragment() {
     lateinit var userDataArrayList: ArrayList<UserData>
     lateinit var textTitle : TextView
     lateinit var buttonDesc : Button
-    lateinit var loadingOl : View
+    lateinit var loadingOl : FullScreenLoading
 
 
 
@@ -40,59 +41,54 @@ abstract class RoomFragment(val RID : Int) : Fragment() {
 
         textTitle = view.findViewById(R.id.room_text_title)
         buttonDesc = view.findViewById(R.id.room_button_description)
-        loadingOl = view.findViewById(R.id.overlay)
-        loadingOl.visibility = VISIBLE
+        loadingOl = view.findViewById(R.id.loading_overlay)
 
         usersRecyclerView = view.findViewById(R.id.recycler_view)
         usersRecyclerView.setHasFixedSize(false)
 
-        val roomResponse = RetrofitHelper.buildService(APIInterface::class.java)
-        roomResponse.getRoom(RID, APIInterface.getHeaderMap()).enqueue(
-            object : Callback<RoomData> {
-                override fun onResponse(
-                    call: Call<RoomData>,
-                    userResponse: Response<RoomData>
-                ) {
-                    if (userResponse.isSuccessful) {
+       fun loadData(){
+           val roomResponse = RetrofitHelper.buildService(APIInterface::class.java)
+           roomResponse.getRoom(RID, APIInterface.getHeaderMap()).enqueue(
+               object : Callback<RoomData> {
+                   override fun onResponse(
+                       call: Call<RoomData>,
+                       userResponse: Response<RoomData>
+                   ) {
+                       if (userResponse.isSuccessful) {
 
-                        val roomData: RoomData = userResponse.body()!!
+                           val roomData: RoomData = userResponse.body()!!
 
 
-                        if(roomData.Residents != null) {
-                            usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
-                                roomData.Residents!!,
-                                requireContext()
-                            )
-                        }
+                           if(roomData.Residents != null) {
+                               usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
+                                   roomData.Residents!!,
+                                   requireContext()
+                               )
+                           }
 
-                        textTitle.text = roomData.RID.toString()
+                           textTitle.text = roomData.RID.toString()
 
-                        buttonDesc.text = roomData.Group
+                           buttonDesc.text = roomData.Group
 
-                        buttonDesc.setOnClickListener{
-                            (context as MainActivity).changeFragment(MyApplication.usersFragment())
-                        }
+                           buttonDesc.setOnClickListener{
+                               (context as MainActivity).changeFragment(MyApplication.usersFragment())
+                           }
 
-                        loadingOl.animate()
-                            .alpha(0.0f)
-                            .setDuration(300)
-                            .setListener(object : AnimatorListenerAdapter() {
-                                override fun onAnimationEnd(animation: Animator) {
-                                    super.onAnimationEnd(animation)
-                                    loadingOl.visibility = View.GONE
-                                }
-                            })
+                           loadingOl.setState(FullScreenLoading.NONE)
 
-                    } else {
-                        APIInterface.serverErrorPopup(context)
-                    }
-                }
+                       } else {
+                           loadingOl.setState(FullScreenLoading.ERROR)
+                       }
+                   }
 
-                override fun onFailure(call: Call<RoomData>, t: Throwable) {
-                    APIInterface.serverErrorPopup(context)
-                }
-            }
-        )
+                   override fun onFailure(call: Call<RoomData>, t: Throwable) {
+                       loadingOl.setState(FullScreenLoading.ERROR)
+                   }
+               }
+           )
+       }
+
+        loadingOl.loadData = {loadData()}
 
     }
 

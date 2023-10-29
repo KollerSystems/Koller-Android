@@ -2,6 +2,7 @@ package com.norbert.koller.teacher
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import com.norbert.koller.teacher.BuildConfig
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.teacher.activities.*
 import com.norbert.koller.teacher.fragments.CalendarFragment
@@ -19,6 +20,8 @@ class MyApplication : com.norbert.koller.shared.MyApplication() {
 
     override fun onCreate() {
         super.onCreate()
+
+        version = BuildConfig.VERSION_NAME
 
         openSettings = {context : Context ->
             openActivity(context, SettingsActivity::class.java)

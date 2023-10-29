@@ -65,6 +65,8 @@ open class MyApplication : Application() {
 
     companion object Comp{
 
+        lateinit var version : String
+
         lateinit var openSettings: (context : Context) -> Unit
         lateinit var openLogin: (context : Context) -> Unit
         lateinit var openMain: (context : Context) -> Unit

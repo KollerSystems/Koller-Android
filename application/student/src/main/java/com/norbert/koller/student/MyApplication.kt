@@ -18,6 +18,8 @@ class MyApplication : com.norbert.koller.shared.MyApplication() {
     override fun onCreate() {
         super.onCreate()
 
+        version = BuildConfig.VERSION_NAME
+
         openSettings = {context : Context ->
             openActivity(context, SettingsActivity::class.java)
         }

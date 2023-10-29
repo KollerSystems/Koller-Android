@@ -234,7 +234,7 @@
                     android:text="@string/made_by" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/text_version"
                     style="@style/Description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"

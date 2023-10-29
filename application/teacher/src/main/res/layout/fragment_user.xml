@@ -129,10 +129,8 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.norbert.koller.shared.FullScreenLoading
-        android:id="@id/loading_overlay"
+        android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="visible"
-        tools:visibility="gone" />
+        android:layout_height="match_parent" />
 
 </FrameLayout>

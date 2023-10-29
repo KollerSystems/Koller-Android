@@ -18,16 +18,25 @@ class FullScreenLoading(context: Context, attrs: AttributeSet) : LinearLayout(co
     private val retry : Button
     lateinit var loadData: () -> Unit
 
+    fun crossFade(toHide : View, toShow : View){
+        toHide.animate()
+            .alpha(0.0f)
+            .setDuration(100)
+
+        toShow.visibility = VISIBLE
+        toShow.animate()
+            .alpha(1f)
+            .setDuration(100)
+    }
+
     fun setState(value : Int){
         state = value
         when (state){
             LOADING->{
-                error.visibility = GONE
-                loading.visibility = VISIBLE
+                crossFade(error, loading)
             }
             ERROR->{
-                error.visibility = VISIBLE
-                loading.visibility = GONE
+                crossFade(loading, error)
             }
             NONE->{
                 fadeOut()
