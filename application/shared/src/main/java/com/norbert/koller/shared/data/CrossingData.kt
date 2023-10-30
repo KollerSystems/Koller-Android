@@ -1,12 +1,24 @@
 package com.norbert.koller.shared.data
 
+import android.content.Context
+import com.norbert.koller.shared.MyApplication
 import java.sql.Timestamp
+import java.text.SimpleDateFormat
+import java.util.Date
 
 
-data class CrossingData(
-    val ID : Int = -1,
-    val PID : Int = -1,
-    val Time : Timestamp,
-    val Direction : Byte
+class CrossingData(
+    var ID : Int = -1,
+    var UID : Int = -1,
+    var Time: Date,
+    var Direction : Byte
 
-)
+) : BaseData() {
+    override fun diffrentDecider(context: Context): String {
+        return SimpleDateFormat(MyApplication.monthDay).format(Time)
+    }
+
+    override fun getMainID(): Int {
+        return ID
+    }
+}

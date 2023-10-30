@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
 import androidx.core.widget.doBeforeTextChanged
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -66,7 +67,7 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
             }
             VIEW_TYPE_SEPARATOR -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.view_date, parent, false)
-                GateRecyclerAdapter.DateViewHolder(view)
+                DateViewHolder(view)
             }
             VIEW_TYPE_LOADING -> {
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.view_loading, parent, false)
@@ -113,7 +114,7 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
                 }
                 VIEW_TYPE_SEPARATOR -> {
 
-                    holder as GateRecyclerAdapter.DateViewHolder
+                    holder as DateViewHolder
 
                     item as String
 
@@ -196,5 +197,11 @@ abstract class BaseRecycleAdapter(private val chipGroup: ChipGroup? = null, val 
         const val VIEW_TYPE_SEPARATOR = 1
         const val VIEW_TYPE_LOADING = 2
         const val VIEW_TYPE_RETRY = 3
+    }
+
+
+    class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
+        val text : TextView = itemView.findViewById(R.id.text_view)
     }
 }

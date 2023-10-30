@@ -9,8 +9,10 @@ import androidx.paging.PagingState
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
 import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
 import kotlinx.coroutines.delay
+import retrofit2.Response
 import kotlin.random.Random
 
 
@@ -21,7 +23,7 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
 
 
-    open suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : List<BaseData>{
+    open suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : Response<List<BaseData>> {
         throw Exception("Nem lett felülírva a getApiResponse függvény 💀")
     }
 
@@ -38,19 +40,28 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
         val apiResponse = RetrofitHelper.buildService(APIInterface::class.java)
         try {
-            val response: List<BaseData> = getApiResponse(apiResponse, params.loadSize, offset)
+            val response: Response<List<BaseData>> = getApiResponse(apiResponse, params.loadSize, offset)
+            var responseAs: List<BaseData> = listOf()
+            if(response.isSuccessful) {
+                if(!response.body().isNullOrEmpty()) {
+                    responseAs = response.body() as List<BaseData>
+                }
+            }
+            else{
+                throw Exception("API error: ${response.code()}")
+            }
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
             recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)
             recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1 - 1, Object())
             recyclerAdapter.state = BaseRecycleAdapter.STATE_NONE
 
-            lastListSize = response.size
+            lastListSize = responseAs.size
             val items = mutableListOf<Any>()
 
 
 
-            for (data in response) {
+            for (data in responseAs) {
                 val firstChar = data.diffrentDecider(context)
                 if (firstChar != lastFirstChar) {
                     items.add(firstChar)

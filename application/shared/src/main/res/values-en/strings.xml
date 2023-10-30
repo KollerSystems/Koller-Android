@@ -34,7 +34,7 @@
     <string name="development_team">Development team</string>
     <string name="sleeping">Sleeping</string>
     <string name="out_in">Out/In</string>
-    <string name="in">In</string>
+    <string name="in_">In</string>
     <string name="open_ediary">Open E-Diary</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
@@ -303,4 +303,5 @@
     <string name="presence">Presence</string>
     <string name="role">Role</string>
     <string name="cancel">Cancel</string>
+    <string name="out">Out</string>
 </resources>

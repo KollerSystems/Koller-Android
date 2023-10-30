@@ -59,7 +59,7 @@
     <string name="version" translatable="false">v0.0.1</string>
     <string name="sleeping">Alvás</string>
     <string name="out_in">Kint/Bent</string>
-    <string name="in">Bent</string>
+    <string name="in_">Be</string>
     <string name="doing_things">Szabad elfoglaltság</string>
     <string name="open_ediary">E-Napló megnyitása</string>
     <string name="monday">Hétfő</string>
@@ -339,4 +339,5 @@
     <string name="role">Szerepkör</string>
     <string name="app_name_base" translatable="false">Koller</string>
     <string name="cancel">Mégsem</string>
+    <string name="out">Ki</string>
 </resources>

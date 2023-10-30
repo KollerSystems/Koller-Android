@@ -110,22 +110,25 @@
                 android:text="@string/filters" />
 
             <com.google.android.material.chip.ChipGroup
+
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip31"
+                    android:id="@+id/chip_direction"
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
                     android:text="@string/direction"
                     app:closeIconEnabled="true" />
 
                 <com.google.android.material.chip.Chip
-                    android:id="@+id/chip29"
+                    android:id="@+id/chip_lateness"
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
                     android:text="@string/lateness"
                     app:closeIconEnabled="true" />
 
@@ -134,6 +137,7 @@
                     style="@style/chipDropdownButtonFilterStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checkable="false"
                     android:text="@string/date"
                     app:closeIconEnabled="true" />
 
@@ -148,6 +152,7 @@
                 android:text="@string/arrangement" />
 
             <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_sort"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:checkedChip="@id/chip_none"
@@ -159,6 +164,7 @@
                     android:id="@+id/chip_none"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="Date:desc"
                     android:text="@string/newest"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
@@ -166,6 +172,7 @@
                     android:id="@+id/chip_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:tag="Date:asc"
                     android:text="@string/oldest"
                     app:shapeAppearance="@style/overlayRoundedRight" />
 
@@ -180,50 +187,10 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+    <com.norbert.koller.shared.SuperCoolRecyclerView
+        android:id="@+id/sc_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/fab_scroll_to_top"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom|right"
-                android:layout_marginRight="@dimen/application_padding"
-                android:layout_marginBottom="@dimen/application_padding"
-                android:clickable="true"
-                android:src="@drawable/up" />
-
-            <TextView
-                android:id="@+id/text_view_recycler_view_header"
-                style="@style/CategoryCardName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@null"
-                android:layout_marginTop="@null"
-                android:background="?android:attr/windowBackground"
-                android:outlineProvider="none"
-                android:paddingHorizontal="30dp"
-                android:paddingVertical="@dimen/text_container_margin"
-                android:text="Július 12."
-                android:translationZ="1dp" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                style="@style/MainCardLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingHorizontal="20dp"
-                android:paddingBottom="85dp"
-                tools:listitem="@layout/view_readable_item" />
-        </FrameLayout>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

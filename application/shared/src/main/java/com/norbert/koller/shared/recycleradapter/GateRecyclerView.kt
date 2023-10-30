@@ -9,6 +9,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.marginTop
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.chip.Chip
+import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CrossingData
@@ -19,61 +21,10 @@ import java.util.Calendar
 import java.util.Date
 
 
-class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var context : Context, var date : TextView) : RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+class GateRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) :BaseRecycleAdapter(chipGroup, chips){
 
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-
-        recyclerView.setOnScrollChangeListener(){ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
-
-            val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
-            val firstVisibleItemIndex : Int = layoutManager.findFirstVisibleItemPosition()
-            val firstCompletelyVisibleIndex : Int = layoutManager.findFirstCompletelyVisibleItemPosition()
-
-            if(firstVisibleItemIndex != -1) {
-                val firstData = crossingList[firstVisibleItemIndex]
-                if (firstData is String) {
-                    date.text = firstData
-                }
-                else{
-                    firstData as CrossingData
-                    date.text = SimpleDateFormat( MyApplication.monthDay).format(firstData.Time).replaceFirstChar(Char::titlecase)
-                }
-            }
-
-            if(firstCompletelyVisibleIndex != -1){
-                val firstData = crossingList[firstCompletelyVisibleIndex]
-                if(firstData is String){
-                    val firstCompletelyVisibleItem : View = layoutManager.getChildAt(1)!!
-                    val top = firstCompletelyVisibleItem.top
-                    val y = top - firstCompletelyVisibleItem.marginTop
-                    val fullFirstViewHeight = firstCompletelyVisibleItem.height + firstCompletelyVisibleItem.marginTop * 2
-                    if(y < fullFirstViewHeight){
-                        date.translationY = (y - fullFirstViewHeight).toFloat()
-                    }
-                }
-                else{
-                    date.translationY = 0f
-                }
-            }
-        }
-    }
-
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-
-        return when (viewType) {
-            0 -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_readable_item, parent, false)
-                CrossingViewHolder(view)
-            }
-
-            else -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_date, parent, false)
-                DateViewHolder(view)
-            }
-        }
+    override fun createViewHolder(view: View): RecyclerView.ViewHolder {
+        return CrossingViewHolder(view)
     }
 
     fun late(timeInMillis : Long) : String{
@@ -92,52 +43,38 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
         return "Időben"
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        val currentItem = crossingList[position]
+
+
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
         when (holder.itemViewType) {
             0 -> {
-                currentItem as CrossingData
+                item as CrossingData
                 holder as CrossingViewHolder
 
 
 
-                val icon : Int = if(currentItem.Direction == 0.toByte()){
+                val icon : Int = if(item.Direction == 0.toByte()){
                     R.drawable.in_
                 } else{
                     R.drawable.out
                 }
-                holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(context, icon))
+                holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, icon))
 
-                holder.title.text = SimpleDateFormat(MyApplication.timeFormat).format(currentItem.Time)
-                holder.description.text = late(currentItem.Time.time)
+                holder.title.text = SimpleDateFormat(MyApplication.timeFormat).format(item.Time)
+                holder.description.text = late(item.Time.time)
 
                 holder.itemView.setOnClickListener {
 
                 }
             }
             else -> {
-                currentItem as String
+                item as String
                 holder as DateViewHolder
 
-                holder.text.text = currentItem
+                holder.text.text = item
 
             }
-        }
-
-
-    }
-
-    override fun getItemCount(): Int {
-        return crossingList.size
-    }
-
-    override fun getItemViewType(position: Int): Int {
-        return if (crossingList[position] is CrossingData){
-            0
-        }
-        else{
-            1
         }
     }
 
@@ -148,9 +85,5 @@ class GateRecyclerAdapter (private var crossingList : ArrayList<Any>, var contex
         val description : TextView = itemView.findViewById(R.id.text_description)
     }
 
-    class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-        val text : TextView = itemView.findViewById(R.id.text_view)
-    }
 
 }

@@ -22,7 +22,9 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentManager
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.appbar.AppBarLayout
@@ -85,6 +87,50 @@ open class MyApplication : Application() {
 
         var userOutgoingTemporaryFragment: (UID : Int) -> UserOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
         var userOutgoingPermanentFragment: (UID : Int) -> UserOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
+
+        fun setupDrpd(context : Context, fragmentManager : FragmentManager, chip : Chip){
+
+            chip.setOnClickListener {
+
+                val dprdb = MaterialDatePicker.Builder.dateRangePicker()
+
+                if (chip.tag != null) {
+                    dprdb.setSelection(chip.tag as androidx.core.util.Pair<Long, Long>)
+                }
+
+                val drpd = dprdb.build()
+
+                drpd.addOnPositiveButtonClickListener { selection ->
+
+                    var stringForChip = java.text.SimpleDateFormat(shortMonthDayFormat).format(selection.first)
+                    if (selection.first != selection.second) {
+                        stringForChip += " - ${java.text.SimpleDateFormat(shortMonthDayFormat).format(selection.second)}"
+                    }
+                    chip.tag = selection
+                    chip.text = stringForChip
+                    chip.isCheckable = true
+                    chip.isChecked = true
+                    chip.isCheckable = false
+                    chip.closeIcon = AppCompatResources.getDrawable(context, R.drawable.close_thick)
+                    chip.setOnCloseIconClickListener {
+                        chip.closeIcon = AppCompatResources.getDrawable(context, R.drawable.arrow_drop)
+                        chip.tag = null
+                        chip.text = context.getString(R.string.date)
+                        chip.isCheckable = true
+                        chip.isChecked = false
+                        chip.isCheckable = false
+                        chip.setOnCloseIconClickListener(null)
+                    }
+
+                }
+
+
+
+
+                drpd.show(fragmentManager, "MATERIAL_DATE_RANGE_PICKER")
+
+            }
+        }
 
         fun setToolbarToBottomViewColor(bottomView : View, window:Window){
             bottomView.post{

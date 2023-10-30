@@ -12,6 +12,7 @@ import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.BasePagingSource
 import com.norbert.koller.shared.data.BaseProgramData
+import com.norbert.koller.shared.data.CrossingData
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -127,28 +128,30 @@ interface APIInterface {
     ) : Call<RoomData>
 
     @GET("api/crossings/me")
-    fun getMyCrossings(
+    suspend fun getMyCrossings(
         @Query(value = "limit") limit : Int,
         @Query(value = "offset") offset : Int,
+        @Query(value = "sort") sort : String = "Time:asc",
+        @Query(value = "filter") filter : String? = null,
         @HeaderMap headers: Map<String, String>
-    ) : Call<List<UserData>>
+    ) : Response<List<CrossingData>>
+}
+
+class CrossingPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, sort: String, filter: String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
+
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+
+        return apiResponse.getMyCrossings(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
+
+    }
+
 }
 
 class UserPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, sort: String, filter: String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
-        val response: Response<List<UserData>> = apiResponse.getUsers(limit, offset, sort, filter, APIInterface.getHeaderMap())
-
-        Log.d("APIINFO", "user filter: $filter")
-
-        if(response.isSuccessful) {
-
-            return response.body() as List<BaseData>
-        }
-        else{
-            throw Exception("API error: ${response.code()}")
-        }
+        return apiResponse.getUsers(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
 
     }
 
@@ -156,43 +159,18 @@ class UserPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, so
 
 class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String, filter : String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseData> {
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
-        val response: Response<List<RoomData>> = apiResponse.getRooms(limit, offset, sort, filter, APIInterface.getHeaderMap())
-
-        Log.d("APIINFO", "user filter: $filter")
-
-
-
-        if(response.isSuccessful) {
-
-            return response.body() as List<BaseData>
-        }
-        else{
-            throw Exception("API error: ${response.code()}")
-        }
-
+        return apiResponse.getRooms(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
     }
 
 }
 
 class BaseProgramPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String, filter : String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): List<BaseProgramData> {
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
-        val response: Response<List<BaseProgramData>> = apiResponse.getBasePrograms(limit, offset, sort, filter, APIInterface.getHeaderMap())
-
-        Log.d("APIINFO", "user filter: $filter")
-
-
-
-        if(response.isSuccessful) {
-
-            return response.body() as List<BaseProgramData>
-        }
-        else{
-            throw Exception("API error: ${response.code()}")
-        }
+        return apiResponse.getBasePrograms(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
 
     }
 

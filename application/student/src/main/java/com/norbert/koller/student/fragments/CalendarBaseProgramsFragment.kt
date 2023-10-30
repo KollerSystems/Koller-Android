@@ -35,47 +35,6 @@ class CalendarBaseProgramsFragment : Fragment() {
 
     var lengthOption : ArrayList<Boolean> = arrayListOf(false, false)
 
-    private fun setupDrpd(chip : Chip) : MaterialDatePicker<Pair<Long, Long>> {
-
-        val dprdb = MaterialDatePicker.Builder.dateRangePicker()
-
-        if(chip.tag != null){
-            dprdb.setSelection(chip.tag as Pair<Long, Long>)
-        }
-
-        val drpd = dprdb.build()
-
-        drpd.addOnPositiveButtonClickListener {selection ->
-
-            var stringForChip = SimpleDateFormat(MyApplication.shortMonthDayFormat).format(selection.first)
-            if(selection.first != selection.second){
-                stringForChip += " - ${SimpleDateFormat(MyApplication.shortMonthDayFormat).format(selection.second)}"
-            }
-            chip.tag = selection
-            chip.text = stringForChip
-            chip.isCheckable = true
-            chip.isChecked = true
-            chip.isCheckable = false
-            chip.closeIcon = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.close_thick)
-            chip.setOnCloseIconClickListener{
-                chip.closeIcon = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.arrow_drop)
-                chip.tag = null
-                chip.text = getString(com.norbert.koller.shared.R.string.date)
-                chip.isCheckable = true
-                chip.isChecked = false
-                chip.isCheckable = false
-                chip.setOnCloseIconClickListener(null)
-            }
-        }
-
-
-
-
-        drpd.show(parentFragmentManager,  "MATERIAL_DATE_RANGE_PICKER")
-
-        return drpd
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -95,11 +54,9 @@ class CalendarBaseProgramsFragment : Fragment() {
 
         val chipDate : Chip = view.findViewById(R.id.chip_date)
 
-        chipDate.setOnClickListener{
-            setupDrpd(chipDate).addOnPositiveButtonClickListener {
 
-            }
-        }
+            MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
+
 
 
         val baseProgramRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, listOf(chipLength, chipDate))
@@ -138,7 +95,7 @@ class CalendarBaseProgramsFragment : Fragment() {
             MyApplication.getApiSortString(chipGroupSort),
             MyApplication.createApiFilter(
                 arrayOf(FiltersData("Length", lengthFilters)),
-                    arrayOf(FilterDateData("Date", (chipDate.tag as Pair<Long, Long>?))))) }
+                arrayOf(FilterDateData("Date", (chipDate.tag as Pair<Long, Long>?))))) }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

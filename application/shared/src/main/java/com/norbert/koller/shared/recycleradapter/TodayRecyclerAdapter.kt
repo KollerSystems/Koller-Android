@@ -233,8 +233,12 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         holder.handler.removeCallbacksAndMessages(null)
         holder.handler.postDelayed({
 
-            val card : ViewGroup = recyclerView.getChildAt(holder.absoluteAdapterPosition).findViewById(R.id.notification_card_new_mark)
-            changeSizeAnimation(card, card.getChildAt(0), smallerSizeDp, smallerSizeDp, smallerMarginDp)
+            val child = recyclerView.getChildAt(holder.absoluteAdapterPosition)
+
+            if(child != null) {
+                val card: ViewGroup = child.findViewById(R.id.notification_card_new_mark)
+                changeSizeAnimation(card, card.getChildAt(0), smallerSizeDp, smallerSizeDp, smallerMarginDp)
+            }
 
         }, 1000*3)
     }

@@ -36,7 +36,7 @@ class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment
         val scbGate : SimpleCardButton = view.findViewById(R.id.scb_gate)
 
         scbGate.setOnClickListener {
-            (context as MainActivity).changeFragment(UserExitsAndEntrancesFragment())
+            (context as MainActivity).changeFragment(UserExitsAndEntrancesFragment(UID))
         }
 
         val scbEdit : SimpleCardButton = view.findViewById(R.id.scb_edit)

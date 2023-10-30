@@ -109,7 +109,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         fbtnGate.setOnClickListener{
 
-            UserExitsAndEntrancesFragment.open(requireContext(), UserData.instance.UID)
+            (requireContext() as MainActivity).changeFragment(UserExitsAndEntrancesFragment(UserData.instance.UID))
             this.dismiss()
         }
 
