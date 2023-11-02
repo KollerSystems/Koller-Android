@@ -14,6 +14,7 @@
         android:orientation="vertical">
 
         <com.norbert.koller.shared.RoundedBadgeImageView
+            android:id="@+id/rbiw_pfp"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="@dimen/spacing" />
@@ -22,18 +23,18 @@
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Andrásosfi Norberto"
             android:textAlignment="center"
-            android:textAppearance="@style/Title"
-            tools:text="Andrásosfi Norberto" />
+            android:textAppearance="@style/Title" />
 
         <TextView
             android:id="@+id/text_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing"
+            android:text="210 • 1.B • F9"
             android:textAlignment="center"
-            android:textAppearance="@style/Description"
-            tools:text="210 • 1.B • F9" />
+            android:textAppearance="@style/Description" />
 
         <TextView
             android:id="@+id/textView10"
@@ -41,9 +42,9 @@
             android:layout_height="wrap_content"
             android:drawablePadding="@dimen/text_container_margin"
             android:gravity="center_vertical"
+            android:text="Kint"
             android:textAlignment="center"
-            app:drawableLeftCompat="@drawable/out"
-            tools:text="Kint" />
+            app:drawableLeftCompat="@drawable/out" />
 
         <TextView
             android:id="@+id/textView27"
@@ -52,9 +53,9 @@
             android:layout_marginBottom="@dimen/spacing"
             android:drawablePadding="@dimen/text_container_margin"
             android:gravity="center_vertical"
+            android:text="Engedéllyel"
             android:textAlignment="center"
-            android:textAppearance="@style/Description"
-            tools:text="Engedéllyel" />
+            android:textAppearance="@style/Description" />
 
         <TextView
             android:id="@+id/textView16"

@@ -22,6 +22,13 @@
         <item name="materialButtonStyle">@style/button</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="editTextStyle">@style/edit_text</item>
+        <item name="textInputStyle">@style/text_input</item>
+    </style>
+
+    <style name="text_input" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+         <item name="android:layout_marginBottom">@dimen/text_container_margin</item>
+        <item name="android:layout_marginHorizontal">@dimen/text_container_margin</item>
+        <item name="suffixTextAppearance">@style/Description</item>
     </style>
 
     <style name="edit_text">
@@ -420,8 +427,40 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <style name="overlayRoundedCardTopLeft">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="overlayRoundedCardTopRight">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">@dimen/panel_round</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
     <style name="overlayRoundedCardBottom">
         <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
+        <item name="cornerSizeBottomRight">@dimen/panel_round</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="overlayRoundedCardBottomLeft">
+        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="overlayRoundedCardBottomRight">
+        <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">@dimen/panel_round</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeTopRight">0dp</item>

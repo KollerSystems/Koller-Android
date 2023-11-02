@@ -60,11 +60,6 @@ open class MyApplication : Application() {
         DynamicColors.applyToActivitiesIfAvailable(this)
     }
 
-
-
-
-
-
     companion object Comp{
 
         lateinit var version : String
@@ -404,9 +399,29 @@ open class MyApplication : Application() {
             roundCardX(view, view2, R.style.overlayRoundedCardBottom,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0)
         }
 
+        fun roundCardBottomLeft(view : View, view2 : View? = null){
+            val context = view.context
+            roundCardX(view, view2, R.style.overlayRoundedCardBottomLeft,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
+        }
+
+        fun roundCardBottomRight(view : View, view2 : View? = null){
+            val context = view.context
+            roundCardX(view, view2, R.style.overlayRoundedCardBottomRight,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0)
+        }
+
         fun roundCardTop(view : View, view2 : View? = null){
             val context = view.context
             roundCardX(view, view2, R.style.overlayRoundedCardTop,0,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+        }
+
+        fun roundCardTopLeft(view : View, view2 : View? = null){
+            val context = view.context
+            roundCardX(view, view2, R.style.overlayRoundedCardTopLeft,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin))
+        }
+
+        fun roundCardTopRight(view : View, view2 : View? = null){
+            val context = view.context
+            roundCardX(view, view2, R.style.overlayRoundedCardTopRight,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun roundCardLeft(view : View, view2 : View? = null){
@@ -423,17 +438,17 @@ open class MyApplication : Application() {
             roundCardX(view, view2, R.style.overlayRoundedCard, 0,0,0,0)
         }
 
-        fun deroundCardX(view : View, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
+        fun deroundCardX(view : View, leftMargin : Int, topMargin : Int, rightMargin : Int, bottomMargin : Int){
 
-            deroundCardX(view, null, leftPadding, topPadding, rightPadding, bottomPadding)
+            deroundCardX(view, null, leftMargin, topMargin, rightMargin, bottomMargin)
         }
 
-        fun deroundCardX(view : View, view2 : View?, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
+        fun deroundCardX(view : View, view2 : View?, leftMargin : Int, topMargin : Int, rightMargin : Int, bottomMargin : Int){
 
             (view as MaterialCardView).shapeAppearanceModel = ShapeAppearanceModel()
             if(view2 != null) (view2 as Shapeable).shapeAppearanceModel = ShapeAppearanceModel()
 
-            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(leftPadding,topPadding,rightPadding,bottomPadding)
+            (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(leftMargin,topMargin,rightMargin,bottomMargin)
             view.requestLayout()
         }
 
@@ -442,6 +457,24 @@ open class MyApplication : Application() {
 
             val context = view.context
             deroundCardX(view, view2,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+        }
+
+        fun deroundCardWithLeftMargin(view : View, view2 : View? = null){
+
+            val context = view.context
+            deroundCardX(view, context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                0,
+                context.resources.getDimensionPixelSize(R.dimen.card_margin))
+        }
+
+        fun deroundCardWithRightMargin(view : View, view2 : View? = null){
+
+            val context = view.context
+            deroundCardX(view, view2,0,
+                context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun deroundCardHorizontal(view : View, view2 : View? = null){

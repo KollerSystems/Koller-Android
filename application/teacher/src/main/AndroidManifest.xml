@@ -26,6 +26,9 @@
             android:name=".activities.RoomRateActivity"
             android:exported="false" />
         <activity
+            android:name=".activities.RoomPresenceActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity

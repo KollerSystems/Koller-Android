@@ -27,6 +27,7 @@ import com.norbert.koller.shared.api.CrossingPagingSource
 import com.norbert.koller.shared.data.FilterDateData
 import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.fragments.bottomsheet.RangeInputBshdFragment
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -56,7 +57,11 @@ class UserExitsAndEntrancesFragment(val UID : Int) : Fragment() {
         val chipDirection : Chip = view.findViewById(R.id.chip_direction)
         val chipDate : Chip = view.findViewById(R.id.chip_date)
 
-
+        val chipLateness : Chip = view.findViewById(com.norbert.koller.shared.R.id.chip_lateness)
+        chipLateness.setOnClickListener {
+            val dialog = RangeInputBshdFragment()
+            dialog.show(childFragmentManager, RangeInputBshdFragment.TAG)
+        }
 
         MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
 

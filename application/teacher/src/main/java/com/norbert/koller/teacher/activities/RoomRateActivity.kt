@@ -1,34 +1,23 @@
 package com.norbert.koller.teacher.activities
 
-import android.graphics.Color
-import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
 import android.widget.Button
-import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.graphics.drawable.DrawableCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.slider.Slider
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.MyApplication
@@ -38,38 +27,16 @@ import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.recycleradapter.RoomRateRecyclerAdapter
-import kotlin.math.roundToInt
 import com.norbert.koller.shared.R as Rs
 
 
-class RoomRateActivity : AppCompatActivity() {
+class RoomRateActivity : RoomsActivity() {
 
-    override fun onBackPressed() {
-
-        MaterialAlertDialogBuilder(this)
-            .setTitle(getString(R.string.are_you_sure_discard_all_grade))
-            .setPositiveButton(getString(Rs.string.yes)) { _, _ ->
-                super.onBackPressed()
-            }
-            .setNegativeButton(getString(Rs.string.no)){ _, _ ->
-
-            }
-            .setNeutralButton(getString(Rs.string.create_a_draft)){ _, _ ->
-                super.onBackPressed()
-            }
-            .show()
-
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_room_rate)
 
-        MyApplication.setToolbarToBottomViewColor(findViewById(R.id.bottom_view), window)
-
-        val viewPager : ViewPager2 = findViewById(R.id.view_pager)
-        val tabLayout : TabLayout = findViewById(R.id.tab_layout)
+        collapsingToolbarLayout.title = getString(R.string.room_rate)
 
         val adapter = RoomRateViewPagerAdapter()
 
@@ -79,52 +46,6 @@ class RoomRateActivity : AppCompatActivity() {
         TabLayoutMediator(tabLayout, viewPager){tab,position->
             tab.text = (position + 200).toString()
         }.attach()
-
-
-        val mainBackground : MaterialCardView = findViewById(R.id.main_background)
-        val appBar : AppBarLayout = findViewById(R.id.appbar)
-
-        MyApplication.setupActivityToolbar(mainBackground,appBar)
-
-        val backButton : Button = findViewById(R.id.toolbar_exit)
-
-        backButton.setOnClickListener{
-            onBackPressed()
-        }
-
-        val buttonPublishAll : Button = findViewById(R.id.button_publish_all)
-        val buttonMore : Button = findViewById(R.id.button_more)
-
-        buttonPublishAll.setOnClickListener{
-            MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.are_you_sure_publish_all_grade))
-                .setPositiveButton(getString(Rs.string.yes)) { _, _ ->
-                    finish()
-                }
-                .setNegativeButton(getString(Rs.string.no)){ _, _ ->
-
-                }
-                .show()
-        }
-
-        buttonMore.setOnClickListener{
-            val dialog = ItemListDialogFragment()
-            dialog.show(supportFragmentManager, ItemListDialogFragment.TAG)
-
-            dialog.list = arrayListOf(
-                ListItem({
-                    MaterialAlertDialogBuilder(this)
-                        .setTitle(getString(R.string.are_you_sure_delete_all_grade))
-                        .setPositiveButton(getString(Rs.string.yes)) { _, _ ->
-
-                        }
-                        .setNegativeButton(getString(Rs.string.no)){ _, _ ->
-
-                        }
-                        .show()
-                }, getString(Rs.string.delete_all), null, AppCompatResources.getDrawable(this@RoomRateActivity, Rs.drawable.close))
-            )
-        }
     }
 }
 

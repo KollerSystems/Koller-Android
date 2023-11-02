@@ -19,6 +19,7 @@ import com.norbert.koller.shared.api.BaseProgramPagingSource
 import com.norbert.koller.shared.data.FilterDateData
 import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.fragments.bottomsheet.RangeInputBshdFragment
 import com.norbert.koller.shared.recycleradapter.BaseProgramRecyclerAdapter
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.student.R
@@ -55,8 +56,8 @@ class CalendarBaseProgramsFragment : Fragment() {
         val chipDate : Chip = view.findViewById(R.id.chip_date)
 
 
-            MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
 
+        MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
 
 
         val baseProgramRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, listOf(chipLength, chipDate))
@@ -89,6 +90,8 @@ class CalendarBaseProgramsFragment : Fragment() {
 
             }
         }
+
+
 
 
         val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter,
