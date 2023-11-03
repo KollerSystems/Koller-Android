@@ -137,40 +137,40 @@ interface APIInterface {
     ) : Response<List<CrossingData>>
 }
 
-class CrossingPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, sort: String, filter: String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
+class CrossingPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(context, recyclerAdapter) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
-        return apiResponse.getMyCrossings(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
+        return apiResponse.getMyCrossings(limit, offset, getSort(), getFilters(), APIInterface.getHeaderMap()) as Response<List<BaseData>>
 
     }
 
 }
 
-class UserPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, sort: String, filter: String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
+class UserPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(context, recyclerAdapter) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
-        return apiResponse.getUsers(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
+        return apiResponse.getUsers(limit, offset, getSort(), getFilters(), APIInterface.getHeaderMap()) as Response<List<BaseData>>
 
     }
 
 }
 
-class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String, filter : String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
+class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(context, recyclerAdapter) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
-        return apiResponse.getRooms(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
+        return apiResponse.getRooms(limit, offset, getSort(), getFilters(), APIInterface.getHeaderMap()) as Response<List<BaseData>>
     }
 
 }
 
-class BaseProgramPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, sort : String, filter : String? = null) : BasePagingSource(context, recyclerAdapter, sort, filter) {
+class BaseProgramPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter) : BasePagingSource(context, recyclerAdapter) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
-        return apiResponse.getBasePrograms(limit, offset, sort, filter, APIInterface.getHeaderMap()) as Response<List<BaseData>>
+        return apiResponse.getBasePrograms(limit, offset, getSort(), getFilters(), APIInterface.getHeaderMap()) as Response<List<BaseData>>
 
     }
 

@@ -630,7 +630,8 @@ open class MyApplication : Application() {
             return prefixIntigerToSymbol((chip.parent as ViewGroup).indexOfChild(chip)) + basedOn
         }
 
-        fun getApiSortString(chipGroup : ChipGroup) : String{
+        fun getApiSortString(chipGroup : ChipGroup?) : String{
+            if(chipGroup == null) return ""
             val chip : Chip = chipGroup.findViewById(chipGroup.checkedChipId)
             return chip.tag.toString()
         }

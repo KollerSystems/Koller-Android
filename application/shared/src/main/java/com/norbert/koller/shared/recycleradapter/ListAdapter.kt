@@ -14,7 +14,7 @@ import com.norbert.koller.shared.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.norbert.koller.shared.MyApplication
 
-data class ListItem(val function: ((isChecked : Boolean) -> Unit)?, val title: String, val description: String?, val icon: Drawable?, var isChecked : Boolean? = null, val tag : String? = null){
+data class ListItem(val title: String, val description: String?, val icon: Drawable?, val tag : String? = null){
 }
 
 class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem : ArrayList<ListItem>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
@@ -34,7 +34,7 @@ class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem 
         holder.title.text = currentItem.title
 
 
-        if(currentItem.isChecked != null) {
+        if(currentItem.isChecked == null) {
             holder.checkBox.isChecked = currentItem.isChecked!!
             holder.checkBox.visibility = VISIBLE
         }
@@ -49,15 +49,12 @@ class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem 
                 holder.checkBox.toggle()
             }
             else{
-
                 dialog.dismiss()
-                currentItem.function?.invoke(holder.checkBox.isChecked)
             }
         }
 
         holder.checkBox.setOnCheckedChangeListener{ cButton, isChecked ->
             currentItem.isChecked = isChecked
-            currentItem.function?.invoke(isChecked)
         }
 
         if(!currentItem.description.isNullOrEmpty()) {

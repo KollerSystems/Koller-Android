@@ -31,6 +31,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.RangeInputBshdFragment
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.flow.retry
 import kotlinx.coroutines.launch
 import java.sql.Timestamp
 import java.text.SimpleDateFormat
@@ -40,30 +41,22 @@ import java.time.ZoneId
 
 class UserExitsAndEntrancesFragment(val UID : Int) : Fragment() {
 
-    private lateinit var scRecyclerView: SuperCoolRecyclerView
-
-    var filterOut : Boolean = false
-    var filterIn : Boolean = false
-    var filterDirections : ArrayList<String> = arrayListOf()
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view : View = inflater.inflate(R.layout.fragment_user_gate, container, false)
+        return inflater.inflate(R.layout.fragment_user_gate, container, false)
+    }
 
-        val chipGroupSort : ChipGroup = view.findViewById(R.id.chip_group_sort)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
         val chipDirection : Chip = view.findViewById(R.id.chip_direction)
         val chipDate : Chip = view.findViewById(R.id.chip_date)
+        val chipLateness : Chip = view.findViewById(R.id.chip_lateness)
 
-        val chipLateness : Chip = view.findViewById(com.norbert.koller.shared.R.id.chip_lateness)
-        chipLateness.setOnClickListener {
-            val dialog = RangeInputBshdFragment()
-            dialog.show(childFragmentManager, RangeInputBshdFragment.TAG)
-        }
+        val chipGroupSort : ChipGroup = view.findViewById(R.id.chip_group_sort)
 
-        MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
 
 
         chipDirection.setOnClickListener {
@@ -71,47 +64,47 @@ class UserExitsAndEntrancesFragment(val UID : Int) : Fragment() {
             dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
 
             dialog.list = arrayListOf(
-                ListItem({isChecked ->
-                    filterOut = isChecked
-                }, getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), filterOut, "0"),
-                ListItem({isChecked ->
-                    filterIn = isChecked
-                }, getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), filterIn, "1")
+                ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "0"),
+                ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "1")
             )
 
             dialog.getValuesOnFinish = {values, locNames ->
 
-                filterDirections = values
+                chipDirection.tag = FiltersData("Direction",values)
                 MyApplication.editChipBasedOnResponse(requireContext(), chipDirection, values, locNames, R.string.direction)
 
             }
         }
 
+        MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
 
-        val crossingRecycleAdapter = GateRecyclerAdapter(chipGroupSort, listOf(chipDirection, chipDate))
+        chipLateness.setOnClickListener {
+            val dialog = RangeInputBshdFragment()
+            dialog.show(childFragmentManager, RangeInputBshdFragment.TAG)
+        }
 
-        val viewModel = BaseViewModel { CrossingPagingSource(requireContext(), crossingRecycleAdapter,
-            MyApplication.getApiSortString(chipGroupSort),
-            MyApplication.createApiFilter(
-                arrayOf(FiltersData("Direction", filterDirections)),
-                arrayOf(FilterDateData("Date", (chipDate.tag as Pair<Long, Long>?))))) }
 
-        scRecyclerView = view.findViewById(R.id.sc_recycler_view)
+
+
+        val scRecyclerView : SuperCoolRecyclerView = view.findViewById(R.id.sc_recycler_view)
+        scRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
+
+        val gateRecycleAdapter = GateRecyclerAdapter(chipGroupSort, listOf(chipDirection, chipDate))
+
+        val viewModel = BaseViewModel {
+            CrossingPagingSource(
+                requireContext(),
+                gateRecycleAdapter) }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = crossingRecycleAdapter
+            adapter = gateRecycleAdapter
         }
-
-
-        scRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
 
         lifecycleScope.launch {
             viewModel.pagingData.collectLatest { pagingData ->
-                crossingRecycleAdapter.submitData(pagingData)
+                gateRecycleAdapter.submitData(pagingData)
             }
         }
-
-        return view
     }
 }
