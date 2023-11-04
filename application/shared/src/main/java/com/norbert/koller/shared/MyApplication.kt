@@ -22,6 +22,7 @@ import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentManager
@@ -49,6 +50,8 @@ import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.recycleradapter.ListItem
 import java.util.Date
 
 
@@ -83,7 +86,7 @@ open class MyApplication : Application() {
         var userOutgoingTemporaryFragment: (UID : Int) -> UserOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
         var userOutgoingPermanentFragment: (UID : Int) -> UserOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
 
-        fun setupDrpd(context : Context, fragmentManager : FragmentManager, chip : Chip){
+        fun setupDrpd(fragmentManager : FragmentManager, chip : Chip){
 
             chip.setOnClickListener {
 
@@ -102,28 +105,27 @@ open class MyApplication : Application() {
                         stringForChip += " - ${java.text.SimpleDateFormat(shortMonthDayFormat).format(selection.second)}"
                     }
                     chip.tag = selection
-                    chip.text = stringForChip
-                    chip.isCheckable = true
-                    chip.isChecked = true
-                    chip.isCheckable = false
-                    chip.closeIcon = AppCompatResources.getDrawable(context, R.drawable.close_thick)
-                    chip.setOnCloseIconClickListener {
-                        chip.closeIcon = AppCompatResources.getDrawable(context, R.drawable.arrow_drop)
-                        chip.tag = null
-                        chip.text = context.getString(R.string.date)
-                        chip.isCheckable = true
-                        chip.isChecked = false
-                        chip.isCheckable = false
-                        chip.setOnCloseIconClickListener(null)
+                    if(chip.text.toString() != stringForChip) {
+                        chip.text = stringForChip
                     }
 
+                    chip.checkByPass(true)
+
+                    addCloseOptionToFilterChip(chip, R.string.date)
                 }
-
-
-
 
                 drpd.show(fragmentManager, "MATERIAL_DATE_RANGE_PICKER")
 
+            }
+        }
+
+        fun addCloseOptionToFilterChip(chip : Chip, localizedFilterId : Int){
+            chip.closeIcon = AppCompatResources.getDrawable(chip.context, R.drawable.close_thick)
+            chip.setOnCloseIconClickListener {
+                chip.restoreDropDown()
+                chip.tag = null
+                chip.text = chip.context.getString(localizedFilterId)
+                chip.checkByPass(false)
             }
         }
 
@@ -143,6 +145,32 @@ open class MyApplication : Application() {
                 '3' -> number + context.getString(R.string.rd)
                 else -> number + context.getString(R.string.th)
             }
+        }
+
+        fun setupCheckBoxList(fragmentManager: FragmentManager, chip : Chip, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>){
+
+            chip.setOnClickListener {
+
+                var filterTo : ArrayList<String>? = null
+                if(chip.tag is FiltersData){
+                    filterTo = (chip.tag as FiltersData).filterTo
+                }
+
+                val dialog = ItemListDialogFragment(arrayList, filterTo)
+
+
+                dialog.getValuesOnFinish = {values, locNames ->
+
+                    chip.tag = FiltersData(filterName, values)
+                    editChipBasedOnResponse(chip, values, locNames, localizedFilterId)
+
+                }
+
+                dialog.show(fragmentManager, ItemListDialogFragment.TAG)
+
+
+            }
+
         }
 
         fun setupDbd(textView : TextView) : MaterialDatePicker<Long> {
@@ -672,19 +700,23 @@ open class MyApplication : Application() {
             return finalString
         }
 
-        fun editChipBasedOnResponse(context: Context, chip : Chip, values : ArrayList<String>, locNames : String, defaultNameID : Int){
+        fun editChipBasedOnResponse(chip : Chip, values : ArrayList<String>, locNames : String, defaultNameID : Int){
             val hasValues = values.size != 0
-            chip.isCheckable = true
-            chip.isChecked = hasValues
-            chip.isCheckable = false
+            chip.checkByPass(hasValues)
             if(hasValues) {
-                if(chip.text.toString() != locNames)
+                if(chip.text.toString() != locNames){
                     chip.text = locNames
+                    addCloseOptionToFilterChip(chip, defaultNameID)
+                }
+
+
             }
             else{
-                val string = context.getString(defaultNameID)
-                if(chip.text.toString() != string)
+                val string = chip.context.getString(defaultNameID)
+                if(chip.text.toString() != string) {
                     chip.text = string
+                    chip.restoreDropDown()
+                }
             }
         }
 
@@ -719,6 +751,15 @@ open class MyApplication : Application() {
             return description
         }
     }
+}
 
+fun Chip.checkByPass(isChecked : Boolean){
+    isCheckable = true
+    this.isChecked = isChecked
+    isCheckable = false
+}
 
+fun Chip.restoreDropDown(){
+    closeIcon = AppCompatResources.getDrawable(context, R.drawable.arrow_drop)
+    setOnCloseIconClickListener(null)
 }

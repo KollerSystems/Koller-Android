@@ -50,11 +50,10 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, 
             buttonMore.setOnClickListener {
 
                 val fragmentManager = (context as AppCompatActivity)
-                val dialog = ItemListDialogFragment()
+                val dialog = ItemListDialogFragment(arrayListOf(
+                    ListItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag))))
                 dialog.show(fragmentManager.supportFragmentManager, ItemListDialogFragment.TAG)
-                dialog.list = arrayListOf(
-                    ListItem({},context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag))
-                )
+
 
 
 

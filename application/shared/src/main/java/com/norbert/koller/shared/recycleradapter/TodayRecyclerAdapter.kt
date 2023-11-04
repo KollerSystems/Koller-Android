@@ -123,17 +123,15 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            val dialog = ItemListDialogFragment()
+            val dialog = ItemListDialogFragment(arrayListOf(
+                ListItem(text, null, icon, null, {
+                    currentItem.read = !currentItem.read
+                    notifyItemChanged(holder.bindingAdapterPosition)
+                })))
             dialog.show(fragmentManager.supportFragmentManager, ItemListDialogFragment.TAG)
 
 
 
-            dialog.list = arrayListOf(
-                    ListItem({
-                        currentItem.read = !currentItem.read
-                        notifyItemChanged(holder.bindingAdapterPosition)
-                             }, text, null, icon)
-                )
 
 
 

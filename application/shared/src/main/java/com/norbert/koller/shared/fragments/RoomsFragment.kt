@@ -26,45 +26,22 @@ open class RoomsFragment : Fragment() {
 
     private lateinit var roomsRecyclerView: SuperCoolRecyclerView
 
-    var filterMan : Boolean = false
-    var filterWoman : Boolean = false
-    var filterValues : ArrayList<String> = arrayListOf()
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         roomsRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
         roomsRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
 
         val chipGroup : ChipGroup = view.findViewById(R.id.chip_group_sort)
-        val chipFilter : ChipGroup = view.findViewById(R.id.chip_group_filter)
 
         val chipSide : Chip = view.findViewById(R.id.chip_side)
 
-        chipSide.setOnClickListener {
-            val dialog = ItemListDialogFragment()
-            dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
-
-            dialog.list = arrayListOf(
-                ListItem({isChecked ->
-                    filterWoman = isChecked
-                }, getString(R.string.girl), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), filterWoman, "0"),
-                ListItem({isChecked ->
-                    filterMan = isChecked
-                }, getString(R.string.boy), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), filterMan, "1")
-            )
-
-            dialog.getValuesOnFinish = {values, locNames ->
-
-                filterValues = values
-                MyApplication.editChipBasedOnResponse(requireContext(), chipSide, values, locNames, R.string.side)
-
-            }
-        }
-
-
+        MyApplication.setupCheckBoxList(childFragmentManager, chipSide, "Gender", R.string.side, arrayListOf(
+            ListItem( getString(R.string.girl), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
+            ListItem( getString(R.string.boy), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
+        ))
 
         val roomRecycleAdapter = RoomRecyclerAdapter(chipGroup, listOf(chipSide))
-        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter, MyApplication.getApiSortString(chipGroup) , MyApplication.createApiFilter(FiltersData("Gender", filterValues))) }
+        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter) }
 
 
         roomsRecyclerView.recyclerView.apply {

@@ -39,7 +39,9 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
                     finalString += "${filtersData.filterName}:${argument},"
                 }
             }
-            else{
+            else if (chip.tag is FilterDateData) {
+
+
 
                 val filterDateData = (chip.tag as FilterDateData)
 

@@ -83,11 +83,8 @@ abstract class RoomsActivity : AppCompatActivity() {
         }
 
         buttonMore.setOnClickListener{
-            val dialog = ItemListDialogFragment()
-            dialog.show(supportFragmentManager, ItemListDialogFragment.TAG)
-
-            dialog.list = arrayListOf(
-                ListItem({
+            val dialog = ItemListDialogFragment(arrayListOf(
+                ListItem(getString(com.norbert.koller.shared.R.string.delete_all), null, AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.close), null, {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.are_you_sure_delete_all_grade))
                         .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
@@ -97,8 +94,9 @@ abstract class RoomsActivity : AppCompatActivity() {
 
                         }
                         .show()
-                }, getString(com.norbert.koller.shared.R.string.delete_all), null, AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.close))
-            )
+                })))
+            dialog.show(supportFragmentManager, ItemListDialogFragment.TAG)
+
         }
 
     }

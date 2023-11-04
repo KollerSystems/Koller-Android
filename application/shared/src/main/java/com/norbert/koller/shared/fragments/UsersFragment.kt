@@ -28,19 +28,9 @@ import kotlinx.coroutines.launch
 open class UsersFragment : Fragment() {
 
     private lateinit var superCoolRecyclerView: SuperCoolRecyclerView
-    private var usersDataArrayList: ArrayList<TodayData> = ArrayList()
 
     private lateinit var leaderUsersRecyclerView: RecyclerView
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
-
-    var filterMan : Boolean = false
-    var filterWoman : Boolean = false
-    var filterValues : ArrayList<String> = arrayListOf()
-
-
-    var filterStudent : Boolean = false
-    var filterTeacher : Boolean = false
-    var filterRoleValues : ArrayList<String> = arrayListOf()
 
 
     lateinit var viewModel : BaseViewModel
@@ -77,54 +67,17 @@ open class UsersFragment : Fragment() {
 
         val userRecycleAdapter = UserRecyclerAdapter(chipGroupSort, listOf(chipGender, chipRole))
 
-        chipGender.setOnClickListener {
-            val dialog = ItemListDialogFragment()
-            dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
+        MyApplication.setupCheckBoxList(childFragmentManager, chipGender, "Gender", R.string.gender, arrayListOf(
+            ListItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
+            ListItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
+        ))
 
-            dialog.list = arrayListOf(
-                ListItem({isChecked ->
-                    filterWoman = isChecked
-                }, getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), filterWoman, "0"),
-                ListItem({isChecked ->
-                    filterMan = isChecked
-                }, getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), filterMan, "1")
-            )
+        MyApplication.setupCheckBoxList(childFragmentManager, chipRole, "Role", R.string.role, arrayListOf(
+            ListItem(getString(R.string.student), null, null, "1"),
+            ListItem(getString(R.string.teacher), null, null, "2")
+        ))
 
-            dialog.getValuesOnFinish = {values, locNames ->
-
-                filterValues = values
-                MyApplication.editChipBasedOnResponse(requireContext(), chipGender, values, locNames, R.string.gender)
-
-            }
-        }
-
-
-        chipRole.setOnClickListener {
-            val dialog = ItemListDialogFragment()
-            dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
-
-            dialog.list = arrayListOf(
-                ListItem({isChecked ->
-                    filterStudent = isChecked
-                }, getString(R.string.student), null, null, filterStudent, "1"),
-                ListItem({isChecked ->
-                    filterTeacher = isChecked
-                }, getString(R.string.teacher), null, null, filterTeacher, "2")
-            )
-
-            dialog.getValuesOnFinish = {values, locNames ->
-
-                filterRoleValues = values
-                MyApplication.editChipBasedOnResponse(requireContext(), chipRole, values, locNames, R.string.role)
-
-            }
-        }
-
-
-        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter, MyApplication.getApiSortString(chipGroupSort),
-            MyApplication.createApiFilter(
-                FiltersData("Gender", filterValues),
-                FiltersData("Role", filterRoleValues))) }
+        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter) }
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

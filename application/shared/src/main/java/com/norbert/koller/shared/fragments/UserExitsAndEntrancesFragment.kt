@@ -24,12 +24,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.norbert.koller.shared.BaseViewModel
 import com.norbert.koller.shared.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.CrossingPagingSource
+import com.norbert.koller.shared.checkByPass
 import com.norbert.koller.shared.data.FilterDateData
 import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RangeInputBshdFragment
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
+import com.norbert.koller.shared.restoreDropDown
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.retry
 import kotlinx.coroutines.launch
@@ -58,29 +60,49 @@ class UserExitsAndEntrancesFragment(val UID : Int) : Fragment() {
         val chipGroupSort : ChipGroup = view.findViewById(R.id.chip_group_sort)
 
 
+        MyApplication.setupCheckBoxList(childFragmentManager, chipDirection, "Direction", R.string.direction, arrayListOf(
+            ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "0"),
+            ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "1")
+        ))
 
-        chipDirection.setOnClickListener {
-            val dialog = ItemListDialogFragment()
-            dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
-
-            dialog.list = arrayListOf(
-                ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "0"),
-                ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "1")
-            )
-
-            dialog.getValuesOnFinish = {values, locNames ->
-
-                chipDirection.tag = FiltersData("Direction",values)
-                MyApplication.editChipBasedOnResponse(requireContext(), chipDirection, values, locNames, R.string.direction)
-
-            }
-        }
-
-        MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
+        MyApplication.setupDrpd(parentFragmentManager, chipDate)
 
         chipLateness.setOnClickListener {
-            val dialog = RangeInputBshdFragment()
+
+            var fromTo : kotlin.Pair<Int?, Int?> = kotlin.Pair(null, null)
+            if( chipLateness.tag != null && chipLateness.tag !is String){
+                fromTo = chipLateness.tag as kotlin.Pair<Int?, Int?>
+            }
+            val dialog = RangeInputBshdFragment(fromTo)
             dialog.show(childFragmentManager, RangeInputBshdFragment.TAG)
+
+            dialog.getValuesOnFinish = {values ->
+
+                val hasValue = values.first != null
+                var stringForChip : String
+                if(hasValue) {
+                    stringForChip = "${values.first}p"
+                    if (values.first != values.second) {
+                        stringForChip += " - ${values.second}p"
+                    }
+                    chipLateness.tag = values
+
+                    MyApplication.addCloseOptionToFilterChip(chipLateness, R.string.lateness)
+                }
+                else{
+                    stringForChip = getString(R.string.lateness)
+                    chipLateness.tag = null
+                    chipLateness.restoreDropDown()
+                }
+
+                if (chipLateness.text.toString() != stringForChip) {
+                    chipLateness.text = stringForChip
+                }
+                chipLateness.checkByPass(hasValue)
+            }
+
+
+
         }
 
 

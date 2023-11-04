@@ -31,11 +31,6 @@ import com.norbert.koller.shared.R as Rs
 
 class CalendarBaseProgramsFragment : Fragment() {
 
-
-    var lengthFilters : ArrayList<String> = arrayListOf()
-
-    var lengthOption : ArrayList<Boolean> = arrayListOf(false, false)
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,48 +52,20 @@ class CalendarBaseProgramsFragment : Fragment() {
 
 
 
-        MyApplication.setupDrpd(requireContext(), parentFragmentManager, chipDate)
+        MyApplication.setupDrpd(parentFragmentManager, chipDate)
 
 
         val baseProgramRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, listOf(chipLength, chipDate))
 
+        val lessonLocalName : String = requireContext().getString(Rs.string.lesson).lowercase()
 
-        chipLength.setOnClickListener {
-            val dialog = ItemListDialogFragment()
-            dialog.show(childFragmentManager, ItemListDialogFragment.TAG)
-
-            val lessonLocalName : String = requireContext().getString(Rs.string.lesson).lowercase()
-
-            dialog.list = arrayListOf(
-                ListItem(
-                    { isChecked ->
-                        lengthOption[0] = isChecked
-                    },
-                    "1 ${lessonLocalName}", null, null, lengthOption[0], "1"),
-                ListItem(
-                    { isChecked ->
-                        lengthOption[1] = isChecked
-                    },
-                    "2 ${lessonLocalName}", null, null, lengthOption[1], "2")
-            )
-
-            dialog.getValuesOnFinish = {values, locNames ->
-
-                lengthFilters = values
-
-                MyApplication.editChipBasedOnResponse(requireContext(),chipLength,values,locNames, com.norbert.koller.shared.R.string.length)
-
-            }
-        }
+        MyApplication.setupCheckBoxList(childFragmentManager, chipLength, "Length", com.norbert.koller.shared.R.string.length, arrayListOf(
+            ListItem("1 ${lessonLocalName}", null, null, "1"),
+            ListItem("2 ${lessonLocalName}", null, null, "2")
+        ))
 
 
-
-
-        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter,
-            MyApplication.getApiSortString(chipGroupSort),
-            MyApplication.createApiFilter(
-                arrayOf(FiltersData("Length", lengthFilters)),
-                arrayOf(FilterDateData("Date", (chipDate.tag as Pair<Long, Long>?))))) }
+        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter) }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

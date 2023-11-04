@@ -13,12 +13,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 
-data class ListItem(val title: String, val description: String?, val icon: Drawable?, val tag : String? = null){
+data class ListItem(val title: String, val description: String?, val icon: Drawable?, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
 }
 
-class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem : ArrayList<ListItem>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+class ListAdapter (val bottomSheet : ItemListDialogFragment, private val listItem : ArrayList<ListItem>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+
+        if(bottomSheet.alreadyChecked != null) {
+            for (item in listItem) {
+                item.isChecked = bottomSheet.alreadyChecked.contains(item.tag)
+            }
+        }
+        else{
+            for (item in listItem) {
+                item.isChecked = false
+            }
+        }
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -34,27 +50,28 @@ class ListAdapter (val dialog : BottomSheetDialogFragment, private val listItem 
         holder.title.text = currentItem.title
 
 
-        if(currentItem.isChecked == null) {
-            holder.checkBox.isChecked = currentItem.isChecked!!
+
+        if (bottomSheet.getValuesOnFinish != null) {
+            holder.checkBox.isChecked = currentItem.isChecked
             holder.checkBox.visibility = VISIBLE
-        }
-        else{
+            holder.checkBox.setOnCheckedChangeListener{ _, isChecked ->
+                currentItem.isChecked = isChecked
+            }
+
+        } else {
             holder.checkBox.visibility = GONE
         }
 
+
         holder.itemView.setOnClickListener {
 
-            if(currentItem.isChecked != null) {
-
+            if(bottomSheet.getValuesOnFinish != null) {
                 holder.checkBox.toggle()
             }
             else{
-                dialog.dismiss()
+                bottomSheet.dismiss()
             }
-        }
-
-        holder.checkBox.setOnCheckedChangeListener{ cButton, isChecked ->
-            currentItem.isChecked = isChecked
+            currentItem.function?.invoke(holder.checkBox.isChecked)
         }
 
         if(!currentItem.description.isNullOrEmpty()) {

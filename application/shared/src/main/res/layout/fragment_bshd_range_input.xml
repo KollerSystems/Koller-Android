@@ -30,6 +30,7 @@
             android:padding="@dimen/application_padding">
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_from"
                 style="@style/text_input"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -40,7 +41,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number|numberSigned" />
+                    android:inputType="number|numberSigned"
+                    android:maxLength="9" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
@@ -50,6 +52,7 @@
                 android:text="-" />
 
             <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_to"
                 style="@style/text_input"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -60,7 +63,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number|numberSigned" />
+                    android:inputType="number|numberSigned"
+                    android:maxLength="9" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </LinearLayout>

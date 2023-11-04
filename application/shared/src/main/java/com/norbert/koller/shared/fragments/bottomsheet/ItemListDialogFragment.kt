@@ -14,11 +14,10 @@ import com.norbert.koller.shared.recycleradapter.ListAdapter
 import com.norbert.koller.shared.recycleradapter.ListItem
 import java.util.Arrays
 
-class ItemListDialogFragment : BottomSheetDialogFragment() {
+class ItemListDialogFragment(val list : ArrayList<ListItem>, val alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
 
     private lateinit var recycleView : RecyclerView
 
-    var list : ArrayList<ListItem> = arrayListOf()
 
     var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedString : String) -> Unit)? = null
 
@@ -50,7 +49,7 @@ class ItemListDialogFragment : BottomSheetDialogFragment() {
             val localizedStringList: ArrayList<String> = arrayListOf()
 
             for (item in list) {
-                if (item.isChecked!!) {
+                if (item.isChecked) {
                     stringList.add(item.tag!!)
                     localizedStringList.add(item.title)
                 }
