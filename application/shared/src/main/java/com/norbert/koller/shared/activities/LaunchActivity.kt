@@ -5,6 +5,7 @@ import android.view.View
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.DataStoreManager
 import com.norbert.koller.shared.MyApplication
@@ -28,7 +29,7 @@ class LaunchActivity : AppCompatActivity() {
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
                     // Check whether the initial data is ready.
-                    return if (UserData.instance.UID != -1) {
+                    return if (UserData.instance.UID != -1 || !MyApplication.isOnline(this@LaunchActivity)) {
                         // The content is ready. Start drawing.
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
@@ -41,6 +42,21 @@ class LaunchActivity : AppCompatActivity() {
         )
 
         lifecycleScope.launch {
+
+            if(!MyApplication.isOnline(this@LaunchActivity)){
+                MaterialAlertDialogBuilder(this@LaunchActivity)
+                    .setTitle("Nincs internet")
+                    .setMessage("Az alkalmazás jelenleg csakis internettel képes működni")
+                    .setIcon(R.drawable.no_internet)
+                    .setPositiveButton("Alkalmazás bezárása")
+                    { _, _ ->
+                        finishAffinity()
+                    }
+                    .show()
+
+                return@launch
+            }
+
             val refreshToken = DataStoreManager.read(this@LaunchActivity, DataStoreManager.TOKENS)
             if(refreshToken == null){
                 MyApplication.openLogin.invoke(this@LaunchActivity)

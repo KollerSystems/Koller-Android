@@ -18,7 +18,6 @@ class DayRecyclerAdapter  (private val dayList : ArrayList<TodayData>) : Recycle
     }
 
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
-        val currentItem = dayList[position]
         holder.mcardDutyTeachers.setOnClickListener{
             val dialog = DutyTeachersBshdFragment()
             dialog.show((holder.itemView.context as AppCompatActivity).supportFragmentManager, DutyTeachersBshdFragment.TAG)
@@ -27,7 +26,7 @@ class DayRecyclerAdapter  (private val dayList : ArrayList<TodayData>) : Recycle
     }
 
     override fun getItemCount(): Int {
-        return dayList.size
+        return 365
     }
 
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){

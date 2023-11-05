@@ -186,7 +186,8 @@ open class LoginActivity : AppCompatActivity() {
             }
             else{
                 MaterialAlertDialogBuilder(this@LoginActivity)
-                    .setTitle("Nincs internet DUMASS!")
+                    .setTitle("Nincs internet")
+                    .setIcon(R.drawable.no_internet)
                     .setPositiveButton(
                         getString(R.string.ok)
                     )
