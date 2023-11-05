@@ -41,8 +41,6 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
             }
             else if (chip.tag is FilterDateData) {
 
-
-
                 val filterDateData = (chip.tag as FilterDateData)
 
                 if(filterDateData.filterFrom != null) {

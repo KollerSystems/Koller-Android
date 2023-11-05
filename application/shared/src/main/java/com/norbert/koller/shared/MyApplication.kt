@@ -92,8 +92,8 @@ open class MyApplication : Application() {
 
                 val dprdb = MaterialDatePicker.Builder.dateRangePicker()
 
-                if (chip.tag != null) {
-                    dprdb.setSelection(chip.tag as androidx.core.util.Pair<Long, Long>)
+                if (chip.tag is FilterDateData) {
+                    dprdb.setSelection((chip.tag as FilterDateData).filterFrom)
                 }
 
                 val drpd = dprdb.build()
@@ -104,7 +104,7 @@ open class MyApplication : Application() {
                     if (selection.first != selection.second) {
                         stringForChip += " - ${java.text.SimpleDateFormat(shortMonthDayFormat).format(selection.second)}"
                     }
-                    chip.tag = selection
+                    chip.tag = FilterDateData("Date", selection)
                     if(chip.text.toString() != stringForChip) {
                         chip.text = stringForChip
                     }
@@ -185,9 +185,9 @@ open class MyApplication : Application() {
 
             dpd.addOnPositiveButtonClickListener {selection ->
 
-                textView.setText(java.text.SimpleDateFormat(shortMonthDayFormat).format(selection))
-                textView.tag = selection
 
+                textView.tag = selection
+                textView.setText(java.text.SimpleDateFormat(shortMonthDayFormat).format(selection))
 
 
             }
