@@ -106,7 +106,7 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
     }
 
     override fun onBindViewHolder(holder: RoomPresenceViewHolder, position: Int) {
-        
+
 
         holder.textPresence.setVisibilityBy(!(holder.itemView.context as RoomPresenceActivity).knowsTheLayout)
 

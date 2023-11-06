@@ -6,6 +6,7 @@
         android:name=".MyApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
+        android:enableOnBackInvokedCallback="false"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -14,8 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainTheme"
         android:usesCleartextTraffic="true"
-        android:enableOnBackInvokedCallback="false"
         tools:targetApi="tiramisu">
+        <activity
+            android:name=".AdmissionActivity"
+            android:exported="false" />
         <activity
             android:name=".EditRoomActivity"
             android:exported="false" />
