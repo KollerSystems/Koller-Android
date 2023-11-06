@@ -233,7 +233,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/textView16"
+            android:id="@+id/text_presence"
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

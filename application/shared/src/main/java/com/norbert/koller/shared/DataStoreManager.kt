@@ -18,6 +18,7 @@ class DataStoreManager {
 
         val LOGIN_DATA_NAME = "login_data"
         val TOKENS = "tokens"
+        val ROOM_PRESENCE_KNOWS_THE_LAYOUT = "room_presence_knows_the_layout"
         private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = LOGIN_DATA_NAME)
 
         suspend fun save(context: Context, key: String, value: String) {

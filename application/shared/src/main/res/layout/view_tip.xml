@@ -23,7 +23,7 @@
         android:padding="@dimen/text_container_margin">
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/text_container_margin"

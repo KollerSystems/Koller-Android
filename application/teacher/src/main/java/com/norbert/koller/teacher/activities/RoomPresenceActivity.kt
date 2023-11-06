@@ -4,20 +4,28 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
+import com.norbert.koller.shared.DataStoreManager
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.customview.RoundedBadgeImageView
 import com.norbert.koller.shared.data.RoomOrderConditionsBase
 import com.norbert.koller.shared.data.RoomOrderData
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.setVisibilityBy
 import com.norbert.koller.teacher.R
 import com.stfalcon.imageviewer.StfalconImageViewer
+import kotlinx.coroutines.launch
 
 
 class RoomPresenceActivity : RoomsActivity() {
 
+    var knowsTheLayout : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
@@ -32,6 +40,25 @@ class RoomPresenceActivity : RoomsActivity() {
         TabLayoutMediator(tabLayout, viewPager){tab,position->
             tab.text = (position + 200).toString()
         }.attach()
+
+
+        lifecycleScope.launch {
+            knowsTheLayout = false
+            var read = 0
+            val data = DataStoreManager.readInt(this@RoomPresenceActivity, DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT)
+            if(data != null) {
+                read = data
+            }
+
+            if(read == 3){
+                knowsTheLayout = true
+            }
+
+            read++
+            if(read <= 3){
+                DataStoreManager.save(this@RoomPresenceActivity, DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT, read)
+            }
+        }
     }
 }
 
@@ -79,7 +106,9 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
     }
 
     override fun onBindViewHolder(holder: RoomPresenceViewHolder, position: Int) {
+        
 
+        holder.textPresence.setVisibilityBy(!(holder.itemView.context as RoomPresenceActivity).knowsTheLayout)
 
         if (position == 0) {
 
@@ -154,6 +183,8 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
     class RoomPresenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val rbiwPfp : RoundedBadgeImageView = itemView.findViewById(R.id.rbiw_pfp)
+
+        val textPresence : TextView = itemView.findViewById(R.id.text_presence)
     }
 
 }

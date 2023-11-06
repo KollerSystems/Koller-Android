@@ -54,7 +54,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@id/textView10"
+                android:id="@id/text_crossing"
                 style="@style/CategoryCardName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
