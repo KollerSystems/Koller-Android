@@ -10,7 +10,7 @@
 
     <View style="@style/separator_line" />
 
-    <com.norbert.koller.shared.TipView
+    <com.norbert.koller.shared.customview.TipView
 
         android:id="@+id/tip_return_to_current_day"
         android:layout_width="match_parent"

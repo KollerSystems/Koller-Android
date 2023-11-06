@@ -11,22 +11,18 @@ import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.ReportFragment.Companion.reportFragment
-import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.MyApplication
-import com.norbert.koller.shared.MyApplication.Comp.getPixelColorFromView
 import com.norbert.koller.shared.R
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.FragmentHolderFragment
-import com.norbert.koller.shared.fragments.CalendarFragment
-import com.norbert.koller.shared.fragments.HomeFragment
+import com.norbert.koller.shared.camelToSnakeCase
+import com.norbert.koller.shared.fragments.FragmentHolderFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
-import com.norbert.koller.shared.fragments.StudentHostelFragment
-import kotlinx.coroutines.launch
+import com.norbert.koller.shared.getColorOfPixel
+import com.norbert.koller.shared.getStringResourceByName
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -128,7 +124,7 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     fun changeToolbarTitleToCurrentFragmentName(fragment: Fragment){
-        setToolbarTitle(MyApplication.getStringResourceByName(this@MainActivity, MyApplication.camelToSnakeCase(fragment.javaClass.simpleName.replace("Fragment", ""))), null)
+        setToolbarTitle(this.getStringResourceByName(fragment.javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
 
     }
 
@@ -259,7 +255,7 @@ abstract class MainActivity : AppCompatActivity() {
 
 
         bottomNavigationView.post{
-            val navViewColor = getPixelColorFromView(bottomNavigationView,0,0)
+            val navViewColor = bottomNavigationView.getColorOfPixel(0,0)
             window.navigationBarColor = navViewColor
         }
 

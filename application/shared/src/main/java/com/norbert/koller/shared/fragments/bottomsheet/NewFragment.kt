@@ -20,6 +20,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.setupBottomSheet
 
 
 class NewFragment : BottomSheetDialogFragment() {
@@ -73,7 +74,7 @@ class NewFragment : BottomSheetDialogFragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_bshd_post, container, false)
-        MyApplication.setupBottomSheet(dialog!!)
+        dialog!!.setupBottomSheet()
         commentTil = view.findViewById(R.id.news_til_comment)
         val buttonPost : Button = view.findViewById(R.id.news_button_post_comment)
 

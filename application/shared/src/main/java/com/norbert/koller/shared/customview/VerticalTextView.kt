@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.content.Context
 import android.graphics.Canvas

@@ -1,7 +1,5 @@
 package com.norbert.koller.shared.fragments
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
@@ -12,7 +10,7 @@ import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import com.google.android.material.chip.Chip
-import com.norbert.koller.shared.FullScreenLoading
+import com.norbert.koller.shared.customview.FullScreenLoading
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
@@ -81,6 +79,7 @@ abstract class UserFragment(val UID : Int) : Fragment() {
                         if (userResponse.code() == 200) {
 
                             val userData: UserData = userResponse.body()!!
+
                             textName.text = userData.Name
 
                             buttonGroup.text = userData.Group
@@ -92,7 +91,7 @@ abstract class UserFragment(val UID : Int) : Fragment() {
                                     (activity as MainActivity).setToolbarTitle(getString(R.string.user),null)
 
                                 } else {
-                                    (activity as MainActivity).setToolbarTitle(userData.Name,MyApplication.createUserDescription(userData))
+                                    (activity as MainActivity).setToolbarTitle(userData.Name, userData.createDescription())
                                 }
                             }
 

@@ -9,7 +9,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.TutoringFragment
+import com.norbert.koller.shared.fragments.TutoringFragment
 import com.norbert.koller.shared.fragments.CalendarCanteenFragment
 import com.norbert.koller.shared.fragments.CalendarProgramsFragment
 import com.google.android.material.tabs.TabLayoutMediator

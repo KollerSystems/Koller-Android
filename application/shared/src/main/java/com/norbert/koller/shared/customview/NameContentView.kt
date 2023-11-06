@@ -1,13 +1,10 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
-import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-
+import com.norbert.koller.shared.R
 
 
 open class NameContentView(context: Context, attrs: AttributeSet) : NameContentShared(context, attrs) {

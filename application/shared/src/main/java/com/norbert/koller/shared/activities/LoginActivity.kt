@@ -25,6 +25,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import com.norbert.koller.shared.BuildConfig
+import com.norbert.koller.shared.getColorOfPixel
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -49,7 +50,7 @@ open class LoginActivity : AppCompatActivity() {
 
         val bottomView : View = findViewById(R.id.bottom_view)
         bottomView.post{
-            val navViewColor = MyApplication.getPixelColorFromView(bottomView, 100, 100)
+            val navViewColor = bottomView.getColorOfPixel( 100, 100)
             window.navigationBarColor = navViewColor
         }
 

@@ -13,7 +13,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.norbert.koller.shared.RoundedBadgeImageView
+        <com.norbert.koller.shared.customview.RoundedBadgeImageView
             android:id="@+id/rbiw_pfp"
             android:layout_width="100dp"
             android:layout_height="100dp"

@@ -14,6 +14,7 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.student.DayRecyclerAdapter
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
+import com.norbert.koller.shared.helpers.DateTimeHelper
 
 class CalendarDaysFragment : Fragment() {
 
@@ -33,7 +34,7 @@ class CalendarDaysFragment : Fragment() {
 
         val mcardDate : MaterialCardView = view.findViewById(R.id.mcard_date)
         mcardDate.setOnClickListener{
-            MyApplication.setupDbd(mcardDate.getChildAt(0) as TextView).show(parentFragmentManager,  "MATERIAL_DATE_PICKER")
+            DateTimeHelper.setupDbd(mcardDate.getChildAt(0) as TextView).show(parentFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
 

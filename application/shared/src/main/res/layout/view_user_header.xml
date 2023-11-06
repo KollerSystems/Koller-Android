@@ -176,7 +176,7 @@
         android:layout_height="wrap_content"
         android:text="Állapot" />
 
-    <com.norbert.koller.shared.SimpleCardButton
+    <com.norbert.koller.shared.customview.SimpleCardButton
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -64,7 +64,7 @@
             android:orientation="vertical"
             android:padding="@dimen/application_padding">
 
-            <com.norbert.koller.shared.NameContentView
+            <com.norbert.koller.shared.customview.NameContentView
                 android:id="@+id/ncw_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                 custom:icon="@drawable/question_box"
                 custom:name="@string/state" />
 
-            <com.norbert.koller.shared.NameContentView
+            <com.norbert.koller.shared.customview.NameContentView
                 android:id="@+id/ncw_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                 custom:icon="@drawable/calendar"
                 custom:name="@string/date" />
 
-            <com.norbert.koller.shared.NameContentView
+            <com.norbert.koller.shared.customview.NameContentView
                 android:id="@+id/ncw_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                 custom:icon="@drawable/clock"
                 custom:name="@string/lesson" />
 
-            <com.norbert.koller.shared.NameContentButton
+            <com.norbert.koller.shared.customview.NameContentButton
                 android:id="@+id/ncb_classroom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -96,7 +96,7 @@
                 custom:icon="@drawable/room"
                 custom:name="@string/classroom" />
 
-            <com.norbert.koller.shared.NameContentButton
+            <com.norbert.koller.shared.customview.NameContentButton
                 android:id="@+id/ncb_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                 custom:icon="@drawable/groups"
                 custom:name="@string/class_" />
 
-            <com.norbert.koller.shared.NameContentButton
+            <com.norbert.koller.shared.customview.NameContentButton
                 android:id="@+id/ncb_teacher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -112,7 +112,7 @@
                 custom:icon="@drawable/user"
                 custom:name="@string/teacher">
 
-            </com.norbert.koller.shared.NameContentButton>
+            </com.norbert.koller.shared.customview.NameContentButton>
         </LinearLayout>
     </LinearLayout>
 

@@ -7,8 +7,8 @@ import android.text.TextWatcher
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.SimpleCardButton
-import com.norbert.koller.shared.SimpleCardButtonWithToggle
+import com.norbert.koller.shared.customview.SimpleCardButton
+import com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
 import com.norbert.koller.shared.api.APIInterface
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.RangeSlider

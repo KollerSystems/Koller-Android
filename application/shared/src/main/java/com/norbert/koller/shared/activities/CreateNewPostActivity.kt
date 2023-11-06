@@ -27,6 +27,8 @@ import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.bottomsheet.BottomFragmentPostTypes
 import com.norbert.koller.shared.fragments.bottomsheet.ScheduleFragment
+import com.norbert.koller.shared.getColorOfPixel
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.recycleradapter.EditableImageRecyclerAdapter
 import java.text.SimpleDateFormat
 import java.time.LocalDate
@@ -85,14 +87,14 @@ class CreateNewPostActivity : AppCompatActivity() {
     private fun setupTbd(til : TextInputLayout) : MaterialTimePicker{
 
 
-        val time : Pair<Int, Int> = MyApplication.timeFromString(til.editText!!.text.toString())
+        val time : Pair<Int, Int> = DateTimeHelper.timeFromString(til.editText!!.text.toString())
         val tpd = MaterialTimePicker.Builder()
             .setHour(time.first).setMinute(time.second)
             .build()
 
         tpd.addOnPositiveButtonClickListener {
 
-            til.editText!!.setText(MyApplication.timeToString(tpd.hour, tpd.minute))
+            til.editText!!.setText(DateTimeHelper.timeToString(tpd.hour, tpd.minute))
 
             til.isEndIconVisible = true
 
@@ -107,7 +109,7 @@ class CreateNewPostActivity : AppCompatActivity() {
 
         val bottomView : View = findViewById(R.id.bottom_view)
         bottomView.post{
-            val navViewColor = MyApplication.getPixelColorFromView(bottomView, 0, 0)
+            val navViewColor = bottomView.getColorOfPixel(0, 0)
             window.navigationBarColor = navViewColor
         }
 
@@ -168,7 +170,7 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            val dpd = MyApplication.setupDbd(tilDateFrom.editText!!)
+            val dpd = DateTimeHelper.setupDbd(tilDateFrom.editText!!)
             dpd.addOnPositiveButtonClickListener {
                 tilDateFrom.isEndIconVisible = true
             }
@@ -179,7 +181,7 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            val dpd = MyApplication.setupDbd(tilDateTo.editText!!)
+            val dpd = DateTimeHelper.setupDbd(tilDateTo.editText!!)
             dpd.addOnPositiveButtonClickListener {
                 tilDateTo.isEndIconVisible = true
             }

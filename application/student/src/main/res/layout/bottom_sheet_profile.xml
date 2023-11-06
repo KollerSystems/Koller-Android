@@ -61,14 +61,14 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content" />
 
-                        <com.norbert.koller.shared.SimpleCardButton
+                        <com.norbert.koller.shared.customview.SimpleCardButton
                             android:id="@id/profile_card_my_room"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/room"
                             custom:text="@string/my_room" />
 
-                        <com.norbert.koller.shared.SimpleCardButton
+                        <com.norbert.koller.shared.customview.SimpleCardButton
                             android:id="@id/profile_card_my_groups"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -77,21 +77,21 @@
                             custom:text="@string/my_groups"
                             tools:visibility="visible" />
 
-                        <com.norbert.koller.shared.SimpleCardButton
+                        <com.norbert.koller.shared.customview.SimpleCardButton
                             android:id="@+id/profile_fbtn_outgoing"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/wave"
                             custom:text="@string/user_outgoings" />
 
-                        <com.norbert.koller.shared.SimpleCardButton
+                        <com.norbert.koller.shared.customview.SimpleCardButton
                             android:id="@id/profile_fbtn_gate"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/gate"
                             custom:text="@string/port_exits_and_entrances" />
 
-                        <com.norbert.koller.shared.SimpleCardButton
+                        <com.norbert.koller.shared.customview.SimpleCardButton
                             android:id="@id/profile_card_devices"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -100,14 +100,14 @@
                             custom:text="@string/devices"
                             tools:visibility="visible" />
 
-                        <com.norbert.koller.shared.SimpleCardButton
+                        <com.norbert.koller.shared.customview.SimpleCardButton
                             android:id="@id/profile_fbtn_settings"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/settings"
                             custom:text="@string/settings" />
 
-                        <com.norbert.koller.shared.SimpleCardButton
+                        <com.norbert.koller.shared.customview.SimpleCardButton
                             android:id="@id/profile_fbtn_privacy_policy"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"

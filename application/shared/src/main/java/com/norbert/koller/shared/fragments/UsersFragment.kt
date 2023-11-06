@@ -12,14 +12,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.BaseViewModel
+import com.norbert.koller.shared.recycleradapter.BaseViewModel
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.SuperCoolRecyclerView
+import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.UserPagingSource
-import com.norbert.koller.shared.data.FiltersData
-import com.norbert.koller.shared.data.TodayData
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -67,12 +65,12 @@ open class UsersFragment : Fragment() {
 
         val userRecycleAdapter = UserRecyclerAdapter(chipGroupSort, listOf(chipGender, chipRole))
 
-        MyApplication.setupCheckBoxList(childFragmentManager, chipGender, "Gender", R.string.gender, arrayListOf(
+        chipGender.connectToCheckBoxList(childFragmentManager, "Gender", R.string.gender, arrayListOf(
             ListItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
             ListItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
         ))
 
-        MyApplication.setupCheckBoxList(childFragmentManager, chipRole, "Role", R.string.role, arrayListOf(
+        chipRole.connectToCheckBoxList(childFragmentManager, "Role", R.string.role, arrayListOf(
             ListItem(getString(R.string.student), null, null, "1"),
             ListItem(getString(R.string.teacher), null, null, "2")
         ))

@@ -16,6 +16,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.timepicker.MaterialTimePicker
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.text.SimpleDateFormat
 
 class ScheduleFragment : BottomSheetDialogFragment() {
@@ -38,7 +39,7 @@ class ScheduleFragment : BottomSheetDialogFragment() {
             val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
             calendar.timeInMillis = parentActivity.scheduleDate
 
-            tilDate.editText!!.setText(SimpleDateFormat(MyApplication.shortMonthDayFormat).format(calendar.time))
+            tilDate.editText!!.setText(SimpleDateFormat(DateTimeHelper.shortMonthDayFormat).format(calendar.time))
         }
         if(parentActivity.scheduleTime != 0){
 
@@ -111,7 +112,7 @@ class ScheduleFragment : BottomSheetDialogFragment() {
 
             parentActivity.scheduleTime = tpd.hour * 60 + tpd.minute
 
-            tilTime.editText!!.setText(MyApplication.timeToString(tpd.hour, tpd.minute))
+            tilTime.editText!!.setText(DateTimeHelper.timeToString(tpd.hour, tpd.minute))
         }
 
         return view

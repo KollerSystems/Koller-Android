@@ -1,15 +1,12 @@
 package com.norbert.koller.shared.fragments
 
-import android.animation.Animator
-import android.animation.AnimatorListenerAdapter
 import android.os.Bundle
 import android.view.View
-import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.FullScreenLoading
+import com.norbert.koller.shared.customview.FullScreenLoading
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity

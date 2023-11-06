@@ -68,14 +68,14 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.norbert.koller.shared.SimpleCardButton
+            <com.norbert.koller.shared.customview.SimpleCardButton
                 android:id="@+id/profile_card_support"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:icon="@drawable/support_us"
                 custom:text="@string/support_us" />
 
-            <com.norbert.koller.shared.SimpleCardButton
+            <com.norbert.koller.shared.customview.SimpleCardButton
                 android:id="@+id/profile_card_bug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,9 +84,9 @@
                 custom:text="@string/bug_report"
                 tools:visibility="visible">
 
-            </com.norbert.koller.shared.SimpleCardButton>
+            </com.norbert.koller.shared.customview.SimpleCardButton>
 
-            <com.norbert.koller.shared.SimpleCardButton
+            <com.norbert.koller.shared.customview.SimpleCardButton
                 android:id="@+id/profile_card_idea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                 custom:text="@string/suggestion"
                 tools:visibility="visible" />
 
-            <com.norbert.koller.shared.SimpleCardButton
+            <com.norbert.koller.shared.customview.SimpleCardButton
                 android:id="@+id/profile_fbtn_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

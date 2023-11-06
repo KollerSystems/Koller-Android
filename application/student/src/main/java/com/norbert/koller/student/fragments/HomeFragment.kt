@@ -14,6 +14,8 @@ import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.student.activities.MainActivity
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.data.DefaultDayTimes
+import com.norbert.koller.shared.getAttributeColor
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.util.*
 import kotlin.math.roundToInt
 
@@ -113,10 +115,10 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                         outgoingTimerRunning = true
 
                         if((millisUntilFinished / 1000f / 60 / 60) < 0.25f){
-                            slider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorErrorContainer))
+                            slider.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorErrorContainer))
                         }
                         else{
-                            slider.setBackgroundColor(MyApplication.getAttributeColor(requireContext(), com.google.android.material.R.attr.colorPrimaryContainer))
+                            slider.setBackgroundColor(requireContext().getAttributeColor( com.google.android.material.R.attr.colorPrimaryContainer))
                         }
 
                         var remainText : String = ""
@@ -207,7 +209,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
 
                 val lesson = DefaultDayTimes.instance.lessons[index + 1]
                 textSmallLessonsNumber.text = (index + 1 + 1).toString()
-                textSmallLessonsTime.text = MyApplication.timeFromTo(lesson.from, lesson.to)
+                textSmallLessonsTime.text = DateTimeHelper.timeFromTo(lesson.from, lesson.to)
             }
 
             for (i in 0 until DefaultDayTimes.instance.lessons.size){
@@ -224,7 +226,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                     textLessonsNumber.text = (i + 1).toString()
                     textLessonsNumber.background = null
 
-                    textLessonsTime.text = MyApplication.timeFromTo(currentLessonTime.from, currentLessonTime.to)
+                    textLessonsTime.text = DateTimeHelper.timeFromTo(currentLessonTime.from, currentLessonTime.to)
 
                     startTimerForLessons(realViewLessonSlider, currentLessonTime.from, currentLessonTime.to)
 
@@ -256,7 +258,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                     textLessonsDescription.text = getText(com.norbert.koller.shared.R.string.pause_description)
                     textLessonsNumber.text = ""
                     textLessonsNumber.background = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.pause)
-                    textLessonsTime.text = MyApplication.timeFromTo(currentLessonTime.to, nextLessonTime.from)
+                    textLessonsTime.text = DateTimeHelper.timeFromTo(currentLessonTime.to, nextLessonTime.from)
 
                     startTimerForLessons(realViewLessonSlider, currentLessonTime.to, nextLessonTime.from)
                 }

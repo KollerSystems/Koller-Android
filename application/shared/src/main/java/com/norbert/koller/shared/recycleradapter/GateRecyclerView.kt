@@ -16,6 +16,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CrossingData
 import com.norbert.koller.shared.data.DefaultDayTimes
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
@@ -61,7 +62,7 @@ class GateRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
                 }
                 holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, icon))
 
-                holder.title.text = SimpleDateFormat(MyApplication.timeFormat).format(item.Time)
+                holder.title.text = SimpleDateFormat(DateTimeHelper.timeFormat).format(item.Time)
                 holder.description.text = late(item.Time.time)
 
                 holder.itemView.setOnClickListener {

@@ -29,6 +29,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
 class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : RecyclerView.Adapter<TodayRecyclerAdapter.TodayViewHolder>(){
@@ -55,7 +56,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
 
         val context = holder.itemView.context
 
-        MyApplication.roundRecyclerItemsVertically(holder.itemView, holder.itemView, position, todayList.size)
+        RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, holder.itemView, position, todayList.size)
 
         holder.cardUnreadOverlay.visibility = VISIBLE
         holder.iconLeft.setImageDrawable(currentItem.iconLeft)

@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.DevData
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
 class DevRecyclerAdapter (private var devList : ArrayList<DevData>) : RecyclerView.Adapter<DevRecyclerAdapter.DevViewHolder>(){
@@ -54,7 +55,7 @@ class DevRecyclerAdapter (private var devList : ArrayList<DevData>) : RecyclerVi
     override fun onBindViewHolder(holder: DevViewHolder, position: Int) {
         val currentItem = devList[position  %  devList.size]
 
-        MyApplication.roundRecyclerItemsHorizontallyWithHeaderImages(holder.itemView, holder.image, position, devList.size)
+        RecyclerViewHelper.roundRecyclerItemsHorizontallyWithHeaderImages(holder.itemView, holder.image, position, devList.size)
 
         holder.name.text = currentItem.name
         holder.description.text = currentItem.description

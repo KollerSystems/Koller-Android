@@ -44,25 +44,25 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:id="@+id/room_scb_room_order"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/clean"
                         custom:text="@string/room_order">
 
-                    </com.norbert.koller.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.customview.SimpleCardButton>
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:id="@+id/room_scb_presence"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/person_wave"
                         custom:text="@string/presence">
 
-                    </com.norbert.koller.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.customview.SimpleCardButton>
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
@@ -70,9 +70,9 @@
                         custom:text="@string/error_report"
                         tools:visibility="visible">
 
-                    </com.norbert.koller.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.customview.SimpleCardButton>
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
@@ -81,23 +81,23 @@
                         custom:text="@string/reports"
                         tools:visibility="visible">
 
-                    </com.norbert.koller.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.customview.SimpleCardButton>
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/pencil"
                         custom:text="@string/edit">
 
-                    </com.norbert.koller.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.customview.SimpleCardButton>
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/close"
                         custom:text="@string/remove">
 
-                    </com.norbert.koller.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.customview.SimpleCardButton>
 
                 </LinearLayout>
 
@@ -107,7 +107,7 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.norbert.koller.shared.FullScreenLoading
+    <com.norbert.koller.shared.customview.FullScreenLoading
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

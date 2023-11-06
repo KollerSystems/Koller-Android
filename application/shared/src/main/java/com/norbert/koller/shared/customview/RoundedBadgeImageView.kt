@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -6,6 +6,8 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.google.android.material.card.MaterialCardView
+import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.R
 
 class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 

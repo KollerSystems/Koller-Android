@@ -63,13 +63,13 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.norbert.koller.shared.RoundedBadgeImageView
+                <com.norbert.koller.shared.customview.RoundedBadgeImageView
                     android:id="@+id/roundedBadgeImageView"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:translationZ="1dp">
 
-                </com.norbert.koller.shared.RoundedBadgeImageView>
+                </com.norbert.koller.shared.customview.RoundedBadgeImageView>
 
             </FrameLayout>
 

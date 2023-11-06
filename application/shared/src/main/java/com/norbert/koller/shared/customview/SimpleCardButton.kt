@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.content.Context
 import android.graphics.drawable.Drawable
@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
+import com.norbert.koller.shared.R
 
 
 open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {

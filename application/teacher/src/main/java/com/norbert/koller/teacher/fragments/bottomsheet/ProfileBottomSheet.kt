@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.norbert.koller.shared.SimpleCardButton
+import com.norbert.koller.shared.customview.SimpleCardButton
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.teacher.R

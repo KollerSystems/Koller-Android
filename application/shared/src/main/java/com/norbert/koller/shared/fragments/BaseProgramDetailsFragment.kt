@@ -1,7 +1,6 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -9,9 +8,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.customview.NameContentButton
+import com.norbert.koller.shared.customview.NameContentView
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseProgramData
-import com.norbert.koller.shared.fragments.UserFragment
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.text.SimpleDateFormat
 
 class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : BottomSheetDialogFragment() {
@@ -41,7 +44,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
             textTitle.text = baseProgram.Topic
 
             ncwState.visibility = GONE
-            ncwDate.textContent.text = SimpleDateFormat(MyApplication.monthDay).format(baseProgram.Date)
+            ncwDate.textContent.text = SimpleDateFormat(DateTimeHelper.monthDay).format(baseProgram.Date)
             ncwTime.textContent.text = MyApplication.createClassesText(requireContext(), baseProgram.Lesson, baseProgram.Length)
             ncbClassroom.buttonContent.text = baseProgram.RID.toString()
             ncbClass.buttonContent.text = baseProgram.Group

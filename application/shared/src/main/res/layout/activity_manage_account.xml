@@ -57,12 +57,12 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <com.norbert.koller.shared.RoundedBadgeImageView
+            <com.norbert.koller.shared.customview.RoundedBadgeImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 custom:stroke_width="10dp">
 
-            </com.norbert.koller.shared.RoundedBadgeImageView>
+            </com.norbert.koller.shared.customview.RoundedBadgeImageView>
 
             <TextView
                 android:id="@+id/textView16"
@@ -84,13 +84,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/data"
                         custom:text="Személyes adatok kezelése" />
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/key"

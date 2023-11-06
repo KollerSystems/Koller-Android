@@ -13,7 +13,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.BaseComparator
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: List<Chip> = listOf()) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
@@ -125,7 +125,7 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
             }
 
 
-            MyApplication.roundRecyclerItemsVerticallyWithSeparator(holder.itemView, position, this)
+            RecyclerViewHelper.roundRecyclerItemsVerticallyWithSeparator(holder.itemView, position, this)
         }
         else{
             when (getItemViewType(position)) {

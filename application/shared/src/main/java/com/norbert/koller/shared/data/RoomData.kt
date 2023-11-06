@@ -3,6 +3,7 @@ package com.norbert.koller.shared.data
 import android.content.Context
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.orderSingleNumber
 
 class RoomData(
     var RID : Int = -1,
@@ -22,7 +23,7 @@ class RoomData(
 
 
 
-        return MyApplication.orderSingleNumber(context, RID.toString()[0].toString()) + " " + context.getString(R.string.floor_level).lowercase() + " • " + genderString
+        return RID.toString()[0].orderSingleNumber(context) + " " + context.getString(R.string.floor_level).lowercase() + " • " + genderString
     }
 
     override fun getMainID(): Int {

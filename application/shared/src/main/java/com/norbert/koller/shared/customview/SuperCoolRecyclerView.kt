@@ -1,24 +1,20 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
-import android.view.MotionEvent
 import android.view.View
-import android.view.ViewGroup
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.marginTop
-import androidx.core.view.size
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
-import kotlin.math.abs
 
 
 @SuppressLint("ClickableViewAccessibility")

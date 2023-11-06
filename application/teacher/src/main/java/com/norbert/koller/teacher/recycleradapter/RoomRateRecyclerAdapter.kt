@@ -18,6 +18,7 @@ import com.norbert.koller.shared.data.RoomOrderConditionsInt
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.slider.Slider
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<RoomOrderConditionsBase>) :  RecyclerView.Adapter<ViewHolder>(){
 
@@ -80,15 +81,15 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
         val context = holder.itemView.context
         if (roomOrderConditionsData.size == 1) {
 
-            MyApplication.roundCard(holder.itemView)
+            RecyclerViewHelper.roundCard(holder.itemView)
 
         }
         else if(position == 0){
 
-            MyApplication.roundCardTop(holder.itemView)
+            RecyclerViewHelper.roundCardTop(holder.itemView)
         }
         else{
-            MyApplication.deroundCardVertical(holder.itemView)
+            RecyclerViewHelper.deroundCardVertical(holder.itemView)
         }
 
 

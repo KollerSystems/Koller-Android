@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.recycleradapter
 
 import androidx.recyclerview.widget.DiffUtil
 import com.norbert.koller.shared.data.BaseData

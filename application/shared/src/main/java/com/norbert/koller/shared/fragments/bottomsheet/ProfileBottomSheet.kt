@@ -23,6 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.activities.ManageAccountActivity
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.setupBottomSheet
 import kotlinx.coroutines.launch
 
 
@@ -41,7 +42,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        MyApplication.setupBottomSheet(dialog!!)
+        dialog!!.setupBottomSheet()
 
         val textVersion : TextView = view.findViewById(R.id.text_version)
         textVersion.text = MyApplication.version
@@ -50,7 +51,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         textName.text = UserData.instance.Name
 
         textDescription = view.findViewById(R.id.profile_text_description)
-        textDescription.text = MyApplication.createUserDescription(UserData.instance)
+        textDescription.text = UserData.instance.createDescription()
 
 
         val buttonLogout: Button = view.findViewById(R.id.button_logout)

@@ -2,7 +2,7 @@ package com.norbert.koller.student.activities
 
 import android.os.Bundle
 import com.norbert.koller.student.R
-import com.norbert.koller.shared.SimpleCardButtonWithToggle
+import com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
 import com.google.android.material.checkbox.MaterialCheckBox
 import java.util.*
 

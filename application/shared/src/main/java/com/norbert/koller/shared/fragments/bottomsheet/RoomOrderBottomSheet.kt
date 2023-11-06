@@ -13,6 +13,7 @@ import com.norbert.koller.shared.data.RoomOrderData
 import com.norbert.koller.shared.data.StarData
 import com.norbert.koller.shared.recycleradapter.StarsRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.norbert.koller.shared.setupBottomSheet
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import kotlin.math.roundToInt
@@ -29,7 +30,7 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
     ): View? {
         // Inflate the layout for this fragment
         val view : View = inflater.inflate(R.layout.fragment_bshd_room_order, container, false)
-        MyApplication.setupBottomSheet(dialog!!)
+        dialog!!.setupBottomSheet()
         val finalGrade: TextView = view.findViewById(R.id.room_order_fragment_text_final_rate)
         val teacherName: TextView = view.findViewById(R.id.room_order_fragment_text_rater_name)
         val date: TextView = view.findViewById(R.id.room_order_fragment_text_date)

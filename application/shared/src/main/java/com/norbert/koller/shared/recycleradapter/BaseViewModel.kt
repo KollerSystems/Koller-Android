@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.recycleradapter
 
 import androidx.lifecycle.ViewModel
 import androidx.paging.Pager

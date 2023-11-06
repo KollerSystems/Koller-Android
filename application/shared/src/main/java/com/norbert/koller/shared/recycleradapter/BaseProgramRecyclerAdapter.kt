@@ -9,11 +9,8 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.UserFragment
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.BaseProgramDetailsFragment
-import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.fragments.BaseProgramDetailsFragment
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.norbert.koller.shared.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.norbert.koller.shared.customview.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -145,10 +145,10 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.norbert.koller.shared.SuperCoolRecyclerView
+    <com.norbert.koller.shared.customview.SuperCoolRecyclerView
         android:id="@+id/super_cool_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-</com.norbert.koller.shared.NestedCoordinatorLayout>
+</com.norbert.koller.shared.customview.NestedCoordinatorLayout>

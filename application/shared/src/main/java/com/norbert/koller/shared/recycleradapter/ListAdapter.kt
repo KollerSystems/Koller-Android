@@ -14,6 +14,7 @@ import com.norbert.koller.shared.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 data class ListItem(val title: String, val description: String?, val icon: Drawable?, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
 }
@@ -44,7 +45,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragment, private val listIte
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
-        MyApplication.roundRecyclerItemsVertically(holder.itemView, position, itemCount)
+        RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, position, itemCount)
 
         val currentItem = listItem[position]
         holder.title.text = currentItem.title

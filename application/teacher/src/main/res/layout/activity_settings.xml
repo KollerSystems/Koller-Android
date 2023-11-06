@@ -186,7 +186,7 @@
 
                     </com.google.android.material.card.MaterialCardView>
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:id="@id/settings_scb_test_activity"
                         custom:text="Open test Activity"
                         custom:description="Hell yeah. Test activity!"
@@ -214,39 +214,39 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_all"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:text="@string/all" />
 
-                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_arrival"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:description="@string/arrival_reminder_description"
                         custom:text="@string/arrival_reminder" />
 
-                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_occupation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:description="@string/occupation_reminder_description"
                         custom:text="@string/occupation_reminder" />
 
-                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_room"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:text="@string/room_order" />
 
-                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_comm_or_warn"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:text="@string/commendation_warning" />
 
-                    <com.norbert.koller.shared.SimpleCardButtonWithToggle
+                    <com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
                         android:id="@+id/notifics_new"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"

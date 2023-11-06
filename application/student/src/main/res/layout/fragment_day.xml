@@ -146,7 +146,7 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-        <com.norbert.koller.shared.EventPoint
+        <com.norbert.koller.shared.customview.EventPoint
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?android:attr/windowBackground"
@@ -177,7 +177,7 @@
                     android:text="6:00"
                     android:textAlignment="textEnd" />
 
-                <com.norbert.koller.shared.EventPoint
+                <com.norbert.koller.shared.customview.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/n_panel_padding"
@@ -185,7 +185,7 @@
                     custom:text="@string/room_scoring"
                     custom:time="8:00">
 
-                </com.norbert.koller.shared.EventPoint>
+                </com.norbert.koller.shared.customview.EventPoint>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -211,7 +211,7 @@
 
                 </LinearLayout>
 
-                <com.norbert.koller.shared.EventPoint
+                <com.norbert.koller.shared.customview.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/n_panel_padding"
@@ -671,7 +671,7 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-        <com.norbert.koller.shared.EventPoint
+        <com.norbert.koller.shared.customview.EventPoint
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="?android:attr/windowBackground"
@@ -726,7 +726,7 @@
 
                 </LinearLayout>
 
-                <com.norbert.koller.shared.EventPoint
+                <com.norbert.koller.shared.customview.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginLeft="@dimen/n_panel_padding"
@@ -746,7 +746,7 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.norbert.koller.shared.EventPoint
+        <com.norbert.koller.shared.customview.EventPoint
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             custom:text="@string/headcount_check"

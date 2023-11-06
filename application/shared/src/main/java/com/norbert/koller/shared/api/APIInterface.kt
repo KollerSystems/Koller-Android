@@ -10,7 +10,7 @@ import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.norbert.koller.shared.BasePagingSource
+import com.norbert.koller.shared.recycleradapter.BasePagingSource
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.CrossingData
 import retrofit2.Call

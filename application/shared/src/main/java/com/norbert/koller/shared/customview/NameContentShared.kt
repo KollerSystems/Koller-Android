@@ -1,10 +1,10 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.content.Context
 import android.util.AttributeSet
-import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.norbert.koller.shared.R
 
 abstract class NameContentShared(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 

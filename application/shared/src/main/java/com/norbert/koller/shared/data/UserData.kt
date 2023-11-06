@@ -46,5 +46,9 @@ class UserData (
         return UID
     }
 
+    fun createDescription(): String{
+        return Group + " • " + RID  + " • " + Class?.Class
+    }
+
 
 }

@@ -15,6 +15,8 @@ import com.norbert.koller.shared.data.EventsData
 import com.norbert.koller.shared.fragments.bottomsheet.NewFragment
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.setVisibilityBy
 
 class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>()
 {
@@ -27,19 +29,19 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
 
         val mainActivity : MainActivity = holder.itemView.context as MainActivity
 
-        MyApplication.roundRecyclerItemsVertically(holder.itemView, position, eventsList.size)
+        RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, position, eventsList.size)
 
         val currentItem = eventsList[position]
         holder.title.text = currentItem.title
         holder.description.text = currentItem.description
 
-        MyApplication.visibilityOn(holder.chipPlace, currentItem.place)
-        MyApplication.visibilityOn(holder.chipDateTime, currentItem.dateTime)
-        MyApplication.visibilityOn(holder.chipBPR, currentItem.baseProgramReplacement)
+        holder.chipPlace.setVisibilityBy(currentItem.place)
+        holder.chipDateTime.setVisibilityBy(currentItem.dateTime)
+        holder.chipBPR.setVisibilityBy(currentItem.baseProgramReplacement)
 
         val isAnyChildVisible = holder.chipPlace.visibility == VISIBLE || holder.chipDateTime.visibility == VISIBLE || holder.chipBPR.visibility == VISIBLE
 
-        (holder.chipPlace.parent as ViewGroup).visibility = MyApplication.visibilityOn(isAnyChildVisible)
+        (holder.chipPlace.parent as ViewGroup).setVisibilityBy(isAnyChildVisible)
 
         holder.posterUser.setOnClickListener{
             mainActivity.changeFragment(MyApplication.userFragment(currentItem.UID))

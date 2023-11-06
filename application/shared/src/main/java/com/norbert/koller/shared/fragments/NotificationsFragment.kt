@@ -7,8 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.SuperCoolRecyclerView
-import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.recycleradapter.TodayRecyclerAdapter
 

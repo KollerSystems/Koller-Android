@@ -10,13 +10,12 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.BaseViewModel
+import com.norbert.koller.shared.recycleradapter.BaseViewModel
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.SuperCoolRecyclerView
+import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.RoomPagingSource
-import com.norbert.koller.shared.data.FiltersData
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.RoomRecyclerAdapter
 import kotlinx.coroutines.flow.collectLatest
@@ -35,7 +34,7 @@ open class RoomsFragment : Fragment() {
 
         val chipSide : Chip = view.findViewById(R.id.chip_side)
 
-        MyApplication.setupCheckBoxList(childFragmentManager, chipSide, "Gender", R.string.side, arrayListOf(
+        chipSide.connectToCheckBoxList(childFragmentManager, "Gender", R.string.side, arrayListOf(
             ListItem( getString(R.string.girl), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
             ListItem( getString(R.string.boy), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
         ))

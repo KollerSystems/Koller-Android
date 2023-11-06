@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.content.Context
 import android.util.AttributeSet
@@ -8,6 +8,8 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.norbert.koller.shared.DataStoreManager
+import com.norbert.koller.shared.R
 import kotlinx.coroutines.launch
 
 

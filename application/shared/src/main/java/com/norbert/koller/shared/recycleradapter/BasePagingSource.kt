@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.recycleradapter
 
 import android.content.Context
 import android.icu.text.SimpleDateFormat
@@ -7,13 +7,14 @@ import android.os.Looper
 import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.google.android.material.chip.Chip
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.FilterDateData
 import com.norbert.koller.shared.data.FiltersData
-import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import kotlinx.coroutines.delay
 import retrofit2.Response
 import kotlin.random.Random
@@ -45,7 +46,7 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
                 if(filterDateData.filterFrom != null) {
 
-                    finalString += "${filterDateData.filterName}[gte]:${SimpleDateFormat(MyApplication.apiFormat).format(filterDateData.filterFrom!!.first)+ "T00:00:00.000Z"},${filterDateData.filterName}[lte]:${SimpleDateFormat(MyApplication.apiFormat).format(filterDateData.filterFrom!!.second) + "T00:00:00.000Z"},"
+                    finalString += "${filterDateData.filterName}[gte]:${SimpleDateFormat(DateTimeHelper.apiFormat).format(filterDateData.filterFrom!!.first)+ "T00:00:00.000Z"},${filterDateData.filterName}[lte]:${SimpleDateFormat(DateTimeHelper.apiFormat).format(filterDateData.filterFrom!!.second) + "T00:00:00.000Z"},"
                 }
 
             }
@@ -56,7 +57,9 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
     }
 
     fun getSort() : String{
-        return MyApplication.getApiSortString(recyclerAdapter.chipGroup)
+        if(recyclerAdapter.chipGroup == null) return ""
+        val chip : Chip = recyclerAdapter.chipGroup.findViewById(recyclerAdapter.chipGroup.checkedChipId)
+        return chip.tag.toString()
     }
 
 

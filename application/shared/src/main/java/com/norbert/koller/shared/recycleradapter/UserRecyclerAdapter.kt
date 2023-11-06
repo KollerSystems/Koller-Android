@@ -32,7 +32,7 @@ class UserRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
             )
         )
         holder.title.text = item.Name
-        holder.description.text = MyApplication.createUserDescription(item)
+        holder.description.text = item.createDescription()
 
         holder.itemView.setOnClickListener {
 

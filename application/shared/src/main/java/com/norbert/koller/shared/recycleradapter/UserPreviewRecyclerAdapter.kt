@@ -12,6 +12,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
 class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, var context : Context) : RecyclerView.Adapter<UserPreviewRecyclerAdapter.TodayViewHolder>(){
@@ -28,7 +29,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
 
-        MyApplication.roundRecyclerItemsHorizontally(holder.itemView, null, position, todayList.size)
+        RecyclerViewHelper.roundRecyclerItemsHorizontally(holder.itemView, null, position, todayList.size)
 
         val nameParts : List<String> = currentItem.Name!!.split(" ")
         val name = nameParts[0] + " " + nameParts [1]

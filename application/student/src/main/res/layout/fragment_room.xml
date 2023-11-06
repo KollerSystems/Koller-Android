@@ -52,14 +52,14 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.norbert.koller.shared.SimpleCardButton
+                    <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:description="@string/report_room_desc"
                         custom:icon="@drawable/flag"
                         custom:text="@string/report">
 
-                    </com.norbert.koller.shared.SimpleCardButton>
+                    </com.norbert.koller.shared.customview.SimpleCardButton>
 
                 </LinearLayout>
 
@@ -69,7 +69,7 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.norbert.koller.shared.FullScreenLoading
+    <com.norbert.koller.shared.customview.FullScreenLoading
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.google.android.material.card.MaterialCardView
+import com.norbert.koller.shared.getAttributeColor
 import com.stfalcon.imageviewer.StfalconImageViewer
 import java.util.ArrayList
 import java.util.Collections
@@ -221,7 +222,7 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
     fun updateLimit(text : TextView, current : Int, max : Int){
         text.text = "${current}/${max}"
         if(current > max){
-            text.setTextColor(MyApplication.getAttributeColor(context, com.google.android.material.R.attr.colorError))
+            text.setTextColor(context.getAttributeColor(com.google.android.material.R.attr.colorError))
         }
         else if (defaultTextColor != 0){
             text.setTextColor(defaultTextColor)

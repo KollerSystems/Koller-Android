@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
@@ -7,7 +7,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
-import com.norbert.koller.shared.fragments.RoomsFragment
+import com.norbert.koller.shared.R
 
 class FullScreenLoading(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
@@ -32,13 +32,13 @@ class FullScreenLoading(context: Context, attrs: AttributeSet) : LinearLayout(co
     fun setState(value : Int){
         state = value
         when (state){
-            LOADING->{
+            LOADING ->{
                 crossFade(error, loading)
             }
-            ERROR->{
+            ERROR ->{
                 crossFade(loading, error)
             }
-            NONE->{
+            NONE ->{
                 fadeOut()
             }
         }

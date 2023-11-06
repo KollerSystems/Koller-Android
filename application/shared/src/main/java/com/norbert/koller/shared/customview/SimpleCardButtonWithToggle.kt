@@ -1,9 +1,10 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.customview
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import com.google.android.material.checkbox.MaterialCheckBox
+import com.norbert.koller.shared.R
 
 class SimpleCardButtonWithToggle(context: Context, attrs: AttributeSet) : SimpleCardButton(context, attrs) {
 

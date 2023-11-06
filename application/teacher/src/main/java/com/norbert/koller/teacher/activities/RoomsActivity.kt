@@ -12,8 +12,10 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.connectToBackgroundCard
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.recycleradapter.ListItem
+import com.norbert.koller.shared.setToolbarToViewColor
 import com.norbert.koller.teacher.R
 
 abstract class RoomsActivity : AppCompatActivity() {
@@ -53,13 +55,13 @@ abstract class RoomsActivity : AppCompatActivity() {
         collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar_layout)
 
 
-        MyApplication.setToolbarToBottomViewColor(findViewById(R.id.bottom_view), window)
+        window.setToolbarToViewColor(findViewById(R.id.bottom_view))
 
 
         val mainBackground : MaterialCardView = findViewById(R.id.main_background)
         val appBar : AppBarLayout = findViewById(R.id.appbar)
 
-        MyApplication.setupActivityToolbar(mainBackground,appBar)
+        appBar.connectToBackgroundCard(mainBackground)
 
         val backButton : Button = findViewById(R.id.toolbar_exit)
 
