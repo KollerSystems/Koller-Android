@@ -25,6 +25,17 @@
         <item name="textInputStyle">@style/text_input</item>
     </style>
 
+    <style name="separator_title" parent="Normal">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/text_container_margin</item>
+    </style>
+
+    <style name="separaotr_main_title" parent="@style/Title">
+        <item name="android:textStyle">bold</item>
+        <item name="android:layout_marginTop">@dimen/n_text_container_margin</item>
+        <item name="android:layout_marginLeft">@dimen/n_text_container_margin</item>
+    </style>
+
     <style name="text_input" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox">
          <item name="android:layout_marginBottom">@dimen/text_container_margin</item>
         <item name="android:layout_marginHorizontal">@dimen/text_container_margin</item>

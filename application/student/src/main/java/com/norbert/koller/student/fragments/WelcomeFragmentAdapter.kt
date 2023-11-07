@@ -5,10 +5,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.norbert.koller.shared.fragments.WelcomeBasicInformationsFragment
+import com.norbert.koller.student.WelcomeSummaryFragment
 
 class WelcomeFragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
     override fun getItemCount(): Int {
-        return 6
+        return 7
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -23,12 +24,15 @@ class WelcomeFragmentAdapter(fragmentManager: FragmentManager, lifecycle: Lifecy
                 WelcomeBasicInformationsFragment()
             }
             3->{
-                WelcomeNewPasswordFragment()
-            }
-            4->{
                 WelcomePersonalityFragment()
             }
+            4->{
+                WelcomeSummaryFragment()
+            }
             5->{
+                WelcomeNewPasswordFragment()
+            }
+            6->{
                 WelcomeFinalDoneFragment()
             }
             else->{

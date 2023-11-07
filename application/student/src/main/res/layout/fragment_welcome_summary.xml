@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    tools:context=".WelcomeSummaryFragment">
+
+    <LinearLayout
+        style="@style/MainLayoutWelcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Kollégium" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MainCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+                            android:text="Azonosító" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="532678523"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Név"
+                            android:textStyle="bold" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Táncsics Mihály Tehetséggondozó Kollégium"
+                            android:textAppearance="@style/Description" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Személyes Adatok" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MainCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                style="@style/MainCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView96"
+                            style="@style/separaotr_main_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Diák adatai" />
+
+                        <TextView
+                            android:id="@+id/textView84"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Név" />
+
+                        <TextView
+                            android:id="@+id/textView85"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Kis Gazsi"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nem" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Férfi"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Születési hely" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Budapest 8."
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView41"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Születési dátum" />
+
+                        <TextView
+                            android:id="@+id/textView43"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="2005. 07. 22."
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lakcím" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Magyarország, 1022 Budapest, Helló belló utca 3."
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView88"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Taj" />
+
+                        <TextView
+                            android:id="@+id/textView89"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="64354367"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView90"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tanuló azonosító" />
+
+                        <TextView
+                            android:id="@+id/textView91"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="62367372346"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView94"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Állampolgárság" />
+
+                        <TextView
+                            android:id="@+id/textView95"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Magyar"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView92"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="További állampolgárság" />
+
+                        <TextView
+                            android:id="@+id/textView93"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Telefonszám" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="+36 65 321 5423"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="kisgazsi@gmail.com"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView82"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Discord" />
+
+                        <TextView
+                            android:id="@+id/textView83"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Gazsika4"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView80"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Facebook" />
+
+                        <TextView
+                            android:id="@+id/textView81"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="kisgazsi.5.1"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView64"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Instagram" />
+
+                        <TextView
+                            android:id="@+id/textView79"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="k_gazsi3"
+                            android:textAppearance="@style/Description" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView97"
+                            style="@style/separaotr_main_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Szülő adatai" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Név" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Kis Gazsi"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lakcím" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Magyarország, 1022 Budapest, Helló utca 3."
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Telefonszám" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="+36 65 321 5423"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView61"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Email" />
+
+                        <TextView
+                            android:id="@+id/textView62"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="kisgazsi@gmail.com"
+                            android:textAppearance="@style/Description" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView98"
+                            style="@style/separaotr_main_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Kollégiumhoz közeli rokon" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Név" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Kis Gazsi"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView31"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lakcím" />
+
+                        <TextView
+                            android:id="@+id/textView39"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Magyarország, 1022 Budapest, Helló utca 3."
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            android:id="@+id/textView53"
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Telefonszám" />
+
+                        <TextView
+                            android:id="@+id/textView60"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="+36 65 321 5423"
+                            android:textAppearance="@style/Description" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textView7"
+            style="@style/CategoryCardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Szobaközösség" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MainCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/textView16"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Személyiségtípus"
+                            android:textAppearance="@style/separaotr_main_title" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/textView27"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="Introvertált"
+                                android:textAppearance="@style/Description" />
+
+                            <com.google.android.material.slider.RangeSlider
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/n_spacing"
+                                android:layout_marginBottom="@dimen/n_spacing"
+                                android:layout_weight="1"
+                                android:enabled="false"
+                                app:thumbRadius="7.5dp"
+                                app:trackHeight="2.5dp" />
+
+                            <TextView
+                                android:id="@+id/textView99"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="0"
+                                android:text="Extrovertált"
+                                android:textAppearance="@style/Description" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:paddingStart="@dimen/spacing"
+            android:text="A kollégium házirendjét és adatkezelési tájékoztatóját megismertem és az abban foglaltakat elfogadom." />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:paddingLeft="@dimen/spacing"
+            android:text="Kijelentem, hogy a jelentkezés során megadott adatok a valóságnak megfelelnek." />
+
+
+    </LinearLayout>
+
+
+</ScrollView>

@@ -39,9 +39,9 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_welcome)
 
-        tabs = findViewById(com.norbert.koller.student.R.id.welcome_tabs)
-        val btnNavigation: CardView = findViewById(com.norbert.koller.student.R.id.welcome_btn_navigation)
-        viewPager = findViewById(com.norbert.koller.student.R.id.welcome_view_pager)
+        tabs = findViewById(R.id.welcome_tabs)
+        val btnNavigation: CardView = findViewById(R.id.welcome_btn_navigation)
+        viewPager = findViewById(R.id.welcome_view_pager)
         viewPager.isUserInputEnabled = false
 
         val adapter = WelcomeFragmentAdapter(supportFragmentManager, lifecycle)
@@ -66,12 +66,15 @@ class WelcomeActivity : AppCompatActivity() {
                     tab.text = "Adatok"
                 }
                 3->{
-                    tab.text = "Jelszó"
-                }
-                4->{
                     tab.text = "Személyes preferenciák"
                 }
+                4->{
+                    tab.text = "Összegzés"
+                }
                 5->{
+                    tab.text = "Jelszó"
+                }
+                6->{
                     tab.view.minimumWidth = 1
                     tab.view.post{
                         tab.view.layoutParams.width = MyApplication.convertDpToPixel(10, tab.view.context)
@@ -84,8 +87,8 @@ class WelcomeActivity : AppCompatActivity() {
 
         }.attach()
 
-        val btnBackward : Button = findViewById(com.norbert.koller.student.R.id.welcome_backward)
-        val btnForward : Button = findViewById(com.norbert.koller.student.R.id.welcome_foreward)
+        val btnBackward : Button = findViewById(R.id.welcome_backward)
+        val btnForward : Button = findViewById(R.id.welcome_foreward)
 
         btnBackward.setOnClickListener {
             scrollBackward()
