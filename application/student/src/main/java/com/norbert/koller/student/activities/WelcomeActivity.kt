@@ -9,7 +9,9 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
+import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.student.R
 import com.norbert.koller.shared.R as Rs
@@ -18,12 +20,15 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayout.TabView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.fragments.WelcomeFragmentBase
 
 
 class WelcomeActivity : AppCompatActivity() {
 
     lateinit var viewPager: ViewPager2
     lateinit var tabs: TabLayout
+    var currentFragment : WelcomeFragmentBase? = null
+    lateinit var btnForward : Button
 
     fun scrollForward(){
         viewPager.setCurrentItem(viewPager.currentItem+1, true)
@@ -88,7 +93,7 @@ class WelcomeActivity : AppCompatActivity() {
         }.attach()
 
         val btnBackward : Button = findViewById(R.id.welcome_backward)
-        val btnForward : Button = findViewById(R.id.welcome_foreward)
+        btnForward = findViewById(R.id.welcome_foreward)
 
         btnBackward.setOnClickListener {
             scrollBackward()
@@ -145,8 +150,19 @@ class WelcomeActivity : AppCompatActivity() {
                 if (position == 0 || position == viewPager.adapter!!.itemCount - 1) {
                     if(navigatedAtLEastOnce)
                         animateOutNavigation()
+
+
+
                 }
                 else{
+
+                    currentFragment = supportFragmentManager.findFragmentByTag("f" + position) as WelcomeFragmentBase?
+
+
+                    currentFragment?.onChange = { value ->
+                        btnForward.isEnabled = value
+                    }
+                    currentFragment?.onChange?.invoke(currentFragment!!.checkIfAllCorrect())
 
                     if (position == 0 + 1){
                         btnBackward.text = getString(Rs.string.back)

@@ -25,6 +25,12 @@
         <item name="textInputStyle">@style/text_input</item>
     </style>
 
+    <style name="SimpleCardWithContent" parent="@style/SimpleCard">
+        <item name="android:layout_margin">@dimen/CardMargin</item>
+        <item name="contentPadding">@dimen/panel_padding</item>
+        <item name="android:outlineProvider">none</item>
+    </style>
+
     <style name="separator_title" parent="Normal">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/text_container_margin</item>

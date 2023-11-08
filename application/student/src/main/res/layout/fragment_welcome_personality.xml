@@ -13,7 +13,7 @@
     tools:context=".fragments.WelcomePersonalityFragment">
 
     <LinearLayout
-        style="@style/MainLayoutWelcome"
+        style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -80,7 +80,7 @@
                                 tools:ignore="HardcodedText" />
 
                             <com.google.android.material.slider.RangeSlider
-                                android:id="@+id/settings_slider_list_loading_delay"
+                                android:id="@+id/range_slider_personality"
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/n_spacing"

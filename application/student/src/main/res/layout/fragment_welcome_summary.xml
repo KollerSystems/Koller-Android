@@ -8,72 +8,77 @@
     tools:context=".WelcomeSummaryFragment">
 
     <LinearLayout
-        style="@style/MainLayoutWelcome"
+        style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Minden amit eddig megadtál"
+            android:textAlignment="center"
+            android:textAppearance="@style/MainTitle" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kérlek fuss át mindenen mégegyszer utoljára"
+            android:textAlignment="center" />
+
+        <TextView
             style="@style/CategoryCardName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/big_spacing"
             android:text="Kollégium" />
 
+
         <com.google.android.material.card.MaterialCardView
-            style="@style/MainCard"
+            style="@style/SimpleCardWithContent"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="@dimen/text_container_margin"
                 android:orientation="vertical">
 
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/Card"
+                <TextView
+
+                    style="@style/separator_title"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="0dp"
+                    android:text="Azonosító" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_margin="@dimen/text_container_margin"
-                        android:orientation="vertical">
+                <TextView
 
-                        <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="532678523"
+                    android:textAppearance="@style/Description" />
 
-                            style="@style/separator_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="0dp"
-                            android:text="Azonosító" />
+                <TextView
 
-                        <TextView
+                    style="@style/separator_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Név"
+                    android:textStyle="bold" />
 
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="532678523"
-                            android:textAppearance="@style/Description" />
+                <TextView
 
-                        <TextView
-
-                            style="@style/separator_title"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Név"
-                            android:textStyle="bold" />
-
-                        <TextView
-
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="Táncsics Mihály Tehetséggondozó Kollégium"
-                            android:textAppearance="@style/Description" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Táncsics Mihály Tehetséggondozó Kollégium"
+                    android:textAppearance="@style/Description" />
             </LinearLayout>
-
         </com.google.android.material.card.MaterialCardView>
+
 
         <TextView
             style="@style/CategoryCardName"
@@ -108,7 +113,7 @@
                             style="@style/separaotr_main_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Diák adatai" />
+                            android:text="Diák" />
 
                         <TextView
                             android:id="@+id/textView84"
@@ -177,7 +182,7 @@
 
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Magyarország, 1022 Budapest, Helló belló utca 3."
+                            android:text="Magyarország, 1022 Budapest, Helló utca 3."
                             android:textAppearance="@style/Description" />
 
                         <TextView
@@ -324,7 +329,7 @@
                             style="@style/separaotr_main_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Szülő adatai" />
+                            android:text="Szülő / Gondviselő" />
 
                         <TextView
 
@@ -483,10 +488,11 @@
 
                         <TextView
                             android:id="@+id/textView16"
+                            style="@style/separator_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Személyiségtípus"
-                            android:textAppearance="@style/separaotr_main_title" />
+                            android:layout_marginTop="0dp"
+                            android:text="Személyiségtípus" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -527,16 +533,18 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <CheckBox
-            android:id="@+id/checkBox"
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_container_margin"
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginBottom="@dimen/text_container_margin"
             android:paddingStart="@dimen/spacing"
             android:text="A kollégium házirendjét és adatkezelési tájékoztatóját megismertem és az abban foglaltakat elfogadom." />
 
-        <CheckBox
-            android:id="@+id/checkBox2"
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_true_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"

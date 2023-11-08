@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.norbert.koller.shared.fragments.WelcomeFragmentBase
 import com.norbert.koller.student.R
 
-class WelcomeNewPasswordFragment : Fragment() {
-
+class WelcomeNewPasswordFragment : WelcomeFragmentBase() {
+    override fun checkIfAllCorrect(): Boolean {
+        return true
+    }
 
 
     override fun onCreateView(
