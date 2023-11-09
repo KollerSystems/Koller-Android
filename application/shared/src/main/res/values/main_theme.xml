@@ -492,9 +492,15 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
+    <style name="image">
+        <item name="android:scaleType">centerCrop</item>
+        <item name="shapeAppearanceOverlay">@style/roundedImageView</item>
+    </style>
+
     <style name="roundedImageView">
         <item name="cornerSize">10dp</item>
         <item name="cornerFamily">rounded</item>
+
     </style>
 
     <style name="chipGroupArrangeCard">

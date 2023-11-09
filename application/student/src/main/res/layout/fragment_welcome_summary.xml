@@ -246,6 +246,48 @@
                             style="@style/separator_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:text="Anyja leánykori neve" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Lakatos Anita"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Tartós betegség, fogyaték" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Por allergia"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hátráynos helyzetű" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nem"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:text="Telefonszám" />
 
                         <TextView
@@ -312,6 +354,7 @@
                             android:textAppearance="@style/Description" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/Card"
@@ -423,14 +466,12 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            android:id="@+id/textView31"
                             style="@style/separator_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Lakcím" />
 
                         <TextView
-                            android:id="@+id/textView39"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Magyarország, 1022 Budapest, Helló utca 3."
@@ -452,6 +493,236 @@
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
+
+
+
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Iskola" />
+        <com.google.android.material.card.MaterialCardView
+            style="@style/MainCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                style="@style/MainCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Iskola neve"
+                            android:layout_marginTop="0dp"/>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Budapesti Műszaki Szakképzési Centrum Puskás Tivadar Távközlési és Informatikai Technikum"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Cím" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Magyarország, 1022 Budapest, Helló utca 4."
+                            android:textAppearance="@style/Description" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Osztályfőnök neve"
+                            android:layout_marginTop="0dp"/>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nagy Béla"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Telefonszáma" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="-"
+                            android:textAppearance="@style/Description" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:orientation="vertical">
+
+
+
+                        <TextView
+
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Képzés típusa"
+                            android:layout_marginTop="0dp"/>
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Technikum"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Képzés formája" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Ingyenes"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Évfolyam" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="12."
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Szakma, tagozat" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="IRA"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Érettségizett" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nem"
+                            android:textAppearance="@style/Description" />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Érettségi bizonyítvány" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            style="@style/image"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/sh_room"
+                            android:layout_marginVertical="@dimen/text_container_margin"
+                         />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Iskolai bizonyítvány" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            style="@style/image"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/sh_room"
+                            android:layout_marginVertical="@dimen/text_container_margin"
+                            />
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Iskolalátogatási igazolás" />
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            style="@style/image"
+                            android:layout_width="100dp"
+                            android:layout_height="150dp"
+                            android:src="@drawable/sh_room"
+                            android:layout_marginVertical="@dimen/text_container_margin"
+                            />
+
+
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
 
 
             </LinearLayout>
@@ -487,7 +758,6 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/textView16"
                             style="@style/separator_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -501,7 +771,6 @@
                             android:orientation="horizontal">
 
                             <TextView
-                                android:id="@+id/textView27"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="0"
@@ -526,6 +795,22 @@
                                 android:text="Extrovertált"
                                 android:textAppearance="@style/Description" />
                         </LinearLayout>
+
+                        <TextView
+                            style="@style/separator_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+                            android:text="Egyéb közledő" />
+
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="0"
+                            android:text="anyad"
+                            android:textAppearance="@style/Description" />
 
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
