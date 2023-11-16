@@ -14,6 +14,7 @@ import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import java.lang.Error
 
 abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: List<Chip> = listOf()) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
@@ -182,19 +183,22 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
 
 
 
-        if(position == itemCount-1) {
-            if (state == STATE_LOADING) {
-                return VIEW_TYPE_LOADING
+            if(position == itemCount-1) {
+                if (state == STATE_LOADING) {
+                    return VIEW_TYPE_LOADING
+                }
+                else if(state == STATE_ERROR){
+                    return VIEW_TYPE_RETRY
+                }
             }
-            else if(state == STATE_ERROR){
-                return VIEW_TYPE_RETRY
-            }
-        }
 
-        return when (getItem(position)){
-            is String -> VIEW_TYPE_SEPARATOR
-            else -> VIEW_TYPE_USER
-        }
+            return when (getItem(position)){
+                is String -> VIEW_TYPE_SEPARATOR
+                else -> VIEW_TYPE_USER
+            }
+
+
+
     }
 
 

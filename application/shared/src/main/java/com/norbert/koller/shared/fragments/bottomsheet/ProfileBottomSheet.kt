@@ -148,6 +148,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
             DevData("Fehér Dávid", "Windows back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp7)!!, "https://github.com/TheBlueLines"),
             DevData("Várnagy Miklós T.", "Windows front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp1)!!, "https://github.com/Ararakalari"),
             DevData("Bende Ákos Gy.", "Szerver", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp6)!!, "https://github.com/kutzlect"),
+            DevData("Kovács Gábor", "iOS", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gabi)!!, "https://github.com/mrSajt2"),
         )
 
         recyclerView.adapter = DevRecyclerAdapter(devArrayList)
