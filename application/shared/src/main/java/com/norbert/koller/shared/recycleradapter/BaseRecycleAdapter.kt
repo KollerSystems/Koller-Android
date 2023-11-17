@@ -18,11 +18,10 @@ import java.lang.Error
 
 abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: List<Chip> = listOf()) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
-    private var lastMaxPosition : Int = -1
     lateinit var recyclerView: RecyclerView
 
     var state : Int = STATE_NONE
-
+    var withLoadingAnim : Boolean = true
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView
@@ -33,7 +32,6 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
             }
         }
 
-
         chipGroup?.setOnCheckedStateChangeListener { chipGroup: ChipGroup, ints: MutableList<Int> ->
             refreshFully()
         }
@@ -42,8 +40,6 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
     var beingEmptied : Boolean = false
 
     fun refreshFully(){
-
-        lastMaxPosition = -1
 
         beingEmptied = true
         Log.d("INFO", "START TO EMPTY")
@@ -56,8 +52,6 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
         refresh()
 
     }
-
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
@@ -97,91 +91,69 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
+        Log.d("TEST", "state: ${state}, super.getItemCount ${super.getItemCount()}")
+        if(state == STATE_NONE && super.getItemCount() == 0)
+            return
 
+        if (state != STATE_NONE && position == itemCount - 1){
 
-        if(state != STATE_NONE || super.getItemCount() != 0) {
+            when (getItemViewType(position)) {
+                VIEW_TYPE_RETRY -> {
 
-            var item: Any? = null
-
-            if (state == STATE_NONE || position != itemCount - 1) {
-                item = getItem(position)
+                    val retryViewHolder = holder as ErrorViewHolder
+                    retryViewHolder.button.setOnClickListener {
+                        retry()
+                    }
+                }
             }
 
+            return
+        }
 
-            if (item != null) {
-                when (getItemViewType(position)) {
-                    VIEW_TYPE_USER -> {
+        val item = getItem(position)!!
 
-                        onBindViewHolder(holder, item, position)
+        when (getItemViewType(position)) {
+            VIEW_TYPE_USER -> {
 
+                onBindViewHolder(holder, item, position)
 
-                        if (position == itemCount - 1) {
-                            lastMaxPosition = position
-                        }
-
-                        if (position == lastMaxPosition + 1) {
-                            holder.itemView.post {
-                                recyclerView.adapter!!.notifyItemChanged(lastMaxPosition, Object())
-                            }
-                        }
-                    }
-
-                    VIEW_TYPE_SEPARATOR -> {
-
-                        holder as DateViewHolder
-
-                        item as String
-
-                        holder.text.text = item
-
-
+                if (position == snapshot().size-1) {
+                    holder.itemView.post {
+                        notifyItemChanged(snapshot().size-1, Object())
                     }
                 }
+            }
 
+            VIEW_TYPE_SEPARATOR -> {
 
-                RecyclerViewHelper.roundRecyclerItemsVerticallyWithSeparator(holder.itemView, position, this)
-            } else {
-                when (getItemViewType(position)) {
-                    VIEW_TYPE_LOADING -> {
-                        // Töltő ikon megjelenítése
-                    }
-
-                    VIEW_TYPE_RETRY -> {
-                        // Hibaüzenet megjelenítése és újra próbálkozás gomb eseménykezelése
-                        val retryViewHolder = holder as ErrorViewHolder
-                        retryViewHolder.button.setOnClickListener {
-                            retry()
-                        }
-                    }
-                }
+                holder as DateViewHolder
+                item as String
+                holder.text.text = item
             }
         }
+
+
+        RecyclerViewHelper.roundRecyclerItemsVerticallyWithSeparator(holder.itemView, position, this)
+
+
     }
 
     abstract fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int)
 
-
-
-
     override fun getItemCount(): Int {
 
-
-        return if(state != STATE_NONE){
+        return if(state != STATE_NONE || super.getItemCount()==0){
             super.getItemCount() + 1
         } else{
-            if(super.getItemCount() == 0){
-                1
-            } else{
-                super.getItemCount()
-            }
+            super.getItemCount()
         }
-
     }
 
 
     override fun getItemViewType(position: Int): Int {
 
-
+        if(super.getItemCount()==0 && state == STATE_NONE)
+            return -1
 
             if(position == itemCount-1) {
                 if (state == STATE_LOADING) {

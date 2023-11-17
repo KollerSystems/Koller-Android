@@ -74,7 +74,13 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
             return LoadResult.Page(emptyList(), null,null)
 
         val offset = params.key ?: 0
-        recyclerAdapter.state = BaseRecycleAdapter.STATE_LOADING
+        if(recyclerAdapter.withLoadingAnim) {
+            recyclerAdapter.state = BaseRecycleAdapter.STATE_LOADING
+        }
+        else{
+            recyclerAdapter.withLoadingAnim = true
+        }
+
         Handler(Looper.getMainLooper()).post {
             recyclerAdapter.notifyItemInserted(recyclerAdapter.itemCount)
         }

@@ -59,8 +59,10 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
                 swipeToRefresh.setOnRefreshListener {
 
 
+                    recyclerAdapter.withLoadingAnim = false
                     recyclerAdapter.refresh()
-                    recyclerAdapter.state = BaseRecycleAdapter.STATE_NONE
+
+
 
 
                 }
