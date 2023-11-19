@@ -105,13 +105,12 @@ abstract class UserFragment(val UID : Int) : Fragment() {
                             showAndSetIfNotNull(emailCard, userData.Email)
 
                             imagePfp.setOnClickListener{
-                                StfalconImageViewer.Builder(context, listOf(imagePfp.drawable)) { view, drawable ->
+                                StfalconImageViewer.Builder(context, listOf(imagePfp.drawable)){view, drawable ->
                                     view.setImageDrawable(drawable)
-
                                 }
                                     .withStartPosition(0)
                                     .withTransitionFrom(imagePfp)
-                                    .show()
+                                    .show(parentFragmentManager)
                             }
 
                             loadingOl.setState(FullScreenLoading.NONE)

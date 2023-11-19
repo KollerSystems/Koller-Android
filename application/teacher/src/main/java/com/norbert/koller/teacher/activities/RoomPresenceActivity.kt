@@ -165,13 +165,12 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
 
 
         holder.rbiwPfp.card.setOnClickListener{
-            StfalconImageViewer.Builder(holder.itemView.context, listOf(holder.rbiwPfp.image.drawable)) { view, drawable ->
+            StfalconImageViewer.Builder(holder.itemView.context, listOf(holder.rbiwPfp.image.drawable)){view, drawable ->
                 view.setImageDrawable(drawable)
-
             }
                 .withStartPosition(0)
                 .withTransitionFrom(holder.rbiwPfp.image)
-                .show()
+                .show((holder.itemView.context as RoomPresenceActivity).supportFragmentManager)
         }
 
     }

@@ -94,4 +94,5 @@
     <item name="action_global_userGateFragment" type="id" />
     <item name="action_global_roomRateFragment" type="id" />
     <item name="loading_overlay" type="id" />
+    <item name="loadingView" type="id" />
 </resources>

@@ -161,13 +161,12 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
 
                 holder.itemView.setOnClickListener{
 
-                    StfalconImageViewer.Builder(context, imageList) { view, uri ->
+                    StfalconImageViewer.Builder(context, imageList){view,uri ->
                         view.setImageURI(uri)
-
                     }
                         .withStartPosition(holder.bindingAdapterPosition)
                         .withTransitionFrom(holder.image)
-                        .show()
+                        .show((context as AppCompatActivity).supportFragmentManager)
                 }
 
                 holder.buttonRemove.setOnClickListener{

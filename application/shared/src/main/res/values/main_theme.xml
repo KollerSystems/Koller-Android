@@ -25,6 +25,14 @@
         <item name="textInputStyle">@style/text_input</item>
     </style>
 
+    <style name="ImageViewerDialog" parent="android:Theme.Translucent.NoTitleBar"/>
+
+
+    <style name="ImageViewerDialog.Default">
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
     <style name="SimpleCardWithContent" parent="@style/SimpleCard">
         <item name="android:layout_margin">@dimen/CardMargin</item>
         <item name="contentPadding">@dimen/panel_padding</item>

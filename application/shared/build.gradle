@@ -33,6 +33,9 @@ android {
 }
 
 dependencies {
+
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+
     implementation 'androidx.core:core-ktx:1.12.0'
 
     implementation 'androidx.appcompat:appcompat:1.6.1'
@@ -57,7 +60,7 @@ dependencies {
     implementation 'androidx.paging:paging-runtime-ktx:3.2.1'
     implementation 'androidx.paging:paging-common-ktx:3.2.1'
 
-    implementation 'com.github.stfalcon-studio:StfalconImageViewer:v1.0.1'
+    implementation 'com.github.iielse:imageviewer:2.1.23'
 
     implementation 'androidx.datastore:datastore-preferences:1.0.0'
 }

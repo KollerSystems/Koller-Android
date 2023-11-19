@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.MyApplication
+import com.github.iielse.imageviewer.ImageViewerBuilder
+import com.github.iielse.imageviewer.core.SimpleDataProvider
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import com.stfalcon.imageviewer.StfalconImageViewer
@@ -29,13 +31,12 @@ class ImageRecyclerAdapter (private val imageList : ArrayList<Drawable>, val con
 
         holder.itemView.setOnClickListener{
 
-            StfalconImageViewer.Builder(context, imageList) { view, drawable ->
+            StfalconImageViewer.Builder(context, imageList){view, drawable ->
                 view.setImageDrawable(drawable)
-
             }
                 .withStartPosition(position)
                 .withTransitionFrom(holder.image)
-                .show()
+                .show((context as AppCompatActivity).supportFragmentManager)
         }
     }
 
