@@ -117,7 +117,7 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
 
                 onBindViewHolder(holder, item, position)
 
-                if (position == snapshot().size-1) {
+                if (position == snapshot().size) {
                     holder.itemView.post {
                         notifyItemChanged(snapshot().size-1, Object())
                     }

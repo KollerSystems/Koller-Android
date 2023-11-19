@@ -622,6 +622,10 @@
         <item name="tint">?android:attr/colorForeground</item>
     </style>
 
+    <style name="transparent_icon" parent="@style/Icon">
+        <item name="android:alpha">0.666</item>
+    </style>
+
     <style name="toolbar" parent="@style/Widget.Material3.Toolbar">
         <item name="android:layout_height">@dimen/header_footer_size</item>
         <item name="android:minHeight">0dp</item>
