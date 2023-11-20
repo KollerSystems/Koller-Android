@@ -2,6 +2,8 @@ package com.norbert.koller.shared
 
 import android.app.Application
 import android.app.Dialog
+import android.app.NotificationChannel
+import android.app.NotificationManager
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
@@ -52,7 +54,9 @@ import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.helpers.NotificationHelper
 import com.norbert.koller.shared.recycleradapter.ListItem
+import okhttp3.internal.notify
 import java.util.Date
 
 
@@ -63,8 +67,9 @@ open class MyApplication : Application() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
 
-
+        NotificationHelper.createNotificationChannels(this)
     }
+
 
     companion object Comp{
 
