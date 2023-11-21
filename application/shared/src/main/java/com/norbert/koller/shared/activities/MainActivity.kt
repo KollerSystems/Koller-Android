@@ -1,13 +1,20 @@
 package com.norbert.koller.shared.activities
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
@@ -18,6 +25,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.camelToSnakeCase
 import com.norbert.koller.shared.fragments.FragmentHolderFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
@@ -44,111 +52,9 @@ abstract class MainActivity : AppCompatActivity() {
 
     var onlyIcon : Boolean = false
 
-    fun changeSelectedBottomNavigationIcon(selectedItemId : Int){
-        onlyIcon = true
-        bottomNavigationView.selectedItemId = selectedItemId
-        onlyIcon = false
-    }
-
-
-    fun showBackButton(show : Boolean){
-        if(!show){
-
-            backButton.visibility = AppBarLayout.INVISIBLE
-            val dp15 : Int = MyApplication.convertDpToPixel(15, this)
-            toolbarContainer.setPadding(dp15,0,dp15,0)
-
-        }
-        else{
-
-            backButton.visibility = AppBarLayout.VISIBLE
-            toolbarContainer.setPadding(defaultTitlePadding,0,defaultTitlePadding, 0)
-        }
-    }
-
-    private lateinit var homeFragment: FragmentHolderFragment
-    private lateinit var calendarFragment: FragmentHolderFragment
-    private lateinit var studentHostelFragment: FragmentHolderFragment
-    private lateinit var notificationsFragment: FragmentHolderFragment
-
-    companion object{
-        var selectedIndex = 0
-    }
-
-
-
-    private val fragments: Array<FragmentHolderFragment>
-        get() = arrayOf(
-            homeFragment,
-            calendarFragment,
-            studentHostelFragment,
-            notificationsFragment
-        )
-
-    override fun onBackPressed() {
-
-        appBar.setExpanded(false)
-            if (fragments[selectedIndex].childFragmentManager.backStackEntryCount > 0) {
-
-                fragments[selectedIndex].childFragmentManager.popBackStack()
-                backButton.post {
-                    changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
-                    if (fragments[selectedIndex].childFragmentManager.backStackEntryCount == 0) {
-                        showBackButton(false)
-                    }
-                }
-
-            } else {
-                if (mainFragmentList.size == 1) {
-
-                    if (selectedIndex != 0) {
-                        selectFragment(0)
-                        mainFragmentList = arrayListOf(0)
-                    }
-                    else{
-                        finish()
-                    }
-
-                }
-                else{
-
-                    mainFragmentList.removeLast()
-                    selectFragment(mainFragmentList.last())
-                }
-
-            }
-
-
-
-        changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
-    }
-
-    fun changeToolbarTitleToCurrentFragmentName(fragment: Fragment){
-        setToolbarTitle(this.getStringResourceByName(fragment.javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
-
-    }
-
-    fun changeFragment(fragment: Fragment){
-        val fragmentTransaction: FragmentTransaction = fragments[selectedIndex].childFragmentManager.beginTransaction()
-        fragmentTransaction.setCustomAnimations(
-            R.anim.anim_in,
-            R.anim.anim_out,
-            R.anim.anim_in,
-            R.anim.anim_out
-        )
-        fragmentTransaction.replace(R.id.inner_fragment_container_view, fragment)
-        fragmentTransaction.addToBackStack(null)
-        fragmentTransaction.setReorderingAllowed(true)
-        fragmentTransaction.commit()
-
-        appBar.setExpanded(false)
-
-        showBackButton(true)
-
-        changeToolbarTitleToCurrentFragmentName(fragment)
-    }
-
-    fun onCreated(savedInstanceState: Bundle?) {
+    private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
         backButton = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{
@@ -259,8 +165,118 @@ abstract class MainActivity : AppCompatActivity() {
             window.navigationBarColor = navViewColor
         }
 
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112);
+    }
+
+    fun changeSelectedBottomNavigationIcon(selectedItemId : Int){
+        onlyIcon = true
+        bottomNavigationView.selectedItemId = selectedItemId
+        onlyIcon = false
+    }
+
+
+    fun showBackButton(show : Boolean){
+        if(!show){
+
+            backButton.visibility = AppBarLayout.INVISIBLE
+            val dp15 : Int = MyApplication.convertDpToPixel(15, this)
+            toolbarContainer.setPadding(dp15,0,dp15,0)
+
+        }
+        else{
+
+            backButton.visibility = AppBarLayout.VISIBLE
+            toolbarContainer.setPadding(defaultTitlePadding,0,defaultTitlePadding, 0)
+        }
+    }
+
+    private lateinit var homeFragment: FragmentHolderFragment
+    private lateinit var calendarFragment: FragmentHolderFragment
+    private lateinit var studentHostelFragment: FragmentHolderFragment
+    private lateinit var notificationsFragment: FragmentHolderFragment
+
+    companion object{
+        var selectedIndex = 0
+    }
+
+
+
+    private val fragments: Array<FragmentHolderFragment>
+        get() = arrayOf(
+            homeFragment,
+            calendarFragment,
+            studentHostelFragment,
+            notificationsFragment
+        )
+
+    override fun onBackPressed() {
+
+        appBar.setExpanded(false)
+            if (fragments[selectedIndex].childFragmentManager.backStackEntryCount > 0) {
+
+                fragments[selectedIndex].childFragmentManager.popBackStack()
+                backButton.post {
+                    changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
+                    if (fragments[selectedIndex].childFragmentManager.backStackEntryCount == 0) {
+                        showBackButton(false)
+                    }
+                }
+
+            } else {
+                if (mainFragmentList.size == 1) {
+
+                    if (selectedIndex != 0) {
+                        selectFragment(0)
+                        mainFragmentList = arrayListOf(0)
+                    }
+                    else{
+                        finish()
+                    }
+
+                }
+                else{
+
+                    mainFragmentList.removeLast()
+                    selectFragment(mainFragmentList.last())
+                }
+
+            }
+
+
+
+        changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
+    }
+
+    fun changeToolbarTitleToCurrentFragmentName(fragment: Fragment){
+        setToolbarTitle(this.getStringResourceByName(fragment.javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
 
     }
+
+    fun changeFragment(fragment: Fragment){
+        val fragmentTransaction: FragmentTransaction = fragments[selectedIndex].childFragmentManager.beginTransaction()
+        fragmentTransaction.setCustomAnimations(
+            R.anim.anim_in,
+            R.anim.anim_out,
+            R.anim.anim_in,
+            R.anim.anim_out
+        )
+        fragmentTransaction.replace(R.id.inner_fragment_container_view, fragment)
+        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.setReorderingAllowed(true)
+        fragmentTransaction.commit()
+
+        appBar.setExpanded(false)
+
+        showBackButton(true)
+
+        changeToolbarTitleToCurrentFragmentName(fragment)
+    }
+
+
+
+
+
+
 
     fun setToolbarTitle(title : String?, description : String?){
 

@@ -9,8 +9,8 @@
     <ImageView
         android:id="@+id/iv_icon"
         style="@style/Icon"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/panel_icon_smaller"
+        android:layout_height="@dimen/panel_icon_smaller"
         android:layout_gravity="center_vertical"
         android:alpha="0.666"
         android:src="@drawable/flag" />
@@ -40,24 +40,29 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:maxLines="1"
             android:text="@string/report_room_desc" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/badge"
-        android:layout_width="wrap_content"
-        android:layout_height="25dp"
-        android:background="@drawable/circle"
-        android:backgroundTint="?attr/colorError"
-        android:gravity="center"
-        android:minWidth="25dp"
-        android:paddingLeft="7.5dp"
-        android:paddingRight="7.5dp"
-        android:text="0"
-        android:textColor="?android:attr/colorBackground"
-        android:visibility="gone"
-        tools:ignore="HardcodedText" />
+    <FrameLayout
+        android:id="@+id/frame_layout_end"
+        android:layout_width="@dimen/panel_icon_smaller"
+        android:layout_height="@dimen/panel_icon_smaller"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/badge"
+            android:layout_width="wrap_content"
+            android:layout_height="25dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="?attr/colorError"
+            android:gravity="center"
+            android:minWidth="25dp"
+            android:paddingLeft="7.5dp"
+            android:paddingRight="7.5dp"
+            android:text="0"
+            android:textColor="?android:attr/colorBackground"
+            tools:ignore="HardcodedText" />
+    </FrameLayout>
 
 </LinearLayout>

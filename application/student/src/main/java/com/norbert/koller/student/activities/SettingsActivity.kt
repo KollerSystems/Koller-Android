@@ -12,13 +12,18 @@ class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity()
     override fun onCreate(savedInstanceState: Bundle?) {
         setContentView(R.layout.activity_settings)
         super.onCreate(savedInstanceState)
+
+        val checkBoxNotifArrival : SimpleCardButtonWithToggle = findViewById(R.id.notifics_arrival)
+        val checkBoxNotifRoom : SimpleCardButtonWithToggle = findViewById(R.id.notifics_room)
+        val checkBoxNotifOccupation : SimpleCardButtonWithToggle = findViewById(R.id.notifics_occupation)
+        val checkBoxNotifCommOrWarn : SimpleCardButtonWithToggle = findViewById(R.id.notifics_comm_or_warn)
+
         val checkBoxParent: SimpleCardButtonWithToggle = findViewById(R.id.notifics_all)
         val childrenCheckBoxes: ArrayList<SimpleCardButtonWithToggle> = arrayListOf(
-            findViewById(R.id.notifics_arrival),
-            findViewById(R.id.notifics_new),
-            findViewById(R.id.notifics_room),
-            findViewById(R.id.notifics_occupation),
-            findViewById(R.id.notifics_comm_or_warn))
+            checkBoxNotifArrival,
+            checkBoxNotifRoom,
+            checkBoxNotifOccupation,
+            checkBoxNotifCommOrWarn)
 
         // Parent's checked state changed listener
         val parentOnCheckedStateChangedListener =

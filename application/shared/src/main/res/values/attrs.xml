@@ -45,6 +45,7 @@
         <attr name="description" format="string" />
         <attr name="badge" format="integer" />
         <attr name="icon" />
+        <attr name="end_icon" format="reference" />
     </declare-styleable>
 
     <declare-styleable name="tipView">

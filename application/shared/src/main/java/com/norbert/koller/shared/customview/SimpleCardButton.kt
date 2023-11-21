@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
@@ -17,12 +18,14 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
     private var mDesc: String = ""
     private var mBadge: Int = 0
     private var mIcon: Drawable? = null
+    private var mEndIcon: Drawable? = null
     private var mSwapDescriptionAndText = false
 
     private val textText: TextView
     private val textDesc: TextView
     private val textBadge: TextView?
     private val imageViewIcon: ImageView?
+    val frameLayoutEnd: FrameLayout?
 
     init {
         val typedArray = context.theme.obtainStyledAttributes(
@@ -36,6 +39,7 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
             mDesc = typedArray.getString(R.styleable.simpleCardButton_description) ?: ""
             mBadge = typedArray.getInt(R.styleable.simpleCardButton_badge, 0)
             mIcon = typedArray.getDrawable(R.styleable.simpleCardButton_icon)
+
             mSwapDescriptionAndText = typedArray.getBoolean(R.styleable.simpleCardButton_swap_description_and_text, false)
             mRounded = typedArray.getBoolean(R.styleable.simpleCardButton_rounded, false)
         } finally {
@@ -48,6 +52,11 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
         textDesc = findViewById(R.id.text_description)
         textBadge = findViewById(R.id.badge)
         imageViewIcon = findViewById(R.id.iv_icon)
+        frameLayoutEnd = findViewById(R.id.frame_layout_end)
+
+        if(frameLayoutEnd!=null){
+            frameLayoutEnd.background = mEndIcon
+        }
 
         if(!mRounded) {
             this.radius = 0f
@@ -58,6 +67,7 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
 
         this.setContentPadding(padding,padding,padding,padding)
 
+        //TODO láthatóság elkészítése
 
         imageViewIcon?.setImageDrawable(mIcon)
 
@@ -65,8 +75,10 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
 
         if(textBadge!=null) {
             if (textBadge.text == "0") {
+                frameLayoutEnd.visibility = GONE
                 textBadge.visibility = GONE
             } else {
+                frameLayoutEnd.visibility = VISIBLE
                 textBadge.visibility = VISIBLE
                 textBadge.text = mBadge.toString()
             }

@@ -16,7 +16,7 @@ object RetrofitHelper {
         .build()
 
     val gyIP =TITOK_HAHAHA
-    val grazIP = "http://192.168.0.100/"
+    val grazIP = ""
 
     private val retrofit = Retrofit.Builder()
         .baseUrl(gyIP)
