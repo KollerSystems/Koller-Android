@@ -12,21 +12,19 @@
         android:layout_width="@dimen/panel_icon_smaller"
         android:layout_height="@dimen/panel_icon_smaller"
         android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/spacing"
         android:alpha="0.666"
         android:src="@drawable/flag" />
 
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="@dimen/text_container_margin"
-        android:layout_marginRight="@dimen/text_container_margin"
-        android:layout_marginBottom="@dimen/text_container_margin"
         android:layout_weight="1"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:gravity="center_vertical"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="@dimen/text_container_margin">
 
         <TextView
             android:id="@+id/text_text"
@@ -46,22 +44,28 @@
 
     <FrameLayout
         android:id="@+id/frame_layout_end"
-        android:layout_width="@dimen/panel_icon_smaller"
-        android:layout_height="@dimen/panel_icon_smaller"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="@dimen/text_container_margin"
+        android:background="@drawable/alarm_fill"
+        android:backgroundTint="?attr/colorForeground066"
         android:visibility="gone">
 
         <TextView
             android:id="@+id/badge"
             android:layout_width="wrap_content"
-            android:layout_height="25dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center_vertical|end"
             android:background="@drawable/circle"
             android:backgroundTint="?attr/colorError"
             android:gravity="center"
-            android:minWidth="25dp"
-            android:paddingLeft="7.5dp"
-            android:paddingRight="7.5dp"
+            android:minWidth="20dp"
+            android:paddingLeft="5.5dp"
+            android:paddingRight="5.5dp"
             android:text="0"
             android:textColor="?android:attr/colorBackground"
+            android:textSize="@dimen/text_description"
+            android:visibility="gone"
             tools:ignore="HardcodedText" />
     </FrameLayout>
 

@@ -10,6 +10,7 @@ import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.drawable.Drawable
 import android.icu.text.SimpleDateFormat
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -67,7 +68,7 @@ open class MyApplication : Application() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
 
-        NotificationHelper.createNotificationChannels(this)
+
     }
 
 
@@ -261,6 +262,14 @@ fun AppBarLayout.connectToBackgroundCard(backgroundCard : MaterialCardView){
 
 fun View.setVisibilityBy(boolean : Boolean){
     if(!boolean){
+        visibility = GONE
+    } else{
+        visibility = VISIBLE
+    }
+}
+
+fun View.setVisibilityBy(drawable : Drawable?){
+    if(drawable == null){
         visibility = GONE
     } else{
         visibility = VISIBLE

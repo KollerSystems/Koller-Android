@@ -1,15 +1,15 @@
 package com.norbert.koller.shared.helpers
 
-import android.Manifest
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationChannelGroup
 import android.app.NotificationManager
-import android.content.pm.PackageManager
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
+import android.media.AudioAttributes
+import android.media.RingtoneManager
+import android.os.Build
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
+
 
 open class NotificationHelper {
 
@@ -37,6 +37,22 @@ open class NotificationHelper {
 
     companion object{
 
+
+        fun isChannelEnabled(groupId : String, id : String) : Boolean{
+            return isChannelGroupEnabled(groupId) && notificationManager.getNotificationChannel(id).importance != NotificationManager.IMPORTANCE_NONE
+
+
+        }
+
+
+        fun isChannelGroupEnabled(id : String) : Boolean{
+            return if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                !notificationManager.getNotificationChannelGroup(id).isBlocked
+            } else {
+                true
+            }
+        }
+
         const val REMINDER_CHANNEL_GROUP = "reminder_channel_group"
         const val GENERAL_CHANNEL_GROUP = "general_channel_group"
 
@@ -44,7 +60,7 @@ open class NotificationHelper {
 
 
         private lateinit var myApplication : MyApplication
-        private lateinit var notificationManager: NotificationManager
+        lateinit var notificationManager: NotificationManager
 
         fun createNotificationChannel(ID : String, name : Int, description : Int, importance : Int, group : String){
 
@@ -56,18 +72,25 @@ open class NotificationHelper {
                     this.group = group
                 }
 
+            notificationManager.deleteNotificationChannel(ID)
             notificationManager.createNotificationChannel(channel)
 
         }
 
         fun createNotificationChannel(ID : String, name : Int, importance : Int, group : String){
 
+
+
+
             val channel = NotificationChannel(
                 ID,
                 myApplication.getString(name),
                 importance).apply {
                 this.group = group
+
             }
+
+
 
             notificationManager.createNotificationChannel(channel)
 

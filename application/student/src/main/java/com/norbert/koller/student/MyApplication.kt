@@ -12,11 +12,15 @@ import com.norbert.koller.student.fragments.StudentHostelFragment
 import com.norbert.koller.student.fragments.UserFragment
 import com.norbert.koller.student.fragments.bottomsheet.ProfileBottomSheet
 import com.norbert.koller.shared.fragments.NotificationsFragment
+import com.norbert.koller.student.helpers.NotificationHelper
 
 class MyApplication : com.norbert.koller.shared.MyApplication() {
 
     override fun onCreate() {
+
+
         super.onCreate()
+        NotificationHelper().createNotificationChannels(this)
 
         version = BuildConfig.VERSION_NAME
 

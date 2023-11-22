@@ -22,8 +22,7 @@
                 android:id="@+id/text_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/arrival_reminder"
-                android:textAppearance="@style/Title" />
+                android:text="@string/arrival_reminder" />
 
             <TextView
                 android:id="@+id/text_description"

@@ -52,8 +52,12 @@ abstract class MainActivity : AppCompatActivity() {
 
     var onlyIcon : Boolean = false
 
-    private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
+
         super.onCreate(savedInstanceState)
 
         backButton = findViewById(R.id.toolbar_exit)

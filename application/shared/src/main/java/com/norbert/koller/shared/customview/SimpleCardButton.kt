@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.setVisibilityBy
 
 
 open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
@@ -39,6 +40,7 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
             mDesc = typedArray.getString(R.styleable.simpleCardButton_description) ?: ""
             mBadge = typedArray.getInt(R.styleable.simpleCardButton_badge, 0)
             mIcon = typedArray.getDrawable(R.styleable.simpleCardButton_icon)
+            mEndIcon = typedArray.getDrawable(R.styleable.simpleCardButton_end_icon)
 
             mSwapDescriptionAndText = typedArray.getBoolean(R.styleable.simpleCardButton_swap_description_and_text, false)
             mRounded = typedArray.getBoolean(R.styleable.simpleCardButton_rounded, false)
@@ -54,9 +56,8 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
         imageViewIcon = findViewById(R.id.iv_icon)
         frameLayoutEnd = findViewById(R.id.frame_layout_end)
 
-        if(frameLayoutEnd!=null){
-            frameLayoutEnd.background = mEndIcon
-        }
+
+        imageViewIcon?.setVisibilityBy(mIcon)
 
         if(!mRounded) {
             this.radius = 0f
@@ -73,9 +74,18 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
 
         textText.text = mText
 
+        if(frameLayoutEnd!=null){
+            if(mEndIcon!=null) {
+                frameLayoutEnd.background = mEndIcon
+                frameLayoutEnd.visibility = VISIBLE
+            }
+        }
+
         if(textBadge!=null) {
             if (textBadge.text == "0") {
-                frameLayoutEnd.visibility = GONE
+                if (mEndIcon == null){
+                    frameLayoutEnd.visibility = GONE
+                }
                 textBadge.visibility = GONE
             } else {
                 frameLayoutEnd.visibility = VISIBLE

@@ -70,46 +70,13 @@ class NotificationsFragment : Fragment() {
 
         notificsRecyclerView.recyclerView.adapter = TodayRecyclerAdapter(notificationDataArrayList)
 
-        sendNotification()
+
 
     }
 
 
 
-    private val notificationId = 101
 
 
 
-    private fun sendNotification() {
-        // Create an explicit intent for an Activity in your app.
-        val intent = Intent(requireContext(), MyApplication.openMain::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE)
-
-        val ACTION_SNOOZE = "snooze"
-
-        val snoozeIntent = Intent(requireContext(), MyApplication.openMain::class.java).apply {
-            action = ACTION_SNOOZE
-            putExtra(EXTRA_NOTIFICATION_ID, 0)
-        }
-        val snoozePendingIntent: PendingIntent =
-            PendingIntent.getBroadcast(requireContext(), 0, snoozeIntent, PendingIntent.FLAG_IMMUTABLE)
-
-
-        val builder = NotificationCompat.Builder(requireContext(), NotificationHelper.ROOM_ORDER_CHANNEL)
-            .setSmallIcon(R.drawable.notifications)
-            .setContentTitle("Bassza meg a Rare")
-            .setContentText("This is a sample notification.")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-            .addAction(R.drawable.eye, "ÚGY VAN!!", snoozePendingIntent)
-
-        with(NotificationManagerCompat.from(requireContext())) {
-            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                notify(notificationId, builder.build())
-            }
-        }
-    }
 }

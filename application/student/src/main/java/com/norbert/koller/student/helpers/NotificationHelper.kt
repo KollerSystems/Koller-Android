@@ -11,6 +11,7 @@ class NotificationHelper : com.norbert.koller.shared.helpers.NotificationHelper(
 
     override fun createNotificationChannels(myApplication: MyApplication) {
 
+        super.createNotificationChannels(myApplication)
         createNotificationChannel(
             ARRIVAL_REMINDER_CHANNEL,
             R.string.arrival_reminder,
@@ -37,13 +38,10 @@ class NotificationHelper : com.norbert.koller.shared.helpers.NotificationHelper(
 
     companion object{
 
-
         const val ARRIVAL_REMINDER_CHANNEL = "arrival_reminder_channel"
         const val ROOM_ORDER_CHANNEL = "room_order_channel"
         const val COMMENDATION_OR_WARNING_CHANNEL = "commendation_or_warning_channel"
 
-        private lateinit var myApplication : MyApplication
-        private lateinit var notificationManager: NotificationManager
 
 
 
