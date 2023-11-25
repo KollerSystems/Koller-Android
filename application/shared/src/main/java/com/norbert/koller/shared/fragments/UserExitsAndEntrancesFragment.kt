@@ -46,17 +46,17 @@ class UserExitsAndEntrancesFragment(val UID : Int) : Fragment() {
 
 
         chipDirection.connectToCheckBoxList(childFragmentManager, "Direction", R.string.direction, arrayListOf(
-            ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "0"),
-            ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "1")
+            ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "1"),
+            ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "0")
         ))
 
         chipDate.connectToDateRangePicker(parentFragmentManager)
 
         chipLateness.setOnClickListener {
 
-            var fromTo : kotlin.Pair<Int?, Int?> = kotlin.Pair(null, null)
+            var fromTo : Pair<Int?, Int?> = Pair(null, null)
             if( chipLateness.tag != null && chipLateness.tag !is String){
-                fromTo = chipLateness.tag as kotlin.Pair<Int?, Int?>
+                fromTo = chipLateness.tag as Pair<Int?, Int?>
             }
             val dialog = RangeInputBshdFragment(fromTo)
             dialog.show(childFragmentManager, RangeInputBshdFragment.TAG)

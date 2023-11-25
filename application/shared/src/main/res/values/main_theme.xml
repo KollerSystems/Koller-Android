@@ -23,6 +23,11 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="editTextStyle">@style/edit_text</item>
         <item name="textInputStyle">@style/text_input</item>
+        <item name="recyclerViewStyle">@style/recyclerView</item>
+    </style>
+
+    <style name="recyclerView">
+        <item name="android:fillViewport">true</item>
     </style>
 
     <style name="ImageViewerDialog" parent="android:Theme.Translucent.NoTitleBar"/>
@@ -578,6 +583,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:clipToPadding">false</item>
         <item name="android:clipChildren">false</item>
+        <item name="android:fillViewport">true</item>
 
     </style>
     

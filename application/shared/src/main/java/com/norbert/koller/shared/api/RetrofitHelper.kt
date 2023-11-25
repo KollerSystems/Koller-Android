@@ -15,11 +15,11 @@ object RetrofitHelper {
         .addInterceptor(loggingInterceptor)
         .build()
 
-    val gyIP =TITOK_HAHAHA
+    val dIP = "http://koller.nzx.hu:48659/"
     val grazIP = ""
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(gyIP)
+        .baseUrl(dIP)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

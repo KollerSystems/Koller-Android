@@ -66,10 +66,11 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
 
         dialog.getValuesOnFinish = {values, locNames ->
 
-            tag = FiltersData(filterName, values)
+
             val hasValues = values.size != 0
             checkByPass(hasValues)
             if(hasValues) {
+                tag = FiltersData(filterName, values)
                 if(text.toString() != locNames){
                     text = locNames
                     this.addCloseOption(localizedFilterId)
@@ -78,6 +79,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
 
             }
             else{
+                tag = null
                 val string = context.getString(localizedFilterId)
                 if(text.toString() != string) {
                     text = string
