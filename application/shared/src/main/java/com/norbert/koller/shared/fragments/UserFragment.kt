@@ -16,6 +16,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
+import com.norbert.koller.shared.customview.RoundedBadgeImageView
 import com.norbert.koller.shared.data.UserData
 import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
@@ -35,7 +36,7 @@ abstract class UserFragment(val UID : Int) : Fragment() {
         val buttonGroup : Button = view.findViewById(R.id.user_button_group)
         val buttonRoom : Button = view.findViewById(R.id.user_button_room)
         val buttonClass : Button = view.findViewById(R.id.user_button_class)
-        val imagePfp : ImageView = view.findViewById(R.id.user_image_pfp)
+        val badgeUser : RoundedBadgeImageView = view.findViewById(R.id.badge_user)
 
         val discordCard : Chip = view.findViewById(R.id.user_view_discord)
         val facebookCard : Chip = view.findViewById(R.id.user_view_facebook)
@@ -80,6 +81,8 @@ abstract class UserFragment(val UID : Int) : Fragment() {
 
                             val userData: UserData = userResponse.body()!!
 
+                            badgeUser.setColorBasedOnClass(userData.Class?.Class)
+
                             textName.text = userData.Name
 
                             buttonGroup.text = userData.Group
@@ -104,12 +107,12 @@ abstract class UserFragment(val UID : Int) : Fragment() {
                             showAndSetIfNotNull(instagramCard, userData.Instagram)
                             showAndSetIfNotNull(emailCard, userData.Email)
 
-                            imagePfp.setOnClickListener{
-                                StfalconImageViewer.Builder(context, listOf(imagePfp.drawable)){view, drawable ->
+                            badgeUser.image.setOnClickListener{
+                                StfalconImageViewer.Builder(context, listOf(badgeUser.image.drawable)){view, drawable ->
                                     view.setImageDrawable(drawable)
                                 }
                                     .withStartPosition(0)
-                                    .withTransitionFrom(imagePfp)
+                                    .withTransitionFrom(badgeUser.image)
                                     .show(parentFragmentManager)
                             }
 

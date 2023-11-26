@@ -730,7 +730,7 @@
         </com.google.android.material.card.MaterialCardView>
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/text_iv_icon"
             style="@style/CategoryCardName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

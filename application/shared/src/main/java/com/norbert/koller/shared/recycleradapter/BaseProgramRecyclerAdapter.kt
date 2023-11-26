@@ -10,11 +10,15 @@ import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.fragments.BaseProgramDetailsFragment
+import com.norbert.koller.shared.fragments.bottomsheet.BaseProgramDetailsFragment
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 
 class BaseProgramRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips) {
+    override fun getViewType(): Int {
+        return R.layout.view_item
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return ViewHolder(view)
     }

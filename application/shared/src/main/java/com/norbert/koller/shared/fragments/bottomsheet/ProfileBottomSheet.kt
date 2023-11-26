@@ -23,6 +23,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.activities.ManageAccountActivity
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.customview.RoundedBadgeImageView
 import com.norbert.koller.shared.setupBottomSheet
 import kotlinx.coroutines.launch
 
@@ -43,6 +44,9 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dialog!!.setupBottomSheet()
+
+        val badgeUser : RoundedBadgeImageView = view.findViewById(R.id.badge_user)
+        badgeUser.setColorBasedOnClass(UserData.instance.Class?.Class)
 
         val textVersion : TextView = view.findViewById(R.id.text_version)
         textVersion.text = MyApplication.version

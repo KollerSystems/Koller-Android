@@ -12,6 +12,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.customview.RoundedBadgeImageView
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
@@ -30,6 +31,8 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
         val currentItem = todayList[position]
 
         RecyclerViewHelper.roundRecyclerItemsHorizontally(holder.itemView, null, position, todayList.size)
+
+        holder.userBadge.setColorBasedOnClass(currentItem.Class?.Class)
 
         val nameParts : List<String> = currentItem.Name!!.split(" ")
         val name = nameParts[0] + " " + nameParts [1]
@@ -55,8 +58,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
 
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val image : ImageView = itemView.findViewById(R.id.image_pfp)
-        val outline : MaterialCardView = itemView.findViewById(R.id.card_pfp_outline)
+        val userBadge : RoundedBadgeImageView = itemView.findViewById(R.id.badge_user)
         val text : TextView = itemView.findViewById(R.id.text_name)
     }
 

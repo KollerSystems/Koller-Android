@@ -12,10 +12,11 @@ class BaseViewModel(pagingSource: ()-> BasePagingSource) : ViewModel() {
         const val pageSize : Int = 25
     }
 
-    val pagingData: Flow<PagingData<Any>> = Pager(config = PagingConfig(
+    val pagingData: Flow<PagingData<Any>> = Pager(
+        config = PagingConfig(
         pageSize = pageSize,
         initialLoadSize = pageSize,
-        prefetchDistance = 1
+        prefetchDistance = 2
     )) {
         pagingSource()
     }.flow

@@ -16,6 +16,10 @@ import com.norbert.koller.shared.activities.MainActivity
 
 class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips){
 
+    override fun getViewType(): Int {
+        return R.layout.view_item
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return RoomsViewHolder(view)
     }
@@ -32,16 +36,19 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
         item as RoomData
 
         holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, R.drawable.bed))
-        holder.title.text = item.RID.toString()
+        holder.title.text = "${item.RID} • ${item.Group}"
+
+        holder.description.isSingleLine = false
 
         if(item.Residents !=null ) {
 
-            var desc = "${item.Group} • ${getShortName(item.Residents!![0].Name!!)}"
-            for (i in 1 until item.Residents!!.size){
+            var desc : String = ""
+            for (i in 0 until item.Residents!!.size){
 
-
-                desc += ", " + getShortName(item.Residents!![i].Name!!)
+                desc += getShortName(item.Residents!![i].Name!!) + ", "
             }
+            desc.trimEnd()
+
             holder.description.text = desc
         }
 

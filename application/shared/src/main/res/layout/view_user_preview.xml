@@ -18,24 +18,10 @@
         android:clipToPadding="false"
         android:orientation="vertical">
 
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_pfp_outline"
+        <com.norbert.koller.shared.customview.RoundedBadgeImageView
+            android:id="@+id/badge_user"
             android:layout_width="75dp"
-            android:layout_height="75dp"
-            app:cardCornerRadius="9999dp"
-            app:contentPadding="5dp"
-            app:strokeColor="?attr/colorYellow"
-            app:strokeWidth="5dp">
-
-            <ImageView
-                android:id="@+id/image_pfp"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:adjustViewBounds="true"
-                android:background="@drawable/circle"
-                android:backgroundTint="?attr/colorPrimaryContainer"
-                app:srcCompat="@drawable/person" />
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_height="75dp" />
 
         <TextView
             android:id="@+id/text_name"

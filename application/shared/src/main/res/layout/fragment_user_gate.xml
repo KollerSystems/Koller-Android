@@ -164,7 +164,7 @@
                     android:id="@+id/chip_none"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:tag="Date:desc"
+                    android:tag="Time:desc"
                     android:text="@string/newest"
                     app:shapeAppearance="@style/overlayRoundedLeft" />
 
@@ -172,7 +172,7 @@
                     android:id="@+id/chip_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:tag="Date:asc"
+                    android:tag="Time:asc"
                     android:text="@string/oldest"
                     app:shapeAppearance="@style/overlayRoundedRight" />
 

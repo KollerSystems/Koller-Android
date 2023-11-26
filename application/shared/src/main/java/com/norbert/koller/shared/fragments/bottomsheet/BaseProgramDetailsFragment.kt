@@ -1,4 +1,4 @@
-package com.norbert.koller.shared.fragments
+package com.norbert.koller.shared.fragments.bottomsheet
 
 import android.os.Bundle
 import android.view.LayoutInflater

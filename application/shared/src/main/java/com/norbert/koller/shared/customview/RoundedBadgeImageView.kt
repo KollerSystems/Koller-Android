@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.customview
 
 import android.content.Context
+import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
@@ -8,12 +9,35 @@ import android.widget.LinearLayout
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.getAttributeColor
 
 class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     private var mStrokeWidth: Float = 0f
     lateinit var image : ImageView
     lateinit var card : MaterialCardView
+
+    val red : Int = 10
+    val yellow : Int = 12
+
+    fun setColorBasedOnClass(class_ : String?){
+        if(class_ == null){
+            card.strokeColor = Color.BLACK
+            return
+        }
+
+        val year : Int = class_.split(".")[0].toInt()
+
+        if(year <= red){
+            card.strokeColor = context.getAttributeColor(R.attr.colorRed)
+        }
+        else if(year <= yellow){
+            card.strokeColor = context.getAttributeColor(R.attr.colorYellow)
+        }
+        else{
+            card.strokeColor = context.getAttributeColor(R.attr.colorGreen)
+        }
+    }
 
     init {
         val typedArray = context.theme.obtainStyledAttributes(

@@ -24,6 +24,10 @@ import java.util.Date
 
 class GateRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) :BaseRecycleAdapter(chipGroup, chips){
 
+    override fun getViewType(): Int {
+        return R.layout.view_descriptive_icon_item
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return CrossingViewHolder(view)
     }
@@ -55,13 +59,18 @@ class GateRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
 
 
 
-                val icon : Int = if(item.Direction == 0.toByte()){
-                    R.drawable.in_
+                val icon : Int
+                val iconLocDesc : Int
+
+                if(item.Direction == 0.toByte()){
+                    icon = R.drawable.in_
+                    iconLocDesc = R.string.in_
                 } else{
-                    R.drawable.out
+                    icon = R.drawable.out
+                    iconLocDesc = R.string.out
                 }
                 holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, icon))
-
+                holder.iconDesc.text = holder.itemView.context.getString(iconLocDesc)
                 holder.title.text = SimpleDateFormat(DateTimeHelper.timeFormat).format(item.Time)
                 holder.description.text = late(item.Time.time)
 
@@ -82,6 +91,7 @@ class GateRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
     class CrossingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
+        val iconDesc : TextView = itemView.findViewById(R.id.text_iv_icon)
         val title : TextView = itemView.findViewById(R.id.text_text)
         val description : TextView = itemView.findViewById(R.id.text_description)
     }

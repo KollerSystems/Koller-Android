@@ -8,26 +8,13 @@
 
     android:orientation="vertical">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/outline"
+    <com.norbert.koller.shared.customview.RoundedBadgeImageView
+        android:id="@+id/badge_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/application_padding"
         android:layout_marginBottom="@dimen/application_padding"
-        app:cardCornerRadius="9999dp"
-        app:contentPadding="20dp"
-        app:strokeColor="?attr/colorYellow"
-        app:strokeWidth="20dp">
-
-        <ImageView
-            android:id="@+id/user_image_pfp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:background="@drawable/circle"
-            android:backgroundTint="?attr/colorPrimaryContainer"
-            app:srcCompat="@drawable/person" />
-    </com.google.android.material.card.MaterialCardView>
+        custom:stroke_width="20dp" />
 
     <TextView
         android:id="@+id/user_text_name"

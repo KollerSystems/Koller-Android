@@ -50,7 +50,7 @@ class UserExitsAndEntrancesFragment(val UID : Int) : Fragment() {
             ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "0")
         ))
 
-        chipDate.connectToDateRangePicker(parentFragmentManager)
+        chipDate.connectToDateRangePicker(parentFragmentManager, "Time")
 
         chipLateness.setOnClickListener {
 

@@ -161,11 +161,11 @@ open class MyApplication : Application() {
 
                 val orderedNumber = (i + 1).orderSingleNumber(context)
 
-                if(i < length-1-1) {
+                if(i < length-1) {
 
                     description += "${orderedNumber}, "
                 }
-                else if (i < length-1){
+                else if (i < length){
                     description += "${orderedNumber} ${context.getString(R.string.and)} "
                 }
                 else{

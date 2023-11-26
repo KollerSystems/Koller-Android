@@ -6,33 +6,8 @@
     style="@style/Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:clickable="true"
     android:outlineProvider="none"
     app:contentPadding="0dp">
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/notification_card_new_mark"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_container_margin"
-        android:outlineProvider="none"
-        android:visibility="invisible"
-        app:cardBackgroundColor="?attr/colorPrimary"
-        app:cardElevation="100dp"
-        tools:visibility="visible">
-
-        <TextView
-            android:id="@+id/textView30"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing"
-            android:layout_marginVertical="@dimen/text_container_margin"
-            android:ellipsize="none"
-            android:singleLine="true"
-            android:text="@string/new_"
-            android:textAppearance="@style/Description"
-            android:textColor="?android:attr/colorBackground" />
-    </com.google.android.material.card.MaterialCardView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -86,25 +61,6 @@
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/notification_icon_end"
-            style="@style/iconLikeText"
-            android:layout_marginStart="@dimen/text_container_margin"
-            android:text="C"
-            android:textColor="#00BF9F"
-            android:textStyle="bold"
-            android:visibility="gone"
-            tools:visibility="visible" />
-
     </LinearLayout>
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/notification_card_unread_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:outlineProvider="none"
-        android:visibility="gone"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="24dp"
-        tools:visibility="visible" />
 </com.google.android.material.card.MaterialCardView>

@@ -12,8 +12,13 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.UserFragment
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.customview.RoundedBadgeImageView
 
 class UserRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = listOf()) : BaseRecycleAdapter(chipGroup, chips) {
+    override fun getViewType(): Int {
+        return R.layout.view_user_item
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return UserViewHolder(view)
     }
@@ -25,12 +30,13 @@ class UserRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
         holder as UserViewHolder
 
         item as UserData
-        holder.iconLeft.setImageDrawable(
+        holder.userBadge.image.setImageDrawable(
             AppCompatResources.getDrawable(
                 context,
                 R.drawable.person
             )
         )
+        holder.userBadge.setColorBasedOnClass(item.Class?.Class)
         holder.title.text = item.Name
         holder.description.text = item.createDescription()
 
@@ -47,7 +53,7 @@ class UserRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
 
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
+        val userBadge : RoundedBadgeImageView = itemView.findViewById(R.id.user_badge)
         val title : TextView = itemView.findViewById(R.id.text_text)
         val description : TextView = itemView.findViewById(R.id.text_description)
     }

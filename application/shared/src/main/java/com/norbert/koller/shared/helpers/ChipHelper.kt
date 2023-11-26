@@ -18,7 +18,7 @@ class ChipHelper {
 
 }
 
-fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager){
+fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date"){
 
     setOnClickListener {
 
@@ -36,7 +36,7 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager){
             if (selection.first != selection.second) {
                 stringForChip += " - ${java.text.SimpleDateFormat(DateTimeHelper.shortMonthDayFormat).format(selection.second)}"
             }
-            tag = FilterDateData("Date", selection)
+            tag = FilterDateData(filterName, selection)
             if(text.toString() != stringForChip) {
                 text = stringForChip
             }
