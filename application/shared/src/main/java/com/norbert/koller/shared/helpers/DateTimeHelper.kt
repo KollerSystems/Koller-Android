@@ -8,6 +8,7 @@ class DateTimeHelper {
 
     companion object{
 
+        val monthDayWeekdayFormat = "MMMM d. EEEE"
         val shortMonthDayTimeFormat = "MMM d. HH:mm"
         val yearShortMonthDayFormat = "yyyy. MMM d."
         val monthDay = "MMMM d."
@@ -51,11 +52,11 @@ class DateTimeHelper {
             return Pair(hours, minutes)
         }
 
-        fun setupDbd(textView : TextView) : MaterialDatePicker<Long> {
+        fun setupDbd(textView : TextView, style : String = shortMonthDayFormat) : MaterialDatePicker<Long> {
 
             val dpdb = MaterialDatePicker.Builder.datePicker()
 
-            if(textView.text.isNullOrEmpty()){
+            if(textView.tag is Long){
                 dpdb.setSelection(textView.tag as Long)
             }
 
@@ -65,7 +66,7 @@ class DateTimeHelper {
 
 
                 textView.tag = selection
-                textView.setText(java.text.SimpleDateFormat(shortMonthDayFormat).format(selection))
+                textView.setText(java.text.SimpleDateFormat(style).format(selection))
 
 
             }

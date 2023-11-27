@@ -34,7 +34,7 @@ class CalendarDaysFragment : Fragment() {
 
         val mcardDate : MaterialCardView = view.findViewById(R.id.mcard_date)
         mcardDate.setOnClickListener{
-            DateTimeHelper.setupDbd(mcardDate.getChildAt(0) as TextView).show(parentFragmentManager,  "MATERIAL_DATE_PICKER")
+            DateTimeHelper.setupDbd(mcardDate.getChildAt(0) as TextView, DateTimeHelper.monthDayWeekdayFormat).show(parentFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
 

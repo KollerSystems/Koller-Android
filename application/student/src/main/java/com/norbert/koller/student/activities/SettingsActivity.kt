@@ -10,6 +10,7 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.norbert.koller.shared.customview.SimpleCardButton
 import com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
 import com.norbert.koller.student.R
+import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.student.helpers.NotificationHelper
 import java.util.*
 import com.norbert.koller.shared.helpers.NotificationHelper as SharedNotificationHelper
@@ -23,7 +24,7 @@ class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity()
         setContentView(R.layout.activity_settings)
         super.onCreate(savedInstanceState)
 
-        val checkBoxNotifFullSettings : SimpleCardButton = findViewById(R.id.notifics_full_settings)
+        val checkBoxNotifFullSettings : SimpleCardButton = findViewById(Rs.id.notifics_full_settings)
 
         checkBoxNotifFullSettings.setOnClickListener {
             val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {

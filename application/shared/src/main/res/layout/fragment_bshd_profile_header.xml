@@ -15,7 +15,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/spacing"
-                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
                 <com.norbert.koller.shared.customview.RoundedBadgeImageView
@@ -27,15 +26,15 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/text_container_margin"
-                    android:gravity="center"
                     android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/profile_text_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/none"
+                        android:text="@string/title"
                         android:textAppearance="@style/MainTitle" />
 
                     <TextView
@@ -51,18 +50,19 @@
 
             <Button
                 android:id="@+id/btn_manage_account"
-                style="@style/Widget.Material3.Button.OutlinedButton"
+                style="@style/button_outline"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing"
                 android:text="@string/manage_account" />
 
             <Button
                 android:id="@+id/button_logout"
-                style="@style/Widget.Material3.Button"
+                style="@style/button_icon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/logout"
-                app:icon="@drawable/logout"
+                app:icon="@drawable/out"
                 app:iconGravity="textStart" />
 
         </LinearLayout>

@@ -39,6 +39,7 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var toolbarContainer : LinearLayout
     lateinit var toolbarTitle : TextView
     lateinit var toolbarDescription : TextView
+    var selectedIndex = 0
 
     lateinit var bottomNavigationView : BottomNavigationView
 
@@ -198,10 +199,6 @@ abstract class MainActivity : AppCompatActivity() {
     private lateinit var calendarFragment: FragmentHolderFragment
     private lateinit var studentHostelFragment: FragmentHolderFragment
     private lateinit var notificationsFragment: FragmentHolderFragment
-
-    companion object{
-        var selectedIndex = 0
-    }
 
 
 
