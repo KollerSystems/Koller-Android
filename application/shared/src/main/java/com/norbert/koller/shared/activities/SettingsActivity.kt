@@ -6,6 +6,8 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customview.SimpleCardButton
 import com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
@@ -14,6 +16,7 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.RangeSlider
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.connectToBackgroundCard
 import java.util.Calendar
 
 open class SettingsActivity : AppCompatActivity() {
@@ -48,6 +51,11 @@ open class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
+
+        val mainBackground : MaterialCardView = findViewById(R.id.main_background)
+        val appBar : AppBarLayout = findViewById(R.id.appbar)
+
+        appBar.connectToBackgroundCard(mainBackground)
 
         settingsSCB.setOnClickListener {
             val intent = Intent(this, CreateNewPostActivity::class.java)

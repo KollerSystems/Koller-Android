@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fitsSystemWindows="true"
-        android:orientation="vertical"
         android:translationZ="100dp">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -32,14 +31,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 app:title="@string/room_rate"
-                app:titleCollapseMode="scale"
                 app:toolbarId="@+id/toolbar">
 
 
                 <Button
                     android:id="@+id/toolbar_exit"
                     style="@style/ToolbarNavigationButton"
-                    android:layout_gravity="bottom|left" />
+                    android:layout_gravity="bottom|start" />
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar"

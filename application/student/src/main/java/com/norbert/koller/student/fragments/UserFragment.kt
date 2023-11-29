@@ -109,13 +109,13 @@ class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment
 
             val notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
             val r = RingtoneManager.getRingtone(requireContext(), notification)
-            r.play()
+            //r.play()
 
 
             with(NotificationManagerCompat.from(requireContext())) {
                 if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
 
-                    notify(notificationId, notificationStyle.build())
+                    //notify(notificationId, notificationStyle.build())
                 }
             }
 
