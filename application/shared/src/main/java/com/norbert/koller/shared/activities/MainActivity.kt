@@ -54,12 +54,8 @@ abstract class MainActivity : AppCompatActivity() {
     var onlyIcon : Boolean = false
 
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-
-
-
-        super.onCreate(savedInstanceState)
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
 
         backButton = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{

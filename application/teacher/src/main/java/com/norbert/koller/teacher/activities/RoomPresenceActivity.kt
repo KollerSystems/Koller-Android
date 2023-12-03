@@ -110,59 +110,7 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
 
         holder.textPresence.setVisibilityBy(!(holder.itemView.context as RoomPresenceActivity).knowsTheLayout)
 
-        if (position == 0) {
-
-            if(roomOrderConditionsData.size == 1) {
-
-                RecyclerViewHelper.roundCard(holder.itemView)
-            }
-            else if (roomOrderConditionsData.size == 2){
-                RecyclerViewHelper.roundCardLeft(holder.itemView)
-            }
-            else {
-                RecyclerViewHelper.roundCardTopLeft(holder.itemView)
-            }
-
-        }
-        else if (position == 1) {
-
-            if (roomOrderConditionsData.size == 2 || roomOrderConditionsData.size == 3){
-                RecyclerViewHelper.roundCardRight(holder.itemView)
-            }
-            else {
-                RecyclerViewHelper.roundCardTopRight(holder.itemView)
-            }
-
-        }
-        else if (position == roomOrderConditionsData.size - 1) {
-
-            if(position % 2 != 0) {
-                RecyclerViewHelper.roundCardBottomRight(holder.itemView)
-            }
-            else{
-                RecyclerViewHelper.roundCardBottomLeft(holder.itemView)
-            }
-
-        }
-        else if (position == roomOrderConditionsData.size ) {
-
-            if(position % 2 != 0) {
-                RecyclerViewHelper.roundCardBottomRight(holder.itemView)
-            }
-            else{
-                RecyclerViewHelper.roundCardBottom(holder.itemView)
-            }
-
-        }
-        else{
-            if(position % 2 != 0) {
-                RecyclerViewHelper.deroundCardWithLeftMargin(holder.itemView)
-            }
-            else{
-                RecyclerViewHelper.deroundCardWithRightMargin(holder.itemView)
-            }
-        }
-
+        RecyclerViewHelper.roundRecyclerItemsGrid(holder.itemView, position, roomOrderConditionsData.size)
 
         holder.rbiwPfp.card.setOnClickListener{
             StfalconImageViewer.Builder(holder.itemView.context, listOf(holder.rbiwPfp.image.drawable)){view, drawable ->

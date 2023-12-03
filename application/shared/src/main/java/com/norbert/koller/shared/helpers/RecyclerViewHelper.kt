@@ -39,6 +39,61 @@ class RecyclerViewHelper {
 
         }
 
+        fun roundRecyclerItemsGrid(view : View, position: Int, size : Int){
+            if (position == 0) {
+
+                if(size == 1) {
+
+                    roundCard(view)
+                }
+                else if (size == 2){
+                    roundCardLeft(view)
+                }
+                else {
+                    roundCardTopLeft(view)
+                }
+
+            }
+            else if (position == 1) {
+
+                if (size == 2 || size == 3){
+                    roundCardRight(view)
+                }
+                else {
+                    roundCardTopRight(view)
+                }
+
+            }
+            else if (position == size - 1) {
+
+                if(position % 2 != 0) {
+                    roundCardBottomRight(view)
+                }
+                else{
+                    roundCardBottomLeft(view)
+                }
+
+            }
+            else if (position == size ) {
+
+                if(position % 2 != 0) {
+                    roundCardBottomRight(view)
+                }
+                else{
+                    roundCardBottom(view)
+                }
+
+            }
+            else{
+                if(position % 2 != 0) {
+                    deroundCardWithLeftMargin(view)
+                }
+                else{
+                    deroundCardWithRightMargin(view)
+                }
+            }
+        }
+
 
         fun roundRecyclerItemsX(view : View, position : Int, size : Int, startAppearance : Int, endAppearance : Int, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
             val context = view.context

@@ -48,8 +48,8 @@ open class SettingsActivity : AppCompatActivity() {
         checkBoxParent.checkBox.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
 
         val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
 

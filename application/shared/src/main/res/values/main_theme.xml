@@ -597,17 +597,16 @@
         <item name="cardElevation" >-16dp</item>
     </style>
 
-    <style name="ToolbarNavigationButton" parent="SimpleButton">
-        <item name="android:layout_width">50dp</item>
-        <item name="android:layout_height">50dp</item>
+    <style name="toolbar_navigation_button" parent="@style/icon_button_transparent">
+        <item name="android:layout_width">@dimen/toolbar_button_size</item>
+        <item name="android:layout_height">@dimen/toolbar_button_size</item>
         <item name="android:layout_margin">@dimen/text_container_margin</item>
-        <item name="android:alpha">0.666</item>
-        <item name="cornerRadius">9999dp</item>
+        <item name="cornerRadius">999dp</item>
         <item name="icon">@drawable/arrow_back</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">0dp</item>
         <item name="iconSize">25dp</item>
-        <item name="iconTint">?attr/colorForeground</item>
+        <item name="iconTint">?attr/colorForeground066</item>
         <item name="minWidth">0dp</item>
     </style>
     

@@ -6,8 +6,9 @@ import com.norbert.koller.teacher.R
 class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        setContentView(R.layout.activity_settings)
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_settings)
+
     }
 
 }

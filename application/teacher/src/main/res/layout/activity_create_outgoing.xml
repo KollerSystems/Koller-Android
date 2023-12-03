@@ -47,7 +47,7 @@
 
                 <Button
                     android:id="@+id/toolbar_exit"
-                    style="@style/ToolbarNavigationButton"
+                    style="@style/toolbar_navigation_button"
                     android:layout_height="@dimen/toolbar_button_size"
                     android:layout_marginRight="@dimen/spacing"
                     android:alpha="0.666"
