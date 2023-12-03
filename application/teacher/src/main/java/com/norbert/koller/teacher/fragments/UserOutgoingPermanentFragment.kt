@@ -1,10 +1,13 @@
 package com.norbert.koller.teacher.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
+import com.norbert.koller.teacher.activities.CreateOutgoingActivity
 
 class UserOutgoingPermanentFragment : com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment() {
 
@@ -14,6 +17,12 @@ class UserOutgoingPermanentFragment : com.norbert.koller.shared.fragments.UserOu
 
         val buttonLayout = buttonAddNew.parent as ViewGroup
         buttonLayout.visibility = View.VISIBLE
+
+        buttonAddNew.setOnClickListener{
+            val intent = Intent(requireContext(), CreateOutgoingActivity::class.java)
+            intent.putExtra("type", CreateOutgoingActivity.PERMANENT)
+            requireContext().startActivity(intent)
+        }
     }
 
 }

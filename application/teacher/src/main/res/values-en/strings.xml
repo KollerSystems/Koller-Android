@@ -8,4 +8,6 @@
     <string name="are_you_sure_discard_all_grade">Are you sure you want to discard all grades?</string>
 
     <string name="app_name">Koller for Teachers</string>
+
+    <string name="create_new_x_outgoing_last_part">outgoing</string>
 </resources>

@@ -44,8 +44,8 @@ class MyApplication : com.norbert.koller.shared.MyApplication() {
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
         notificationFragment = { NotificationsFragment() }
-        roomFragment = {RID : Int -> RoomFragment(RID) }
-        userFragment = {UID : Int -> UserFragment(UID) }
+        roomFragment = {RoomFragment() }
+        userFragment = {UserFragment() }
         roomsFragment = {RoomsFragment()}
         usersFragment = {UsersFragment()}
 
