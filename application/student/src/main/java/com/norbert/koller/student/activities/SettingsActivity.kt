@@ -24,14 +24,7 @@ class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity()
         setContentView(R.layout.activity_settings)
         super.onCreate(savedInstanceState)
 
-        val checkBoxNotifFullSettings : SimpleCardButton = findViewById(Rs.id.notifics_full_settings)
 
-        checkBoxNotifFullSettings.setOnClickListener {
-            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
-                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
-            }
-            startActivity(intent)
-        }
 
     }
 

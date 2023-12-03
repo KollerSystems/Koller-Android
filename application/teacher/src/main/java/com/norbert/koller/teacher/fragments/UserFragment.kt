@@ -10,7 +10,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 
-class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment(UID) {
+class UserFragment : com.norbert.koller.shared.fragments.UserFragment() {
 
 
     override fun onCreateView(

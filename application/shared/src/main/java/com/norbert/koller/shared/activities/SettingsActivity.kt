@@ -2,6 +2,7 @@ package com.norbert.koller.shared.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Button
@@ -51,6 +52,7 @@ open class SettingsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
+
 
         val mainBackground : MaterialCardView = findViewById(R.id.main_background)
         val appBar : AppBarLayout = findViewById(R.id.appbar)
@@ -122,7 +124,14 @@ open class SettingsActivity : AppCompatActivity() {
             }
         })
 
+        val notifFullSettings : SimpleCardButton = findViewById(R.id.notifics_full_settings)
 
+        notifFullSettings.setOnClickListener {
+            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+                putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
+            }
+            startActivity(intent)
+        }
 
 
     }

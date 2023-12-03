@@ -67,10 +67,10 @@ class UserOutgoingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: 
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                MyApplication.userOutgoingTemporaryFragment(1)
+                MyApplication.userOutgoingTemporaryFragment()
             }
             1->{
-                MyApplication.userOutgoingPermanentFragment(1)
+                MyApplication.userOutgoingPermanentFragment()
             }
             else->{
                 Fragment()

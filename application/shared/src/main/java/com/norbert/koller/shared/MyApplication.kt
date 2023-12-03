@@ -24,10 +24,12 @@ import android.view.ViewGroup
 import android.view.Window
 import android.view.WindowManager
 import android.view.inputmethod.InputMethodManager
+import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.FragmentManager
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -86,14 +88,14 @@ open class MyApplication : Application() {
         lateinit var studentHostelFragment: () -> StudentHostelFragment
         lateinit var notificationFragment: () -> NotificationsFragment
 
-        lateinit var roomFragment: (RID : Int) -> RoomFragment
-        lateinit var userFragment: (UID : Int) -> UserFragment
+        lateinit var roomFragment: () -> RoomFragment
+        lateinit var userFragment: () -> UserFragment
 
         var roomsFragment: () -> RoomsFragment = { RoomsFragment() }
         var usersFragment: () -> UsersFragment = { UsersFragment() }
 
-        var userOutgoingTemporaryFragment: (UID : Int) -> UserOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
-        var userOutgoingPermanentFragment: (UID : Int) -> UserOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
+        var userOutgoingTemporaryFragment: () -> UserOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
+        var userOutgoingPermanentFragment: () -> UserOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
 
         const val minLengthBeforeDismiss : Int = 3
 
@@ -103,6 +105,33 @@ open class MyApplication : Application() {
             context.startActivity(intent)
         }
 
+        fun waitForChange(onChange : (() -> Unit)?, vararg editTexts: EditText) {
+
+            for (editText in editTexts) {
+                editText.doOnTextChanged { _, _, _, _ ->
+                    onChange?.invoke()
+                }
+            }
+        }
+
+        fun waitForChange(onChange : (() -> Unit)?, vararg textInputLayouts: TextInputLayout) {
+
+            for (textInputLayout in textInputLayouts) {
+                textInputLayout.editText!!.doOnTextChanged { _, _, _, _ ->
+                    onChange?.invoke()
+                }
+            }
+        }
+
+        fun allFilled(vararg textInputLayouts: TextInputLayout) : Boolean{
+            var isAllFilled = true
+            for (textInputLayout in textInputLayouts){
+                if(textInputLayout.editText!!.text.isNullOrBlank()){
+                    isAllFilled = false
+                }
+            }
+            return isAllFilled
+        }
 
         fun setClipboard(context: Context, text: String) {
 

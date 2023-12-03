@@ -68,7 +68,7 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
 
         this.setContentPadding(padding,padding,padding,padding)
 
-        //TODO láthatóság elkészítése
+
 
         imageViewIcon?.setImageDrawable(mIcon)
 

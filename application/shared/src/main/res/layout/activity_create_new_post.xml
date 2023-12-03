@@ -68,8 +68,7 @@
                     android:text="@string/create_new_x_first_part"
                     android:textAppearance="@style/Title"
                     android:textColorHint="@android:color/transparent"
-                    android:textStyle="bold"
-                   />
+                    android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/create_new_post_til_type"
@@ -248,7 +247,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="text|textCapSentences|textMultiLine"
                             android:maxLength="50"
-                            android:textAppearance="@style/Title" />
+                            android:textAppearance="@style/Normal" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout

@@ -105,8 +105,11 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
         val cardMyRoom: View = view.findViewById(R.id.profile_card_my_room)
 
         cardMyRoom.setOnClickListener{
-
-            (requireContext() as MainActivity).changeFragment(MyApplication.roomFragment(UserData.instance.RID!!))
+            val bundle = Bundle()
+            bundle.putInt("RID", UserData.instance.RID!!)
+            val fragment = MyApplication.roomFragment()
+            fragment.arguments = bundle
+            (requireContext() as MainActivity).changeFragment(fragment)
             this.dismiss()
         }
 

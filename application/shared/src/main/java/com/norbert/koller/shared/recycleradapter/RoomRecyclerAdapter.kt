@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapter
 
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -54,7 +55,11 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
 
         holder.itemView.setOnClickListener {
 
-            (holder.itemView.context as MainActivity).changeFragment(MyApplication.roomFragment(item.RID))
+            val bundle = Bundle()
+            bundle.putInt("RID", item.RID)
+            val fragment = MyApplication.roomFragment()
+            fragment.arguments = bundle
+            (holder.itemView.context as MainActivity).changeFragment(fragment)
 
         }
     }

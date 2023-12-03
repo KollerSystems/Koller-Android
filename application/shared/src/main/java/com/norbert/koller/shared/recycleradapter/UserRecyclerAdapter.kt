@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapter
 
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -45,7 +46,11 @@ class UserRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
             if (item.UID == UserData.instance.UID) {
                 MyApplication.openProfile(context)
             } else {
-                (context as MainActivity).changeFragment(MyApplication.userFragment(item.UID))
+                val bundle = Bundle()
+                bundle.putInt("UID", item.UID)
+                val fragment = MyApplication.userFragment()
+                fragment.arguments = bundle
+                (context as MainActivity).changeFragment(fragment)
             }
 
         }

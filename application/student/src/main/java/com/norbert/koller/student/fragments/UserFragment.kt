@@ -24,7 +24,7 @@ import com.norbert.koller.student.helpers.NotificationHelper
 import com.norbert.koller.shared.R as Rs
 
 
-class UserFragment(UID : Int) : com.norbert.koller.shared.fragments.UserFragment(UID) {
+class UserFragment : com.norbert.koller.shared.fragments.UserFragment() {
 
 
 

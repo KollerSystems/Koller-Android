@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.norbert.koller.student.R
 
 
-class RoomFragment(RID : Int) : com.norbert.koller.shared.fragments.RoomFragment(RID) {
+class RoomFragment : com.norbert.koller.shared.fragments.RoomFragment() {
 
 
     override fun onCreateView(

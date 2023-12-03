@@ -157,6 +157,7 @@ abstract class MainActivity : AppCompatActivity() {
         bottomNavigationView.setOnItemReselectedListener { menuItem ->
 
             fragments[selectedIndex].toDefaultFragment()
+
         }
 
         val userButton = findViewById<ShapeableImageView>(R.id.user_button)

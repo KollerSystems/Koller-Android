@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.recycleradapter
 
 import android.content.Context
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,8 +46,11 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
                 MyApplication.openProfile.invoke(holder.itemView.context)
             }
             else{
-                (context as MainActivity).changeFragment(MyApplication.userFragment(currentItem.UID))
-
+                val bundle = Bundle()
+                bundle.putInt("UID", currentItem.UID)
+                val fragment = MyApplication.userFragment()
+                fragment.arguments = bundle
+                (context as MainActivity).changeFragment(fragment)
             }
 
         }

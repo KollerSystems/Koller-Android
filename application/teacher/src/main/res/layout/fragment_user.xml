@@ -46,7 +46,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/key"
-                        custom:text="Kölcsön kulcsok" />
+                        custom:text="Kulcsfelvétel" />
 
                     <com.norbert.koller.shared.customview.SimpleCardButton
                         android:layout_width="match_parent"

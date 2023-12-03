@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/create_new_post_til_addresse"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:hint="@string/addressee"
+        app:boxCornerRadiusBottomEnd="@dimen/panel_round"
+        app:boxCornerRadiusBottomStart="@dimen/panel_round"
+        app:boxCornerRadiusTopEnd="@dimen/panel_round"
+        app:boxCornerRadiusTopStart="@dimen/panel_round"
+        app:boxStrokeErrorColor="?attr/colorPrimary"
+        app:cursorErrorColor="?attr/colorPrimary"
+        app:errorEnabled="true"
+        app:errorIconDrawable="@null"
+        app:errorIconTint="?attr/colorPrimary"
+        app:errorTextColor="?attr/colorPrimary"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top"
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textAppearance="@style/Normal" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/create_new_post_chips_addresse"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.MaterialAutoCompleteTextView
+            android:id="@+id/create_new_post_edt_addresse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:dropDownAnchor="@id/create_new_post_til_addresse"
+            android:inputType="text|textCapWords"
+            android:minWidth="2dp"
+            android:paddingStart="0dp"
+            android:paddingLeft="0dp"
+            android:paddingTop="7.25dp"
+            android:paddingEnd="0dp"
+            android:paddingRight="0dp"
+            android:paddingBottom="7.25dp"
+            android:singleLine="false"
+            android:textAppearance="@style/Normal" />
+
+    </com.google.android.material.chip.ChipGroup>
+</merge>

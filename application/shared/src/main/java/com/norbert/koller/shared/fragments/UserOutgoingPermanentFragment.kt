@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 
 open class UserOutgoingPermanentFragment : Fragment() {
@@ -17,5 +19,10 @@ open class UserOutgoingPermanentFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_user_outgoing_permanent, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
     }
 }

@@ -41,6 +41,7 @@ class FragmentHolderFragment : Fragment() {
             .commit()
         mainActivity.showBackButton(false)
         mainActivity.changeToolbarTitleToCurrentFragmentName(startFragment)
+        mainActivity.appBar.setExpanded(false)
     }
 
     lateinit var startFragment : Fragment

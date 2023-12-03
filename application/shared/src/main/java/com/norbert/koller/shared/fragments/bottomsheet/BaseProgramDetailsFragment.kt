@@ -51,7 +51,11 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
             ncbTeacher.buttonContent.text = baseProgram.TUID.toString()
 
             ncbClassroom.buttonContent.setOnClickListener {
-                (requireContext() as MainActivity).changeFragment(MyApplication.roomFragment(baseProgram.RID))
+                val bundle = Bundle()
+                bundle.putInt("RID", baseProgram.RID)
+                val fragment = MyApplication.roomFragment()
+                fragment.arguments = bundle
+                (requireContext() as MainActivity).changeFragment(fragment)
                 dismiss()
             }
 
@@ -60,7 +64,11 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
             }
 
             ncbTeacher.buttonContent.setOnClickListener {
-                (requireContext() as MainActivity).changeFragment(MyApplication.userFragment(baseProgram.TUID))
+                val bundle = Bundle()
+                bundle.putInt("TUID", baseProgram.TUID)
+                val fragment = MyApplication.userFragment()
+                fragment.arguments = bundle
+                (requireContext() as MainActivity).changeFragment(fragment)
                 dismiss()
             }
         }

@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapter
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
@@ -44,7 +45,11 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
         (holder.chipPlace.parent as ViewGroup).setVisibilityBy(isAnyChildVisible)
 
         holder.posterUser.setOnClickListener{
-            mainActivity.changeFragment(MyApplication.userFragment(currentItem.UID))
+            val bundle = Bundle()
+            bundle.putInt("UID", currentItem.UID)
+            val fragment = MyApplication.userFragment()
+            fragment.arguments = bundle
+            mainActivity.changeFragment(fragment)
         }
 
     }
