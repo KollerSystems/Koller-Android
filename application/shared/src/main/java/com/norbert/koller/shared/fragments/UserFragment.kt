@@ -118,7 +118,7 @@ abstract class UserFragment : Fragment() {
                             showAndSetIfNotNull(instagramCard, userData.Instagram)
                             showAndSetIfNotNull(emailCard, userData.Email)
 
-                            badgeUser.image.setOnClickListener{
+                            badgeUser.card.setOnClickListener{
                                 StfalconImageViewer.Builder(context, listOf(badgeUser.image.drawable)){view, drawable ->
                                     view.setImageDrawable(drawable)
                                 }

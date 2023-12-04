@@ -5,18 +5,18 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.customview.RoundedBadgeImageView
 import com.norbert.koller.shared.customview.UserPreview
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
 class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, var context : Context) : RecyclerView.Adapter<UserPreviewRecyclerAdapter.TodayViewHolder>(){
-
-    //TODO: Befejezni
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
 
@@ -30,7 +30,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
     override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
         val currentItem = todayList[position]
 
-        RecyclerViewHelper.roundRecyclerItemsHorizontally(holder.itemView, null, position, todayList.size)
+        RecyclerViewHelper.roundRecyclerItemsHorizontallyGrid(holder.itemView, position, todayList.size)
 
         holder.userBadge.setColorBasedOnClass(currentItem.Class?.Class)
 
@@ -60,16 +60,10 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
     }
 
 
-    class ViewHolder(v: View?) : RecyclerView.ViewHolder(v!!) {
-        private val customView: UserPreview?
-
-        init {
-            customView = v as UserPreview?
-        }
-
-        fun getCustomView(): UserPreview? {
-            return customView
-        }
+    class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
+        val userBadge : RoundedBadgeImageView = itemView.findViewById(R.id.badge_user)
+        val text : TextView = itemView.findViewById(R.id.text_name)
     }
 
 

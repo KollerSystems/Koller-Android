@@ -39,7 +39,7 @@ class RecyclerViewHelper {
 
         }
 
-        fun roundRecyclerItemsGrid(view : View, position: Int, size : Int){
+        fun roundRecyclerItemsVerticallyGrid(view : View, position: Int, size : Int){
             if (position == 0) {
 
                 if(size == 1) {
@@ -64,7 +64,7 @@ class RecyclerViewHelper {
                 }
 
             }
-            else if (position == size - 1) {
+            else if (position == size - 1-1) {
 
                 if(position % 2 != 0) {
                     roundCardBottomRight(view)
@@ -74,7 +74,7 @@ class RecyclerViewHelper {
                 }
 
             }
-            else if (position == size ) {
+            else if (position == size -1) {
 
                 if(position % 2 != 0) {
                     roundCardBottomRight(view)
@@ -90,6 +90,61 @@ class RecyclerViewHelper {
                 }
                 else{
                     deroundCardWithRightMargin(view)
+                }
+            }
+        }
+
+        fun roundRecyclerItemsHorizontallyGrid(view : View, position: Int, size : Int){
+            if (position == 0) {
+
+                if(size == 1) {
+
+                    roundCard(view)
+                }
+                else if (size == 2){
+                    roundCardTop(view)
+                }
+                else {
+                    roundCardTopLeft(view)
+                }
+
+            }
+            else if (position == 1) {
+
+                if (size == 2 || size == 3){
+                    roundCardBottom(view)
+                }
+                else {
+                    roundCardBottomLeft(view)
+                }
+
+            }
+            else if (position == size - 1-1) {
+
+                if(position % 2 != 0) {
+                    roundCardBottomRight(view)
+                }
+                else{
+                    roundCardTopRight(view)
+                }
+
+            }
+            else if (position == size -1) {
+
+                if(position % 2 != 0) {
+                    roundCardBottomRight(view)
+                }
+                else{
+                    roundCardRight(view)
+                }
+
+            }
+            else{
+                if(position % 2 != 0) {
+                    deroundCardWithTopMargin(view)
+                }
+                else{
+                    deroundCardWithBottomMargin(view)
                 }
             }
         }
@@ -296,6 +351,24 @@ class RecyclerViewHelper {
             deroundCardX(view, context.resources.getDimensionPixelSize(R.dimen.card_margin),
                 context.resources.getDimensionPixelSize(R.dimen.card_margin),
                 0,
+                context.resources.getDimensionPixelSize(R.dimen.card_margin))
+        }
+
+        fun deroundCardWithTopMargin(view : View, view2 : View? = null){
+
+            val context = view.context
+            deroundCardX(view, context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                0)
+        }
+
+        fun deroundCardWithBottomMargin(view : View, view2 : View? = null){
+
+            val context = view.context
+            deroundCardX(view, context.resources.getDimensionPixelSize(R.dimen.card_margin),
+                0,
+                context.resources.getDimensionPixelSize(R.dimen.card_margin),
                 context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 

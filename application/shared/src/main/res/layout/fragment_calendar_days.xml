@@ -10,14 +10,6 @@
 
     <View style="@style/separator_line" />
 
-    <com.norbert.koller.shared.customview.TipView
-
-        android:id="@+id/tip_return_to_current_day"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        custom:text="Ha ismét megérinted a Napok fület, akkor automatikkusan visszatérhetsz a jelenlegi naphoz." />
-
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcard_date"
         android:layout_width="match_parent"
@@ -46,10 +38,28 @@
     </com.google.android.material.card.MaterialCardView>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="?android:attr/windowBackground" />
+        android:background="?android:attr/windowBackground">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/floatingActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_marginEnd="@dimen/application_padding"
+            android:layout_marginBottom="@dimen/application_padding"
+            android:clickable="true"
+            android:src="@drawable/up" />
+
+    </FrameLayout>
 </LinearLayout>

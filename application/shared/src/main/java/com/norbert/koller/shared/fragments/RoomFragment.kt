@@ -49,7 +49,7 @@ abstract class RoomFragment : Fragment() {
         loadingOl = view.findViewById(R.id.loading_overlay)
 
         usersRecyclerView = view.findViewById(R.id.recycler_view)
-        usersRecyclerView.layoutManager = LinearLayoutManager(context)
+        usersRecyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.HORIZONTAL,false)
         usersRecyclerView.setHasFixedSize(false)
 
        fun loadData(){
@@ -65,12 +65,12 @@ abstract class RoomFragment : Fragment() {
                            val roomData: RoomData = userResponse.body()!!
 
 
-                           /*if(roomData.Residents != null) {
+                           if(roomData.Residents != null) {
                                usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
                                    roomData.Residents!!,
                                    requireContext()
                                )
-                           }*/
+                           }
 
                            textTitle.text = roomData.RID.toString()
 

@@ -110,7 +110,7 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
 
         holder.textPresence.setVisibilityBy(!(holder.itemView.context as RoomPresenceActivity).knowsTheLayout)
 
-        RecyclerViewHelper.roundRecyclerItemsGrid(holder.itemView, position, roomOrderConditionsData.size)
+        RecyclerViewHelper.roundRecyclerItemsVerticallyGrid(holder.itemView, position, roomOrderConditionsData.size)
 
         holder.rbiwPfp.card.setOnClickListener{
             StfalconImageViewer.Builder(holder.itemView.context, listOf(holder.rbiwPfp.image.drawable)){view, drawable ->
