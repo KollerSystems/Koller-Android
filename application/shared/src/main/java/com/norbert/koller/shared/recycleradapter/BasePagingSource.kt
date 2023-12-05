@@ -70,8 +70,10 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {
 
 
-        if(recyclerAdapter.beingEmptied || lastListSize < BaseViewModel.pageSize)
-            return LoadResult.Page(emptyList(), null,null)
+        if(recyclerAdapter.beingEmptied || lastListSize < BaseViewModel.pageSize) {
+            Log.d("INFO", "TO EMPTY")
+            return LoadResult.Page(emptyList(), null, null)
+        }
 
         val offset = params.key ?: 0
         if(recyclerAdapter.withLoadingAnim) {
