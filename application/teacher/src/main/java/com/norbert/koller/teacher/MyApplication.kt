@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import com.norbert.koller.teacher.BuildConfig
 import com.norbert.koller.shared.fragments.NotificationsFragment
+import com.norbert.koller.shared.helpers.NotificationHelper
 import com.norbert.koller.teacher.activities.*
 import com.norbert.koller.teacher.fragments.CalendarFragment
 import com.norbert.koller.teacher.fragments.HomeFragment
@@ -20,6 +21,7 @@ class MyApplication : com.norbert.koller.shared.MyApplication() {
 
     override fun onCreate() {
         super.onCreate()
+        NotificationHelper().createNotificationChannels(this)
 
         version = BuildConfig.VERSION_NAME
 
