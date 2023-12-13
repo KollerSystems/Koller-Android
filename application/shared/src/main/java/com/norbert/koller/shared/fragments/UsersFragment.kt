@@ -13,13 +13,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.recycleradapter.BaseViewModel
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -32,6 +34,11 @@ open class UsersFragment : Fragment() {
 
 
     lateinit var viewModel : BaseViewModel
+
+
+    companion object{
+
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -75,7 +82,8 @@ open class UsersFragment : Fragment() {
             ListItem(getString(R.string.teacher), null, null, "2")
         ))
 
-        viewModel = BaseViewModel { UserPagingSource(requireContext(), userRecycleAdapter) }
+
+        viewModel = BaseViewModel({ UserPagingSource(requireContext(), userRecycleAdapter) })
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

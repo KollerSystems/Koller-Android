@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.recycleradapter.BaseViewModel
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.BaseProgramPagingSource
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
