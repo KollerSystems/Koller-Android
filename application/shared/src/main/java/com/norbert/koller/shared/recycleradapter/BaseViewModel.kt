@@ -9,8 +9,7 @@ import com.norbert.koller.shared.api.UserPagingSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.Flow
 
-class BaseViewModel(pagingSource: ()-> BasePagingSource) : ViewModel() {
-
+class BaseViewModel(pagingSource: (()-> BasePagingSource)) : ViewModel() {
 
 
     companion object{
@@ -21,11 +20,10 @@ class BaseViewModel(pagingSource: ()-> BasePagingSource) : ViewModel() {
 
     val pagingData: Flow<PagingData<Any>> = Pager(
         config = PagingConfig(
-        pageSize = pageSize,
-        initialLoadSize = pageSize,
-        prefetchDistance = 2
-    )) {
+            pageSize = pageSize,
+            initialLoadSize = pageSize,
+            prefetchDistance = 2)
+        ) {
         pagingSource()
     }.flow
-    
 }

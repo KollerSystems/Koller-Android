@@ -23,6 +23,8 @@ abstract class BaseRecycleAdapter(val chipGroup: ChipGroup? = null, val chips: L
     var state : Int = STATE_NONE
     var withLoadingAnim : Boolean = true
 
+ 
+
     abstract fun getViewType() : Int
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

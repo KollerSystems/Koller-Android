@@ -58,13 +58,17 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
     fun getSort() : String{
         if(recyclerAdapter.chipGroup == null) return ""
-        val chip : Chip = recyclerAdapter.chipGroup.findViewById(recyclerAdapter.chipGroup.checkedChipId)
+        val chip : Chip = recyclerAdapter.chipGroup!!.findViewById(recyclerAdapter.chipGroup!!.checkedChipId)
         return chip.tag.toString()
     }
 
 
     open suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : Response<List<BaseData>> {
         throw Exception("Nem lett felülírva a getApiResponse függvény 💀")
+    }
+
+    companion object{
+        var savedValues : List<Any>? = null
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {

@@ -57,7 +57,7 @@ class NestedCoordinatorLayout : CoordinatorLayout, NestedScrollingChild2 {
         dispatchNestedPreScroll(dx, dy, consumed, null, type)
         if (consumed[1] == 0) {
             super.onNestedPreScroll(target, dx, dy, consumed, type)
-            Log.d("INFO", "NESTED1")
+
         }
     }
 
@@ -65,7 +65,7 @@ class NestedCoordinatorLayout : CoordinatorLayout, NestedScrollingChild2 {
         dispatchNestedPreScroll(dx, dy, consumed, null)
         if (consumed[1] == 0) {
             super.onNestedPreScroll(target, dx, dy, consumed, ViewCompat.TYPE_TOUCH)
-            Log.d("INFO", "NESTED2")
+
         }
     }
 
