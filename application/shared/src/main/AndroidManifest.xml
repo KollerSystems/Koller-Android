@@ -14,7 +14,8 @@
     <application
         android:enableOnBackInvokedCallback="false"
         android:theme="@style/Theme.MainTheme"
-        tools:targetApi="tiramisu">
+        tools:targetApi="tiramisu"
+        android:screenOrientation="portrait" >
         <activity
             android:name=".activities.ManageAccountActivity"
             android:exported="false" />

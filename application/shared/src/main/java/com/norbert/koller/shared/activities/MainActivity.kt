@@ -38,11 +38,9 @@ import java.util.Stack
 
 abstract class MainActivity : AppCompatActivity() {
 
-    lateinit var fragmentHolder : FragmentContainerView
     lateinit var toolbarContainer : LinearLayout
     lateinit var toolbarTitle : TextView
     lateinit var toolbarDescription : TextView
-    var selectedID = 0
 
     lateinit var bottomNavigationView : BottomNavigationView
 
@@ -53,22 +51,12 @@ abstract class MainActivity : AppCompatActivity() {
 
     var mainFragmentList : ArrayList<Int> = arrayListOf()
 
-    /*private lateinit var homeFragment: FragmentHolderFragment
-    private lateinit var calendarFragment: FragmentHolderFragment
-    private lateinit var studentHostelFragment: FragmentHolderFragment
-    private lateinit var notificationsFragment: FragmentHolderFragment*/
+    var savedBackStacks : MutableSet<Int> = mutableSetOf()
 
-
-
-    /*private val fragments: Array<FragmentHolderFragment>
-        get() = arrayOf(
-            homeFragment,
-            calendarFragment,
-            studentHostelFragment,
-            notificationsFragment
-        )
-    */
-
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putIntArray("savedBackStacks", savedBackStacks.toIntArray())
+        super.onSaveInstanceState(outState)
+    }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
@@ -84,37 +72,6 @@ abstract class MainActivity : AppCompatActivity() {
         toolbarTitle = findViewById(R.id.toolbar_title)
         toolbarDescription = findViewById(R.id.toolbar_description)
         defaultTitlePadding = toolbarContainer.paddingLeft
-
-        /*if (savedInstanceState == null) {
-            val homeFragment = FragmentHolderFragment().also { this.homeFragment = it }
-            val calendarFragment = FragmentHolderFragment().also { this.calendarFragment = it }
-            val studentHostelFragment = FragmentHolderFragment().also { this.studentHostelFragment = it }
-            val notificationsFragment = FragmentHolderFragment().also { this.notificationsFragment = it }
-
-
-            supportfragmentHolder.beginTransaction()
-                .add(R.id.main_fragment, homeFragment, "homeFragment")
-                .add(R.id.main_fragment, calendarFragment, "calendarFragment")
-                .add(R.id.main_fragment, studentHostelFragment, "studentHostelFragment")
-                .add(R.id.main_fragment, notificationsFragment, "notificationsFragment")
-                .selectFragment(selectedID)
-                .commit()
-        } else {
-            homeFragment = supportfragmentHolder.findFragmentByTag("homeFragment") as FragmentHolderFragment
-            calendarFragment = supportfragmentHolder.findFragmentByTag("calendarFragment") as FragmentHolderFragment
-            studentHostelFragment = supportfragmentHolder.findFragmentByTag("studentHostelFragment") as FragmentHolderFragment
-            notificationsFragment = supportfragmentHolder.findFragmentByTag("notificationsFragment") as FragmentHolderFragment*
-        }
-
-        homeFragment.startFragment = MyApplication.homeFragment()
-        calendarFragment.startFragment = MyApplication.calendarFragment()
-        studentHostelFragment.startFragment = MyApplication.studentHostelFragment()
-        notificationsFragment.startFragment = NotificationsFragment()*/
-
-        fragmentHolder = findViewById(R.id.main_fragment)
-
-
-
 
 
 
@@ -137,6 +94,7 @@ abstract class MainActivity : AppCompatActivity() {
 
 
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
+
 
             changeBackStackState(menuItem.itemId)
 
@@ -161,7 +119,12 @@ abstract class MainActivity : AppCompatActivity() {
             window.navigationBarColor = navViewColor
         }
 
-        changeBackStackState(R.id.home)
+        if(savedInstanceState == null) {
+            changeBackStackState(R.id.home)
+        }
+        else{
+            savedBackStacks = savedInstanceState.getIntArray("savedBackStacks")!!.toMutableSet()
+        }
 
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112);
     }
@@ -192,7 +155,7 @@ abstract class MainActivity : AppCompatActivity() {
             } else {
                 if (mainFragmentList.size == 1) {
 
-                    if (selectedID != R.id.home) {
+                    if (bottomNavigationView.selectedItemId != R.id.home) {
                         bottomNavigationView.selectedItemId = R.id.home
                         mainFragmentList = arrayListOf(0)
                     }
@@ -215,6 +178,9 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun changeToolbarTitleToCurrentFragmentName(){
         toolbarTitle.post{
+            if(supportFragmentManager.backStackEntryCount == 0)
+                return@post
+
             setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
         }
     }
@@ -232,7 +198,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
-        val fragment = when (selectedID) {
+        val fragment = when (bottomNavigationView.selectedItemId) {
             R.id.home -> {
                 MyApplication.homeFragment()
             }
@@ -267,54 +233,42 @@ abstract class MainActivity : AppCompatActivity() {
         showBackButton(true)
     }
 
-    var hasHome = false
-    var hasCalendar = false
-    var hasStudentHostel = false
-    var hasNotification = false
-
-
     fun changeBackStackState(idToSelect : Int){
 
-        supportFragmentManager.saveBackStack(selectedID.toString())
-        selectedID = idToSelect
+
+        //TODO kitalálni mi a hiba
+        if(idToSelect == bottomNavigationView.selectedItemId) {
+            supportFragmentManager.saveBackStack(bottomNavigationView.selectedItemId.toString())
+            savedBackStacks.add(idToSelect)
+        }
 
         supportFragmentManager.restoreBackStack(idToSelect.toString())
 
-        when (selectedID) {
-            R.id.home -> {
-                if(!hasHome) {
-                    hasHome = true
+        if(!savedBackStacks.contains(idToSelect)) {
+            when (idToSelect) {
+                R.id.home -> {
                     replaceFragment(MyApplication.homeFragment())
                 }
-            }
 
-            R.id.calendar -> {
-                if(!hasCalendar) {
-                    hasCalendar = true
+                R.id.calendar -> {
                     replaceFragment(MyApplication.calendarFragment())
                 }
-            }
 
-            R.id.studentHostel -> {
-                if(!hasStudentHostel) {
-                    hasStudentHostel = true
+                R.id.studentHostel -> {
                     replaceFragment(MyApplication.studentHostelFragment())
                 }
-            }
 
-            R.id.notifications -> {
-                if(!hasNotification) {
-                    hasNotification = true
+                R.id.notifications -> {
                     replaceFragment(MyApplication.notificationFragment())
                 }
             }
         }
 
 
-        if (mainFragmentList.contains(selectedID)) {
-            mainFragmentList.remove(selectedID)
+        if (mainFragmentList.contains(idToSelect)) {
+            mainFragmentList.remove(idToSelect)
         }
-        mainFragmentList.add(selectedID)
+        mainFragmentList.add(idToSelect)
 
         //Toast.makeText(this, mainFragmentList.toString(), Toast.LENGTH_LONG).show()
 
@@ -331,9 +285,9 @@ abstract class MainActivity : AppCompatActivity() {
             R.anim.anim_in,
             R.anim.anim_out
         )
-        fragmentTransaction.replace(R.id.main_fragment, fragment, "${selectedID}+${supportFragmentManager.backStackEntryCount}")
+        fragmentTransaction.replace(R.id.main_fragment, fragment, "${bottomNavigationView.selectedItemId}+${supportFragmentManager.backStackEntryCount}")
         fragmentTransaction.setReorderingAllowed(true)
-        fragmentTransaction.addToBackStack(selectedID.toString())
+        fragmentTransaction.addToBackStack(bottomNavigationView.selectedItemId.toString())
         fragmentTransaction.commit()
 
     }

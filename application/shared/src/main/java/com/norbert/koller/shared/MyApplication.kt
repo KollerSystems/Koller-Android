@@ -271,8 +271,14 @@ fun Context.getAttributeColor(attributeId: Int): Int {
 
 fun Context.getStringResourceByName(stringName: String): String? {
 
-    val resId = resources.getIdentifier(stringName, "string", packageName)
-    return getString(resId)
+    return try {
+        val resId = resources.getIdentifier(stringName, "string", packageName)
+        getString(resId)
+    }
+    catch (ex : Exception){
+        null
+    }
+
 }
 
 fun String.camelToSnakeCase() = fold(StringBuilder(length)) { acc, c ->
