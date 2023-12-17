@@ -25,11 +25,11 @@ open class StudentHostelFragment : Fragment() {
         val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
 
         roomsButton.setOnClickListener{
-            (context as MainActivity).changeFragment(MyApplication.roomsFragment())
+            (context as MainActivity).addFragment(MyApplication.roomsFragment())
         }
 
         usersButton.setOnClickListener{
-            (context as MainActivity).changeFragment(MyApplication.usersFragment())
+            (context as MainActivity).addFragment(MyApplication.usersFragment())
         }
 
         return view

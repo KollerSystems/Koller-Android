@@ -55,7 +55,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
                 bundle.putInt("RID", baseProgram.RID)
                 val fragment = MyApplication.roomFragment()
                 fragment.arguments = bundle
-                (requireContext() as MainActivity).changeFragment(fragment)
+                (requireContext() as MainActivity).addFragment(fragment)
                 dismiss()
             }
 
@@ -68,7 +68,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
                 bundle.putInt("TUID", baseProgram.TUID)
                 val fragment = MyApplication.userFragment()
                 fragment.arguments = bundle
-                (requireContext() as MainActivity).changeFragment(fragment)
+                (requireContext() as MainActivity).addFragment(fragment)
                 dismiss()
             }
         }

@@ -27,13 +27,13 @@ class UserFragment : com.norbert.koller.shared.fragments.UserFragment() {
         val scbOutgoings : SimpleCardButton = view.findViewById(R.id.scb_outgoings)
 
         scbOutgoings.setOnClickListener {
-            (context as MainActivity).changeFragment(UserOutgoingsFragment())
+            (context as MainActivity).addFragment(UserOutgoingsFragment())
         }
 
         val scbGate : SimpleCardButton = view.findViewById(R.id.scb_gate)
 
         scbGate.setOnClickListener {
-            (context as MainActivity).changeFragment(UserExitsAndEntrancesFragment(UID))
+            (context as MainActivity).addFragment(UserExitsAndEntrancesFragment(UID))
         }
 
         val scbEdit : SimpleCardButton = view.findViewById(R.id.scb_edit)

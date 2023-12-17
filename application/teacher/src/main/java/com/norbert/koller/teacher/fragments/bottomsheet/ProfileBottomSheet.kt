@@ -31,7 +31,7 @@ class ProfileBottomSheet : com.norbert.koller.shared.fragments.bottomsheet.Profi
         scb.setOnClickListener {
 
             val usersFragment = UsersFragment()
-            mainActivity.changeFragment(usersFragment)
+            mainActivity.addFragment(usersFragment)
         }
 
     }

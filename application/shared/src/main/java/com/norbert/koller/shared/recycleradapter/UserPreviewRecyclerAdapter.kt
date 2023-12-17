@@ -49,7 +49,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
                 bundle.putInt("UID", currentItem.UID)
                 val fragment = MyApplication.userFragment()
                 fragment.arguments = bundle
-                (context as MainActivity).changeFragment(fragment)
+                (context as MainActivity).addFragment(fragment)
             }
 
         }

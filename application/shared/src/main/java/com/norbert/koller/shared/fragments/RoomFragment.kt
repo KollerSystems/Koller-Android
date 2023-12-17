@@ -77,7 +77,7 @@ abstract class RoomFragment : Fragment() {
                            buttonDesc.text = roomData.Group
 
                            buttonDesc.setOnClickListener{
-                               (context as MainActivity).changeFragment(MyApplication.usersFragment())
+                               (context as MainActivity).addFragment(MyApplication.usersFragment())
                            }
 
                            loadingOl.setState(FullScreenLoading.NONE)

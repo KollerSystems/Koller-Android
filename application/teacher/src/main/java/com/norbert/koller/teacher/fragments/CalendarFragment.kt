@@ -26,7 +26,7 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CalendarViewPagerAdapter(childFragmentManager, lifecycle)
+        val adapter = CalendarViewPagerAdapter(parentFragmentManager, lifecycle)
 
         viewPager.adapter = adapter
 

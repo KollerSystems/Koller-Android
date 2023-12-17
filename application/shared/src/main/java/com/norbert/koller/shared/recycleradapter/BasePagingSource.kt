@@ -24,6 +24,7 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
     private var lastFirstChar : String? = null
     private var lastListSize : Int = BaseViewModel.pageSize + 1
+    var savedValues : List<BaseData>? = null
 
     fun getFilters() : String{
 
@@ -58,7 +59,7 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
     fun getSort() : String{
         if(recyclerAdapter.chipGroup == null) return ""
-        val chip : Chip = recyclerAdapter.chipGroup!!.findViewById(recyclerAdapter.chipGroup!!.checkedChipId)
+        val chip : Chip = recyclerAdapter.chipGroup.findViewById(recyclerAdapter.chipGroup.checkedChipId)
         return chip.tag.toString()
     }
 
@@ -67,11 +68,9 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
         throw Exception("Nem lett felülírva a getApiResponse függvény 💀")
     }
 
-    companion object{
-        var savedValues : List<Any>? = null
-    }
-
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {
+
+
 
 
         if(recyclerAdapter.beingEmptied || lastListSize < BaseViewModel.pageSize) {
@@ -79,7 +78,14 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
             return LoadResult.Page(emptyList(), null, null)
         }
 
+        if(savedValues != null) {
+            val result = formatRecievedValues(savedValues!!,0, savedValues!!.size)
+            savedValues = null
+            return result
+        }
+
         val offset = params.key ?: 0
+
         if(recyclerAdapter.withLoadingAnim) {
             recyclerAdapter.state = BaseRecycleAdapter.STATE_LOADING
         }
@@ -105,29 +111,10 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
             }
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-            recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)
-            recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1 - 1, Object())
-            recyclerAdapter.state = BaseRecycleAdapter.STATE_NONE
-
-            lastListSize = responseAs.size
-            val items = mutableListOf<Any>()
 
 
+            return formatRecievedValues(responseAs, offset, params.loadSize)
 
-            for (data in responseAs) {
-                val firstChar = data.diffrentDecider(context)
-                if (firstChar != lastFirstChar) {
-                    items.add(firstChar)
-                    lastFirstChar = firstChar
-                }
-                items.add(data)
-            }
-
-            return LoadResult.Page(
-                data = items,
-                prevKey = if (offset == 0) null else offset - params.loadSize,
-                nextKey = if (items.isEmpty()) null else offset + params.loadSize
-            )
 
 
         }catch(e: Exception){
@@ -136,6 +123,35 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
             Log.e("ERROR", e.toString())
             return LoadResult.Error(e)
         }
+    }
+
+    fun formatRecievedValues(responseAs : List<BaseData>, offset : Int, limit: Int): LoadResult<Int, Any> {
+
+
+        recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)
+        recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1 - 1, Object())
+
+        recyclerAdapter.state = BaseRecycleAdapter.STATE_NONE
+
+        lastListSize = responseAs.size
+        val items = mutableListOf<Any>()
+
+
+
+        for (data in responseAs) {
+            val firstChar = data.diffrentDecider(context)
+            if (firstChar != lastFirstChar) {
+                items.add(firstChar)
+                lastFirstChar = firstChar
+            }
+            items.add(data)
+        }
+
+        return LoadResult.Page(
+            data = items,
+            prevKey = if (offset == 0) null else offset - limit,
+            nextKey = if (items.isEmpty()) null else offset + limit
+        )
     }
 
     override fun getRefreshKey(state: PagingState<Int, Any>): Int? {

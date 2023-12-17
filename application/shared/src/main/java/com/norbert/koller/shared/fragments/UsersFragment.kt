@@ -1,47 +1,27 @@
 package com.norbert.koller.shared.fragments
 
-import android.content.Context
-import android.icu.text.SimpleDateFormat
-import com.norbert.koller.shared.data.UserData
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingData
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.recycleradapter.BaseViewModel
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.APIInterface
-import com.norbert.koller.shared.api.RetrofitHelper
-import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.UserPagingSource
+import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.data.FilterDateData
-import com.norbert.koller.shared.data.FiltersData
-import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
-import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
+import com.norbert.koller.shared.recycleradapter.BaseViewModel
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.SupervisorJob
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import retrofit2.Response
-import kotlin.random.Random
 
 open class UsersFragment : Fragment() {
 
@@ -52,6 +32,10 @@ open class UsersFragment : Fragment() {
 
     var userRecycleAdapter : UserRecyclerAdapter? = null
     var viewModel : BaseViewModel? = null
+
+    companion object{
+        var savedValues : ArrayList<BaseData>? = null
+    }
 
 
     override fun onCreateView(
@@ -86,7 +70,12 @@ open class UsersFragment : Fragment() {
 
 
             userRecycleAdapter = UserRecyclerAdapter(chipGroupSort, listOf(chipGender, chipRole))
-            viewModel = BaseViewModel({ UserPagingSource(requireContext(), userRecycleAdapter!!) })
+            viewModel = BaseViewModel{
+                val pagingSource = UserPagingSource(requireContext(), userRecycleAdapter!!)
+                pagingSource.savedValues = savedValues
+                savedValues = null
+                return@BaseViewModel pagingSource
+            }
 
 
 
@@ -100,14 +89,10 @@ open class UsersFragment : Fragment() {
             ListItem(getString(R.string.teacher), null, null, "2")
         ))
 
-
-
-
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = userRecycleAdapter
         }
-
 
         superCoolRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
 
@@ -127,6 +112,12 @@ open class UsersFragment : Fragment() {
 
     override fun onStop() {
         super.onStop()
-
+        val rcItems = userRecycleAdapter!!.snapshot().items
+        savedValues = arrayListOf()
+        for (rcItem in rcItems){
+            if(rcItem is BaseData){
+                savedValues!!.add(rcItem)
+            }
+        }
     }
 }

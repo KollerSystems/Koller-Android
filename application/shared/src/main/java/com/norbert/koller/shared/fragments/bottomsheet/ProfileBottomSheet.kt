@@ -109,7 +109,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
             bundle.putInt("RID", UserData.instance.RID!!)
             val fragment = MyApplication.roomFragment()
             fragment.arguments = bundle
-            (requireContext() as MainActivity).changeFragment(fragment)
+            (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()
         }
 
@@ -117,7 +117,7 @@ open class ProfileBottomSheet : BottomSheetDialogFragment() {
 
         fbtnGate.setOnClickListener{
 
-            (requireContext() as MainActivity).changeFragment(UserExitsAndEntrancesFragment(UserData.instance.UID))
+            (requireContext() as MainActivity).addFragment(UserExitsAndEntrancesFragment(UserData.instance.UID))
             this.dismiss()
         }
 

@@ -49,7 +49,7 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
             bundle.putInt("UID", currentItem.UID)
             val fragment = MyApplication.userFragment()
             fragment.arguments = bundle
-            mainActivity.changeFragment(fragment)
+            mainActivity.addFragment(fragment)
         }
 
     }

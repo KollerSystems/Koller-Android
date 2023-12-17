@@ -120,7 +120,7 @@ abstract class UserFragment : Fragment() {
                                 bundle.putInt("RID", userData.RID!!)
                                 val fragment = MyApplication.roomFragment()
                                 fragment.arguments = bundle
-                                (requireContext() as MainActivity).changeFragment(fragment)
+                                (requireContext() as MainActivity).addFragment(fragment)
                             }
 
                             showAndSetIfNotNull(discordCard, userData.Discord)

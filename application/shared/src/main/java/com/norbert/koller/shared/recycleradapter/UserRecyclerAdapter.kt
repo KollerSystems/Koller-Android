@@ -50,7 +50,7 @@ class UserRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
                 bundle.putInt("UID", item.UID)
                 val fragment = MyApplication.userFragment()
                 fragment.arguments = bundle
-                (context as MainActivity).changeFragment(fragment)
+                (context as MainActivity).addFragment(fragment)
             }
 
         }

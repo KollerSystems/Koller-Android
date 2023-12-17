@@ -25,7 +25,7 @@ class UserOutgoingsFragment : Fragment() {
 
             context as MainActivity
 
-            context.changeFragment(UserOutgoingsFragment())
+            context.addFragment(UserOutgoingsFragment())
         }
     }
     override fun onCreateView(

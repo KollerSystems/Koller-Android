@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
@@ -22,14 +23,12 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment(){
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_calendar, container, false)
-
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CalendarViewPagerAdapter(childFragmentManager, lifecycle)
+        val adapter = CalendarViewPagerAdapter(this)
 
         viewPager.adapter = adapter
 
@@ -59,7 +58,7 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment(){
     }
 }
 
-class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle)
+class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
 {
     override fun getItemCount(): Int {
         return 6
@@ -90,5 +89,4 @@ class CalendarViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Life
             }
         }
     }
-
 }

@@ -59,7 +59,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chips: List<Chip> = list
             bundle.putInt("RID", item.RID)
             val fragment = MyApplication.roomFragment()
             fragment.arguments = bundle
-            (holder.itemView.context as MainActivity).changeFragment(fragment)
+            (holder.itemView.context as MainActivity).addFragment(fragment)
 
         }
     }

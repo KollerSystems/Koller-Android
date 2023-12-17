@@ -38,31 +38,37 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <ImageView
-                        android:id="@+id/imageView6"
-                        style="@style/transparent_icon"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginVertical="@dimen/panel_padding"
-                        android:layout_marginStart="@dimen/full_card_padding"
-                        android:layout_marginEnd="@dimen/panel_padding"
-                        android:layout_weight="0"
-                        android:adjustViewBounds="true"
-                        app:srcCompat="@drawable/search" />
-
-                    <com.norbert.koller.shared.customview.ExtraEditText
-                        android:id="@+id/editText_search"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginVertical="@dimen/panel_padding"
-                        android:layout_weight="1"
-                        android:focusable="true"
-                        android:focusableInTouchMode="true"
-                        android:hint="@string/search"
-                        android:inputType="text|textCapSentences"
-                        android:singleLine="true"
-                        android:textAppearance="@style/Title"
-                        android:textColorHint="?attr/colorForeground066" />
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            style="@style/transparent_icon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginVertical="@dimen/panel_padding"
+                            android:layout_marginStart="@dimen/full_card_padding"
+                            android:layout_marginEnd="@dimen/panel_padding"
+                            android:layout_weight="0"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/search" />
+
+                        <com.norbert.koller.shared.customview.ExtraEditText
+                            android:id="@+id/editText_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:hint="@string/search"
+                            android:inputType="text|textCapSentences"
+                            android:paddingVertical="@dimen/panel_padding"
+                            android:paddingStart="55dp"
+                            android:singleLine="true"
+                            android:textAppearance="@style/Title"
+                            android:textColorHint="?attr/colorForeground066" />
+                    </FrameLayout>
 
                     <Button
                         android:id="@+id/button_search"

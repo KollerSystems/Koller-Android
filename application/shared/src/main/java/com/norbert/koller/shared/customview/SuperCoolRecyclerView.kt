@@ -69,58 +69,62 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
 
 
 
+                updateTitle()
+                recyclerView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
 
-                recyclerView.setOnScrollChangeListener { view: View, x: Int, y: Int, i2: Int, i3: Int ->
+                    updateTitle()
 
+                }
+            }
+        }
+    }
 
-                    val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
-                    val firstVisibleItemIndex: Int = layoutManager.findFirstVisibleItemPosition()
-                    val firstCompletelyVisibleIndex: Int = layoutManager.findFirstCompletelyVisibleItemPosition()
+    fun updateTitle(){
+        val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
+        val firstVisibleItemIndex: Int = layoutManager.findFirstVisibleItemPosition()
+        val firstCompletelyVisibleIndex: Int = layoutManager.findFirstCompletelyVisibleItemPosition()
 
-                    val pagingAdapter = (recyclerView.adapter as PagingDataAdapter<*, *>)
+        val pagingAdapter = (recyclerView.adapter as PagingDataAdapter<*, *>)
 
-                    if (firstVisibleItemIndex != -1) {
-                        val firstData = pagingAdapter.getItemViewType(firstVisibleItemIndex)
-                        val list = pagingAdapter.snapshot()
-                        if (firstData == 1) {
+        if (firstVisibleItemIndex != -1) {
+            val firstData = pagingAdapter.getItemViewType(firstVisibleItemIndex)
+            val list = pagingAdapter.snapshot()
+            if (firstData == 1) {
 
-                            textHeader.text = list[firstVisibleItemIndex] as String
-                        } else {
+                textHeader.text = list[firstVisibleItemIndex] as String
+            } else {
 
-                            for (index in (0 until firstVisibleItemIndex).reversed()) {
-                                if (list[index] is String) {
-                                    textHeader.text = list[index] as String
-                                    break
-                                }
-                            }
-
-                        }
-                    }
-
-                    if (firstCompletelyVisibleIndex != -1) {
-                        val firstData = pagingAdapter.getItemViewType(firstCompletelyVisibleIndex)
-                        if(firstCompletelyVisibleIndex != 0) {
-                            textHeader.visibility = VISIBLE
-                            if (firstData == 1) {
-
-                                val firstCompletelyVisibleItem: View = layoutManager.getChildAt(1)!!
-                                val top = firstCompletelyVisibleItem.top
-                                val y = top - firstCompletelyVisibleItem.marginTop
-                                val fullFirstViewHeight =
-                                    firstCompletelyVisibleItem.height + firstCompletelyVisibleItem.marginTop * 2
-                                if (y < fullFirstViewHeight) {
-                                    textHeader.translationY = (y - fullFirstViewHeight).toFloat()
-                                }
-                            } else {
-                                textHeader.translationY = 0f
-                            }
-                        }
-                        else{
-                            textHeader.translationY = 0f
-                            textHeader.visibility = GONE
-                        }
+                for (index in (0 until firstVisibleItemIndex).reversed()) {
+                    if (list[index] is String) {
+                        textHeader.text = list[index] as String
+                        break
                     }
                 }
+
+            }
+        }
+
+        if (firstCompletelyVisibleIndex != -1) {
+            val firstData = pagingAdapter.getItemViewType(firstCompletelyVisibleIndex)
+            if(firstCompletelyVisibleIndex != 0) {
+                textHeader.visibility = VISIBLE
+                if (firstData == 1) {
+
+                    val firstCompletelyVisibleItem: View = layoutManager.getChildAt(1)!!
+                    val top = firstCompletelyVisibleItem.top
+                    val y = top - firstCompletelyVisibleItem.marginTop
+                    val fullFirstViewHeight =
+                        firstCompletelyVisibleItem.height + firstCompletelyVisibleItem.marginTop * 2
+                    if (y < fullFirstViewHeight) {
+                        textHeader.translationY = (y - fullFirstViewHeight).toFloat()
+                    }
+                } else {
+                    textHeader.translationY = 0f
+                }
+            }
+            else{
+                textHeader.translationY = 0f
+                textHeader.visibility = GONE
             }
         }
     }
