@@ -104,7 +104,7 @@
         android:layout_height="match_parent"
         android:outlineProvider="none"
         android:visibility="gone"
+        app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
         app:cardCornerRadius="0dp"
-        app:cardElevation="24dp"
         tools:visibility="visible" />
 </com.google.android.material.card.MaterialCardView>

@@ -75,11 +75,11 @@
     </style>
 
     <style name="main_background" parent="@style/Widget.Material3.CardView.Filled">
-        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
         <item name="android:layout_height">match_parent</item>
         <item name="android:layout_width">match_parent</item>
-        <item name="cardCornerRadius">0dp</item>
-        <item name="cardElevation">@dimen/header_footer_elevation</item>
+        <item name="cardCornerRadius">0dp</item>lo
+        <item name="cardElevation">0dp</item>
 
     </style>
 
@@ -197,9 +197,9 @@
     </style>
     
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
-        <item name="cardElevation">@dimen/default_card_elevation</item>
+        <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">@dimen/panel_round</item>
-        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainerLow</item>
     </style>
 
     <style name="bottomSheetDrag" parent="Widget.Material3.BottomSheet.DragHandle">
@@ -298,9 +298,9 @@
     <style name="panelButton" parent="@style/button">
          <item name="android:paddingTop">@dimen/panel_padding</item>
         <item name="android:paddingBottom">@dimen/panel_padding</item>
-        <item name="android:backgroundTint">?attr/colorSurface</item>
+        <item name="android:backgroundTint">?attr/colorSurfaceContainerLow</item>
         <item name="cornerRadius">0dp</item>
-        <item name="android:elevation">@dimen/default_card_elevation</item>
+        <item name="android:elevation">0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconTint">?android:attr/colorForeground</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
@@ -593,8 +593,9 @@
         <item name="android:layout_marginLeft">0dp</item>
         <item name="android:layout_marginRight">0dp</item>
         <item name="android:layout_marginTop">0dp</item>
+        <item name="cardElevation">-16dp</item>
         <item name="cardCornerRadius">@dimen/application_round</item>
-        <item name="cardElevation" >-16dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
     </style>
 
     <style name="toolbar_navigation_button" parent="@style/icon_button_transparent">
@@ -675,7 +676,7 @@
     <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
         <item name="shapeAppearanceOverlay">@style/CustomShapeAppearanceBottomSheetDialog</item>
         <item name="backgroundTint">@android:color/transparent</item>
-<item name="android:outlineProvider" >none</item>
+        <item name="android:outlineProvider" >none</item>
         <item name="android:elevation">0dp</item>
         <item name="elevation">0dp</item>
         <item name="cardElevation">0dp</item>

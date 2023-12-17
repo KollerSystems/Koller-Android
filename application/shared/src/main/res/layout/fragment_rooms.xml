@@ -29,7 +29,6 @@
                 android:layout_marginBottom="@dimen/text_container_margin"
                 android:outlineProvider="none"
                 app:cardCornerRadius="@null"
-                app:cardElevation="2dp"
                 app:shapeAppearance="@style/roundImageView">
 
                 <LinearLayout

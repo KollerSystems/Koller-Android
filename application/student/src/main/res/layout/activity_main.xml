@@ -66,13 +66,10 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/main_background"
-        style="@style/Widget.Material3.CardView.Filled"
+        style="@style/main_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="false"
-        app:cardBackgroundColor="?attr/colorSurface"
-        app:cardCornerRadius="0dp"
-        app:cardElevation="@dimen/header_footer_elevation">
+        android:fitsSystemWindows="false">
 
     </com.google.android.material.card.MaterialCardView>
 

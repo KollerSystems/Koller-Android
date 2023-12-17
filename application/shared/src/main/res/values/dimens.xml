@@ -13,7 +13,7 @@
     <dimen name="application_padding">15dp</dimen>
     <dimen name="separator_margin_space">20dp</dimen>
     <dimen name="full_card_padding">20dp</dimen>
-    <dimen name="default_card_elevation">1dp</dimen>
+    <dimen name="default_card_elevation">0dp</dimen>
     <dimen name="card_margin">0.5dp</dimen>
     <dimen name="card_full_margin">1dp</dimen>
     <dimen name="text_drawable_size">15dp</dimen>
@@ -31,7 +31,7 @@
 
     <dimen name="toolbar_button_size">50dp</dimen>
 
-    <dimen name="header_footer_elevation">3dp</dimen>
+    <dimen name="header_footer_elevation">0dp</dimen>
 
     <dimen name="header_footer_size">60dp</dimen>
 

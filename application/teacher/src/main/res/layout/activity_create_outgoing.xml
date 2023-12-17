@@ -13,8 +13,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="@dimen/expandedToolbarHeight"
-        android:background="?attr/colorSurface"
-        app:elevation="1dp"
+        android:background="?attr/colorSurfaceContainer"
         app:expanded="false">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
@@ -85,8 +84,7 @@
                     app:endIconMode="custom"
                     app:endIconScaleType="centerInside"
                     app:endIconTint="?attr/colorOnSecondaryContainer"
-                    app:hintEnabled="false"
-                    >
+                    app:hintEnabled="false">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="wrap_content"

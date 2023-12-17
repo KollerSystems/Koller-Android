@@ -29,6 +29,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
@@ -78,9 +79,8 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         holder.cardNewMark.translationX = 0f
 
         if(!currentItem.read){
-            holder.cardUnreadOverlay.cardElevation = MyApplication.convertDpToPixel(24, holder.itemView.context
-            ).toFloat()
-            holder.root.cardElevation = MyApplication.convertDpToPixel(1, holder.itemView.context).toFloat()
+            holder.cardUnreadOverlay.setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerHigh))
+            holder.root.setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow))
             holder.cardNewMark.visibility = VISIBLE
             text = context.getString(R.string.mark_as_read)
             icon = AppCompatResources.getDrawable(holder.itemView.context, R.drawable.eye)
@@ -97,11 +97,8 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
 
         }
         else{
-            holder.cardUnreadOverlay.cardElevation = MyApplication.convertDpToPixel(
-                -24,
-                holder.itemView.context
-            ).toFloat()
-            holder.root.cardElevation = MyApplication.convertDpToPixel(25, holder.itemView.context).toFloat()
+            holder.cardUnreadOverlay.setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow))
+            holder.root.setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerHigh))
             holder.cardNewMark.visibility = INVISIBLE
             text = context.getString(R.string.mark_as_unread)
             icon = AppCompatResources.getDrawable(holder.itemView.context, R.drawable.eye_off)

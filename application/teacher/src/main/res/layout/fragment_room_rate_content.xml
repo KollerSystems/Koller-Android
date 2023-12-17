@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/full_card_padding"
             android:layout_marginBottom="@dimen/full_card_padding"
-            app:cardElevation="@dimen/header_footer_elevation"
+            app:cardBackgroundColor="?attr/colorSurfaceContainer"
             app:cardPreventCornerOverlap="false"
             app:shapeAppearanceOverlay="@style/overlayRoundedCardBottom">
 

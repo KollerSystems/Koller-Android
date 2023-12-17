@@ -15,9 +15,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
-        android:outlineProvider="none"
+        app:cardBackgroundColor="?attr/colorSurfaceContainer"
         app:cardCornerRadius="0dp"
-        app:cardElevation="@dimen/header_footer_elevation"
         app:contentPadding="@dimen/spacing">
 
         <TextView
