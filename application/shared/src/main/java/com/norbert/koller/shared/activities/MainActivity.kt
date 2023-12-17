@@ -17,6 +17,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
@@ -27,19 +28,20 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.camelToSnakeCase
-import com.norbert.koller.shared.fragments.FragmentHolderFragment
+
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.getColorOfPixel
 import com.norbert.koller.shared.getStringResourceByName
+import java.util.Stack
 
 
 abstract class MainActivity : AppCompatActivity() {
 
-    lateinit var fragmentManager : FragmentContainerView
+    lateinit var fragmentHolder : FragmentContainerView
     lateinit var toolbarContainer : LinearLayout
     lateinit var toolbarTitle : TextView
     lateinit var toolbarDescription : TextView
-    var selectedIndex = 0
+    var selectedID = 0
 
     lateinit var bottomNavigationView : BottomNavigationView
 
@@ -50,8 +52,21 @@ abstract class MainActivity : AppCompatActivity() {
 
     var mainFragmentList : ArrayList<Int> = arrayListOf(0)
 
+    /*private lateinit var homeFragment: FragmentHolderFragment
+    private lateinit var calendarFragment: FragmentHolderFragment
+    private lateinit var studentHostelFragment: FragmentHolderFragment
+    private lateinit var notificationsFragment: FragmentHolderFragment*/
 
-    var onlyIcon : Boolean = false
+
+
+    /*private val fragments: Array<FragmentHolderFragment>
+        get() = arrayOf(
+            homeFragment,
+            calendarFragment,
+            studentHostelFragment,
+            notificationsFragment
+        )
+    */
 
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -69,33 +84,33 @@ abstract class MainActivity : AppCompatActivity() {
         toolbarDescription = findViewById(R.id.toolbar_description)
         defaultTitlePadding = toolbarContainer.paddingLeft
 
-        if (savedInstanceState == null) {
+        /*if (savedInstanceState == null) {
             val homeFragment = FragmentHolderFragment().also { this.homeFragment = it }
             val calendarFragment = FragmentHolderFragment().also { this.calendarFragment = it }
             val studentHostelFragment = FragmentHolderFragment().also { this.studentHostelFragment = it }
             val notificationsFragment = FragmentHolderFragment().also { this.notificationsFragment = it }
 
 
-            supportFragmentManager.beginTransaction()
+            supportfragmentHolder.beginTransaction()
                 .add(R.id.main_fragment, homeFragment, "homeFragment")
                 .add(R.id.main_fragment, calendarFragment, "calendarFragment")
                 .add(R.id.main_fragment, studentHostelFragment, "studentHostelFragment")
                 .add(R.id.main_fragment, notificationsFragment, "notificationsFragment")
-                .selectFragment(selectedIndex)
+                .selectFragment(selectedID)
                 .commit()
         } else {
-            homeFragment = supportFragmentManager.findFragmentByTag("homeFragment") as FragmentHolderFragment
-            calendarFragment = supportFragmentManager.findFragmentByTag("calendarFragment") as FragmentHolderFragment
-            studentHostelFragment = supportFragmentManager.findFragmentByTag("studentHostelFragment") as FragmentHolderFragment
-            notificationsFragment = supportFragmentManager.findFragmentByTag("notificationsFragment") as FragmentHolderFragment
+            homeFragment = supportfragmentHolder.findFragmentByTag("homeFragment") as FragmentHolderFragment
+            calendarFragment = supportfragmentHolder.findFragmentByTag("calendarFragment") as FragmentHolderFragment
+            studentHostelFragment = supportfragmentHolder.findFragmentByTag("studentHostelFragment") as FragmentHolderFragment
+            notificationsFragment = supportfragmentHolder.findFragmentByTag("notificationsFragment") as FragmentHolderFragment*
         }
 
         homeFragment.startFragment = MyApplication.homeFragment()
         calendarFragment.startFragment = MyApplication.calendarFragment()
         studentHostelFragment.startFragment = MyApplication.studentHostelFragment()
-        notificationsFragment.startFragment = NotificationsFragment()
+        notificationsFragment.startFragment = NotificationsFragment()*/
 
-        fragmentManager = findViewById(R.id.main_fragment)
+        fragmentHolder = findViewById(R.id.main_fragment)
 
 
 
@@ -122,37 +137,15 @@ abstract class MainActivity : AppCompatActivity() {
 
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
 
-            if(onlyIcon) return@setOnItemSelectedListener true
-
-            when (menuItem.itemId) {
-
-                R.id.home -> {
-
-                    selectedIndex = 0
-                }
-                R.id.calendar -> {
-
-                    selectedIndex = 1
-                }
-                R.id.studentHostel -> {
-
-                    selectedIndex = 2
-                }
-                R.id.notifications -> {
-
-                    selectedIndex = 3
-                }
+            changeBackStackState(menuItem.itemId)
 
 
-            }
-
-            selectFragment(selectedIndex)
             return@setOnItemSelectedListener true
         }
 
         bottomNavigationView.setOnItemReselectedListener { menuItem ->
 
-            fragments[selectedIndex].toDefaultFragment()
+            dropAllFragments()
 
         }
 
@@ -167,15 +160,10 @@ abstract class MainActivity : AppCompatActivity() {
             window.navigationBarColor = navViewColor
         }
 
+        changeBackStackState(R.id.home)
+
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112);
     }
-
-    fun changeSelectedBottomNavigationIcon(selectedItemId : Int){
-        onlyIcon = true
-        bottomNavigationView.selectedItemId = selectedItemId
-        onlyIcon = false
-    }
-
 
     fun showBackButton(show : Boolean){
         if(!show){
@@ -192,39 +180,19 @@ abstract class MainActivity : AppCompatActivity() {
         }
     }
 
-    private lateinit var homeFragment: FragmentHolderFragment
-    private lateinit var calendarFragment: FragmentHolderFragment
-    private lateinit var studentHostelFragment: FragmentHolderFragment
-    private lateinit var notificationsFragment: FragmentHolderFragment
 
-
-
-    private val fragments: Array<FragmentHolderFragment>
-        get() = arrayOf(
-            homeFragment,
-            calendarFragment,
-            studentHostelFragment,
-            notificationsFragment
-        )
 
     override fun onBackPressed() {
 
         appBar.setExpanded(false)
-            if (fragments[selectedIndex].childFragmentManager.backStackEntryCount > 0) {
-
-                fragments[selectedIndex].childFragmentManager.popBackStack()
-                backButton.post {
-                    changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
-                    if (fragments[selectedIndex].childFragmentManager.backStackEntryCount == 0) {
-                        showBackButton(false)
-                    }
-                }
+            if (supportFragmentManager.backStackEntryCount > 1) {
+                dropLastFragment()
 
             } else {
                 if (mainFragmentList.size == 1) {
 
-                    if (selectedIndex != 0) {
-                        selectFragment(0)
+                    if (selectedID != R.id.home) {
+                        bottomNavigationView.selectedItemId = selectedID
                         mainFragmentList = arrayListOf(0)
                     }
                     else{
@@ -235,39 +203,150 @@ abstract class MainActivity : AppCompatActivity() {
                 else{
 
                     mainFragmentList.removeLast()
-                    selectFragment(mainFragmentList.last())
+                    bottomNavigationView.selectedItemId = selectedID
+
                 }
 
             }
 
 
-
-        changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
     }
 
-    fun changeToolbarTitleToCurrentFragmentName(fragment: Fragment){
-        setToolbarTitle(this.getStringResourceByName(fragment.javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
+    fun changeToolbarTitleToCurrentFragmentName(){
+        toolbarTitle.post{
+            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
+        }
+    }
+
+    fun dropLastFragment(){
+        supportFragmentManager.popBackStack()
+
+        updateValuesOnFragmentReplace()
+        showBackButtonIfNeeded()
+    }
+
+    fun dropAllFragments(){
+        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+
+        val fragment = when (selectedID) {
+            R.id.home -> {
+                MyApplication.homeFragment()
+            }
+
+            R.id.calendar -> {
+                MyApplication.calendarFragment()
+            }
+
+            R.id.studentHostel -> {
+                MyApplication.studentHostelFragment()
+            }
+
+            R.id.notifications -> {
+                MyApplication.notificationFragment()
+            }
+
+            else -> {
+                Fragment()
+            }
+        }
+
+        replaceFragment(fragment)
+
+        updateValuesOnFragmentReplace()
+        showBackButton(false)
+    }
+
+    fun addFragment(fragment: Fragment){
+        replaceFragment(fragment)
+
+        updateValuesOnFragmentReplace()
+        showBackButton(true)
+    }
+
+    var hasHome = false
+    var hasCalendar = false
+    var hasStudentHostel = false
+    var hasNotification = false
+
+
+    fun changeBackStackState(idToSelect : Int){
+
+        supportFragmentManager.saveBackStack(selectedID.toString())
+        selectedID = idToSelect
+
+        supportFragmentManager.restoreBackStack(idToSelect.toString())
+
+        when (selectedID) {
+            R.id.home -> {
+                if(!hasHome) {
+                    hasHome = true
+                    replaceFragment(MyApplication.homeFragment())
+                }
+            }
+
+            R.id.calendar -> {
+                if(!hasCalendar) {
+                    hasCalendar = true
+                    replaceFragment(MyApplication.calendarFragment())
+                }
+            }
+
+            R.id.studentHostel -> {
+                if(!hasStudentHostel) {
+                    hasStudentHostel = true
+                    replaceFragment(MyApplication.studentHostelFragment())
+                }
+            }
+
+            R.id.notifications -> {
+                if(!hasNotification) {
+                    hasNotification = true
+                    replaceFragment(MyApplication.notificationFragment())
+                }
+            }
+        }
+
+
+        if (mainFragmentList.contains(selectedID)) {
+            mainFragmentList.remove(selectedID)
+        }
+        mainFragmentList.add(selectedID)
+
+        updateValuesOnFragmentReplace()
+        showBackButtonIfNeeded()
 
     }
 
-    fun changeFragment(fragment: Fragment){
-        val fragmentTransaction: FragmentTransaction = fragments[selectedIndex].childFragmentManager.beginTransaction()
+    fun replaceFragment(fragment: Fragment) : FragmentTransaction{
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
             R.anim.anim_in,
             R.anim.anim_out,
             R.anim.anim_in,
             R.anim.anim_out
         )
-        fragmentTransaction.replace(R.id.inner_fragment_container_view, fragment)
-        fragmentTransaction.addToBackStack(null)
+        fragmentTransaction.replace(R.id.main_fragment, fragment, "${selectedID}+${supportFragmentManager.backStackEntryCount}")
         fragmentTransaction.setReorderingAllowed(true)
+        fragmentTransaction.addToBackStack(selectedID.toString())
         fragmentTransaction.commit()
 
+
+        return fragmentTransaction
+    }
+
+    fun updateValuesOnFragmentReplace(){
         appBar.setExpanded(false)
+        changeToolbarTitleToCurrentFragmentName()
+    }
 
-        showBackButton(true)
-
-        changeToolbarTitleToCurrentFragmentName(fragment)
+    fun showBackButtonIfNeeded(){
+        toolbarTitle.post {
+            if (supportFragmentManager.backStackEntryCount == 1) {
+                showBackButton(false)
+            } else {
+                showBackButton(true)
+            }
+        }
     }
 
 
@@ -300,11 +379,11 @@ abstract class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun selectFragment(indexToSelect: Int) {
-        selectedIndex = indexToSelect
+    /*private fun selectFragment(indexToSelect: Int) {
+        selectedID = indexToSelect
 
 
-        val transaction = supportFragmentManager.beginTransaction()
+        val transaction = supportfragmentHolder.beginTransaction()
             .setCustomAnimations(
                 R.anim.anim_in,
                 R.anim.anim_out,
@@ -315,8 +394,8 @@ abstract class MainActivity : AppCompatActivity() {
             .selectFragment(indexToSelect)
             .commit()
 
-        if(fragments[selectedIndex].childFragmentManager.fragments.size != 0)
-            changeToolbarTitleToCurrentFragmentName(fragments[selectedIndex].childFragmentManager.fragments[0])
+        if(fragments[selectedID].childfragmentHolder.fragments.size != 0)
+            changeToolbarTitleToCurrentFragmentName(fragments[selectedID].childfragmentHolder.fragments[0])
 
 
         if(mainFragmentList.contains(indexToSelect)) mainFragmentList.remove(indexToSelect)
@@ -345,7 +424,7 @@ abstract class MainActivity : AppCompatActivity() {
         changeSelectedBottomNavigationIcon(selectedId)
 
         appBar.setExpanded(false)
-        if(fragments[selectedIndex].childFragmentManager.backStackEntryCount == 0){
+        if(fragments[selectedID].childfragmentHolder.backStackEntryCount == 0){
             showBackButton(false)
         }
         else{
@@ -353,11 +432,11 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
 
-    }
+    }*/
 
-    private fun FragmentTransaction.selectFragment(selectedIndex: Int): FragmentTransaction {
+    /*private fun FragmentTransaction.selectFragment(selectedID: Int): FragmentTransaction {
         fragments.forEachIndexed { index, fragment ->
-            if (index == selectedIndex) {
+            if (index == selectedID) {
                 attach(fragment)
             } else {
                 detach(fragment)
@@ -366,6 +445,6 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         return this
-    }
+    }*/
 
 }
