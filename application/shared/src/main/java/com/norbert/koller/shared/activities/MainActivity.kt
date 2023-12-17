@@ -9,6 +9,7 @@ import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -50,7 +51,7 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var appBar : AppBarLayout
     lateinit var backButton : Button
 
-    var mainFragmentList : ArrayList<Int> = arrayListOf(0)
+    var mainFragmentList : ArrayList<Int> = arrayListOf()
 
     /*private lateinit var homeFragment: FragmentHolderFragment
     private lateinit var calendarFragment: FragmentHolderFragment
@@ -192,7 +193,7 @@ abstract class MainActivity : AppCompatActivity() {
                 if (mainFragmentList.size == 1) {
 
                     if (selectedID != R.id.home) {
-                        bottomNavigationView.selectedItemId = selectedID
+                        bottomNavigationView.selectedItemId = R.id.home
                         mainFragmentList = arrayListOf(0)
                     }
                     else{
@@ -203,7 +204,7 @@ abstract class MainActivity : AppCompatActivity() {
                 else{
 
                     mainFragmentList.removeLast()
-                    bottomNavigationView.selectedItemId = selectedID
+                    bottomNavigationView.selectedItemId = mainFragmentList.last()
 
                 }
 
@@ -226,6 +227,9 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     fun dropAllFragments(){
+        if(supportFragmentManager.backStackEntryCount <=1)
+            return
+
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 
         val fragment = when (selectedID) {
@@ -312,12 +316,14 @@ abstract class MainActivity : AppCompatActivity() {
         }
         mainFragmentList.add(selectedID)
 
+        //Toast.makeText(this, mainFragmentList.toString(), Toast.LENGTH_LONG).show()
+
         updateValuesOnFragmentReplace()
         showBackButtonIfNeeded()
 
     }
 
-    fun replaceFragment(fragment: Fragment) : FragmentTransaction{
+    fun replaceFragment(fragment: Fragment){
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
             R.anim.anim_in,
@@ -330,8 +336,6 @@ abstract class MainActivity : AppCompatActivity() {
         fragmentTransaction.addToBackStack(selectedID.toString())
         fragmentTransaction.commit()
 
-
-        return fragmentTransaction
     }
 
     fun updateValuesOnFragmentReplace(){
@@ -348,12 +352,6 @@ abstract class MainActivity : AppCompatActivity() {
             }
         }
     }
-
-
-
-
-
-
 
     fun setToolbarTitle(title : String?, description : String?){
 
@@ -378,73 +376,4 @@ abstract class MainActivity : AppCompatActivity() {
             ) { dialogInterface, i -> }
             .show()
     }
-
-    /*private fun selectFragment(indexToSelect: Int) {
-        selectedID = indexToSelect
-
-
-        val transaction = supportfragmentHolder.beginTransaction()
-            .setCustomAnimations(
-                R.anim.anim_in,
-                R.anim.anim_out,
-                R.anim.anim_in,
-                R.anim.anim_out
-            )
-
-            .selectFragment(indexToSelect)
-            .commit()
-
-        if(fragments[selectedID].childfragmentHolder.fragments.size != 0)
-            changeToolbarTitleToCurrentFragmentName(fragments[selectedID].childfragmentHolder.fragments[0])
-
-
-        if(mainFragmentList.contains(indexToSelect)) mainFragmentList.remove(indexToSelect)
-        mainFragmentList.add(indexToSelect)
-
-        val selectedId = when (indexToSelect) {
-
-            0 -> {
-
-                R.id.home
-            }
-            1 -> {
-
-                R.id.calendar
-            }
-            2 -> {
-
-                R.id.studentHostel
-            }
-            3 -> {
-
-                R.id.notifications
-            }
-            else -> 0
-        }
-        changeSelectedBottomNavigationIcon(selectedId)
-
-        appBar.setExpanded(false)
-        if(fragments[selectedID].childfragmentHolder.backStackEntryCount == 0){
-            showBackButton(false)
-        }
-        else{
-            showBackButton(true)
-        }
-
-
-    }*/
-
-    /*private fun FragmentTransaction.selectFragment(selectedID: Int): FragmentTransaction {
-        fragments.forEachIndexed { index, fragment ->
-            if (index == selectedID) {
-                attach(fragment)
-            } else {
-                detach(fragment)
-            }
-
-        }
-
-        return this
-    }*/
-
 }
