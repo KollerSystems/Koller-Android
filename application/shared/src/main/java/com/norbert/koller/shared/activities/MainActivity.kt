@@ -55,6 +55,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         outState.putIntArray("savedBackStacks", savedBackStacks.toIntArray())
+        outState.putIntArray("mainFragmentList", mainFragmentList.toIntArray())
         super.onSaveInstanceState(outState)
     }
 
@@ -124,6 +125,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
         else{
             savedBackStacks = savedInstanceState.getIntArray("savedBackStacks")!!.toMutableSet()
+            mainFragmentList = savedInstanceState.getIntArray("mainFragmentList")!!.toCollection(java.util.ArrayList())
         }
 
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112);
@@ -236,33 +238,37 @@ abstract class MainActivity : AppCompatActivity() {
     fun changeBackStackState(idToSelect : Int){
 
 
-        //TODO kitalálni mi a hiba
-        if(idToSelect == bottomNavigationView.selectedItemId) {
+        if(idToSelect != bottomNavigationView.selectedItemId) {
             supportFragmentManager.saveBackStack(bottomNavigationView.selectedItemId.toString())
-            savedBackStacks.add(idToSelect)
+            savedBackStacks.add(bottomNavigationView.selectedItemId)
         }
 
         supportFragmentManager.restoreBackStack(idToSelect.toString())
 
         if(!savedBackStacks.contains(idToSelect)) {
-            when (idToSelect) {
+            val fragment = when (idToSelect) {
                 R.id.home -> {
-                    replaceFragment(MyApplication.homeFragment())
+                    MyApplication.homeFragment()
                 }
 
                 R.id.calendar -> {
-                    replaceFragment(MyApplication.calendarFragment())
+                    MyApplication.calendarFragment()
                 }
 
                 R.id.studentHostel -> {
-                    replaceFragment(MyApplication.studentHostelFragment())
+                    MyApplication.studentHostelFragment()
                 }
 
                 R.id.notifications -> {
-                    replaceFragment(MyApplication.notificationFragment())
+                    MyApplication.notificationFragment()
+                }
+                else -> {
+                    Fragment()
                 }
             }
+            replaceFragment(fragment, idToSelect)
         }
+
 
 
         if (mainFragmentList.contains(idToSelect)) {
@@ -277,7 +283,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     }
 
-    fun replaceFragment(fragment: Fragment){
+    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId){
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.setCustomAnimations(
             R.anim.anim_in,
@@ -285,9 +291,9 @@ abstract class MainActivity : AppCompatActivity() {
             R.anim.anim_in,
             R.anim.anim_out
         )
-        fragmentTransaction.replace(R.id.main_fragment, fragment, "${bottomNavigationView.selectedItemId}+${supportFragmentManager.backStackEntryCount}")
+        fragmentTransaction.replace(R.id.main_fragment, fragment, "${selectedItemId}+${supportFragmentManager.backStackEntryCount}")
         fragmentTransaction.setReorderingAllowed(true)
-        fragmentTransaction.addToBackStack(bottomNavigationView.selectedItemId.toString())
+        fragmentTransaction.addToBackStack(selectedItemId.toString())
         fragmentTransaction.commit()
 
     }
