@@ -15,7 +15,7 @@ object RetrofitHelper {
         .addInterceptor(loggingInterceptor)
         .build()
 
-    val dIP = "http://koller.nzx.hu:48659/"
+    val dIP = "http://main.nzx.hu:48659/"
     val grazIP = ""
 
     private val retrofit = Retrofit.Builder()
