@@ -126,6 +126,8 @@ abstract class MainActivity : AppCompatActivity() {
         else{
             savedBackStacks = savedInstanceState.getIntArray("savedBackStacks")!!.toMutableSet()
             mainFragmentList = savedInstanceState.getIntArray("mainFragmentList")!!.toCollection(java.util.ArrayList())
+            changeToolbarTitleToCurrentFragmentName()
+            showBackButtonIfNeeded()
         }
 
         ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112);
