@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.recycleradapter
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -25,5 +26,5 @@ class BaseViewModel(pagingSource: (()-> BasePagingSource)) : ViewModel() {
             prefetchDistance = 2)
         ) {
         pagingSource()
-    }.flow
+    }.flow.cachedIn(viewModelScope)
 }

@@ -34,6 +34,8 @@ import kotlinx.coroutines.launch
 open class RoomsFragment : Fragment() {
 
     private lateinit var roomsRecyclerView: SuperCoolRecyclerView
+    lateinit var roomRecycleAdapter : RoomRecyclerAdapter
+    lateinit var viewModel : BaseViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -95,8 +97,8 @@ open class RoomsFragment : Fragment() {
             ListItem( getString(R.string.boy), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
         ))
 
-        val roomRecycleAdapter = RoomRecyclerAdapter(chipGroup, listOf(chipSide))
-        val viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter) }
+        roomRecycleAdapter = RoomRecyclerAdapter(chipGroup, listOf(chipSide))
+        viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter) }
 
 
         roomsRecyclerView.recyclerView.apply {
