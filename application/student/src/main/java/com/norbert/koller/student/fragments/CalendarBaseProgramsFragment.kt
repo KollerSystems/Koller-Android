@@ -5,11 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.recycleradapter.BaseViewModel
+import com.norbert.koller.shared.viewmodels.BaseViewModel
 import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.BaseProgramPagingSource
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
@@ -58,7 +59,10 @@ class CalendarBaseProgramsFragment : Fragment() {
         ))
 
 
-        val viewModel = BaseViewModel { BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter) }
+        val viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+        viewModel.pagingSource = {
+            BaseProgramPagingSource(requireContext(), baseProgramRecycleAdapter)
+        }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -17,9 +18,10 @@ import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
-import com.norbert.koller.shared.recycleradapter.BaseViewModel
+import com.norbert.koller.shared.viewmodels.BaseViewModel
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.UserRecyclerAdapter
+import com.norbert.koller.shared.viewmodels.UserViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -31,7 +33,7 @@ open class UsersFragment : Fragment() {
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 
     var userRecycleAdapter : UserRecyclerAdapter? = null
-    var viewModel : BaseViewModel? = null
+    lateinit var viewModel : BaseViewModel
 
     companion object{
         var savedValues : ArrayList<BaseData>? = null
@@ -69,14 +71,15 @@ open class UsersFragment : Fragment() {
         val chipRole : Chip = view.findViewById(R.id.chip_role)
 
 
-            userRecycleAdapter = UserRecyclerAdapter(chipGroupSort, listOf(chipGender, chipRole))
-            viewModel = BaseViewModel{
-                val pagingSource = UserPagingSource(requireContext(), userRecycleAdapter!!)
-                pagingSource.savedValues = savedValues
-                savedValues = null
-                return@BaseViewModel pagingSource
-            }
+        userRecycleAdapter = UserRecyclerAdapter(chipGroupSort, listOf(chipGender, chipRole))
 
+        viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+        viewModel.pagingSource = {
+            val pagingSource = UserPagingSource(requireContext(), userRecycleAdapter!!)
+            pagingSource.savedValues = savedValues
+            savedValues = null
+            pagingSource
+        }
 
 
         chipGender.connectToCheckBoxList(childFragmentManager, "Gender", R.string.gender, arrayListOf(
@@ -99,7 +102,7 @@ open class UsersFragment : Fragment() {
 
         lifecycleScope.launch {
 
-            viewModel!!.pagingData.collectLatest { pagingData ->
+            viewModel.pagingData.collectLatest { pagingData ->
                 userRecycleAdapter!!.submitData(pagingData)
             }
         }
@@ -113,6 +116,11 @@ open class UsersFragment : Fragment() {
     override fun onStop() {
         super.onStop()
         val rcItems = userRecycleAdapter!!.snapshot().items
+
+        if(rcItems.size == 0){
+            return
+        }
+
         savedValues = arrayListOf()
         for (rcItem in rcItems){
             if(rcItem is BaseData){

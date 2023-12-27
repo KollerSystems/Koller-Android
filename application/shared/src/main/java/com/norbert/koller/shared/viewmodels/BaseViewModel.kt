@@ -1,4 +1,4 @@
-package com.norbert.koller.shared.recycleradapter
+package com.norbert.koller.shared.viewmodels
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,18 +6,17 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.norbert.koller.shared.api.UserPagingSource
-import kotlinx.coroutines.CoroutineScope
+import com.norbert.koller.shared.recycleradapter.BasePagingSource
 import kotlinx.coroutines.flow.Flow
 
-class BaseViewModel(pagingSource: (()-> BasePagingSource)) : ViewModel() {
+class BaseViewModel : ViewModel() {
 
 
     companion object{
         const val pageSize : Int = 25
     }
 
-
+    lateinit var pagingSource: (()-> BasePagingSource)
 
     val pagingData: Flow<PagingData<Any>> = Pager(
         config = PagingConfig(

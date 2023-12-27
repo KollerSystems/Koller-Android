@@ -8,13 +8,13 @@ import android.util.Log
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.google.android.material.chip.Chip
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.FilterDateData
 import com.norbert.koller.shared.data.FiltersData
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.delay
 import retrofit2.Response
 import kotlin.random.Random

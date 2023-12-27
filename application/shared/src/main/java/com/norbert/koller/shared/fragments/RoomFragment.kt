@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -18,6 +19,7 @@ import com.norbert.koller.shared.customview.FullScreenLoading
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapter.UserPreviewRecyclerAdapter
+import com.norbert.koller.shared.viewmodels.UserViewModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -31,6 +33,7 @@ abstract class RoomFragment : Fragment() {
     lateinit var buttonDesc : Button
     lateinit var loadingOl : FullScreenLoading
 
+    private lateinit var viewModel: UserViewModel
     var RID : Int = -1
 
 
@@ -41,7 +44,7 @@ abstract class RoomFragment : Fragment() {
         if (bundle != null) {
             RID = bundle.getInt("RID")
         }
-
+        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
 
         textTitle = view.findViewById(R.id.room_text_title)
@@ -52,50 +55,56 @@ abstract class RoomFragment : Fragment() {
         usersRecyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.HORIZONTAL,false)
         usersRecyclerView.setHasFixedSize(false)
 
-       fun loadData(){
-           val roomResponse = RetrofitHelper.buildService(APIInterface::class.java)
-           roomResponse.getRoom(RID, APIInterface.getHeaderMap()).enqueue(
-               object : Callback<RoomData> {
-                   override fun onResponse(
-                       call: Call<RoomData>,
-                       userResponse: Response<RoomData>
-                   ) {
-                       if (userResponse.isSuccessful) {
-
-                           val roomData: RoomData = userResponse.body()!!
 
 
-                           if(roomData.Residents != null) {
-                               usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
-                                   roomData.Residents!!,
-                                   requireContext()
-                               )
-                           }
+        if(!viewModel.response.isInitialized){
+            loadingOl.loadData = {loadData()}
+        }
 
-                           textTitle.text = roomData.RID.toString()
+        viewModel.response.observe(viewLifecycleOwner) { response ->
+            response as RoomData
+            if(response.Residents != null) {
+                usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
+                    response.Residents!!,
+                    requireContext()
+                )
+            }
 
-                           buttonDesc.text = roomData.Group
+            textTitle.text = response.RID.toString()
 
-                           buttonDesc.setOnClickListener{
-                               (context as MainActivity).addFragment(MyApplication.usersFragment())
-                           }
+            buttonDesc.text = response.Group
 
-                           loadingOl.setState(FullScreenLoading.NONE)
+            buttonDesc.setOnClickListener{
+                (context as MainActivity).addFragment(MyApplication.usersFragment())
+            }
 
-                       } else {
-                           loadingOl.setState(FullScreenLoading.ERROR)
-                       }
-                   }
+        }
 
-                   override fun onFailure(call: Call<RoomData>, t: Throwable) {
-                       loadingOl.setState(FullScreenLoading.ERROR)
-                   }
-               }
-           )
-       }
+    }
 
-        loadingOl.loadData = {loadData()}
+    fun loadData(){
+        val roomResponse = RetrofitHelper.buildService(APIInterface::class.java)
+        roomResponse.getRoom(RID, APIInterface.getHeaderMap()).enqueue(
+            object : Callback<RoomData> {
+                override fun onResponse(
+                    call: Call<RoomData>,
+                    userResponse: Response<RoomData>
+                ) {
+                    if (userResponse.isSuccessful) {
 
+                        viewModel.response.value = userResponse.body()!!
+                        loadingOl.setState(FullScreenLoading.NONE)
+
+                    } else {
+                        loadingOl.setState(FullScreenLoading.ERROR)
+                    }
+                }
+
+                override fun onFailure(call: Call<RoomData>, t: Throwable) {
+                    loadingOl.setState(FullScreenLoading.ERROR)
+                }
+            }
+        )
     }
 
 }

@@ -4,17 +4,15 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.InputMethodManager
 import android.widget.Button
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
@@ -23,7 +21,7 @@ import com.norbert.koller.shared.customview.ExtraEditText
 import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.FilterBaseData
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
-import com.norbert.koller.shared.recycleradapter.BaseViewModel
+import com.norbert.koller.shared.viewmodels.BaseViewModel
 import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.shared.recycleradapter.RoomRecyclerAdapter
 import com.norbert.koller.shared.setVisibilityBy
@@ -98,7 +96,10 @@ open class RoomsFragment : Fragment() {
         ))
 
         roomRecycleAdapter = RoomRecyclerAdapter(chipGroup, listOf(chipSide))
-        viewModel = BaseViewModel { RoomPagingSource(requireContext(), roomRecycleAdapter) }
+        viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+        viewModel.pagingSource ={
+            RoomPagingSource(requireContext(), roomRecycleAdapter)
+        }
 
 
         roomsRecyclerView.recyclerView.apply {

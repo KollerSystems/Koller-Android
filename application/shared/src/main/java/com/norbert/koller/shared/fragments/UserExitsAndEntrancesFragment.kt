@@ -6,13 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.recycleradapter.GateRecyclerAdapter
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.recycleradapter.BaseViewModel
+import com.norbert.koller.shared.viewmodels.BaseViewModel
 import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.CrossingPagingSource
 import com.norbert.koller.shared.checkByPass
@@ -97,10 +98,12 @@ class UserExitsAndEntrancesFragment(val UID : Int) : Fragment() {
 
         val gateRecycleAdapter = GateRecyclerAdapter(chipGroupSort, listOf(chipDirection, chipDate))
 
-        val viewModel = BaseViewModel {
+        val viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+        viewModel.pagingSource = {
             CrossingPagingSource(
                 requireContext(),
-                gateRecycleAdapter) }
+                gateRecycleAdapter)
+        }
 
         scRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())

@@ -16,7 +16,7 @@ class FullScreenLoading(context: Context, attrs: AttributeSet) : LinearLayout(co
     private val loading : View
     private val error : View
     private val retry : Button
-    lateinit var loadData: () -> Unit
+    var loadData: (() -> Unit)? = null
 
     fun crossFade(toHide : View, toShow : View){
         toHide.animate()
@@ -72,11 +72,16 @@ class FullScreenLoading(context: Context, attrs: AttributeSet) : LinearLayout(co
 
         retry.setOnClickListener{
             setState(LOADING)
-            loadData.invoke()
+            loadData!!.invoke()
         }
 
         overlay.post{
-            loadData.invoke()
+            if(loadData != null) {
+                loadData!!.invoke()
+            }
+            else{
+                overlay.visibility = View.GONE
+            }
         }
     }
 

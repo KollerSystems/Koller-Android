@@ -19,6 +19,9 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.MyNotificationPublisher
@@ -30,6 +33,7 @@ import com.norbert.koller.shared.customview.FullScreenLoading
 import com.norbert.koller.shared.customview.RoundedBadgeImageView
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.NotificationHelper
+import com.norbert.koller.shared.viewmodels.UserViewModel
 import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
 import retrofit2.Callback
@@ -39,6 +43,11 @@ import retrofit2.Response
 abstract class UserFragment : Fragment() {
 
     var UID : Int = -1
+    lateinit var loadingOl : FullScreenLoading
+
+    private lateinit var viewModel: UserViewModel
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -47,7 +56,7 @@ abstract class UserFragment : Fragment() {
             UID = bundle.getInt("UID")
         }
 
-
+        viewModel = ViewModelProvider(this)[UserViewModel::class.java]
 
         val textName : TextView = view.findViewById(R.id.user_text_name)
         val buttonGroup : Button = view.findViewById(R.id.user_button_group)
@@ -60,9 +69,13 @@ abstract class UserFragment : Fragment() {
         val instagramCard : Chip = view.findViewById(R.id.user_view_instagram)
         val emailCard : Chip = view.findViewById(R.id.user_view_email)
 
-        val loadingOl : FullScreenLoading = view.findViewById(R.id.loading_overlay)
+        loadingOl = view.findViewById(R.id.loading_overlay)
 
         val nestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
+
+
+
+
 
         fun isVisible(view: View): Boolean {
             if (!view.isShown) {
@@ -85,76 +98,89 @@ abstract class UserFragment : Fragment() {
             }
         }
 
-        fun loadData(){
+        if(!viewModel.response.isInitialized){
+            loadingOl.loadData = {loadData()}
+        }
 
-            val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
-            usersResponse.getUser(UID, APIInterface.getHeaderMap()).enqueue(
-                object : Callback<UserData> {
-                    override fun onResponse(
-                        call: Call<UserData>,
-                        userResponse: Response<UserData>
-                    ) {
-                        if (userResponse.code() == 200) {
+        viewModel.response.observe(viewLifecycleOwner) {response ->
 
-                            val userData: UserData = userResponse.body()!!
+            response as UserData
 
-                            badgeUser.setColorBasedOnClass(userData.Class?.Class)
+            badgeUser.setColorBasedOnClass(response.Class?.Class)
 
-                            textName.text = userData.Name
+            textName.text = response.Name
 
-                            buttonGroup.text = userData.Group
-                            buttonRoom.text = userData.RID.toString()
-                            buttonClass.text = userData.Class?.Class
+            buttonGroup.text = response.Group
+            buttonRoom.text = response.RID.toString()
+            buttonClass.text = response.Class?.Class
 
-                            nestedScrollView.setOnScrollChangeListener{ view: View, i: Int, i1: Int, i2: Int, i3: Int ->
-                                if (isVisible(textName)) {
-                                    (activity as MainActivity).setToolbarTitle(getString(R.string.user),null)
+            nestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
+                if (isVisible(textName)) {
+                    (activity as MainActivity).setToolbarTitle(getString(R.string.user), null)
 
-                                } else {
-                                    (activity as MainActivity).setToolbarTitle(userData.Name, userData.createDescription())
-                                }
-                            }
+                } else {
+                    (activity as MainActivity).setToolbarTitle(response.Name, response.createDescription())
+                }
+            }
 
-                            buttonRoom.setOnClickListener{
-                                val bundle = Bundle()
-                                bundle.putInt("RID", userData.RID!!)
-                                val fragment = MyApplication.roomFragment()
-                                fragment.arguments = bundle
-                                (requireContext() as MainActivity).addFragment(fragment)
-                            }
+            buttonRoom.setOnClickListener {
+                val bundle = Bundle()
+                bundle.putInt("RID", response.RID!!)
+                val fragment = MyApplication.roomFragment()
+                fragment.arguments = bundle
+                (requireContext() as MainActivity).addFragment(fragment)
+            }
 
-                            showAndSetIfNotNull(discordCard, userData.Discord)
-                            showAndSetIfNotNull(facebookCard, userData.Facebook)
-                            showAndSetIfNotNull(instagramCard, userData.Instagram)
-                            showAndSetIfNotNull(emailCard, userData.Email)
+            showAndSetIfNotNull(discordCard, response.Discord)
+            showAndSetIfNotNull(facebookCard, response.Facebook)
+            showAndSetIfNotNull(instagramCard, response.Instagram)
+            showAndSetIfNotNull(emailCard, response.Email)
+        }
 
-                            badgeUser.card.setOnClickListener{
-                                StfalconImageViewer.Builder(context, listOf(badgeUser.image.drawable)){view, drawable ->
-                                    view.setImageDrawable(drawable)
-                                }
-                                    .withStartPosition(0)
-                                    .withTransitionFrom(badgeUser.image)
-                                    .show(parentFragmentManager)
-                            }
+        badgeUser.card.setOnClickListener{
+            StfalconImageViewer.Builder(context, listOf(badgeUser.image.drawable)){view, drawable ->
+                view.setImageDrawable(drawable)
+            }
+                .withStartPosition(0)
+                .withTransitionFrom(badgeUser.image)
+                .show(parentFragmentManager)
+        }
+    }
 
-                            loadingOl.setState(FullScreenLoading.NONE)
-                            sendNotification()
+    fun loadData(){
 
-                        } else {
-                            loadingOl.setState(FullScreenLoading.ERROR)
-                        }
-                    }
+        val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
+        usersResponse.getUser(UID, APIInterface.getHeaderMap()).enqueue(
+            object : Callback<UserData> {
+                override fun onResponse(
+                    call: Call<UserData>,
+                    userResponse: Response<UserData>
+                ) {
+                    if (userResponse.code() == 200) {
 
-                    override fun onFailure(call: Call<UserData>, t: Throwable) {
+
+                        viewModel.response.value = userResponse.body()!!
+                        loadingOl.setState(FullScreenLoading.NONE)
+
+
+
+
+
+
+
+                        sendNotification()
+
+                    } else {
                         loadingOl.setState(FullScreenLoading.ERROR)
                     }
                 }
-            )
-        }
 
-        loadingOl.loadData = {loadData()}
+                override fun onFailure(call: Call<UserData>, t: Throwable) {
+                    loadingOl.setState(FullScreenLoading.ERROR)
+                }
+            }
+        )
     }
-
 
 
     private val notificationId = 101
