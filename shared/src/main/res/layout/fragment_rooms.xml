@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.norbert.koller.shared.customview.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground"
+    android:orientation="vertical"
+    android:translationZ="100dp"
+    tools:context=".fragments.UsersFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            style="@style/tricky_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/mcard_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:outlineProvider="none"
+                app:cardCornerRadius="@null"
+                app:shapeAppearance="@style/roundImageView">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1">
+
+                        <ImageView
+                            android:id="@+id/imageView6"
+                            style="@style/transparent_icon"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_marginVertical="@dimen/panel_padding"
+                            android:layout_marginStart="@dimen/full_card_padding"
+                            android:layout_marginEnd="@dimen/panel_padding"
+                            android:layout_weight="0"
+                            android:adjustViewBounds="true"
+                            app:srcCompat="@drawable/search" />
+
+                        <com.norbert.koller.shared.customview.ExtraEditText
+                            android:id="@+id/editText_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:hint="@string/search"
+                            android:inputType="text|textCapSentences"
+                            android:paddingVertical="@dimen/panel_padding"
+                            android:paddingStart="55dp"
+                            android:singleLine="true"
+                            android:textAppearance="@style/Title"
+                            android:textColorHint="?attr/colorForeground066" />
+                    </FrameLayout>
+
+                    <Button
+                        android:id="@+id/button_search"
+                        style="@style/icon_button_transparent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="0"
+                        android:paddingStart="@dimen/panel_padding"
+                        android:paddingLeft="@null"
+                        android:paddingTop="@dimen/panel_padding"
+                        android:paddingEnd="@dimen/full_card_padding"
+                        android:paddingRight="@null"
+                        android:paddingBottom="@dimen/panel_padding"
+                        android:visibility="gone"
+                        app:icon="@drawable/close"
+                        app:iconSize="20dp"
+                        app:iconTint="?attr/colorForeground066"
+                        tools:visibility="visible" />
+                </LinearLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/ly_filters"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:translationZ="-10dp"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <TextView
+                    android:id="@+id/textView_filters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                    android:layout_marginTop="@dimen/spacing"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:text="@string/filters"
+                    android:textAppearance="@style/Description"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_filter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip40"
+                        style="@style/chipDropdownButtonFilterStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:text="@string/place_room"
+                        app:closeIconEnabled="true" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip30"
+                        style="@style/chipDropdownButtonFilterStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:text="@string/group"
+                        app:closeIconEnabled="true" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip39"
+                        style="@style/chipDropdownButtonFilterStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:text="@string/floor_level"
+                        app:closeIconEnabled="true" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_side"
+                        style="@style/chipDropdownButtonFilterStyle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checkable="false"
+                        android:text="Szárny"
+                        app:closeIconEnabled="true" />
+
+                </com.google.android.material.chip.ChipGroup>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:layout_marginTop="@dimen/spacing"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:text="@string/arrangement"
+                android:textAppearance="@style/Description"
+                android:textStyle="bold" />
+
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_sort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:checkedChip="@id/first"
+                app:chipSpacingHorizontal="0dp"
+                app:selectionRequired="true"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/first"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="RID:asc"
+                    android:text="@string/from_down"
+                    app:shapeAppearance="@style/overlayRoundedLeft" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/second"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:tag="RID:desc"
+                    android:text="@string/from_up"
+                    app:shapeAppearance="@style/overlayRoundedRight" />
+
+            </com.google.android.material.chip.ChipGroup>
+
+            <View
+                android:id="@+id/divider"
+                style="@style/separator_line"
+                android:layout_marginTop="@dimen/spacing"
+                android:layout_marginBottom="5dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <Button
+                    android:id="@+id/button_add_new"
+                    style="@style/button_tonal_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Szoba hozzáadása"
+                    app:icon="@drawable/add"
+                    app:iconGravity="textStart" />
+
+                <Button
+                    android:id="@+id/button4"
+                    style="@style/icon_button_outline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/spacing"
+                    android:visibility="gone"
+                    app:icon="@drawable/more_thick"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <com.norbert.koller.shared.customview.SuperCoolRecyclerView
+        android:id="@+id/super_cool_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+</com.norbert.koller.shared.customview.NestedCoordinatorLayout>

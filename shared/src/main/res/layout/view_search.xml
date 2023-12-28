@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mcard_search"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/imageView6"
+                style="@style/transparent_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginVertical="@dimen/panel_padding"
+                android:layout_marginStart="@dimen/full_card_padding"
+                android:layout_marginEnd="@dimen/panel_padding"
+                android:layout_weight="0"
+                android:adjustViewBounds="true"
+                app:srcCompat="@drawable/search" />
+
+            <com.norbert.koller.shared.customview.ExtraEditText
+                android:id="@+id/editText_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="@string/search"
+                android:inputType="text|textCapSentences"
+                android:paddingVertical="@dimen/panel_padding"
+                android:paddingStart="55dp"
+                android:singleLine="true"
+                android:textAppearance="@style/Title"
+                android:textColorHint="?attr/colorForeground066" />
+        </FrameLayout>
+
+        <Button
+            android:id="@+id/button_search"
+            style="@style/icon_button_transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:paddingStart="@dimen/panel_padding"
+            android:paddingLeft="@null"
+            android:paddingTop="@dimen/panel_padding"
+            android:paddingEnd="@dimen/full_card_padding"
+            android:paddingRight="@null"
+            android:paddingBottom="@dimen/panel_padding"
+            android:visibility="gone"
+            app:icon="@drawable/close"
+            app:iconSize="20dp"
+            app:iconTint="?attr/colorForeground066"
+            tools:visibility="visible" />
+
+
+</LinearLayout>
