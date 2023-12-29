@@ -49,20 +49,61 @@ abstract class FragmentList(val defaultFilters : MutableMap<String, ArrayList<St
     lateinit var lyParameters : LinearLayout
 
 
-    abstract fun onSavedList(list : ArrayList<BaseData>?)
-    abstract fun getSavedList() : ArrayList<BaseData>?
     abstract fun getPagingSource() : BasePagingSource
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+
         val view = inflater.inflate(R.layout.fragment_list, container, false)
 
         chipGroupFilter = view.findViewById(R.id.chip_group_filter)
         chipGroupSort = view.findViewById(R.id.chip_group_sort)
 
+        superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
+        lyFilters = view.findViewById(R.id.ly_filters)
+        lyParameters = view.findViewById(R.id.ly_parameters)
+
+        superCoolRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
+        superCoolRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
+
+        viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+
+        if(defaultFilters != null) {
+            viewModel.filters = defaultFilters
+        }
+
+        viewModel.pagingSource = {
+            getPagingSource()
+        }
+
+
         return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        superCoolRecyclerView.recyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = baseRecycleAdapter
+        }
+
+
+
+        lifecycleScope.launch {
+
+            viewModel.pagingData.collectLatest { pagingData ->
+                viewModel.currentPagingSource.recyclerAdapter = baseRecycleAdapter
+                baseRecycleAdapter.submitData(pagingData)
+            }
+        }
+
+
+
+        if(savedInstanceState != null) {
+            if (baseRecycleAdapter.snapshot().isEmpty()) {
+                baseRecycleAdapter.fullRefresh()
+            }
+        }
     }
 
     fun setupSort(firstLocalizedString : Int, secondLocalizedString : Int, sortBy : String, firstSort : String = "asc", secondSort : String = "desc"){
@@ -136,70 +177,5 @@ abstract class FragmentList(val defaultFilters : MutableMap<String, ArrayList<St
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
-        superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
-        lyFilters = view.findViewById(R.id.ly_filters)
-        lyParameters = view.findViewById(R.id.ly_parameters)
-
-        superCoolRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
-        superCoolRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
-
-        viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
-
-        if(defaultFilters != null) {
-            viewModel.filters = defaultFilters
-        }
-
-
-
-
-
-
-            viewModel.pagingSource = {
-                val pagingSource = getPagingSource()
-                if (viewModel.filters.isEmpty() && viewModel.dateFilters.isEmpty() && chipGroupSort.checkedChipId == R.id.first) {
-                    pagingSource.savedValues = getSavedList()
-                }
-                pagingSource
-            }
-
-            superCoolRecyclerView.recyclerView.apply {
-                layoutManager = LinearLayoutManager(requireContext())
-                adapter = baseRecycleAdapter
-            }
-
-            lifecycleScope.launch {
-
-                viewModel.pagingData.collectLatest { pagingData ->
-                    baseRecycleAdapter.submitData(pagingData)
-                }
-            }
-
-            if(savedInstanceState != null) {
-                if (baseRecycleAdapter.snapshot().isEmpty()) {
-                    baseRecycleAdapter.refreshFully()
-                }
-            }
-
-    }
-
-
-    override fun onStop() {
-        super.onStop()
-        val rcItems = baseRecycleAdapter.snapshot().items
-
-        if(rcItems.isEmpty() || (viewModel.filters.isNotEmpty() || viewModel.dateFilters.isNotEmpty() || chipGroupSort.checkedChipId == R.id.second)){
-            return
-        }
-
-        val list : ArrayList<BaseData> = arrayListOf()
-        for (rcItem in rcItems){
-            if(rcItem is BaseData){
-                list.add(rcItem)
-            }
-        }
-        onSavedList(list)
-    }
 }

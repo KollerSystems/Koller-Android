@@ -32,21 +32,8 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 
 
-
-    companion object{
-        var savedValues : ArrayList<BaseData>? = null
-    }
-
-    override fun onSavedList(list: ArrayList<BaseData>?) {
-        savedValues = list
-    }
-
-    override fun getSavedList(): ArrayList<BaseData>? {
-        return savedValues
-    }
-
     override fun getPagingSource(): BasePagingSource {
-        return UserPagingSource(requireContext(), baseRecycleAdapter, viewModel)
+        return UserPagingSource(requireContext(), viewModel)
     }
 
 
@@ -54,8 +41,6 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
 
         setupSort(R.string.abc, R.string.zyx,"Name")
         baseRecycleAdapter = UserRecyclerAdapter(chipGroupSort, chipGroupFilter)
-
-        super.onViewCreated(view, savedInstanceState)
 
         /*leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)
@@ -81,5 +66,7 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         ))
 
         addSearchbar()
+
+        super.onViewCreated(view, savedInstanceState)
     }
 }

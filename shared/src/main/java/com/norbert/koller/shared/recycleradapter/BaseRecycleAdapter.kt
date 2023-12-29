@@ -14,6 +14,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import java.lang.Error
 
@@ -23,6 +24,8 @@ abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chip
 
     var state : Int = STATE_NONE
     var withLoadingAnim : Boolean = true
+
+    var beforeRefresh: (() -> Unit)? = null
 
  
 
@@ -34,30 +37,37 @@ abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chip
         for (chip in chipGroupFilter!!){
             chip as Chip
             chip.doBeforeTextChanged{text, start, before, count ->
-                refreshFully()
+                fullRefresh()
             }
         }
 
         recyclerView.post {
             chipGroupSort?.setOnCheckedStateChangeListener { chipGroup: ChipGroup, ints: MutableList<Int> ->
-                refreshFully()
+                fullRefresh()
             }
         }
     }
 
     var beingEmptied : Boolean = false
 
-    fun refreshFully(){
+    fun seemlessRefresh(){
+        beforeRefresh?.invoke()
+        refresh()
+    }
+    
+    fun fullRefresh(){
 
+
+        
         beingEmptied = true
         Log.d("INFO", "START TO EMPTY")
-        refresh()
+        seemlessRefresh()
 
         recyclerView.scrollToPosition(0)
 
         beingEmptied = false
         Log.d("INFO", "START TO LOAD")
-        refresh()
+        seemlessRefresh()
 
     }
 

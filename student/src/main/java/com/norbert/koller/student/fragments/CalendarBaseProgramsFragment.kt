@@ -29,28 +29,14 @@ import com.norbert.koller.shared.R as Rs
 
 class CalendarBaseProgramsFragment : FragmentList() {
 
-    companion object{
-        var savedValues : ArrayList<BaseData>? = null
-    }
-
-    override fun onSavedList(list: ArrayList<BaseData>?) {
-        savedValues = list
-    }
-
-    override fun getSavedList(): ArrayList<BaseData>? {
-        return savedValues
-    }
-
     override fun getPagingSource(): BasePagingSource {
-        return BaseProgramPagingSource(requireContext(), baseRecycleAdapter, viewModel)
+        return BaseProgramPagingSource(requireContext(), viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(com.norbert.koller.shared.R.string.newest, com.norbert.koller.shared.R.string.oldest,"Date", "desc,Lesson:desc", "asc,Lesson:asc")
         baseRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, chipGroupFilter)
-
-        super.onViewCreated(view, savedInstanceState)
 
         addDateChip()
 
@@ -62,5 +48,7 @@ class CalendarBaseProgramsFragment : FragmentList() {
         ))
 
         addSearchbar()
+
+        super.onViewCreated(view, savedInstanceState)
     }
 }

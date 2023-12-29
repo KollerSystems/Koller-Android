@@ -139,7 +139,7 @@ interface APIInterface {
     ) : Response<List<CrossingData>>
 }
 
-class CrossingPagingSource(context: Context, val UID : Int, recyclerAdapter: BaseRecycleAdapter, viewModel: BaseViewModel) : BasePagingSource(context, recyclerAdapter, viewModel) {
+class CrossingPagingSource(context: Context, val UID : Int, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -149,7 +149,7 @@ class CrossingPagingSource(context: Context, val UID : Int, recyclerAdapter: Bas
 
 }
 
-class UserPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, viewModel: BaseViewModel) : BasePagingSource(context, recyclerAdapter, viewModel) {
+class UserPagingSource(context: Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -159,7 +159,7 @@ class UserPagingSource(context: Context, recyclerAdapter: BaseRecycleAdapter, vi
 
 }
 
-class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, viewModel: BaseViewModel) : BasePagingSource(context, recyclerAdapter, viewModel) {
+class RoomPagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -168,7 +168,7 @@ class RoomPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, v
 
 }
 
-class BaseProgramPagingSource(context : Context, recyclerAdapter: BaseRecycleAdapter, viewModel: BaseViewModel) : BasePagingSource(context, recyclerAdapter, viewModel) {
+class BaseProgramPagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 

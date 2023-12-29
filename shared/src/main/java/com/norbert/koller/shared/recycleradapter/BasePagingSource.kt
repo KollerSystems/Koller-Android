@@ -9,6 +9,7 @@ import androidx.core.view.iterator
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.google.android.material.chip.Chip
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
 import com.norbert.koller.shared.data.BaseData
@@ -21,11 +22,15 @@ import retrofit2.Response
 import kotlin.random.Random
 
 
-open class BasePagingSource(val context: Context, private val recyclerAdapter: BaseRecycleAdapter, val viewModel: BaseViewModel) : PagingSource<Int, Any>()  {
+abstract class BasePagingSource(val context: Context, val viewModel: BaseViewModel) : PagingSource<Int, Any>()  {
 
     private var lastFirstChar : String? = null
     private var lastListSize : Int = BaseViewModel.pageSize + 1
-    var savedValues : List<BaseData>? = null
+    lateinit var recyclerAdapter: BaseRecycleAdapter
+
+    companion object{
+        var temporarySavedValues : MutableMap<String, ArrayList<BaseData>> = mutableMapOf()
+    }
 
     fun getFilters() : String{
 
@@ -49,7 +54,7 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
     fun getSort() : String{
         if(recyclerAdapter.chipGroupSort == null) return ""
-        val chip : Chip = recyclerAdapter.chipGroupSort.findViewById(recyclerAdapter.chipGroupSort.checkedChipId)
+        val chip : Chip = recyclerAdapter.chipGroupSort!!.findViewById(recyclerAdapter.chipGroupSort!!.checkedChipId)
         return chip.tag.toString()
     }
 
@@ -62,16 +67,11 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
         Log.d("INFO", "HELLO LOADI")
 
+        val className = recyclerAdapter.javaClass.simpleName
+
         if(recyclerAdapter.beingEmptied || lastListSize < BaseViewModel.pageSize) {
             Log.d("INFO", "TO EMPTY")
             return LoadResult.Page(emptyList(), null, null)
-        }
-
-        if(savedValues != null) {
-            val result = formatRecievedValues(savedValues!!,0, savedValues!!.size)
-            savedValues = null
-            Log.d("INFO", "BEJÖTT")
-            return result
         }
 
         val offset = params.key ?: 0
@@ -80,8 +80,24 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
             recyclerAdapter.state = BaseRecycleAdapter.STATE_LOADING
         }
         else{
+            if(areParametersDefault()) {
+                temporarySavedValues.remove(className)
+            }
             recyclerAdapter.withLoadingAnim = true
         }
+
+        Log.d("INFOOOO", recyclerAdapter.withLoadingAnim.toString())
+        Log.d("INFOOOO2", recyclerAdapter.state.toString())
+
+        if(offset == 0 && areParametersDefault() && temporarySavedValues.containsKey(className)) {
+
+            val savedValues = temporarySavedValues[className]
+            val result = formatRecievedValues(savedValues!!,0, savedValues.size)
+            Log.d("INFO", "BEJÖTT")
+            return result
+        }
+
+
 
         Handler(Looper.getMainLooper()).post {
             recyclerAdapter.notifyItemInserted(recyclerAdapter.itemCount)
@@ -101,8 +117,12 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
             }
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-
-
+            if(areParametersDefault()) {
+                if (!temporarySavedValues.containsKey(className)) {
+                    temporarySavedValues[className] = ArrayList()
+                }
+                temporarySavedValues[className]!!.addAll(responseAs)
+            }
             return formatRecievedValues(responseAs, offset, params.loadSize)
 
 
@@ -115,11 +135,16 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
         }
     }
 
+    fun areParametersDefault() : Boolean{
+        return (viewModel.filters.isEmpty() && viewModel.dateFilters.isEmpty() && (recyclerAdapter.chipGroupSort?.checkedChipId ?: R.id.first) == R.id.first)
+    }
+
     fun formatRecievedValues(responseAs : List<BaseData>, offset : Int, limit: Int): LoadResult<Int, Any> {
 
 
         recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)
         recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1 - 1, Object())
+        Log.d("INFUPUPUPUPUO", recyclerAdapter.itemCount.toString())
 
         recyclerAdapter.state = BaseRecycleAdapter.STATE_NONE
 

@@ -34,20 +34,8 @@ import kotlinx.coroutines.launch
 
 open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : FragmentList(defaultFilters) {
 
-    companion object{
-        var savedValues : ArrayList<BaseData>? = null
-    }
-
-    override fun onSavedList(list: ArrayList<BaseData>?) {
-        savedValues = list
-    }
-
-    override fun getSavedList(): ArrayList<BaseData>? {
-        return savedValues
-    }
-
     override fun getPagingSource(): BasePagingSource {
-        return RoomPagingSource(requireContext(), baseRecycleAdapter, viewModel)
+        return RoomPagingSource(requireContext(), viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -56,8 +44,6 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
 
         baseRecycleAdapter = RoomRecyclerAdapter(chipGroupSort, chipGroupFilter)
 
-        super.onViewCreated(view, savedInstanceState)
-
         addSortingChip("Gender", R.string.side, arrayListOf(
             ListItem( getString(R.string.girl), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
             ListItem( getString(R.string.boy), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
@@ -65,5 +51,7 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
 
         addSearchbar()
 
+
+        super.onViewCreated(view, savedInstanceState)
     }
 }

@@ -23,6 +23,7 @@ class BaseViewModel : ViewModel() {
     var sort : Boolean = false
 
     lateinit var pagingSource: (()-> BasePagingSource)
+    lateinit var currentPagingSource : BasePagingSource
 
     val pagingData: Flow<PagingData<Any>> = Pager(
         config = PagingConfig(
@@ -30,6 +31,11 @@ class BaseViewModel : ViewModel() {
             initialLoadSize = pageSize,
             prefetchDistance = 2)
         ) {
-        pagingSource()
-    }.flow.cachedIn(viewModelScope)
+            currentPagingSource = pagingSource()
+            currentPagingSource
+        }.flow.cachedIn(viewModelScope)
+
+    init {
+
+    }
 }

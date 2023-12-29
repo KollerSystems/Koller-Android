@@ -30,28 +30,14 @@ import kotlinx.coroutines.launch
 
 class UserExitsAndEntrancesFragment(val UID : Int? = null) : FragmentList() {
 
-    companion object{
-        var savedValues : ArrayList<BaseData>? = null
-    }
-
-    override fun onSavedList(list: ArrayList<BaseData>?) {
-        savedValues = list
-    }
-
-    override fun getSavedList(): ArrayList<BaseData>? {
-        return savedValues
-    }
-
     override fun getPagingSource(): BasePagingSource {
-        return CrossingPagingSource(requireContext(), viewModel.ID, baseRecycleAdapter, viewModel)
+        return CrossingPagingSource(requireContext(), viewModel.ID, viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
         baseRecycleAdapter = GateRecyclerAdapter(chipGroupSort, chipGroupFilter)
-
-        super.onViewCreated(view, savedInstanceState)
 
         if(UID != null) {
             viewModel.ID = UID
@@ -104,6 +90,6 @@ class UserExitsAndEntrancesFragment(val UID : Int? = null) : FragmentList() {
 
         }*/
 
-
+        super.onViewCreated(view, savedInstanceState)
     }
 }
