@@ -51,16 +51,17 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+        setupSort(R.string.from_down, R.string.from_up,"RID")
 
         baseRecycleAdapter = RoomRecyclerAdapter(chipGroupSort, chipGroupFilter)
+
+        super.onViewCreated(view, savedInstanceState)
 
         addSortingChip("Gender", R.string.side, arrayListOf(
             ListItem( getString(R.string.girl), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
             ListItem( getString(R.string.boy), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
         ))
-
-        setupSort(R.string.from_down, R.string.from_up,"RID")
 
         addSearchbar()
 

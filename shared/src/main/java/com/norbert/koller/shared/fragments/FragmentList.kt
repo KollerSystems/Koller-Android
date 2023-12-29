@@ -57,7 +57,12 @@ abstract class FragmentList(val defaultFilters : MutableMap<String, ArrayList<St
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_list, container, false)
+        val view = inflater.inflate(R.layout.fragment_list, container, false)
+
+        chipGroupFilter = view.findViewById(R.id.chip_group_filter)
+        chipGroupSort = view.findViewById(R.id.chip_group_sort)
+
+        return view
     }
 
     fun setupSort(firstLocalizedString : Int, secondLocalizedString : Int, sortBy : String, firstSort : String = "asc", secondSort : String = "desc"){
@@ -135,8 +140,6 @@ abstract class FragmentList(val defaultFilters : MutableMap<String, ArrayList<St
         super.onViewCreated(view, savedInstanceState)
 
         superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
-        chipGroupFilter = view.findViewById(R.id.chip_group_filter)
-        chipGroupSort = view.findViewById(R.id.chip_group_sort)
         lyFilters = view.findViewById(R.id.ly_filters)
         lyParameters = view.findViewById(R.id.ly_parameters)
 
@@ -152,7 +155,7 @@ abstract class FragmentList(val defaultFilters : MutableMap<String, ArrayList<St
 
 
 
-        superCoolRecyclerView.post {
+
 
             viewModel.pagingSource = {
                 val pagingSource = getPagingSource()
@@ -179,7 +182,7 @@ abstract class FragmentList(val defaultFilters : MutableMap<String, ArrayList<St
                     baseRecycleAdapter.refreshFully()
                 }
             }
-        }
+
     }
 
 

@@ -46,9 +46,11 @@ class CalendarBaseProgramsFragment : FragmentList() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
 
+        setupSort(com.norbert.koller.shared.R.string.newest, com.norbert.koller.shared.R.string.oldest,"Date", "desc,Lesson:desc", "asc,Lesson:asc")
         baseRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, chipGroupFilter)
+
+        super.onViewCreated(view, savedInstanceState)
 
         addDateChip()
 
@@ -58,8 +60,6 @@ class CalendarBaseProgramsFragment : FragmentList() {
             ListItem("1 ${lessonLocalName}", null, null, "1"),
             ListItem("2 ${lessonLocalName}", null, null, "2")
         ))
-
-        setupSort(com.norbert.koller.shared.R.string.newest, com.norbert.koller.shared.R.string.oldest,"Date", "desc,Lesson:desc", "asc,Lesson:asc")
 
         addSearchbar()
     }

@@ -49,22 +49,16 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
         recyclerView.post {
             if (recyclerView.adapter is BaseRecycleAdapter) {
 
-                    recyclerAdapter = (recyclerView.adapter as BaseRecycleAdapter)
-                    recyclerAdapter.addOnPagesUpdatedListener {
-                        swipeToRefresh.isRefreshing = false
-                    }
-
+                recyclerAdapter = (recyclerView.adapter as BaseRecycleAdapter)
+                recyclerAdapter.addOnPagesUpdatedListener {
+                    swipeToRefresh.isRefreshing = false
+                }
 
 
                 swipeToRefresh.setOnRefreshListener {
 
-
                     recyclerAdapter.withLoadingAnim = false
                     recyclerAdapter.refresh()
-
-
-
-
                 }
 
 

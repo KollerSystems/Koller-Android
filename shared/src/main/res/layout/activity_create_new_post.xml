@@ -178,37 +178,6 @@
                         android:textAppearance="@style/Normal" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/create_new_post_chips_addresse"
-                    style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginBottom="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
-                        android:id="@+id/create_new_post_edt_addresse"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:dropDownAnchor="@id/create_new_post_til_addresse"
-                        android:inputType="text|textCapWords"
-                        android:minWidth="2dp"
-                        android:paddingStart="0dp"
-                        android:paddingLeft="0dp"
-                        android:paddingTop="7.25dp"
-                        android:paddingEnd="0dp"
-                        android:paddingRight="0dp"
-                        android:paddingBottom="7.25dp"
-                        android:singleLine="false"
-                        android:textAppearance="@style/Normal" />
-
-                </com.google.android.material.chip.ChipGroup>
-
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -220,6 +189,7 @@
                 android:text="@string/content" />
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/CardMargin"

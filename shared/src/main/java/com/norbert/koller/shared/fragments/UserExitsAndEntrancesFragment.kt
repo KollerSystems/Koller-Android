@@ -47,13 +47,15 @@ class UserExitsAndEntrancesFragment(val UID : Int? = null) : FragmentList() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
+        baseRecycleAdapter = GateRecyclerAdapter(chipGroupSort, chipGroupFilter)
+
         super.onViewCreated(view, savedInstanceState)
 
         if(UID != null) {
             viewModel.ID = UID
         }
-
-        baseRecycleAdapter = GateRecyclerAdapter(chipGroupSort, chipGroupFilter)
 
         addSortingChip("Direction", R.string.direction, arrayListOf(
             ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "1"),
@@ -62,7 +64,7 @@ class UserExitsAndEntrancesFragment(val UID : Int? = null) : FragmentList() {
 
         addDateChip("Time")
 
-        setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
+
 
         /*chipLateness.setOnClickListener {
 

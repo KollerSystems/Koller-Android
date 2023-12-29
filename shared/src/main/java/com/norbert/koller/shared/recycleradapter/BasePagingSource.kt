@@ -60,8 +60,7 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {
 
-
-
+        Log.d("INFO", "HELLO LOADI")
 
         if(recyclerAdapter.beingEmptied || lastListSize < BaseViewModel.pageSize) {
             Log.d("INFO", "TO EMPTY")
@@ -71,6 +70,7 @@ open class BasePagingSource(val context: Context, private val recyclerAdapter: B
         if(savedValues != null) {
             val result = formatRecievedValues(savedValues!!,0, savedValues!!.size)
             savedValues = null
+            Log.d("INFO", "BEJÖTT")
             return result
         }
 
