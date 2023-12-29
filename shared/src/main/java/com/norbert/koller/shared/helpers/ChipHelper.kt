@@ -82,7 +82,18 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     }
 
     if(viewModel.filters.containsKey(filterName)){
-        setChip(arrayToString(viewModel.filters[filterName]!!))
+        val localizedStrings : ArrayList<String> = arrayListOf()
+
+        for (tag in viewModel.filters[filterName]!!){
+            for (elements in arrayList){
+                if(tag == elements.tag){
+                    localizedStrings.add(elements.title)
+                }
+            }
+        }
+
+
+        setChip(arrayToString(localizedStrings))
     }
     else{
         resetSimpleChip(context.getString(localizedFilterId))
