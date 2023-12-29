@@ -3,6 +3,7 @@ package com.norbert.koller.shared.customview
 import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
+import android.view.MotionEvent
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -41,9 +42,32 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
 
 
         FABScrollUp.setOnClickListener{
+
             recyclerView.smoothScrollToPosition(0)
-            appBar?.setExpanded(true)
+
+            recyclerView.setOnTouchListener { v, event ->
+                when (event?.action) {
+                    MotionEvent.ACTION_DOWN -> {
+                        recyclerView.clearOnScrollListeners()
+                        recyclerView.setOnTouchListener { view, motionEvent ->  v.onTouchEvent(event)}
+                    }
+                }
+
+                v.onTouchEvent(event)
+            }
+
+            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
+                    super.onScrollStateChanged(recyclerView, newState)
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        appBar?.setExpanded(true)
+                        recyclerView.clearOnScrollListeners()
+                    }
+                }
+            })
         }
+
+
 
         //TODO: ennek a törlése, ha minden recycler view fasza
         recyclerView.post {
