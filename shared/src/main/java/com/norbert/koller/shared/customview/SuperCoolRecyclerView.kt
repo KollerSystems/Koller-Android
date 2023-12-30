@@ -45,13 +45,13 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
 
             recyclerView.smoothScrollToPosition(0)
 
+            recyclerView.clearOnScrollListeners()
+            recyclerView.setOnTouchListener(null)
+
             recyclerView.setOnTouchListener { v, event ->
-                when (event?.action) {
-                    MotionEvent.ACTION_DOWN -> {
-                        recyclerView.clearOnScrollListeners()
-                        recyclerView.setOnTouchListener { view, motionEvent ->  v.onTouchEvent(event)}
-                    }
-                }
+
+                recyclerView.clearOnScrollListeners()
+                recyclerView.setOnTouchListener(null)
 
                 v.onTouchEvent(event)
             }
@@ -62,6 +62,7 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
                         appBar?.setExpanded(true)
                         recyclerView.clearOnScrollListeners()
+                        recyclerView.setOnTouchListener(null)
                     }
                 }
             })
@@ -76,6 +77,9 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
                 recyclerAdapter = (recyclerView.adapter as BaseRecycleAdapter)
                 recyclerAdapter.addOnPagesUpdatedListener {
                     swipeToRefresh.isRefreshing = false
+                    recyclerView.post {
+                        updateTitle()
+                    }
                 }
 
 
