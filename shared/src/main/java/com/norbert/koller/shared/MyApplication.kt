@@ -90,6 +90,8 @@ open class MyApplication : Application() {
         lateinit var roomFragment: (RID : Int) -> RoomFragment
         lateinit var userFragment: (UID : Int) -> UserFragment
 
+        lateinit var getAppColor: (context : Context) -> Int
+
         var roomsFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomsFragment = {map-> RoomsFragment(map) }
         var usersFragment: (map : MutableMap<String, ArrayList<String>>?) -> UsersFragment = {map-> UsersFragment(map) }
 

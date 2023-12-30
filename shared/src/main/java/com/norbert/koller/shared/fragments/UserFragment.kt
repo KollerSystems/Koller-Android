@@ -65,10 +65,6 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
 
         val nestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
 
-
-
-
-
         fun isVisible(view: View): Boolean {
             if (!view.isShown) {
                 return false
@@ -152,13 +148,6 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
                         loadingOl.setState(FullScreenLoading.NONE)
 
 
-
-
-
-
-
-                        sendNotification()
-
                     } else {
                         loadingOl.setState(FullScreenLoading.ERROR)
                     }
@@ -170,46 +159,4 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
             }
         )
     }
-
-
-    private val notificationId = 101
-    private fun sendNotification() {
-
-        // Create an explicit intent for an Activity in your app.
-        val intent = Intent(requireContext(), MyNotificationPublisher::class.java)
-
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, PendingIntent.FLAG_IMMUTABLE)
-
-        val ACTION_SNOOZE = "snooze"
-
-        val snoozeIntent = Intent(requireContext(), MyApplication.openMain::class.java).apply {
-            action = ACTION_SNOOZE
-            putExtra(EXTRA_NOTIFICATION_ID, 0)
-        }
-        val snoozePendingIntent: PendingIntent =
-            PendingIntent.getBroadcast(requireContext(), 0, snoozeIntent, PendingIntent.FLAG_IMMUTABLE)
-
-
-        val builder = NotificationCompat.Builder(requireContext(), NotificationHelper.OCCUPATION_REMINDER_CHANNEL)
-            .setSmallIcon(R.drawable.notifications)
-            .setContentTitle("Hello")
-            .setContentText("This is a sample notification.")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-            .addAction(R.drawable.eye, "ÚGY VAN!!", snoozePendingIntent)
-
-
-
-        with(NotificationManagerCompat.from(requireContext())) {
-            if (ActivityCompat.checkSelfPermission(requireContext(), Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
-                notify(notificationId, builder.build())
-            }
-        }
-
-
-
-
-    }
-
 }

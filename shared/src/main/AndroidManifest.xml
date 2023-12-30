@@ -10,12 +10,15 @@
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.NFC" />
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
 
     <application
         android:enableOnBackInvokedCallback="false"
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu"
         android:screenOrientation="portrait" >
+        <receiver android:name=".MyNotificationPublisher"
+            android:enabled="true"/>
         <activity
             android:name=".activities.ManageAccountActivity"
             android:exported="false" />

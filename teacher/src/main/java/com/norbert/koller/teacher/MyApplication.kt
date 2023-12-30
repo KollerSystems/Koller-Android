@@ -2,6 +2,7 @@ package com.norbert.koller.teacher
 
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.norbert.koller.teacher.BuildConfig
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.helpers.NotificationHelper
@@ -40,6 +41,10 @@ class MyApplication : com.norbert.koller.shared.MyApplication() {
         openProfile = {context: Context ->
             val dialog = ProfileBottomSheet()
             dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBottomSheet.TAG)
+        }
+
+        getAppColor = {context->
+            ContextCompat.getColor(context, R.color.app_icon_color)
         }
 
         homeFragment = { HomeFragment() }

@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.fragments
 
 import android.Manifest
+import android.app.AlarmManager
 import android.app.Notification
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -24,7 +25,9 @@ import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.MyNotificationPublisher
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.LaunchActivity
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.TodayData
@@ -71,12 +74,38 @@ class NotificationsFragment : Fragment() {
         notificsRecyclerView.recyclerView.adapter = TodayRecyclerAdapter(notificationDataArrayList)
 
 
+        sendNotification()
+
+
 
     }
 
 
 
+    private fun sendNotification() {
 
+        val intent = Intent(requireContext(), MyNotificationPublisher::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            requireContext(),
+            1,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val alarmManager = requireContext().getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+            System.currentTimeMillis(),
+            pendingIntent
+        )
+
+
+
+
+
+
+
+
+    }
 
 
 }
