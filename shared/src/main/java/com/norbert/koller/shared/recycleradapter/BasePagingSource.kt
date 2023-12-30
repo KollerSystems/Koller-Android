@@ -74,7 +74,11 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
             return LoadResult.Page(emptyList(), null, null)
         }
 
-        val offset = params.key ?: 0
+        var offset = params.key ?: 0
+
+        if(recyclerAdapter.snapshot().size == 0){
+            offset = 0
+        }
 
         if(recyclerAdapter.withLoadingAnim) {
             recyclerAdapter.state = BaseRecycleAdapter.STATE_LOADING
@@ -89,7 +93,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
         Log.d("INFOOOO", recyclerAdapter.withLoadingAnim.toString())
         Log.d("INFOOOO2", recyclerAdapter.state.toString())
 
-        if(offset == 0 && areParametersDefault() && temporarySavedValues.containsKey(className)) {
+        if(offset <= 0 && areParametersDefault() && temporarySavedValues.containsKey(className)) {
 
             val savedValues = temporarySavedValues[className]
             val result = formatRecievedValues(savedValues!!,0, savedValues.size)
@@ -141,6 +145,9 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
 
     fun formatRecievedValues(responseAs : List<BaseData>, offset : Int, limit: Int): LoadResult<Int, Any> {
 
+        if(offset <= 0){
+            recyclerAdapter.recyclerView.scrollToPosition(0)
+        }
 
         recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)
         recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1 - 1, Object())

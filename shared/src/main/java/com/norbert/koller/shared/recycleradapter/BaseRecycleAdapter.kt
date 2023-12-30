@@ -57,7 +57,7 @@ abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chip
     
     fun fullRefresh(){
 
-
+        recyclerView.scrollToPosition(0)
         
         beingEmptied = true
         Log.d("INFO", "START TO EMPTY")
@@ -65,9 +65,11 @@ abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chip
 
         recyclerView.scrollToPosition(0)
 
+
         beingEmptied = false
         Log.d("INFO", "START TO LOAD")
         seemlessRefresh()
+
 
     }
 
