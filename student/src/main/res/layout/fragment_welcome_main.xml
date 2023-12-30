@@ -49,7 +49,7 @@
 
             <Button
                 android:id="@+id/welcome_main_btn_back"
-                style="@style/button_outline"
+                style="@style/ButtonOutline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/text_container_margin"
@@ -57,7 +57,7 @@
 
             <Button
                 android:id="@+id/button_exit"
-                style="@style/button_icon"
+                style="@style/ButtonIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/text_container_margin"

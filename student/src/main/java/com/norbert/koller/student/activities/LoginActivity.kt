@@ -2,11 +2,6 @@ package com.norbert.koller.student.activities
 
 import android.content.Intent
 import android.os.Bundle
-import android.widget.TextView
-import com.norbert.koller.student.BuildConfig
-import com.norbert.koller.student.MyApplication
-import com.norbert.koller.student.R
-import com.norbert.koller.shared.R as Rs
 
 class LoginActivity : com.norbert.koller.shared.activities.LoginActivity() {
 

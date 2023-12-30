@@ -6,28 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
-import android.widget.Button
 import android.widget.LinearLayout
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.data.RoomOrderConditionsBase
 import com.norbert.koller.shared.data.RoomOrderData
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
-import com.norbert.koller.shared.recycleradapter.ListItem
 import com.norbert.koller.teacher.R
-import com.norbert.koller.teacher.recycleradapter.RoomRateRecyclerAdapter
-import com.norbert.koller.shared.R as Rs
+import com.norbert.koller.teacher.recycleradapters.RoomRateRecyclerAdapter
 
 
 class RoomRateActivity : RoomsActivity() {

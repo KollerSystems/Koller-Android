@@ -31,7 +31,7 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
-                android:padding="@dimen/panel_padding">
+                android:padding="@dimen/card_padding">
 
                 <TextView
                     android:id="@+id/text_text"
@@ -45,7 +45,7 @@
 
                 <TextView
                     android:id="@+id/room_order_fragment_text_final_rate"
-                    style="@style/iconLikeText"
+                    style="@style/IconLikeText"
                     android:layout_marginStart="@dimen/spacing"
                     android:text="4"
                     android:textColor="#00BF9F"
@@ -68,12 +68,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="2.5dp"
-                tools:listitem="@layout/view_rate_byte">
+                tools:listitem="@layout/view_rate_stars">
 
             </androidx.recyclerview.widget.RecyclerView>
 
             <include
-                layout="@layout/view_message_like_footer"
+                layout="@layout/view_message_footer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

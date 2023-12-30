@@ -7,7 +7,7 @@
     app:cardCornerRadius="9999dp"
     app:cardElevation="0dp"
     app:contentPadding="@dimen/text_container_margin"
-    app:strokeColor="?attr/colorYellow"
+    app:strokeColor="@android:color/black"
     app:strokeWidth="@dimen/text_container_margin">
 
     <ImageView

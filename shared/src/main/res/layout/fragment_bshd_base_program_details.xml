@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/BottomSheetMainLayout">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardElevation="@dimen/header_footer_elevation">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/drag_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="horizontal"
+                android:padding="@dimen/card_padding">
+
+                <TextView
+                    android:id="@+id/text_title"
+                    style="@style/Title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:padding="@dimen/text_container_margin"
+                    android:text="@string/title" />
+
+                <ImageView
+                    android:id="@+id/image_state"
+                    style="@style/Icon"
+                    android:layout_width="@dimen/card_icon"
+                    android:layout_height="@dimen/card_icon"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginStart="@dimen/spacing"
+                    android:gravity="center_vertical"
+                    android:visibility="gone"
+                    app:srcCompat="@drawable/x_circle"
+                    tools:visibility="visible" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:padding="@dimen/application_padding">
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:detail="-"
+                custom:icon="@drawable/question_box"
+                custom:name="@string/state" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:detail="-"
+                custom:icon="@drawable/calendar"
+                custom:name="@string/date" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:detail="-"
+                custom:icon="@drawable/clock"
+                custom:name="@string/lesson" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_classroom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:detail="-"
+                custom:icon="@drawable/room"
+                custom:name="@string/classroom" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:detail="-"
+                custom:icon="@drawable/groups"
+                custom:name="@string/class_" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:detail="-"
+                custom:icon="@drawable/user"
+                custom:name="@string/teacher">
+
+            </com.norbert.koller.shared.customviews.NameContentButton>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

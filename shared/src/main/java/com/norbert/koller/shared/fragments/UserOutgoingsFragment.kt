@@ -1,6 +1,5 @@
 package com.norbert.koller.shared.fragments
 
-import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,32 +10,15 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.managers.MyApplication
 
-class UserOutgoingsFragment : Fragment() {
-    companion object {
-        var toGet : Int = -1
+class UserOutgoingsFragment(UID : Int? = null) : PagedFragment() {
 
-        fun open(context : Context, RID : Int){
-            toGet = RID
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-            context as MainActivity
-
-            context.addFragment(UserOutgoingsFragment())
-        }
-    }
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_user_outgoing, container, false)
-
-        val tabs : TabLayout = view.findViewById(R.id.user_outgoing_tabs)
-        val viewPager : ViewPager2 = view.findViewById(R.id.user_outgoing_viewpager)
 
         val adapter = UserOutgoingViewPagerAdapter(childFragmentManager, lifecycle)
 
@@ -53,8 +35,6 @@ class UserOutgoingsFragment : Fragment() {
                 }
             }
         }.attach()
-
-        return view
     }
 }
 

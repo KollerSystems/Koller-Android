@@ -1,7 +1,6 @@
 package com.norbert.koller.teacher.activities
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
@@ -11,11 +10,10 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
-import com.norbert.koller.shared.MyApplication
-import com.norbert.koller.shared.connectToBackgroundCard
+import com.norbert.koller.shared.managers.connectToBackgroundCard
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
-import com.norbert.koller.shared.recycleradapter.ListItem
-import com.norbert.koller.shared.setToolbarToViewColor
+import com.norbert.koller.shared.managers.setToolbarToViewColor
+import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
 
 abstract class RoomsActivity : AppCompatActivity() {
@@ -52,7 +50,7 @@ abstract class RoomsActivity : AppCompatActivity() {
 
         viewPager  = findViewById(R.id.view_pager)
         tabLayout = findViewById(R.id.tab_layout)
-        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar_layout)
+        collapsingToolbarLayout = findViewById(R.id.CollapsingToolbarLayout)
 
 
         window.setToolbarToViewColor(findViewById(R.id.bottom_view))

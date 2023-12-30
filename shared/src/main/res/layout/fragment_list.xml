@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.norbert.koller.shared.customview.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.norbert.koller.shared.customviews.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
@@ -17,10 +17,81 @@
 
         <LinearLayout
             android:id="@+id/ly_parameters"
-            style="@style/tricky_toolbar"
+            style="@style/TrickyToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false">
+
+                        <View
+                            android:id="@+id/home_view_stay_slider"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="?attr/colorPrimaryContainer"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintWidth_percent="0.75" />
+
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/text_container_margin"
+                            android:text="Összesen 1 óra 10 perc késés"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <Button
+                            android:id="@+id/button7"
+                            style="@style/Widget.Material3.Button.IconButton"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:insetLeft="0dp"
+                            android:insetTop="0dp"
+                            android:insetRight="0dp"
+                            android:insetBottom="0dp"
+                            android:paddingLeft="@dimen/text_container_margin"
+                            android:paddingTop="@dimen/text_container_margin"
+                            android:paddingRight="@dimen/text_container_margin"
+                            android:paddingBottom="@dimen/text_container_margin"
+                            app:icon="@drawable/expand_toggle"
+                            app:iconGravity="end"
+                            app:iconTint="?attr/colorPrimary"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/home_view_stay_slider"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal" />
+
+            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ly_filters"
@@ -74,7 +145,7 @@
                     android:layout_height="wrap_content"
                     android:tag="RID:asc"
                     android:text="@string/from_down"
-                    app:shapeAppearance="@style/overlayRoundedLeft" />
+                    app:shapeAppearance="@style/OverlayRoundedLeft" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/second"
@@ -82,23 +153,23 @@
                     android:layout_height="wrap_content"
                     android:tag="RID:desc"
                     android:text="@string/from_up"
-                    app:shapeAppearance="@style/overlayRoundedRight" />
+                    app:shapeAppearance="@style/OverlayRoundedRight" />
 
             </com.google.android.material.chip.ChipGroup>
 
             <View
                 android:id="@+id/divider"
-                style="@style/separator_line"
+                style="@style/SeparatorLine"
                 android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="@dimen/text_container_margin" />
 
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.norbert.koller.shared.customview.SuperCoolRecyclerView
+    <com.norbert.koller.shared.customviews.SuperCoolRecyclerView
         android:id="@+id/super_cool_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
-</com.norbert.koller.shared.customview.NestedCoordinatorLayout>
+</com.norbert.koller.shared.customviews.NestedCoordinatorLayout>

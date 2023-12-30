@@ -5,7 +5,7 @@
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.MessageFragment">
+    tools:context=".fragments.bottomsheet.MessageFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_margin="@dimen/text_container_margin"
-                    android:padding="@dimen/panel_padding"
+                    android:padding="@dimen/card_padding"
                     android:text="@string/title" />
 
             </FrameLayout>
@@ -53,22 +53,15 @@
                 android:orientation="vertical"
                 android:padding="@dimen/application_padding">
 
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textView29"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_container_margin"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:id="@+id/textView29"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/lorem_long" />
-
-                </LinearLayout>
+                    android:text="@string/lorem_long" />
 
                 <include
-                    layout="@layout/view_message_like_footer"
+                    layout="@layout/view_message_footer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

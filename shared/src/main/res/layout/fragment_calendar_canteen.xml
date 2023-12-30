@@ -15,7 +15,7 @@
 
 
         <LinearLayout
-            style="@style/tricky_toolbar"
+            style="@style/TrickyToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -43,7 +43,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_teacher"
-                    style="@style/chipDropdownButtonFilterStyle"
+                    style="@style/ChipDropdownFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/type_"
@@ -51,7 +51,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_date"
-                    style="@style/chipDropdownButtonFilterStyle"
+                    style="@style/ChipDropdownFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/date"
@@ -80,20 +80,20 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/newest"
-                    app:shapeAppearance="@style/overlayRoundedLeft" />
+                    app:shapeAppearance="@style/OverlayRoundedLeft" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/oldest"
-                    app:shapeAppearance="@style/overlayRoundedRight" />
+                    app:shapeAppearance="@style/OverlayRoundedRight" />
 
             </com.google.android.material.chip.ChipGroup>
 
             <View
                 android:id="@+id/divider"
-                style="@style/separator_line"
+                style="@style/SeparatorLine"
                 android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="@dimen/text_container_margin" />
 
@@ -101,7 +101,7 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.norbert.koller.shared.customview.SuperCoolRecyclerView
+    <com.norbert.koller.shared.customviews.SuperCoolRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

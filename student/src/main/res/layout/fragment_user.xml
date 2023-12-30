@@ -27,7 +27,7 @@
 
             <include
                 android:id="@+id/include_header"
-                layout="@layout/view_user_header"
+                layout="@layout/view_fragment_user_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -53,7 +53,7 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:description="@string/report_desc"
@@ -67,7 +67,7 @@
     </androidx.core.widget.NestedScrollView>
 
 
-    <com.norbert.koller.shared.customview.FullScreenLoading
+    <com.norbert.koller.shared.customviews.FullScreenLoading
         android:id="@id/loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

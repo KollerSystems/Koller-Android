@@ -22,7 +22,7 @@
                 android:id="@+id/text_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/arrival_reminder" />
+                android:text="@string/title" />
 
             <TextView
                 android:id="@+id/text_description"
@@ -30,7 +30,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ellipsize="end"
-                android:text="@string/arrival_reminder_description" />
+                android:text="@string/description" />
 
         </LinearLayout>
 

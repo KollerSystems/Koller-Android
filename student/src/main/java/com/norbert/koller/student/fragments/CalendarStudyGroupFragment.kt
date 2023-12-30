@@ -16,6 +16,6 @@ class CalendarStudyGroupFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendar_study_group, container, false)
+        return inflater.inflate(com.norbert.koller.shared.R.layout.activity_launch, container, false)
     }
 }

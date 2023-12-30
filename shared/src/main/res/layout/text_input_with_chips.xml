@@ -10,10 +10,10 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:hint="@string/addressee"
-        app:boxCornerRadiusBottomEnd="@dimen/panel_round"
-        app:boxCornerRadiusBottomStart="@dimen/panel_round"
-        app:boxCornerRadiusTopEnd="@dimen/panel_round"
-        app:boxCornerRadiusTopStart="@dimen/panel_round"
+        app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
+        app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+        app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
+        app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
         app:boxStrokeErrorColor="?attr/colorPrimary"
         app:cursorErrorColor="?attr/colorPrimary"
         app:errorEnabled="true"
@@ -31,7 +31,7 @@
             android:gravity="top"
             android:importantForAutofill="no"
             android:inputType="text"
-            android:textAppearance="@style/Normal" />
+            android:textAppearance="@style/Text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.chip.ChipGroup
@@ -61,7 +61,7 @@
             android:paddingRight="0dp"
             android:paddingBottom="7.25dp"
             android:singleLine="false"
-            android:textAppearance="@style/Normal" />
+            android:textAppearance="@style/Text" />
 
     </com.google.android.material.chip.ChipGroup>
 </merge>

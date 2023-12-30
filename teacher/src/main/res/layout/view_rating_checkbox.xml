@@ -16,8 +16,8 @@
         <ImageView
             android:id="@+id/image_icon"
             style="@style/Icon"
-            android:layout_width="@dimen/panel_icon_smaller"
-            android:layout_height="@dimen/panel_icon_smaller"
+            android:layout_width="@dimen/card_icon_smaller"
+            android:layout_height="@dimen/card_icon_smaller"
             android:layout_marginRight="@dimen/spacing"
             android:layout_weight="0"
             android:alpha="0.666"
@@ -53,7 +53,7 @@
                 app:chipIconVisible="true"
                 app:chipMinTouchTargetSize="0dp"
                 app:iconStartPadding="14dp"
-                app:shapeAppearance="@style/overlayRoundedLeft" />
+                app:shapeAppearance="@style/OverlayRoundedLeft" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_yes"
@@ -64,7 +64,7 @@
                 app:chipIconVisible="true"
                 app:chipMinTouchTargetSize="0dp"
                 app:iconStartPadding="14dp"
-                app:shapeAppearance="@style/overlayRoundedRight"
+                app:shapeAppearance="@style/OverlayRoundedRight"
                 app:textEndPadding="2dp" />
 
         </com.google.android.material.chip.ChipGroup>

@@ -17,7 +17,7 @@
 
         <TextView
             android:id="@+id/textView14"
-            style="@style/separator"
+            style="@style/Separator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Értékelési szempontok"
@@ -52,7 +52,7 @@
             android:layout_marginBottom="@dimen/full_card_padding"
             app:cardBackgroundColor="?attr/colorSurfaceContainer"
             app:cardPreventCornerOverlap="false"
-            app:shapeAppearanceOverlay="@style/overlayRoundedCardBottom">
+            app:shapeAppearanceOverlay="@style/OverlayRoundedCardBottom">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -92,7 +92,7 @@
                             app:chipBackgroundColor="@color/color_worst_toggle"
                             app:chipEndPadding="0dp"
                             app:chipStartPadding="0dp"
-                            app:shapeAppearance="@style/overlayRoundedLeft"
+                            app:shapeAppearance="@style/OverlayRoundedLeft"
                             app:textEndPadding="0dp"
                             app:textStartPadding="0dp" />
 
@@ -148,7 +148,7 @@
                             app:chipBackgroundColor="@color/color_best_toggle"
                             app:chipEndPadding="0dp"
                             app:chipStartPadding="0dp"
-                            app:shapeAppearance="@style/overlayRoundedRight"
+                            app:shapeAppearance="@style/OverlayRoundedRight"
                             app:textEndPadding="0dp"
                             app:textStartPadding="0dp" />
                     </com.google.android.material.chip.ChipGroup>

@@ -5,33 +5,31 @@
         <item name="fontFamily">@font/rubik_family</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
-        <item name="android:spinnerStyle">@style/kollerSpinnerStyle</item>
-        <item name="spinnerDropDownItemStyle">@style/kollerSpinnerDropdownItemStyle</item>
-        <item name="android:spinnerItemStyle">@style/kollerSpinnerItemStyle</item>
-        <item name="tabStyle">@style/tab</item>
-        <item name="chipStyle">@style/chipButtonFilterStyle</item>
+        <item name="android:spinnerStyle">@style/Spinner</item>
+        <item name="spinnerDropDownItemStyle">@style/SpinnerItem</item>
+        <item name="tabStyle">@style/Tab</item>
+        <item name="chipStyle">@style/ChipFilter</item>
         <item name="android:textViewStyle">@style/DefaultTextView</item>
-        <item name="bottomSheetDragHandleStyle">@style/bottomSheetDrag</item>
+        <item name="bottomSheetDragHandleStyle">@style/BottomSheetDrag</item>
         <item name="materialCardViewStyle">@style/SimpleCard</item>
         <item name="materialAlertDialogTheme">@style/Popup</item>
-        <item name="toolbarStyle">@style/toolbar</item>
+        <item name="toolbarStyle">@style/Toolbar</item>
         <item name="checkboxStyle">@style/Checkbox</item>
-        <item name="floatingActionButtonStyle">@style/floatingActionButtonC</item>
+        <item name="floatingActionButtonStyle">@style/FloatingActionButton</item>
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
-        <item name="appBarLayoutStyle">@style/appBarStyle</item>
-        <item name="materialButtonStyle">@style/button</item>
+        <item name="appBarLayoutStyle">@style/AppBarStyle</item>
+        <item name="materialButtonStyle">@style/Button</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
-        <item name="editTextStyle">@style/edit_text</item>
-        <item name="textInputStyle">@style/text_input</item>
-        <item name="recyclerViewStyle">@style/recyclerView</item>
+        <item name="editTextStyle">@style/EditText</item>
+        <item name="textInputStyle">@style/TextInput</item>
+        <item name="recyclerViewStyle">@style/RecyclerView</item>
     </style>
 
-    <style name="recyclerView">
+    <style name="RecyclerView">
         <item name="android:fillViewport">true</item>
     </style>
 
     <style name="ImageViewerDialog" parent="android:Theme.Translucent.NoTitleBar"/>
-
 
     <style name="ImageViewerDialog.Default">
         <item name="android:windowTranslucentStatus">true</item>
@@ -39,39 +37,39 @@
     </style>
 
     <style name="SimpleCardWithContent" parent="@style/SimpleCard">
-        <item name="android:layout_margin">@dimen/CardMargin</item>
-        <item name="contentPadding">@dimen/panel_padding</item>
+        <item name="android:layout_margin">@dimen/text_container_margin</item>
+        <item name="contentPadding">@dimen/card_padding</item>
         <item name="android:outlineProvider">none</item>
     </style>
 
-    <style name="separator_title" parent="Normal">
+    <style name="SeparatorTitle" parent="Text">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/text_container_margin</item>
     </style>
 
-    <style name="separaotr_main_title" parent="@style/Title">
+    <style name="SeparatorTitleMain" parent="@style/Title">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/n_text_container_margin</item>
         <item name="android:layout_marginLeft">@dimen/n_text_container_margin</item>
     </style>
 
-    <style name="text_input" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+    <style name="TextInput" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox">
          <item name="android:layout_marginBottom">@dimen/text_container_margin</item>
         <item name="android:layout_marginHorizontal">@dimen/text_container_margin</item>
         <item name="suffixTextAppearance">@style/Description</item>
     </style>
 
-    <style name="edit_text">
-        <item name="android:textAppearance">@style/Normal</item>
+    <style name="EditText">
+        <item name="android:textAppearance">@style/Text</item>
         <item name="android:drawablePadding">-15dp</item>
     </style>
 
-    <style name="card_outline" parent="@style/SimpleCard">
+    <style name="CardOutline" parent="@style/SimpleCard">
         <item name="android:outlineProvider">none</item>
         <item name="cardBackgroundColor">@android:color/transparent</item>
         <item name="strokeWidth">1dp</item>
-        <item name="contentPadding">@dimen/panel_padding</item>
-        <item name="android:layout_margin">@dimen/CardMargin</item>
+        <item name="contentPadding">@dimen/card_padding</item>
+        <item name="android:layout_margin">@dimen/text_container_margin</item>
     </style>
 
     <style name="main_background" parent="@style/Widget.Material3.CardView.Filled">
@@ -83,13 +81,13 @@
 
     </style>
 
-    <style name="separator_line">
+    <style name="SeparatorLine">
         <item name="android:layout_height">1dp</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:background">?attr/colorForeground01</item>
     </style>
 
-    <style name="separator" parent="@style/CategoryCardName">
+    <style name="Separator" parent="@style/CategoryCardName">
         <item name="android:layout_marginHorizontal">@null</item>
         <item name="android:layout_marginTop">@null</item>
         <item name="android:background">?android:attr/windowBackground</item>
@@ -99,7 +97,7 @@
         <item name="android:outlineProvider">none</item>
     </style>
 
-    <style name="button" parent="@style/Widget.Material3.Button">
+    <style name="Button" parent="@style/Widget.Material3.Button">
         <item name="android:paddingTop">@dimen/button_vertical_padding</item>
         <item name="android:paddingBottom">@dimen/button_vertical_padding</item>
         <item name="android:minWidth">0dp</item>
@@ -108,53 +106,53 @@
         <item name="android:minHeight">0dp</item>
     </style>
 
-    <style name="button_tonal" parent="@style/button">
+    <style name="ButtonTonal" parent="@style/Button">
         <item name="android:backgroundTint">?attr/colorSecondaryContainer</item>
         <item name="android:textColor">?attr/colorOnSecondaryContainer</item>
         <item name="iconTint">?attr/colorOnSecondaryContainer</item>
     </style>
 
-    <style name="button_tonal_icon" parent="@style/button_tonal">
+    <style name="ButtonTonalIcon" parent="@style/ButtonTonal">
         <item name="android:paddingLeft">16dp</item>
     </style>
 
-    <style name="button_outline" parent="@style/button">
+    <style name="ButtonOutline" parent="@style/Button">
         <item name="backgroundTint">@android:color/transparent</item>
         <item name="strokeColor">@color/m3_button_outline_color_selector</item>
         <item name="android:textColor">?android:attr/colorPrimary</item>
         <item name="strokeWidth">1dp</item>
     </style>
 
-    <style name="button_icon" parent="@style/button">
+    <style name="ButtonIcon" parent="@style/Button">
         <item name="android:paddingLeft">16dp</item>
     </style>
 
-    <style name="button_outline_icon" parent="@style/button_outline">
+    <style name="ButtonOutlineIcon" parent="@style/ButtonOutline">
         <item name="android:paddingLeft">16dp</item>
         <item name="iconTint">?android:attr/colorPrimary</item>
     </style>
 
-    <style name="icon_button" parent="@style/button">
+    <style name="IconButton" parent="@style/Button">
         <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
         <item name="android:paddingRight">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
     </style>
 
-    <style name="icon_button_transparent" parent="@style/icon_button">
+    <style name="IconButtonTransparent" parent="@style/IconButton">
         <item name="android:background">@android:color/transparent</item>
     </style>
 
-    <style name="icon_button_outline" parent="@style/button_outline_icon">
+    <style name="IconButtonOutline" parent="@style/ButtonOutlineIcon">
         <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
         <item name="android:paddingRight">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
     </style>
 
-    <style name="appBarStyle">
+    <style name="AppBarStyle">
         <item name="background">@null</item>
     </style>
 
-    <style name="floatingActionButtonC" parent="@style/Widget.Material3.FloatingActionButton.Primary">
+    <style name="FloatingActionButton" parent="@style/Widget.Material3.FloatingActionButton.Primary">
         <item name="android:layout_gravity">bottom|right</item>
         <item name="android:layout_margin">@null</item>
         <item name="android:layout_marginLeft">@dimen/application_padding</item>
@@ -169,7 +167,7 @@
         <item name="android:minWidth">0dp</item>
     </style>
 
-    <style name="tricky_toolbar">
+    <style name="TrickyToolbar">
         <item name="android:paddingHorizontal">@dimen/application_padding</item>
         <item name="android:paddingTop">@dimen/application_padding</item>
         <item name="layout_scrollFlags">scroll</item>
@@ -181,15 +179,15 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:paddingVertical">@dimen/text_container_margin</item>
-        <item name="android:layout_marginLeft">@dimen/n_panel_padding</item>
-        <item name="android:layout_marginRight">@dimen/n_panel_padding</item>
+        <item name="android:layout_marginLeft">@dimen/n_card_padding</item>
+        <item name="android:layout_marginRight">@dimen/n_card_padding</item>
     </style>
     
-    <style name="ImageAddButton" parent="button">
+    <style name="ImageAddButton" parent="Button">
         <item name="backgroundTint">?attr/colorSecondary</item>
-        <item name="android:layout_width">@dimen/imageListHeight</item>
-        <item name="android:layout_height">@dimen/imageListHeight</item>
-        <item name="android:layout_margin">@dimen/CardMargin</item>
+        <item name="android:layout_width">@dimen/image_list_height</item>
+        <item name="android:layout_height">@dimen/image_list_height</item>
+        <item name="android:layout_margin">@dimen/text_container_margin</item>
         <item name="android:text">@string/plus_image</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:textSize">20sp</item>
@@ -198,11 +196,11 @@
     
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
         <item name="cardElevation">0dp</item>
-        <item name="cardCornerRadius">@dimen/panel_round</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="cardBackgroundColor">?attr/colorSurfaceContainerLow</item>
     </style>
 
-    <style name="bottomSheetDrag" parent="Widget.Material3.BottomSheet.DragHandle">
+    <style name="BottomSheetDrag" parent="Widget.Material3.BottomSheet.DragHandle">
         <item name="tint">?attr/colorForeground066</item>
     </style>
 
@@ -216,48 +214,40 @@
     </style>
 
     <style name="DefaultTextView">
-        <item name="android:textAppearance">@style/Normal</item>
+        <item name="android:textAppearance">@style/Text</item>
     </style>
 
-    <style name="kollerSpinnerItemStyle" parent="@style/Normal">
-
-    </style>
-
-    <style name="chipButtonFilterStyle" parent="@style/Widget.Material3.Chip.Filter">
-        <item name="android:textAppearance">@style/chipButtonTextStyle</item>
+    <style name="ChipFilter" parent="@style/Widget.Material3.Chip.Filter">
         <item name="checkedIconEnabled">false</item>
         <item name="checkedIcon">@null</item>
         <item name="chipMinTouchTargetSize">0dp</item>
         <item name="chipMinHeight">0dp</item>
         <item name="android:paddingVertical">8dp</item>
+        <item name="android:textAppearance">@style/Description</item>
     </style>
 
-    <style name="iconLikeText">
+    <style name="IconLikeText">
         <item name="autoSizeTextType">uniform</item>
         <item name="android:scaleX">1.2</item>
         <item name="android:scaleY">1.2</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
-        <item name="android:layout_height">@dimen/panel_icon</item>
-        <item name="android:layout_width">@dimen/panel_icon</item>
+        <item name="android:layout_height">@dimen/card_icon</item>
+        <item name="android:layout_width">@dimen/card_icon</item>
     </style>
 
-    <style name="chipDropdownButtonFilterStyle" parent="@style/chipButtonFilterStyle">
+    <style name="ChipDropdownFilter" parent="@style/ChipFilter">
         <item name="closeIcon">@drawable/arrow_drop</item>
         <item name="android:checkable">false</item>
         <item name="closeIconEnabled">true</item>
         <item name="android:ellipsize">end</item>
     </style>
 
-    <style name="chipButtonTextStyle" parent="@style/Description">
-
+    <style name="Spinner" parent="android:Widget.Material.Spinner">
+        <item name="android:popupBackground">@drawable/panel_dropdown</item>
     </style>
 
-    <style name="kollerSpinnerStyle" parent="android:Widget.Material.Spinner">
-            <item name="android:popupBackground">@drawable/panel_dropdown</item>
-    </style>
-
-    <style name="kollerSpinnerDropdownItemStyle" parent="@style/Normal">
+    <style name="SpinnerItem" parent="@style/Text">
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:gravity">center_vertical</item>
     </style>
@@ -296,16 +286,16 @@
     </style>
 
 
-    <style name="panelButton" parent="@style/button">
-         <item name="android:paddingTop">@dimen/panel_padding</item>
-        <item name="android:paddingBottom">@dimen/panel_padding</item>
+    <style name="CardButton" parent="@style/Button">
+         <item name="android:paddingTop">@dimen/card_padding</item>
+        <item name="android:paddingBottom">@dimen/card_padding</item>
         <item name="android:backgroundTint">?attr/colorSurfaceContainerLow</item>
         <item name="cornerRadius">0dp</item>
         <item name="android:elevation">0dp</item>
         <item name="iconGravity">textStart</item>
         <item name="iconTint">?android:attr/colorForeground</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
-        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textSize">@dimen/text</item>
     </style>
 
     <style name="MainTitleExpanded">
@@ -325,18 +315,18 @@
     </style>
 
     <style name="SmallTitle">
-        <item name="android:textSize">@dimen/text_normal</item>
+        <item name="android:textSize">@dimen/text</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
         <item name="android:textStyle">bold</item>
         <item name="minHeight">15dp</item>
     </style>
 
-    <style name="Normal">
-        <item name="android:textSize">@dimen/text_normal</item>
+    <style name="Text">
+        <item name="android:textSize">@dimen/text</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
     </style>
 
-    <style name="CategoryCardName" parent="Normal">
+    <style name="CategoryCardName" parent="@style/Text">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?attr/colorForeground066</item>
         <item name="android:layout_marginHorizontal">15dp</item>
@@ -348,12 +338,12 @@
         <item name="android:textStyle">normal</item>
     </style>
 
-    <style name="roundImageView">
+    <style name="RoundImageView">
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedLeft">
+    <style name="OverlayRoundedLeft">
         <item name="cornerSizeBottomLeft">8dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeTopLeft">8dp</item>
@@ -361,7 +351,7 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedRight">
+    <style name="OverlayRoundedRight">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">8dp</item>
         <item name="cornerSizeTopLeft">0dp</item>
@@ -370,7 +360,7 @@
     </style>
 
 
-    <style name="textButton" parent="@style/Widget.Material3.Button.TextButton">
+    <style name="TextButton" parent="@style/Widget.Material3.Button.TextButton">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:insetTop">0dp</item>
@@ -386,157 +376,138 @@
         <item name="android:textAppearance">@style/Description</item>
     </style>
 
-    <style name="overlayRoundedCardLeft">
-        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
+    <style name="OverlayRoundedCardLeft">
+        <item name="cornerSizeBottomLeft">@dimen/card_corner_radius</item>
         <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedCardRight">
+    <style name="OverlayRoundedCardRight">
         <item name="cornerSizeBottomLeft">0dp</item>
-        <item name="cornerSizeBottomRight">@dimen/panel_round</item>
+        <item name="cornerSizeBottomRight">@dimen/card_corner_radius</item>
         <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeTopRight">@dimen/panel_round</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlaySmallRoundedCardLeft">
-        <item name="cornerSizeBottomLeft">@dimen/panel_small_radius</item>
+    <style name="OverlaySmallRoundedCardLeft">
+        <item name="cornerSizeBottomLeft">@dimen/card_corner_radius_small</item>
         <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlaySmallRoundedCardRight">
+    <style name="OverlaySmallRoundedCardRight">
         <item name="cornerSizeBottomLeft">0dp</item>
-        <item name="cornerSizeBottomRight">@dimen/panel_small_radius</item>
+        <item name="cornerSizeBottomRight">@dimen/card_corner_radius_small</item>
         <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeTopRight">@dimen/panel_small_radius</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius_small</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlaySmallRoundedCardTopLeft">
+    <style name="OverlaySmallRoundedCardTopLeft">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_small_radius</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius_small</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlaySmallRoundedCardTopRight">
+    <style name="OverlaySmallRoundedCardTopRight">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeTopRight">@dimen/panel_small_radius</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius_small</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlaySmallRoundedCardTop">
+    <style name="OverlaySmallRoundedCardTop">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_small_radius</item>
-        <item name="cornerSizeTopRight">@dimen/panel_small_radius</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius_small</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius_small</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlaySmallRoundedCard">
-        <item name="cornerSizeBottomLeft">@dimen/panel_small_radius</item>
-        <item name="cornerSizeBottomRight">@dimen/panel_small_radius</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_small_radius</item>
-        <item name="cornerSizeTopRight">@dimen/panel_small_radius</item>
+    <style name="OverlaySmallRoundedCard">
+        <item name="cornerSizeBottomLeft">@dimen/card_corner_radius_small</item>
+        <item name="cornerSizeBottomRight">@dimen/card_corner_radius_small</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius_small</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius_small</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedCardTop">
+    <style name="OverlayRoundedCardTop">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
-        <item name="cornerSizeTopRight">@dimen/panel_round</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedCardTopLeft">
+    <style name="OverlayRoundedCardTopLeft">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedCardTopRight">
+    <style name="OverlayRoundedCardTopRight">
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeTopRight">@dimen/panel_round</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedCardBottom">
-        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
-        <item name="cornerSizeBottomRight">@dimen/panel_round</item>
-        <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeTopRight">0dp</item>
-        <item name="cornerFamily">rounded</item>
-    </style>
-
-    <style name="overlayRoundedCardBottomLeft">
-        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
-        <item name="cornerSizeBottomRight">0dp</item>
+    <style name="OverlayRoundedCardBottom">
+        <item name="cornerSizeBottomLeft">@dimen/card_corner_radius</item>
+        <item name="cornerSizeBottomRight">@dimen/card_corner_radius</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedCardBottomRight">
-        <item name="cornerSizeBottomLeft">0dp</item>
-        <item name="cornerSizeBottomRight">@dimen/panel_round</item>
+    <style name="OverlayRoundedCardBottomLeft">
+        <item name="cornerSizeBottomLeft">@dimen/card_corner_radius</item>
+        <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="overlayRoundedCard">
-        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
-        <item name="cornerSizeBottomRight">@dimen/panel_round</item>
-        <item name="cornerSizeTopLeft">@dimen/panel_round</item>
-        <item name="cornerSizeTopRight">@dimen/panel_round</item>
+    <style name="OverlayRoundedCardBottomRight">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">@dimen/card_corner_radius</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
-    <style name="image">
+    <style name="OverlayRoundedCard">
+        <item name="cornerSizeBottomLeft">@dimen/card_corner_radius</item>
+        <item name="cornerSizeBottomRight">@dimen/card_corner_radius</item>
+        <item name="cornerSizeTopLeft">@dimen/card_corner_radius</item>
+        <item name="cornerSizeTopRight">@dimen/card_corner_radius</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="Image">
         <item name="android:scaleType">centerCrop</item>
-        <item name="shapeAppearanceOverlay">@style/roundedImageView</item>
+        <item name="shapeAppearanceOverlay">@style/RoundedImageView</item>
     </style>
 
-    <style name="roundedImageView">
+    <style name="RoundedImageView">
         <item name="cornerSize">10dp</item>
         <item name="cornerFamily">rounded</item>
-
-    </style>
-
-    <style name="chipGroupArrangeCard">
-        <item name="cardCornerRadius">8dp</item>
-        <item name="android:layout_marginVertical">8dp</item>
-        <item name="strokeWidth">1dp</item>
-    </style>
-
-    <style name="chipGroupArrange" parent="@style/Widget.Material3.ChipGroup">
-        <item name="chipSpacingHorizontal">0dp</item>
-        <item name="chipSpacingVertical">0dp</item>
-        <item name="selectionRequired">true</item>
-        <item name="singleSelection">true</item>
-    </style>
-
-    <style name="chipArrange" parent="chipButtonFilterStyle">
-        <item name="chipCornerRadius">0dp</item>
-        <item name="chipMinTouchTargetSize">0dp</item>
     </style>
 
     <style name="Card" parent="@style/SimpleCard">
-        <item name="contentPadding">@dimen/panel_padding</item>
+        <item name="contentPadding">@dimen/card_padding</item>
         <item name="android:clipChildren">false</item>
         <item name="android:clipToPadding">false</item>
         <item name="cardCornerRadius">@null</item>
@@ -549,20 +520,6 @@
     <style name="CardHeader" parent="Card">
         <item name="android:layout_margin">0dp</item>
         <item name="contentPadding">0dp</item>
-    </style>
-
-
-    <style name="CardMainCategory" parent="Card">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MaterialCardView.Cut</item>
-    </style>
-
-
-    <style name="ShapeAppearanceOverlay.MaterialCardView.Cut" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">0dp</item>
-        <item name="cornerSizeTopLeft">0dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-        <item name="cornerSizeBottomLeft">@dimen/panel_round</item>
     </style>
 
     <style name="MainCard" parent="@style/SimpleCard">
@@ -585,7 +542,6 @@
         <item name="android:clipToPadding">false</item>
         <item name="android:clipChildren">false</item>
         <item name="android:fillViewport">true</item>
-
     </style>
     
     <style name="BottomSheetMainLayout">
@@ -595,11 +551,11 @@
         <item name="android:layout_marginRight">0dp</item>
         <item name="android:layout_marginTop">0dp</item>
         <item name="cardElevation">-16dp</item>
-        <item name="cardCornerRadius">@dimen/application_round</item>
+        <item name="cardCornerRadius">@dimen/application_corner_radius</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
     </style>
 
-    <style name="toolbar_navigation_button" parent="@style/icon_button_transparent">
+    <style name="ToolbarNavigationButton" parent="@style/IconButtonTransparent">
         <item name="android:layout_width">@dimen/toolbar_button_size</item>
         <item name="android:layout_height">@dimen/toolbar_button_size</item>
         <item name="android:layout_margin">@dimen/text_container_margin</item>
@@ -610,14 +566,6 @@
         <item name="iconSize">25dp</item>
         <item name="iconTint">?attr/colorForeground066</item>
         <item name="minWidth">0dp</item>
-    </style>
-    
-    <style name="CornerRadius15">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">15dp</item>
-        <item name="cornerSizeTopLeft">15dp</item>
-        <item name="cornerSizeBottomRight">15dp</item>
-        <item name="cornerSizeBottomLeft">15dp</item>
     </style>
 
     <style name="SimpleButton" parent="@style/Widget.Material3.Button.TextButton">
@@ -637,21 +585,21 @@
         <item name="tint">?android:attr/colorForeground</item>
     </style>
 
-    <style name="transparent_icon" parent="@style/Icon">
+    <style name="TransparentIcon" parent="@style/Icon">
         <item name="android:alpha">0.666</item>
     </style>
 
-    <style name="toolbar" parent="@style/Widget.Material3.Toolbar">
+    <style name="Toolbar" parent="@style/Widget.Material3.Toolbar">
         <item name="android:layout_height">@dimen/header_footer_size</item>
         <item name="android:minHeight">0dp</item>
     </style>
 
-    <style name="collapsing_toolbar_layout" parent="@style/Widget.Material3.CollapsingToolbar">
+    <style name="CollapsingToolbarLayout" parent="@style/Widget.Material3.CollapsingToolbar">
         <item name="layout_scrollFlags">scroll|exitUntilCollapsed|snap</item>
         <item name="collapsedTitleTextAppearance">@style/MainTitle</item>
         <item name="expandedTitleGravity">center</item>
         <item name="expandedTitleTextAppearance">@style/MainTitleExpanded</item>
-        <item name="scrimVisibleHeightTrigger">@dimen/expandedToolbarHeight</item>
+        <item name="scrimVisibleHeightTrigger">@dimen/expanded_toolbar_height</item>
         <item name="expandedTitleTextColor">?android:attr/colorForeground</item>
         <item name="collapsedTitleTextColor">?android:attr/colorForeground</item>
         <item name="titleCollapseMode">scale</item>
@@ -671,7 +619,7 @@
     </style>
 
     <style name="BottomSheetDialogFull" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/BottomSheetFull</item>
+        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
     </style>
 
     <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
@@ -688,12 +636,11 @@
     </style>
 
     <style name="FakeBottomSheet" parent="Card">
-        <item name="cardCornerRadius">@dimen/panel_round</item>
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="contentPaddingBottom">10dp</item>
         <item name="contentPaddingTop">0dp</item>
         <item name="contentPaddingLeft">0dp</item>
         <item name="contentPaddingRight">0dp</item>
-
         <item name="android:layout_margin">@null</item>
         <item name="android:layout_marginBottom">-20dp</item>
         <item name="android:layout_marginTop">0dp</item>
@@ -701,14 +648,10 @@
         <item name="android:layout_marginRight">0dp</item>
     </style>
 
-    <style name="BottomSheetFull" parent="CustomBottomSheet">
-
-    </style>
-
     <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
         <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopRight">@dimen/application_round</item>
-        <item name="cornerSizeTopLeft">@dimen/application_round</item>
+        <item name="cornerSizeTopRight">@dimen/application_corner_radius</item>
+        <item name="cornerSizeTopLeft">@dimen/application_corner_radius</item>
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeBottomLeft">0dp</item>
     </style>
@@ -724,15 +667,9 @@
         <item name="android:background">?android:attr/colorBackground</item>
     </style>
 
-    <style name="MainLayoutWelcome" parent="MainLayout">
-        <item name="android:paddingBottom">@dimen/welcome_bottom_padding</item>
-        <item name="android:paddingTop">@dimen/welcome_top_padding</item>
-        <item name="background">@android:color/transparent</item>
-    </style>
-
-    <style name="tab" parent="@style/Widget.Material3.TabLayout">
-        <item name="android:background">@android:color/transparent</item>
+    <style name="Tab" parent="@style/Widget.Material3.TabLayout">
         <item name="android:layout_height">@dimen/tab_height</item>
+        <item name="android:background">@android:color/transparent</item>
         <item name="tabMode">scrollable</item>
         <item name="tabGravity">center</item>
         <item name="android:layout_width">match_parent</item>
@@ -740,37 +677,9 @@
         <item name="tabTextColor">?colorForeground066</item>
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
         <item name="tabUnboundedRipple">false</item>
-
     </style>
 
-    <style name="nestedScrollView">
+    <style name="NestedScrollView">
         <item name="android:scrollbars">vertical</item>
-
-    </style>
-
-    <style name="infoLeft" parent="info">
-        <item name="android:textAlignment">textStart</item>
-    </style>
-
-    <style name="infoRight" parent="info">
-        <item name="android:textAlignment">textEnd</item>
-    </style>
-
-    <style name="list">
-        <item name="android:padding">@dimen/text_container_margin</item>
-    </style>
-
-    <style name="separatedBG2" parent="list">
-        <item name="android:background">#0D000000</item>
-    </style>
-
-    <style name="separatedBG1" parent="list">
-        <item name="android:background">#0DFFFFFF</item>
-    </style>
-
-    <style name="info" parent="@style/Description">
-        <item name="android:textColor">@color/white</item>
-        <item name="android:layout_weight">1</item>
-        <item name="android:layout_width">match_parent</item>
     </style>
 </resources>

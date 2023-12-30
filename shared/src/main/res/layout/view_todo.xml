@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-7.5dp"
+                android:layout_marginTop="-7.5dp"
+                android:layout_marginRight="-7.5dp"
+                android:layout_marginBottom="-7.5dp"
+                app:cardBackgroundColor="?android:attr/colorBackground"
+                app:cardCornerRadius="15dp">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <View
+                        android:id="@+id/home_view_lesson_slider"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:background="?attr/colorPrimaryContainer"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintWidth_percent="0.75" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/home_text_lessons_number"
+                    style="@style/IconLikeText"
+                    android:layout_width="@dimen/card_icon"
+                    android:layout_height="@dimen/card_icon"
+                    android:layout_gravity="center_vertical"
+                    android:backgroundTint="?android:attr/colorForeground"
+                    android:gravity="center|center_vertical"
+                    android:text="n"
+                    android:textAlignment="center" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:layout_marginRight="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/home_text_lessons_title"
+                            style="@style/Title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/title" />
+
+                        <TextView
+                            android:id="@+id/home_text_lessons_description"
+                            style="@style/Description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/description"
+                            android:textAlignment="textStart" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/home_text_lessons_time"
+                        style="@style/Description"
+                        android:layout_width="35sp"
+                        android:layout_height="match_parent"
+                        android:gravity="center"
+                        android:lineSpacingExtra="-5sp"
+                        android:text="@string/hours"
+                        android:textAlignment="center" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/home_layout_lessons_next"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="12.5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/home_text_small_lessons_number"
+                style="@style/IconLikeText"
+                android:layout_width="@dimen/card_icon_smaller"
+                android:layout_height="@dimen/card_icon_smaller"
+                android:text="n"
+                android:textColor="?colorForeground066" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="6.666dp"
+                android:layout_marginTop="3.333dp"
+                android:layout_marginRight="3.3333dp"
+                android:layout_marginBottom="3.3333dp"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="6.666dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/home_text_small_lessons_title"
+                        style="@style/TextAppearance.AppCompat.Medium"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/title"
+                        android:textColor="?colorForeground066"
+                        android:textSize="@dimen/text_title_smaller" />
+
+                    <TextView
+                        android:id="@+id/home_text_small_lessons_description"
+                        style="@style/Description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/description"
+                        android:textAlignment="textStart"
+                        android:textColor="?colorForeground033"
+                        android:textSize="@dimen/text_description_smaller" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/home_text_small_lessons_time"
+                    style="@style/Description"
+                    android:layout_width="26.25sp"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:lineSpacingExtra="-3.75sp"
+                    android:text="@string/hours"
+                    android:textAlignment="center"
+                    android:textColor="?colorForeground033"
+                    android:textSize="@dimen/text_description_smaller" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+</LinearLayout>

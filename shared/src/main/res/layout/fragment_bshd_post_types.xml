@@ -5,7 +5,7 @@
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.bottomsheet.BottomFragmentPostTypes">
+    tools:context=".fragments.bottomsheet.FragmentPostTypes">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,12 +53,12 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
+                            android:layout_width="@dimen/card_icon"
+                            android:layout_height="@dimen/card_icon"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="@dimen/text_container_margin"
                             android:alpha="0.666"
-                            app:srcCompat="@drawable/megaphone" />
+                            app:srcCompat="@drawable/announce" />
 
                         <LinearLayout
                             android:layout_width="0dp"
@@ -109,8 +109,8 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
+                            android:layout_width="@dimen/card_icon"
+                            android:layout_height="@dimen/card_icon"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="@dimen/text_container_margin"
                             android:alpha="0.666"
@@ -166,8 +166,8 @@
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/iv_icon"
                             style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
+                            android:layout_width="@dimen/card_icon"
+                            android:layout_height="@dimen/card_icon"
                             android:layout_gravity="center_vertical"
                             android:layout_marginRight="@dimen/text_container_margin"
                             android:alpha="0.666"

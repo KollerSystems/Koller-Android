@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context=".WelcomeSummaryFragment">
+    tools:context=".fragments.WelcomeSummaryFragment">
 
     <LinearLayout
         style="@style/MainLayout"
@@ -49,7 +49,7 @@
 
                 <TextView
 
-                    style="@style/separator_title"
+                    style="@style/SeparatorTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
@@ -64,7 +64,7 @@
 
                 <TextView
 
-                    style="@style/separator_title"
+                    style="@style/SeparatorTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Név"
@@ -110,14 +110,14 @@
 
                         <TextView
                             android:id="@+id/textView96"
-                            style="@style/separaotr_main_title"
+                            style="@style/SeparatorTitleMain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Diák" />
 
                         <TextView
                             android:id="@+id/textView84"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Név" />
@@ -131,7 +131,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Nem" />
@@ -145,7 +145,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Születési hely" />
@@ -159,7 +159,7 @@
 
                         <TextView
                             android:id="@+id/textView41"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Születési dátum" />
@@ -173,7 +173,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Lakcím" />
@@ -187,7 +187,7 @@
 
                         <TextView
                             android:id="@+id/textView88"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Taj" />
@@ -201,7 +201,7 @@
 
                         <TextView
                             android:id="@+id/textView90"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Tanuló azonosító" />
@@ -215,7 +215,7 @@
 
                         <TextView
                             android:id="@+id/textView94"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Állampolgárság" />
@@ -229,7 +229,7 @@
 
                         <TextView
                             android:id="@+id/textView92"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="További állampolgárság" />
@@ -243,7 +243,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Anyja leánykori neve" />
@@ -257,7 +257,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Tartós betegség, fogyaték" />
@@ -271,7 +271,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Hátráynos helyzetű" />
@@ -285,7 +285,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Telefonszám" />
@@ -299,7 +299,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Email" />
@@ -313,7 +313,7 @@
 
                         <TextView
                             android:id="@+id/textView82"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Discord" />
@@ -327,7 +327,7 @@
 
                         <TextView
                             android:id="@+id/textView80"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Facebook" />
@@ -341,7 +341,7 @@
 
                         <TextView
                             android:id="@+id/textView64"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Instagram" />
@@ -369,14 +369,14 @@
 
                         <TextView
                             android:id="@+id/textView97"
-                            style="@style/separaotr_main_title"
+                            style="@style/SeparatorTitleMain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Szülő / Gondviselő" />
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Név" />
@@ -390,7 +390,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Lakcím" />
@@ -404,7 +404,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Telefonszám" />
@@ -418,7 +418,7 @@
 
                         <TextView
                             android:id="@+id/textView61"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Email" />
@@ -446,14 +446,14 @@
 
                         <TextView
                             android:id="@+id/textView98"
-                            style="@style/separaotr_main_title"
+                            style="@style/SeparatorTitleMain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Kollégiumhoz közeli rokon" />
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Név" />
@@ -466,7 +466,7 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Lakcím" />
@@ -479,7 +479,7 @@
 
                         <TextView
                             android:id="@+id/textView53"
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Telefonszám" />
@@ -531,7 +531,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Iskola neve"
@@ -545,7 +545,7 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Cím" />
@@ -573,7 +573,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Osztályfőnök neve"
@@ -587,7 +587,7 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Telefonszáma" />
@@ -615,7 +615,7 @@
 
                         <TextView
 
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Képzés típusa"
@@ -629,7 +629,7 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Képzés formája" />
@@ -641,7 +641,7 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Évfolyam" />
@@ -653,7 +653,7 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Szakma, tagozat" />
@@ -665,7 +665,7 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Érettségizett" />
@@ -677,13 +677,13 @@
                             android:textAppearance="@style/Description" />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Érettségi bizonyítvány" />
 
                         <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/image"
+                            style="@style/Image"
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:src="@drawable/sh_room"
@@ -691,13 +691,13 @@
                          />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Iskolai bizonyítvány" />
 
                         <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/image"
+                            style="@style/Image"
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:src="@drawable/sh_room"
@@ -705,13 +705,13 @@
                             />
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Iskolalátogatási igazolás" />
 
                         <com.google.android.material.imageview.ShapeableImageView
-                            style="@style/image"
+                            style="@style/Image"
                             android:layout_width="100dp"
                             android:layout_height="150dp"
                             android:src="@drawable/sh_room"
@@ -758,7 +758,7 @@
                         android:orientation="vertical">
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="0dp"
@@ -797,7 +797,7 @@
                         </LinearLayout>
 
                         <TextView
-                            style="@style/separator_title"
+                            style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 

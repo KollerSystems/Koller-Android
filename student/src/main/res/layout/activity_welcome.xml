@@ -19,7 +19,7 @@
         android:fitsSystemWindows="true"
         android:translationY="-40dp"
         android:visibility="invisible"
-        app:tabIndicator="@drawable/inner_panel"
+        app:tabIndicator="@drawable/rounded_square"
         app:tabIndicatorColor="?attr/colorSecondaryContainer"
         app:tabIndicatorGravity="center"
         app:tabIndicatorHeight="25sp"

@@ -10,14 +10,14 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.customview.SimpleCardButton
-import com.norbert.koller.shared.customview.SimpleCardButtonWithToggle
+import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.customviews.SimpleCardButtonWithToggle
 import com.norbert.koller.shared.api.APIInterface
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.RangeSlider
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputLayout
-import com.norbert.koller.shared.connectToBackgroundCard
+import com.norbert.koller.shared.managers.connectToBackgroundCard
 import java.util.Calendar
 
 open class SettingsActivity : AppCompatActivity() {

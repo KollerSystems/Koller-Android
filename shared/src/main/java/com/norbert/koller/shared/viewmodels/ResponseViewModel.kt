@@ -8,5 +8,4 @@ class ResponseViewModel : ViewModel() {
 
     var ID = -1
     var response = MutableLiveData<Any>()
-
 }

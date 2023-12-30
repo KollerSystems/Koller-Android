@@ -12,12 +12,12 @@
         android:id="@+id/appbar"
 
         android:layout_width="match_parent"
-        android:layout_height="@dimen/expandedToolbarHeight"
+        android:layout_height="@dimen/expanded_toolbar_height"
         android:background="?attr/colorSurfaceContainer"
         app:expanded="false">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="@style/collapsing_toolbar_layout"
+            style="@style/CollapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
@@ -42,11 +42,11 @@
                 android:clipToPadding="false"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingVertical="@dimen/HeaderMarginVertical">
+                android:paddingVertical="@dimen/header_margin_vertical">
 
                 <Button
                     android:id="@+id/toolbar_exit"
-                    style="@style/toolbar_navigation_button"
+                    style="@style/ToolbarNavigationButton"
                     android:layout_height="@dimen/toolbar_button_size"
                     android:layout_marginRight="@dimen/spacing"
                     android:alpha="0.666"
@@ -122,7 +122,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        style="@style/nestedScrollView"
+        style="@style/NestedScrollView"
         android:layout_width="match_parent"
 
 
@@ -143,7 +143,7 @@
             tools:context=".activities.CreateNewPostActivity">
 
 
-            <com.norbert.koller.shared.customview.TextInputWithChips
+            <com.norbert.koller.shared.customviews.TextInputWithChips
                 android:id="@+id/til_addresse"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -154,13 +154,13 @@
                 android:id="@+id/create_new_post_til_title"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/CardMargin"
-                android:layout_marginBottom="@dimen/CardMargin"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
                 android:hint="Célja"
-                app:boxCornerRadiusBottomEnd="@dimen/panel_round"
-                app:boxCornerRadiusBottomStart="@dimen/panel_round"
-                app:boxCornerRadiusTopEnd="@dimen/panel_round"
-                app:boxCornerRadiusTopStart="@dimen/panel_round"
+                app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
+                app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+                app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
+                app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
                 app:counterEnabled="false">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -168,7 +168,7 @@
                     android:layout_height="wrap_content"
                     android:inputType="text|textCapSentences|textMultiLine"
                     android:maxLength="50"
-                    android:textAppearance="@style/Normal" />
+                    android:textAppearance="@style/Text" />
             </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -219,7 +219,7 @@
                                     android:editable="false"
                                     android:focusable="false"
                                     android:inputType="datetime|date"
-                                    android:textAppearance="@style/Normal" />
+                                    android:textAppearance="@style/Text" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
@@ -243,7 +243,7 @@
                                     android:focusable="false"
                                     android:inputType="datetime|time"
                                     android:singleLine="false"
-                                    android:textAppearance="@style/Normal" />
+                                    android:textAppearance="@style/Text" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
@@ -273,7 +273,7 @@
                                     android:focusable="false"
                                     android:inputType="datetime|date"
                                     android:singleLine="false"
-                                    android:textAppearance="@style/Normal" />
+                                    android:textAppearance="@style/Text" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
@@ -296,7 +296,7 @@
                                     android:focusable="false"
                                     android:inputType="datetime|time"
                                     android:singleLine="false"
-                                    android:textAppearance="@style/Normal" />
+                                    android:textAppearance="@style/Text" />
                             </com.google.android.material.textfield.TextInputLayout>
                         </LinearLayout>
 
@@ -324,7 +324,7 @@
             android:layout_height="match_parent"
             android:gravity="right|center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/HeaderMarginHorizontal">
+            android:paddingHorizontal="@dimen/header_margin_horizontal">
 
             <Button
                 android:id="@+id/create_new_post_button_publish"

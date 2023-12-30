@@ -12,7 +12,7 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            style="@style/tricky_toolbar"
+            style="@style/TrickyToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -30,7 +30,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip37"
-                    style="@style/chipDropdownButtonFilterStyle"
+                    style="@style/ChipDropdownFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/length"
@@ -38,7 +38,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_date"
-                    style="@style/chipDropdownButtonFilterStyle"
+                    style="@style/ChipDropdownFilter"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/date"
@@ -67,14 +67,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/newest"
-                    app:shapeAppearance="@style/overlayRoundedLeft" />
+                    app:shapeAppearance="@style/OverlayRoundedLeft" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_yes"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/oldest"
-                    app:shapeAppearance="@style/overlayRoundedRight" />
+                    app:shapeAppearance="@style/OverlayRoundedRight" />
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -98,7 +98,7 @@
 
                 <Button
                     android:id="@+id/button_add_new"
-                    style="@style/button_tonal_icon"
+                    style="@style/ButtonTonalIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Folyamatos kimenő hozzáadása"
@@ -107,7 +107,7 @@
 
                 <Button
                     android:id="@+id/button4"
-                    style="@style/icon_button_outline"
+                    style="@style/IconButtonOutline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/spacing"
@@ -119,7 +119,7 @@
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <com.norbert.koller.shared.customview.SuperCoolRecyclerView
+    <com.norbert.koller.shared.customviews.SuperCoolRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />

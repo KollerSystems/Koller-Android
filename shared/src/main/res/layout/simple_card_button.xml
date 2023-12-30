@@ -9,12 +9,12 @@
     <ImageView
         android:id="@+id/iv_icon"
         style="@style/Icon"
-        android:layout_width="@dimen/panel_icon_smaller"
-        android:layout_height="@dimen/panel_icon_smaller"
+        android:layout_width="@dimen/card_icon_smaller"
+        android:layout_height="@dimen/card_icon_smaller"
         android:layout_gravity="center_vertical"
         android:layout_marginEnd="@dimen/spacing"
         android:alpha="0.666"
-        android:src="@drawable/flag" />
+        android:src="@drawable/empty" />
 
     <LinearLayout
         android:layout_width="0dp"
@@ -30,7 +30,7 @@
             android:id="@+id/text_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/report" />
+            android:text="@string/title" />
 
         <TextView
             android:id="@+id/text_description"
@@ -38,7 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ellipsize="end"
-            android:text="@string/report_room_desc" />
+            android:text="@string/description" />
 
     </LinearLayout>
 
@@ -47,7 +47,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="@dimen/text_container_margin"
-        android:background="@drawable/alarm_fill"
+        android:background="@drawable/add"
         android:backgroundTint="?attr/colorForeground066"
         android:visibility="gone">
 

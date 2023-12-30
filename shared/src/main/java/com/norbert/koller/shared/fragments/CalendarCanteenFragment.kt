@@ -9,7 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CanteenData
-import com.norbert.koller.shared.recycleradapter.CanteenRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.CanteenRecyclerAdapter
+import java.util.Date
 
 class CalendarCanteenFragment : Fragment() {
 
@@ -30,9 +31,9 @@ class CalendarCanteenFragment : Fragment() {
         canteenRecyclerView.setHasFixedSize(true)
 
         canteenDataArrayList = arrayListOf(
-            CanteenData("Reggeli", "6:00 - 8:45", "Száraz kenyér"),
-            CanteenData("Ebéd", "13:00 - 15:45", "Zöccség leves és Polipos genyó"),
-            CanteenData("Vacsora", "19:15 - 19:45", "Száraz kenyér")
+            CanteenData(1,"Reggeli", "6:00 - 8:45", "Száraz kenyér", Date()),
+            CanteenData(1,"Ebéd", "13:00 - 15:45", "Zöccség leves és Polipos genyó", Date()),
+            CanteenData(1,"Vacsora", "19:15 - 19:45", "Száraz kenyér", Date())
         )
 
         canteenRecyclerView.adapter = CanteenRecyclerAdapter(canteenDataArrayList)

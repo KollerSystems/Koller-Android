@@ -19,7 +19,7 @@
             android:orientation="vertical">
 
             <include
-                layout="@layout/view_user_header"
+                layout="@layout/view_fragment_user_header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
@@ -41,27 +41,27 @@
                     android:layout_height="match_parent"
                     android:orientation="vertical">
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
 
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/key"
                         custom:text="Kulcsfelvétel" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/person_wave"
                         custom:text="@string/presence" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:id="@+id/scb_outgoings"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         custom:icon="@drawable/wave"
                         custom:text="@string/user_outgoings" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:id="@+id/scb_gate"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -69,7 +69,7 @@
                         custom:text="@string/port_exits_and_entrances_delays" />
 
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:visibility="gone"
@@ -77,7 +77,7 @@
                         custom:text="@string/calendar"
                         tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:visibility="gone"
@@ -85,7 +85,7 @@
                         custom:text="@string/commendations"
                         tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:visibility="gone"
@@ -93,7 +93,7 @@
                         custom:text="@string/warnings"
                         tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
@@ -101,21 +101,21 @@
                         custom:text="@string/reports"
                         tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:id="@+id/scb_personal_info"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/data"
                         custom:text="Személyes adatok" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:id="@+id/scb_edit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/pencil"
                         custom:text="@string/edit" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/close"
@@ -128,7 +128,7 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
-    <com.norbert.koller.shared.customview.FullScreenLoading
+    <com.norbert.koller.shared.customviews.FullScreenLoading
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

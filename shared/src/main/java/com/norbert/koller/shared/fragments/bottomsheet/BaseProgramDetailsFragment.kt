@@ -9,14 +9,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.norbert.koller.shared.MyApplication
-import com.norbert.koller.shared.customview.NameContentButton
-import com.norbert.koller.shared.customview.NameContentView
+import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.customviews.NameContentButton
+import com.norbert.koller.shared.customviews.NameContentView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.viewmodels.BaseViewModel
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import java.text.SimpleDateFormat
 
@@ -27,7 +26,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_base_program_details, container, false)
+        return inflater.inflate(R.layout.fragment_bshd_base_program_details, container, false)
     }
 
     lateinit var viewModel : ResponseViewModel

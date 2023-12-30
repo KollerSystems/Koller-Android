@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <TextView
+
+        android:id="@+id/textView10"
+        style="@style/CategoryCardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notifications" />
+
+    <androidx.cardview.widget.CardView
+        style="@style/MainCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            style="@style/MainCardLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.norbert.koller.shared.customviews.SimpleCardButton
+                android:id="@+id/notifics_full_settings"
+                custom:end_icon="@drawable/open_in_new"
+                custom:text="Értesítések kezelése"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</merge>

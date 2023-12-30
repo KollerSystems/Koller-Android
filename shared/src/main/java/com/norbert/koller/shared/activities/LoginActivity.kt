@@ -11,8 +11,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.norbert.koller.shared.DataStoreManager
-import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.managers.DataStoreManager
+import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
@@ -24,8 +24,8 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-import com.norbert.koller.shared.BuildConfig
-import com.norbert.koller.shared.getColorOfPixel
+import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
+import com.norbert.koller.shared.managers.getColorOfPixel
 import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
@@ -115,7 +115,7 @@ open class LoginActivity : AppCompatActivity() {
                     loadingBar.visibility = View.VISIBLE
 
                     val loginResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                    val loginData = ApiLoginData("password", inplID.editText!!.text.toString(), inplPassword.editText!!.text.toString())
+                    val loginData = ApiLoginUsernameAndPasswordData("password", inplID.editText!!.text.toString(), inplPassword.editText!!.text.toString())
                     loginResponse.postLogin(loginData).enqueue(
                         object : Callback<ApiLoginTokensData> {
 

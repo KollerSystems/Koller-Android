@@ -14,6 +14,6 @@ class CalendarBaseProgramsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.fragment_calendar_base_programs, container, false)
+        return inflater.inflate(com.norbert.koller.shared.R.layout.activity_launch, container, false)
     }
 }

@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.core.widget.NestedScrollView
-            style="@style/nestedScrollView"
+            style="@style/NestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -87,12 +87,12 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
-                                android:padding="@dimen/panel_padding">
+                                android:padding="@dimen/card_padding">
 
                                 <ImageView
                                     android:id="@id/image_icon"
-                                    android:layout_width="@dimen/panel_icon"
-                                    android:layout_height="@dimen/panel_icon"
+                                    android:layout_width="@dimen/card_icon"
+                                    android:layout_height="@dimen/card_icon"
                                     android:layout_gravity="center_vertical"
                                     android:adjustViewBounds="true"
                                     android:src="@drawable/tree"
@@ -152,7 +152,7 @@
                                     android:text="@string/silence_warning" />
 
                                 <include
-                                    layout="@layout/view_todo_time"
+                                    layout="@layout/view_todo"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content" />
 
@@ -169,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_marginLeft="@dimen/card_padding"
                     android:layout_weight="1"
                     android:text="@string/today" />
 
@@ -204,7 +204,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_marginLeft="@dimen/card_padding"
                     android:layout_weight="1"
                     android:text="@string/unread" />
 

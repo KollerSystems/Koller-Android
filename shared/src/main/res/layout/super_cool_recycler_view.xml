@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@null"
         android:layout_marginTop="@null"
-        android:background="?android:attr/windowBackground"
+        android:background="?android:attr/colorBackground"
         android:outlineProvider="none"
         android:paddingHorizontal="30dp"
         android:paddingVertical="@dimen/text_container_margin"

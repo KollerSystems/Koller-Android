@@ -7,13 +7,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.RoomOrderData
-import com.norbert.koller.shared.data.StarData
-import com.norbert.koller.shared.recycleradapter.StarsRecyclerAdapter
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.norbert.koller.shared.setupBottomSheet
+import com.norbert.koller.shared.managers.setupBottomSheet
 import java.text.SimpleDateFormat
 import java.util.ArrayList
 import kotlin.math.roundToInt
@@ -21,7 +18,6 @@ import kotlin.math.roundToInt
 class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
 
 
-    private lateinit var starsArrayList: ArrayList<StarData>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,18 +44,18 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
         val format = SimpleDateFormat("MM. dd.")
         date.text = format.format(RoomOrderData.instance[0].Date)
 
-        val recyclerView : RecyclerView = view.findViewById(R.id.room_order_recycler_view)
+        val RecyclerView : RecyclerView = view.findViewById(R.id.room_order_recycler_view)
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.setHasFixedSize(true)
+        RecyclerView.layoutManager = LinearLayoutManager(context)
+        RecyclerView.setHasFixedSize(true)
 
-        starsArrayList = arrayListOf(
+        /*starsArrayList = arrayListOf(
             StarData(getString(R.string.floor), 4f),
             StarData(getString(R.string.beds), 5f)
-        )
+        )*/
 
-        val adapter = StarsRecyclerAdapter(starsArrayList)
-        recyclerView.adapter = adapter
+        //val adapter = StarsRecyclerAdapter(starsArrayList)
+        //RecyclerView.adapter = adapter
 
         return view
     }

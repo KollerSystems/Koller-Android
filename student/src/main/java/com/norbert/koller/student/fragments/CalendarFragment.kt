@@ -5,25 +5,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.TutoringFragment
 import com.norbert.koller.shared.fragments.CalendarCanteenFragment
-import com.norbert.koller.shared.fragments.CalendarProgramsFragment
 import com.google.android.material.tabs.TabLayoutMediator
 
-class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment(){
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendar, container, false)
-    }
+class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -33,7 +20,7 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment(){
         viewPager.adapter = adapter
 
 
-        TabLayoutMediator(tabLayout, viewPager){tab,position->
+        TabLayoutMediator(tabs, viewPager){tab,position->
             when(position){
                 0->{
                     tab.text = getString(R.string.days)
@@ -47,12 +34,6 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment(){
                 3->{
                     tab.text = getString(R.string.study_groups)
                 }
-                4->{
-                    tab.text = getString(R.string.tutorings)
-                }
-                5->{
-                    tab.text = getString(R.string.programs)
-                }
             }
         }.attach()
     }
@@ -61,7 +42,7 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment(){
 class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
 {
     override fun getItemCount(): Int {
-        return 6
+        return 4
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -77,12 +58,6 @@ class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
             }
             3->{
                 CalendarStudyGroupFragment()
-            }
-            4->{
-                TutoringFragment()
-            }
-            5->{
-                CalendarProgramsFragment()
             }
             else->{
                 Fragment()

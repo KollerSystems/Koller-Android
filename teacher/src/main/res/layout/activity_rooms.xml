@@ -19,14 +19,14 @@
 
             style="@null"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/expandedToolbarHeight"
+            android:layout_height="@dimen/expanded_toolbar_height"
             android:background="@null"
             android:outlineProvider="none"
             app:expanded="false">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/collapsing_toolbar_layout"
-                style="@style/collapsing_toolbar_layout"
+                android:id="@+id/CollapsingToolbarLayout"
+                style="@style/CollapsingToolbarLayout"
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -36,7 +36,7 @@
 
                 <Button
                     android:id="@+id/toolbar_exit"
-                    style="@style/toolbar_navigation_button"
+                    style="@style/ToolbarNavigationButton"
                     android:layout_gravity="bottom|start" />
 
                 <androidx.appcompat.widget.Toolbar
@@ -50,7 +50,7 @@
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
             <LinearLayout
-                style="@style/tricky_toolbar"
+                style="@style/TrickyToolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -110,11 +110,11 @@
                 android:layout_weight="0"
                 android:gravity="right|center_vertical"
                 android:orientation="horizontal"
-                android:paddingHorizontal="@dimen/HeaderMarginHorizontal">
+                android:paddingHorizontal="@dimen/header_margin_horizontal">
 
                 <Button
                     android:id="@+id/button_more"
-                    style="@style/icon_button_outline"
+                    style="@style/IconButtonOutline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/more_thick" />
@@ -125,7 +125,7 @@
 
                 <Button
                     android:id="@+id/button_publish_all"
-                    style="@style/button_icon"
+                    style="@style/ButtonIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/publish_all"

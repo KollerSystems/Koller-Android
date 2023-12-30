@@ -12,7 +12,6 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -22,11 +21,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.camelToSnakeCase
-import com.norbert.koller.shared.getColorOfPixel
-import com.norbert.koller.shared.getStringResourceByName
+import com.norbert.koller.shared.managers.camelToSnakeCase
+import com.norbert.koller.shared.managers.getColorOfPixel
+import com.norbert.koller.shared.managers.getStringResourceByName
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -344,7 +343,7 @@ abstract class MainActivity : AppCompatActivity() {
     fun NFCSuccess(){
         MaterialAlertDialogBuilder(this@MainActivity)
             .setTitle(R.string.nfc_success)
-            .setIcon(R.drawable.done_thick)
+            .setIcon(R.drawable.check_thick)
             .setPositiveButton(
                 R.string.ok
             ) { dialogInterface, i -> }

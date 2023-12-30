@@ -5,15 +5,11 @@ import androidx.core.util.Pair
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.checkByPass
-import com.norbert.koller.shared.data.FilterDateData
-import com.norbert.koller.shared.data.FiltersData
+import com.norbert.koller.shared.managers.checkByPass
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
-import com.norbert.koller.shared.recycleradapter.BasePagingSource
-import com.norbert.koller.shared.recycleradapter.ListItem
-import com.norbert.koller.shared.restoreDropDown
+import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.managers.restoreDropDown
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import java.util.Arrays
 

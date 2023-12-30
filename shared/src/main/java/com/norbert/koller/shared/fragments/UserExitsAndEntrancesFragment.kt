@@ -1,34 +1,15 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.recycleradapter.GateRecyclerAdapter
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.viewmodels.BaseViewModel
-import com.norbert.koller.shared.customview.SuperCoolRecyclerView
+import com.norbert.koller.shared.recycleradapters.GateRecyclerAdapter
 import com.norbert.koller.shared.api.CrossingPagingSource
-import com.norbert.koller.shared.checkByPass
-import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.fragments.bottomsheet.RangeInputBshdFragment
-import com.norbert.koller.shared.helpers.addCloseOption
-import com.norbert.koller.shared.helpers.connectToCheckBoxList
-import com.norbert.koller.shared.helpers.connectToDateRangePicker
-import com.norbert.koller.shared.recycleradapter.BasePagingSource
-import com.norbert.koller.shared.recycleradapter.ListItem
-import com.norbert.koller.shared.restoreDropDown
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import com.norbert.koller.shared.recycleradapters.BasePagingSource
+import com.norbert.koller.shared.recycleradapters.ListItem
 
-class UserExitsAndEntrancesFragment(val UID : Int? = null) : FragmentList() {
+class UserExitsAndEntrancesFragment(val UID : Int? = null) : ListFragment() {
 
     override fun getPagingSource(): BasePagingSource {
         return CrossingPagingSource(requireContext(), viewModel.ID, viewModel)

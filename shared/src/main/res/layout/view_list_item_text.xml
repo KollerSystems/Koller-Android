@@ -5,5 +5,5 @@
     android:padding="16dp"
     android:ellipsize="end"
     android:maxLines="1"
-    android:textAppearance="@style/Normal"
+    android:textAppearance="@style/Text"
     />

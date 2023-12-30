@@ -1,11 +1,10 @@
 package com.norbert.koller.shared.data
 
 import android.content.Context
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import java.sql.Timestamp
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.util.Locale
 
 
 class CrossingData(
@@ -16,7 +15,7 @@ class CrossingData(
 
 ) : BaseData() {
     override fun diffrentDecider(context: Context): String {
-        return SimpleDateFormat(DateTimeHelper.monthDay).format(Time)
+        return SimpleDateFormat(DateTimeHelper.monthDay, Locale.getDefault()).format(Time)
     }
 
     override fun getMainID(): Int {

@@ -12,7 +12,7 @@
 
             <Button
                 android:id="@+id/button9"
-                style="@style/icon_button_transparent"
+                style="@style/IconButtonTransparent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:icon="@drawable/expand_toggle"
@@ -26,7 +26,7 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="horizontal"
-                android:padding="@dimen/panel_padding"
+                android:padding="@dimen/card_padding"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
                     android:backgroundTint="?attr/colorPrimaryContainer"
                     android:clickable="true"
                     android:scaleType="centerInside"
-                    app:shapeAppearanceOverlay="@style/roundImageView"
+                    app:shapeAppearanceOverlay="@style/RoundImageView"
                     app:srcCompat="@drawable/norbert" />
 
                 <LinearLayout

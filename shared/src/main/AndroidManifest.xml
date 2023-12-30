@@ -5,7 +5,6 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CALENDAR" />
     <uses-permission android:name="android.permission.WRITE_CALENDAR" />
     <uses-permission android:name="android.permission.NFC" />
@@ -17,7 +16,8 @@
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu"
         android:screenOrientation="portrait" >
-        <receiver android:name=".MyNotificationPublisher"
+
+        <receiver android:name=".broadcastreceivers.MyNotificationPublisher"
             android:enabled="true"/>
         <activity
             android:name=".activities.ManageAccountActivity"
@@ -31,6 +31,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-->
         <activity
             android:name=".activities.DevicesActivity"
             android:exported="false" />
@@ -43,9 +45,10 @@
         <activity
             android:name=".activities.CreateNewPostActivity"
             android:exported="false" />
+            <!-->
 
         <service
-            android:name=".api.KollerHostApduService"
+            android:name=".KollerHostApduService"
             android:exported="true"
             android:permission="android.permission.BIND_NFC_SERVICE">
             <intent-filter>

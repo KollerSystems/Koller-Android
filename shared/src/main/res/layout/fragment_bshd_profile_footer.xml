@@ -57,10 +57,10 @@
                         android:id="@+id/recycler_view"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/n_panel_padding"
-                        android:layout_marginRight="@dimen/n_panel_padding"
+                        android:layout_marginLeft="@dimen/n_card_padding"
+                        android:layout_marginRight="@dimen/n_card_padding"
                         android:clipToPadding="false"
-                        android:paddingHorizontal="@dimen/panel_padding"
+                        android:paddingHorizontal="@dimen/card_padding"
                         tools:itemCount="1"
                         tools:listitem="@layout/view_dev" />
 
@@ -68,14 +68,14 @@
 
             </com.google.android.material.card.MaterialCardView>
 
-            <com.norbert.koller.shared.customview.SimpleCardButton
+            <com.norbert.koller.shared.customviews.SimpleCardButton
                 android:id="@+id/profile_card_support"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:icon="@drawable/support_us"
                 custom:text="@string/support_us" />
 
-            <com.norbert.koller.shared.customview.SimpleCardButton
+            <com.norbert.koller.shared.customviews.SimpleCardButton
                 android:id="@+id/profile_card_bug"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -84,9 +84,9 @@
                 custom:text="@string/bug_report"
                 tools:visibility="visible">
 
-            </com.norbert.koller.shared.customview.SimpleCardButton>
+            </com.norbert.koller.shared.customviews.SimpleCardButton>
 
-            <com.norbert.koller.shared.customview.SimpleCardButton
+            <com.norbert.koller.shared.customviews.SimpleCardButton
                 android:id="@+id/profile_card_idea"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -95,7 +95,7 @@
                 custom:text="@string/suggestion"
                 tools:visibility="visible" />
 
-            <com.norbert.koller.shared.customview.SimpleCardButton
+            <com.norbert.koller.shared.customviews.SimpleCardButton
                 android:id="@+id/profile_fbtn_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:gravity="center_vertical"
-        android:minHeight="@dimen/panel_padding"
+        android:minHeight="@dimen/card_padding"
         android:text="@string/version"
         android:textAlignment="center" />
 </LinearLayout>

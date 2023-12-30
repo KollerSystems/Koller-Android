@@ -1,33 +1,23 @@
 package com.norbert.koller.shared.fragments
 
-import android.Manifest
-import android.app.Notification.EXTRA_NOTIFICATION_ID
-import android.app.PendingIntent
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
-import com.norbert.koller.shared.MyApplication
-import com.norbert.koller.shared.MyNotificationPublisher
+import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
-import com.norbert.koller.shared.customview.FullScreenLoading
-import com.norbert.koller.shared.customview.RoundedBadgeImageView
+import com.norbert.koller.shared.customviews.FullScreenLoading
+import com.norbert.koller.shared.customviews.RoundedBadgeImageView
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.helpers.NotificationHelper
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Call
@@ -56,14 +46,14 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
         val buttonClass : Button = view.findViewById(R.id.user_button_class)
         val badgeUser : RoundedBadgeImageView = view.findViewById(R.id.badge_user)
 
-        val discordCard : Chip = view.findViewById(R.id.user_view_discord)
-        val facebookCard : Chip = view.findViewById(R.id.user_view_facebook)
-        val instagramCard : Chip = view.findViewById(R.id.user_view_instagram)
-        val emailCard : Chip = view.findViewById(R.id.user_view_email)
+        val discordChip : Chip = view.findViewById(R.id.user_view_discord)
+        val facebookChip : Chip = view.findViewById(R.id.user_view_facebook)
+        val instagramChip : Chip = view.findViewById(R.id.user_view_instagram)
+        val emailChip : Chip = view.findViewById(R.id.user_view_email)
 
         loadingOl = view.findViewById(R.id.loading_overlay)
 
-        val nestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
+        val NestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
 
         fun isVisible(view: View): Boolean {
             if (!view.isShown) {
@@ -99,11 +89,23 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
 
             textName.text = response.Name
 
-            buttonGroup.text = response.Group
             buttonRoom.text = response.RID.toString()
+            buttonGroup.text = response.Group
             buttonClass.text = response.Class?.Class
 
-            nestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
+            buttonRoom.setOnClickListener {
+                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.RID!!))
+            }
+
+            buttonGroup.setOnClickListener {
+                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.Group!!)))))
+            }
+
+            buttonClass.setOnClickListener {
+                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Class", arrayListOf(response.Class.toString())))))
+            }
+
+            NestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
                 if (isVisible(textName)) {
                     (activity as MainActivity).setToolbarTitle(getString(R.string.user), null)
 
@@ -112,14 +114,10 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
                 }
             }
 
-            buttonRoom.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.RID!!))
-            }
-
-            showAndSetIfNotNull(discordCard, response.Discord)
-            showAndSetIfNotNull(facebookCard, response.Facebook)
-            showAndSetIfNotNull(instagramCard, response.Instagram)
-            showAndSetIfNotNull(emailCard, response.Email)
+            showAndSetIfNotNull(discordChip, response.Discord)
+            showAndSetIfNotNull(facebookChip, response.Facebook)
+            showAndSetIfNotNull(instagramChip, response.Instagram)
+            showAndSetIfNotNull(emailChip, response.Email)
         }
 
         badgeUser.card.setOnClickListener{

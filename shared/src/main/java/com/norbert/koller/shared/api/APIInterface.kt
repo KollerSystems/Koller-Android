@@ -2,15 +2,14 @@ package com.norbert.koller.shared.api
 import android.content.Context
 import android.util.Log
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.ApiLoginData
-import com.norbert.koller.shared.data.ApiLoginRefreshData
 import com.norbert.koller.shared.data.ApiLoginTokensData
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.recycleradapter.BaseRecycleAdapter
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.norbert.koller.shared.recycleradapter.BasePagingSource
+import com.norbert.koller.shared.data.ApiLoginRefreshData
+import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
+import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.CrossingData
 import com.norbert.koller.shared.viewmodels.BaseViewModel
@@ -73,16 +72,17 @@ interface APIInterface {
     )
     @POST("oauth/token")
     fun postLogin(
-        @Body requestModel: ApiLoginData,
+        @Body requestModel: ApiLoginRefreshData,
+    ) : Call<ApiLoginTokensData>
+
+    @POST("oauth/token")
+    fun postLogin(
+        @Body requestModel: ApiLoginUsernameAndPasswordData,
     ) : Call<ApiLoginTokensData>
 
     @Headers(
         "Content-Type: application/json"
     )
-    @POST("oauth/token")
-    fun postLogin(
-        @Body requestModel: ApiLoginRefreshData,
-    ) : Call<ApiLoginTokensData>
 
     @GET("api/users/me")
     fun getCurrentUser(

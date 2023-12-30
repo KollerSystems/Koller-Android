@@ -38,7 +38,7 @@
                 style="@style/MainCardLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/view_item_list_item" />
+                tools:listitem="@layout/view_list_item" />
 
         </androidx.cardview.widget.CardView>
 

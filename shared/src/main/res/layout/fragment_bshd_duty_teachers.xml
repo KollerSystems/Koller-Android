@@ -5,7 +5,7 @@
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.bottomsheet.DutyTeachersBshdFragment">
+    tools:context=".fragments.bottomsheet.DutyTeachersFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -55,13 +55,10 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
 
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
+                            android:layout_width="@dimen/card_icon"
+                            android:layout_height="@dimen/card_icon"
                             android:layout_marginRight="@dimen/spacing"
-                            android:background="@drawable/circle"
-                            android:backgroundTint="?attr/colorPrimaryContainer"
-                            app:shapeAppearanceOverlay="@style/roundImageView"
+                            app:shapeAppearanceOverlay="@style/RoundImageView"
                             app:srcCompat="@drawable/person" />
 
                         <LinearLayout
@@ -107,63 +104,10 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/imageView2"
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
+                            android:layout_width="@dimen/card_icon"
+                            android:layout_height="@dimen/card_icon"
                             android:layout_marginRight="@dimen/spacing"
-                            android:background="?attr/colorPrimaryContainer"
-                            app:shapeAppearanceOverlay="@style/roundImageView"
-                            app:srcCompat="@drawable/person" />
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="@dimen/text_container_margin"
-                            android:layout_weight="1"
-                            android:clipChildren="false"
-                            android:clipToPadding="false"
-                            android:orientation="vertical">
-
-                            <TextView
-                                style="@style/Title"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Kis Gazsi" />
-
-                            <TextView
-                                android:id="@+id/textView23"
-                                style="@style/Description"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="1. emelet • Lány oldal" />
-
-                        </LinearLayout>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/post_type_ly_news"
-                    style="@style/Card"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:clickable="true">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-
-                        <com.google.android.material.imageview.ShapeableImageView
-                            android:id="@+id/imageView2"
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
-                            android:layout_marginRight="@dimen/spacing"
-                            android:background="?attr/colorPrimaryContainer"
-                            app:shapeAppearanceOverlay="@style/roundImageView"
+                            app:shapeAppearanceOverlay="@style/RoundImageView"
                             app:srcCompat="@drawable/person" />
 
                         <LinearLayout
@@ -209,12 +153,59 @@
 
                         <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/imageView2"
-                            style="@style/Icon"
-                            android:layout_width="@dimen/panel_icon"
-                            android:layout_height="@dimen/panel_icon"
+                            android:layout_width="@dimen/card_icon"
+                            android:layout_height="@dimen/card_icon"
                             android:layout_marginRight="@dimen/spacing"
-                            android:background="?attr/colorPrimaryContainer"
-                            app:shapeAppearanceOverlay="@style/roundImageView"
+                            app:shapeAppearanceOverlay="@style/RoundImageView"
+                            app:srcCompat="@drawable/person" />
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:clipChildren="false"
+                            android:clipToPadding="false"
+                            android:orientation="vertical">
+
+                            <TextView
+                                style="@style/Title"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Kis Gazsi" />
+
+                            <TextView
+                                android:id="@+id/textView23"
+                                style="@style/Description"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="1. emelet • Lány oldal" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/post_type_ly_news"
+                    style="@style/Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+
+                        <com.google.android.material.imageview.ShapeableImageView
+                            android:id="@+id/imageView2"
+                            android:layout_width="@dimen/card_icon"
+                            android:layout_height="@dimen/card_icon"
+                            android:layout_marginRight="@dimen/spacing"
+                            app:shapeAppearanceOverlay="@style/RoundImageView"
                             app:srcCompat="@drawable/person" />
 
                         <LinearLayout

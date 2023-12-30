@@ -1,24 +1,16 @@
 package com.norbert.koller.shared.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
-import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.CreateNewPostActivity
-import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.data.EventsData
 import com.norbert.koller.shared.data.TodayData
-import com.norbert.koller.shared.fragments.bottomsheet.BottomFragmentPostTypes
-import com.norbert.koller.shared.recycleradapter.EventsRecyclerAdapter
-import com.norbert.koller.shared.recycleradapter.TodayRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.TodayRecyclerAdapter
 import java.util.ArrayList
-import java.util.Date
 
 abstract class HomeFragment : Fragment() {
 

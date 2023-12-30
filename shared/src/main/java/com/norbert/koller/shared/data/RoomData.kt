@@ -1,9 +1,8 @@
 package com.norbert.koller.shared.data
 
 import android.content.Context
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.orderSingleNumber
+import com.norbert.koller.shared.managers.orderSingleNumber
 
 class RoomData(
     var RID : Int = -1,

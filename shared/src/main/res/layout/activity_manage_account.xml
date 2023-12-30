@@ -12,14 +12,14 @@
         android:id="@+id/appbar"
 
         android:layout_width="match_parent"
-        android:layout_height="@dimen/expandedToolbarHeight"
+        android:layout_height="@dimen/expanded_toolbar_height"
         android:visibility="visible"
         app:expanded="false"
         tools:visibility="gone">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar_layout"
-            style="@style/collapsing_toolbar_layout"
+            android:id="@+id/CollapsingToolbarLayout"
+            style="@style/CollapsingToolbarLayout"
 
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,7 +29,7 @@
 
             <Button
                 android:id="@+id/toolbar_exit"
-                style="@style/toolbar_navigation_button"
+                style="@style/ToolbarNavigationButton"
                 android:layout_gravity="bottom|left" />
 
             <androidx.appcompat.widget.Toolbar
@@ -57,12 +57,12 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
-            <com.norbert.koller.shared.customview.RoundedBadgeImageView
+            <com.norbert.koller.shared.customviews.RoundedBadgeImageView
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 custom:stroke_width="10dp">
 
-            </com.norbert.koller.shared.customview.RoundedBadgeImageView>
+            </com.norbert.koller.shared.customviews.RoundedBadgeImageView>
 
             <TextView
                 android:id="@+id/text_presence"
@@ -84,13 +84,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/data"
                         custom:text="Személyes adatok kezelése" />
 
-                    <com.norbert.koller.shared.customview.SimpleCardButton
+                    <com.norbert.koller.shared.customviews.SimpleCardButton
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/key"

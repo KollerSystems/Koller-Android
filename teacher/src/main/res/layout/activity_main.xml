@@ -23,7 +23,7 @@
             android:id="@id/appbar"
 
             android:layout_width="match_parent"
-            android:layout_height="@dimen/expandedToolbarHeight"
+            android:layout_height="@dimen/expanded_toolbar_height"
             android:background="@android:color/transparent"
             android:clickable="false"
             app:expanded="false">
@@ -51,7 +51,6 @@
         android:layout_gravity="bottom"
         android:minHeight="@dimen/header_footer_size"
         android:translationZ="1000dp"
-        app:itemBackground="@drawable/tab_ripple"
         app:itemIconTint="@drawable/bottom_navigation_view_text"
         app:itemPaddingBottom="0dp"
         app:itemPaddingTop="0dp"

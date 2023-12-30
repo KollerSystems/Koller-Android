@@ -12,9 +12,8 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import com.norbert.koller.student.R
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.student.activities.MainActivity
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.data.DefaultDayTimes
-import com.norbert.koller.shared.getAttributeColor
+import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.util.*
 import kotlin.math.roundToInt

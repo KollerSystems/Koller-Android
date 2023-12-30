@@ -8,7 +8,7 @@
     android:orientation="vertical"
     tools:context=".fragments.CalendarDaysFragment">
 
-    <View style="@style/separator_line" />
+    <View style="@style/SeparatorLine" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcard_date"

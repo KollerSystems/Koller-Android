@@ -220,10 +220,10 @@ class RecyclerViewHelper {
             val context = view.context
             if (size == 1){
 
-                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCard, 0).build()
+                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.OverlaySmallRoundedCard, 0).build()
                 (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
 
-                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardTop, 0).build()
+                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.OverlaySmallRoundedCardTop, 0).build()
                 (view2 as Shapeable).shapeAppearanceModel = shapeAppearance
 
                 (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,0,0,0)
@@ -231,10 +231,10 @@ class RecyclerViewHelper {
             }
             else if(position == 0){
 
-                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardLeft, 0).build()
+                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.OverlaySmallRoundedCardLeft, 0).build()
                 (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
 
-                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardTopLeft, 0).build()
+                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.OverlaySmallRoundedCardTopLeft, 0).build()
                 (view2 as Shapeable).shapeAppearanceModel = shapeAppearance
 
                 (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
@@ -242,10 +242,10 @@ class RecyclerViewHelper {
             }
             else if (position == size-1){
 
-                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardRight, 0).build()
+                var shapeAppearance = ShapeAppearanceModel.builder(context, R.style.OverlaySmallRoundedCardRight, 0).build()
                 (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
 
-                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.overlaySmallRoundedCardTopRight, 0).build()
+                shapeAppearance = ShapeAppearanceModel.builder(context, R.style.OverlaySmallRoundedCardTopRight, 0).build()
                 (view2 as Shapeable).shapeAppearanceModel = shapeAppearance
 
                 (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,0)
@@ -284,46 +284,46 @@ class RecyclerViewHelper {
 
         fun roundCardBottom(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardBottom,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0)
+            roundCardX(view, view2, R.style.OverlayRoundedCardBottom,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0)
         }
 
         fun roundCardBottomLeft(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardBottomLeft,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
+            roundCardX(view, view2, R.style.OverlayRoundedCardBottomLeft,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
         }
 
         fun roundCardBottomRight(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardBottomRight,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0)
+            roundCardX(view, view2, R.style.OverlayRoundedCardBottomRight,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0)
         }
 
         fun roundCardTop(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardTop,0,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+            roundCardX(view, view2, R.style.OverlayRoundedCardTop,0,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun roundCardTopLeft(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardTopLeft,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin))
+            roundCardX(view, view2, R.style.OverlayRoundedCardTopLeft,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun roundCardTopRight(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardTopRight,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+            roundCardX(view, view2, R.style.OverlayRoundedCardTopRight,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun roundCardLeft(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardLeft,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
+            roundCardX(view, view2, R.style.OverlayRoundedCardLeft,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0)
         }
 
         fun roundCardRight(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.overlayRoundedCardRight, context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,0)
+            roundCardX(view, view2, R.style.OverlayRoundedCardRight, context.resources.getDimensionPixelSize(R.dimen.card_margin),0,0,0)
         }
 
         fun roundCard(view : View, view2 : View? = null){
-            roundCardX(view, view2, R.style.overlayRoundedCard, 0,0,0,0)
+            roundCardX(view, view2, R.style.OverlayRoundedCard, 0,0,0,0)
         }
 
         fun deroundCardX(view : View, leftMargin : Int, topMargin : Int, rightMargin : Int, bottomMargin : Int){

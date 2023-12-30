@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
-        android:name=".MyApplication"
+        android:name=".managers.ApplicationManager"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="false"
@@ -20,10 +20,7 @@
             android:name=".activities.CreateOutgoingActivity"
             android:exported="false" />
         <activity
-            android:name=".AdmissionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".EditRoomActivity"
+            android:name=".activities.EditRoomActivity"
             android:exported="false" />
         <activity
             android:name=".activities.SettingsActivity"

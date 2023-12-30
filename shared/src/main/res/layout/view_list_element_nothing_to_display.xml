@@ -9,9 +9,9 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        style="@style/transparent_icon"
-        android:layout_width="@dimen/panel_icon"
-        android:layout_height="@dimen/panel_icon"
+        style="@style/TransparentIcon"
+        android:layout_width="@dimen/card_icon"
+        android:layout_height="@dimen/card_icon"
         android:layout_marginBottom="@dimen/text_container_margin"
         app:srcCompat="@drawable/box" />
 

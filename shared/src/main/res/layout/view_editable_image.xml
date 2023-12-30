@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:layout_margin="@dimen/text_container_margin"
+    app:cardCornerRadius="15dp">
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/lines" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mcard_cover_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="0dp"
+        app:strokeColor="?attr/colorPrimary"
+        app:strokeWidth="3dp">
+
+        <TextView
+            android:id="@+id/textView35"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="?attr/colorPrimary"
+            android:padding="@dimen/text_container_margin"
+            android:text="@string/cover"
+            android:textAlignment="center"
+            android:textColor="?android:attr/colorBackground" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <Button
+        android:id="@+id/button_remove"
+        style="@style/IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right|top"
+        android:backgroundTint="?attr/colorTertiary"
+        app:icon="@drawable/close_thick"
+        app:iconTint="?attr/colorOnTertiary" />
+
+</com.google.android.material.card.MaterialCardView>

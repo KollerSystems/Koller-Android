@@ -1,7 +1,6 @@
 package com.norbert.koller.shared.data
 
 import android.content.Context
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.text.SimpleDateFormat
 import java.util.Date

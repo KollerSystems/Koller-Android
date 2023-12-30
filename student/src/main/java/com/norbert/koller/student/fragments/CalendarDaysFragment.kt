@@ -1,6 +1,5 @@
 package com.norbert.koller.student.fragments
 
-import android.icu.util.Calendar
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,8 +9,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.norbert.koller.shared.MyApplication
-import com.norbert.koller.student.DayRecyclerAdapter
+import com.norbert.koller.student.recycleradapters.DayRecyclerAdapter
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -41,10 +39,10 @@ class CalendarDaysFragment : Fragment() {
 
         days = arrayOf(getString(R.string.monday), getString(R.string.tuesday), getString(R.string.wednesday), getString(R.string.thursday), getString(R.string.friday), getString(R.string.saturday), getString(R.string.sunday))
 
-        val recyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
+        val RecyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
 
-        recyclerView.layoutManager = LinearLayoutManager(context)
-        recyclerView.setHasFixedSize(true)
+        RecyclerView.layoutManager = LinearLayoutManager(context)
+        RecyclerView.setHasFixedSize(true)
 
         val datas = arrayListOf(
             TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
@@ -59,7 +57,7 @@ class CalendarDaysFragment : Fragment() {
             )
         )
 
-        recyclerView.adapter = DayRecyclerAdapter(datas)
+        RecyclerView.adapter = DayRecyclerAdapter(datas)
 
 
 

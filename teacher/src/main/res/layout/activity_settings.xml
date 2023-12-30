@@ -20,14 +20,14 @@
 
             style="@null"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/expandedToolbarHeight"
+            android:layout_height="@dimen/expanded_toolbar_height"
             android:background="@null"
             android:outlineProvider="none"
             app:expanded="false">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@id/collapsing_toolbar_layout"
-                style="@style/collapsing_toolbar_layout"
+                android:id="@id/CollapsingToolbarLayout"
+                style="@style/CollapsingToolbarLayout"
 
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -37,7 +37,7 @@
 
                 <Button
                     android:id="@id/toolbar_exit"
-                    style="@style/toolbar_navigation_button"
+                    style="@style/ToolbarNavigationButton"
                     android:layout_gravity="bottom|start" />
 
                 <androidx.appcompat.widget.Toolbar
@@ -64,12 +64,12 @@
                 android:orientation="vertical">
 
                 <include
-                    layout="@layout/activity_settings_developer"
+                    layout="@layout/view_activity_settings_developer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 
                 <include
-                    layout="@layout/activity_settings_notifications"
+                    layout="@layout/view_activity_settings_notifications"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
             </LinearLayout>

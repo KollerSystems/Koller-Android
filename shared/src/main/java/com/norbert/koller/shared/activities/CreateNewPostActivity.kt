@@ -4,12 +4,9 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.KeyEvent
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.inputmethod.InputMethodManager
-import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Button
 import android.widget.TextView
@@ -17,28 +14,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
-import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
-import com.google.android.material.timepicker.MaterialTimePicker
-import com.norbert.koller.shared.MyApplication
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.bottomsheet.BottomFragmentPostTypes
+import com.norbert.koller.shared.fragments.bottomsheet.FragmentPostTypes
 import com.norbert.koller.shared.fragments.bottomsheet.ScheduleFragment
-import com.norbert.koller.shared.getColorOfPixel
-import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.recycleradapter.EditableImageRecyclerAdapter
-import com.norbert.koller.shared.setToolbarToViewColor
-import java.text.SimpleDateFormat
-import java.time.LocalDate
-import java.time.LocalDateTime
-import java.time.ZoneId
-import java.time.format.DateTimeFormatter
-import java.time.temporal.ChronoField
-import java.util.Calendar
-import java.util.TimeZone
+import com.norbert.koller.shared.managers.setToolbarToViewColor
+import com.norbert.koller.shared.recycleradapters.EditableImageRecyclerAdapter
 
 
 class CreateNewPostActivity : AppCompatActivity() {
@@ -76,8 +58,6 @@ class CreateNewPostActivity : AppCompatActivity() {
         val buttonExit: Button = findViewById(R.id.toolbar_exit)
 
         tilAddresse = findViewById (R.id.create_new_post_til_addresse)
-        actvAddresse = findViewById (R.id.create_new_post_edt_addresse)
-        chipsAddresse = findViewById (R.id.create_new_post_chips_addresse)
         tilTitle = findViewById (R.id.create_new_post_til_title)
         tilDescription = findViewById (R.id.create_new_post_til_description)
 
@@ -138,9 +118,9 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = BottomFragmentPostTypes()
+            val dialog = FragmentPostTypes()
 
-            dialog.show(supportFragmentManager, BottomFragmentPostTypes.TAG)
+            dialog.show(supportFragmentManager, FragmentPostTypes.TAG)
 
             tilType.post(Runnable {
                 dialog.requireView().findViewById<View>(R.id.post_type_ly_post).setOnClickListener{

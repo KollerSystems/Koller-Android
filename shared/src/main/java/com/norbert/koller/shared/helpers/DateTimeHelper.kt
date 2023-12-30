@@ -2,9 +2,7 @@ package com.norbert.koller.shared.helpers
 
 import android.widget.TextView
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.timepicker.MaterialTimePicker
-import com.norbert.koller.shared.MyApplication
 
 class DateTimeHelper {
 

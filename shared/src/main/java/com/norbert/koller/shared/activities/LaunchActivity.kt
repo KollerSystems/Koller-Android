@@ -7,8 +7,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.DataStoreManager
-import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.managers.DataStoreManager
+import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitHelper
 import com.norbert.koller.shared.data.ApiLoginRefreshData

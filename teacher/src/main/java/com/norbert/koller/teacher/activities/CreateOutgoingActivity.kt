@@ -2,21 +2,17 @@ package com.norbert.koller.teacher.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.widget.addTextChangedListener
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
-import com.norbert.koller.shared.MyApplication
-import com.norbert.koller.shared.customview.TextInputWithChips
-import com.norbert.koller.shared.fragments.bottomsheet.BottomFragmentPostTypes
+import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.customviews.TextInputWithChips
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
-import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
-import com.norbert.koller.shared.recycleradapter.ListItem
-import com.norbert.koller.shared.setToolbarToViewColor
+import com.norbert.koller.shared.managers.setToolbarToViewColor
+import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
 
 class CreateOutgoingActivity() : AppCompatActivity() {

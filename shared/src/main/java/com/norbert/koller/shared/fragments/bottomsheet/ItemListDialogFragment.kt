@@ -10,9 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.recycleradapter.ListAdapter
-import com.norbert.koller.shared.recycleradapter.ListItem
-import java.util.Arrays
+import com.norbert.koller.shared.recycleradapters.ListAdapter
+import com.norbert.koller.shared.recycleradapters.ListItem
 
 class ItemListDialogFragment(val list : ArrayList<ListItem>, val alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
 

@@ -30,17 +30,17 @@
         android:drawablePadding="@dimen/spacing"
 
         android:padding="@dimen/text_container_margin"
-        android:text="@string/date" />
+        android:text="-" />
 
 
     <Button
         android:id="@+id/button_content"
-        style="@style/textButton"
+        style="@style/TextButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="0"
-        android:text="2023. Július 4."
-        android:textAppearance="@style/Normal" />
+        android:text="-"
+        android:textAppearance="@style/Text" />
 
 </LinearLayout>

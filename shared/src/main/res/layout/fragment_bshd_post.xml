@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/header_footer_size"
                 app:cardElevation="@dimen/header_footer_elevation"
-                app:contentPadding="@dimen/panel_padding">
+                app:contentPadding="@dimen/card_padding">
 
                 <TextView
                     android:id="@+id/text_text"
@@ -101,13 +101,13 @@
                         android:id="@+id/new_recyclerview_images"
                         android:layout_width="match_parent"
                         android:layout_height="200dp"
-                        android:layout_marginStart="@dimen/n_panel_padding"
+                        android:layout_marginStart="@dimen/n_card_padding"
                         android:layout_marginTop="@dimen/text_container_margin"
-                        android:layout_marginEnd="@dimen/n_panel_padding"
+                        android:layout_marginEnd="@dimen/n_card_padding"
                         android:clipToPadding="false"
                         android:orientation="horizontal"
-                        android:paddingLeft="@dimen/panel_padding"
-                        android:paddingRight="@dimen/panel_padding"
+                        android:paddingLeft="@dimen/card_padding"
+                        android:paddingRight="@dimen/card_padding"
                         tools:itemCount="1"
                         tools:listitem="@layout/view_image" />
 
@@ -147,7 +147,7 @@
                         style="@style/Widget.Material3.CardView.Outlined"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        app:cardCornerRadius="@dimen/panel_round">
+                        app:cardCornerRadius="@dimen/card_corner_radius">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                             android:layout_marginTop="-0.75dp"
                             android:layout_marginRight="-0.75dp"
                             android:layout_marginBottom="-0.75dp"
-                            android:elevation="@dimen/default_card_elevation"
+                            android:elevation="@dimen/card_elevation"
                             android:orientation="vertical">
 
                             <LinearLayout
@@ -166,7 +166,7 @@
                                 android:clipChildren="false"
                                 android:clipToPadding="false"
                                 android:orientation="vertical"
-                                android:padding="@dimen/panel_padding">
+                                android:padding="@dimen/card_padding">
 
                                 <TextView
                                     android:id="@+id/textView47"
@@ -190,7 +190,7 @@
                                         android:background="@drawable/circle"
                                         android:backgroundTint="?attr/colorPrimaryContainer"
                                         android:scaleType="centerInside"
-                                        app:shapeAppearanceOverlay="@style/roundImageView"
+                                        app:shapeAppearanceOverlay="@style/RoundImageView"
                                         app:srcCompat="@drawable/norbert" />
 
                                     <com.google.android.material.textfield.TextInputLayout
@@ -216,13 +216,13 @@
                                             android:paddingEnd="11.5dp"
                                             android:paddingRight="11.5dp"
                                             android:paddingBottom="10.5dp"
-                                            android:textSize="@dimen/text_normal" />
+                                            android:textSize="@dimen/text" />
 
                                     </com.google.android.material.textfield.TextInputLayout>
 
                                     <Button
                                         android:id="@+id/news_button_post_comment"
-                                        style="@style/icon_button"
+                                        style="@style/IconButton"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
                                         android:layout_gravity="bottom"

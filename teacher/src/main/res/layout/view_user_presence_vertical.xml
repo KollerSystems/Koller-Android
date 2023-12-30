@@ -13,7 +13,7 @@
         android:gravity="center_horizontal"
         android:orientation="vertical">
 
-        <com.norbert.koller.shared.customview.RoundedBadgeImageView
+        <com.norbert.koller.shared.customviews.RoundedBadgeImageView
             android:id="@+id/rbiw_pfp"
             android:layout_width="100dp"
             android:layout_height="100dp"
@@ -72,7 +72,7 @@
                 app:chipIcon="@drawable/close"
                 app:chipIconEnabled="true"
                 app:iconStartPadding="12dp"
-                app:shapeAppearance="@style/overlayRoundedLeft" />
+                app:shapeAppearance="@style/OverlayRoundedLeft" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_yes"
@@ -82,7 +82,7 @@
                 app:chipIconEnabled="true"
                 app:chipMinTouchTargetSize="0dp"
                 app:iconStartPadding="12dp"
-                app:shapeAppearance="@style/overlayRoundedRight" />
+                app:shapeAppearance="@style/OverlayRoundedRight" />
 
         </com.google.android.material.chip.ChipGroup>
 

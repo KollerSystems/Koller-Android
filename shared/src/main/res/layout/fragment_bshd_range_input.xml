@@ -31,7 +31,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_from"
-                style="@style/text_input"
+                style="@style/TextInput"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -53,7 +53,7 @@
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/til_to"
-                style="@style/text_input"
+                style="@style/TextInput"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -79,7 +79,7 @@
 
             <Button
                 android:id="@+id/button_cancel"
-                style="@style/button_outline"
+                style="@style/ButtonOutline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/spacing"
@@ -87,7 +87,7 @@
 
             <Button
                 android:id="@+id/button_apply"
-                style="@style/button"
+                style="@style/Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/apply" />

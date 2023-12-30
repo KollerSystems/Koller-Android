@@ -18,7 +18,7 @@
         android:clipToPadding="false"
         android:orientation="vertical">
 
-        <com.norbert.koller.shared.customview.RoundedBadgeImageView
+        <com.norbert.koller.shared.customviews.RoundedBadgeImageView
             android:id="@+id/badge_user"
             android:layout_width="75dp"
             android:layout_height="75dp" />

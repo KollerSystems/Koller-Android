@@ -9,17 +9,14 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
-import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.student.R
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.student.fragments.WelcomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayout.TabView
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.MyApplication
+import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.fragments.WelcomeFragmentBase
 
 

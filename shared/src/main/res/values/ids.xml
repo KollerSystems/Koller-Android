@@ -5,65 +5,19 @@
     <item name="main_background" type="id" />
     <item name="bottom_navigation_view" type="id" />
     <item name="studentHostelFragment" type="id" />
-    <item name="main_navigation" type="id" />
-    <item name="action_studentHostelFragment_to_roomsFragment2" type="id">
-
-    </item>
     <item name="roomsFragment" type="id" />
-    <item name="action_studentHostelFragment_to_usersFragment2" type="id">
-
-    </item>
     <item name="usersFragment" type="id" />
-    <item name="action_studentHostelFragment_to_userGateFragment" type="id">
-
-    </item>
     <item name="userGateFragment" type="id" />
-    <item name="action_studentHostelFragment_to_userOutgoingsFragment" type="id">
-
-    </item>
     <item name="userOutgoingsFragment" type="id" />
-    <item name="action_studentHostelFragment_to_userFragment" type="id">
-
-    </item>
     <item name="userFragment" type="id" />
-    <item name="action_studentHostelFragment_to_roomFragment" type="id">
-
-    </item>
     <item name="roomFragment" type="id" />
-    <item name="action_roomsFragment_to_roomFragment" type="id">
-
-    </item>
-    <item name="action_usersFragment_to_userFragment" type="id">
-
-    </item>
-    <item name="action_userFragment_to_userGateFragment" type="id">
-
-    </item>
-    <item name="action_userFragment_to_userGateFragment2" type="id">
-
-    </item>
-    <item name="action_userFragment_to_userOutgoingsFragment" type="id">
-
-    </item>
-    <item name="action_userFragment_to_roomFragment" type="id">
-    </item>
-    <item name="action_roomFragment_to_userFragment" type="id">
-    </item>
     <item name="homeFragment" type="id" />
-    <item name="action_homeFragment_to_postsFragment" type="id">
-
-    </item>
     <item name="postsFragment" type="id" />
-    <item name="action_postsFragment_to_homeFragment" type="id">
-
-    </item>
     <item name="home_refresh" type="id" />
     <item name="home_text_now" type="id" />
     <item name="todayRecyclerView" type="id" />
     <item name="home_text_unread" type="id" />
     <item name="home_recycle_view_unread" type="id" />
-    <item name="home_button_show_all_posts" type="id" />
-    <item name="eventsRecyclerView" type="id" />
     <item name="home_fab_root" type="id" />
     <item name="progressBar" type="id" />
     <item name="profile_card_my_groups" type="id" />
@@ -85,14 +39,5 @@
     <item name="settings_slider_list_loading_delay" type="id" />
     <item name="settings_scb_test_activity" type="id" />
     <item name="drag_handle" type="id" />
-    <item name="action_global_postsFragment" type="id" />
-    <item name="action_global_usersFragment" type="id" />
-    <item name="action_global_roomsFragment" type="id" />
-    <item name="action_global_roomFragment" type="id" />
-    <item name="action_global_userFragment" type="id" />
-    <item name="action_global_userOutgoingsFragment" type="id" />
-    <item name="action_global_userGateFragment" type="id" />
-    <item name="action_global_roomRateFragment" type="id" />
     <item name="loading_overlay" type="id" />
-    <item name="loadingView" type="id" />
 </resources>

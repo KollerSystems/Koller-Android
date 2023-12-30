@@ -17,7 +17,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.core.widget.NestedScrollView
-            style="@style/nestedScrollView"
+            style="@style/NestedScrollView"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -81,7 +81,7 @@
 
                                         <TextView
                                             android:id="@+id/home_text_lessons_number"
-                                            style="@style/iconLikeText"
+                                            style="@style/IconLikeText"
                                             android:text="n"
                                             android:textAlignment="center"
                                             android:textSize="38sp" />
@@ -134,7 +134,7 @@
                                 </com.google.android.material.card.MaterialCardView>
 
                                 <include
-                                    layout="@layout/view_todo_time"
+                                    layout="@layout/view_todo"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="7.5dp" />
@@ -151,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_marginLeft="@dimen/card_padding"
                     android:layout_weight="1"
                     android:text="@string/today" />
 
@@ -183,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_marginLeft="@dimen/panel_padding"
+                    android:layout_marginLeft="@dimen/card_padding"
                     android:layout_weight="1"
                     android:text="@string/unread" />
 

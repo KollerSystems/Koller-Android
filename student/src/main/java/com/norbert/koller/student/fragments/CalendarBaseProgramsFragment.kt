@@ -1,33 +1,16 @@
 package com.norbert.koller.student.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.viewmodels.BaseViewModel
-import com.norbert.koller.shared.customview.SuperCoolRecyclerView
 import com.norbert.koller.shared.api.BaseProgramPagingSource
-import com.norbert.koller.shared.api.UserPagingSource
-import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.fragments.FragmentList
-import com.norbert.koller.shared.helpers.connectToCheckBoxList
-import com.norbert.koller.shared.helpers.connectToDateRangePicker
-import com.norbert.koller.shared.recycleradapter.BasePagingSource
-import com.norbert.koller.shared.recycleradapter.BaseProgramRecyclerAdapter
-import com.norbert.koller.shared.recycleradapter.ListItem
-import com.norbert.koller.student.R
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import com.norbert.koller.shared.fragments.ListFragment
+import com.norbert.koller.shared.recycleradapters.BasePagingSource
+import com.norbert.koller.shared.recycleradapters.BaseProgramRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.R as Rs
 
 
-class CalendarBaseProgramsFragment : FragmentList() {
+class CalendarBaseProgramsFragment : ListFragment() {
 
     override fun getPagingSource(): BasePagingSource {
         return BaseProgramPagingSource(requireContext(), viewModel)

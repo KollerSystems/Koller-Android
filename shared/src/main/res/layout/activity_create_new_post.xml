@@ -13,13 +13,13 @@
         android:id="@+id/appbar"
 
         android:layout_width="match_parent"
-        android:layout_height="@dimen/expandedToolbarHeight"
+        android:layout_height="@dimen/expanded_toolbar_height"
         android:background="?attr/colorSurface"
         app:elevation="1dp"
         app:expanded="false">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="@style/collapsing_toolbar_layout"
+            style="@style/CollapsingToolbarLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
 
@@ -44,11 +44,11 @@
                 android:clipToPadding="false"
                 android:gravity="center_vertical"
                 android:orientation="horizontal"
-                android:paddingVertical="@dimen/HeaderMarginVertical">
+                android:paddingVertical="@dimen/header_margin_vertical">
 
                 <Button
                     android:id="@+id/toolbar_exit"
-                    style="@style/toolbar_navigation_button"
+                    style="@style/ToolbarNavigationButton"
                     android:layout_height="@dimen/toolbar_button_size"
                     android:layout_marginRight="@dimen/spacing"
                     android:alpha="0.666"
@@ -123,7 +123,7 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        style="@style/nestedScrollView"
+        style="@style/NestedScrollView"
         android:layout_width="match_parent"
 
 
@@ -147,17 +147,17 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/CardMargin">
+                android:layout_margin="@dimen/text_container_margin">
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/create_new_post_til_addresse"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:hint="@string/addressee"
-                    app:boxCornerRadiusBottomEnd="@dimen/panel_round"
-                    app:boxCornerRadiusBottomStart="@dimen/panel_round"
-                    app:boxCornerRadiusTopEnd="@dimen/panel_round"
-                    app:boxCornerRadiusTopStart="@dimen/panel_round"
+                    app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
+                    app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+                    app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
+                    app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
                     app:boxStrokeErrorColor="?attr/colorPrimary"
                     app:errorEnabled="true"
                     app:errorIconDrawable="@null"
@@ -175,7 +175,7 @@
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:text="@string/everyone"
-                        android:textAppearance="@style/Normal" />
+                        android:textAppearance="@style/Text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -192,7 +192,7 @@
                 android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/CardMargin"
+                android:layout_margin="@dimen/text_container_margin"
                 app:cardBackgroundColor="@android:color/transparent"
                 app:cardElevation="0dp">
 
@@ -208,8 +208,8 @@
                         android:hint="@string/title"
                         app:boxCornerRadiusBottomEnd="0dp"
                         app:boxCornerRadiusBottomStart="0dp"
-                        app:boxCornerRadiusTopEnd="@dimen/panel_round"
-                        app:boxCornerRadiusTopStart="@dimen/panel_round"
+                        app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
+                        app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
                         app:counterEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -217,7 +217,7 @@
                             android:layout_height="wrap_content"
                             android:inputType="text|textCapSentences|textMultiLine"
                             android:maxLength="50"
-                            android:textAppearance="@style/Normal" />
+                            android:textAppearance="@style/Text" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -237,7 +237,7 @@
                             android:inputType="text|textCapSentences|textMultiLine"
                             android:lines="15"
                             android:maxLength="2500"
-                            android:textAppearance="@style/Normal" />
+                            android:textAppearance="@style/Text" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.card.MaterialCardView
@@ -253,21 +253,21 @@
                             android:clipChildren="false"
                             android:clipToPadding="false"
                             android:orientation="vertical"
-                            android:padding="@dimen/panel_padding">
+                            android:padding="@dimen/card_padding">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/recycler_view"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginLeft="@dimen/n_panel_padding"
-                                android:layout_marginRight="@dimen/n_panel_padding"
+                                android:layout_marginLeft="@dimen/n_card_padding"
+                                android:layout_marginRight="@dimen/n_card_padding"
                                 android:clipChildren="false"
                                 android:clipToPadding="false"
                                 android:orientation="horizontal"
-                                android:paddingHorizontal="@dimen/panel_padding"
+                                android:paddingHorizontal="@dimen/card_padding"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/editable_image_view">
+                                tools:listitem="@layout/view_editable_image">
 
                             </androidx.recyclerview.widget.RecyclerView>
 
@@ -352,7 +352,7 @@
                                             android:editable="false"
                                             android:focusable="false"
                                             android:inputType="datetime|date"
-                                            android:textAppearance="@style/Normal" />
+                                            android:textAppearance="@style/Text" />
                                     </com.google.android.material.textfield.TextInputLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
@@ -376,7 +376,7 @@
                                             android:focusable="false"
                                             android:inputType="datetime|time"
                                             android:singleLine="false"
-                                            android:textAppearance="@style/Normal" />
+                                            android:textAppearance="@style/Text" />
                                     </com.google.android.material.textfield.TextInputLayout>
                                 </LinearLayout>
 
@@ -406,7 +406,7 @@
                                             android:focusable="false"
                                             android:inputType="datetime|date"
                                             android:singleLine="false"
-                                            android:textAppearance="@style/Normal" />
+                                            android:textAppearance="@style/Text" />
                                     </com.google.android.material.textfield.TextInputLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
@@ -429,7 +429,7 @@
                                             android:focusable="false"
                                             android:inputType="datetime|time"
                                             android:singleLine="false"
-                                            android:textAppearance="@style/Normal" />
+                                            android:textAppearance="@style/Text" />
                                     </com.google.android.material.textfield.TextInputLayout>
                                 </LinearLayout>
 
@@ -468,7 +468,7 @@
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:textAppearance="@style/Normal" />
+                                    android:textAppearance="@style/Text" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
@@ -507,7 +507,7 @@
                                     android:inputType="number|numberSigned"
                                     android:maxLength="1"
                                     android:selectAllOnFocus="true"
-                                    android:textAppearance="@style/Normal" />
+                                    android:textAppearance="@style/Text" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                         </LinearLayout>
@@ -534,7 +534,7 @@
             android:layout_height="match_parent"
             android:gravity="right|center_vertical"
             android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/HeaderMarginHorizontal">
+            android:paddingHorizontal="@dimen/header_margin_horizontal">
 
             <Button
                 android:id="@+id/create_new_post_button_scheduling"

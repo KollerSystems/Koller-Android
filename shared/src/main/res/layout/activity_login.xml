@@ -79,7 +79,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/login_inpf_id"
-                        style="@style/edit_text"
+                        style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:singleLine="true"
@@ -102,7 +102,7 @@
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/login_inpf_password"
-                        style="@style/edit_text"
+                        style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textWebPassword"
@@ -141,7 +141,7 @@
 
                     <Button
                         android:id="@+id/login_button_no_account"
-                        style="@style/button_outline"
+                        style="@style/ButtonOutline"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_margin="@dimen/text_container_margin"
@@ -158,59 +158,6 @@
 
                 </LinearLayout>
 
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:visibility="gone">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/separator" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:text="@string/or"
-                    android:textAlignment="center"
-                    android:textAllCaps="true"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    app:srcCompat="@drawable/separator" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/textView6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="50dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="50dp"
-                    android:text="@string/touch_nfc"
-                    android:textAlignment="center"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Large" />
             </LinearLayout>
 
             <View
