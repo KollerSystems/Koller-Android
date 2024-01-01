@@ -10,7 +10,7 @@ import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.activities.RoomRateActivity
 
-class RoomFragment(RID : Int? = null) : com.norbert.koller.shared.fragments.RoomFragment(RID)  {
+class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.RoomFragment(rid)  {
 
 
     override fun onCreateView(

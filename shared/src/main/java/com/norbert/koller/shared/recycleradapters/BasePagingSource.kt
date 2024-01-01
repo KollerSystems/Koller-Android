@@ -10,7 +10,7 @@ import androidx.paging.PagingState
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.APIInterface
-import com.norbert.koller.shared.api.RetrofitHelper
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.viewmodels.BaseViewModel
@@ -104,9 +104,9 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
             recyclerAdapter.notifyItemInserted(recyclerAdapter.itemCount)
         }
 
-        val apiResponse = RetrofitHelper.buildService(APIInterface::class.java)
+
         try {
-            val response: Response<List<BaseData>> = getApiResponse(apiResponse, params.loadSize, offset)
+            val response: Response<List<BaseData>> = getApiResponse(RetrofitInstance.api, params.loadSize, offset)
             var responseAs: List<BaseData> = listOf()
             if(response.isSuccessful) {
                 if(!response.body().isNullOrEmpty()) {

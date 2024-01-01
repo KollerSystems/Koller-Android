@@ -44,7 +44,7 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
         (holder.chipPlace.parent as ViewGroup).setVisibilityBy(isAnyChildVisible)
 
         holder.posterUser.setOnClickListener{
-            mainActivity.addFragment(MyApplication.userFragment(currentItem.UID))
+            mainActivity.addFragment(MyApplication.userFragment(currentItem.uid))
         }
 
     }

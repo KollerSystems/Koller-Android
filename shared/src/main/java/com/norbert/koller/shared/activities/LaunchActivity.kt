@@ -9,9 +9,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.MyApplication
-import com.norbert.koller.shared.api.APIInterface
-import com.norbert.koller.shared.api.RetrofitHelper
-import com.norbert.koller.shared.data.ApiLoginRefreshData
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.ApiLoginTokensData
 import com.norbert.koller.shared.data.UserData
 import kotlinx.coroutines.launch
@@ -34,7 +32,7 @@ class LaunchActivity : AppCompatActivity() {
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
                     // Check whether the initial data is ready.
-                    return if (UserData.instance.UID != -1 || !MyApplication.isOnline(this@LaunchActivity)) {
+                    return if (UserData.instance.uid != -1 || !MyApplication.isOnline(this@LaunchActivity)) {
                         // The content is ready. Start drawing.
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
@@ -48,7 +46,7 @@ class LaunchActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
 
-            if(!MyApplication.isOnline(this@LaunchActivity)){
+            if (!MyApplication.isOnline(this@LaunchActivity)) {
                 MaterialAlertDialogBuilder(this@LaunchActivity)
                     .setTitle("Nincs internet")
                     .setMessage("Az alkalmazás jelenleg csakis internettel képes működni")
@@ -62,70 +60,29 @@ class LaunchActivity : AppCompatActivity() {
                 return@launch
             }
 
-            val refreshToken = DataStoreManager.read(this@LaunchActivity, DataStoreManager.TOKENS)
-            if(refreshToken == null){
+            ApiLoginTokensData.instance = DataStoreManager.readTokens(this@LaunchActivity)
+            if (ApiLoginTokensData.instance == null) {
                 MyApplication.openLogin.invoke(this@LaunchActivity)
                 finish()
+
+            }else {
+
+                RetrofitInstance.communicate(lifecycleScope, RetrofitInstance.api::getCurrentUser,
+                    {
+                        UserData.instance = it as UserData
+
+                        MyApplication.openMain.invoke(this@LaunchActivity)
+                        finish()
+                    },
+                    {_,_->
+                        MyApplication.openLogin.invoke(this@LaunchActivity)
+                        finish()
+                    })
+
             }
-            else{
-                val loginResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                loginResponse.postLogin(ApiLoginRefreshData("refresh_token", refreshToken)).enqueue(
-                    object : Callback<ApiLoginTokensData> {
-                        override fun onResponse(
-                            call: Call<ApiLoginTokensData>,
-                            loginResponse: Response<ApiLoginTokensData>
-                        ) {
-                            if(loginResponse.code() == 200) {
 
-                                ApiLoginTokensData.instance = loginResponse.body()!!
-
-                                lifecycleScope.launch {
-                                    DataStoreManager.save(this@LaunchActivity, DataStoreManager.TOKENS, ApiLoginTokensData.instance.refresh_token)
-                                }
-
-
-                                val userResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                                userResponse.getCurrentUser(APIInterface.getHeaderMap()).enqueue(
-                                    object : Callback<UserData> {
-                                        override fun onResponse(
-                                            call: Call<UserData>,
-                                            userResponse: Response<UserData>
-                                        ) {
-                                            if(userResponse.code() == 200) {
-
-                                                UserData.instance = userResponse.body()!!
-
-                                                MyApplication.openMain.invoke(this@LaunchActivity)
-                                                finish()
-                                            }
-                                            else{
-                                                MyApplication.openLogin.invoke(this@LaunchActivity)
-                                                finish()
-                                            }
-                                        }
-
-                                        override fun onFailure(call: Call<UserData>, t: Throwable) {
-                                            MyApplication.openLogin.invoke(this@LaunchActivity)
-                                            finish()
-                                        }
-                                    }
-                                )
-                            }
-                            else{
-                                MyApplication.openLogin.invoke(this@LaunchActivity)
-                                finish()
-                            }
-
-                        }
-
-                        override fun onFailure(call: Call<ApiLoginTokensData>, t: Throwable) {
-                            MyApplication.openLogin.invoke(this@LaunchActivity)
-                            finish()
-                        }
-                    }
-                )
-            }
         }
+
 
 
     }

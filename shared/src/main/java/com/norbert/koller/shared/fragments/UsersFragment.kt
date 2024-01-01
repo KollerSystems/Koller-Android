@@ -32,9 +32,9 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         leaderUsersRecyclerView.setHasFixedSize(false)
 
         leaderUsersDataArrayList = arrayListOf(
-            UserData(Name="Katona Márton"),
-            UserData(Name="Härtlein Károly"),
-            UserData(Name="Hatalmas Norbert")
+            UserData(name="Katona Márton"),
+            UserData(name="Härtlein Károly"),
+            UserData(name="Hatalmas Norbert")
         )
 
         leaderUsersRecyclerView.adapter = UserRecyclerAdapter(null)*/

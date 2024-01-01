@@ -1,13 +1,15 @@
 package com.norbert.koller.shared.data
 
+import com.google.gson.annotations.SerializedName
+
 abstract class ApiLoginData (
-    val grant_type : String
+    @SerializedName("grant_type") val grantType : String
 )
 
 class ApiLoginRefreshData(
-    grant_type : String,
-    val refresh_token : String
-) : ApiLoginData(grant_type)
+    grantType : String,
+    @SerializedName("refresh_token") val refreshToken : String
+) : ApiLoginData(grantType)
 
 class ApiLoginUsernameAndPasswordData(
     grant_type : String,

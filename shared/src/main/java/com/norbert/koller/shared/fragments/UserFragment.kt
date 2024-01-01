@@ -9,12 +9,13 @@ import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.APIInterface
-import com.norbert.koller.shared.api.RetrofitHelper
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
 import com.norbert.koller.shared.data.UserData
@@ -25,7 +26,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-abstract class UserFragment(val UID : Int? = null) : Fragment() {
+abstract class UserFragment(val uid : Int? = null) : Fragment() {
 
     lateinit var loadingOl : FullScreenLoading
 
@@ -77,7 +78,7 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
         }
 
         if(!viewModel.response.isInitialized){
-            viewModel.ID = UID!!
+            viewModel.id = uid!!
             loadingOl.loadData = {loadData()}
         }
 
@@ -85,24 +86,24 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
 
             response as UserData
 
-            badgeUser.setColorBasedOnClass(response.Class?.Class)
+            badgeUser.setColorBasedOnClass(response.class_?.class_)
 
-            textName.text = response.Name
+            textName.text = response.name
 
-            buttonRoom.text = response.RID.toString()
-            buttonGroup.text = response.Group
-            buttonClass.text = response.Class?.Class
+            buttonRoom.text = response.rid.toString()
+            buttonGroup.text = response.group
+            buttonClass.text = response.class_?.class_
 
             buttonRoom.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.RID!!))
+                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.rid!!))
             }
 
             buttonGroup.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.Group!!)))))
+                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.group!!)))))
             }
 
             buttonClass.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Class", arrayListOf(response.Class.toString())))))
+                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Class", arrayListOf(response.class_.toString())))))
             }
 
             NestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
@@ -110,14 +111,14 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
                     (activity as MainActivity).setToolbarTitle(getString(R.string.user), null)
 
                 } else {
-                    (activity as MainActivity).setToolbarTitle(response.Name, response.createDescription())
+                    (activity as MainActivity).setToolbarTitle(response.name, response.createDescription())
                 }
             }
 
-            showAndSetIfNotNull(discordChip, response.Discord)
-            showAndSetIfNotNull(facebookChip, response.Facebook)
-            showAndSetIfNotNull(instagramChip, response.Instagram)
-            showAndSetIfNotNull(emailChip, response.Email)
+            showAndSetIfNotNull(discordChip, response.discord)
+            showAndSetIfNotNull(facebookChip, response.facebook)
+            showAndSetIfNotNull(instagramChip, response.instagram)
+            showAndSetIfNotNull(emailChip, response.email)
         }
 
         badgeUser.card.setOnClickListener{
@@ -132,29 +133,14 @@ abstract class UserFragment(val UID : Int? = null) : Fragment() {
 
     fun loadData(){
 
-        val usersResponse = RetrofitHelper.buildService(APIInterface::class.java)
-        usersResponse.getUser(viewModel.ID, APIInterface.getHeaderMap()).enqueue(
-            object : Callback<UserData> {
-                override fun onResponse(
-                    call: Call<UserData>,
-                    userResponse: Response<UserData>
-                ) {
-                    if (userResponse.code() == 200) {
+        RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.getUser(viewModel.id)},
+            {
+                viewModel.response.value = it as UserData
+                loadingOl.setState(FullScreenLoading.NONE)
+            },
+            {errorMsg, errorBody ->
+                loadingOl.setState(FullScreenLoading.ERROR)
+            })
 
-
-                        viewModel.response.value = userResponse.body()!!
-                        loadingOl.setState(FullScreenLoading.NONE)
-
-
-                    } else {
-                        loadingOl.setState(FullScreenLoading.ERROR)
-                    }
-                }
-
-                override fun onFailure(call: Call<UserData>, t: Throwable) {
-                    loadingOl.setState(FullScreenLoading.ERROR)
-                }
-            }
-        )
     }
 }

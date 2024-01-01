@@ -53,8 +53,8 @@ class ApplicationManager : MyApplication() {
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
         notificationFragment = { NotificationsFragment() }
-        roomFragment = {RID -> RoomFragment(RID) }
-        userFragment = {UID -> UserFragment(UID) }
+        roomFragment = {rid -> RoomFragment(rid) }
+        userFragment = {uid -> UserFragment(uid) }
         roomsFragment = {RoomsFragment()}
         usersFragment = {UsersFragment()}
 

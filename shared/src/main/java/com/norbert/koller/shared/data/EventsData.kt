@@ -8,4 +8,4 @@ data class EventsData (var title : String,
                        var place : String? = null,
                        var dateTime : Date? = null,
                        var baseProgramReplacement : Int = 0,
-                       var UID : Int = 5)
+                       var uid : Int = 5)

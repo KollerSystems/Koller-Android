@@ -21,9 +21,9 @@ class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) 
 
 
         val currentItem = canteenList[position]
-        holder.category.text = currentItem.Category
-        holder.time.text = currentItem.Time
-        holder.foodName.text = currentItem.FoodName
+        holder.category.text = currentItem.category
+        holder.time.text = currentItem.time
+        holder.foodName.text = currentItem.foodName
     }
 
     override fun getItemCount(): Int {

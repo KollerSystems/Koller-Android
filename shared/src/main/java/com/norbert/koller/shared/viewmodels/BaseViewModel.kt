@@ -15,7 +15,7 @@ class BaseViewModel : ViewModel() {
         const val pageSize : Int = 25
     }
 
-    var ID = -1
+    var id = -1
 
     var filters : MutableMap<String, ArrayList<String>> = mutableMapOf()
     var dateFilters : MutableMap<String, androidx.core.util.Pair<Long, Long>> = mutableMapOf()

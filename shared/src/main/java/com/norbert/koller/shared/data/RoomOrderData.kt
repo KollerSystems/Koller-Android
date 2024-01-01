@@ -7,7 +7,7 @@ import kotlin.collections.ArrayList
 data class RoomOrderData(
     var FinalGrade : Byte,
     var TID : Long,
-    var Date : Date,
+    var date : Date,
     var Conditions : ArrayList<RoomOrderConditionsBase>
 ){
     companion object {

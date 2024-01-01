@@ -14,7 +14,7 @@ import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.managers.MyApplication
 
-class UserOutgoingsFragment(UID : Int? = null) : PagedFragment() {
+class UserOutgoingsFragment(uid : Int? = null) : PagedFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

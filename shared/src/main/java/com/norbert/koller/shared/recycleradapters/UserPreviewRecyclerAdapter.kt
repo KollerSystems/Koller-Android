@@ -30,20 +30,20 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
 
         RecyclerViewHelper.roundRecyclerItemsHorizontallyGrid(holder.itemView, position, todayList.size)
 
-        holder.userBadge.setColorBasedOnClass(currentItem.Class?.Class)
+        holder.userBadge.setColorBasedOnClass(currentItem.class_?.class_)
 
-        val nameParts : List<String> = currentItem.Name!!.split(" ")
+        val nameParts : List<String> = currentItem.name!!.split(" ")
         val name = nameParts[0] + " " + nameParts [1]
 
         holder.text.text = name.replace(" ", "\n")
 
         holder.itemView.setOnClickListener {
 
-            if(currentItem.UID == UserData.instance.UID){
+            if(currentItem.uid == UserData.instance.uid){
                 MyApplication.openProfile.invoke(holder.itemView.context)
             }
             else{
-                (context as MainActivity).addFragment(MyApplication.userFragment(currentItem.UID))
+                (context as MainActivity).addFragment(MyApplication.userFragment(currentItem.uid))
             }
 
         }

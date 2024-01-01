@@ -30,9 +30,9 @@ class BaseProgramRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilt
 
         item as BaseProgramData
 
-        holder.title.text = item.Topic
+        holder.title.text = item.topic
 
-        var description ="${item.TUID} • ${MyApplication.createClassesText(context, item.Lesson, item.Length)}"
+        var description ="${item.tuid} • ${MyApplication.createClassesText(context, item.lesson, item.length)}"
 
         holder.description.text = description
 

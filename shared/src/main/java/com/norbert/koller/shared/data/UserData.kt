@@ -1,35 +1,36 @@
 package com.norbert.koller.shared.data
 
 import android.content.Context
+import com.google.gson.annotations.SerializedName
 
-class ClassData(val ID : Int = 0, val Class : String ="", val HeadTUID : Int=1)
+class ClassData(val id : Int = 0, val class_ : String ="", val HeadTUID : Int=1)
 
 class UserData (
-    var UID : Int = -1,
-    val OM : Long? = null,
-    val Gender : Int? = null,
-    val Name : String? = null,
-    val Picture : String? = null,
-    val Group : String? = null,
-    val School : String? = null,
-    val Birthplace : String? = null,
-    val Birthdate : String? = null,
-    val GuardiaName : String? = null,
-    val GuardianPhone : String? = null,
-    val RID : Int? = null,
-    val Country : String ? = null,
-    val City : String? = null,
-    val Street : String? = null,
-    val PostCode : String? = null,
-    val Address : String? = null,
-    val Floor : String? = null,
-    val Door : String? = null,
-    val Email : String? = null,
-    val Discord : String? = null,
-    val Facebook : String? = null,
-    val Instagram : String? = null,
-    val BedNum : Int? = null,
-    val Class : ClassData? = null
+    @SerializedName("UID") var uid : Int = -1,
+    @SerializedName("OM") val om : Long? = null,
+    @SerializedName("Gender") val gender : Int? = null,
+    @SerializedName("Name") val name : String? = null,
+    @SerializedName("Picture") val picture : String? = null,
+    @SerializedName("Group") val group : String? = null,
+    @SerializedName("School") val school : String? = null,
+    @SerializedName("Birthplace") val birthplace : String? = null,
+    @SerializedName("Birthdate") val birthdate : String? = null,
+    @SerializedName("GuardiaName") val guardiaName : String? = null,
+    @SerializedName("GuardianPhone") val guardianPhone : String? = null,
+    @SerializedName("RID") val rid : Int? = null,
+    @SerializedName("Country") val country : String ? = null,
+    @SerializedName("City") val city : String? = null,
+    @SerializedName("Street") val street : String? = null,
+    @SerializedName("PostCode") val postCode : String? = null,
+    @SerializedName("Address") val address : String? = null,
+    @SerializedName("Floor") val floor : String? = null,
+    @SerializedName("Door") val door : String? = null,
+    @SerializedName("Email") val email : String? = null,
+    @SerializedName("Discord") val discord : String? = null,
+    @SerializedName("Facebook") val facebook : String? = null,
+    @SerializedName("Instagram") val instagram : String? = null,
+    @SerializedName("BedNum") val bedNum : Int? = null,
+    @SerializedName("Class") val class_ : ClassData? = null
 ) : BaseData()
 {
 
@@ -39,15 +40,15 @@ class UserData (
     }
 
     override fun diffrentDecider(context: Context): String {
-        return Name!![0].toString()
+        return name!![0].toString()
     }
 
     override fun getMainID(): Int {
-        return UID
+        return uid
     }
 
     fun createDescription(): String{
-        return Group + " • " + RID  + " • " + Class?.Class
+        return group + " • " + rid  + " • " + class_?.class_
     }
 
 

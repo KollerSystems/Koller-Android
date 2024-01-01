@@ -9,10 +9,10 @@ import com.norbert.koller.shared.api.CrossingPagingSource
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 
-class UserExitsAndEntrancesFragment(val UID : Int? = null) : ListFragment() {
+class UserExitsAndEntrancesFragment(val uid : Int? = null) : ListFragment() {
 
     override fun getPagingSource(): BasePagingSource {
-        return CrossingPagingSource(requireContext(), viewModel.ID, viewModel)
+        return CrossingPagingSource(requireContext(), viewModel.id, viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -20,8 +20,8 @@ class UserExitsAndEntrancesFragment(val UID : Int? = null) : ListFragment() {
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
         baseRecycleAdapter = GateRecyclerAdapter(chipGroupSort, chipGroupFilter)
 
-        if(UID != null) {
-            viewModel.ID = UID
+        if(uid != null) {
+            viewModel.id = uid
         }
 
         addSortingChip("Direction", R.string.direction, arrayListOf(

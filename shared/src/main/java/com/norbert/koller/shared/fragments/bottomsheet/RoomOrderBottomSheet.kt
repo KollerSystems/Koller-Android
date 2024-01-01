@@ -42,7 +42,7 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
         teacherName.text = "Name"
 
         val format = SimpleDateFormat("MM. dd.")
-        date.text = format.format(RoomOrderData.instance[0].Date)
+        date.text = format.format(RoomOrderData.instance[0].date)
 
         val RecyclerView : RecyclerView = view.findViewById(R.id.room_order_recycler_view)
 

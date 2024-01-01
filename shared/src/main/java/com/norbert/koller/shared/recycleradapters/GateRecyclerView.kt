@@ -55,7 +55,7 @@ class GateRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
                 val icon : Int
                 val iconLocDesc : Int
 
-                if(item.Direction == 0.toByte()){
+                if(item.direction == 0.toByte()){
                     icon = R.drawable.in_
                     iconLocDesc = R.string.in_
                 } else{
@@ -64,8 +64,8 @@ class GateRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
                 }
                 holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, icon))
                 holder.iconDesc.text = holder.itemView.context.getString(iconLocDesc)
-                holder.title.text = SimpleDateFormat(DateTimeHelper.timeFormat).format(item.Time)
-                holder.description.text = late(item.Time.time)
+                holder.title.text = SimpleDateFormat(DateTimeHelper.timeFormat).format(item.time)
+                holder.description.text = late(item.time.time)
 
                 holder.itemView.setOnClickListener {
 

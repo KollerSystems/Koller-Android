@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import com.norbert.koller.student.R
 
 
-class UserFragment(UID : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(UID) {
+class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(uid) {
 
 
 

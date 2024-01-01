@@ -6,6 +6,6 @@ import com.norbert.koller.shared.data.BaseData
 
 class ResponseViewModel : ViewModel() {
 
-    var ID = -1
+    var id = -1
     var response = MutableLiveData<Any>()
 }

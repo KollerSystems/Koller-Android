@@ -68,8 +68,8 @@ open class MyApplication : Application() {
         lateinit var studentHostelFragment: () -> StudentHostelFragment
         lateinit var notificationFragment: () -> NotificationsFragment
 
-        lateinit var roomFragment: (RID : Int) -> RoomFragment
-        lateinit var userFragment: (UID : Int) -> UserFragment
+        lateinit var roomFragment: (rid : Int) -> RoomFragment
+        lateinit var userFragment: (uid : Int) -> UserFragment
 
         lateinit var getAppColor: (context : Context) -> Int
 

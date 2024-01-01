@@ -47,10 +47,10 @@ open class NotificationMakingManager {
         private lateinit var myApplication : MyApplication
         lateinit var notificationManager: NotificationManager
 
-        fun createNotificationChannel(ID : String, name : Int, description : String?, importance : Int, group : String){
+        fun createNotificationChannel(id : String, name : Int, description : String?, importance : Int, group : String){
 
             val channel = NotificationChannel(
-                ID,
+                id,
                 myApplication.getString(name),
                 importance).apply {
                     this.description = description
@@ -61,15 +61,15 @@ open class NotificationMakingManager {
 
         }
 
-        fun createNotificationChannel(ID : String, name : Int, description : Int, importance : Int, group : String){
+        fun createNotificationChannel(id : String, name : Int, description : Int, importance : Int, group : String){
 
-            createNotificationChannel(ID, name, myApplication.getString(description), importance, group)
+            createNotificationChannel(id, name, myApplication.getString(description), importance, group)
 
         }
 
-        fun createNotificationChannel(ID : String, name : Int, importance : Int, group : String){
+        fun createNotificationChannel(id : String, name : Int, importance : Int, group : String){
 
-            createNotificationChannel(ID, name, null, importance, group)
+            createNotificationChannel(id, name, null, importance, group)
 
         }
     }

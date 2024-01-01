@@ -1,29 +1,28 @@
 package com.norbert.koller.shared.data
 
 import android.content.Context
+import com.google.gson.annotations.SerializedName
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.text.SimpleDateFormat
 import java.util.Date
 
 class BaseProgramData(
-
-    var ID: Int,
-    var TypeID: Int,
-    var Date: Date,
-    var Group: String,
-    var Lesson: Int,
-    var Length: Int,
-    var Topic: String,
-    var RID : Int,
-    var TUID: Int
-
+    @SerializedName("ID") var id: Int,
+    @SerializedName("TypeID") var typeId: Int,
+    @SerializedName("Date") var date: Date,
+    @SerializedName("Group") var group: String,
+    @SerializedName("Lesson") var lesson: Int,
+    @SerializedName("Length") var length: Int,
+    @SerializedName("Topic") var topic: String,
+    @SerializedName("RID") var rid : Int,
+    @SerializedName("TUID") var tuid: Int
 ) : BaseData() {
 
     override fun diffrentDecider(context: Context): String {
-        return SimpleDateFormat(DateTimeHelper.monthDay).format(Date)
+        return SimpleDateFormat(DateTimeHelper.monthDay).format(date)
     }
 
     override fun getMainID(): Int {
-        return ID
+        return id
     }
 }

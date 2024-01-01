@@ -34,16 +34,16 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGro
         item as RoomData
 
         holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, R.drawable.bed))
-        holder.title.text = "${item.RID} • ${item.Group}"
+        holder.title.text = "${item.rid} • ${item.group}"
 
         holder.description.isSingleLine = false
 
-        if(item.Residents !=null ) {
+        if(item.residents !=null ) {
 
             var desc : String = ""
-            for (i in 0 until item.Residents!!.size){
+            for (i in 0 until item.residents!!.size){
 
-                desc += getShortName(item.Residents!![i].Name!!) + ", "
+                desc += getShortName(item.residents!![i].name!!) + ", "
             }
             desc.trimEnd()
 
@@ -52,7 +52,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGro
 
         holder.itemView.setOnClickListener {
 
-            val fragment = MyApplication.roomFragment(item.RID)
+            val fragment = MyApplication.roomFragment(item.rid)
             (holder.itemView.context as MainActivity).addFragment(fragment)
 
         }

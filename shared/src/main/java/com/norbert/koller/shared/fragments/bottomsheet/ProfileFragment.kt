@@ -45,13 +45,13 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         dialog!!.setupBottomSheet()
 
         val badgeUser : RoundedBadgeImageView = view.findViewById(R.id.badge_user)
-        badgeUser.setColorBasedOnClass(UserData.instance.Class?.Class)
+        badgeUser.setColorBasedOnClass(UserData.instance.class_?.class_)
 
         val textVersion : TextView = view.findViewById(R.id.text_version)
         textVersion.text = MyApplication.version
 
         textName = view.findViewById(R.id.profile_text_name)
-        textName.text = UserData.instance.Name
+        textName.text = UserData.instance.name
 
         textDescription = view.findViewById(R.id.profile_text_description)
         textDescription.text = UserData.instance.createDescription()
@@ -105,7 +105,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
 
         cardMyRoom.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(UserData.instance.RID!!))
+            (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(UserData.instance.rid!!))
             this.dismiss()
         }
 
@@ -113,7 +113,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
 
         fbtnGate.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(UserExitsAndEntrancesFragment(UserData.instance.UID))
+            (requireContext() as MainActivity).addFragment(UserExitsAndEntrancesFragment(UserData.instance.uid))
             this.dismiss()
         }
 

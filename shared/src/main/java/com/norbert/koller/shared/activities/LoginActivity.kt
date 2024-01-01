@@ -15,9 +15,8 @@ import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.APIInterface
-import com.norbert.koller.shared.api.RetrofitHelper
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.ApiErrorData
-import com.norbert.koller.shared.data.ApiLoginData
 import com.norbert.koller.shared.data.ApiLoginTokensData
 import com.norbert.koller.shared.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -114,72 +113,40 @@ open class LoginActivity : AppCompatActivity() {
                     loginLayout.alpha = 0.25f
                     loadingBar.visibility = View.VISIBLE
 
-                    val loginResponse = RetrofitHelper.buildService(APIInterface::class.java)
                     val loginData = ApiLoginUsernameAndPasswordData("password", inplID.editText!!.text.toString(), inplPassword.editText!!.text.toString())
-                    loginResponse.postLogin(loginData).enqueue(
-                        object : Callback<ApiLoginTokensData> {
-
-                            override fun onResponse(
-                                call: Call<ApiLoginTokensData>,
-                                loginResponse: Response<ApiLoginTokensData>
-                            ) {
-                                if(loginResponse.code() == 200) {
-
-                                    ApiLoginTokensData.instance = loginResponse.body()!!
-
-                                    lifecycleScope.launch {
-                                        DataStoreManager.save(this@LoginActivity, DataStoreManager.TOKENS, ApiLoginTokensData.instance.refresh_token)
-                                    }
 
 
-                                    val userResponse = RetrofitHelper.buildService(APIInterface::class.java)
-                                    userResponse.getCurrentUser(APIInterface.getHeaderMap()).enqueue(
-                                        object : Callback<UserData> {
-                                            override fun onResponse(
-                                                call: Call<UserData>,
-                                                userResponse: Response<UserData>
-                                            ) {
-                                                if(userResponse.code() == 200) {
+                    RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.postLogin(loginData)},
+                        {
+                            ApiLoginTokensData.instance = it as ApiLoginTokensData
 
-                                                    UserData.instance = userResponse.body()!!
+                            lifecycleScope.launch {
+                                DataStoreManager.save(this@LoginActivity, ApiLoginTokensData.instance!!)
+                            }
 
-                                                    MyApplication.openMain.invoke(this@LoginActivity)
-                                                    finish()
-                                                }
-                                                else{
-                                                    returnLoginLayoutToNormal()
-                                                    APIInterface.serverErrorPopup(this@LoginActivity, userResponse.code().toString())
-                                                }
-                                            }
 
-                                            override fun onFailure(call: Call<UserData>, t: Throwable) {
-                                                returnLoginLayoutToNormal()
-                                                APIInterface.serverErrorPopup(this@LoginActivity, t.localizedMessage)
-                                            }
-                                        }
-                                    )
-                                }
-                                else{
+                            RetrofitInstance.communicate(lifecycleScope, RetrofitInstance.api::getCurrentUser,
+                                {
+                                    UserData.instance = it as UserData
 
-                                    var error : String?
-
-                                    val gson = Gson()
-                                    val type = object : TypeToken<ApiErrorData>() {}.type
-                                    val errorResponse: ApiErrorData? = gson.fromJson(loginResponse.errorBody()!!.charStream(), type)
-
-                                    APIInterface.serverErrorPopup(this@LoginActivity, errorResponse!!.error)
+                                    MyApplication.openMain.invoke(this@LoginActivity)
+                                    finish()
+                                },
+                                {errorMsg, errorBody ->
+                                    APIInterface.serverErrorPopup(this@LoginActivity, errorMsg)
                                     returnLoginLayoutToNormal()
-                                    inplID.error = getString(R.string.invalid_id)
-                                    inplPassword.error = getString(R.string.invalid_password)
-                                }
-                            }
+                                })
 
-                            override fun onFailure(call: Call<ApiLoginTokensData>, t: Throwable) {
-                                returnLoginLayoutToNormal()
-                                APIInterface.serverErrorPopup(this@LoginActivity)
-                            }
-                        }
-                    )
+                        },
+                        {errorMsg, errorBody ->
+
+                            APIInterface.serverErrorPopup(this@LoginActivity, errorBody?.error)
+                            returnLoginLayoutToNormal()
+                            inplID.error = getString(R.string.invalid_id)
+                            inplPassword.error = getString(R.string.invalid_password)
+
+                        })
+
                 }
                 else{
                     inplID.error = getString(R.string.invalid_id)

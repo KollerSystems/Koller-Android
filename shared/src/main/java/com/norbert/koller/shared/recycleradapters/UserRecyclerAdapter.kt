@@ -34,17 +34,17 @@ class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
                 R.drawable.person
             )
         )
-        holder.userBadge.setColorBasedOnClass(item.Class?.Class)
-        holder.title.text = item.Name
+        holder.userBadge.setColorBasedOnClass(item.class_?.class_)
+        holder.title.text = item.name
         holder.description.text = item.createDescription()
 
         holder.itemView.setOnClickListener {
 
-            if (item.UID == UserData.instance.UID) {
+            if (item.uid == UserData.instance.uid) {
                 MyApplication.openProfile(context)
             } else {
                 val bundle = Bundle()
-                val fragment = MyApplication.userFragment(item.UID)
+                val fragment = MyApplication.userFragment(item.uid)
                 fragment.arguments = bundle
                 (context as MainActivity).addFragment(fragment)
             }

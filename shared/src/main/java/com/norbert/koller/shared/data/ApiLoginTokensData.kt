@@ -1,13 +1,11 @@
 package com.norbert.koller.shared.data
 
+import com.google.gson.annotations.SerializedName
+
 data class ApiLoginTokensData (
-        val access_token : String = "",
-        val token_type : String = "",
-        val expires_in : Int = -1,
-        val refresh_token : String = ""
-){
-        companion object {
-                var instance = ApiLoginTokensData()
-        }
-}
+        @SerializedName("access_token") val accessToken : String = "",
+        @SerializedName("token_type") val tokenType : String = "",
+        @SerializedName("expires_in") val expiresIn : Int = -1,
+        @SerializedName("refresh_token") val refreshToken : String = ""
+        )
 

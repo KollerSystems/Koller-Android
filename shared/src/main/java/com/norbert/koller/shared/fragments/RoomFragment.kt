@@ -6,13 +6,14 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.APIInterface
-import com.norbert.koller.shared.api.RetrofitHelper
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
@@ -23,7 +24,7 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-abstract class RoomFragment(val RID: Int? = null) : Fragment() {
+abstract class RoomFragment(val rid: Int? = null) : Fragment() {
 
     lateinit var usersRecyclerView: RecyclerView
     lateinit var userDataArrayList: ArrayList<UserData>
@@ -53,24 +54,24 @@ abstract class RoomFragment(val RID: Int? = null) : Fragment() {
 
         if(!viewModel.response.isInitialized){
             loadingOl.loadData = {loadData()}
-            viewModel.ID = RID!!
+            viewModel.id = rid!!
         }
 
         viewModel.response.observe(viewLifecycleOwner) { response ->
             response as RoomData
-            if(response.Residents != null) {
+            if(response.residents != null) {
                 usersRecyclerView.adapter = UserPreviewRecyclerAdapter(
-                    response.Residents!!,
+                    response.residents!!,
                     requireContext()
                 )
             }
 
-            textTitle.text = response.RID.toString()
+            textTitle.text = response.rid.toString()
 
-            buttonDesc.text = response.Group
+            buttonDesc.text = response.group
 
             buttonDesc.setOnClickListener{
-                val map = mutableMapOf(Pair("Group", arrayListOf(response.Group!!)))
+                val map = mutableMapOf(Pair("Group", arrayListOf(response.group!!)))
 
                 (context as MainActivity).addFragment(MyApplication.usersFragment(map))
             }
@@ -80,28 +81,15 @@ abstract class RoomFragment(val RID: Int? = null) : Fragment() {
     }
 
     fun loadData(){
-        val roomResponse = RetrofitHelper.buildService(APIInterface::class.java)
-        roomResponse.getRoom(viewModel.ID, APIInterface.getHeaderMap()).enqueue(
-            object : Callback<RoomData> {
-                override fun onResponse(
-                    call: Call<RoomData>,
-                    userResponse: Response<RoomData>
-                ) {
-                    if (userResponse.isSuccessful) {
 
-                        viewModel.response.value = userResponse.body()!!
-                        loadingOl.setState(FullScreenLoading.NONE)
-
-                    } else {
-                        loadingOl.setState(FullScreenLoading.ERROR)
-                    }
-                }
-
-                override fun onFailure(call: Call<RoomData>, t: Throwable) {
-                    loadingOl.setState(FullScreenLoading.ERROR)
-                }
-            }
-        )
+        RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.getRoom(viewModel.id)},
+            {
+                viewModel.response.value = it as RoomData
+                loadingOl.setState(FullScreenLoading.NONE)
+            },
+            {errorMsg, errorBody ->
+                loadingOl.setState(FullScreenLoading.ERROR)
+            })
     }
 
 }

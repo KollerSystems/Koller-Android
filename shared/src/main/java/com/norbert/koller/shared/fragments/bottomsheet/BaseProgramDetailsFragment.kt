@@ -50,17 +50,17 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
 
             response as BaseProgramData
 
-            textTitle.text = response.Topic
+            textTitle.text = response.topic
 
             ncwState.visibility = GONE
-            ncwDate.textContent.text = SimpleDateFormat(DateTimeHelper.monthDay).format(response.Date)
-            ncwTime.textContent.text = MyApplication.createClassesText(requireContext(), response.Lesson, response.Length)
-            ncbClassroom.buttonContent.text = response.RID.toString()
-            ncbClass.buttonContent.text = response.Group
-            ncbTeacher.buttonContent.text = response.TUID.toString()
+            ncwDate.textContent.text = SimpleDateFormat(DateTimeHelper.monthDay).format(response.date)
+            ncwTime.textContent.text = MyApplication.createClassesText(requireContext(), response.lesson, response.length)
+            ncbClassroom.buttonContent.text = response.rid.toString()
+            ncbClass.buttonContent.text = response.group
+            ncbTeacher.buttonContent.text = response.tuid.toString()
 
             ncbClassroom.buttonContent.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.RID))
+                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.rid))
                 dismiss()
             }
 
@@ -70,7 +70,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
 
             ncbTeacher.buttonContent.setOnClickListener {
 
-                (requireContext() as MainActivity).addFragment(MyApplication.userFragment(response.TUID))
+                (requireContext() as MainActivity).addFragment(MyApplication.userFragment(response.tuid))
                 dismiss()
             }
 

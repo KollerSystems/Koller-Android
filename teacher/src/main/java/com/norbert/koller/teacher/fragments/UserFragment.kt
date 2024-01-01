@@ -10,7 +10,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 
-class UserFragment(UID : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(UID) {
+class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(uid) {
 
 
     override fun onCreateView(
@@ -33,7 +33,7 @@ class UserFragment(UID : Int? = null) : com.norbert.koller.shared.fragments.User
         val scbGate : SimpleCardButton = view.findViewById(R.id.scb_gate)
 
         scbGate.setOnClickListener {
-            (context as MainActivity).addFragment(UserExitsAndEntrancesFragment(viewModel.ID))
+            (context as MainActivity).addFragment(UserExitsAndEntrancesFragment(viewModel.id))
         }
 
         val scbEdit : SimpleCardButton = view.findViewById(R.id.scb_edit)
