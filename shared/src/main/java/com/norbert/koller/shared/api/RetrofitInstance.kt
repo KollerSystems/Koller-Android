@@ -1,12 +1,8 @@
 package com.norbert.koller.shared.api
 
 import androidx.lifecycle.LifecycleCoroutineScope
-import androidx.lifecycle.LifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
-import com.norbert.koller.shared.data.ApiErrorData
-import com.norbert.koller.shared.data.UserData
-import kotlinx.coroutines.CoroutineScope
+import com.norbert.koller.shared.data.ErrorData
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,7 +12,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.util.concurrent.TimeUnit
-import kotlin.reflect.KSuspendFunction0
 
 
 object RetrofitInstance {
@@ -32,7 +27,6 @@ object RetrofitInstance {
         .connectTimeout(timeout, TimeUnit.SECONDS)
         .writeTimeout(timeout, TimeUnit.SECONDS)
         .readTimeout(timeout, TimeUnit.SECONDS)
-        .addInterceptor(AuthInterceptor())
         .build()
 
     val dIP = "http://main.nzx.hu:48659/"
@@ -47,7 +41,7 @@ object RetrofitInstance {
             .create(APIInterface::class.java)
     }
 
-    fun communicate(lifecycleCoroutineScope: LifecycleCoroutineScope, functionToCall: suspend () -> Response<*>, onSuccess: (data : Any) -> Unit, onError: (error : String?, errorBody : ApiErrorData?) -> Unit){
+    fun communicate(lifecycleCoroutineScope: LifecycleCoroutineScope, functionToCall: suspend () -> Response<*>, onSuccess: (data : Any) -> Unit, onError: (error : String?, errorBody : ErrorData?) -> Unit){
 
         lifecycleCoroutineScope.launch {
             val response : Response<*> = try{
@@ -70,7 +64,7 @@ object RetrofitInstance {
         }
     }
 
-    fun getErrorBody(response: Response<*>?) : ApiErrorData?{
-        return Gson().fromJson(response?.errorBody()?.charStream(), ApiErrorData::class.java)
+    fun getErrorBody(response: Response<*>?) : ErrorData?{
+        return Gson().fromJson(response?.errorBody()?.charStream(), ErrorData::class.java)
     }
 }

@@ -10,12 +10,9 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.data.ApiLoginTokensData
+import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
 import kotlinx.coroutines.launch
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 
 class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,8 +57,8 @@ class LaunchActivity : AppCompatActivity() {
                 return@launch
             }
 
-            ApiLoginTokensData.instance = DataStoreManager.readTokens(this@LaunchActivity)
-            if (ApiLoginTokensData.instance == null) {
+            LoginTokensResponseData.instance = DataStoreManager.readTokens(this@LaunchActivity)
+            if (LoginTokensResponseData.instance == null) {
                 MyApplication.openLogin.invoke(this@LaunchActivity)
                 finish()
 

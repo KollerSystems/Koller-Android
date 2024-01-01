@@ -1,8 +1,7 @@
 package com.norbert.koller.shared.api
 import android.content.Context
-import android.util.Log
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.ApiLoginTokensData
+import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
@@ -48,13 +47,13 @@ interface APIInterface {
     @POST("oauth/token")
     suspend fun postLogin(
         @Body requestModel: ApiLoginRefreshData,
-    ) : Response<ApiLoginTokensData>
+    ) : Response<LoginTokensResponseData>
 
     @Headers("Content-Type: application/json")
     @POST("oauth/token")
     suspend fun postLogin(
         @Body requestModel: ApiLoginUsernameAndPasswordData,
-    ) : Response<ApiLoginTokensData>
+    ) : Response<LoginTokensResponseData>
 
     @Headers("Content-Type: application/json")
     @GET("api/users/me")
