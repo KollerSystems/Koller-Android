@@ -10,6 +10,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.api.RetrofitInstance
+import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
 import kotlinx.coroutines.launch
@@ -57,8 +58,8 @@ class LaunchActivity : AppCompatActivity() {
                 return@launch
             }
 
-            LoginTokensResponseData.instance = DataStoreManager.readTokens(this@LaunchActivity)
-            if (LoginTokensResponseData.instance == null) {
+            LoginTokensData.instance = DataStoreManager.readTokens(this@LaunchActivity)
+            if (LoginTokensData.instance == null) {
                 MyApplication.openLogin.invoke(this@LaunchActivity)
                 finish()
 

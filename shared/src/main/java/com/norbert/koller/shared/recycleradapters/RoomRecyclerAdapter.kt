@@ -18,6 +18,10 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGro
         return R.layout.view_item
     }
 
+    override fun getDataTag(): String {
+        return "room"
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return RoomsViewHolder(view)
     }

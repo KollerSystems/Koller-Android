@@ -3,7 +3,10 @@ package com.norbert.koller.shared.data
 import android.content.Context
 import com.google.gson.annotations.SerializedName
 
-class ClassData(val id : Int = 0, val class_ : String ="", val HeadTUID : Int=1)
+class ClassData(
+    @SerializedName("ID") val id : Int = 0,
+    @SerializedName("Class") val class_ : String ="",
+    @SerializedName("HeadTUID") val headTuid : Int=1)
 
 class UserData (
     @SerializedName("UID") var uid : Int = -1,

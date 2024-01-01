@@ -21,6 +21,10 @@ class GateRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
         return R.layout.view_descriptive_icon_item
     }
 
+    override fun getDataTag(): String {
+        return "exits_and_entrances"
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return CrossingViewHolder(view)
     }

@@ -1,15 +1,18 @@
 package com.norbert.koller.shared.customviews
 
 import android.content.Context
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.setVisibilityBy
+import com.skydoves.androidveil.VeilLayout
 
 
 open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
@@ -22,10 +25,10 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
     private var mEndIcon: Drawable? = null
     private var mSwapDescriptionAndText = false
 
-    private val textText: TextView
-    private val textDesc: TextView
+    val textText: TextView
+    val textDesc: TextView
     private val textBadge: TextView?
-    private val imageViewIcon: ImageView?
+    val imageViewIcon: ImageView?
     val frameLayoutEnd: FrameLayout?
 
     init {
@@ -62,7 +65,6 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
         if(!mRounded) {
             this.radius = 0f
         }
-        this.outlineProvider = null
 
         val padding = resources.getDimensionPixelSize(R.dimen.card_padding)
 

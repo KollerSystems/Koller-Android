@@ -4,8 +4,10 @@ import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
 import android.view.View
+import android.view.View.VISIBLE
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -18,28 +20,45 @@ import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
+import com.norbert.koller.shared.customviews.SimpleCardButton
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.skydoves.androidveil.VeilLayout
 import com.stfalcon.imageviewer.StfalconImageViewer
+import com.stfalcon.imageviewer.common.extensions.isVisible
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-abstract class UserFragment(val uid : Int? = null) : Fragment() {
+abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
 
-    lateinit var loadingOl : FullScreenLoading
+    lateinit var veilStatus : VeilLayout
+    lateinit var scbStatus : SimpleCardButton
 
-    lateinit var viewModel: ResponseViewModel
+    override fun getVeils(): List<VeilLayout> {
+        if(veilStatus.isVeiled){
+            scbStatus.textText.text = "Kint (16:34 óta)"
 
+            scbStatus.imageViewIcon!!.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.out))
+        }
+        return listOf(veilStatus)
+    }
 
+    override fun getDataTag(): String {
+        return "user"
+    }
+
+    override fun apiFunctionToCall(): suspend () -> Response<*> {
+        return {RetrofitInstance.api.getUser(viewModel.id)}
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        veilStatus = view.findViewById(R.id.veil_status)
+
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
-
-
 
         val textName : TextView = view.findViewById(R.id.user_text_name)
         val buttonGroup : Button = view.findViewById(R.id.user_button_group)
@@ -52,9 +71,11 @@ abstract class UserFragment(val uid : Int? = null) : Fragment() {
         val instagramChip : Chip = view.findViewById(R.id.user_view_instagram)
         val emailChip : Chip = view.findViewById(R.id.user_view_email)
 
-        loadingOl = view.findViewById(R.id.loading_overlay)
-
         val NestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
+
+        scbStatus = view.findViewById(R.id.scb_status)
+
+        scbStatus.imageViewIcon!!.visibility = VISIBLE
 
         fun isVisible(view: View): Boolean {
             if (!view.isShown) {
@@ -67,7 +88,6 @@ abstract class UserFragment(val uid : Int? = null) : Fragment() {
         }
 
 
-
         fun showAndSetIfNotNull(chip : Chip, string : String?){
             if (!string.isNullOrBlank()) {
                 chip.visibility = View.VISIBLE
@@ -75,11 +95,6 @@ abstract class UserFragment(val uid : Int? = null) : Fragment() {
                     MyApplication.setClipboard(requireContext(), string)
                 }
             }
-        }
-
-        if(!viewModel.response.isInitialized){
-            viewModel.id = uid!!
-            loadingOl.loadData = {loadData()}
         }
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
@@ -90,9 +105,12 @@ abstract class UserFragment(val uid : Int? = null) : Fragment() {
 
             textName.text = response.name
 
+
             buttonRoom.text = response.rid.toString()
             buttonGroup.text = response.group
             buttonClass.text = response.class_?.class_
+
+
 
             buttonRoom.setOnClickListener {
                 (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.rid!!))
@@ -129,18 +147,5 @@ abstract class UserFragment(val uid : Int? = null) : Fragment() {
                 .withTransitionFrom(badgeUser.image)
                 .show(parentFragmentManager)
         }
-    }
-
-    fun loadData(){
-
-        RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.getUser(viewModel.id)},
-            {
-                viewModel.response.value = it as UserData
-                loadingOl.setState(FullScreenLoading.NONE)
-            },
-            {errorMsg, errorBody ->
-                loadingOl.setState(FullScreenLoading.ERROR)
-            })
-
     }
 }

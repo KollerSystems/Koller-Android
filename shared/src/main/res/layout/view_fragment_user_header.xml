@@ -163,17 +163,34 @@
         android:layout_height="wrap_content"
         android:text="Állapot" />
 
-    <com.norbert.koller.shared.customviews.SimpleCardButton
-
+    <com.skydoves.androidveil.VeilLayout
+        android:id="@+id/veil_status"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="@dimen/text_container_margin"
-        android:outlineProvider="background"
-        custom:cardBackgroundColor="@android:color/transparent"
-        custom:description="Bevásárlás (16:30 - 19:15) • Kis Gazsi"
-        custom:icon="@drawable/out"
-        custom:rounded="true"
-        custom:strokeWidth="1dp"
-        custom:text="Kint (16:34 óta)" />
+        android:layout_height="wrap_content"
+        app:veilLayout_defaultChildVisible="true"
+        app:veilLayout_baseAlpha="0.6"
+        app:veilLayout_baseColor="?attr/colorSurfaceContainer"
+        app:veilLayout_dropOff="0.5"
+        app:veilLayout_highlightAlpha="1.0"
+        app:veilLayout_highlightColor="?attr/colorSurfaceContainerHigh"
+        app:veilLayout_radius="6dp"
+        app:veilLayout_shimmerEnable="true">
+
+        <com.norbert.koller.shared.customviews.SimpleCardButton
+
+            android:id="@+id/scb_status"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/text_container_margin"
+            custom:cardBackgroundColor="@android:color/transparent"
+
+            custom:icon="@null"
+            custom:rounded="true"
+            custom:strokeWidth="1dp"
+            custom:text="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" />
+
+    </com.skydoves.androidveil.VeilLayout>
+
+
 
 </LinearLayout>

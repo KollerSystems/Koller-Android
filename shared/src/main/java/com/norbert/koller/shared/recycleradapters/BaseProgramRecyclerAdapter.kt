@@ -18,6 +18,10 @@ class BaseProgramRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilt
         return R.layout.view_user_item
     }
 
+    override fun getDataTag(): String {
+        return "base_program"
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return ViewHolder(view)
     }

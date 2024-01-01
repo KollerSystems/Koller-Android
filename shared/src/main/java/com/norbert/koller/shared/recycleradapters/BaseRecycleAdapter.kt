@@ -28,6 +28,8 @@ abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chip
 
     abstract fun getViewType() : Int
 
+    abstract fun getDataTag() : String
+
     override fun onAttachedToRecyclerView(RecyclerView: RecyclerView) {
         this.RecyclerView = RecyclerView
 

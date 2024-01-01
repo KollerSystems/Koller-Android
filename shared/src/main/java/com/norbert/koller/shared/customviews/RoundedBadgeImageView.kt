@@ -21,7 +21,7 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayou
     val yellow : Int = 12
 
     fun setColorBasedOnClass(class_ : String?){
-        if(class_ == null){
+        if(class_.isNullOrBlank()){
             card.strokeColor = Color.BLACK
             return
         }

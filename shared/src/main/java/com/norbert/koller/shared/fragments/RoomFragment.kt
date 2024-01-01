@@ -17,45 +17,44 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.UserPreviewRecyclerAdapter
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.skydoves.androidveil.VeilLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
-abstract class RoomFragment(val rid: Int? = null) : Fragment() {
+abstract class RoomFragment(val rid: Int? = null) : DetailsFragment(rid) {
 
     lateinit var usersRecyclerView: RecyclerView
     lateinit var userDataArrayList: ArrayList<UserData>
     lateinit var textTitle : TextView
     lateinit var buttonDesc : Button
-    lateinit var loadingOl : FullScreenLoading
 
-    private lateinit var viewModel: ResponseViewModel
+    override fun getDataTag(): String {
+        return "room"
+    }
 
+    override fun getVeils(): List<VeilLayout> {
+        return listOf()
+    }
+
+    override fun apiFunctionToCall(): suspend () -> Response<*> {
+        return {RetrofitInstance.api.getRoom(viewModel.id)}
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
-
-
         textTitle = view.findViewById(R.id.room_text_title)
         buttonDesc = view.findViewById(R.id.room_button_description)
-        loadingOl = view.findViewById(R.id.loading_overlay)
 
         usersRecyclerView = view.findViewById(R.id.recycler_view)
         usersRecyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.HORIZONTAL,false)
         usersRecyclerView.setHasFixedSize(false)
-
-
-
-        if(!viewModel.response.isInitialized){
-            loadingOl.loadData = {loadData()}
-            viewModel.id = rid!!
-        }
 
         viewModel.response.observe(viewLifecycleOwner) { response ->
             response as RoomData
@@ -78,18 +77,6 @@ abstract class RoomFragment(val rid: Int? = null) : Fragment() {
 
         }
 
-    }
-
-    fun loadData(){
-
-        RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.getRoom(viewModel.id)},
-            {
-                viewModel.response.value = it as RoomData
-                loadingOl.setState(FullScreenLoading.NONE)
-            },
-            {errorMsg, errorBody ->
-                loadingOl.setState(FullScreenLoading.ERROR)
-            })
     }
 
 }

@@ -13,6 +13,8 @@ import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.managers.CacheManager
+import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.delay
 import retrofit2.Response
@@ -26,7 +28,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
     lateinit var recyclerAdapter: BaseRecycleAdapter
 
     companion object{
-        var temporarySavedValues : MutableMap<String, ArrayList<BaseData>> = mutableMapOf()
+
     }
 
     fun getFilters() : String{
@@ -64,7 +66,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
 
         Log.d("INFO", "HELLO LOADI")
 
-        val className = recyclerAdapter.javaClass.simpleName
+        val dataTag = recyclerAdapter.getDataTag()
 
         if(recyclerAdapter.beingEmptied || lastListSize < BaseViewModel.pageSize) {
             Log.d("INFO", "TO EMPTY")
@@ -82,19 +84,26 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
         }
         else{
             if(areParametersDefault()) {
-                temporarySavedValues.remove(className)
+                CacheManager.savedListsOfValues.remove(dataTag)
             }
             recyclerAdapter.withLoadingAnim = true
         }
 
-        Log.d("INFOOOO", recyclerAdapter.withLoadingAnim.toString())
-        Log.d("INFOOOO2", recyclerAdapter.state.toString())
 
-        if(offset <= 0 && areParametersDefault() && temporarySavedValues.containsKey(className)) {
+        if(offset <= 0 && areParametersDefault() && CacheManager.savedListsOfValues.containsKey(dataTag) && (CacheManager.savedListsOfValues[dataTag]!![0].receivedAt - System.currentTimeMillis() < 7*1000*60*60*24 || !MyApplication.isOnline(context))) {
 
-            val savedValues = temporarySavedValues[className]
-            val result = formatRecievedValues(savedValues!!,0, savedValues.size)
-            Log.d("INFO", "BEJÖTT")
+
+
+            CacheManager.savedListsOfValues[dataTag]!!.forEachIndexed { index, element ->
+                if(CacheManager.savedValues.containsKey(Pair(dataTag, element.getMainID()))){
+                    CacheManager.savedListsOfValues[dataTag]!![index] = CacheManager.savedValues[Pair(dataTag, element.getMainID())]!!
+                }
+            }
+
+            val savedValues = CacheManager.savedListsOfValues[dataTag]!!
+
+
+            val result = formatRecievedValues(savedValues,0, savedValues.size)
             return result
         }
 
@@ -118,11 +127,11 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
             }
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-            if(areParametersDefault()) {
-                if (!temporarySavedValues.containsKey(className)) {
-                    temporarySavedValues[className] = ArrayList()
+            if(areParametersDefault() && responseAs.isNotEmpty()) {
+                if (!CacheManager.savedListsOfValues.containsKey(dataTag)) {
+                    CacheManager.savedListsOfValues[dataTag] = ArrayList()
                 }
-                temporarySavedValues[className]!!.addAll(responseAs)
+                CacheManager.savedListsOfValues[dataTag]!!.addAll(responseAs)
             }
             return formatRecievedValues(responseAs, offset, params.loadSize)
 

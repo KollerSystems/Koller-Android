@@ -17,6 +17,10 @@ class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
         return R.layout.view_user_item
     }
 
+    override fun getDataTag(): String {
+        return "user"
+    }
+
     override fun createViewHolder(view: View): RecyclerView.ViewHolder {
         return UserViewHolder(view)
     }

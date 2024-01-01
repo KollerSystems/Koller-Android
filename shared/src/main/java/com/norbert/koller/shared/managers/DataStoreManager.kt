@@ -9,6 +9,7 @@ import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.google.gson.Gson
+import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import kotlinx.coroutines.flow.first
 
@@ -31,13 +32,13 @@ class DataStoreManager {
             }
         }
 
-        suspend fun readTokens(context: Context): LoginTokensResponseData? {
+        suspend fun readTokens(context: Context): LoginTokensData? {
             val dataStoreKey = stringPreferencesKey(TOKENS)
             val preferences = context.dataStore.data.first()
-            return Gson().fromJson(preferences[dataStoreKey], LoginTokensResponseData::class.java)
+            return Gson().fromJson(preferences[dataStoreKey], LoginTokensData::class.java)
         }
 
-        suspend fun save(context: Context, tokensData: LoginTokensResponseData) {
+        suspend fun save(context: Context, tokensData: LoginTokensData) {
             val dataStoreKey = stringPreferencesKey(TOKENS)
             context.dataStore.edit { login_data ->
                 login_data[dataStoreKey] = Gson().toJson(tokensData)

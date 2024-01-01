@@ -21,6 +21,7 @@ import com.norbert.koller.shared.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
+import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.managers.getColorOfPixel
 import kotlinx.coroutines.launch
 
@@ -112,10 +113,11 @@ open class LoginActivity : AppCompatActivity() {
 
                     RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.postLogin(loginData)},
                         {
-                            LoginTokensResponseData.instance = it as LoginTokensResponseData
+                            it as LoginTokensResponseData
+                            LoginTokensData.instance = LoginTokensData(it.accessToken, it.expiresIn-RetrofitInstance.timeout, it.refreshToken)
 
                             lifecycleScope.launch {
-                                DataStoreManager.save(this@LoginActivity, LoginTokensResponseData.instance!!)
+                                DataStoreManager.save(this@LoginActivity, LoginTokensData.instance!!)
                             }
 
 

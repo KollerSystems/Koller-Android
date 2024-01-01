@@ -27,6 +27,7 @@ object RetrofitInstance {
         .connectTimeout(timeout, TimeUnit.SECONDS)
         .writeTimeout(timeout, TimeUnit.SECONDS)
         .readTimeout(timeout, TimeUnit.SECONDS)
+        .addInterceptor(AuthInterceptor())
         .build()
 
     val dIP = "http://main.nzx.hu:48659/"
