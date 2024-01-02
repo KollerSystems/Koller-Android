@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -48,6 +49,7 @@ abstract class RoomFragment(val rid: Int? = null) : DetailsFragment(rid) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        Log.d("MEG VAGYXOK CSIHNÁLVA", "FASDFIASKFOPASOPFAJKAKAKAKAKAJAJAJAJAJAJ")
 
         textTitle = view.findViewById(R.id.room_text_title)
         buttonDesc = view.findViewById(R.id.room_button_description)

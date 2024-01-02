@@ -22,7 +22,7 @@ open class StudentHostelFragment : Fragment() {
         // Inflate the layout for this fragment
         val view: View = inflater.inflate(R.layout.fragment_student_hostel, container, false)
 
-        Log.d("MEG VAGYXOK CSIHNÁLVA", "FASDFIASKFOPASOPFAJKAKAKAKAKAJAJAJAJAJAJ")
+
 
 
         val roomsButton: Button = view.findViewById(R.id.student_hostel_button_rooms)

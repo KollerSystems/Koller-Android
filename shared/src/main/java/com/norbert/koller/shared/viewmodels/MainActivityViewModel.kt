@@ -9,6 +9,6 @@ class MainActivityViewModel : ViewModel()  {
 
     var mainFragmentList : ArrayList<Int> = arrayListOf()
 
-    var fragments : MutableMap<Int, Fragment> = mutableMapOf()
+    var savedBackStacks : MutableSet<Int> = mutableSetOf()
 
 }

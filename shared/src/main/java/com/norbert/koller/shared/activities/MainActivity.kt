@@ -3,6 +3,7 @@ package com.norbert.koller.shared.activities
 import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View.GONE
@@ -110,7 +111,9 @@ abstract class MainActivity : AppCompatActivity() {
             showBackButtonIfNeeded()
         }
 
-        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112)
+        }
     }
 
     fun showBackButton(show : Boolean){
@@ -152,7 +155,7 @@ abstract class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
 
         appBar.setExpanded(false)
-            if (supportFragmentManager.backStackEntryCount > 0) {
+            if (supportFragmentManager.backStackEntryCount > 1) {
                 dropLastFragment()
 
             } else {
@@ -180,16 +183,10 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     fun changeToolbarTitleToCurrentFragmentName(){
+
         toolbarTitle.post{
-            try {
-                setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
-
-            }catch (e : Exception){
-
-            }
+            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
         }
-
-
     }
 
     fun dropLastFragment(){
@@ -200,10 +197,13 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     fun dropAllFragments(){
-        if(supportFragmentManager.backStackEntryCount <=0)
+        if(supportFragmentManager.backStackEntryCount <=1)
             return
 
-        supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+        repeat(supportFragmentManager.backStackEntryCount-1){
+            supportFragmentManager.popBackStack()
+        }
+
         updateValuesOnFragmentReplace()
         showBackButton(false)
     }
@@ -222,19 +222,13 @@ abstract class MainActivity : AppCompatActivity() {
         if(idToSelect != bottomNavigationView.selectedItemId) {
             supportFragmentManager.saveBackStack(bottomNavigationView.selectedItemId.toString())
 
-            if(viewModel.fragments.contains(bottomNavigationView.selectedItemId)) {
-                val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-                fragmentTransaction.detach(viewModel.fragments[bottomNavigationView.selectedItemId]!!)
-                fragmentTransaction.setReorderingAllowed(true)
-                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-                fragmentTransaction.commit()
-            }
+            viewModel.savedBackStacks.add(bottomNavigationView.selectedItemId)
         }
 
+        supportFragmentManager.restoreBackStack(idToSelect.toString())
 
-
-        if(!viewModel.fragments.contains(idToSelect)){
-            viewModel.fragments[idToSelect] = when (idToSelect) {
+        if(!viewModel.savedBackStacks.contains(idToSelect)){
+            val fragment = when (idToSelect) {
                 R.id.home -> {
                     MyApplication.homeFragment()
                 }
@@ -255,25 +249,13 @@ abstract class MainActivity : AppCompatActivity() {
                 }
             }
 
-
-            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.add(R.id.main_fragment,  viewModel.fragments[idToSelect]!!, "${idToSelect}${supportFragmentManager.backStackEntryCount}")
-            fragmentTransaction.setReorderingAllowed(true)
-            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            fragmentTransaction.commit()
-
-        }
-        else{
-            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-            fragmentTransaction.attach(viewModel.fragments[idToSelect]!!)
-            fragmentTransaction.setReorderingAllowed(true)
-            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            fragmentTransaction.commit()
+            replaceFragment(fragment, idToSelect)
         }
 
-        //replaceFragmentWithoutBackStack(viewModel.fragments[idToSelect]!!, idToSelect)
 
-        supportFragmentManager.restoreBackStack(idToSelect.toString())
+
+
+
 
 
         if (viewModel.mainFragmentList.contains(idToSelect)) {
@@ -310,7 +292,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun showBackButtonIfNeeded(){
         toolbarTitle.post {
-            if (supportFragmentManager.backStackEntryCount == 0) {
+            if (supportFragmentManager.backStackEntryCount == 1) {
                 showBackButton(false)
             } else {
                 showBackButton(true)
