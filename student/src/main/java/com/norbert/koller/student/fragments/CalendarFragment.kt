@@ -12,13 +12,14 @@ import com.google.android.material.tabs.TabLayoutMediator
 
 class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() {
 
+    lateinit var adapter : CalendarViewPagerAdapter
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val adapter = CalendarViewPagerAdapter(this)
-
+        adapter = CalendarViewPagerAdapter(this)
         viewPager.adapter = adapter
-        viewPager.isSaveEnabled = false
+
 
 
         TabLayoutMediator(tabs, viewPager){tab,position->

@@ -181,8 +181,15 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun changeToolbarTitleToCurrentFragmentName(){
         toolbarTitle.post{
-            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
+            try {
+                setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
+
+            }catch (e : Exception){
+
+            }
         }
+
+
     }
 
     fun dropLastFragment(){
@@ -214,6 +221,14 @@ abstract class MainActivity : AppCompatActivity() {
 
         if(idToSelect != bottomNavigationView.selectedItemId) {
             supportFragmentManager.saveBackStack(bottomNavigationView.selectedItemId.toString())
+
+            if(viewModel.fragments.contains(bottomNavigationView.selectedItemId)) {
+                val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+                fragmentTransaction.detach(viewModel.fragments[bottomNavigationView.selectedItemId]!!)
+                fragmentTransaction.setReorderingAllowed(true)
+                fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+                fragmentTransaction.commit()
+            }
         }
 
 
@@ -239,9 +254,24 @@ abstract class MainActivity : AppCompatActivity() {
                     Fragment()
                 }
             }
+
+
+            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.add(R.id.main_fragment,  viewModel.fragments[idToSelect]!!, "${idToSelect}${supportFragmentManager.backStackEntryCount}")
+            fragmentTransaction.setReorderingAllowed(true)
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            fragmentTransaction.commit()
+
+        }
+        else{
+            val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+            fragmentTransaction.attach(viewModel.fragments[idToSelect]!!)
+            fragmentTransaction.setReorderingAllowed(true)
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+            fragmentTransaction.commit()
         }
 
-        replaceFragmentWithoutBackStack(viewModel.fragments[idToSelect]!!, idToSelect)
+        //replaceFragmentWithoutBackStack(viewModel.fragments[idToSelect]!!, idToSelect)
 
         supportFragmentManager.restoreBackStack(idToSelect.toString())
 

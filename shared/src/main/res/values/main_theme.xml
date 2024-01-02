@@ -657,6 +657,7 @@
         <item name="android:paddingRight">@dimen/application_padding</item>
         <item name="android:paddingLeft">@dimen/application_padding</item>
         <item name="android:paddingTop">@dimen/application_padding</item>
+        <item name="android:background">?android:attr/colorBackground</item>
 
     </style>
 

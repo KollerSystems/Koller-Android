@@ -41,8 +41,8 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
         loadingOl = view.findViewById(R.id.loading_overlay)
 
-        if(savedInstanceState == null){
-            viewModel.id = id!!
+        if(id != null){
+            viewModel.id = id
 
             val key = Pair(getDataTag(), viewModel.id)
             if(CacheManager.savedValues.containsKey(key)){
