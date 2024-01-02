@@ -2,7 +2,7 @@
 <resources>
     <item name="layout_cordinator" type="id" />
     <item name="main_fragment" type="id" />
-    <item name="main_background" type="id" />
+
     <item name="bottom_navigation_view" type="id" />
     <item name="studentHostelFragment" type="id" />
     <item name="roomsFragment" type="id" />

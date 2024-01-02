@@ -4,6 +4,7 @@ import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.os.Bundle
+import android.util.Log
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
@@ -16,16 +17,19 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getColorOfPixel
 import com.norbert.koller.shared.managers.getStringResourceByName
+import com.norbert.koller.shared.managers.setup
+import com.norbert.koller.shared.viewmodels.MainActivityViewModel
+import com.norbert.koller.shared.viewmodels.ResponseViewModel
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -41,39 +45,25 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var appBar : AppBarLayout
     lateinit var backButton : Button
 
-    var mainFragmentList : ArrayList<Int> = arrayListOf()
-
-    var savedBackStacks : MutableSet<Int> = mutableSetOf()
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        outState.putIntArray("savedBackStacks", savedBackStacks.toIntArray())
-        outState.putIntArray("mainFragmentList", mainFragmentList.toIntArray())
-        super.onSaveInstanceState(outState)
-    }
+    lateinit var viewModel: MainActivityViewModel
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+        
         backButton = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{
             onBackPressed()
         }
 
         appBar = findViewById(R.id.appbar)
-        val mainBackground = findViewById<MaterialCardView>(R.id.main_background)
         toolbarContainer = findViewById(R.id.toolbar_ly_text_container)
         toolbarTitle = findViewById(R.id.toolbar_title)
         toolbarDescription = findViewById(R.id.toolbar_description)
         defaultTitlePadding = toolbarContainer.paddingLeft
-
-
-
-        appBar.addOnOffsetChangedListener { _, verticalOffset ->
-            val collapsedSize: Float = -570f
-            mainBackground.alpha = verticalOffset / collapsedSize
-
-
-        }
+        
+        appBar.setup()
 
         val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
         val listener = AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
@@ -116,8 +106,6 @@ abstract class MainActivity : AppCompatActivity() {
             changeBackStackState(R.id.home)
         }
         else{
-            savedBackStacks = savedInstanceState.getIntArray("savedBackStacks")!!.toMutableSet()
-            mainFragmentList = savedInstanceState.getIntArray("mainFragmentList")!!.toCollection(java.util.ArrayList())
             changeToolbarTitleToCurrentFragmentName()
             showBackButtonIfNeeded()
         }
@@ -164,15 +152,15 @@ abstract class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
 
         appBar.setExpanded(false)
-            if (supportFragmentManager.backStackEntryCount > 1) {
+            if (supportFragmentManager.backStackEntryCount > 0) {
                 dropLastFragment()
 
             } else {
-                if (mainFragmentList.size == 1) {
+                if (viewModel.mainFragmentList.size == 1) {
 
                     if (bottomNavigationView.selectedItemId != R.id.home) {
                         bottomNavigationView.selectedItemId = R.id.home
-                        mainFragmentList = arrayListOf(0)
+                        viewModel.mainFragmentList = arrayListOf(0)
                     }
                     else{
                         finish()
@@ -181,8 +169,8 @@ abstract class MainActivity : AppCompatActivity() {
                 }
                 else{
 
-                    mainFragmentList.removeLast()
-                    bottomNavigationView.selectedItemId = mainFragmentList.last()
+                    viewModel.mainFragmentList.removeLast()
+                    bottomNavigationView.selectedItemId = viewModel.mainFragmentList.last()
 
                 }
 
@@ -193,9 +181,6 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun changeToolbarTitleToCurrentFragmentName(){
         toolbarTitle.post{
-            if(supportFragmentManager.backStackEntryCount == 0)
-                return@post
-
             setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
         }
     }
@@ -208,35 +193,10 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     fun dropAllFragments(){
-        if(supportFragmentManager.backStackEntryCount <=1)
+        if(supportFragmentManager.backStackEntryCount <=0)
             return
 
         supportFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
-
-        val fragment = when (bottomNavigationView.selectedItemId) {
-            R.id.home -> {
-                MyApplication.homeFragment()
-            }
-
-            R.id.calendar -> {
-                MyApplication.calendarFragment()
-            }
-
-            R.id.studentHostel -> {
-                MyApplication.studentHostelFragment()
-            }
-
-            R.id.notifications -> {
-                MyApplication.notificationFragment()
-            }
-
-            else -> {
-                Fragment()
-            }
-        }
-
-        replaceFragment(fragment)
-
         updateValuesOnFragmentReplace()
         showBackButton(false)
     }
@@ -248,18 +208,18 @@ abstract class MainActivity : AppCompatActivity() {
         showBackButton(true)
     }
 
+
     fun changeBackStackState(idToSelect : Int){
 
 
         if(idToSelect != bottomNavigationView.selectedItemId) {
             supportFragmentManager.saveBackStack(bottomNavigationView.selectedItemId.toString())
-            savedBackStacks.add(bottomNavigationView.selectedItemId)
         }
 
-        supportFragmentManager.restoreBackStack(idToSelect.toString())
 
-        if(!savedBackStacks.contains(idToSelect)) {
-            val fragment = when (idToSelect) {
+
+        if(!viewModel.fragments.contains(idToSelect)){
+            viewModel.fragments[idToSelect] = when (idToSelect) {
                 R.id.home -> {
                     MyApplication.homeFragment()
                 }
@@ -279,36 +239,38 @@ abstract class MainActivity : AppCompatActivity() {
                     Fragment()
                 }
             }
-            replaceFragment(fragment, idToSelect)
         }
 
+        replaceFragmentWithoutBackStack(viewModel.fragments[idToSelect]!!, idToSelect)
+
+        supportFragmentManager.restoreBackStack(idToSelect.toString())
 
 
-        if (mainFragmentList.contains(idToSelect)) {
-            mainFragmentList.remove(idToSelect)
+        if (viewModel.mainFragmentList.contains(idToSelect)) {
+            viewModel.mainFragmentList.remove(idToSelect)
         }
-        mainFragmentList.add(idToSelect)
+        viewModel.mainFragmentList.add(idToSelect)
 
-        //Toast.makeText(this, mainFragmentList.toString(), Toast.LENGTH_LONG).show()
 
         updateValuesOnFragmentReplace()
         showBackButtonIfNeeded()
 
     }
 
-    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId){
-        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.setCustomAnimations(
-            R.anim.anim_in,
-            R.anim.anim_out,
-            R.anim.anim_in,
-            R.anim.anim_out
-        )
-        fragmentTransaction.replace(R.id.main_fragment, fragment, "${selectedItemId}+${supportFragmentManager.backStackEntryCount}")
-        fragmentTransaction.setReorderingAllowed(true)
-        fragmentTransaction.addToBackStack(selectedItemId.toString())
-        fragmentTransaction.commit()
 
+    fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId) : FragmentTransaction{
+        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+        fragmentTransaction.replace(R.id.main_fragment, fragment, "${selectedItemId}${supportFragmentManager.backStackEntryCount}")
+        fragmentTransaction.setReorderingAllowed(true)
+        fragmentTransaction.commit()
+        return fragmentTransaction
+    }
+
+
+    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId){
+        val fragmentTransaction = replaceFragmentWithoutBackStack(fragment, selectedItemId)
+        fragmentTransaction.addToBackStack(selectedItemId.toString())
     }
 
     fun updateValuesOnFragmentReplace(){
@@ -318,7 +280,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun showBackButtonIfNeeded(){
         toolbarTitle.post {
-            if (supportFragmentManager.backStackEntryCount == 1) {
+            if (supportFragmentManager.backStackEntryCount == 0) {
                 showBackButton(false)
             } else {
                 showBackButton(true)

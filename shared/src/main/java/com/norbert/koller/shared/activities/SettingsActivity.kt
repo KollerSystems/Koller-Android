@@ -17,7 +17,7 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.RangeSlider
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputLayout
-import com.norbert.koller.shared.managers.connectToBackgroundCard
+import com.norbert.koller.shared.managers.setup
 import java.util.Calendar
 
 open class SettingsActivity : AppCompatActivity() {
@@ -54,10 +54,10 @@ open class SettingsActivity : AppCompatActivity() {
         val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
 
 
-        val mainBackground : MaterialCardView = findViewById(R.id.main_background)
+
         val appBar : AppBarLayout = findViewById(R.id.appbar)
 
-        appBar.connectToBackgroundCard(mainBackground)
+        appBar.setup()
 
         settingsSCB.setOnClickListener {
             val intent = Intent(this, CreateNewPostActivity::class.java)

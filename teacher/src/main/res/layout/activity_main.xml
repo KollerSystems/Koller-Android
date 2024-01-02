@@ -1,31 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
 
         android:id="@id/layout_cordinator"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="@dimen/header_footer_size"
-        android:fitsSystemWindows="true"
-        android:translationZ="100dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@id/appbar"
 
             android:layout_width="match_parent"
             android:layout_height="@dimen/expanded_toolbar_height"
-            android:background="@android:color/transparent"
-            android:clickable="false"
             app:expanded="false">
 
 
@@ -49,6 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:layout_weight="0"
         android:minHeight="@dimen/header_footer_size"
         android:translationZ="1000dp"
         app:itemIconTint="@drawable/bottom_navigation_view_text"
@@ -63,13 +58,4 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@id/main_background"
-        style="@style/main_background"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="false">
-
-    </com.google.android.material.card.MaterialCardView>
-
-</merge>
+</LinearLayout>

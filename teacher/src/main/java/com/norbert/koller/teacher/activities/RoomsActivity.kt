@@ -10,7 +10,7 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
-import com.norbert.koller.shared.managers.connectToBackgroundCard
+import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.recycleradapters.ListItem
@@ -56,10 +56,9 @@ abstract class RoomsActivity : AppCompatActivity() {
         window.setToolbarToViewColor(findViewById(R.id.bottom_view))
 
 
-        val mainBackground : MaterialCardView = findViewById(R.id.main_background)
         val appBar : AppBarLayout = findViewById(R.id.appbar)
 
-        appBar.connectToBackgroundCard(mainBackground)
+        appBar.setup()
 
         val backButton : Button = findViewById(R.id.toolbar_exit)
 

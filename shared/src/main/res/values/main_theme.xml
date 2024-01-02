@@ -72,14 +72,7 @@
         <item name="android:layout_margin">@dimen/text_container_margin</item>
     </style>
 
-    <style name="main_background" parent="@style/Widget.Material3.CardView.Filled">
-        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
-        <item name="android:layout_height">match_parent</item>
-        <item name="android:layout_width">match_parent</item>
-        <item name="cardCornerRadius">0dp</item>lo
-        <item name="cardElevation">0dp</item>
 
-    </style>
 
     <style name="SeparatorLine">
         <item name="android:layout_height">1dp</item>
@@ -90,7 +83,7 @@
     <style name="Separator" parent="@style/CategoryCardName">
         <item name="android:layout_marginHorizontal">@null</item>
         <item name="android:layout_marginTop">@null</item>
-        <item name="android:background">?android:attr/windowBackground</item>
+        <item name="android:background">?android:attr/colorBackground</item>
         <item name="android:paddingHorizontal">30dp</item>
         <item name="android:paddingVertical">@dimen/text_container_margin</item>
         <item name="android:translationZ">1dp</item>
@@ -149,7 +142,7 @@
     </style>
 
     <style name="AppBarStyle">
-        <item name="background">@null</item>
+        <item name="android:layout_height">@dimen/expanded_toolbar_height</item>
     </style>
 
     <style name="FloatingActionButton" parent="@style/Widget.Material3.FloatingActionButton.Primary">
@@ -664,12 +657,12 @@
         <item name="android:paddingRight">@dimen/application_padding</item>
         <item name="android:paddingLeft">@dimen/application_padding</item>
         <item name="android:paddingTop">@dimen/application_padding</item>
-        <item name="android:background">?android:attr/colorBackground</item>
+
     </style>
 
     <style name="Tab" parent="@style/Widget.Material3.TabLayout">
+        <item name="android:background">?attr/colorSurfaceContainer</item>
         <item name="android:layout_height">@dimen/tab_height</item>
-        <item name="android:background">@android:color/transparent</item>
         <item name="tabMode">scrollable</item>
         <item name="tabGravity">center</item>
         <item name="android:layout_width">match_parent</item>

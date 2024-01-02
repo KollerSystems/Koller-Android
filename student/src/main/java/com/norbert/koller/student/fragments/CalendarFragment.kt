@@ -18,6 +18,7 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() 
         val adapter = CalendarViewPagerAdapter(this)
 
         viewPager.adapter = adapter
+        viewPager.isSaveEnabled = false
 
 
         TabLayoutMediator(tabs, viewPager){tab,position->

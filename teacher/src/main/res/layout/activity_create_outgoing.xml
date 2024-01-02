@@ -13,7 +13,6 @@
 
         android:layout_width="match_parent"
         android:layout_height="@dimen/expanded_toolbar_height"
-        android:background="?attr/colorSurfaceContainer"
         app:expanded="false">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout

@@ -269,11 +269,12 @@ fun String.camelToSnakeCase() = fold(StringBuilder(length)) { acc, c ->
 }.toString()
 
 
-fun AppBarLayout.connectToBackgroundCard(backgroundCard : MaterialCardView){
+fun AppBarLayout.setup(){
 
+    setBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
     addOnOffsetChangedListener { _, verticalOffset ->
-        val collapsedSize: Float = -570f
-        backgroundCard.alpha = verticalOffset / collapsedSize
+        val collapsedSize: Int = resources.getDimensionPixelSize(R.dimen.header_footer_size)
+        background.alpha =  ((verticalOffset / -570f) * 255).toInt()
     }
 }
 
