@@ -57,15 +57,5 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         addSearchbar()
 
         super.onViewCreated(view, savedInstanceState)
-
-        exitTransition = null
-        reenterTransition = MaterialElevationScale(/* growing= */ true)
-
-        postponeEnterTransition()
-        (view.parent as ViewGroup).viewTreeObserver
-            .addOnPreDrawListener {
-                startPostponedEnterTransition()
-                true
-            }
     }
 }

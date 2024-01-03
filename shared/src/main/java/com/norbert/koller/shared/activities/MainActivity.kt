@@ -6,6 +6,7 @@ import android.animation.ValueAnimator
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
@@ -18,12 +19,17 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.transition.MaterialContainerTransform
+import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getColorOfPixel
@@ -212,6 +218,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun addFragment(fragment: Fragment) : FragmentTransaction{
         val fragmentTransaction = replaceFragment(fragment)
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
 
         updateValuesOnFragmentReplace()
         showBackButton(true)
@@ -253,7 +260,8 @@ abstract class MainActivity : AppCompatActivity() {
                 }
             }
 
-            replaceFragment(fragment, idToSelect)
+            val fragmentTransaction = replaceFragment(fragment, idToSelect)
+            fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         }
 
 
@@ -276,7 +284,6 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId) : FragmentTransaction{
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         fragmentTransaction.replace(R.id.main_fragment, fragment, "${selectedItemId}${supportFragmentManager.backStackEntryCount}")
         fragmentTransaction.setReorderingAllowed(true)
         fragmentTransaction.commit()
@@ -290,6 +297,22 @@ abstract class MainActivity : AppCompatActivity() {
 
         return fragmentTransaction
     }
+
+    fun addFragmentWithTransition(fragment: Fragment, view : View, name : String) : FragmentTransaction {
+
+        supportFragmentManager.fragments[0].exitTransition = MaterialElevationScale(/* growing= */ false)
+
+        fragment.sharedElementEnterTransition = MaterialContainerTransform().apply {
+            drawingViewId = R.id.main_fragment
+            fadeMode = MaterialContainerTransform.FADE_MODE_CROSS
+        }
+
+        val fragmentTransaction = addFragment(fragment)
+        fragmentTransaction.addSharedElement(view, name)
+
+        return fragmentTransaction
+    }
+
 
     fun updateValuesOnFragmentReplace(){
         appBar.setExpanded(false)

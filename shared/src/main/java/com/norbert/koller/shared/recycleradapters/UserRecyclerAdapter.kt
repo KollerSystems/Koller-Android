@@ -23,9 +23,11 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
+import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 
-class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: ChipGroup? = null) : BaseRecycleAdapter(chipGroupSort, chipGroupFilter) {
+class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: ChipGroup? = null) : BaseRecyclerAdapterWithTransition(chipGroupSort, chipGroupFilter) {
     override fun getViewType(): Int {
         return R.layout.view_user_item
     }
@@ -38,7 +40,8 @@ class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
         return UserViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int) {
+    override fun afterBindViewHolder(holder: RecyclerView.ViewHolder, item : BaseData, position: Int) {
+
 
 
         val context = holder.itemView.context
@@ -55,27 +58,14 @@ class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
         holder.title.text = item.name
         holder.description.text = item.createDescription()
 
-        val transitionName = "cardTransition_${item.uid}position"
-        ViewCompat.setTransitionName(holder.itemView as MaterialCardView, transitionName)
-
         holder.itemView.setOnClickListener {
 
             if (item.uid == UserData.instance.uid) {
                 MyApplication.openProfile(context)
             } else {
 
-
-                chipGroupSort!!.findFragment<UsersFragment>().exitTransition = MaterialElevationScale(/* growing= */ false)
                 val fragment = MyApplication.userFragment(item.uid)
-
-                fragment.sharedElementEnterTransition = MaterialContainerTransform().apply {
-                    drawingViewId = R.id.main_fragment
-                    fadeMode = FADE_MODE_CROSS
-                }
-
-                val fragmentTransaction = (context as MainActivity).addFragment(fragment)
-                fragmentTransaction.addSharedElement(holder.itemView as MaterialCardView, transitionName)
-
+                (context as MainActivity).addFragmentWithTransition(fragment, holder.itemView as MaterialCardView, getTransitionName(item.getMainID()))
             }
 
         }

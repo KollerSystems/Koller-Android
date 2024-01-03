@@ -8,8 +8,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:outlineProvider="none"
-    app:contentPadding="0dp"
-    android:transitionName="cardContainer">
+    app:contentPadding="0dp">
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -10,9 +10,10 @@ import com.norbert.koller.shared.data.RoomData
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.data.BaseData
 
 
-class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGroup? = null) : BaseRecycleAdapter(chipGroup, chipGroupFilter){
+class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGroup? = null) : BaseRecyclerAdapterWithTransition(chipGroup, chipGroupFilter){
 
     override fun getViewType(): Int {
         return R.layout.view_item
@@ -31,7 +32,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGro
         return nameParts[0][0] + ". " + nameParts[1]
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun afterBindViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
         holder as RoomsViewHolder
 
@@ -57,7 +58,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGro
         holder.itemView.setOnClickListener {
 
             val fragment = MyApplication.roomFragment(item.rid)
-            (holder.itemView.context as MainActivity).addFragment(fragment)
+            (holder.itemView.context as MainActivity).addFragmentWithTransition(fragment, holder.itemView, getTransitionName(item.getMainID()))
 
         }
     }

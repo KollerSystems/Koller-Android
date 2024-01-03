@@ -14,7 +14,6 @@ abstract class CalendarFragment : PagedFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        //viewPager.isSaveEnabled = false
 
 
     }
