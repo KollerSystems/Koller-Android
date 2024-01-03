@@ -18,6 +18,7 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.UserPreviewRecyclerAdapter
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
@@ -34,6 +35,10 @@ abstract class RoomFragment(val rid: Int? = null) : DetailsFragment(rid) {
     lateinit var textTitle : TextView
     lateinit var buttonDesc : Button
 
+    override fun getTimeLimit(): Int {
+        return DateTimeHelper.TIME_IMPORTANT
+    }
+
     override fun getDataTag(): String {
         return "room"
     }
@@ -43,7 +48,7 @@ abstract class RoomFragment(val rid: Int? = null) : DetailsFragment(rid) {
     }
 
     override fun apiFunctionToCall(): suspend () -> Response<*> {
-        return {RetrofitInstance.api.getRoom(viewModel.id)}
+        return {RetrofitInstance.api.getRoom(viewModel.id!!)}
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

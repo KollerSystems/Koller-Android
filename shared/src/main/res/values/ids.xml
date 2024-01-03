@@ -41,4 +41,5 @@
     <item name="drag_handle" type="id" />
     <item name="loading_overlay" type="id" />
     <item name="fl_root" type="id" />
+    <item name="swrl" type="id" />
 </resources>

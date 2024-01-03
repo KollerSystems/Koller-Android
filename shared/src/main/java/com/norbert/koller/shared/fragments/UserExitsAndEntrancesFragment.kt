@@ -12,7 +12,7 @@ import com.norbert.koller.shared.recycleradapters.ListItem
 class UserExitsAndEntrancesFragment(val uid : Int? = null) : ListFragment() {
 
     override fun getPagingSource(): BasePagingSource {
-        return CrossingPagingSource(requireContext(), viewModel.id, viewModel)
+        return CrossingPagingSource(requireContext(), viewModel.id!!, viewModel)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -20,7 +20,7 @@ class UserExitsAndEntrancesFragment(val uid : Int? = null) : ListFragment() {
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
         baseRecycleAdapter = GateRecyclerAdapter(chipGroupSort, chipGroupFilter)
 
-        if(uid != null) {
+        if(viewModel.id == null) {
             viewModel.id = uid
         }
 

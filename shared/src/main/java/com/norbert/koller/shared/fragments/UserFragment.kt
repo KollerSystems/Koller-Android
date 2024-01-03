@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
@@ -27,7 +28,9 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
 import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.skydoves.androidveil.VeilLayout
@@ -42,11 +45,15 @@ abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
 
     lateinit var veilStatus : VeilLayout
     lateinit var scbStatus : SimpleCardButton
+    lateinit var textStatus : TextView
 
 
+    override fun getTimeLimit(): Int {
+        return DateTimeHelper.TIME_IMPORTANT
+    }
 
     override fun getVeils(): List<VeilLayout> {
-        if(veilStatus.isVeiled){
+        if(veilStatus.isVeiled && (viewModel.response.value as BaseData).testState == "hello"){
             scbStatus.textText.text = "Kint (16:34 óta)"
 
             scbStatus.imageViewIcon!!.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.out))
@@ -59,7 +66,7 @@ abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
     }
 
     override fun apiFunctionToCall(): suspend () -> Response<*> {
-        return {RetrofitInstance.api.getUser(viewModel.id)}
+        return {RetrofitInstance.api.getUser(viewModel.id!!)}
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -84,6 +91,8 @@ abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
         val NestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
 
         scbStatus = view.findViewById(R.id.scb_status)
+        textStatus = view.findViewById(R.id.text_status)
+
 
         scbStatus.imageViewIcon!!.visibility = VISIBLE
 
@@ -108,6 +117,7 @@ abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
         }
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
+
 
             response as UserData
 

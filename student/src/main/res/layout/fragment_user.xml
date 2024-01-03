@@ -9,60 +9,66 @@
     android:background="?android:attr/colorBackground"
     tools:context=".fragments.UserFragment">
 
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@id/nested_scroll_view"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@id/swrl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            style="@style/MainLayout"
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@id/nested_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            tools:context=".fragments.UserFragment">
+            android:layout_height="wrap_content">
 
-
-            <include
-                android:id="@+id/include_header"
-                layout="@layout/view_fragment_user_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/textView42"
-                style="@style/CategoryCardName"
+            <LinearLayout
+                style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/manage_student"
-                android:visibility="gone"
-                tools:visibility="visible" />
+                android:orientation="vertical"
+                tools:context=".fragments.UserFragment">
 
-            <com.google.android.material.card.MaterialCardView
-                style="@style/MainCard"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="gone"
-                tools:visibility="visible">
 
-                <LinearLayout
-                    style="@style/MainCardLayout"
+                <include
+                    android:id="@+id/include_header"
+                    layout="@layout/view_fragment_user_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/textView42"
+                    style="@style/CategoryCardName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manage_student"
+                    android:visibility="gone"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/MainCard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
+                    <LinearLayout
+                        style="@style/MainCardLayout"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        custom:description="@string/report_desc"
-                        custom:icon="@drawable/flag"
-                        custom:text="@string/report" />
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
 
-            </com.google.android.material.card.MaterialCardView>
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            custom:description="@string/report_desc"
+                            custom:icon="@drawable/flag"
+                            custom:text="@string/report" />
+                    </LinearLayout>
 
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <com.norbert.koller.shared.customviews.FullScreenLoading

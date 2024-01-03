@@ -8,13 +8,18 @@ class DateTimeHelper {
 
     companion object{
 
-        val monthDayWeekdayFormat = "MMMM d. EEEE"
-        val shortMonthDayTimeFormat = "MMM d. HH:mm"
-        val yearShortMonthDayFormat = "yyyy. MMM d."
-        val monthDay = "MMMM d."
-        val shortMonthDayFormat = "MMM d."
-        val timeFormat = "HH:mm"
-        val apiFormat = "YYYY-MM-dd"
+        const val TIME_IMPORTANT = 5
+        const val TIME_LESS_IMPORTANT = 1*60*60*24
+        const val TIME_NOT_IMPORTANT = 7*60*60*24
+        const val TIME_NOT_IMPORTANT_AT_ALL = 4*7*60*60*24
+
+        const val monthDayWeekdayFormat = "MMMM d. EEEE"
+        const val shortMonthDayTimeFormat = "MMM d. HH:mm"
+        const val yearShortMonthDayFormat = "yyyy. MMM d."
+        const val monthDay = "MMMM d."
+        const val shortMonthDayFormat = "MMM d."
+        const val timeFormat = "HH:mm"
+        const val apiFormat = "YYYY-MM-dd"
 
         fun timeTo(to : Int):String{
             return "-\n" + minuteToHourMinuteFormat(to)

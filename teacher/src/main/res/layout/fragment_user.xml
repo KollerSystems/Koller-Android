@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/badge2"
+                android:id="@+id/text_status"
                 style="@style/CategoryCardName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

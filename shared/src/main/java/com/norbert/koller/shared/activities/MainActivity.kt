@@ -5,7 +5,6 @@ import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.os.Build
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -17,26 +16,23 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
-import androidx.fragment.app.findFragment
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getColorOfPixel
 import com.norbert.koller.shared.managers.getStringResourceByName
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -54,11 +50,15 @@ abstract class MainActivity : AppCompatActivity() {
 
     lateinit var viewModel: MainActivityViewModel
 
+    lateinit var mainFragment: FragmentContainerView
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-        
+
+        mainFragment = findViewById(R.id.main_fragment)
+
         backButton = findViewById(R.id.toolbar_exit)
         backButton.setOnClickListener{
             onBackPressed()
@@ -202,7 +202,15 @@ abstract class MainActivity : AppCompatActivity() {
         showBackButtonIfNeeded()
     }
 
+    fun getSnackBar(text : String, time: Int): Snackbar {
 
+        return Snackbar
+            .make(
+                mainFragment,
+                text,
+                time
+            )
+    }
 
     fun dropAllFragments(){
         if(supportFragmentManager.backStackEntryCount <=1)
@@ -218,7 +226,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun addFragment(fragment: Fragment) : FragmentTransaction{
         val fragmentTransaction = replaceFragment(fragment)
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_MATCH_ACTIVITY_OPEN)
 
         updateValuesOnFragmentReplace()
         showBackButton(true)

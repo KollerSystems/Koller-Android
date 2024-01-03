@@ -41,7 +41,7 @@ class PostFragment : BottomSheetDialogFragment() {
 
             val activity = requireActivity()
             val snackbar = Snackbar
-                .make(activity.findViewById(R.id.layout_cordinator), getString(R.string.discarded_comment_to_clipboard), 5000)
+                .make(activity.findViewById(R.id.layout_cordinator), getString(R.string.discarded_comment_to_clipboard), Snackbar.LENGTH_LONG)
                 .setAction(R.string.remove) {
                     addToClipboard = false
                 }

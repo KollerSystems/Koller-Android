@@ -90,7 +90,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
         }
 
 
-        if(offset <= 0 && areParametersDefault() && CacheManager.savedListsOfValues.containsKey(dataTag) && (CacheManager.savedListsOfValues[dataTag]!![0].receivedAt - System.currentTimeMillis() < 7*1000*60*60*24 || !MyApplication.isOnline(context))) {
+        if(offset <= 0 && areParametersDefault() && CacheManager.savedListsOfValues.containsKey(dataTag) && (CacheManager.savedListsOfValues[dataTag]!![0].isValid(context, DateTimeHelper.TIME_NOT_IMPORTANT))) {
 
 
 

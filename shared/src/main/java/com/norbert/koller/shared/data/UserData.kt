@@ -33,7 +33,9 @@ class UserData (
     @SerializedName("Facebook") val facebook : String? = null,
     @SerializedName("Instagram") val instagram : String? = null,
     @SerializedName("BedNum") val bedNum : Int? = null,
-    @SerializedName("Class") val class_ : ClassData? = null
+    @SerializedName("Class") val class_ : ClassData? = null,
+
+
 ) : BaseData()
 {
 
