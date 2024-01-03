@@ -4,16 +4,21 @@ import android.content.res.Resources
 import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.view.ViewCompat
 import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
+import com.google.android.material.transition.MaterialContainerTransform
 import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
@@ -38,6 +43,8 @@ abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
     lateinit var veilStatus : VeilLayout
     lateinit var scbStatus : SimpleCardButton
 
+
+
     override fun getVeils(): List<VeilLayout> {
         if(veilStatus.isVeiled){
             scbStatus.textText.text = "Kint (16:34 óta)"
@@ -60,6 +67,8 @@ abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
         veilStatus = view.findViewById(R.id.veil_status)
 
         super.onViewCreated(view, savedInstanceState)
+
+
 
         val textName : TextView = view.findViewById(R.id.user_text_name)
         val buttonGroup : Button = view.findViewById(R.id.user_button_group)

@@ -2,8 +2,11 @@ package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.View
+import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.transition.Hold
+import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.data.UserData
@@ -54,5 +57,15 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         addSearchbar()
 
         super.onViewCreated(view, savedInstanceState)
+
+        exitTransition = null
+        reenterTransition = MaterialElevationScale(/* growing= */ true)
+
+        postponeEnterTransition()
+        (view.parent as ViewGroup).viewTreeObserver
+            .addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
     }
 }

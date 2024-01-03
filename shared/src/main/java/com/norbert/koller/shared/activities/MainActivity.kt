@@ -196,6 +196,8 @@ abstract class MainActivity : AppCompatActivity() {
         showBackButtonIfNeeded()
     }
 
+
+
     fun dropAllFragments(){
         if(supportFragmentManager.backStackEntryCount <=1)
             return
@@ -208,11 +210,13 @@ abstract class MainActivity : AppCompatActivity() {
         showBackButton(false)
     }
 
-    fun addFragment(fragment: Fragment){
-        replaceFragment(fragment)
+    fun addFragment(fragment: Fragment) : FragmentTransaction{
+        val fragmentTransaction = replaceFragment(fragment)
 
         updateValuesOnFragmentReplace()
         showBackButton(true)
+
+        return fragmentTransaction
     }
 
 
@@ -280,9 +284,11 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
 
-    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId){
+    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId) : FragmentTransaction {
         val fragmentTransaction = replaceFragmentWithoutBackStack(fragment, selectedItemId)
         fragmentTransaction.addToBackStack(selectedItemId.toString())
+
+        return fragmentTransaction
     }
 
     fun updateValuesOnFragmentReplace(){

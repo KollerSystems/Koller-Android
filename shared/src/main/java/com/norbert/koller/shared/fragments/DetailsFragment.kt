@@ -1,27 +1,20 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import android.view.ViewGroup
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.data.RoomData
-import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.managers.MyApplication
-import com.norbert.koller.shared.recycleradapters.UserPreviewRecyclerAdapter
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.skydoves.androidveil.VeilLayout
-import okhttp3.Response
 
 abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
@@ -34,8 +27,23 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
     abstract fun getVeils() : List<VeilLayout>
 
+    abstract fun getLayout() : Int
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(getLayout(), container, false)
+        ViewCompat.setTransitionName(view!!.findViewById(R.id.fl_root), "cardTransition_${id}position")
+        return view
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
 
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
 

@@ -658,7 +658,6 @@
         <item name="android:paddingLeft">@dimen/application_padding</item>
         <item name="android:paddingTop">@dimen/application_padding</item>
         <item name="android:background">?android:attr/colorBackground</item>
-
     </style>
 
     <style name="Tab" parent="@style/Widget.Material3.TabLayout">

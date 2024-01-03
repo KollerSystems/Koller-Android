@@ -8,15 +8,8 @@ import com.norbert.koller.student.R
 
 
 class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.RoomFragment(rid) {
-
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-
-
-        return inflater.inflate(R.layout.fragment_room, container, false)
+    override fun getLayout(): Int {
+        return R.layout.fragment_room
     }
 
 }
