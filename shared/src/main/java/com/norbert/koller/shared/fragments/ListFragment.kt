@@ -2,12 +2,15 @@ package com.norbert.koller.shared.fragments
 
 import android.animation.LayoutTransition
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup.MarginLayoutParams
+import android.view.WindowManager
 import android.widget.LinearLayout
 import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
@@ -18,17 +21,19 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
+import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 
 abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<String>>? = null) : Fragment() {
 
@@ -71,8 +76,11 @@ abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<St
         return view
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
@@ -88,6 +96,7 @@ abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<St
                 baseRecycleAdapter.submitData(pagingData)
             }
         }
+
 
 
 

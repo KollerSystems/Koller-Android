@@ -114,6 +114,8 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
         var pagingSource : LoadResult<Int, Any>? = null
 
 
+        delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
+
         RetrofitInstance.communicate({getApiResponse(RetrofitInstance.api, params.loadSize, offset)}, {response ->
 
             response as List<BaseData>
@@ -136,14 +138,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
 
         })
 
-        delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
-
-
         return pagingSource!!
-
-
-
-
     }
 
     fun areParametersDefault() : Boolean{

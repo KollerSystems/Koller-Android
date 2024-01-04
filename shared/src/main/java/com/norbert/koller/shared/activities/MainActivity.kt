@@ -209,7 +209,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun addFragment(fragment: Fragment) : FragmentTransaction{
         val fragmentTransaction = replaceFragment(fragment)
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_MATCH_ACTIVITY_OPEN)
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
 
 
 

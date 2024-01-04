@@ -71,10 +71,15 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
             viewModel.id = id!!
 
             val key = Pair(getDataTag(), viewModel.id)
-            if(CacheManager.savedValues.containsKey(key) && CacheManager.savedValues[key]!!.isUnexpired(getTimeLimit())){
+            if(CacheManager.savedValues.containsKey(key)){
                 if(!MyApplication.isOnline(requireContext())){
                     CacheManager.savedValues[key]!!.testState = ""
                     createSnackBar()
+                }
+                else{
+                    if(!CacheManager.savedValues[key]!!.isUnexpired(getTimeLimit())){
+                        refresh()
+                    }
                 }
                 viewModel.response.value = CacheManager.savedValues[key]!!
                 return
