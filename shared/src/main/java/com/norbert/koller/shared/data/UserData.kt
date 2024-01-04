@@ -8,7 +8,7 @@ class ClassData(
     @SerializedName("Class") val class_ : String ="",
     @SerializedName("HeadTUID") val headTuid : Int=1)
 
-class UserData (
+class UserData(
     @SerializedName("UID") var uid : Int = -1,
     @SerializedName("OM") val om : Long? = null,
     @SerializedName("Gender") val gender : Int? = null,
@@ -38,7 +38,6 @@ class UserData (
 
 ) : BaseData()
 {
-
 
     companion object {
         var instance: UserData = UserData()

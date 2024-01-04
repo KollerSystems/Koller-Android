@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -110,7 +111,7 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
         RetrofitInstance.communicate(lifecycleScope, apiFunctionToCall(),
             {
-                viewModel.response.value = it as BaseData
+                viewModel.response.value = it
                 (viewModel.response.value as BaseData).testState = "hello"
                 CacheManager.savedValues[Pair(getDataTag(), it.getMainID())] = it
                 disableVeils()
@@ -134,7 +135,10 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
         snackbar!!.show()
     }
 
-    fun loadFromZero(){
+    private fun loadFromZero(){
+
+        Log.d("LOAFOAFOFORM ZEROOOOOOOOOOO", "FROM ZERRO")
+
         loadingOl.loadData = {
             RetrofitInstance.communicate(lifecycleScope, apiFunctionToCall(),
                 {

@@ -41,15 +41,18 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
+abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
     lateinit var veilStatus : VeilLayout
     lateinit var scbStatus : SimpleCardButton
     lateinit var textStatus : TextView
 
-
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
+    }
+
+    override fun getDataTag(): String {
+        return "user"
     }
 
     override fun getVeils(): List<VeilLayout> {
@@ -59,10 +62,6 @@ abstract class UserFragment(val uid : Int? = null) : DetailsFragment(uid) {
             scbStatus.imageViewIcon!!.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.out))
         }
         return listOf(veilStatus)
-    }
-
-    override fun getDataTag(): String {
-        return "user"
     }
 
     override fun apiFunctionToCall(): suspend () -> Response<*> {

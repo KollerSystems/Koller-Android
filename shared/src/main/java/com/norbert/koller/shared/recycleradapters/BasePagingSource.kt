@@ -58,9 +58,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
     }
 
 
-    open suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : Response<List<BaseData>> {
-        throw Exception("Nem lett felülírva a getApiResponse függvény 💀")
-    }
+    abstract suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : Response<List<BaseData>>
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {
 
@@ -113,36 +111,39 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
             recyclerAdapter.notifyItemInserted(recyclerAdapter.itemCount)
         }
 
+        var pagingSource : LoadResult<Int, Any>? = null
 
-        try {
-            val response: Response<List<BaseData>> = getApiResponse(RetrofitInstance.api, params.loadSize, offset)
-            var responseAs: List<BaseData> = listOf()
-            if(response.isSuccessful) {
-                if(!response.body().isNullOrEmpty()) {
-                    responseAs = response.body() as List<BaseData>
-                }
-            }
-            else{
-                throw Exception("API error: ${response.code()}")
-            }
-            delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-            if(areParametersDefault() && responseAs.isNotEmpty()) {
+        RetrofitInstance.communicate({getApiResponse(RetrofitInstance.api, params.loadSize, offset)}, {response ->
+
+            response as List<BaseData>
+
+            if(areParametersDefault() && response.isNotEmpty()) {
                 if (!CacheManager.savedListsOfValues.containsKey(dataTag)) {
                     CacheManager.savedListsOfValues[dataTag] = ArrayList()
                 }
-                CacheManager.savedListsOfValues[dataTag]!!.addAll(responseAs)
+                CacheManager.savedListsOfValues[dataTag]!!.addAll(response)
             }
-            return formatRecievedValues(responseAs, offset, params.loadSize)
 
+            pagingSource = formatRecievedValues(response, offset, params.loadSize)
 
+        }, {error, errorBody ->
 
-        }catch(e: Exception){
             recyclerAdapter.state = BaseRecycleAdapter.STATE_ERROR
             recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount-1)
-            Log.e("ERROR", e.toString())
-            return LoadResult.Error(e)
-        }
+            Log.e("ERROR", error.toString())
+            pagingSource = LoadResult.Error(Throwable("Error: $error. Error body: $errorBody"))
+
+        })
+
+        delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
+
+
+        return pagingSource!!
+
+
+
+
     }
 
     fun areParametersDefault() : Boolean{

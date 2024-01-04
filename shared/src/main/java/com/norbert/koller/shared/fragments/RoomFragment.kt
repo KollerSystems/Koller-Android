@@ -16,6 +16,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -28,10 +29,9 @@ import retrofit2.Callback
 import retrofit2.Response
 
 
-abstract class RoomFragment(val rid: Int? = null) : DetailsFragment(rid) {
+abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
 
     lateinit var usersRecyclerView: RecyclerView
-    lateinit var userDataArrayList: ArrayList<UserData>
     lateinit var textTitle : TextView
     lateinit var buttonDesc : Button
 
@@ -81,9 +81,6 @@ abstract class RoomFragment(val rid: Int? = null) : DetailsFragment(rid) {
 
                 (context as MainActivity).addFragment(MyApplication.usersFragment(map))
             }
-
         }
-
     }
-
 }

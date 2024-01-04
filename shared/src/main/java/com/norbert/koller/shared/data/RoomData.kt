@@ -11,6 +11,7 @@ class RoomData(
     @SerializedName("Group") var group : String?,
     @SerializedName("Residents") var residents : ArrayList<UserData>?,
 ) : BaseData() {
+
     override fun diffrentDecider(context: Context): String {
 
         val genderString: String
