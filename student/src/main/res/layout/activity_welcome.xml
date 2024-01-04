@@ -5,31 +5,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:windowSoftInputMode="adjustResize"
     tools:context=".activities.WelcomeActivity">
 
-
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/welcome_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="top"
-        android:background="?attr/colorSurface"
-        android:elevation="@dimen/header_footer_elevation"
-        android:fitsSystemWindows="true"
-        android:translationY="-40dp"
-        android:visibility="invisible"
-        app:tabIndicator="@drawable/rounded_square"
-        app:tabIndicatorColor="?attr/colorSecondaryContainer"
-        app:tabIndicatorGravity="center"
-        app:tabIndicatorHeight="25sp"
-        app:tabSelectedTextColor="?attr/colorOnSecondaryContainer" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/welcome_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/welcome_tabs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:background="?attr/colorSurfaceContainer"
+        android:elevation="@dimen/header_footer_elevation"
+        android:fitsSystemWindows="true"
+        android:translationY="@dimen/n_tab_height"
+        android:visibility="invisible"
+        app:layout_anchorGravity="top"
+        app:tabIndicator="@drawable/rounded_square"
+        app:tabIndicatorColor="?attr/colorSecondaryContainer"
+        app:tabIndicatorGravity="center"
+        app:tabIndicatorHeight="25sp"
+        app:tabSelectedTextColor="?attr/colorOnSecondaryContainer" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/welcome_btn_navigation"

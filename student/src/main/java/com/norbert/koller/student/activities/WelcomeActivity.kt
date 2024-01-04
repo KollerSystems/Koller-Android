@@ -1,9 +1,11 @@
 package com.norbert.koller.student.activities
 
+import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
+import android.view.animation.AnimationUtils
 import android.view.animation.PathInterpolator
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
@@ -121,25 +123,34 @@ class WelcomeActivity : AppCompatActivity() {
         val easeInInterpolator = PathInterpolator(0.550f, 0.055f, 0.675f, 0.190f)
         val easeOutInterpolator = PathInterpolator(0.215f, 0.610f, 0.355f, 1.000f)
 
-        fun animateOutNavigation(){
+        fun animateNavigation(toTabs : Float, toNavButtons : Float, interpolatorId : Int) : AnimatorSet{
             tabs.layoutParams.height = tabs.height
 
-            ObjectAnimator.ofFloat(tabs, "translationY", tabs.layoutParams.height * -1f).apply {
-                duration = 250
-                interpolator = easeInInterpolator
-                start()
-            }
+            val tabAnimator = ObjectAnimator.ofFloat(tabs, "translationY", toTabs)
+            val naviButtonAnimator = ObjectAnimator.ofFloat(btnNavigation, "translationY", toNavButtons)
 
-            ObjectAnimator.ofFloat(btnNavigation, "translationY", defaultBtnNavigationTransY).apply {
-                duration = 250
-                interpolator = easeInInterpolator
-                start()
+            val animatorSet = AnimatorSet()
+            animatorSet.playTogether(tabAnimator, naviButtonAnimator)
+            animatorSet.duration = resources.getInteger(com.norbert.koller.shared.R.integer.default_transition).toLong()
+            animatorSet.interpolator = AnimationUtils.loadInterpolator(this, interpolatorId)
+            return animatorSet
+        }
 
-                doOnEnd {
-                    tabs.visibility = INVISIBLE
-                    btnNavigation.visibility = INVISIBLE
-                }
+        fun animateOutNavigation(){
+            val animatorSet = animateNavigation(tabs.layoutParams.height * -1f, defaultBtnNavigationTransY, com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized_accelerate)
+            animatorSet.doOnEnd {
+                tabs.visibility = INVISIBLE
+                btnNavigation.visibility = INVISIBLE
             }
+            animatorSet.start()
+        }
+
+        fun animateInNavigation(){
+            tabs.visibility = VISIBLE
+            btnNavigation.visibility = VISIBLE
+
+            val animatorSet = animateNavigation(0f, 0f, com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized_decelerate)
+            animatorSet.start()
         }
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
@@ -174,20 +185,7 @@ class WelcomeActivity : AppCompatActivity() {
                         btnForward.text = getString(Rs.string.next)
                     }
 
-                    tabs.visibility = VISIBLE
-                    btnNavigation.visibility = VISIBLE
-
-                    ObjectAnimator.ofFloat(tabs, "translationY", 0f).apply {
-                        duration = 250
-                        interpolator = easeOutInterpolator
-                        start()
-                    }
-
-                    ObjectAnimator.ofFloat(btnNavigation, "translationY", 0f).apply {
-                        duration = 250
-                        interpolator = easeOutInterpolator
-                        start()
-                    }
+                    animateInNavigation()
                 }
 
                 navigatedAtLEastOnce = true
