@@ -52,13 +52,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/guideline">
 
-            <TextView
-                android:id="@+id/toolbar_title"
+            <TextSwitcher
+                android:id="@+id/text_switcher"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:text="@string/title"
-                android:textAppearance="@style/MainTitle" />
+                android:inAnimation="@anim/anim_in"
+                android:outAnimation="@anim/anim_out">
+
+
+            </TextSwitcher>
+
 
             <TextView
                 android:id="@+id/toolbar_description"

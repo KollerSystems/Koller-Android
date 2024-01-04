@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android"
-    android:interpolator="@anim/ease_out_cubic"
+    android:interpolator="@interpolator/m3_sys_motion_easing_emphasized"
     android:shareInterpolator="true">
 
     <alpha

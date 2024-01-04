@@ -3,15 +3,19 @@ package com.norbert.koller.shared.activities
 import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.TextSwitcher
 import android.widget.TextView
+import android.widget.ViewSwitcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ActivityCompat
@@ -38,7 +42,7 @@ import com.norbert.koller.shared.viewmodels.MainActivityViewModel
 abstract class MainActivity : AppCompatActivity() {
 
     lateinit var toolbarContainer : LinearLayout
-    lateinit var toolbarTitle : TextView
+    lateinit var toolbarTitleSwitcher : TextSwitcher
     lateinit var toolbarDescription : TextView
 
     lateinit var bottomNavigationView : BottomNavigationView
@@ -66,10 +70,22 @@ abstract class MainActivity : AppCompatActivity() {
 
         appBar = findViewById(R.id.appbar)
         toolbarContainer = findViewById(R.id.toolbar_ly_text_container)
-        toolbarTitle = findViewById(R.id.toolbar_title)
+        toolbarTitleSwitcher = findViewById(R.id.text_switcher)
         toolbarDescription = findViewById(R.id.toolbar_description)
         defaultTitlePadding = toolbarContainer.paddingLeft
-        
+
+        var textView : TextView
+
+        toolbarTitleSwitcher.setFactory {
+            textView = TextView(
+                this@MainActivity
+            )
+
+            textView.setTextAppearance(R.style.MainTitle)
+            textView.setTypeface(resources.getFont(R.font.rubik_medium))
+            textView
+        }
+
         appBar.setup()
 
         val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
@@ -113,48 +129,22 @@ abstract class MainActivity : AppCompatActivity() {
             changeBackStackState(R.id.home)
         }
         else{
-            changeToolbarTitleToCurrentFragmentName()
-            showBackButtonIfNeeded()
+
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112)
         }
-    }
 
-    fun showBackButton(show : Boolean){
-
-        val toPadding : Int
-        val toAlpha : Float
-
-        if(!show){
-
-            val dp15 : Int = MyApplication.convertDpToPixel(15, this)
-            toPadding = dp15
-            toAlpha = 0f
-            backButton.isClickable = false
+        supportFragmentManager.addOnBackStackChangedListener {
+            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
+            appBar.setExpanded(false)
+            showBackButtonIfNeeded()
 
         }
-        else{
-
-            toPadding = defaultTitlePadding
-            toAlpha = 1f
-            backButton.isClickable = true
-        }
-        val animator = ValueAnimator.ofInt(toolbarContainer.paddingRight, toPadding)
-        val buttonAnimator = ValueAnimator.ofFloat(backButton.alpha, toAlpha)
-
-        animator.addUpdateListener { valueAnimator -> toolbarContainer.setPadding(valueAnimator.animatedValue as Int, 0, valueAnimator.animatedValue as Int, 0) }
-        buttonAnimator.addUpdateListener { valueAnimator -> backButton.alpha = valueAnimator.animatedValue as Float }
-
-        val animationSet = AnimatorSet()
-        animationSet.playTogether(
-            animator,
-            buttonAnimator)
-        animationSet.setDuration(resources.getInteger(R.integer.default_transition).toLong())
-        animationSet.interpolator = AnimationUtils.loadInterpolator(this, R.anim.ease_out_cubic)
-        animationSet.start()
     }
+
+
 
 
 
@@ -188,18 +178,11 @@ abstract class MainActivity : AppCompatActivity() {
 
     }
 
-    fun changeToolbarTitleToCurrentFragmentName(){
-
-        toolbarTitle.post{
-            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
-        }
-    }
 
     fun dropLastFragment(){
         supportFragmentManager.popBackStack()
 
-        updateValuesOnFragmentReplace()
-        showBackButtonIfNeeded()
+
     }
 
     fun getSnackBar(text : String, time: Int): Snackbar {
@@ -220,16 +203,16 @@ abstract class MainActivity : AppCompatActivity() {
             supportFragmentManager.popBackStack()
         }
 
-        updateValuesOnFragmentReplace()
-        showBackButton(false)
+
+
     }
 
     fun addFragment(fragment: Fragment) : FragmentTransaction{
         val fragmentTransaction = replaceFragment(fragment)
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_MATCH_ACTIVITY_OPEN)
 
-        updateValuesOnFragmentReplace()
-        showBackButton(true)
+
+
 
         return fragmentTransaction
     }
@@ -284,8 +267,8 @@ abstract class MainActivity : AppCompatActivity() {
         viewModel.mainFragmentList.add(idToSelect)
 
 
-        updateValuesOnFragmentReplace()
-        showBackButtonIfNeeded()
+
+
 
     }
 
@@ -322,19 +305,52 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
 
-    fun updateValuesOnFragmentReplace(){
-        appBar.setExpanded(false)
-        changeToolbarTitleToCurrentFragmentName()
-    }
+
 
     fun showBackButtonIfNeeded(){
-        toolbarTitle.post {
-            if (supportFragmentManager.backStackEntryCount == 1) {
-                showBackButton(false)
-            } else {
-                showBackButton(true)
-            }
+
+        val toPadding: Int
+        val toAlpha: Float
+
+        if (supportFragmentManager.backStackEntryCount == 1) {
+
+            val dp15: Int = MyApplication.convertDpToPixel(15, this)
+            toPadding = dp15
+            toAlpha = 0f
+            backButton.isClickable = false
+
+        } else {
+
+            toPadding = defaultTitlePadding
+            toAlpha = 1f
+            backButton.isClickable = true
         }
+        val animator = ValueAnimator.ofInt(toolbarContainer.paddingRight, toPadding)
+        val buttonAnimator = ValueAnimator.ofFloat(backButton.alpha, toAlpha)
+
+        animator.addUpdateListener { valueAnimator ->
+            toolbarContainer.setPadding(
+                valueAnimator.animatedValue as Int,
+                0,
+                valueAnimator.animatedValue as Int,
+                0
+            )
+        }
+        buttonAnimator.addUpdateListener { valueAnimator ->
+            backButton.alpha = valueAnimator.animatedValue as Float
+        }
+
+        val animationSet = AnimatorSet()
+        animationSet.playTogether(
+            animator,
+            buttonAnimator
+        )
+        animationSet.setDuration(resources.getInteger(R.integer.default_transition).toLong())
+        animationSet.interpolator = AnimationUtils.loadInterpolator(
+            this,
+            com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
+        )
+        animationSet.start()
     }
 
     fun setToolbarTitle(title : String?, description : String?){
@@ -346,8 +362,8 @@ abstract class MainActivity : AppCompatActivity() {
             toolbarDescription.visibility = VISIBLE
             toolbarDescription.text = description
         }
-        toolbarTitle.text = title
-        toolbarTitle.requestLayout()
+        toolbarTitleSwitcher.setText(title)
+        toolbarTitleSwitcher.requestLayout()
 
     }
 
