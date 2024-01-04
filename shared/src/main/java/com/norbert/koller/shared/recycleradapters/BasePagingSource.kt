@@ -121,6 +121,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
             response as List<BaseData>
 
             if(areParametersDefault() && response.isNotEmpty()) {
+                response[0].saveReceivedTime()
                 if (!CacheManager.savedListsOfValues.containsKey(dataTag)) {
                     CacheManager.savedListsOfValues[dataTag] = ArrayList()
                 }

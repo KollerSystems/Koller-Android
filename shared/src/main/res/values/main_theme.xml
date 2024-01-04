@@ -251,11 +251,6 @@
         <item name="android:progressBackgroundTint">?attr/colorPrimary</item>
     </style>
 
-    <style name="ImagePopup" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
-        <item name="materialAlertDialogTitleTextStyle">@style/DialogTitleWithImage</item>
-        <item name="materialAlertDialogTitleIconStyle">@style/DialogIcon</item>
-    </style>
-
     <style name="Popup" parent="ThemeOverlay.Material3.MaterialAlertDialog.Centered">
         <item name="materialAlertDialogTitleTextStyle">@style/DialogTitle</item>
     </style>
@@ -264,18 +259,6 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textAlignment">center</item>
-    </style>
-    <style name="DialogTitleWithImage" parent="DialogTitle">
-        <item name="android:translationY">-200dp</item>
-        <item name="android:paddingTop">15dp</item>
-    </style>
-
-    <style name="DialogIcon">
-        <item name="android:layout_height">200dp</item>
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:translationY">50dp</item>
-        <item name="android:adjustViewBounds">true</item>
     </style>
 
 

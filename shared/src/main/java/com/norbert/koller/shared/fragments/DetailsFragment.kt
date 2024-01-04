@@ -116,9 +116,11 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
         RetrofitInstance.communicate(lifecycleScope, apiFunctionToCall(),
             {
-                viewModel.response.value = it
+                val baseData = it as BaseData
+                baseData.saveReceivedTime()
+                viewModel.response.value = baseData
                 (viewModel.response.value as BaseData).testState = "hello"
-                CacheManager.savedValues[Pair(getDataTag(), it.getMainID())] = it
+                CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
                 disableVeils()
                 if(snackbar != null){
                     snackbar!!.dismiss()
@@ -147,8 +149,10 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
         loadingOl.loadData = {
             RetrofitInstance.communicate(lifecycleScope, apiFunctionToCall(),
                 {
-                    viewModel.response.value = it as BaseData
-                    CacheManager.savedValues[Pair(getDataTag(), it.getMainID())] = it
+                    val baseData = it as BaseData
+                    baseData.saveReceivedTime()
+                    viewModel.response.value = baseData
+                    CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
                     loadingOl.setState(FullScreenLoading.NONE)
                     disableVeils()
                 },

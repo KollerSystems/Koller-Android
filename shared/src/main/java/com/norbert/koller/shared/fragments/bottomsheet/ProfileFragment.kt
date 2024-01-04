@@ -60,11 +60,10 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         val buttonLogout: Button = view.findViewById(R.id.button_logout)
         buttonLogout.setOnClickListener{
 
-            MaterialAlertDialogBuilder(view.context, R.style.ImagePopup)
+            MaterialAlertDialogBuilder(view.context)
                 .setTitle("Biztosan ki akarsz jelentkezni?")
-                .setIcon(R.drawable.surpriesd)
                 .setPositiveButton(
-                    "Igen"
+                    getText(R.string.yes)
                 )
                 { _, _ ->
                     val dialog = MaterialAlertDialogBuilder(view.context)
@@ -84,7 +83,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
 
                 }
                 .setNegativeButton(
-                    "Nem"
+                    getText(R.string.cancel)
                 )
                 { _, _ ->
 

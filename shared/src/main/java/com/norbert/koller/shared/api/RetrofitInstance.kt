@@ -43,7 +43,7 @@ object RetrofitInstance {
             .create(APIInterface::class.java)
     }
 
-    fun communicate(lifecycleCoroutineScope: LifecycleCoroutineScope, functionToCall: suspend () -> Response<*>, onSuccess: (data : BaseData) -> Unit, onError: (error : String?, errorBody : ErrorData?) -> Unit){
+    fun communicate(lifecycleCoroutineScope: LifecycleCoroutineScope, functionToCall: suspend () -> Response<*>, onSuccess: (data : Any) -> Unit, onError: (error : String?, errorBody : ErrorData?) -> Unit){
 
         lifecycleCoroutineScope.launch {
             val response : Response<*> = try{
@@ -58,9 +58,7 @@ object RetrofitInstance {
                 return@launch
             }
             if(response.isSuccessful && response.body() != null){
-                val baseData = response.body() as BaseData
-                baseData.saveReceivedTime()
-                onSuccess.invoke(baseData)
+                onSuccess.invoke(response.body()!!)
             }
             else{
                 onError.invoke(response.code().toString(), getErrorBody(response))
@@ -83,11 +81,7 @@ object RetrofitInstance {
                 return
             }
             if(response.isSuccessful && response.body() != null){
-                val baseData = response.body() as List<BaseData>
-                if(baseData.isNotEmpty()){
-                    baseData[0].saveReceivedTime()
-                }
-                onSuccess.invoke(baseData)
+                onSuccess.invoke(response.body()!!)
             }
             else{
                 onError.invoke(response.code().toString(), getErrorBody(response))
