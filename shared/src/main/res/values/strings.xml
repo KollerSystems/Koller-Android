@@ -45,7 +45,8 @@
     <string name="occupation_reminder">Foglalkozás emlékeztető</string>
     <string name="occupation_reminder_description">Értesítés negyed órával a foglalkozások előtt</string>
     <string name="room_order">Szobarend</string>
-    <string name="commendation_warning">Dícséret/Figyelmeztetés</string>
+    <string name="commendation_warning">Dícséret / Figyelmeztetés</string>
+    <string name="commendations_warnings">Dícséretek / Figyelmeztetők</string>
     <string name="news">Hírek</string>
     <string name="appearance">Megjelenítés</string>
     <string name="mode">Mód</string>
@@ -271,7 +272,7 @@
     <string name="commendations">Dicséretek</string>
     <string name="edit">Szerkesztés</string>
     <string name="reports">Jelentések</string>
-    <string name="port_exits_and_entrances_delays">Portai ki- és belépések / késések</string>
+    <string name="port_exits_and_entrances_delays">Portai ki- és belépések / Késések</string>
     <string name="presence_colon">Jelenlét:</string>
     <string name="to_do">Teendők</string>
     <string name="my_groups">Csoportjaim</string>

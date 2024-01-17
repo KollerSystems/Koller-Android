@@ -13,14 +13,6 @@ import com.norbert.koller.teacher.activities.RoomRateActivity
 class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.RoomFragment(rid)  {
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_room, container, false)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -35,5 +27,9 @@ class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.Room
             val intent = Intent(requireContext(), RoomPresenceActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.fragment_room
     }
 }

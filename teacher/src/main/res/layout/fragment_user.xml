@@ -6,131 +6,127 @@
     android:layout_height="match_parent"
     tools:context=".fragments.UserFragment">
 
-    <androidx.core.widget.NestedScrollView
-        android:id="@id/nested_scroll_view"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swrl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="match_parent">
 
-        <LinearLayout
-            style="@style/MainLayout"
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@id/nested_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:fillViewport="true">
 
-            <include
-                layout="@layout/view_fragment_user_header"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/text_status"
-                style="@style/CategoryCardName"
+            <LinearLayout
+                style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/manage_student" />
+                android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                style="@style/MainCard"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <LinearLayout
-                    style="@style/MainCardLayout"
+                <include
+                    layout="@layout/view_fragment_user_header"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
+                <TextView
+                    android:id="@+id/text_status"
+                    style="@style/CategoryCardName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/manage_student" />
 
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/MainCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        style="@style/MainCardLayout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        custom:icon="@drawable/key"
-                        custom:text="Kulcsfelvétel" />
+                        android:orientation="vertical">
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        custom:icon="@drawable/person_wave"
-                        custom:text="@string/presence" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:id="@+id/scb_outgoings"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        custom:icon="@drawable/wave"
-                        custom:text="@string/user_outgoings" />
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/key"
+                            custom:text="Kulcsfelvétel" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:id="@+id/scb_gate"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        custom:icon="@drawable/gate"
-                        custom:text="@string/port_exits_and_entrances_delays" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/person_wave"
+                            custom:text="@string/presence" />
+
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:id="@+id/scb_outgoings"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            custom:icon="@drawable/wave"
+                            custom:text="@string/user_outgoings" />
+
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:id="@+id/scb_gate"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/gate"
+                            custom:text="@string/port_exits_and_entrances_delays" />
 
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
-                        custom:icon="@drawable/calendar"
-                        custom:text="@string/calendar"
-                        tools:visibility="visible" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/calendar"
+                            custom:text="Naptár / Teendők" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
-                        custom:icon="@drawable/award"
-                        custom:text="@string/commendations"
-                        tools:visibility="visible" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/award"
+                            custom:text="@string/commendations_warnings" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:visibility="gone"
-                        custom:icon="@drawable/report"
-                        custom:text="@string/warnings"
-                        tools:visibility="visible" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            custom:icon="@drawable/flag"
+                            custom:text="@string/reports"
+                            tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        custom:icon="@drawable/flag"
-                        custom:text="@string/reports"
-                        tools:visibility="visible" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:id="@+id/scb_personal_info"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/data"
+                            custom:text="Személyes adatok" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:id="@+id/scb_personal_info"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        custom:icon="@drawable/data"
-                        custom:text="Személyes adatok" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:id="@+id/scb_edit"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/pencil"
+                            custom:text="@string/edit" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:id="@+id/scb_edit"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        custom:icon="@drawable/pencil"
-                        custom:text="@string/edit" />
+                        <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            custom:icon="@drawable/close"
+                            custom:text="@string/remove" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        custom:icon="@drawable/close"
-                        custom:text="@string/remove" />
+                    </LinearLayout>
 
-                </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-            </com.google.android.material.card.MaterialCardView>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
     <com.norbert.koller.shared.customviews.FullScreenLoading
         android:id="@+id/loading_overlay"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        tools:visibility="gone" />
 
 </FrameLayout>

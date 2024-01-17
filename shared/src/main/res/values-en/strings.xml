@@ -25,6 +25,7 @@
     <string name="occupation_reminder_description">Notification fifteen minutes before occupations</string>
     <string name="room_order">Room order</string>
     <string name="commendation_warning">Commendation/Warning</string>
+    <string name="commendations_warnings">Commendations / Warnings</string>
     <string name="news">News</string>
     <string name="appearance">Appearance</string>
     <string name="mode">Mode</string>
@@ -236,7 +237,7 @@
     <string name="commendations">Commendations</string>
     <string name="edit">Edit</string>
     <string name="reports">Reports</string>
-    <string name="port_exits_and_entrances_delays">Gate exits and entrances / delays</string>
+    <string name="port_exits_and_entrances_delays">Gate exits and entrances / Delays</string>
     <string name="presence_colon">Presence:</string>
     <string name="to_do">To do</string>
     <string name="my_groups">My groups</string>

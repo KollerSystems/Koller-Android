@@ -47,7 +47,7 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(getLayout(), container, false)
-        ViewCompat.setTransitionName(view!!.findViewById(R.id.fl_root), "cardTransition_${id}position")
+        ViewCompat.setTransitionName(view!!.rootView, "cardTransition_${id}position")
         return view
     }
 
