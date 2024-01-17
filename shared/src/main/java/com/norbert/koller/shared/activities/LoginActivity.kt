@@ -12,7 +12,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.managers.DataStoreManager
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
@@ -37,10 +37,11 @@ open class LoginActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
+
         setContentView(R.layout.activity_login)
 
         val textVersion : TextView = findViewById(R.id.text_version)
-        textVersion.text = MyApplication.version
+        textVersion.text = ApplicationManager.version
 
         val bottomView : View = findViewById(R.id.bottom_view)
         bottomView.post{
@@ -99,7 +100,7 @@ open class LoginActivity : AppCompatActivity() {
 
         loginButton.setOnClickListener {
 
-            if(MyApplication.isOnline(this)){
+            if(ApplicationManager.isOnline(this)){
 
 
 
@@ -125,7 +126,7 @@ open class LoginActivity : AppCompatActivity() {
                                 {
                                     UserData.instance = it as UserData
 
-                                    MyApplication.openMain.invoke(this@LoginActivity)
+                                    ApplicationManager.openMain.invoke(this@LoginActivity)
                                     finish()
                                 },
                                 {errorMsg, errorBody ->
@@ -196,7 +197,7 @@ open class LoginActivity : AppCompatActivity() {
         loginButton.setOnLongClickListener {
             Toast.makeText(this, "Csak téged csak most kivételesen beengedlek", Toast.LENGTH_SHORT).show()
 
-            MyApplication.openMain.invoke(this@LoginActivity)
+            ApplicationManager.openMain.invoke(this@LoginActivity)
             finish()
 
             return@setOnLongClickListener true

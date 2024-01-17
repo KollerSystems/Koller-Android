@@ -8,7 +8,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.DataStoreManager
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
@@ -30,7 +30,7 @@ class LaunchActivity : AppCompatActivity() {
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
                     // Check whether the initial data is ready.
-                    return if (UserData.instance.uid != -1 || !MyApplication.isOnline(this@LaunchActivity)) {
+                    return if (UserData.instance.uid != -1 || !ApplicationManager.isOnline(this@LaunchActivity)) {
                         // The content is ready. Start drawing.
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
@@ -44,7 +44,7 @@ class LaunchActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
 
-            if (!MyApplication.isOnline(this@LaunchActivity)) {
+            if (!ApplicationManager.isOnline(this@LaunchActivity)) {
                 MaterialAlertDialogBuilder(this@LaunchActivity)
                     .setTitle("Nincs internet")
                     .setMessage("Az alkalmazás jelenleg csakis internettel képes működni")
@@ -60,7 +60,7 @@ class LaunchActivity : AppCompatActivity() {
 
             LoginTokensData.instance = DataStoreManager.readTokens(this@LaunchActivity)
             if (LoginTokensData.instance == null) {
-                MyApplication.openLogin.invoke(this@LaunchActivity)
+                ApplicationManager.openLogin.invoke(this@LaunchActivity)
                 finish()
 
             }else {
@@ -69,11 +69,11 @@ class LaunchActivity : AppCompatActivity() {
                     {
                         UserData.instance = it as UserData
 
-                        MyApplication.openMain.invoke(this@LaunchActivity)
+                        ApplicationManager.openMain.invoke(this@LaunchActivity)
                         finish()
                     },
                     {_,_->
-                        MyApplication.openLogin.invoke(this@LaunchActivity)
+                        ApplicationManager.openLogin.invoke(this@LaunchActivity)
                         finish()
                     })
 

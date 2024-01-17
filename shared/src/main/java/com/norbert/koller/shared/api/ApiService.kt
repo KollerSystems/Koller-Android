@@ -45,7 +45,7 @@ interface APIInterface {
 
     @Headers("Content-Type: application/json")
     @POST("oauth/token")
-    suspend fun postLogin(
+    suspend fun postLoginTokens(
         @Body requestModel: ApiLoginRefreshData,
     ) : Response<LoginTokensResponseData>
 

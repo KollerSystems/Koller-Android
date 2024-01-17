@@ -8,7 +8,7 @@ import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.RoomData
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseData
 
@@ -57,7 +57,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGro
 
         holder.itemView.setOnClickListener {
 
-            val fragment = MyApplication.roomFragment(item.rid)
+            val fragment = ApplicationManager.roomFragment(item.rid)
             (holder.itemView.context as MainActivity).addFragmentWithTransition(fragment, holder.itemView, getTransitionName(item.getMainID()))
 
         }

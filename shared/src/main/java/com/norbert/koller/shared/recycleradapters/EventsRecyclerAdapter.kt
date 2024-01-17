@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.EventsData
 import com.norbert.koller.shared.fragments.bottomsheet.PostFragment
@@ -44,7 +44,7 @@ class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : R
         (holder.chipPlace.parent as ViewGroup).setVisibilityBy(isAnyChildVisible)
 
         holder.posterUser.setOnClickListener{
-            mainActivity.addFragment(MyApplication.userFragment(currentItem.uid))
+            mainActivity.addFragment(ApplicationManager.userFragment(currentItem.uid))
         }
 
     }

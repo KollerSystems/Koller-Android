@@ -6,7 +6,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.ChipGroup
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.fragments.bottomsheet.BaseProgramDetailsFragment
@@ -36,7 +36,7 @@ class BaseProgramRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilt
 
         holder.title.text = item.topic
 
-        var description ="${item.tuid} • ${MyApplication.createClassesText(context, item.lesson, item.length)}"
+        var description ="${item.tuid} • ${ApplicationManager.createClassesText(context, item.lesson, item.length)}"
 
         holder.description.text = description
 

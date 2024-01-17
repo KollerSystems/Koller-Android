@@ -12,7 +12,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.norbert.koller.shared.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 
 class UserOutgoingsFragment(uid : Int? = null) : PagedFragment() {
 
@@ -47,10 +47,10 @@ class UserOutgoingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: 
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                MyApplication.userOutgoingTemporaryFragment()
+                ApplicationManager.userOutgoingTemporaryFragment()
             }
             1->{
-                MyApplication.userOutgoingPermanentFragment()
+                ApplicationManager.userOutgoingPermanentFragment()
             }
             else->{
                 Fragment()

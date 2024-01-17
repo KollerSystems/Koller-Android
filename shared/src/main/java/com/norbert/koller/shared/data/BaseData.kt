@@ -5,7 +5,7 @@ import android.os.SystemClock
 import android.system.SystemCleaner
 import android.util.Log
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 
 abstract class BaseData() {
     abstract fun diffrentDecider(context: Context) : String
@@ -20,7 +20,7 @@ abstract class BaseData() {
     var testState : String = ""
 
     fun isValid(context: Context, time : Int) : Boolean{
-        return isUnexpired(time) || !MyApplication.isOnline(context)
+        return isUnexpired(time) || !ApplicationManager.isOnline(context)
     }
 
     fun isUnexpired(time : Int) : Boolean{

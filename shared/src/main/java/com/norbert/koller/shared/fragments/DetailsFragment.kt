@@ -18,7 +18,7 @@ import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.skydoves.androidveil.VeilLayout
 
@@ -72,7 +72,7 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
             val key = Pair(getDataTag(), viewModel.id)
             if(CacheManager.savedValues.containsKey(key)){
-                if(!MyApplication.isOnline(requireContext())){
+                if(!ApplicationManager.isOnline(requireContext())){
                     CacheManager.savedValues[key]!!.testState = ""
                     createSnackBar()
                 }

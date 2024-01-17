@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.google.android.material.card.MaterialCardView
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.getAttributeColor
 
@@ -47,7 +47,7 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayou
         )
 
         try {
-            mStrokeWidth = typedArray.getDimension(R.styleable.roundedBadgeImageView_stroke_width, MyApplication.convertDpToPixel(5, context).toFloat())
+            mStrokeWidth = typedArray.getDimension(R.styleable.roundedBadgeImageView_stroke_width, ApplicationManager.convertDpToPixel(5, context).toFloat())
         } finally {
             typedArray.recycle()
         }

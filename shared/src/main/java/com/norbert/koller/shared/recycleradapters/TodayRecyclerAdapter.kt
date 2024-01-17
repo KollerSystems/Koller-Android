@@ -21,7 +21,7 @@ import androidx.core.view.setMargins
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.fragments.bottomsheet.MessageFragment
@@ -87,7 +87,7 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
 
             holder.cardNewMark.layoutParams = FrameLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)
             val params = (holder.cardNewMark as ViewGroup).layoutParams as ViewGroup.MarginLayoutParams
-            params.setMargins(MyApplication.convertDpToPixel(5, holder.itemView.context))
+            params.setMargins(ApplicationManager.convertDpToPixel(5, holder.itemView.context))
             holder.cardNewMark.layoutParams = params
             holder.cardNewMark.getChildAt(0).alpha = 1f
             
@@ -247,8 +247,8 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
 
         super.onAttachedToRecyclerView(recyclerView)
 
-        smallerSizeDp = MyApplication.convertDpToPixel(15,recyclerView.context)
-        smallerMarginDp = MyApplication.convertDpToPixel(10,recyclerView.context)
+        smallerSizeDp = ApplicationManager.convertDpToPixel(15,recyclerView.context)
+        smallerMarginDp = ApplicationManager.convertDpToPixel(10,recyclerView.context)
 
         waitToHideAllText(recyclerView)
 

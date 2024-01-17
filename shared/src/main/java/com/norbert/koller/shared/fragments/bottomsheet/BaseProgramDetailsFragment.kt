@@ -9,7 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.customviews.NameContentButton
 import com.norbert.koller.shared.customviews.NameContentView
 import com.norbert.koller.shared.R
@@ -55,13 +55,13 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
 
             ncwState.visibility = GONE
             ncwDate.textContent.text = response.date.formatDate(DateTimeHelper.monthDay)
-            ncwTime.textContent.text = MyApplication.createClassesText(requireContext(), response.lesson, response.length)
+            ncwTime.textContent.text = ApplicationManager.createClassesText(requireContext(), response.lesson, response.length)
             ncbClassroom.buttonContent.text = response.rid.toString()
             ncbClass.buttonContent.text = response.group
             ncbTeacher.buttonContent.text = response.tuid.toString()
 
             ncbClassroom.buttonContent.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.rid))
+                (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
                 dismiss()
             }
 
@@ -71,7 +71,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
 
             ncbTeacher.buttonContent.setOnClickListener {
 
-                (requireContext() as MainActivity).addFragment(MyApplication.userFragment(response.tuid))
+                (requireContext() as MainActivity).addFragment(ApplicationManager.userFragment(response.tuid))
                 dismiss()
             }
 

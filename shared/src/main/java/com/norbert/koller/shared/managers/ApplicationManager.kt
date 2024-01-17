@@ -36,6 +36,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
@@ -45,7 +46,7 @@ import java.util.Date
 import java.util.Locale
 
 
-open class MyApplication : Application() {
+open class ApplicationManager : Application() {
 
 
 
@@ -59,10 +60,14 @@ open class MyApplication : Application() {
 
         lateinit var version : String
 
+        var currentContext : Context? = null
+
         lateinit var openSettings: (context : Context) -> Unit
         lateinit var openLogin: (context : Context) -> Unit
         lateinit var openMain: (context : Context) -> Unit
         lateinit var openProfile: (context : Context) -> Unit
+
+        lateinit var loginActivity: () -> LoginActivity
 
         lateinit var homeFragment: () -> HomeFragment
         lateinit var calendarFragment: () -> CalendarFragment

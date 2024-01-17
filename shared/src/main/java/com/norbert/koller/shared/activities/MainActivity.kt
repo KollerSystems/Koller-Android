@@ -31,7 +31,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getColorOfPixel
 import com.norbert.koller.shared.managers.getStringResourceByName
@@ -56,8 +56,11 @@ abstract class MainActivity : AppCompatActivity() {
 
     lateinit var mainFragment: FragmentContainerView
 
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
+
         super.onPostCreate(savedInstanceState)
+        ApplicationManager.currentContext = this
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
@@ -116,7 +119,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         val userButton = findViewById<ShapeableImageView>(R.id.user_button)
         userButton.setOnClickListener{
-            MyApplication.openProfile.invoke(this)
+            ApplicationManager.openProfile.invoke(this)
         }
 
 
@@ -232,19 +235,19 @@ abstract class MainActivity : AppCompatActivity() {
         if(!viewModel.savedBackStacks.contains(idToSelect)){
             val fragment = when (idToSelect) {
                 R.id.home -> {
-                    MyApplication.homeFragment()
+                    ApplicationManager.homeFragment()
                 }
 
                 R.id.calendar -> {
-                    MyApplication.calendarFragment()
+                    ApplicationManager.calendarFragment()
                 }
 
                 R.id.studentHostel -> {
-                    MyApplication.studentHostelFragment()
+                    ApplicationManager.studentHostelFragment()
                 }
 
                 R.id.notifications -> {
-                    MyApplication.notificationFragment()
+                    ApplicationManager.notificationFragment()
                 }
                 else -> {
                     Fragment()
@@ -314,7 +317,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         if (supportFragmentManager.backStackEntryCount == 1) {
 
-            val dp15: Int = MyApplication.convertDpToPixel(15, this)
+            val dp15: Int = ApplicationManager.convertDpToPixel(15, this)
             toPadding = dp15
             toAlpha = 0f
             backButton.isClickable = false

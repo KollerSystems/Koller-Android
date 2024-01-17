@@ -6,7 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
@@ -40,10 +40,10 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
         holder.itemView.setOnClickListener {
 
             if(currentItem.uid == UserData.instance.uid){
-                MyApplication.openProfile.invoke(holder.itemView.context)
+                ApplicationManager.openProfile.invoke(holder.itemView.context)
             }
             else{
-                (context as MainActivity).addFragment(MyApplication.userFragment(currentItem.uid))
+                (context as MainActivity).addFragment(ApplicationManager.userFragment(currentItem.uid))
             }
 
         }

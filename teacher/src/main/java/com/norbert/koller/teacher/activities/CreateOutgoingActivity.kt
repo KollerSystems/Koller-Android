@@ -6,7 +6,7 @@ import android.widget.Button
 import androidx.appcompat.content.res.AppCompatResources
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.customviews.TextInputWithChips
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
 import com.norbert.koller.shared.helpers.connectToDatePicker
@@ -119,10 +119,10 @@ class CreateOutgoingActivity() : AppCompatActivity() {
         val publishButton: Button = findViewById (com.norbert.koller.shared.R.id.create_new_post_button_publish)
 
         val onChange : (() -> Unit) = {
-            publishButton.isEnabled = (MyApplication.allFilled(tilDateFrom, tilDateTo, tilTimeFrom, tilTimeTo, tilTitle) && tilAddresse.containsChip())
+            publishButton.isEnabled = (ApplicationManager.allFilled(tilDateFrom, tilDateTo, tilTimeFrom, tilTimeTo, tilTitle) && tilAddresse.containsChip())
         }
 
-        MyApplication.waitForChange(onChange, tilDateFrom, tilDateTo, tilTimeFrom, tilTimeTo, tilTitle)
+        ApplicationManager.waitForChange(onChange, tilDateFrom, tilDateTo, tilTimeFrom, tilTimeTo, tilTitle)
         tilAddresse.onChipChange = onChange
 
         onChange.invoke()

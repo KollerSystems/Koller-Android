@@ -10,9 +10,9 @@ import com.norbert.koller.shared.R
 
 open class NotificationMakingManager {
 
-    open fun createNotificationChannels(myApplication: MyApplication) {
-        NotificationMakingManager.myApplication = myApplication
-        notificationManager = myApplication.getSystemService(Application.NOTIFICATION_SERVICE) as NotificationManager
+    open fun createNotificationChannels(ApplicationManager: ApplicationManager) {
+        NotificationMakingManager.ApplicationManager = ApplicationManager
+        notificationManager = ApplicationManager.getSystemService(Application.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannelGroup(NotificationChannelGroup(REMINDER_CHANNEL_GROUP, "Emlékeztetők"))
         notificationManager.createNotificationChannelGroup(NotificationChannelGroup(GENERAL_CHANNEL_GROUP, "Általános"))
 
@@ -44,14 +44,14 @@ open class NotificationMakingManager {
 
         const val OCCUPATION_REMINDER_CHANNEL = "occupation_reminder_channel"
 
-        private lateinit var myApplication : MyApplication
+        private lateinit var ApplicationManager : ApplicationManager
         lateinit var notificationManager: NotificationManager
 
         fun createNotificationChannel(id : String, name : Int, description : String?, importance : Int, group : String){
 
             val channel = NotificationChannel(
                 id,
-                myApplication.getString(name),
+                ApplicationManager.getString(name),
                 importance).apply {
                     this.description = description
                     this.group = group
@@ -63,7 +63,7 @@ open class NotificationMakingManager {
 
         fun createNotificationChannel(id : String, name : Int, description : Int, importance : Int, group : String){
 
-            createNotificationChannel(id, name, myApplication.getString(description), importance, group)
+            createNotificationChannel(id, name, ApplicationManager.getString(description), importance, group)
 
         }
 

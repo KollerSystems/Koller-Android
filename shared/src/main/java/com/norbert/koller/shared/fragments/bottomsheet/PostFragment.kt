@@ -11,7 +11,7 @@ import android.widget.Button
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CommentData
 import com.norbert.koller.shared.recycleradapters.CommentRecyclerAdapter
@@ -37,7 +37,7 @@ class PostFragment : BottomSheetDialogFragment() {
     override fun onCancel(dialog: DialogInterface) {
 
         var addToClipboard = true
-        if(MyApplication.longEnoughToAsk(commentTil)){
+        if(ApplicationManager.longEnoughToAsk(commentTil)){
 
             val activity = requireActivity()
             val snackbar = Snackbar
@@ -53,7 +53,7 @@ class PostFragment : BottomSheetDialogFragment() {
                     override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                         super.onDismissed(transientBottomBar, event)
                         if(addToClipboard){
-                            MyApplication.setClipboard(activity, commentTil.editText!!.text.toString())
+                            ApplicationManager.setClipboard(activity, commentTil.editText!!.text.toString())
                         }
                     }
                 })

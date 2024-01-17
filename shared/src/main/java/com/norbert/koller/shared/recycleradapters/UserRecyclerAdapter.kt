@@ -18,7 +18,7 @@ import com.google.android.material.transition.MaterialArcMotion
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialContainerTransform.FADE_MODE_CROSS
 import com.google.android.material.transition.MaterialElevationScale
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.activities.MainActivity
@@ -61,10 +61,10 @@ class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
         holder.itemView.setOnClickListener {
 
             if (item.uid == UserData.instance.uid) {
-                MyApplication.openProfile(context)
+                ApplicationManager.openProfile(context)
             } else {
 
-                val fragment = MyApplication.userFragment(item.uid)
+                val fragment = ApplicationManager.userFragment(item.uid)
                 (context as MainActivity).addFragmentWithTransition(fragment, holder.itemView as MaterialCardView, getTransitionName(item.getMainID()))
             }
 

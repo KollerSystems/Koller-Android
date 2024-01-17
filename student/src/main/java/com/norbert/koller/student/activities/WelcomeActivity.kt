@@ -18,7 +18,7 @@ import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.student.fragments.WelcomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.fragments.WelcomeFragmentBase
 
 
@@ -58,7 +58,7 @@ class WelcomeActivity : AppCompatActivity() {
                 0->{
                     tab.view.minimumWidth = 1
                     tab.view.post{
-                        tab.view.layoutParams.width = MyApplication.convertDpToPixel(10, tab.view.context)
+                        tab.view.layoutParams.width = ApplicationManager.convertDpToPixel(10, tab.view.context)
                     }
 
                     tab.view.setPadding(0,0,0,0)
@@ -81,7 +81,7 @@ class WelcomeActivity : AppCompatActivity() {
                 6->{
                     tab.view.minimumWidth = 1
                     tab.view.post{
-                        tab.view.layoutParams.width = MyApplication.convertDpToPixel(10, tab.view.context)
+                        tab.view.layoutParams.width = ApplicationManager.convertDpToPixel(10, tab.view.context)
                     }
                     tab.view.setPadding(0,0,0,0)
                 }

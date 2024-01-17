@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Koller"
-        android:name="com.norbert.koller.reader.MyApplication"
+        android:name="com.norbert.koller.reader.ApplicationManager"
         android:allowBackup="true"
         android:usesCleartextTraffic="true">
 

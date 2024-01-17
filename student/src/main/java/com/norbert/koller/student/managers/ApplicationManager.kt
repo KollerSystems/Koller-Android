@@ -13,11 +13,11 @@ import com.norbert.koller.student.fragments.StudentHostelFragment
 import com.norbert.koller.student.fragments.UserFragment
 import com.norbert.koller.student.fragments.bottomsheet.ProfileFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.student.BuildConfig
 import com.norbert.koller.student.R
 
-class ApplicationManager : MyApplication() {
+class ApplicationManager : ApplicationManager() {
 
     override fun onCreate() {
 

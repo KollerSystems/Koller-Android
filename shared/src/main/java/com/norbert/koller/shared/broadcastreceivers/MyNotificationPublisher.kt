@@ -11,7 +11,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.LaunchActivity
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
 
 
@@ -31,7 +31,7 @@ class MyNotificationPublisher : BroadcastReceiver() {
             .setContentText("Nincs kimenőd, így csak 15:45-ig maradhatsz kint")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingActivityIntent)
-            .setColor(MyApplication.getAppColor(context))
+            .setColor(ApplicationManager.getAppColor(context))
             .setAutoCancel(true)
 
 

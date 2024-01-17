@@ -14,7 +14,6 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.managers.MyApplication
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.delay
@@ -131,14 +130,14 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
 
             pagingSource = formatRecievedValues(response, offset, params.loadSize)
 
-        }, {error, errorBody ->
+        }) { error, errorBody ->
 
             recyclerAdapter.state = BaseRecycleAdapter.STATE_ERROR
-            recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount-1)
+            recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1)
             Log.e("ERROR", error.toString())
             pagingSource = LoadResult.Error(Throwable("Error: $error. Error body: $errorBody"))
 
-        })
+        }
 
         return pagingSource!!
     }

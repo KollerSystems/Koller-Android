@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.activities.DevicesActivity
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.DevData
 import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
@@ -48,7 +48,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         badgeUser.setColorBasedOnClass(UserData.instance.class_?.class_)
 
         val textVersion : TextView = view.findViewById(R.id.text_version)
-        textVersion.text = MyApplication.version
+        textVersion.text = ApplicationManager.version
 
         textName = view.findViewById(R.id.profile_text_name)
         textName.text = UserData.instance.name
@@ -74,7 +74,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
                     lifecycleScope.launch{
 
                         DataStoreManager.remove(requireActivity(), DataStoreManager.TOKENS)
-                        MyApplication.openLogin.invoke(requireContext())
+                        ApplicationManager.openLogin.invoke(requireContext())
                         requireActivity().finish()
                         dialog.dismiss()
                         dismiss()
@@ -104,7 +104,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
 
         cardMyRoom.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(UserData.instance.rid!!))
+            (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(UserData.instance.rid!!))
             this.dismiss()
         }
 
@@ -126,7 +126,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
 
         fbtnSettings.setOnClickListener{
-            MyApplication.openSettings.invoke(requireContext())
+            ApplicationManager.openSettings.invoke(requireContext())
         }
 
         val fbtnPrivacyPolicy: View = view.findViewById(R.id.profile_fbtn_privacy_policy)

@@ -10,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.APIInterface
@@ -79,7 +79,7 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
             buttonDesc.setOnClickListener{
                 val map = mutableMapOf(Pair("Group", arrayListOf(response.group!!)))
 
-                (context as MainActivity).addFragment(MyApplication.usersFragment(map))
+                (context as MainActivity).addFragment(ApplicationManager.usersFragment(map))
             }
         }
     }

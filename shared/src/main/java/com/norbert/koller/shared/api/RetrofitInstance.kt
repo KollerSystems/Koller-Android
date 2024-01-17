@@ -2,7 +2,6 @@ package com.norbert.koller.shared.api
 
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.google.gson.Gson
-import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ErrorData
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
@@ -29,6 +28,7 @@ object RetrofitInstance {
         .writeTimeout(timeout, TimeUnit.SECONDS)
         .readTimeout(timeout, TimeUnit.SECONDS)
         .addInterceptor(AuthInterceptor())
+        .authenticator(AuthenticationManager())
         .build()
 
     val dIP = "http://main.nzx.hu:48659/"

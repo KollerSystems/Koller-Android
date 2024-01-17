@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.norbert.koller.shared.fragments.NotificationsFragment
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
 import com.norbert.koller.teacher.BuildConfig
 import com.norbert.koller.teacher.R
@@ -20,7 +20,7 @@ import com.norbert.koller.teacher.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.teacher.fragments.UsersFragment
 import com.norbert.koller.teacher.fragments.bottomsheet.ProfileFragment
 
-class ApplicationManager : MyApplication() {
+class ApplicationManager : ApplicationManager() {
 
     override fun onCreate() {
         super.onCreate()

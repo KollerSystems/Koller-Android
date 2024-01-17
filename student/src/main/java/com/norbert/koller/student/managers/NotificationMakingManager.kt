@@ -1,14 +1,14 @@
 package com.norbert.koller.student.managers
 
 import android.app.NotificationManager
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 
 class NotificationMakingManager : com.norbert.koller.shared.managers.NotificationMakingManager() {
 
-    override fun createNotificationChannels(myApplication: MyApplication) {
+    override fun createNotificationChannels(ApplicationManager: ApplicationManager) {
 
-        super.createNotificationChannels(myApplication)
+        super.createNotificationChannels(ApplicationManager)
         createNotificationChannel(
             ARRIVAL_REMINDER_CHANNEL,
             R.string.arrival_reminder,

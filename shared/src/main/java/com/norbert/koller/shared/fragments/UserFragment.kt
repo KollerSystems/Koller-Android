@@ -20,7 +20,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.transition.MaterialContainerTransform
-import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.APIInterface
@@ -110,7 +110,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
             if (!string.isNullOrBlank()) {
                 chip.visibility = View.VISIBLE
                 chip.setOnClickListener{
-                    MyApplication.setClipboard(requireContext(), string)
+                    ApplicationManager.setClipboard(requireContext(), string)
                 }
             }
         }
@@ -132,15 +132,15 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
 
             buttonRoom.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.roomFragment(response.rid!!))
+                (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid!!))
             }
 
             buttonGroup.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.group!!)))))
+                (requireContext() as MainActivity).addFragment(ApplicationManager.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.group!!)))))
             }
 
             buttonClass.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(MyApplication.usersFragment(mutableMapOf(Pair("Class", arrayListOf(response.class_.toString())))))
+                (requireContext() as MainActivity).addFragment(ApplicationManager.usersFragment(mutableMapOf(Pair("Class", arrayListOf(response.class_.toString())))))
             }
 
             NestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
