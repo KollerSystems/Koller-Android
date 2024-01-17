@@ -15,6 +15,7 @@ import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.MyApplication
+import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.delay
 import retrofit2.Response
@@ -44,7 +45,7 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
         }
 
         for ((key, value) in viewModel.dateFilters) {
-            finalString += "${key}[gte]:${SimpleDateFormat(DateTimeHelper.apiFormat).format(value.first) + "T00:00:00.000Z"},${key}[lte]:${SimpleDateFormat(DateTimeHelper.apiFormat).format(value.second) + "T00:00:00.000Z"},"
+            finalString += "${key}[gte]:${value.first.formatDate(DateTimeHelper.apiFormat) + "T00:00:00.000Z"},${key}[lte]:${SimpleDateFormat(DateTimeHelper.apiFormat).format(value.second) + "T00:00:00.000Z"},"
         }
         finalString.dropLast(1)
 

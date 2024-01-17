@@ -8,10 +8,12 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.checkByPass
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.managers.restoreDropDown
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import java.util.Arrays
+import java.util.Date
 
 class ChipHelper {
 
@@ -129,9 +131,9 @@ fun arrayToString(arrayList: ArrayList<String>) : String{
 }
 
 fun dateDoubleToString(date : Pair<Long, Long>) : String{
-    var stringForChip = java.text.SimpleDateFormat(DateTimeHelper.shortMonthDayFormat).format(date.first)
+    var stringForChip = date.first.formatDate(DateTimeHelper.shortMonthDayFormat)
     if (date.first != date.second) {
-        stringForChip += " - ${java.text.SimpleDateFormat(DateTimeHelper.shortMonthDayFormat).format(date.second)}"
+        stringForChip += " - ${date.second.formatDate(DateTimeHelper.shortMonthDayFormat)}"
     }
 
     return stringForChip

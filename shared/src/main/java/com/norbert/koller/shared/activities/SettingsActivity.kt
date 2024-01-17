@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.AppBarLayout
@@ -19,6 +20,7 @@ import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.managers.setup
 import java.util.Calendar
+import java.util.Locale
 
 open class SettingsActivity : AppCompatActivity() {
     companion object {
@@ -52,6 +54,7 @@ open class SettingsActivity : AppCompatActivity() {
         super.onPostCreate(savedInstanceState)
 
         val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
+
 
 
 

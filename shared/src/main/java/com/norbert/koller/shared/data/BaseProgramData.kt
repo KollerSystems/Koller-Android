@@ -3,6 +3,7 @@ package com.norbert.koller.shared.data
 import android.content.Context
 import com.google.gson.annotations.SerializedName
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.managers.formatDate
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -19,7 +20,7 @@ class BaseProgramData(
 ) : BaseData() {
 
     override fun diffrentDecider(context: Context): String {
-        return SimpleDateFormat(DateTimeHelper.monthDay).format(date)
+        return RoomOrderData.instance[0].date.formatDate(DateTimeHelper.monthDay)
     }
 
     override fun getMainID(): Int {

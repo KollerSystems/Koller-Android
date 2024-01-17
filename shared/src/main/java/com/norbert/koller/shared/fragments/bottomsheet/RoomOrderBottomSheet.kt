@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.RoomOrderData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.managers.setupBottomSheet
 import java.text.SimpleDateFormat
 import java.util.ArrayList
@@ -41,8 +42,8 @@ class RoomOrderBottomSheet : BottomSheetDialogFragment()  {
 
         teacherName.text = "Name"
 
-        val format = SimpleDateFormat("MM. dd.")
-        date.text = format.format(RoomOrderData.instance[0].date)
+
+        date.text = RoomOrderData.instance[0].date.formatDate("MM. dd.")
 
         val RecyclerView : RecyclerView = view.findViewById(R.id.room_order_recycler_view)
 

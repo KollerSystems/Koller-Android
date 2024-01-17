@@ -3,6 +3,7 @@ package com.norbert.koller.shared.data
 import android.content.Context
 import com.google.gson.annotations.SerializedName
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.managers.formatDate
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
@@ -15,7 +16,7 @@ class CanteenData (
     @SerializedName("Date") val date: Date
 ) : BaseData() {
     override fun diffrentDecider(context: Context): String {
-        return SimpleDateFormat(DateTimeHelper.monthDay, Locale.getDefault()).format(date)
+        return date.formatDate(DateTimeHelper.monthDay)
     }
 
     override fun getMainID(): Int {

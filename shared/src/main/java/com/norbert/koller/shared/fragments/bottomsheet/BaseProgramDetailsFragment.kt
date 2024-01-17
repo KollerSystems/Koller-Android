@@ -16,6 +16,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import java.text.SimpleDateFormat
 
@@ -53,7 +54,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
             textTitle.text = response.topic
 
             ncwState.visibility = GONE
-            ncwDate.textContent.text = SimpleDateFormat(DateTimeHelper.monthDay).format(response.date)
+            ncwDate.textContent.text = response.date.formatDate(DateTimeHelper.monthDay)
             ncwTime.textContent.text = MyApplication.createClassesText(requireContext(), response.lesson, response.length)
             ncbClassroom.buttonContent.text = response.rid.toString()
             ncbClass.buttonContent.text = response.group

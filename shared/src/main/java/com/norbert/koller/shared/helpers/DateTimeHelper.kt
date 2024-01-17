@@ -3,6 +3,7 @@ package com.norbert.koller.shared.helpers
 import android.widget.TextView
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
+import com.norbert.koller.shared.managers.formatDate
 
 class DateTimeHelper {
 
@@ -70,7 +71,7 @@ class DateTimeHelper {
             dpd.addOnPositiveButtonClickListener {selection ->
 
                 textView.tag = selection
-                textView.text = java.text.SimpleDateFormat(style).format(selection)
+                textView.text = selection.formatDate(style)
             }
 
             return dpd

@@ -42,6 +42,7 @@ import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.util.Date
+import java.util.Locale
 
 
 open class MyApplication : Application() {
@@ -317,6 +318,18 @@ fun TextView.setVisibilityBy(date : Date?){
         visibility = GONE
     } else{
         visibility = VISIBLE
-        text = SimpleDateFormat(DateTimeHelper.shortMonthDayTimeFormat).format(date)
+        text = date.formatDate(DateTimeHelper.shortMonthDayTimeFormat)
     }
+}
+
+fun String.formatDate(format : String): String {
+    return java.text.SimpleDateFormat(format, Locale.forLanguageTag("hu")).format(this)
+}
+
+fun Date.formatDate(format : String): String {
+    return java.text.SimpleDateFormat(format, Locale.forLanguageTag("hu")).format(this)
+}
+
+fun Long.formatDate(format : String): String {
+    return java.text.SimpleDateFormat(format, Locale.forLanguageTag("hu")).format(this)
 }

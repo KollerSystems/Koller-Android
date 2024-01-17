@@ -16,6 +16,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.textfield.TextInputLayout
 import com.google.android.material.timepicker.MaterialTimePicker
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.managers.formatDate
 import java.text.SimpleDateFormat
 
 class ScheduleFragment : BottomSheetDialogFragment() {
@@ -38,7 +39,7 @@ class ScheduleFragment : BottomSheetDialogFragment() {
             val calendar: Calendar = Calendar.getInstance(TimeZone.getTimeZone("UTC"))
             calendar.timeInMillis = parentActivity.scheduleDate
 
-            tilDate.editText!!.setText(SimpleDateFormat(DateTimeHelper.shortMonthDayFormat).format(calendar.time))
+            tilDate.editText!!.setText(calendar.time.formatDate(DateTimeHelper.shortMonthDayFormat))
         }
         if(parentActivity.scheduleTime != 0){
 
