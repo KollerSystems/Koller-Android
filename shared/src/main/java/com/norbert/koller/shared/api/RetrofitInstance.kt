@@ -31,7 +31,7 @@ object RetrofitInstance {
         .authenticator(AuthenticationManager())
         .build()
 
-    val dIP = "http://main.nzx.hu:48659/"
+    val dIP = "https://main.nzx.hu:48659/"
     val grazIP = ""
 
     val api : APIInterface by lazy {

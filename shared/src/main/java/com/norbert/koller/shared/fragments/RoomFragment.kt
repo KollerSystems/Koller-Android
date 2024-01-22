@@ -74,10 +74,10 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
 
             textTitle.text = response.rid.toString()
 
-            buttonDesc.text = response.group
+            buttonDesc.text = response.group?.group
 
             buttonDesc.setOnClickListener{
-                val map = mutableMapOf(Pair("Group", arrayListOf(response.group!!)))
+                val map = mutableMapOf(Pair("Group", arrayListOf(response.group!!.id.toString())))
 
                 (context as MainActivity).addFragment(ApplicationManager.usersFragment(map))
             }

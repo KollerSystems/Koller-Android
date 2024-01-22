@@ -126,7 +126,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
 
             buttonRoom.text = response.rid.toString()
-            buttonGroup.text = response.group
+            buttonGroup.text = response.group?.group
             buttonClass.text = response.class_?.class_
 
 
@@ -136,7 +136,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
             }
 
             buttonGroup.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(ApplicationManager.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.group!!)))))
+                (requireContext() as MainActivity).addFragment(ApplicationManager.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.group!!.group)))))
             }
 
             buttonClass.setOnClickListener {
@@ -152,10 +152,10 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
                 }
             }
 
-            showAndSetIfNotNull(discordChip, response.discord)
-            showAndSetIfNotNull(facebookChip, response.facebook)
-            showAndSetIfNotNull(instagramChip, response.instagram)
-            showAndSetIfNotNull(emailChip, response.email)
+            showAndSetIfNotNull(discordChip, response.contacts?.discord)
+            showAndSetIfNotNull(facebookChip, response.contacts?.facebook)
+            showAndSetIfNotNull(instagramChip, response.contacts?.instagram)
+            showAndSetIfNotNull(emailChip, response.contacts?.email)
         }
 
         badgeUser.card.setOnClickListener{
