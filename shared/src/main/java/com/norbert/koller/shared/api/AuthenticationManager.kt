@@ -5,12 +5,15 @@ import com.norbert.koller.shared.data.ApiLoginRefreshData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.DataStoreManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
+import java.util.Calendar
 
 class AuthenticationManager : Authenticator {
 
@@ -35,6 +38,11 @@ class AuthenticationManager : Authenticator {
 
         runBlocking(Dispatchers.IO) {
             RetrofitInstance.communicate({RetrofitInstance.api.postLoginTokens(tokens)}, {it as LoginTokensResponseData
+                runBlocking {
+                    withContext(Dispatchers.IO) {
+                        DataStoreManager.save(ApplicationManager.currentContext!!, LoginTokensData(it.accessToken, Calendar.getInstance().timeInMillis + it.expiresIn-RetrofitInstance.timeout, it.refreshToken))
+                    }
+                }
                 request = response.request.newBuilder()
                     .header("Authorization", "Bearer ${it.accessToken}")
                     .build()
@@ -42,6 +50,11 @@ class AuthenticationManager : Authenticator {
             ) {error, errorBody ->
                 if(errorBody?.error == "A valid refresh token is required!"){
                     (ApplicationManager.currentContext!! as Activity).finishAffinity()
+                    runBlocking {
+                        withContext(Dispatchers.IO) {
+                            DataStoreManager.remove(ApplicationManager.currentContext!!, DataStoreManager.TOKENS)
+                        }
+                    }
                     ApplicationManager.openActivity(ApplicationManager.currentContext!!, ApplicationManager.loginActivity()::class.java)
                 }
             }

@@ -33,7 +33,10 @@ object RetrofitInstance {
 
     val davidIP = "https://main.nzx.hu:48659/"
     val grazIP = ""
-    val gergoIP = "http://192.168.163.147:80/"
+    val gergoIP = ""
+    val gyuriIP = ""
+    val robiIP = ""
+    val tempIP = ""
 
     val api : APIInterface by lazy {
         Retrofit.Builder()
