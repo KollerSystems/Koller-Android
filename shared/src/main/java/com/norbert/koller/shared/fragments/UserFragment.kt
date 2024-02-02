@@ -109,6 +109,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
         fun showAndSetIfNotNull(chip : Chip, string : String?){
             if (!string.isNullOrBlank()) {
                 chip.visibility = View.VISIBLE
+                chip.text = string
                 chip.setOnClickListener{
                     ApplicationManager.setClipboard(requireContext(), string)
                 }
@@ -136,11 +137,15 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
             }
 
             buttonGroup.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(ApplicationManager.usersFragment(mutableMapOf(Pair("Group", arrayListOf(response.group!!.group)))))
+                val userFragment = ApplicationManager.usersFragment(null)
+                    .setFilter("Group.ID", response.group!!.id.toString())
+                (requireContext() as MainActivity).addFragment(userFragment)
             }
 
             buttonClass.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(ApplicationManager.usersFragment(mutableMapOf(Pair("Class", arrayListOf(response.class_.toString())))))
+                val userFragment = ApplicationManager.usersFragment(null)
+                    .setFilter("Class.ID", response.class_!!.id.toString())
+                (requireContext() as MainActivity).addFragment(userFragment)
             }
 
             NestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
@@ -152,13 +157,15 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
                 }
             }
 
-            showAndSetIfNotNull(discordChip, response.contacts?.discord)
-            showAndSetIfNotNull(facebookChip, response.contacts?.facebook)
-            showAndSetIfNotNull(instagramChip, response.contacts?.instagram)
-            showAndSetIfNotNull(emailChip, response.contacts?.email)
+            if(response.contacts != null){
+                showAndSetIfNotNull(discordChip, response.contacts.discord)
+                showAndSetIfNotNull(facebookChip, response.contacts.facebook)
+                showAndSetIfNotNull(instagramChip, response.contacts.instagram)
+            }
+
         }
 
-        badgeUser.card.setOnClickListener{
+        badgeUser.setOnClickListener{
             StfalconImageViewer.Builder(context, listOf(badgeUser.image.drawable)){view, drawable ->
                 view.setImageDrawable(drawable)
             }

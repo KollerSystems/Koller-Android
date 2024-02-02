@@ -23,9 +23,9 @@ class UserData(
     @SerializedName("Floor") val floor : String? = null,
     @SerializedName("Door") val door : String? = null,
 
-    @SerializedName("Class") val class_ : ClassData? = ClassData(),
-    @SerializedName("Group") val group : GroupData? = GroupData(),
-    @SerializedName("Contacts") val contacts : ContactsData? = ContactsData()
+    @SerializedName("Class") val class_ : ClassData? = null,
+    @SerializedName("Group") val group : GroupData? = null,
+    @SerializedName("Contacts") val contacts : ContactsData? = null
 
 ) : BaseData()
 {
