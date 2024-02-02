@@ -13,7 +13,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseData
 
 
-class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGroup? = null) : BaseRecyclerAdapterWithTransition(chipGroup, chipGroupFilter){
+class RoomRecyclerAdapter() : BaseRecyclerAdapterWithTransition(){
 
     override fun getViewType(): Int {
         return R.layout.view_item
@@ -39,7 +39,7 @@ class RoomRecyclerAdapter(chipGroup: ChipGroup? = null, chipGroupFilter: ChipGro
         item as RoomData
 
         holder.iconLeft.setImageDrawable(AppCompatResources.getDrawable(holder.itemView.context, R.drawable.bed))
-        holder.title.text = "${item.rid} • ${item.group}"
+        holder.title.text = "${item.rid} • ${item.group!!.group}"
 
         holder.description.isSingleLine = false
 

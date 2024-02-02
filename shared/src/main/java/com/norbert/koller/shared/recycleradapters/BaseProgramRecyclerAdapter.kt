@@ -9,11 +9,13 @@ import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.search.SearchBar
+import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.fragments.bottomsheet.BaseProgramDetailsFragment
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 
-class BaseProgramRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: ChipGroup? = null) : BaseRecycleAdapter(chipGroupSort, chipGroupFilter) {
+class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
     override fun getViewType(): Int {
         return R.layout.view_user_item
     }

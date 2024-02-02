@@ -77,9 +77,11 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
             buttonDesc.text = response.group?.group
 
             buttonDesc.setOnClickListener{
-                val map = mutableMapOf(Pair("Group", arrayListOf(response.group!!.id.toString())))
 
-                (context as MainActivity).addFragment(ApplicationManager.usersFragment(map))
+                val userFragment = ApplicationManager.usersFragment(null)
+                    .setFilter("Group.ID", response.group!!.id.toString())
+
+                (context as MainActivity).addFragment(userFragment)
             }
         }
     }

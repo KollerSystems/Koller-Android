@@ -21,7 +21,7 @@ class SearchView : MaterialCardView {
     constructor(context: Context?) : super(context!!)
 
     val editTextSearch : ExtraEditText
-    private val buttonSearchCancel : Button
+    val buttonSearchCancel : Button
 
     init {
 

@@ -16,7 +16,7 @@ import java.util.Calendar
 import java.util.Date
 
 
-class GateRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: ChipGroup? = null, ) :BaseRecycleAdapter(chipGroupSort, chipGroupFilter){
+class GateRecyclerAdapter() :BaseRecycleAdapter(){
 
     override fun getViewType(): Int {
         return R.layout.view_descriptive_icon_item

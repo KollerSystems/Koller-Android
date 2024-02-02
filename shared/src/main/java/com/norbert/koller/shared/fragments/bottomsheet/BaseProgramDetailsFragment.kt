@@ -57,7 +57,7 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
             ncwDate.textContent.text = response.date.formatDate(DateTimeHelper.monthDay)
             ncwTime.textContent.text = ApplicationManager.createClassesText(requireContext(), response.lesson, response.length)
             ncbClassroom.buttonContent.text = response.rid.toString()
-            ncbClass.buttonContent.text = response.group
+            ncbClass.buttonContent.text = response.class_.class_
             ncbTeacher.buttonContent.text = response.tuid.toString()
 
             ncbClassroom.buttonContent.setOnClickListener {
@@ -66,6 +66,9 @@ class BaseProgramDetailsFragment(val baseProgram : BaseProgramData? = null) : Bo
             }
 
             ncbClass.buttonContent.setOnClickListener {
+                val userFragment = ApplicationManager.usersFragment(null)
+                    .setFilter("Class.ID", response.class_.id.toString())
+                (requireContext() as MainActivity).addFragment(userFragment)
                 dismiss()
             }
 

@@ -2,16 +2,18 @@ package com.norbert.koller.shared.fragments
 
 import android.animation.LayoutTransition
 import android.os.Bundle
-import android.os.SystemClock
+import android.view.KeyEvent
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup.MarginLayoutParams
-import android.view.WindowManager
+import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
+import android.widget.TextView
+import android.widget.TextView.OnEditorActionListener
+import android.widget.Toast
 import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -21,11 +23,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
+import com.norbert.koller.shared.helpers.arrayToString
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
+import com.norbert.koller.shared.helpers.resetSimpleChip
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
@@ -35,7 +38,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<String>>? = null) : Fragment() {
+abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : Fragment() {
 
     lateinit var viewModel : BaseViewModel
     lateinit var superCoolRecyclerView: SuperCoolRecyclerView
@@ -47,6 +50,11 @@ abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<St
 
 
     abstract fun getPagingSource() : BasePagingSource
+
+    fun setFilter(filterIn : String, filterTo : String) : Fragment{
+        defaultFilters = mutableMapOf(Pair(filterIn, arrayListOf(filterTo)))
+        return this
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -65,7 +73,7 @@ abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<St
         viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
 
         if(defaultFilters != null) {
-            viewModel.filters = defaultFilters
+            viewModel.filters = defaultFilters!!
         }
 
         viewModel.pagingSource = {
@@ -124,7 +132,7 @@ abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<St
         return chip
     }
 
-    fun addSearchbar(){
+    fun addSearchbar(filterName : String){
         checkIfFiltersShouldBeShowed(false)
 
         val searchBar = SearchView(requireContext())
@@ -138,6 +146,20 @@ abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<St
             checkIfFiltersShouldBeShowed(isFocused)
         }
 
+        if(viewModel.filters.containsKey(filterName)){
+
+            searchBar.editTextSearch.setText(viewModel.filters[filterName]!![0])
+        }
+
+        searchBar.editTextSearch.doOnTextChanged { text, start, before, count ->
+            if(searchBar.editTextSearch.text.isNullOrBlank()){
+                viewModel.filters.remove(filterName)
+            }
+            else{
+                viewModel.filters[filterName] = arrayListOf("/\\b(?:\\S*[_ -])*(?i)${searchBar.editTextSearch.text!!.trim()}\\S*\\b/")
+            }
+        }
+
         for (chip in chipGroupFilter.children){
             chip as Chip
             chip.doOnTextChanged{ _, _, _, _ ->
@@ -147,6 +169,10 @@ abstract class ListFragment(val defaultFilters : MutableMap<String, ArrayList<St
         }
 
         lyParameters.layoutTransition = LayoutTransition()
+
+        viewModel.filters
+
+        baseRecycleAdapter.searchBar = searchBar
     }
 
     fun addDateChip(filterName : String = "Date"){

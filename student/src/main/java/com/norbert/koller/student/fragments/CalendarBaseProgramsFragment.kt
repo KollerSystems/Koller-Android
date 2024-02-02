@@ -19,7 +19,9 @@ class CalendarBaseProgramsFragment : ListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(com.norbert.koller.shared.R.string.newest, com.norbert.koller.shared.R.string.oldest,"Date", "desc,Lesson:desc", "asc,Lesson:asc")
-        baseRecycleAdapter = BaseProgramRecyclerAdapter(chipGroupSort, chipGroupFilter)
+        baseRecycleAdapter = BaseProgramRecyclerAdapter()
+        baseRecycleAdapter.chipGroupSort = chipGroupSort
+        baseRecycleAdapter.chipGroupFilter = chipGroupFilter
 
         addDateChip()
 
@@ -30,7 +32,7 @@ class CalendarBaseProgramsFragment : ListFragment() {
             ListItem("2 ${lessonLocalName}", null, null, "2")
         ))
 
-        addSearchbar()
+        addSearchbar("Topic")
 
         super.onViewCreated(view, savedInstanceState)
     }

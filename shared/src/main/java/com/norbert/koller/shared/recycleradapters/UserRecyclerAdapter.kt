@@ -27,7 +27,7 @@ import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 
-class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: ChipGroup? = null) : BaseRecyclerAdapterWithTransition(chipGroupSort, chipGroupFilter) {
+class UserRecyclerAdapter() : BaseRecyclerAdapterWithTransition() {
     override fun getViewType(): Int {
         return R.layout.view_user_item
     }

@@ -29,7 +29,9 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(R.string.abc, R.string.zyx,"Name")
-        baseRecycleAdapter = UserRecyclerAdapter(chipGroupSort, chipGroupFilter)
+        baseRecycleAdapter = UserRecyclerAdapter()
+        baseRecycleAdapter.chipGroupSort = chipGroupSort
+        baseRecycleAdapter.chipGroupFilter = chipGroupFilter
 
         /*leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)
@@ -54,7 +56,13 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
             ListItem(getString(R.string.teacher), null, null, "2")
         ))
 
-        addSearchbar()
+        addSortingChip("Class.ID", R.string.class_, arrayListOf(
+        ))
+
+        addSortingChip("Group.ID", R.string.group, arrayListOf(
+        ))
+
+        addSearchbar("Name")
 
         super.onViewCreated(view, savedInstanceState)
     }

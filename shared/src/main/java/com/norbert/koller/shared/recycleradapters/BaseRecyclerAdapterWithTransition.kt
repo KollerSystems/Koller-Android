@@ -11,7 +11,7 @@ import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.fragments.ListFragment
 
-abstract class BaseRecyclerAdapterWithTransition(chipGroupSort : ChipGroup? = null, chipGroupFilter : ChipGroup? = null) : BaseRecycleAdapter(chipGroupSort, chipGroupFilter) {
+abstract class BaseRecyclerAdapterWithTransition() : BaseRecycleAdapter() {
 
     lateinit var fragment : ListFragment
 

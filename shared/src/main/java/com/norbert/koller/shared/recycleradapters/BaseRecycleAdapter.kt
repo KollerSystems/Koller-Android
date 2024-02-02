@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
 import androidx.core.view.iterator
@@ -12,10 +13,12 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.google.android.material.search.SearchBar
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
-abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chipGroupFilter: ChipGroup? = null) : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
+abstract class BaseRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseComparator){
 
     lateinit var RecyclerView: RecyclerView
 
@@ -24,7 +27,9 @@ abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chip
 
     var beforeRefresh: (() -> Unit)? = null
 
- 
+    var chipGroupSort: ChipGroup? = null
+    var chipGroupFilter: ChipGroup? = null
+    var searchBar: SearchView? = null
 
     abstract fun getViewType() : Int
 
@@ -37,6 +42,30 @@ abstract class BaseRecycleAdapter(val chipGroupSort: ChipGroup? = null, val chip
             chip as Chip
             chip.doBeforeTextChanged{text, start, before, count ->
                 fullRefresh()
+            }
+        }
+
+
+        if(searchBar != null) {
+            searchBar!!.editTextSearch.setOnEditorActionListener { _, actionId, _ ->
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    if(searchBar!!.tag != searchBar!!.editTextSearch.text.toString()) {
+                        fullRefresh()
+                    }
+
+                    searchBar!!.tag = searchBar!!.editTextSearch.text.toString()
+                }
+                false
+            }
+
+            searchBar!!.buttonSearchCancel.setOnClickListener {
+                searchBar!!.editTextSearch.setText("")
+                if(searchBar!!.tag != searchBar!!.editTextSearch.text.toString()){
+                    fullRefresh()
+                }
+
+
+                searchBar!!.tag = ""
             }
         }
 

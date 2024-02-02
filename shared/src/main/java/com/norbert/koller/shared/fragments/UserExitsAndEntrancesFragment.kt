@@ -18,7 +18,9 @@ class UserExitsAndEntrancesFragment(val uid : Int? = null) : ListFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
-        baseRecycleAdapter = GateRecyclerAdapter(chipGroupSort, chipGroupFilter)
+        baseRecycleAdapter = GateRecyclerAdapter()
+        baseRecycleAdapter.chipGroupSort = chipGroupSort
+        baseRecycleAdapter.chipGroupFilter = chipGroupFilter
 
         if(viewModel.id == null) {
             viewModel.id = uid
