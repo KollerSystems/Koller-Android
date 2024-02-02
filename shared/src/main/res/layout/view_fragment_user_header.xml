@@ -35,7 +35,6 @@
             style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:paddingHorizontal="8dp"
             android:text="@string/group"
             android:textAppearance="@style/Text" />
@@ -70,7 +69,6 @@
             style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:enabled="false"
             android:paddingHorizontal="8dp"
             android:text="@string/class_"
             android:textAppearance="@style/Text" />

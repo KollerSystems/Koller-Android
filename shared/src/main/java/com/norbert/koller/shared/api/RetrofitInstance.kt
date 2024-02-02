@@ -31,12 +31,13 @@ object RetrofitInstance {
         .authenticator(AuthenticationManager())
         .build()
 
-    val dIP = "https://main.nzx.hu:48659/"
+    val davidIP = "https://main.nzx.hu:48659/"
     val grazIP = ""
+    val gergoIP = "http://192.168.163.147:80/"
 
     val api : APIInterface by lazy {
         Retrofit.Builder()
-            .baseUrl(dIP)
+            .baseUrl(davidIP)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()

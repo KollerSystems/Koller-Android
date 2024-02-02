@@ -72,25 +72,29 @@
                 android:textColor="?attr/colorForeground066" />
         </LinearLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/user_button"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/user_card"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginStart="5dp"
             android:layout_marginTop="@dimen/spacing"
             android:layout_marginEnd="20dp"
             android:layout_marginBottom="@dimen/spacing"
-            android:background="@drawable/circle"
-            android:backgroundTint="?attr/colorPrimaryContainer"
-            android:clickable="true"
-            android:scaleType="centerInside"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toEndOf="@+id/toolbar_title"
-            app:layout_constraintTop_toBottomOf="@id/guideline"
-            app:shapeAppearanceOverlay="@style/RoundImageView"
+            app:layout_constraintTop_toBottomOf="@id/guideline">
+
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerInside"
             app:srcCompat="@drawable/person" />
+
+        </com.google.android.material.card.MaterialCardView>
 
     </androidx.constraintlayout.motion.widget.MotionLayout>
     </merge>

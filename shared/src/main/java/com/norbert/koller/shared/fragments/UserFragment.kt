@@ -120,7 +120,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
             response as UserData
 
-            badgeUser.setColorBasedOnClass(response.class_?.class_)
+            badgeUser.setUser(response)
 
             textName.text = response.name
 

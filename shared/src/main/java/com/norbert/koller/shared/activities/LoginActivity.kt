@@ -19,6 +19,7 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData

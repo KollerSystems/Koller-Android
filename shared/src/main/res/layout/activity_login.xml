@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -24,7 +24,7 @@
             android:textAppearance="@style/MainTitleExpanded"
             android:textSize="60sp" />
 
-    </LinearLayout>
+    </FrameLayout>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottom_view"
@@ -78,7 +78,7 @@
                     app:helperTextTextAppearance="@style/Description">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/login_inpf_id"
+                        android:id="@+id/tiet_ip"
                         style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"

@@ -54,7 +54,7 @@ class UserRecyclerAdapter(chipGroupSort: ChipGroup? = null, chipGroupFilter: Chi
                 R.drawable.person
             )
         )
-        holder.userBadge.setColorBasedOnClass(item.class_?.class_)
+        holder.userBadge.setUser(item)
         holder.title.text = item.name
         holder.description.text = item.createDescription()
 

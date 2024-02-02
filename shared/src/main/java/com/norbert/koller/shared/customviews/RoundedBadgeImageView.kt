@@ -2,6 +2,7 @@ package com.norbert.koller.shared.customviews
 
 import android.content.Context
 import android.graphics.Color
+import android.service.autofill.UserData
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
@@ -10,6 +11,7 @@ import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.getAttributeColor
+import com.squareup.picasso.Picasso
 
 class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
@@ -19,6 +21,16 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayou
 
     val red : Int = 10
     val yellow : Int = 12
+
+    fun setUser(userData : com.norbert.koller.shared.data.UserData){
+
+        Picasso.get()
+            .load("https://media.discordapp.net/attachments/1028713335698489504/1060984132953440397/FB_IMG_1660119226404.png")
+            .into(image)
+
+
+        setColorBasedOnClass(userData.class_?.class_)
+    }
 
     fun setColorBasedOnClass(class_ : String?){
         if(class_.isNullOrBlank()){

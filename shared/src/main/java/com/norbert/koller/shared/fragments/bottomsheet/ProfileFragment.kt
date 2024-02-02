@@ -45,7 +45,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         dialog!!.setupBottomSheet()
 
         val badgeUser : RoundedBadgeImageView = view.findViewById(R.id.badge_user)
-        badgeUser.setColorBasedOnClass(UserData.instance.class_?.class_)
+        badgeUser.setUser(UserData.instance)
 
         val textVersion : TextView = view.findViewById(R.id.text_version)
         textVersion.text = ApplicationManager.version

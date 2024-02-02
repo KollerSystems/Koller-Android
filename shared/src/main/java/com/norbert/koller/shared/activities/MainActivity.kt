@@ -12,6 +12,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextSwitcher
 import android.widget.TextView
@@ -25,6 +26,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.snackbar.Snackbar
@@ -37,6 +39,7 @@ import com.norbert.koller.shared.managers.getColorOfPixel
 import com.norbert.koller.shared.managers.getStringResourceByName
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
+import com.squareup.picasso.Picasso
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -111,17 +114,21 @@ abstract class MainActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-        bottomNavigationView.setOnItemReselectedListener { menuItem ->
+        bottomNavigationView.setOnItemReselectedListener {
 
             dropAllFragments()
 
         }
 
-        val userButton = findViewById<ShapeableImageView>(R.id.user_button)
-        userButton.setOnClickListener{
+        val userImage = findViewById<ImageView>(R.id.user_image)
+        val userCard = findViewById<MaterialCardView>(R.id.user_card)
+        userCard.setOnClickListener{
             ApplicationManager.openProfile.invoke(this)
         }
 
+        Picasso.get()
+            .load("https://media.discordapp.net/attachments/1028713335698489504/1060984132953440397/FB_IMG_1660119226404.png")
+            .into(userImage)
 
         bottomNavigationView.post{
             val navViewColor = bottomNavigationView.getColorOfPixel(0,0)
@@ -130,9 +137,6 @@ abstract class MainActivity : AppCompatActivity() {
 
         if(savedInstanceState == null) {
             changeBackStackState(R.id.home)
-        }
-        else{
-
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -165,6 +169,7 @@ abstract class MainActivity : AppCompatActivity() {
                         viewModel.mainFragmentList = arrayListOf(0)
                     }
                     else{
+                        super.onBackPressed()
                         finish()
                     }
 
@@ -376,7 +381,7 @@ abstract class MainActivity : AppCompatActivity() {
             .setIcon(R.drawable.check_thick)
             .setPositiveButton(
                 R.string.ok
-            ) { dialogInterface, i -> }
+            ) { _, _ -> }
             .show()
     }
 }

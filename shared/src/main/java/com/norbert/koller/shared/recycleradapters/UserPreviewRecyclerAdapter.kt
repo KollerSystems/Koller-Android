@@ -30,7 +30,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
 
         RecyclerViewHelper.roundRecyclerItemsHorizontallyGrid(holder.itemView, position, todayList.size)
 
-        holder.userBadge.setColorBasedOnClass(currentItem.class_?.class_)
+        holder.userBadge.setUser(currentItem)
 
         val nameParts : List<String> = currentItem.name!!.split(" ")
         val name = nameParts[0] + " " + nameParts [1]
