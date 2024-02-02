@@ -20,13 +20,7 @@ class RoomData(
             return rid.toString()[0].orderSingleNumber(context) + " " + context.getString(R.string.floor_level).lowercase()
         }
 
-        genderString = if(annexe!!.gender == 0){
-            context.getString(R.string.girl_side)
-        } else{
-            context.getString(R.string.boy_side)
-        }
-
-        return rid.toString()[0].orderSingleNumber(context) + " " + context.getString(R.string.floor_level).lowercase() + " • " + genderString
+        return rid.toString()[0].orderSingleNumber(context) + " " + context.getString(R.string.floor_level).lowercase() + " • " + annexe?.annexe
     }
 
     override fun getMainID(): Int {

@@ -11,7 +11,7 @@ class BaseProgramData(
     @SerializedName("ID") var id: Int,
     @SerializedName("TypeID") var typeId: Int,
     @SerializedName("Date") var date: Date,
-    @SerializedName("Group") var group: String,
+    @SerializedName("Class") var class_: ClassData,
     @SerializedName("Lesson") var lesson: Int,
     @SerializedName("Length") var length: Int,
     @SerializedName("Topic") var topic: String,
@@ -20,7 +20,7 @@ class BaseProgramData(
 ) : BaseData() {
 
     override fun diffrentDecider(context: Context): String {
-        return RoomOrderData.instance[0].date.formatDate(DateTimeHelper.monthDay)
+        return date.formatDate(DateTimeHelper.monthDay)
     }
 
     override fun getMainID(): Int {
