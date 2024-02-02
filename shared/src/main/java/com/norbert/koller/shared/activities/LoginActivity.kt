@@ -2,6 +2,7 @@ package com.norbert.koller.shared.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.SystemClock
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -25,6 +26,7 @@ import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.managers.getColorOfPixel
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 open class LoginActivity : AppCompatActivity() {
 
@@ -116,7 +118,7 @@ open class LoginActivity : AppCompatActivity() {
                     RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.postLogin(loginData)},
                         {
                             it as LoginTokensResponseData
-                            LoginTokensData.instance = LoginTokensData(it.accessToken, it.expiresIn-RetrofitInstance.timeout, it.refreshToken)
+                            LoginTokensData.instance = LoginTokensData(it.accessToken, Calendar.getInstance().timeInMillis + it.expiresIn-RetrofitInstance.timeout, it.refreshToken)
 
                             lifecycleScope.launch {
                                 DataStoreManager.save(this@LoginActivity, LoginTokensData.instance!!)
@@ -138,11 +140,24 @@ open class LoginActivity : AppCompatActivity() {
                         },
                         {errorMsg, errorBody ->
 
-                            APIInterface.serverErrorPopup(this@LoginActivity, errorBody?.error)
+                            if(errorBody == null){
+                                APIInterface.serverErrorPopup(this@LoginActivity, errorBody?.error)
+                            }
+                            else{
+                                when(errorBody.error){
+                                    "invalid_username" ->{
+                                        inplID.error = getString(R.string.invalid_id)
+                                    }
+                                    "invalid_password" ->{
+                                        inplPassword.error = getString(R.string.invalid_password)
+                                    }
+                                    else -> {
+                                        APIInterface.serverErrorPopup(this@LoginActivity, errorBody.error)
+                                    }
+                                }
+                            }
+                            
                             returnLoginLayoutToNormal()
-                            inplID.error = getString(R.string.invalid_id)
-                            inplPassword.error = getString(R.string.invalid_password)
-
                         })
 
                 }

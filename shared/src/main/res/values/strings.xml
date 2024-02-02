@@ -4,7 +4,7 @@
     <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Jelszó</string>
     <string name="invalid_username">Helytelen felhasználónév</string>
-    <string name="invalid_password">Helytelen jelszó!</string>
+    <string name="invalid_password">Helytelen jelszó</string>
     <string name="login_failed">Sikertelen bejelentkezés</string>
     <string name="login">Bejelentkezés</string>
     <string name="username">Oktatási azonsoító</string>
@@ -154,7 +154,7 @@
     <string name="optional">Opcionális</string>
     <string name="too_low_char_id" translatable="false">Kevesebb mint 11 számot írtál be!</string>
     <string name="too_much_char_id" translatable="false">Több mint 11 számot írtál be!</string>
-    <string name="invalid_id">Érvénytelen oktatási azonosító!</string>
+    <string name="invalid_id">Érvénytelen oktatási azonosító</string>
     <string name="backward">Előző</string>
     <string name="finnish">Befejezés</string>
     <string name="date">Dátum</string>
