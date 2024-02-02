@@ -5,6 +5,8 @@ import android.graphics.Color
 import android.service.autofill.UserData
 import android.util.AttributeSet
 import android.view.View
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.ImageView
 import android.widget.LinearLayout
 import com.google.android.material.card.MaterialCardView
@@ -13,11 +15,10 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.squareup.picasso.Picasso
 
-class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
 
     private var mStrokeWidth: Float = 0f
     lateinit var image : ImageView
-    lateinit var card : MaterialCardView
 
     val red : Int = 10
     val yellow : Int = 12
@@ -25,33 +26,46 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayou
     fun setUser(userData : com.norbert.koller.shared.data.UserData){
 
         Picasso.get()
-            .load("https://media.discordapp.net/attachments/1028713335698489504/1060984132953440397/FB_IMG_1660119226404.png")
+            .load(userData.picture)
+            .noPlaceholder()
             .into(image)
 
 
-        setColorBasedOnClass(userData.class_?.class_)
+        setColorBasedOnClass(userData)
     }
 
-    fun setColorBasedOnClass(class_ : String?){
+    fun setColorBasedOnClass(userData : com.norbert.koller.shared.data.UserData){
+
+        val class_ = userData.class_?.class_
         if(class_.isNullOrBlank()){
-            card.strokeColor = Color.BLACK
+            strokeColor = if(userData.group == null) {
+                Color.BLACK
+            } else{
+                context.getAttributeColor(R.attr.colorGreen)
+            }
             return
         }
 
         val year : Int = class_.split(".")[0].toInt()
 
         if(year <= red){
-            card.strokeColor = context.getAttributeColor(R.attr.colorRed)
+            strokeColor = context.getAttributeColor(R.attr.colorRed)
         }
         else if(year <= yellow){
-            card.strokeColor = context.getAttributeColor(R.attr.colorYellow)
+            strokeColor = context.getAttributeColor(R.attr.colorYellow)
         }
         else{
-            card.strokeColor = context.getAttributeColor(R.attr.colorGreen)
+            strokeColor = context.getAttributeColor(R.attr.colorGreen)
         }
     }
 
     init {
+
+        layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        radius = 99999f
+        strokeColor = Color.BLACK
+        strokeWidth = context.resources.getDimensionPixelSize(R.dimen.text_container_margin)
+
         val typedArray = context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.roundedBadgeImageView,
@@ -67,12 +81,11 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : LinearLayou
 
         View.inflate(context, R.layout.view_rounded_badge_image, this)
 
-        card  = findViewById(R.id.card)
         image = findViewById(R.id.image)
 
         val mStrokeWidthInt = mStrokeWidth.toInt()
-        card.setContentPadding(mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt)
-        card.strokeWidth = mStrokeWidthInt
+        setContentPadding(mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt)
+        strokeWidth = mStrokeWidthInt
     }
 
 }

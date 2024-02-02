@@ -1,19 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.imageview.ShapeableImageView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/card"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:cardCornerRadius="99999dp"
-    app:contentPadding="@dimen/text_container_margin"
-    app:strokeColor="@android:color/black"
-    app:strokeWidth="@dimen/text_container_margin">
-
-    <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        app:srcCompat="@drawable/person"
-        app:shapeAppearance="@style/RoundImageView"/>
-</com.google.android.material.card.MaterialCardView>
+        android:background="?attr/colorPrimaryContainer"
+        app:shapeAppearance="@style/RoundImageView"
+        app:srcCompat="@drawable/person" />

@@ -33,6 +33,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getColorOfPixel
@@ -40,6 +41,7 @@ import com.norbert.koller.shared.managers.getStringResourceByName
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
 import com.squareup.picasso.Picasso
+import org.w3c.dom.Text
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -127,7 +129,8 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         Picasso.get()
-            .load("https://media.discordapp.net/attachments/1028713335698489504/1060984132953440397/FB_IMG_1660119226404.png")
+            .load(UserData.instance.picture)
+            .noPlaceholder()
             .into(userImage)
 
         bottomNavigationView.post{
@@ -362,6 +365,11 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     fun setToolbarTitle(title : String?, description : String?){
+
+        if(title.toString() == (toolbarTitleSwitcher.currentView as TextView).text.toString() &&
+            description.toString() == toolbarDescription.text.toString()){
+            return
+        }
 
         if (description.isNullOrBlank()) {
             toolbarDescription.visibility = GONE

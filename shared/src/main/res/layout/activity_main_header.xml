@@ -87,12 +87,13 @@
             app:layout_constraintTop_toBottomOf="@id/guideline">
 
 
-        <ImageView
-            android:id="@+id/user_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerInside"
-            app:srcCompat="@drawable/person" />
+            <ImageView
+                android:id="@+id/user_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/colorPrimaryContainer"
+                android:scaleType="centerCrop"
+                app:srcCompat="@drawable/person" />
 
         </com.google.android.material.card.MaterialCardView>
 
