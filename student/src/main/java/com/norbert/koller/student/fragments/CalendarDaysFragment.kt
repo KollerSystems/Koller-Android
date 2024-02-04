@@ -17,7 +17,6 @@ import com.norbert.koller.shared.helpers.DateTimeHelper
 class CalendarDaysFragment : Fragment() {
 
 
-    private lateinit var days : Array<String>
 
 
 
@@ -27,7 +26,14 @@ class CalendarDaysFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view: View = inflater.inflate(R.layout.fragment_calendar_days, container, false)
+        return inflater.inflate(R.layout.fragment_calendar_days, container, false)
+
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
 
 
         val mcardDate : MaterialCardView = view.findViewById(R.id.mcard_date)
@@ -36,33 +42,13 @@ class CalendarDaysFragment : Fragment() {
         }
 
 
-
-        days = arrayOf(getString(R.string.monday), getString(R.string.tuesday), getString(R.string.wednesday), getString(R.string.thursday), getString(R.string.friday), getString(R.string.saturday), getString(R.string.sunday))
-
         val RecyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
+        RecyclerView.adapter = DayRecyclerAdapter()
 
         RecyclerView.layoutManager = LinearLayoutManager(context)
         RecyclerView.setHasFixedSize(true)
 
-        val datas = arrayListOf(
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mivel találkoztam vele a Mondoconon"
-            )
-        )
-
-        RecyclerView.adapter = DayRecyclerAdapter(datas)
 
 
-
-
-        return view
     }
-
 }

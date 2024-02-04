@@ -35,70 +35,12 @@
         android:paddingBottom="0dp">
 
 
-        <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+        <include
+            layout="@layout/view_fragment_calendar_days_day_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-20dp"
-            android:layout_marginTop="@dimen/card_margin"
-            android:layout_marginRight="-20dp"
-            android:layout_marginBottom="@dimen/card_margin"
-            app:cardPreventCornerOverlap="false"
-            app:contentPadding="@null">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-                <TextView
-                    style="@style/Title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginHorizontal="@dimen/spacing"
-                    android:paddingTop="@dimen/text_container_margin"
-                    android:paddingBottom="@dimen/text_container_margin"
-                    android:text="@string/dummy_date_MMddw"
-                    android:textAlignment="center" />
-
-                <View
-                    android:id="@+id/view"
-                    style="@style/SeparatorLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp" />
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/mcard_duty_teachers"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:cardCornerRadius="0dp"
-                    app:cardElevation="0dp"
-                    app:contentPaddingBottom="@dimen/text_container_margin"
-                    app:contentPaddingLeft="@dimen/spacing"
-                    app:contentPaddingRight="@dimen/spacing"
-                    app:contentPaddingTop="@dimen/text_container_margin">
-
-                    <TextView
-                        style="@style/Description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_vertical"
-                        android:layout_weight="1"
-                        android:text="Nearest duty teacher:\nKis Gazsi (F3)"
-                        android:textAlignment="center" />
-
-                    <ImageView
-                        android:layout_width="18dp"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="right"
-                        android:src="@drawable/arrow_drop" />
-                </com.google.android.material.card.MaterialCardView>
-
-            </LinearLayout>
-
-
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_marginRight="-20dp" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Card"
