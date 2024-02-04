@@ -100,9 +100,11 @@
                 android:id="@+id/ncb_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 custom:detail="-"
                 custom:icon="@drawable/groups"
-                custom:name="@string/class_" />
+                custom:name="@string/class_"
+                tools:visibility="visible" />
 
             <com.norbert.koller.shared.customviews.NameContentButton
                 android:id="@+id/ncb_teacher"

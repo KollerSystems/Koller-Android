@@ -13,28 +13,26 @@ import com.google.android.material.search.SearchBar
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.fragments.bottomsheet.BaseProgramDetailsFragment
 import com.norbert.koller.shared.data.BaseProgramData
+import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 
-class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
+class StudyGroupRecyclerAdapter() : BaseRecycleAdapter() {
     override fun getViewType(): Int {
         return R.layout.view_user_item
     }
 
     override fun getDataTag(): String {
-        return "base_program"
+        return "study_group"
     }
 
-    override fun createViewHolder(view: View): RecyclerView.ViewHolder {
-        return ViewHolder(view)
-    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int) {
 
 
         val context = holder.itemView.context
-        holder as ViewHolder
+        holder as BaseViewHolder
 
-        item as BaseProgramData
+        item as StudyGroupData
 
         holder.title.text = item.topic
 
@@ -51,13 +49,5 @@ class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
 
         }
     }
-
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-
-        val title : TextView = itemView.findViewById(R.id.text_text)
-        val description : TextView = itemView.findViewById(R.id.text_description)
-    }
-
 
 }

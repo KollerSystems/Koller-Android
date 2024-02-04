@@ -29,7 +29,7 @@ class BaseViewModel : ViewModel() {
         config = PagingConfig(
             pageSize = pageSize,
             initialLoadSize = pageSize,
-            prefetchDistance = 2)
+            prefetchDistance = pageSize/2)
         ) {
             currentPagingSource = pagingSource()
             currentPagingSource

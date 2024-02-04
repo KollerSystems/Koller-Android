@@ -9,7 +9,6 @@ import com.norbert.koller.shared.recycleradapters.BaseProgramRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.R as Rs
 
-
 class CalendarBaseProgramsFragment : ListFragment() {
 
     override fun getPagingSource(): BasePagingSource {
