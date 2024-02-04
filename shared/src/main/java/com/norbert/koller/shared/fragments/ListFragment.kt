@@ -156,7 +156,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
                 viewModel.filters.remove(filterName)
             }
             else{
-                viewModel.filters[filterName] = arrayListOf("/\\b(?:\\S*[_ -])*(?i)${searchBar.editTextSearch.text!!.trim()}\\S*\\b/")
+
+                viewModel.filters[filterName] = arrayListOf("/\\b(?:\\S*[_ -])*(?i)${Regex.escape(searchBar.editTextSearch.text!!.trim().toString())}\\S*\\b/")
             }
         }
 

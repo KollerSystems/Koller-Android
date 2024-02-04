@@ -45,7 +45,7 @@ abstract class BaseRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
             }
         }
 
-
+        searchBar!!.tag = searchBar!!.editTextSearch.text.toString()
         if(searchBar != null) {
             searchBar!!.editTextSearch.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -133,7 +133,9 @@ abstract class BaseRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
         }
     }
 
-    abstract fun createViewHolder(view : View) : RecyclerView.ViewHolder
+    open fun createViewHolder(view : View) : RecyclerView.ViewHolder{
+        return BaseViewHolder(view)
+    }
 
 
 
@@ -232,6 +234,14 @@ abstract class BaseRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
         const val VIEW_TYPE_SEPARATOR = 1
         const val VIEW_TYPE_LOADING = 2
         const val VIEW_TYPE_RETRY = 3
+    }
+
+
+
+    class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    {
+        val title : TextView = itemView.findViewById(R.id.text_text)
+        val description : TextView = itemView.findViewById(R.id.text_description)
     }
 
     class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
