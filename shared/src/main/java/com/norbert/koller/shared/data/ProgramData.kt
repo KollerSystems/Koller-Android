@@ -11,7 +11,7 @@ open class ProgramData(
     @SerializedName("Type") var type: Int,
     @SerializedName("Topic") var topic: String,
     @SerializedName("RID") var rid : Int,
-    @SerializedName("TUID") var tuid: Int,
+    @SerializedName("Teacher") var teacher: UserData?,
     @SerializedName("ProgramID") var prgraomID: Int,
     @SerializedName("Date") var date: Date,
     @SerializedName("Lesson") var lesson: Int,

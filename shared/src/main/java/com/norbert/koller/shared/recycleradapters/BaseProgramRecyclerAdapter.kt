@@ -38,7 +38,7 @@ class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
 
         holder.title.text = item.topic
 
-        var description ="${item.tuid} • ${ApplicationManager.createClassesText(context, item.lesson, item.length)}"
+        var description ="${item.teacher!!.name} • ${ApplicationManager.createClassesText(context, item.lesson, item.length)}"
 
         holder.description.text = description
 

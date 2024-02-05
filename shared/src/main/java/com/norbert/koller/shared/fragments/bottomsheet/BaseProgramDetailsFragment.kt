@@ -72,7 +72,7 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
             }
 
 
-            ncbTeacher.buttonContent.text = response.tuid.toString()
+            ncbTeacher.buttonContent.text = response.teacher!!.name.toString()
 
             ncbClassroom.buttonContent.setOnClickListener {
                 (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
@@ -81,7 +81,7 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
 
             ncbTeacher.buttonContent.setOnClickListener {
 
-                (requireContext() as MainActivity).addFragment(ApplicationManager.userFragment(response.tuid))
+                (requireContext() as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
                 dismiss()
             }
 
