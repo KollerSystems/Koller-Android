@@ -5,6 +5,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
-        android:background="?attr/colorPrimaryContainer"
         app:shapeAppearance="@style/RoundImageView"
         app:srcCompat="@drawable/person" />

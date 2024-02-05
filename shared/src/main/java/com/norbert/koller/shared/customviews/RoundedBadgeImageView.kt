@@ -61,10 +61,13 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCar
 
     init {
 
+
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         radius = 99999f
         strokeColor = Color.BLACK
         strokeWidth = context.resources.getDimensionPixelSize(R.dimen.text_container_margin)
+
+        setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorPrimaryContainer))
 
         val typedArray = context.theme.obtainStyledAttributes(
             attrs,
