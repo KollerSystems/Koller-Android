@@ -7,11 +7,10 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.norbert.koller.shared.managers.setup
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
 import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
@@ -82,7 +81,7 @@ abstract class RoomsActivity : AppCompatActivity() {
         }
 
         buttonMore.setOnClickListener{
-            val dialog = ItemListDialogFragment(arrayListOf(
+            val dialog = ItemListDialogFragmentBase(arrayListOf(
                 ListItem(getString(com.norbert.koller.shared.R.string.delete_all), null, AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.close), null, {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.are_you_sure_delete_all_grade))
@@ -94,7 +93,7 @@ abstract class RoomsActivity : AppCompatActivity() {
                         }
                         .show()
                 })))
-            dialog.show(supportFragmentManager, ItemListDialogFragment.TAG)
+            dialog.show(supportFragmentManager, ItemListDialogFragmentBase.TAG)
 
         }
 

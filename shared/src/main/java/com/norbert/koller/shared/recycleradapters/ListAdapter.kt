@@ -11,13 +11,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
-data class ListItem(val title: String, val description: String?, val icon: Drawable?, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
+data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
 }
 
-class ListAdapter (val bottomSheet : ItemListDialogFragment, private val listItem : ArrayList<ListItem>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val listItem : ArrayList<ListItem>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
@@ -49,8 +49,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragment, private val listIte
         holder.title.text = currentItem.title
 
 
-
-        if (bottomSheet.getValuesOnFinish != null) {
+        if (bottomSheet.toggleList()) {
             holder.checkBox.isChecked = currentItem.isChecked
             holder.checkBox.visibility = VISIBLE
             holder.checkBox.setOnCheckedChangeListener{ _, isChecked ->
@@ -64,7 +63,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragment, private val listIte
 
         holder.itemView.setOnClickListener {
 
-            if(bottomSheet.getValuesOnFinish != null) {
+            if(bottomSheet.toggleList()) {
                 holder.checkBox.toggle()
             }
             else{

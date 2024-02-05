@@ -307,4 +307,5 @@
     <string name="out">Out</string>
     <string name="apply">Apply</string>
     <string name="retry">Retry</string>
+    <string name="loading">Töltés...</string>
 </resources>

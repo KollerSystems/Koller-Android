@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.helpers.arrayToString
@@ -36,6 +37,7 @@ import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 
 abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : Fragment() {
@@ -186,6 +188,12 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
         val chip = createChip()
         chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, arrayList, viewModel)
+    }
+
+    fun addSortingChip(filterName : String, localizedNameId : Int, getValues: suspend () -> Response<*>, tag : String){
+
+        val chip = createChip()
+        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, getValues, viewModel, tag)
     }
 
     fun checkIfFiltersShouldBeShowed(isFocused : Boolean){

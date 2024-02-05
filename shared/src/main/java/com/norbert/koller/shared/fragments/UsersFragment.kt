@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.transition.Hold
 import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
@@ -56,11 +57,9 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
             ListItem(getString(R.string.teacher), null, null, "2")
         ))
 
-        addSortingChip("Class.ID", R.string.class_, arrayListOf(
-        ))
+        addSortingChip("Class.ID", R.string.class_, {RetrofitInstance.api.getClasses()}, "class")
 
-        addSortingChip("Group.ID", R.string.group, arrayListOf(
-        ))
+        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group")
 
         addSearchbar("Name")
 

@@ -1,6 +1,9 @@
 package com.norbert.koller.shared.managers
 
+import com.google.gson.annotations.Until
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
+import okhttp3.Response
 
 object CacheManager {
 

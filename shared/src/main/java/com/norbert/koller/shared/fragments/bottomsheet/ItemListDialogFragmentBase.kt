@@ -13,30 +13,35 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.recycleradapters.ListAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 
-class ItemListDialogFragment(val list : ArrayList<ListItem>, val alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
+abstract class ItemListDialogFragmentBase(val alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
 
-    private lateinit var recycleView : RecyclerView
-
+    open lateinit var list : ArrayList<ListItem>
 
     var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
+
+    lateinit var recycleView : RecyclerView
+
+    abstract fun toggleList() : Boolean
+
+
+    fun setRecyclerView(listItemList : ArrayList<ListItem>){
+
+        recycleView.adapter = ListAdapter(this@ItemListDialogFragmentBase, listItemList)
+        recycleView.layoutManager = LinearLayoutManager(context)
+        recycleView.setHasFixedSize(true)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_bshd_item_list, container, false)
+        return inflater.inflate(R.layout.fragment_bshd_item_list, container, false)
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         recycleView = view.findViewById(R.id.simple_list_bottom_fragment_recycle_view)
-
-
-        recycleView.adapter = ListAdapter(this, list)
-
-
-        recycleView.layoutManager = LinearLayoutManager(context)
-        recycleView.setHasFixedSize(true)
-
-        return view
     }
 
     override fun onCancel(dialog: DialogInterface) {
@@ -58,7 +63,6 @@ class ItemListDialogFragment(val list : ArrayList<ListItem>, val alreadyChecked 
         }
         super.onCancel(dialog)
     }
-
 
 
     companion object {

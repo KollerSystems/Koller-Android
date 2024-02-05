@@ -10,6 +10,7 @@ import com.norbert.koller.shared.managers.ApplicationManager
 abstract class BaseData() {
     abstract fun diffrentDecider(context: Context) : String
     abstract fun getMainID() : Int
+    open fun getTitle(): String{return ""}
     private var receivedAt : Long = -1
 
     fun saveReceivedTime(){

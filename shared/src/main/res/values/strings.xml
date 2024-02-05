@@ -343,5 +343,6 @@
     <string name="out">Ki</string>
     <string name="apply">Alkalmazás</string>
     <string name="retry">Újra</string>
+    <string name="loading">Loading...</string>
 
 </resources>

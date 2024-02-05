@@ -25,10 +25,11 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.fragments.bottomsheet.MessageFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
@@ -121,12 +122,12 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            val dialog = ItemListDialogFragment(arrayListOf(
+            val dialog = ItemListDialogFragmentStatic(arrayListOf(
                 ListItem(text, null, icon, null, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)
                 })))
-            dialog.show(fragmentManager.supportFragmentManager, ItemListDialogFragment.TAG)
+            dialog.show(fragmentManager.supportFragmentManager, ItemListDialogFragmentBase.TAG)
 
 
 

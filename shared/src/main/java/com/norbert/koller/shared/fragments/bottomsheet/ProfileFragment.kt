@@ -1,29 +1,35 @@
 package com.norbert.koller.shared.fragments.bottomsheet
 
-import com.norbert.koller.shared.data.UserData
+import android.app.Dialog
+import android.content.DialogInterface
+import android.content.DialogInterface.OnShowListener
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
+import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.managers.DataStoreManager
-import com.norbert.koller.shared.activities.DevicesActivity
-import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.DevData
-import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
-import com.norbert.koller.shared.recycleradapters.DevRecyclerAdapter
+import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.norbert.koller.shared.activities.ManageAccountActivity
+import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.DevicesActivity
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.activities.ManageAccountActivity
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
+import com.norbert.koller.shared.data.DevData
+import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
+import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.setupBottomSheet
+import com.norbert.koller.shared.recycleradapters.DevRecyclerAdapter
 import kotlinx.coroutines.launch
 
 
@@ -40,7 +46,20 @@ open class ProfileFragment : BottomSheetDialogFragment() {
     private lateinit var textName : TextView
     private lateinit var textDescription : TextView
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
+        dialog.setOnShowListener { dialog1: DialogInterface ->
+            val d = dialog1 as BottomSheetDialog
+            val bottomSheet =
+                d.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout?
+            if (bottomSheet != null) BottomSheetBehavior.from(bottomSheet).state =
+                BottomSheetBehavior.STATE_EXPANDED
+        }
+        return dialog
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
         super.onViewCreated(view, savedInstanceState)
         dialog!!.setupBottomSheet()
 

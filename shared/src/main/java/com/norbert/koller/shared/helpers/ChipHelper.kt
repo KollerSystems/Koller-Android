@@ -1,19 +1,32 @@
 package com.norbert.koller.shared.helpers
 
+import android.app.Activity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.util.Pair
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.api.RetrofitInstance
+import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentApi
 import com.norbert.koller.shared.managers.checkByPass
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.managers.restoreDropDown
 import com.norbert.koller.shared.viewmodels.BaseViewModel
+import kotlinx.coroutines.launch
+import retrofit2.Response
 import java.util.Arrays
-import java.util.Date
 
 class ChipHelper {
 
@@ -64,20 +77,102 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName 
     }
 }
 
-fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>, viewModel: BaseViewModel){
+fun Chip.resetChip(localizedNameSting : String, viewModel: BaseViewModel, filterName : String){
+    viewModel.filters.remove(filterName)
+    resetSimpleChip(localizedNameSting)
+}
 
-    fun resetChip(localizedNameSting : String){
-        viewModel.filters.remove(filterName)
-        resetSimpleChip(localizedNameSting)
+fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel: BaseViewModel, filterName : String){
+    checkByPass(true)
+    text = localizedNameSting
+    this.addCloseOption {
+        resetChip(context.getString(localizedFilterId), viewModel, filterName)
     }
+}
 
-    fun setChip(localizedNameSting : String){
-        checkByPass(true)
-        text = localizedNameSting
-        this.addCloseOption {
-            resetChip(context.getString(localizedFilterId))
+fun Chip.createAndSetChipText(viewModel: BaseViewModel, filterName: String, tag: String, localizedFilterId : Int){
+    val strings : ArrayList<String> = arrayListOf()
+
+    for (id in viewModel.filters[filterName]!!){
+        for (elements in CacheManager.savedListsOfValues[tag]!!){
+            if(id == elements.getMainID().toString()){
+                strings.add(elements.getTitle())
+            }
         }
     }
+    setChip(arrayToString(strings), localizedFilterId, viewModel, filterName)
+
+}
+
+fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ItemListDialogFragmentBase, viewModel: BaseViewModel, filterName: String, localizedFilterId: Int){
+    dialog.getValuesOnFinish = {values, locNames ->
+
+        if(values.size != 0) {
+            val locNamesString = arrayToString(locNames)
+            if(text.toString() != locNamesString) {
+                viewModel.filters[filterName] = values
+                setChip(locNamesString, localizedFilterId, viewModel, filterName)
+            }
+        }
+        else{
+            val string = context.getString(localizedFilterId)
+            if(text.toString() != string) {
+                viewModel.filters.remove(filterName)
+                resetChip(string, viewModel, filterName)
+            }
+        }
+
+    }
+
+    dialog.show(fragmentManager, ItemListDialogFragmentBase.TAG)
+}
+
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: BaseViewModel, tag : String){
+
+    if(viewModel.filters.containsKey(filterName)){
+
+
+         viewModel.viewModelScope.launch {
+
+            if(CacheManager.savedListsOfValues.containsKey(tag)){
+                createAndSetChipText(viewModel, filterName, tag, localizedFilterId)
+            }
+            else{
+                setChip(context.getString(R.string.loading), localizedFilterId, viewModel, filterName)
+
+                RetrofitInstance.communicate(getValues, {
+                    CacheManager.savedListsOfValues[tag] = it as ArrayList<BaseData>
+                    createAndSetChipText(viewModel, filterName, tag, localizedFilterId)
+
+                },{
+                        error, errorBody ->
+                    setChip(context.getString(R.string.an_error_occurred), localizedFilterId, viewModel, filterName)
+                })
+            }
+
+
+
+
+        }
+
+
+    }
+    else{
+        resetSimpleChip(context.getString(localizedFilterId))
+    }
+
+    setOnClickListener {
+
+
+        val dialog = ItemListDialogFragmentApi(getValues, viewModel.filters[filterName], tag)
+
+        handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
+
+    }
+}
+
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>, viewModel: BaseViewModel){
+
 
     if(viewModel.filters.containsKey(filterName)){
         val localizedStrings : ArrayList<String> = arrayListOf()
@@ -91,7 +186,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
         }
 
 
-        setChip(arrayToString(localizedStrings))
+        setChip(arrayToString(localizedStrings), localizedFilterId, viewModel, filterName)
     }
     else{
         resetSimpleChip(context.getString(localizedFilterId))
@@ -100,29 +195,10 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ItemListDialogFragment(arrayList, viewModel.filters[filterName])
+        val dialog = ItemListDialogFragmentStatic(arrayList, viewModel.filters[filterName])
 
 
-        dialog.getValuesOnFinish = {values, locNames ->
-
-            if(values.size != 0) {
-                val locNamesString = arrayToString(locNames)
-                if(text.toString() != locNamesString) {
-                    viewModel.filters[filterName] = values
-                    setChip(locNamesString)
-                }
-            }
-            else{
-                val string = context.getString(localizedFilterId)
-                if(text.toString() != string) {
-                    viewModel.filters.remove(filterName)
-                    resetChip(string)
-                }
-            }
-
-        }
-
-        dialog.show(fragmentManager, ItemListDialogFragment.TAG)
+        handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
     }
 }
 
