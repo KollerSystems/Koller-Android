@@ -11,6 +11,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
 import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
@@ -81,7 +82,7 @@ abstract class RoomsActivity : AppCompatActivity() {
         }
 
         buttonMore.setOnClickListener{
-            val dialog = ItemListDialogFragmentBase(arrayListOf(
+            val dialog = ItemListDialogFragmentStatic(arrayListOf(
                 ListItem(getString(com.norbert.koller.shared.R.string.delete_all), null, AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.close), null, {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.are_you_sure_delete_all_grade))

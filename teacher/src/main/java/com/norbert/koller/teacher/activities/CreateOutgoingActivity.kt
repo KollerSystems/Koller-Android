@@ -9,6 +9,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.customviews.TextInputWithChips
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
+import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
 import com.norbert.koller.shared.managers.setToolbarToViewColor
@@ -92,7 +93,7 @@ class CreateOutgoingActivity() : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = ItemListDialogFragmentBase(arrayListOf(
+            val dialog = ItemListDialogFragmentStatic(arrayListOf(
                 ListItem(
                     getString(com.norbert.koller.shared.R.string.temporary),
                     null,
