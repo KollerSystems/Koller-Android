@@ -45,8 +45,9 @@ abstract class BaseRecycleAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
             }
         }
 
-        searchBar!!.tag = searchBar!!.editTextSearch.text.toString()
+
         if(searchBar != null) {
+            searchBar!!.tag = searchBar!!.editTextSearch.text.toString()
             searchBar!!.editTextSearch.setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     if(searchBar!!.tag != searchBar!!.editTextSearch.text.toString()) {
