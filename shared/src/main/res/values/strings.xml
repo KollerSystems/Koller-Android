@@ -343,6 +343,7 @@
     <string name="out">Ki</string>
     <string name="apply">Alkalmazás</string>
     <string name="retry">Újra</string>
-    <string name="loading">Loading...</string>
+    <string name="annexe">Szárny</string>
+    <string name="loading">Töltés...</string>
 
 </resources>
