@@ -150,7 +150,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
             NestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
                 if (isVisible(textName)) {
-                    (activity as MainActivity).setToolbarTitle(getString(R.string.user), null)
+                    (activity as MainActivity).setToolbarTitle(getString(R.string.user))
 
                 } else {
                     (activity as MainActivity).setToolbarTitle(response.name, response.createDescription())

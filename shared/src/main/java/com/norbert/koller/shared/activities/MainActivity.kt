@@ -6,6 +6,7 @@ import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.View.GONE
@@ -147,7 +148,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.addOnBackStackChangedListener {
-            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()), null)
+            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()))
             appBar.setExpanded(false)
             showBackButtonIfNeeded()
 
@@ -364,20 +365,22 @@ abstract class MainActivity : AppCompatActivity() {
         animationSet.start()
     }
 
-    fun setToolbarTitle(title : String?, description : String?){
+    fun setToolbarTitle(title : String?, description : String = ""){
 
-        if(title.toString() == (toolbarTitleSwitcher.currentView as TextView).text.toString() &&
-            description.toString() == toolbarDescription.text.toString()){
+        if(title == (toolbarTitleSwitcher.currentView as TextView).text.toString() &&
+            description == toolbarDescription.text.toString()){
             return
         }
 
-        if (description.isNullOrBlank()) {
+        Log.d("RETGIJASDIKUFHASDIOLCHBHJYXFV", "${description} :::::: ${toolbarDescription.text.toString()}")
+
+        if (description.isBlank()) {
             toolbarDescription.visibility = GONE
         }
         else{
             toolbarDescription.visibility = VISIBLE
-            toolbarDescription.text = description
         }
+        toolbarDescription.text = description
         toolbarTitleSwitcher.setText(title)
         toolbarTitleSwitcher.requestLayout()
 
