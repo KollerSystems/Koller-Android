@@ -50,6 +50,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
 
 
         if (bottomSheet.toggleList()) {
+            holder.checkBox.setOnCheckedChangeListener(null)
             holder.checkBox.isChecked = currentItem.isChecked
             holder.checkBox.visibility = VISIBLE
             holder.checkBox.setOnCheckedChangeListener{ _, isChecked ->
