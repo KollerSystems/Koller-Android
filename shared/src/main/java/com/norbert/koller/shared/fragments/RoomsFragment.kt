@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.RoomPagingSource
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
@@ -24,10 +25,15 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         baseRecycleAdapter.chipGroupSort = chipGroupSort
         baseRecycleAdapter.chipGroupFilter = chipGroupFilter
 
-        addSortingChip("Gender", R.string.side, arrayListOf(
-            ListItem( getString(R.string.girl), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
-            ListItem( getString(R.string.boy), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
+        addSortingChip("Floor", R.string.floor_level, arrayListOf(
         ))
+
+
+        addSortingChip("Annexe", R.string.annexe, arrayListOf(
+        ))
+
+        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group")
+
 
         addSearchbar("RID")
 
