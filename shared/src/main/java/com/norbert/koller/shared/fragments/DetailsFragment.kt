@@ -5,6 +5,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -16,11 +18,11 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.skydoves.androidveil.VeilLayout
+
 
 abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
@@ -139,6 +141,15 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
         snackbar!!.setAction(getString(R.string.retry)){
             refresh()
         }
+        snackbar!!.view.viewTreeObserver
+            .addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    snackbar!!.view.viewTreeObserver.removeOnPreDrawListener(this)
+                    (snackbar!!.view.layoutParams as CoordinatorLayout.LayoutParams).behavior =
+                        null
+                    return true
+                }
+            })
         snackbar!!.show()
     }
 
