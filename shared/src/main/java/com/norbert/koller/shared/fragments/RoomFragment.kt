@@ -78,7 +78,7 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
 
             buttonDesc.setOnClickListener{
 
-                val userFragment = ApplicationManager.usersFragment(null)
+                val userFragment = ApplicationManager.roomsFragment(null)
                     .setFilter("Group.ID", response.group!!.id.toString())
 
                 (context as MainActivity).addFragment(userFragment)
