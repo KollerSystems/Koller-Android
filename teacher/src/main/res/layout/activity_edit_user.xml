@@ -1,9 +1,170 @@
-<?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:custom="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:fitsSystemWindows="true"
+tools:context=".EditUserActivity">
+
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@id/appbar"
+
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/expanded_toolbar_height"
+        android:outlineProvider="none"
+        android:visibility="visible"
+        app:expanded="false"
+        tools:visibility="gone">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:id="@id/CollapsingToolbarLayout"
+            style="@style/CollapsingToolbarLayout"
+
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:title="Felhasználó szerkesztése"
+            app:toolbarId="@id/toolbar">
+
+
+            <Button
+                android:id="@id/toolbar_exit"
+                style="@style/ToolbarNavigationButton"
+                android:layout_gravity="bottom|start" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_footer_size"
+                android:clickable="false"
+                app:titleMargin="@null"
+                app:titleMarginStart="49dp" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+<androidx.core.widget.NestedScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditUserActivity">
+    android:fillViewport="true"
+    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        style="@style/MainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/application_padding"
+            android:layout_marginBottom="@dimen/application_padding">
+
+            <com.norbert.koller.shared.customviews.RoundedBadgeImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:stroke_width="20dp">
+
+            </com.norbert.koller.shared.customviews.RoundedBadgeImageView>
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/IconButtonTonal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="@dimen/spacing"
+                android:layout_marginBottom="@dimen/spacing"
+                app:icon="@drawable/pencil" />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/user_text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@android:string/unknownName"
+            android:textAlignment="center"
+            android:textAppearance="@style/MainTitle"
+            android:layout_marginBottom="@dimen/spacing"/>
+
+        <TextView
+            android:id="@+id/text_status"
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Kollégiumi adatok" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/CardTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:hint="Szoba"
+            app:boxCornerRadiusBottomEnd="0dp"
+            app:boxCornerRadiusBottomStart="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textCapSentences|textMultiLine"
+                android:maxLength="50"
+                android:textAppearance="@style/Text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/CardTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:hint="Csoport"
+            app:boxCornerRadiusBottomEnd="0dp"
+            app:boxCornerRadiusBottomStart="0dp"
+            app:boxCornerRadiusTopEnd="0dp"
+            app:boxCornerRadiusTopStart="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textCapSentences|textMultiLine"
+                android:maxLength="50"
+                android:textAppearance="@style/Text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/CardTextInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Osztály"
+            app:boxCornerRadiusTopEnd="0dp"
+            app:boxCornerRadiusTopStart="0dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textCapSentences|textMultiLine"
+                android:maxLength="50"
+                android:textAppearance="@style/Text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/text_status"
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Személyes adatok" />
+
+        <com.norbert.koller.shared.customviews.SimpleCardButton
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            custom:icon="@drawable/data"
+            custom:text="Személyes adatok szerkesztése" />
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

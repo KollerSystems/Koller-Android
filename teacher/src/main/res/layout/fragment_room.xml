@@ -90,6 +90,7 @@
                         </com.norbert.koller.shared.customviews.SimpleCardButton>
 
                         <com.norbert.koller.shared.customviews.SimpleCardButton
+                            android:id="@+id/scb_edit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             custom:icon="@drawable/pencil"

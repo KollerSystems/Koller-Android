@@ -29,6 +29,13 @@
         <item name="android:fillViewport">true</item>
     </style>
 
+    <style name="CardTextInput" parent="@style/TextInput">
+        <item name="boxCornerRadiusBottomEnd">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/card_corner_radius</item>
+    </style>
+
     <style name="ImageViewerDialog" parent="android:Theme.Translucent.NoTitleBar"/>
 
     <style name="ImageViewerDialog.Default">
@@ -136,6 +143,12 @@
     </style>
 
     <style name="IconButtonOutline" parent="@style/ButtonOutlineIcon">
+        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
+        <item name="iconPadding">0dp</item>
+    </style>
+
+    <style name="IconButtonTonal" parent="@style/ButtonTonalIcon">
         <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
         <item name="android:paddingRight">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>

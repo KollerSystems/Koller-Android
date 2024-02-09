@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.teacher.EditUserActivity
 import com.norbert.koller.teacher.R
+import com.norbert.koller.teacher.activities.EditRoomActivity
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.activities.RoomRateActivity
 
@@ -25,6 +27,13 @@ class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.Room
         val scbPresence : SimpleCardButton = view.findViewById(R.id.room_scb_presence)
         scbPresence.setOnClickListener{
             val intent = Intent(requireContext(), RoomPresenceActivity::class.java)
+            startActivity(intent)
+        }
+
+        val scbEdit : SimpleCardButton = view.findViewById(R.id.scb_edit)
+
+        scbEdit.setOnClickListener {
+            val intent = Intent(requireContext(), EditRoomActivity::class.java)
             startActivity(intent)
         }
     }
