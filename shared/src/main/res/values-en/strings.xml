@@ -266,7 +266,7 @@
     <string name="rd">rd</string>
     <string name="th">th</string>
     <string name="to_current_day">To current day</string>
-    <string name="create_new_x_first_part">Create new</string>
+    <string name="create_new_x_first_part">Create</string>
     <string name="create_new_x_last_part">" "</string>
     <string name="lateness">Lateness</string>
     <string name="length">Length</string>

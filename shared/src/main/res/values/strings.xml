@@ -301,7 +301,6 @@
     <string name="rd">.</string>
     <string name="th">.</string>
     <string name="to_current_day">Jelenlegi napra</string>
-    <string name="create_new_x_first_part">Új</string>
     <string name="create_new_x_last_part">létrehozása</string>
     <string name="lateness">Késés</string>
     <string name="length">Hossz</string>
@@ -345,5 +344,6 @@
     <string name="retry">Újra</string>
     <string name="annexe">Szárny</string>
     <string name="loading">Töltés...</string>
+    <string name="create_new_x_first_part">" "</string>
 
 </resources>

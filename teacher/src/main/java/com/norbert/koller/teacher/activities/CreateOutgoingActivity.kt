@@ -2,8 +2,11 @@ package com.norbert.koller.teacher.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View.GONE
 import android.widget.Button
+import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -13,6 +16,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentSta
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
 import com.norbert.koller.shared.managers.setToolbarToViewColor
+import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
 
@@ -53,6 +57,13 @@ class CreateOutgoingActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_outgoing)
+
+        findViewById<AppBarLayout>(com.norbert.koller.shared.R.id.appbar).setup()
+
+        val textFirst : TextView = findViewById(R.id.text_first)
+        if(textFirst.text.isNullOrBlank()){
+            textFirst.visibility = GONE
+        }
 
         window.setToolbarToViewColor(findViewById(com.norbert.koller.shared.R.id.bottom_view))
 
