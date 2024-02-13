@@ -87,6 +87,14 @@ open class ApplicationManager : Application() {
 
         const val minLengthBeforeDismiss : Int = 3
 
+        fun searchApiWithRegex(searchValue : String) : String{
+            return "/${searchWithRegex(searchValue)}/"
+        }
+
+        fun searchWithRegex(searchValue : String) : String{
+            return "\\b(?:\\S*[_ -])*(?i)${Regex.escape(searchValue.trim())}\\S*\\b"
+        }
+
         fun openActivity(context : Context, className : Class<*>){
             val intent = Intent(context, className)
             //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)

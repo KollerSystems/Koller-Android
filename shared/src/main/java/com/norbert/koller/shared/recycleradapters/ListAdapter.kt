@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.recycleradapters
 
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -13,6 +14,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.managers.ApplicationManager
+import java.util.Locale
 
 data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
 }
@@ -33,6 +36,26 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
                 item.isChecked = false
             }
         }
+    }
+
+    var itemsCopy : ArrayList<ListItem>? = null
+
+    fun filter(text: String) {
+        if(itemsCopy == null){
+            itemsCopy = ArrayList(listItem)
+        }
+        listItem.clear()
+        if (text.isEmpty()) {
+            listItem.addAll(itemsCopy!!)
+        } else {
+            for (item in itemsCopy!!) {
+                Log.d("ASDASD",text)
+                if (Regex(ApplicationManager.searchWithRegex(text)).matches(item.title)) {
+                    listItem.add(item)
+                }
+            }
+        }
+        notifyDataSetChanged()
     }
 
 

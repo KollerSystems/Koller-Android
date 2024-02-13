@@ -8,6 +8,7 @@
     tools:context=".fragments.bottomsheet.ItemListDialogFragmentBase">
 
     <LinearLayout
+        android:id="@+id/ly"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -26,14 +27,15 @@
 
         <androidx.cardview.widget.CardView
 
-            style="@style/MainCard"
             android:id="@+id/main_card"
+            style="@style/MainCard"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="0dp"
             android:layout_marginTop="0dp"
             android:layout_marginRight="0dp"
             android:layout_marginBottom="0dp">
+
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/simple_list_bottom_fragment_recycle_view"
                 style="@style/MainCardLayout"

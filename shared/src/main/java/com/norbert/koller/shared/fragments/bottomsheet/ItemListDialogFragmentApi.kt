@@ -57,6 +57,7 @@ class ItemListDialogFragmentApi(val apiToCall : suspend () -> Response<*>, alrea
         lifecycleScope.launch {
             if(CacheManager.savedListsOfValues.containsKey(key)){
                 list = setRecyclerViewWitResponse(CacheManager.savedListsOfValues[key]!!)
+                allLoaded()
             }
             else{
                 val pb = ProgressBar(requireContext())
@@ -70,6 +71,7 @@ class ItemListDialogFragmentApi(val apiToCall : suspend () -> Response<*>, alrea
                     val arrayList : ArrayList<BaseData> = ArrayList(it as List<ClassData>)
                     list = setRecyclerViewWitResponse(arrayList)
                     CacheManager.savedListsOfValues[key] = arrayList
+                    allLoaded()
                 },{ error, errorBody ->
                     dismiss()
                     var snackbar = (requireContext() as MainActivity).getSnackBar(getString(R.string.an_error_occurred), Snackbar.LENGTH_SHORT)

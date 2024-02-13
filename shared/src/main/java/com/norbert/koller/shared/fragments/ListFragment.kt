@@ -30,6 +30,7 @@ import com.norbert.koller.shared.helpers.arrayToString
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
 import com.norbert.koller.shared.helpers.resetSimpleChip
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
@@ -159,7 +160,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             }
             else{
 
-                viewModel.filters[filterName] = arrayListOf("/\\b(?:\\S*[_ -])*(?i)${Regex.escape(searchBar.editTextSearch.text!!.trim().toString())}\\S*\\b/")
+                viewModel.filters[filterName] = arrayListOf(ApplicationManager.searchApiWithRegex(searchBar.editTextSearch.text!!.toString()))
             }
         }
 

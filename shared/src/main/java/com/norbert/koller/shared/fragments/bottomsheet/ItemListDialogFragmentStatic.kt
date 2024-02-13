@@ -21,6 +21,7 @@ class ItemListDialogFragmentStatic(override var list : ArrayList<ListItem>, alre
         super.onViewCreated(view, savedInstanceState)
 
         setRecyclerView(list)
+        allLoaded()
     }
 
     override fun toggleList(): Boolean {
