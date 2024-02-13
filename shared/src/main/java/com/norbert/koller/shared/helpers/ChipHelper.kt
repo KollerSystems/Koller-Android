@@ -127,7 +127,7 @@ fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ItemLi
     dialog.show(fragmentManager, ItemListDialogFragmentBase.TAG)
 }
 
-fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: BaseViewModel, tag : String){
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: BaseViewModel, tag : String, collapseText : Boolean){
 
     if(viewModel.filters.containsKey(filterName)){
 
@@ -165,6 +165,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
 
 
         val dialog = ItemListDialogFragmentApi(getValues, viewModel.filters[filterName], tag)
+        dialog.collapseText = collapseText
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
 

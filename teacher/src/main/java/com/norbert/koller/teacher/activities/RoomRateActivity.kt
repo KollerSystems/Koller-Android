@@ -53,7 +53,7 @@ class RoomRateViewPagerAdapter() : RecyclerView.Adapter<RoomRateViewPagerAdapter
 
 
         holder.recyclerView.layoutManager = LinearLayoutManager(holder.itemView.context)
-        holder.recyclerView.setHasFixedSize(true)
+
 
         val data : ArrayList<RoomOrderConditionsBase> = RoomOrderData.instance[0].Conditions
 

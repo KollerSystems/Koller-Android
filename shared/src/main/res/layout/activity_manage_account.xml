@@ -58,6 +58,7 @@
             android:orientation="vertical">
 
             <com.norbert.koller.shared.customviews.RoundedBadgeImageView
+                android:id="@+id/rbiv"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 custom:stroke_width="10dp">
@@ -65,7 +66,7 @@
             </com.norbert.koller.shared.customviews.RoundedBadgeImageView>
 
             <TextView
-                android:id="@+id/text_presence"
+                android:id="@+id/text_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/text_container_margin"
@@ -85,12 +86,14 @@
                     android:orientation="vertical">
 
                     <com.norbert.koller.shared.customviews.SimpleCardButton
+                        android:id="@+id/scb_personal"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/data"
                         custom:text="Személyes adatok kezelése" />
 
                     <com.norbert.koller.shared.customviews.SimpleCardButton
+                        android:id="@+id/scb_password"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         custom:icon="@drawable/key"

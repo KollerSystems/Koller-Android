@@ -230,6 +230,7 @@
         <item name="chipMinHeight">0dp</item>
         <item name="android:paddingVertical">8dp</item>
         <item name="android:textAppearance">@style/Description</item>
+        <item name="android:ellipsize">end</item>
     </style>
 
     <style name="IconLikeText">
@@ -246,7 +247,6 @@
         <item name="closeIcon">@drawable/arrow_drop</item>
         <item name="android:checkable">false</item>
         <item name="closeIconEnabled">true</item>
-        <item name="android:ellipsize">end</item>
     </style>
 
     <style name="Spinner" parent="android:Widget.Material.Spinner">
@@ -542,6 +542,7 @@
         <item name="cardElevation">-16dp</item>
         <item name="cardCornerRadius">@dimen/application_corner_radius</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
+
     </style>
 
     <style name="ToolbarNavigationButton" parent="@style/IconButtonTransparent">

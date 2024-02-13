@@ -24,4 +24,8 @@ class GroupData(
     override fun getTitle(): String {
         return group
     }
+
+    override fun getDescription(): String {
+        return headTuid.toString()
+    }
 }

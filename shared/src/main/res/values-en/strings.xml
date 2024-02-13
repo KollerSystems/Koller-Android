@@ -309,4 +309,5 @@
     <string name="retry">Retry</string>
     <string name="annexe">Annexe</string>
     <string name="loading">Loading...</string>
+    <string name="recommended">Recommended</string>
 </resources>

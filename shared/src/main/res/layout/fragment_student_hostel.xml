@@ -8,29 +8,10 @@
     android:orientation="vertical"
     tools:context="fragments.StudentHostelFragment">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView11"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Táncsics Mihály Tehettséggondozó Kollégium"
-            android:textAlignment="center"
-            android:textAppearance="@style/MainTitle" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Fejlesztés alatt álló menü"
-            android:textAlignment="center"
-            android:textAppearance="@style/Description" />
-    </LinearLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <androidx.cardview.widget.CardView
         style="@style/MainCard"

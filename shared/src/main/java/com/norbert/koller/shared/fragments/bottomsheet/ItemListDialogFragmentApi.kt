@@ -21,7 +21,6 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ClassData
 import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.recycleradapters.ListAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -33,7 +32,7 @@ class ItemListDialogFragmentApi(val apiToCall : suspend () -> Response<*>, alrea
     fun responseToListItemList(response : ArrayList<BaseData>) : ArrayList<ListItem>{
         var listItemList: ArrayList<ListItem> = arrayListOf()
         for (i in response.indices){
-            var listItem = ListItem(response[i].getTitle(), null, null, response[i].getMainID().toString())
+            var listItem = ListItem(response[i].getTitle(), response[i].getDescription(), null, response[i].getMainID().toString())
             listItemList.add(listItem)
         }
 
@@ -68,7 +67,7 @@ class ItemListDialogFragmentApi(val apiToCall : suspend () -> Response<*>, alrea
                 (recycleView.parent as ViewGroup).addView(pb)
                 RetrofitInstance.communicate(apiToCall, {
                     (recycleView.parent as ViewGroup).removeView(pb)
-                    val arrayList : ArrayList<BaseData> = ArrayList(it as List<ClassData>)
+                    val arrayList : ArrayList<BaseData> = ArrayList(it as List<BaseData>)
                     list = setRecyclerViewWitResponse(arrayList)
                     CacheManager.savedListsOfValues[key] = arrayList
                     allLoaded()

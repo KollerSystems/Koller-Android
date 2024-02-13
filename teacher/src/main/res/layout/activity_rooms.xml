@@ -49,31 +49,6 @@
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-            <LinearLayout
-                style="@style/TrickyToolbar"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:visibility="gone">
-
-                <TextView
-                    android:id="@+id/textView31"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:drawablePadding="@dimen/spacing"
-                    android:text="1. ágy: Katona Márton\n2. ágy: Kis Gazsi\n3. ágy: Nagy József"
-                    android:textAppearance="@style/Description"
-                    app:drawableLeftCompat="@drawable/info" />
-
-                <View
-                    android:id="@+id/divider4"
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="@dimen/spacing"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:background="?android:attr/listDivider" />
-
-            </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
 

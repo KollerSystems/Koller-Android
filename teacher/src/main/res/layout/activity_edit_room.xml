@@ -24,7 +24,7 @@ tools:context=".activities.EditRoomActivity">
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:title="Felhasználó szerkesztése"
+        app:title="Szoba szerkesztése"
         app:toolbarId="@id/toolbar">
 
 

@@ -50,7 +50,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
         } else {
             for (item in itemsCopy!!) {
                 Log.d("ASDASD",text)
-                if (Regex(ApplicationManager.searchWithRegex(text)).matches(item.title)) {
+                if (Regex(ApplicationManager.searchWithRegex(text)).matches("${item.title} ")) {
                     listItem.add(item)
                 }
             }
@@ -58,6 +58,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
         notifyDataSetChanged()
     }
 
+    //TODO: a leírásra is keresni
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_list_item, parent, false)
@@ -69,7 +70,6 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
         RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, position, itemCount)
 
         val currentItem = listItem[position]
-        holder.title.text = currentItem.title
 
 
         if (bottomSheet.toggleList()) {
@@ -96,9 +96,15 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
             currentItem.function?.invoke(holder.checkBox.isChecked)
         }
 
-        if(!currentItem.description.isNullOrEmpty()) {
-            holder.description.visibility = VISIBLE
-            holder.description.text = currentItem.description
+        if(!bottomSheet.collapseText) {
+            holder.title.text = currentItem.title
+            if (!currentItem.description.isNullOrEmpty()) {
+                holder.description.visibility = VISIBLE
+                holder.description.text = currentItem.description
+            }
+        }
+        else{
+            holder.title.text = "${currentItem.title} • ${currentItem.description}"
         }
 
         if(currentItem.icon != null) {

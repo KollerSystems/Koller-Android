@@ -191,10 +191,10 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, arrayList, viewModel)
     }
 
-    fun addSortingChip(filterName : String, localizedNameId : Int, getValues: suspend () -> Response<*>, tag : String){
+    fun addSortingChip(filterName : String, localizedNameId : Int, getValues: suspend () -> Response<*>, tag : String, collapseText : Boolean = false){
 
         val chip = createChip()
-        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, getValues, viewModel, tag)
+        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, getValues, viewModel, tag, collapseText)
     }
 
     fun checkIfFiltersShouldBeShowed(isFocused : Boolean){

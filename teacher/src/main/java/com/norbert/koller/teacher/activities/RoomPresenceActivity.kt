@@ -70,7 +70,7 @@ class RoomPresenceViewPagerAdapter() : RecyclerView.Adapter<RoomPresenceViewPage
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
         holder.recyclerView.layoutManager = GridLayoutManager(holder.itemView.context, 2)
-        holder.recyclerView.setHasFixedSize(true)
+
 
         val data : ArrayList<RoomOrderConditionsBase> = RoomOrderData.instance[0].Conditions
 

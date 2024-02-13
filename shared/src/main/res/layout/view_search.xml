@@ -8,55 +8,55 @@
     android:gravity="center_vertical"
     android:orientation="horizontal">
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
 
-            <ImageView
-                android:id="@+id/imageView6"
-                style="@style/TransparentIcon"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginVertical="@dimen/card_padding"
-                android:layout_marginStart="@dimen/full_card_padding"
-                android:layout_marginEnd="@dimen/card_padding"
-                android:layout_weight="0"
-                android:adjustViewBounds="true"
-                app:srcCompat="@drawable/search" />
-
-            <com.norbert.koller.shared.customviews.ExtraEditText
-                android:id="@+id/editText_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
-                android:hint="@string/search"
-                android:inputType="text|textCapSentences"
-                android:paddingVertical="@dimen/card_padding"
-                android:paddingStart="55dp"
-                android:singleLine="true"
-                android:textAppearance="@style/Title"
-                android:textColorHint="?attr/colorForeground066" />
-        </FrameLayout>
-
-        <Button
-            android:id="@+id/button_search"
-            style="@style/IconButtonTransparent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageView
+            android:id="@+id/imageView6"
+            style="@style/TransparentIcon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginVertical="@dimen/card_padding"
+            android:layout_marginStart="@dimen/full_card_padding"
+            android:layout_marginEnd="@dimen/card_padding"
             android:layout_weight="0"
-            android:paddingStart="@dimen/card_padding"
-            android:paddingLeft="@null"
-            android:paddingTop="@dimen/card_padding"
-            android:paddingEnd="@dimen/full_card_padding"
-            android:paddingRight="@null"
-            android:paddingBottom="@dimen/card_padding"
-            android:visibility="gone"
-            app:icon="@drawable/close"
-            app:iconSize="20dp"
-            app:iconTint="?attr/colorForeground066"
-            tools:visibility="visible" />
+            android:adjustViewBounds="true"
+            app:srcCompat="@drawable/search" />
+
+        <com.norbert.koller.shared.customviews.ExtraEditText
+            android:id="@+id/editText_search"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:hint="@string/search"
+            android:inputType="text|textCapSentences"
+            android:paddingVertical="@dimen/card_padding"
+            android:paddingStart="55dp"
+            android:singleLine="true"
+            android:textAppearance="@style/Title"
+            android:textColorHint="?attr/colorForeground066" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/button_search"
+        style="@style/IconButtonTransparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:paddingStart="@dimen/card_padding"
+        android:paddingLeft="@null"
+        android:paddingTop="@dimen/card_padding"
+        android:paddingEnd="@dimen/full_card_padding"
+        android:paddingRight="@null"
+        android:paddingBottom="@dimen/card_padding"
+        android:visibility="gone"
+        app:icon="@drawable/close"
+        app:iconSize="20dp"
+        app:iconTint="?attr/colorForeground066"
+        tools:visibility="visible" />
 
 
 </LinearLayout>

@@ -345,5 +345,6 @@
     <string name="annexe">Szárny</string>
     <string name="loading">Töltés...</string>
     <string name="create_new_x_first_part">" "</string>
+    <string name="recommended">Ajánlott</string>
 
 </resources>

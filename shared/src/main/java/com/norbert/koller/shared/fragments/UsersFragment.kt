@@ -59,7 +59,7 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
 
         addSortingChip("Class.ID", R.string.class_, {RetrofitInstance.api.getClasses()}, "class")
 
-        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group")
+        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group", true)
 
         addSearchbar("Name")
 

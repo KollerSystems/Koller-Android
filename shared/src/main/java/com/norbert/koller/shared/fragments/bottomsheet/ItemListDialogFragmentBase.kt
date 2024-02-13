@@ -31,6 +31,8 @@ abstract class ItemListDialogFragmentBase(val alreadyChecked : ArrayList<String>
     lateinit var recycleView : RecyclerView
     lateinit var adapter : ListAdapter
 
+    var collapseText : Boolean = false
+
     abstract fun toggleList() : Boolean
 
 
