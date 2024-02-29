@@ -142,6 +142,9 @@ abstract class MainActivity : AppCompatActivity() {
         if(savedInstanceState == null) {
             changeBackStackState(R.id.home)
         }
+        else{
+            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()))
+        }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112)
@@ -173,7 +176,7 @@ abstract class MainActivity : AppCompatActivity() {
                         viewModel.mainFragmentList = arrayListOf(0)
                     }
                     else{
-                        super.onBackPressed()
+
                         finish()
                     }
 

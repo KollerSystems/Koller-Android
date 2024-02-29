@@ -1,69 +1,135 @@
 package com.norbert.koller.shared.api
 
 import android.app.Activity
+import android.util.Log
+import androidx.core.content.ContextCompat
+import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.data.ApiLoginRefreshData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import okhttp3.Authenticator
 import okhttp3.Request
 import okhttp3.Response
 import okhttp3.Route
+import retrofit2.HttpException
+import java.io.IOException
 import java.util.Calendar
+import java.util.concurrent.atomic.AtomicBoolean
+
 
 class AuthenticationManager : Authenticator {
 
+    private var tokenRefreshInProgress: AtomicBoolean = AtomicBoolean(false)
+    private var request: Request? = null
 
-    @Synchronized // annotate with @Synchronized to force parallel threads/coroutines to block and wait in an ordered manner when accessing authenticate()
+    fun getToken() : ApiLoginRefreshData{
+        return ApiLoginRefreshData("refresh_token", LoginTokensData.instance!!.refreshToken)
+    }
+
     override fun authenticate(route: Route?, response: Response): Request? {
 
-        // prevent parallel refresh requests
-        val accessToken = LoginTokensData.instance?.accessToken
-        val alreadyRefreshed = response.request.header("Authorization")?.contains(accessToken.toString(), true) == false
-        if (alreadyRefreshed) { // if request's header's token is different, then that means the access token has already been refreshed and we return the response with the locally persisted token in the header
-            return response.request.newBuilder()
-                .header("Authorization", "Bearer $accessToken")
-                .build()
-        }
+        return runBlocking {
 
-        // logic to handle refreshing the token
+            if(!response.request.url.toString().contains("/oauth/token")) {
+
+                Log.d("TESTTESTS", "111")
+
+                if (!tokenRefreshInProgress.get()) {
 
 
-        val tokens = ApiLoginRefreshData("refresh_token", LoginTokensData.instance!!.refreshToken)
-        var request : Request? = null
+                    tokenRefreshInProgress.set(true)
+                    val response2 : retrofit2.Response<LoginTokensResponseData>  = RetrofitInstance.api.postLoginTokens(getToken())
+                    val tokenData : LoginTokensResponseData? = response2.body()
 
-        runBlocking(Dispatchers.IO) {
-            RetrofitInstance.communicate({RetrofitInstance.api.postLoginTokens(tokens)}, {it as LoginTokensResponseData
-                runBlocking {
-                    withContext(Dispatchers.IO) {
-                        DataStoreManager.save(ApplicationManager.currentContext!!, LoginTokensData(it.accessToken, Calendar.getInstance().timeInMillis + it.expiresIn-RetrofitInstance.timeout, it.refreshToken))
-                    }
-                }
-                request = response.request.newBuilder()
-                    .header("Authorization", "Bearer ${it.accessToken}")
-                    .build()
-            }
-            ) {error, errorBody ->
-                if(errorBody?.error == "A valid refresh token is required!"){
-                    (ApplicationManager.currentContext!! as Activity).finishAffinity()
-                    runBlocking {
-                        withContext(Dispatchers.IO) {
-                            DataStoreManager.remove(ApplicationManager.currentContext!!, DataStoreManager.TOKENS)
+                    if (response2.isSuccessful && tokenData != null) {
+                        LoginTokensData.instance = LoginTokensData(
+                            tokenData.accessToken,
+                            Calendar.getInstance().timeInMillis + tokenData.expiresIn - RetrofitInstance.timeout,
+                            tokenData.refreshToken
+                        )
+                        runBlocking {
+                            DataStoreManager.save(
+                                ApplicationManager.currentContext!!,
+                                LoginTokensData.instance!!
+                            )
+
                         }
+
+                        request = response.request.newBuilder()
+                            .header("Authorization", "Bearer ${LoginTokensData.instance?.accessToken}")
+                            .build()
+
                     }
-                    ApplicationManager.openActivity(ApplicationManager.currentContext!!, ApplicationManager.loginActivity()::class.java)
+                    else{
+                        Log.d("TESTTESTS", "NEM JOPOOOOOOOOOOOOO")
+
+                    }
+                    tokenRefreshInProgress.set(false)
+
+
+
+
+
+                } else {
+
+
+                    // Waiting for the ongoing request to finish
+                    // So that we don't refresh our token multiple times
+                    waitForRefresh(response)
+
                 }
             }
+            else{
 
-            return@runBlocking
-        }.let {
-            return request
+                Log.d("TESTTESTS", "333333")
+
+                tokenRefreshInProgress.set(false)
+                val activity = (ApplicationManager.currentContext!! as Activity)
+                DataStoreManager.remove(activity, DataStoreManager.TOKENS)
+
+
+                    activity.runOnUiThread {
+                        activity.finishAffinity()
+                        ApplicationManager.openActivity(
+                            activity,
+                            ApplicationManager.loginActivity()::class.java
+                        )
+                    }
+
+
+                request = null
+
+            }
+
+            return@runBlocking request
+
         }
 
     }
 
+    private suspend fun waitForRefresh(response: Response) {
+        while (tokenRefreshInProgress.get()) {
+            delay(100)
+        }
+        request = response.request.newBuilder()
+            .header("Authorization", "Bearer ${LoginTokensData.instance!!.accessToken}")
+            .build()
+    }
+
+
+    private fun responseCount(response: Response?): Int {
+        var result = 1
+        while (response?.priorResponse != null && result <= 3) {
+            result++
+        }
+        return result
+    }
 }

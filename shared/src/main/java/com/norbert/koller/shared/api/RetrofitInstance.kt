@@ -23,11 +23,11 @@ object RetrofitInstance {
     val timeout : Long = 10
 
     private val client = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
         .connectTimeout(timeout, TimeUnit.SECONDS)
         .writeTimeout(timeout, TimeUnit.SECONDS)
         .readTimeout(timeout, TimeUnit.SECONDS)
         .addInterceptor(AuthInterceptor())
+        .addInterceptor(loggingInterceptor)
         .authenticator(AuthenticationManager())
         .build()
 

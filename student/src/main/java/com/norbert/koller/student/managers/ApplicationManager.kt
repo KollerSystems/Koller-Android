@@ -19,6 +19,10 @@ import com.norbert.koller.student.R
 
 class ApplicationManager : ApplicationManager() {
 
+    init{
+
+    }
+
     override fun onCreate() {
 
 
@@ -56,5 +60,7 @@ class ApplicationManager : ApplicationManager() {
             RoomFragment(rid) }
         userFragment = {uid ->
             UserFragment(uid) }
+
+        loginActivity = {LoginActivity()}
     }
 }

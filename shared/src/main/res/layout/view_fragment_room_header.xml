@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:orientation="vertical">
 
 
@@ -12,6 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="@dimen/text_container_margin"
+        android:overScrollMode="never"
         tools:itemCount="2"
         tools:listitem="@layout/view_user_preview" />
 
@@ -20,10 +23,9 @@
         android:id="@+id/room_text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:text="216"
         android:textAlignment="center"
         android:textAppearance="@style/MainTitle"
-/>
+        tools:text="216" />
 
     <Button
         android:id="@+id/room_button_description"

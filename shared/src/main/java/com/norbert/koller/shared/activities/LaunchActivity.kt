@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.activities
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +20,8 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
+
+        ApplicationManager.currentContext = this
 
         if(!isTaskRoot){
             finish()
@@ -42,28 +45,29 @@ class LaunchActivity : AppCompatActivity() {
             }
         )
 
+
+
+        if (!ApplicationManager.isOnline(this@LaunchActivity)) {
+            MaterialAlertDialogBuilder(this@LaunchActivity)
+                .setTitle("Nincs internet")
+                .setMessage("Az alkalmazás jelenleg csakis internettel képes működni")
+                .setIcon(R.drawable.no_internet)
+                .setPositiveButton("Alkalmazás bezárása")
+                { _, _ ->
+                    finishAffinity()
+                }
+                .show()
+
+            return
+        }
+
         lifecycleScope.launch {
-
-            if (!ApplicationManager.isOnline(this@LaunchActivity)) {
-                MaterialAlertDialogBuilder(this@LaunchActivity)
-                    .setTitle("Nincs internet")
-                    .setMessage("Az alkalmazás jelenleg csakis internettel képes működni")
-                    .setIcon(R.drawable.no_internet)
-                    .setPositiveButton("Alkalmazás bezárása")
-                    { _, _ ->
-                        finishAffinity()
-                    }
-                    .show()
-
-                return@launch
-            }
-
             LoginTokensData.instance = DataStoreManager.readTokens(this@LaunchActivity)
             if (LoginTokensData.instance == null) {
                 ApplicationManager.openLogin.invoke(this@LaunchActivity)
                 finish()
 
-            }else {
+            } else {
 
                 RetrofitInstance.communicate(lifecycleScope, RetrofitInstance.api::getCurrentUser,
                     {
@@ -72,15 +76,14 @@ class LaunchActivity : AppCompatActivity() {
                         ApplicationManager.openMain.invoke(this@LaunchActivity)
                         finish()
                     },
-                    {_,_->
+                    { _, _ ->
                         ApplicationManager.openLogin.invoke(this@LaunchActivity)
                         finish()
                     })
 
+
             }
-
         }
-
 
 
     }
