@@ -138,8 +138,18 @@
         <item name="iconPadding">0dp</item>
     </style>
 
-    <style name="IconButtonTransparent" parent="@style/IconButton">
-        <item name="android:background">@android:color/transparent</item>
+    <style name="IconButtonTransparent" parent="@style/Widget.Material3.Button.IconButton">
+        <item name="android:paddingTop">@dimen/button_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/button_vertical_padding</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:insetLeft">0dp</item>
+        <item name="android:insetRight">0dp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
+        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
+        <item name="iconPadding">0dp</item>
     </style>
 
     <style name="IconButtonOutline" parent="@style/ButtonOutlineIcon">
