@@ -49,8 +49,9 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
             listItem.addAll(itemsCopy!!)
         } else {
             for (item in itemsCopy!!) {
-                Log.d("ASDASD",text)
-                if (Regex(ApplicationManager.searchWithRegex(text)).matches("${item.title} ")) {
+                Log.d("ASDASD",text + " ::: ${item.title} ${item.description.toString()}")
+                val regexSearch = Regex(ApplicationManager.searchWithRegex(text), RegexOption.IGNORE_CASE)
+                if (regexSearch.containsMatchIn("${item.title} ${item.description.toString()}")) {
                     listItem.add(item)
                 }
             }

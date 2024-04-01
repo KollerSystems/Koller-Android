@@ -92,7 +92,7 @@ open class ApplicationManager : Application() {
         }
 
         fun searchWithRegex(searchValue : String) : String{
-            return "\\b(?:\\S*[_ -])*(?i)${Regex.escape(searchValue.trim())}\\S*\\b"
+            return /*"(?i)*/"\\b(?:\\S*[_ -])*${Regex.escape(searchValue.trim())}\\S*\\b"
         }
 
         fun openActivity(context : Context, className : Class<*>){

@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.core.view.iterator
 import androidx.core.widget.doBeforeTextChanged
@@ -127,7 +128,7 @@ abstract class BaseRecycleAdapter() :
                 VIEW_TYPE_LOADING -> {
                     val view = LayoutInflater.from(parent.context)
                         .inflate(R.layout.view_loading, parent, false)
-                    EmptyViewHolder(view)
+                    LoadingViewHolder(view)
                 }
 
                 else -> {
@@ -251,6 +252,12 @@ abstract class BaseRecycleAdapter() :
 
     class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val text: TextView = itemView.findViewById(R.id.text_view)
+    }
+
+    class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+        init{
+            itemView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
+        }
     }
 
     class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

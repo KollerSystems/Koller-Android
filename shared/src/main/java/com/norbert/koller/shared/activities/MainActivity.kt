@@ -94,6 +94,7 @@ abstract class MainActivity : AppCompatActivity() {
             textView.setTypeface(resources.getFont(R.font.rubik_medium))
             textView
         }
+        toolbarTitleSwitcher.measureAllChildren = false
 
         appBar.setup()
 
@@ -385,6 +386,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
         toolbarDescription.text = description
         toolbarTitleSwitcher.setText(title)
+
         toolbarTitleSwitcher.requestLayout()
 
     }
