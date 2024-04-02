@@ -101,7 +101,7 @@
                     style="@style/ButtonTonalIcon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Folyamatos kimenő hozzáadása"
+                    android:text="@string/add_continuous_outgoing"
                     app:icon="@drawable/add"
                     app:iconGravity="textStart" />
 
@@ -110,7 +110,7 @@
                     style="@style/IconButtonOutline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/spacing"
+                    android:layout_marginStart="@dimen/spacing"
                     android:visibility="gone"
                     app:icon="@drawable/more_thick"
                     tools:visibility="visible" />

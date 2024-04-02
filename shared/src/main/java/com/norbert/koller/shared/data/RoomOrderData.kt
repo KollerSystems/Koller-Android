@@ -11,21 +11,15 @@ data class RoomOrderData(
     var Conditions : ArrayList<RoomOrderConditionsBase>
 ){
     companion object {
-        val conditionInt : RoomOrderConditionsInt = RoomOrderConditionsInt()
         val conditionBoolean : RoomOrderConditionsBoolean = RoomOrderConditionsBoolean()
         init {
-
-            conditionInt.icon = R.drawable.bed
-            conditionInt.title = "Ágyak"
-            conditionInt.value = 10
-
 
             conditionBoolean.icon = R.drawable.power
             conditionBoolean.title = "Áramtalanítás"
             conditionBoolean.value = false
 
         }
-        val listOfConditions : ArrayList<RoomOrderConditionsBase> = arrayListOf(conditionInt,conditionInt,conditionBoolean,conditionInt,conditionBoolean,conditionInt,conditionInt,conditionInt,conditionBoolean)
+        val listOfConditions : ArrayList<RoomOrderConditionsBase> = arrayListOf(conditionBoolean,conditionBoolean,conditionBoolean,conditionBoolean,conditionBoolean,conditionBoolean,conditionBoolean,conditionBoolean,conditionBoolean)
 
 
         var instance: ArrayList<RoomOrderData> = arrayListOf(

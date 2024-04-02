@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="@dimen/application_padding"
-    tools:context=".fragments.RoomRateContentFragment">
+    android:paddingTop="@dimen/application_padding">
 
     <LinearLayout
         android:id="@+id/ly_content"
@@ -20,7 +19,7 @@
             style="@style/Separator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Értékelési szempontok"
+            android:text="@string/evaluation_criteria"
             android:translationZ="1dp" />
 
         <androidx.recyclerview.widget.RecyclerView
@@ -32,7 +31,7 @@
             android:clipToPadding="false"
             android:paddingHorizontal="@dimen/full_card_padding"
             android:paddingBottom="@dimen/card_margin"
-            tools:listitem="@layout/view_rating_slider" />
+            tools:listitem="@layout/view_rating" />
 
     </LinearLayout>
 
@@ -57,7 +56,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -71,7 +71,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/spacing"
                         android:layout_weight="0"
-                        android:text="Osztályzat" />
+                        android:text="@string/grade" />
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/chip_group"
@@ -94,7 +94,8 @@
                             app:chipStartPadding="0dp"
                             app:shapeAppearance="@style/OverlayRoundedLeft"
                             app:textEndPadding="0dp"
-                            app:textStartPadding="0dp" />
+                            app:textStartPadding="0dp"
+                            tools:ignore="HardcodedText,PxUsage" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip_like"
@@ -108,7 +109,8 @@
                             app:chipStartPadding="0dp"
                             app:shapeAppearance="@null"
                             app:textEndPadding="0dp"
-                            app:textStartPadding="0dp" />
+                            app:textStartPadding="0dp"
+                            tools:ignore="HardcodedText,PxUsage" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip8"
@@ -122,7 +124,8 @@
                             app:chipStartPadding="0dp"
                             app:shapeAppearance="@null"
                             app:textEndPadding="0dp"
-                            app:textStartPadding="0dp" />
+                            app:textStartPadding="0dp"
+                            tools:ignore="HardcodedText,PxUsage" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip10"
@@ -136,7 +139,8 @@
                             app:chipStartPadding="0dp"
                             app:shapeAppearance="@null"
                             app:textEndPadding="0dp"
-                            app:textStartPadding="0dp" />
+                            app:textStartPadding="0dp"
+                            tools:ignore="HardcodedText,PxUsage" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip13"
@@ -150,7 +154,8 @@
                             app:chipStartPadding="0dp"
                             app:shapeAppearance="@style/OverlayRoundedRight"
                             app:textEndPadding="0dp"
-                            app:textStartPadding="0dp" />
+                            app:textStartPadding="0dp"
+                            tools:ignore="HardcodedText,PxUsage" />
                     </com.google.android.material.chip.ChipGroup>
 
                 </LinearLayout>

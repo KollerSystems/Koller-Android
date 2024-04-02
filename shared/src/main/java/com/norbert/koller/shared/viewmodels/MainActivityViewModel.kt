@@ -11,4 +11,6 @@ class MainActivityViewModel : ViewModel()  {
 
     var savedBackStacks : MutableSet<Int> = mutableSetOf()
 
+    var descriptionHeight : Int = 0
+
 }

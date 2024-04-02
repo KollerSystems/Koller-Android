@@ -84,7 +84,8 @@
                         android:layout_height="wrap_content"
                         android:singleLine="true"
                         android:text="tweinek5"
-                        android:textAppearance="@style/Title" />
+                        android:textAppearance="@style/Title"
+                        tools:ignore="HardcodedText" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <android.widget.Space
@@ -108,7 +109,8 @@
                         android:inputType="textWebPassword"
                         android:singleLine="true"
                         android:text="rT1>k.U'`B?&amp;AsA9"
-                        android:textAppearance="@style/Title" />
+                        android:textAppearance="@style/Title"
+                        tools:ignore="HardcodedText" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button

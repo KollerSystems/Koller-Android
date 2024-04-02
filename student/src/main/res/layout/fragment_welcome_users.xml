@@ -26,19 +26,19 @@
                     android:id="@+id/chip2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Iskola" />
+                    android:text="@string/school" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Osztály" />
+                    android:text="@string/class_" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/view_new_chip_place"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Nem" />
+                    android:text="@string/gender" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip9"

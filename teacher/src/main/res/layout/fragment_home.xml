@@ -89,16 +89,16 @@
                                         <LinearLayout
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginLeft="10dp"
+                                            android:layout_marginStart="10dp"
                                             android:layout_marginTop="@dimen/text_container_margin"
-                                            android:layout_marginRight="@dimen/text_container_margin"
+                                            android:layout_marginEnd="@dimen/text_container_margin"
                                             android:layout_marginBottom="@dimen/text_container_margin"
                                             android:orientation="horizontal">
 
                                             <LinearLayout
                                                 android:layout_width="0dp"
                                                 android:layout_height="wrap_content"
-                                                android:layout_marginRight="10dp"
+                                                android:layout_marginStart="10dp"
                                                 android:layout_weight="1"
                                                 android:orientation="vertical">
 
@@ -151,7 +151,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_marginLeft="@dimen/card_padding"
+                    android:layout_marginEnd="@dimen/card_padding"
                     android:layout_weight="1"
                     android:text="@string/today" />
 
@@ -183,7 +183,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_marginLeft="@dimen/card_padding"
+                    android:layout_marginStart="@dimen/card_padding"
                     android:layout_weight="1"
                     android:text="@string/unread" />
 
@@ -218,7 +218,7 @@
         android:id="@id/home_fab_root"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/application_padding"
         android:layout_marginBottom="@dimen/application_padding"
         android:src="@drawable/pencil"

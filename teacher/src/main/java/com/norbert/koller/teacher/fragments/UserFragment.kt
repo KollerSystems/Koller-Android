@@ -2,16 +2,13 @@ package com.norbert.koller.teacher.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.customviews.SimpleCardButton
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
-import com.norbert.koller.teacher.EditUserActivity
-import com.norbert.koller.teacher.activities.RoomPresenceActivity
+import com.norbert.koller.teacher.activities.EditUserActivity
 
 class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(uid) {
 

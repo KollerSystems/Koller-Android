@@ -94,7 +94,8 @@
             android:textColor="#00BF9F"
             android:textStyle="bold"
             android:visibility="gone"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 

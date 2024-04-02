@@ -118,7 +118,7 @@
 
     <style name="ButtonOutline" parent="@style/Button">
         <item name="backgroundTint">@android:color/transparent</item>
-        <item name="strokeColor">@color/m3_button_outline_color_selector</item>
+        <item name="strokeColor" tools:ignore="PrivateResource">@color/m3_button_outline_color_selector</item>
         <item name="android:textColor">?android:attr/colorPrimary</item>
         <item name="strokeWidth">1dp</item>
     </style>

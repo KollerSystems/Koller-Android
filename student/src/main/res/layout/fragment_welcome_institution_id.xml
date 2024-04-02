@@ -12,7 +12,7 @@
         android:id="@+id/textView54"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Intézményed azonosítója"
+        android:text="@string/your_institutions_id"
         android:textAlignment="center"
         android:textAppearance="@style/MainTitle" />
 
@@ -20,7 +20,7 @@
         android:id="@+id/textView55"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="A kollégiumod weboldalán a jelentkezés menüpontban találsz egy kódot. Azt másold be az alábbi mezőbe."
+        android:text="@string/institiution_id_description"
         android:textAlignment="center" />
 
     <com.google.android.material.card.MaterialCardView
@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
                         android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="Intézmény azonosító">
+                        android:hint="@string/institutions_id">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"

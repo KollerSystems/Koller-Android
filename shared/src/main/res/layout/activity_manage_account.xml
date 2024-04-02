@@ -30,7 +30,7 @@
             <Button
                 android:id="@+id/toolbar_exit"
                 style="@style/ToolbarNavigationButton"
-                android:layout_gravity="bottom|left" />
+                android:layout_gravity="bottom|start" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -71,7 +71,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/text_container_margin"
                 android:padding="@dimen/text_container_margin"
-                android:text="Kis Gazsi"
+                android:text="@string/unknown"
                 android:textAppearance="@style/MainTitle" />
 
             <com.google.android.material.card.MaterialCardView

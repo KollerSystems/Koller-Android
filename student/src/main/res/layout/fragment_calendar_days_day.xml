@@ -39,8 +39,8 @@
             layout="@layout/view_fragment_calendar_days_day_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="-20dp"
-            android:layout_marginRight="-20dp" />
+            android:layout_marginStart="-20dp"
+            android:layout_marginEnd="-20dp" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Card"
@@ -62,7 +62,7 @@
                     android:layout_width="@dimen/card_icon"
                     android:layout_height="@dimen/card_icon"
                     android:layout_gravity="center"
-                    android:layout_marginRight="@dimen/spacing"
+                    android:layout_marginEnd="@dimen/spacing"
                     android:src="@drawable/moon" />
 
                 <TextView
@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:layout_marginLeft="@dimen/spacing"
+                    android:layout_marginStart="@dimen/spacing"
                     android:lineSpacingExtra="-5sp"
                     android:text="6:00"
                     android:textAlignment="center" />
@@ -122,8 +122,8 @@
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/n_card_padding"
-                    android:layout_marginRight="@dimen/n_card_padding"
+                    android:layout_marginStart="@dimen/n_card_padding"
+                    android:layout_marginEnd="@dimen/n_card_padding"
                     custom:text="@string/room_scoring"
                     custom:time="8:00">
 
@@ -140,7 +140,7 @@
                         android:layout_width="@dimen/card_icon"
                         android:layout_height="@dimen/card_icon"
                         android:layout_gravity="center"
-                        android:layout_marginRight="@dimen/spacing"
+                        android:layout_marginEnd="@dimen/spacing"
                         android:src="@drawable/walk" />
 
                     <TextView
@@ -156,8 +156,8 @@
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/n_card_padding"
-                    android:layout_marginRight="@dimen/n_card_padding"
+                    android:layout_marginStart="@dimen/n_card_padding"
+                    android:layout_marginEnd="@dimen/n_card_padding"
                     android:clipChildren="false"
                     android:clipToPadding="false"
                     custom:text="@string/expected_arrival"
@@ -206,9 +206,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_weight="1"
                     android:clipChildren="false"
@@ -323,9 +323,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_weight="1"
                     android:clipChildren="false"
@@ -440,9 +440,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_weight="1"
                     android:clipChildren="false"
@@ -559,9 +559,9 @@
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
                     android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginRight="10dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_weight="1"
                     android:clipChildren="false"
@@ -655,7 +655,7 @@
                         android:layout_width="@dimen/card_icon"
                         android:layout_height="@dimen/card_icon"
                         android:layout_gravity="center"
-                        android:layout_marginRight="@dimen/spacing"
+                        android:layout_marginEnd="@dimen/spacing"
                         android:src="@drawable/walk" />
 
                     <TextView
@@ -671,8 +671,8 @@
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginLeft="@dimen/n_card_padding"
-                    android:layout_marginRight="@dimen/n_card_padding"
+                    android:layout_marginStart="@dimen/n_card_padding"
+                    android:layout_marginEnd="@dimen/n_card_padding"
                     custom:text="@string/expected_arrival"
                     custom:time="21:00" />
 
@@ -714,7 +714,7 @@
                     android:layout_width="@dimen/card_icon"
                     android:layout_height="@dimen/card_icon"
                     android:layout_gravity="center"
-                    android:layout_marginRight="@dimen/spacing"
+                    android:layout_marginEnd="@dimen/spacing"
                     android:src="@drawable/moon" />
 
                 <TextView
@@ -730,7 +730,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="top"
-                    android:layout_marginLeft="@dimen/spacing"
+                    android:layout_marginStart="@dimen/spacing"
                     android:lineSpacingExtra="-5sp"
                     android:text="22:00"
                     android:textAlignment="center" />

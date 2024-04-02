@@ -3,6 +3,7 @@ package com.norbert.koller.shared.activities
 import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.annotation.SuppressLint
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -11,6 +12,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
@@ -20,6 +22,7 @@ import android.widget.TextView
 import android.widget.ViewSwitcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
@@ -61,6 +64,8 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var viewModel: MainActivityViewModel
 
     lateinit var mainFragment: FragmentContainerView
+
+
 
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -142,6 +147,8 @@ abstract class MainActivity : AppCompatActivity() {
 
         if(savedInstanceState == null) {
             changeBackStackState(R.id.home)
+            toolbarDescription.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            viewModel.descriptionHeight = toolbarDescription.measuredHeight;
         }
         else{
             setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()))
@@ -157,6 +164,8 @@ abstract class MainActivity : AppCompatActivity() {
             showBackButtonIfNeeded()
 
         }
+
+
     }
 
 
@@ -323,6 +332,7 @@ abstract class MainActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("PrivateResource")
     fun showBackButtonIfNeeded(){
 
         val toPadding: Int
@@ -369,22 +379,48 @@ abstract class MainActivity : AppCompatActivity() {
         animationSet.start()
     }
 
+    @SuppressLint("PrivateResource")
     fun setToolbarTitle(title : String?, description : String = ""){
 
-        if(title == (toolbarTitleSwitcher.currentView as TextView).text.toString() &&
-            description == toolbarDescription.text.toString()){
+        val descriptionChanges = description != toolbarDescription.text.toString()
+        if(title == (toolbarTitleSwitcher.currentView as TextView).text.toString() && !descriptionChanges) {
+
             return
         }
 
         Log.d("RETGIJASDIKUFHASDIOLCHBHJYXFV", "${description} :::::: ${toolbarDescription.text.toString()}")
 
-        if (description.isBlank()) {
-            toolbarDescription.visibility = GONE
+        if(descriptionChanges) {
+            if (description.isBlank()) {
+
+                val animator = ValueAnimator.ofInt(toolbarDescription.height, 0)
+                animator.addUpdateListener { valueAnimator ->
+                    toolbarDescription.height = valueAnimator.animatedValue as Int
+                }
+
+                animator.setDuration(resources.getInteger(R.integer.default_transition).toLong())
+                animator.interpolator = AnimationUtils.loadInterpolator(
+                    this,
+                    com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
+                )
+                animator.start()
+
+            } else if(toolbarDescription.text.toString().isBlank()) {
+
+                val animator = ValueAnimator.ofInt(toolbarDescription.height, viewModel.descriptionHeight)
+                animator.addUpdateListener { valueAnimator ->
+                    toolbarDescription.height = valueAnimator.animatedValue as Int
+                }
+
+                animator.setDuration(resources.getInteger(R.integer.default_transition).toLong())
+                animator.interpolator = AnimationUtils.loadInterpolator(
+                    this,
+                    com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
+                )
+                animator.start()
+            }
+            toolbarDescription.text = description
         }
-        else{
-            toolbarDescription.visibility = VISIBLE
-        }
-        toolbarDescription.text = description
         toolbarTitleSwitcher.setText(title)
 
         toolbarTitleSwitcher.requestLayout()

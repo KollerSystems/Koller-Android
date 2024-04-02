@@ -42,7 +42,7 @@
                     style="@style/SmallIcon"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
-                    android:layout_marginRight="@dimen/spacing"
+                    android:layout_marginEnd="@dimen/spacing"
                     android:layout_weight="0"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
@@ -75,7 +75,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:editable="false"
-                        android:focusable="false" />
+                        android:focusable="false"
+                        tools:ignore="Deprecated" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -90,7 +91,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:editable="false"
-                        android:focusable="false" />
+                        android:focusable="false"
+                        tools:ignore="Deprecated" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -100,7 +102,7 @@
                 style="@style/Button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
+                android:layout_gravity="end"
                 android:layout_marginTop="15dp"
                 android:text="@string/scheduling" />
 

@@ -45,7 +45,8 @@
             android:layout_marginBottom="@dimen/spacing"
             android:text="•"
             android:textAlignment="center"
-            android:textColor="?colorForeground066" />
+            android:textColor="?colorForeground066"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/user_button_room"
@@ -62,7 +63,8 @@
             android:layout_marginBottom="@dimen/spacing"
             android:text="•"
             android:textAlignment="center"
-            android:textColor="?colorForeground066" />
+            android:textColor="?colorForeground066"
+            tools:ignore="HardcodedText" />
 
         <Button
             android:id="@+id/user_button_class"
@@ -111,7 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            android:text="+36 30 783 6989"
+            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/phone"
             custom:chipIconVisible="true"
@@ -123,7 +125,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            android:text="Kis Gazsi"
+            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/facebook"
             custom:chipIconVisible="true"
@@ -135,7 +137,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            android:text="\@kisgazsi"
+            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/instagram"
             custom:chipIconVisible="true"
@@ -147,7 +149,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            android:text="kisgazsi"
+            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/discord"
             custom:chipIconVisible="true"
@@ -162,7 +164,7 @@
         style="@style/CategoryCardName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Állapot" />
+        android:text="@string/state" />
 
     <com.skydoves.androidveil.VeilLayout
         android:id="@+id/veil_status"

@@ -27,7 +27,7 @@
                 android:layout_marginBottom="@dimen/spacing"
                 app:drawableLeftCompat="@drawable/info"
                 android:drawablePadding="@dimen/text_container_margin"
-                android:text="Az alábbi képek nem biztos hogy megegyeznek a kiszolgált ételekkel."
+                android:text="@string/canteen_images_may_not_match"
                 android:textAppearance="@style/Description" />
 
             <TextView

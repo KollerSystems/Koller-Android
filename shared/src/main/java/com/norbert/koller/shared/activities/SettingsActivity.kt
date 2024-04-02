@@ -1,11 +1,14 @@
 package com.norbert.koller.shared.activities
 
 import android.content.Intent
+import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.view.View.VISIBLE
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.AppBarLayout
@@ -130,10 +133,21 @@ open class SettingsActivity : AppCompatActivity() {
         val notifFullSettings : SimpleCardButton = findViewById(R.id.notifics_full_settings)
 
         notifFullSettings.setOnClickListener {
-            val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
+            val notificationsIntent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
                 putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
             }
-            startActivity(intent)
+            startActivity(notificationsIntent)
+        }
+
+        val languageFullSettings : SimpleCardButton = findViewById(R.id.language_full_settings)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            languageFullSettings.visibility = VISIBLE
+            languageFullSettings.setOnClickListener {
+                val languageIntent = Intent(Settings.ACTION_APP_LOCALE_SETTINGS)
+                languageIntent.data = Uri.fromParts("package", packageName, null)
+                startActivity(languageIntent)
+            }
         }
 
 

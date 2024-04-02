@@ -103,7 +103,8 @@
                         android:text="@string/unset"
                         android:textAppearance="@style/Title"
                         android:textColor="?attr/colorOnSecondaryContainer"
-                        android:textStyle="bold" />
+                        android:textStyle="bold"
+                        tools:ignore="Deprecated" />
 
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -352,7 +353,8 @@
                                             android:editable="false"
                                             android:focusable="false"
                                             android:inputType="datetime|date"
-                                            android:textAppearance="@style/Text" />
+                                            android:textAppearance="@style/Text"
+                                            tools:ignore="Deprecated" />
                                     </com.google.android.material.textfield.TextInputLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
@@ -376,7 +378,8 @@
                                             android:focusable="false"
                                             android:inputType="datetime|time"
                                             android:singleLine="false"
-                                            android:textAppearance="@style/Text" />
+                                            android:textAppearance="@style/Text"
+                                            tools:ignore="Deprecated" />
                                     </com.google.android.material.textfield.TextInputLayout>
                                 </LinearLayout>
 
@@ -406,7 +409,8 @@
                                             android:focusable="false"
                                             android:inputType="datetime|date"
                                             android:singleLine="false"
-                                            android:textAppearance="@style/Text" />
+                                            android:textAppearance="@style/Text"
+                                            tools:ignore="Deprecated" />
                                     </com.google.android.material.textfield.TextInputLayout>
 
                                     <com.google.android.material.textfield.TextInputLayout
@@ -429,7 +433,8 @@
                                             android:focusable="false"
                                             android:inputType="datetime|time"
                                             android:singleLine="false"
-                                            android:textAppearance="@style/Text" />
+                                            android:textAppearance="@style/Text"
+                                            tools:ignore="Deprecated" />
                                     </com.google.android.material.textfield.TextInputLayout>
                                 </LinearLayout>
 

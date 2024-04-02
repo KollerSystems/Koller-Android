@@ -111,8 +111,6 @@
         style="@style/Description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_vertical"
-        android:gravity="center_vertical"
         android:minHeight="@dimen/card_padding"
         android:text="@string/version"
         android:textAlignment="center" />

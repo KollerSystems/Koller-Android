@@ -2,6 +2,7 @@ package com.norbert.koller.student.activities
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
@@ -136,6 +137,7 @@ class WelcomeActivity : AppCompatActivity() {
             return animatorSet
         }
 
+        @SuppressLint("PrivateResource")
         fun animateOutNavigation(){
             val animatorSet = animateNavigation(tabs.layoutParams.height * -1f, defaultBtnNavigationTransY, com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized_accelerate)
             animatorSet.doOnEnd {
@@ -145,6 +147,7 @@ class WelcomeActivity : AppCompatActivity() {
             animatorSet.start()
         }
 
+        @SuppressLint("PrivateResource")
         fun animateInNavigation(){
             tabs.visibility = VISIBLE
             btnNavigation.visibility = VISIBLE

@@ -17,7 +17,7 @@
             android:id="@+id/textView4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Minden amit eddig megadtál"
+            android:text="@string/everything_provided_so_far"
             android:textAlignment="center"
             android:textAppearance="@style/MainTitle" />
 
@@ -25,7 +25,7 @@
             android:id="@+id/textView10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kérlek fuss át mindenen mégegyszer utoljára"
+            android:text="@string/everything_provided_so_far_description"
             android:textAlignment="center" />
 
         <TextView
@@ -33,7 +33,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/big_spacing"
-            android:text="Kollégium" />
+            android:text="@string/institution" />
 
 
         <com.google.android.material.card.MaterialCardView
@@ -53,7 +53,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="0dp"
-                    android:text="Azonosító" />
+                    android:text="@string/id" />
 
                 <TextView
 
@@ -67,7 +67,7 @@
                     style="@style/SeparatorTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Név"
+                    android:text="@string/name"
                     android:textStyle="bold" />
 
                 <TextView
@@ -84,7 +84,7 @@
             style="@style/CategoryCardName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Személyes Adatok" />
+            android:text="@string/personal_data" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/MainCard"
@@ -113,14 +113,14 @@
                             style="@style/SeparatorTitleMain"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Diák" />
+                            android:text="@string/student" />
 
                         <TextView
                             android:id="@+id/textView84"
                             style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Név" />
+                            android:text="@string/name" />
 
                         <TextView
                             android:id="@+id/textView85"
@@ -134,7 +134,7 @@
                             style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nem" />
+                            android:text="@string/gender" />
 
                         <TextView
 
@@ -148,7 +148,7 @@
                             style="@style/SeparatorTitle"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Születési hely" />
+                            android:text="@string/name" />
 
                         <TextView
 
@@ -807,7 +807,7 @@
 
                         <TextView
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="0dp"
                             android:layout_weight="0"
                             android:text="anyad"
                             android:textAppearance="@style/Description" />
@@ -833,7 +833,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
-            android:paddingLeft="@dimen/spacing"
+            android:paddingStart="@dimen/spacing"
             android:text="Kijelentem, hogy a jelentkezés során megadott adatok a valóságnak megfelelnek." />
 
 

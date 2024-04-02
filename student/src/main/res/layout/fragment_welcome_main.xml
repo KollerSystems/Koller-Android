@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Örülünk hogy a mi kollégiumunkat választottad!\nMost pedig kérlek szánj ránk egy kis időt, és add meg a szükséges adataidat."
+                android:text="@string/happy_you_choose_us"
                 android:textAlignment="center" />
 
         </LinearLayout>
@@ -73,13 +73,13 @@
         android:id="@+id/textView50"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_marginEnd="-35dp"
         android:layout_marginBottom="-35dp"
         android:alpha="0.5"
         android:elevation="@dimen/header_footer_elevation"
         android:text="👋"
         android:textSize="200dp"
-        tools:ignore="SpUsage" />
+        tools:ignore="HardcodedText,SpUsage" />
 
 </FrameLayout>

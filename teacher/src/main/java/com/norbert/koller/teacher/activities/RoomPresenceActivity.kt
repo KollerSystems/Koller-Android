@@ -121,7 +121,7 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
     }
 
     override fun getItemCount(): Int {
-        return roomOrderConditionsData.size + 1
+        return roomOrderConditionsData.size
     }
 
     class RoomPresenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

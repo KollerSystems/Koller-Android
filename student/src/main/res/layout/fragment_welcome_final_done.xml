@@ -26,7 +26,7 @@
                 android:id="@+id/textView44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Elkészültél!"
+                android:text="@string/you_are_done"
                 android:textAlignment="center"
                 android:textAllCaps="false"
                 android:textAppearance="@style/MainTitleExpanded"
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Adataidat sikeresen rögzítettük!\nIgyekezni fogunk úgy összeállítani a szobaközösségedet, hogy az mindőtöknek a legjobb legyen.\nKérlek most várd meg, míg Email-ben értesítünk felvételedről."
+                android:text="@string/registration_done_description"
                 android:textAlignment="center" />
 
             <Button
@@ -45,7 +45,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="Kilépés" />
+                android:text="@string/quit_app" />
 
         </LinearLayout>
 
@@ -55,7 +55,7 @@
         android:id="@+id/textView63"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
+        android:layout_gravity="bottom|end"
         android:layout_marginEnd="-35dp"
         android:layout_marginBottom="-35dp"
         android:alpha="0.5"
@@ -63,6 +63,6 @@
         android:scaleX="-1"
         android:text="🎉"
         android:textSize="200dp"
-        tools:ignore="SpUsage" />
+        tools:ignore="HardcodedText,SpUsage" />
 
 </FrameLayout>

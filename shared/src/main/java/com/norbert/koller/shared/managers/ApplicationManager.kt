@@ -19,6 +19,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.Window
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources

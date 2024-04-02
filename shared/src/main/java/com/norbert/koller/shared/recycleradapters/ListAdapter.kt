@@ -20,39 +20,30 @@ import java.util.Locale
 data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
 }
 
-class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val listItem : ArrayList<ListItem>) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+class ListAdapter (val bottomSheet : ItemListDialogFragmentBase) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
 
-        if(bottomSheet.alreadyChecked != null) {
-            for (item in listItem) {
-                item.isChecked = bottomSheet.alreadyChecked.contains(item.tag)
-            }
-        }
-        else{
-            for (item in listItem) {
-                item.isChecked = false
-            }
-        }
+
     }
 
     var itemsCopy : ArrayList<ListItem>? = null
 
     fun filter(text: String) {
         if(itemsCopy == null){
-            itemsCopy = ArrayList(listItem)
+            itemsCopy = ArrayList(bottomSheet.viewModel.list.value!!)
         }
-        listItem.clear()
+        bottomSheet.viewModel.list.value!!.clear()
         if (text.isEmpty()) {
-            listItem.addAll(itemsCopy!!)
+            bottomSheet.viewModel.list.value!!.addAll(itemsCopy!!)
         } else {
             for (item in itemsCopy!!) {
                 Log.d("ASDASD",text + " ::: ${item.title} ${item.description.toString()}")
                 val regexSearch = Regex(ApplicationManager.searchWithRegex(text), RegexOption.IGNORE_CASE)
                 if (regexSearch.containsMatchIn("${item.title} ${item.description.toString()}")) {
-                    listItem.add(item)
+                    bottomSheet.viewModel.list.value!!.add(item)
                 }
             }
         }
@@ -70,7 +61,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
 
         RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, position, itemCount)
 
-        val currentItem = listItem[position]
+        val currentItem = bottomSheet.viewModel.list.value!![position]
 
 
         if (bottomSheet.toggleList()) {
@@ -97,7 +88,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
             currentItem.function?.invoke(holder.checkBox.isChecked)
         }
 
-        if(!bottomSheet.collapseText) {
+        if(!bottomSheet.viewModel.collapseText) {
             holder.title.text = currentItem.title
             if (!currentItem.description.isNullOrEmpty()) {
                 holder.description.visibility = VISIBLE
@@ -118,7 +109,7 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase, private val lis
     }
 
     override fun getItemCount(): Int {
-        return listItem.size
+        return bottomSheet.viewModel.list.value!!.size
     }
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

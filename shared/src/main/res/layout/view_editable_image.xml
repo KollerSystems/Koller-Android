@@ -40,7 +40,7 @@
         style="@style/IconButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right|top"
+        android:layout_gravity="end|top"
         android:backgroundTint="?attr/colorTertiary"
         app:icon="@drawable/close_thick"
         app:iconTint="?attr/colorOnTertiary" />

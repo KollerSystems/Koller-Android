@@ -36,7 +36,7 @@
                     android:id="@+id/comment_pfp"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:layout_marginRight="@dimen/text_container_margin"
+                    android:layout_marginStart="@dimen/text_container_margin"
                     android:background="@drawable/circle"
                     android:backgroundTint="?attr/colorPrimaryContainer"
                     android:clickable="true"

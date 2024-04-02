@@ -27,7 +27,7 @@ class MyNotificationPublisher : BroadcastReceiver() {
 
         val builder = NotificationCompat.Builder(context, NotificationMakingManager.OCCUPATION_REMINDER_CHANNEL)
             .setSmallIcon(R.drawable.app_icon)
-            .setContentTitle("1 órád van visszaérni a kollégiumba")
+            .setContentTitle("DUMMY 1 órád van visszaérni a kollégiumba")
             .setContentText("Nincs kimenőd, így csak 15:45-ig maradhatsz kint")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
             .setContentIntent(pendingActivityIntent)

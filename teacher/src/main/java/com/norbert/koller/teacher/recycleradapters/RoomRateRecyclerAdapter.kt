@@ -22,13 +22,9 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         when (viewType){
-            R.layout.view_rating_slider -> {
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_rating_slider, parent, false)
-                return RoomOrderConditionsIntViewHolder(view)
-            }
-            R.layout.view_rating_checkbox ->{
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_rating_checkbox, parent, false)
-                return RoomOrderConditionsBooleanViewHolder(view)
+            R.layout.view_rating ->{
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_rating, parent, false)
+                return RoomOrderConditionsViewHolder(view)
             }
             R.layout.view_rating_rv_footer ->{
                 val view = LayoutInflater.from(parent.context).inflate(R.layout.view_rating_rv_footer, parent, false)
@@ -51,17 +47,9 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
             R.layout.view_rating_rv_footer -> {
 
             }
-            R.layout.view_rating_checkbox -> {
+            R.layout.view_rating -> {
 
                 setupRatingView(holder, position)
-
-            }
-            R.layout.view_rating_slider -> {
-
-                holder as RoomOrderConditionsIntViewHolder
-
-                setupRatingView(holder, position)
-
 
             }
         }
@@ -71,7 +59,7 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
 
 
     fun setupRatingView(holder: ViewHolder, position: Int){
-        holder as RoomOrderConditionsBaseViewHolder
+        holder as RoomOrderConditionsViewHolder
 
         val currentItem = roomOrderConditionsData[position]
 
@@ -107,35 +95,25 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
                 R.layout.view_rating_rv_footer
             }
             else -> {
-                when (roomOrderConditionsData[position]) {
-                    is RoomOrderConditionsInt -> R.layout.view_rating_slider
-                    is RoomOrderConditionsBoolean -> R.layout.view_rating_checkbox
-                    else -> throw Exception("Idiot")
-                }
+
+                   R.layout.view_rating
+
             }
         }
     }
 
-    class RoomOrderConditionsIntViewHolder(itemView: View) : RoomOrderConditionsBaseViewHolder(itemView)
-    {
-        val chipDislike : Chip = itemView.findViewById(R.id.chip_dislike)
-        val chipMiddlelike : Chip = itemView.findViewById(R.id.chip_middlelike)
-        val chipLike : Chip = itemView.findViewById(R.id.chip_like)
-    }
 
-    class RoomOrderConditionsBooleanViewHolder(itemView: View) : RoomOrderConditionsBaseViewHolder(itemView)
+
+    class RoomOrderConditionsViewHolder(itemView: View) : ViewHolder(itemView)
     {
+        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
+        val icon : ImageView = itemView.findViewById(R.id.image_icon)
+        val title : TextView = itemView.findViewById(R.id.text_title)
         val chipYes : Chip = itemView.findViewById(R.id.chip_yes)
         val chipNo : Chip = itemView.findViewById(R.id.chip_no)
     }
 
     class RoomOrderConditionsFooter(itemView: View) : ViewHolder(itemView)
 
-    abstract class RoomOrderConditionsBaseViewHolder(itemView: View) : ViewHolder(itemView)
-    {
-        val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
-        val icon : ImageView = itemView.findViewById(R.id.image_icon)
-        val title : TextView = itemView.findViewById(R.id.text_title)
-    }
 
 }

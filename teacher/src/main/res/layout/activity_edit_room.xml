@@ -71,7 +71,8 @@ tools:context=".activities.EditRoomActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
-            android:hint="Név"
+            android:enabled="false"
+            android:hint="@string/room_number"
             app:boxCornerRadiusBottomEnd="0dp"
             app:boxCornerRadiusBottomStart="0dp">
 
@@ -87,7 +88,7 @@ tools:context=".activities.EditRoomActivity">
             style="@style/CardTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Csoport"
+            android:hint="@string/group"
             app:boxCornerRadiusTopEnd="0dp"
             app:boxCornerRadiusTopStart="0dp">
 

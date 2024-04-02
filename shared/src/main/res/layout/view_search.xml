@@ -21,7 +21,7 @@
             android:layout_marginVertical="@dimen/card_padding"
             android:layout_marginStart="@dimen/full_card_padding"
             android:layout_marginEnd="@dimen/card_padding"
-            android:layout_weight="0"
+
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/search" />
 

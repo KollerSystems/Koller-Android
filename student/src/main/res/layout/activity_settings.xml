@@ -28,7 +28,7 @@
             <Button
                 android:id="@+id/toolbar_exit"
                 style="@style/ToolbarNavigationButton"
-                android:layout_gravity="bottom|left" />
+                android:layout_gravity="bottom|start" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"

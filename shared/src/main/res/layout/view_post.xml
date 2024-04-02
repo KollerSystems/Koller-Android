@@ -55,9 +55,9 @@
                         android:id="@+id/textView34"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="55dp"
+                        android:layout_marginStart="55dp"
                         android:layout_marginTop="@dimen/spacing"
-                        android:layout_marginRight="@dimen/card_padding"
+                        android:layout_marginEnd="@dimen/card_padding"
                         android:layout_marginBottom="@dimen/spacing"
                         android:text="Nagy Árpád" />
 

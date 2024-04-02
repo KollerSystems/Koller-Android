@@ -32,7 +32,7 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         addSortingChip("Annexe", R.string.annexe, arrayListOf(
         ))
 
-        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group")
+        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group", true)
 
 
         addSearchbar("RID")

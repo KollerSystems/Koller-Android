@@ -11,8 +11,7 @@
     <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
-        android:translationZ="100dp">
+        android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar"
@@ -86,7 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/header_footer_size"
             android:layout_weight="0"
-            android:gravity="right|center_vertical"
+            android:gravity="end|center_vertical"
             android:orientation="horizontal"
             android:paddingHorizontal="@dimen/header_margin_horizontal">
 

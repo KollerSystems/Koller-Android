@@ -25,7 +25,7 @@
             android:id="@+id/textView54"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="A megálmodott szobaközösséged"
+            android:text="@string/dream_roomates"
             android:textAlignment="center"
             android:textAppearance="@style/MainTitle" />
 
@@ -33,7 +33,7 @@
             android:id="@+id/textView55"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Az alábbiakban megadthatod, hogy milyen szobatársakkal lennél szívesen."
+            android:text="@string/dream_roomates_description"
             android:textAlignment="center" />
 
         <com.google.android.material.card.MaterialCardView
@@ -106,7 +106,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing"
                             android:drawablePadding="@dimen/text_container_margin"
-                            android:text="Introvertált: Nem egy partyarc, csöndes, el van magával."
+                            android:text="@string/introvert_description"
                             android:textAppearance="@style/Description"
                             app:drawableLeftCompat="@drawable/info" />
 
@@ -116,7 +116,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/text_container_margin"
                             android:drawablePadding="@dimen/text_container_margin"
-                            android:text="Extrovertált: Partyarc, nyüzsgő, folyamatosan társaságban van."
+                            android:text="@string/extrovert_description"
                             android:textAppearance="@style/Description"
                             app:drawableLeftCompat="@drawable/info" />
 
@@ -144,7 +144,7 @@
                             style="@style/TextInput"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:hint="Egyéb közlendő"
+                            android:hint="@string/other_information"
                             app:helperText="@string/optional">
 
                             <com.google.android.material.textfield.TextInputEditText

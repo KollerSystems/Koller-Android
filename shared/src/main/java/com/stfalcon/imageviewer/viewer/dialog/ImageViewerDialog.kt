@@ -70,10 +70,12 @@ class ImageViewerDialog<T>(
             .setView(viewerView)
             .setOnKeyListener { _, keyCode, event -> onDialogKeyEvent(keyCode, event) }
             .create()
+
             .apply {
                 setOnShowListener { viewerView.open(builderData.transitionView, animateOpen) }
                 setOnDismissListener { ((targetFragment ?: activity) as? OnDismissListener)?.onDismiss() }
             }
+
         return dialog
     }
 

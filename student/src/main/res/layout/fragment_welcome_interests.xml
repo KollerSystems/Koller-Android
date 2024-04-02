@@ -17,7 +17,7 @@
             android:id="@+id/textView56"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Most pedig egy kicsit rólad!"
+            android:text="@string/litle_about_you"
             android:textAlignment="center"
             android:textAppearance="@style/MainTitle" />
 

@@ -1,11 +1,14 @@
 package com.norbert.koller.shared.helpers
 
 import android.app.Activity
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.util.Pair
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -105,26 +108,29 @@ fun Chip.createAndSetChipText(viewModel: BaseViewModel, filterName: String, tag:
 }
 
 fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ItemListDialogFragmentBase, viewModel: BaseViewModel, filterName: String, localizedFilterId: Int){
-    dialog.getValuesOnFinish = {values, locNames ->
 
-        if(values.size != 0) {
+    dialog.show(fragmentManager, ItemListDialogFragmentBase.TAG)
+
+    if(dialog.getValuesOnFinish == null){
+    dialog.getValuesOnFinish = { values, locNames ->
+
+
+        if (values.size != 0) {
             val locNamesString = arrayToString(locNames)
-            if(text.toString() != locNamesString) {
+            if (text.toString() != locNamesString) {
                 viewModel.filters[filterName] = values
                 setChip(locNamesString, localizedFilterId, viewModel, filterName)
             }
-        }
-        else{
+        } else {
+
             val string = context.getString(localizedFilterId)
-            if(text.toString() != string) {
+            if (text.toString() != string) {
                 viewModel.filters.remove(filterName)
                 resetChip(string, viewModel, filterName)
             }
         }
-
     }
-
-    dialog.show(fragmentManager, ItemListDialogFragmentBase.TAG)
+    }
 }
 
 fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: BaseViewModel, tag : String, collapseText : Boolean){

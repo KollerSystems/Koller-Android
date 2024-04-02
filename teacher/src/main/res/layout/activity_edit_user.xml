@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:fitsSystemWindows="true"
-tools:context=".EditUserActivity">
+tools:context=".activities.EditUserActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
@@ -96,7 +96,7 @@ tools:context=".EditUserActivity">
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Kollégiumi adatok" />
+            android:text="@string/institutional_data" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_room"
@@ -104,7 +104,7 @@ tools:context=".EditUserActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
-            android:hint="Szoba"
+            android:hint="@string/room"
             app:boxCornerRadiusBottomEnd="0dp"
             app:boxCornerRadiusBottomStart="0dp">
 
@@ -161,6 +161,7 @@ tools:context=".EditUserActivity">
             android:text="Személyes adatok" />
 
         <com.norbert.koller.shared.customviews.SimpleCardButton
+            custom:rounded="true"
             android:id="@+id/scb_edit_personal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

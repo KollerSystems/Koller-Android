@@ -21,7 +21,7 @@
             <com.norbert.koller.shared.customviews.RoundedBadgeImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_marginRight="@dimen/spacing" />
+                android:layout_marginEnd="@dimen/spacing" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -51,7 +51,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_container_margin"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="0dp"
@@ -95,7 +96,7 @@
                 <com.google.android.material.chip.ChipGroup
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/card_padding"
+                    android:layout_marginStart="@dimen/card_padding"
                     app:chipSpacingHorizontal="0dp"
                     app:chipSpacingVertical="0dp"
                     app:singleSelection="true">
@@ -104,6 +105,7 @@
                         android:id="@+id/chip_none"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/color_worst_toggle"
                         app:chipIcon="@drawable/close"
                         app:chipIconEnabled="true"
                         app:iconStartPadding="12dp"
@@ -113,6 +115,7 @@
                         android:id="@+id/chip_yes"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        app:chipBackgroundColor="@color/color_best_toggle"
                         app:chipIcon="@drawable/check"
                         app:chipIconEnabled="true"
                         app:chipMinTouchTargetSize="0dp"

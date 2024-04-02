@@ -19,6 +19,6 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nincs mit megjeleníteni"
+        android:text="@string/there_is_nothing_to_display"
         android:textAlignment="center" />
 </LinearLayout>

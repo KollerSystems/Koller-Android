@@ -17,7 +17,7 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".EditUserActivity"
+            android:name=".activities.EditUserActivity"
             android:exported="false" />
         <activity
             android:name=".activities.CreateOutgoingActivity"

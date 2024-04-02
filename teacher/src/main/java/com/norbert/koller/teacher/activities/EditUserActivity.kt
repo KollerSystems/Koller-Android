@@ -7,10 +7,10 @@ import com.google.android.material.appbar.AppBarLayout
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
 
-class EditRoomActivity : AppCompatActivity() {
+class EditUserActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_room)
+        setContentView(R.layout.activity_edit_user)
 
         val appBar : AppBarLayout = findViewById(R.id.appbar)
 
@@ -21,5 +21,6 @@ class EditRoomActivity : AppCompatActivity() {
         backButton.setOnClickListener{
             onBackPressed()
         }
+
     }
 }

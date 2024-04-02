@@ -20,13 +20,15 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.recycleradapters.ListAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.viewmodels.ItemListDialogApiViewModel
+import com.norbert.koller.shared.viewmodels.ItemListDialogViewModel
 import okhttp3.internal.notifyAll
 
-abstract class ItemListDialogFragmentBase(val alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
-
-    open lateinit var list : ArrayList<ListItem>
+abstract class ItemListDialogFragmentBase(var alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
 
     var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
+
+    lateinit var viewModel: ItemListDialogViewModel
 
     lateinit var recycleView : RecyclerView
     lateinit var adapter : ListAdapter
@@ -36,9 +38,9 @@ abstract class ItemListDialogFragmentBase(val alreadyChecked : ArrayList<String>
     abstract fun toggleList() : Boolean
 
 
-    fun setRecyclerView(listItemList : ArrayList<ListItem>){
+    fun setRecyclerView(){
 
-        adapter = ListAdapter(this@ItemListDialogFragmentBase, listItemList)
+        adapter = ListAdapter(this@ItemListDialogFragmentBase)
         recycleView.adapter = adapter
         recycleView.layoutManager = LinearLayoutManager(context)
         recycleView.setHasFixedSize(true)
@@ -55,10 +57,34 @@ abstract class ItemListDialogFragmentBase(val alreadyChecked : ArrayList<String>
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         recycleView = view.findViewById(R.id.simple_list_bottom_fragment_recycle_view)
+
+        if(savedInstanceState == null){
+            if(getValuesOnFinish != null) {
+                viewModel.getValuesOnFinish = getValuesOnFinish
+            }
+            viewModel.collapseText = collapseText
+
+        }
+
+        viewModel.list.observe(this){
+
+                if (savedInstanceState == null && alreadyChecked != null) {
+                    for (item in viewModel.list.value!!) {
+                        item.isChecked = alreadyChecked!!.contains(item.tag)
+                    }
+                }
+
+            setList()
+        }
+
+
     }
 
-    fun allLoaded(){
-        if(list.size > 15){
+    fun setList(){
+
+
+
+        if(viewModel.list.value!!.size > 15){
             dialog!!.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)
 
 
@@ -84,21 +110,21 @@ abstract class ItemListDialogFragmentBase(val alreadyChecked : ArrayList<String>
     override fun onCancel(dialog: DialogInterface) {
         Log.d("TEST", "1")
 
-        if(getValuesOnFinish != null) {
+        if(viewModel.getValuesOnFinish != null) {
 
             adapter.filter("")
 
             val stringList: ArrayList<String> = arrayListOf()
             val localizedStringList: ArrayList<String> = arrayListOf()
 
-            for (item in list) {
+            for (item in viewModel.list.value!!) {
                 if (item.isChecked) {
                     stringList.add(item.tag!!)
                     localizedStringList.add(item.title)
                 }
             }
 
-            getValuesOnFinish!!.invoke(stringList, localizedStringList)
+            viewModel.getValuesOnFinish!!.invoke(stringList, localizedStringList)
         }
         super.onCancel(dialog)
     }

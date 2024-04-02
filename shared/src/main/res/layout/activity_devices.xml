@@ -26,7 +26,7 @@
             <Button
                 android:id="@+id/toolbar_exit"
                 style="@style/ToolbarNavigationButton"
-                android:layout_gravity="bottom|left" />
+                android:layout_gravity="bottom|start" />
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -60,7 +60,7 @@
                     android:id="@+id/textView78"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Itt látható az összes olyan eszköz, amelyben be vagy jelentkezve a Kollerbe.\n\nHa az itt szereplő eszközök között van olyan, amit nem imsersz meg, jelentkezz ki abból, és azonnal változtasd meg a jelszavadat." />
+                    android:text="@string/devices_menu_description" />
             </LinearLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
