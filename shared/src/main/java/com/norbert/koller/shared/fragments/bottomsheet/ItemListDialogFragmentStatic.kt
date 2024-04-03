@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.R
@@ -21,15 +22,18 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 class ItemListDialogFragmentStatic(var list : ArrayList<ListItem>? = null, alreadyChecked : ArrayList<String>? = null) : ItemListDialogFragmentBase(alreadyChecked) {
-
-
-    //TODO: VALAMÉRT NEM TŰNIK EL A NYAMVATT PIPA DOBOZ MIUTÁN A CHIP X-ÉVEL TÖRÖLTEM A FILTEREKET
+    
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         viewModel = ViewModelProvider(this)[ItemListDialogStaticViewModel::class.java]
+
         if(savedInstanceState == null){
 
-            viewModel.list.value = list
+            val listCopy : ArrayList<ListItem> = arrayListOf()
+            for(listElement in list!!){
+                listCopy.add(ListItem(listElement.title, listElement.description, listElement.icon, listElement.tag))
+            }
+            viewModel.list.value = listCopy
         }
 
         super.onViewCreated(view, savedInstanceState)

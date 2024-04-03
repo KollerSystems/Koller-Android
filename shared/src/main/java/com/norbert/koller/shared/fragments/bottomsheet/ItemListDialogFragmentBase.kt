@@ -68,6 +68,8 @@ abstract class ItemListDialogFragmentBase(var alreadyChecked : ArrayList<String>
 
         viewModel.list.observe(this){
 
+            Log.d("JIOSA", viewModel.list.value.toString())
+
                 if (savedInstanceState == null && alreadyChecked != null) {
                     for (item in viewModel.list.value!!) {
                         item.isChecked = alreadyChecked!!.contains(item.tag)

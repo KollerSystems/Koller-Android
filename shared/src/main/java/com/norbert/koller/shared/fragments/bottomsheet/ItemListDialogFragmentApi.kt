@@ -48,9 +48,8 @@ class ItemListDialogFragmentApi(var apiToCall : (suspend () -> Response<*>)? = n
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
-
         viewModel = ViewModelProvider(this)[ItemListDialogApiViewModel::class.java]
+
         if(savedInstanceState == null){
             apiViewModel().key = key!!
 
