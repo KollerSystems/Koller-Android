@@ -65,6 +65,9 @@ abstract class ItemListDialogFragmentBase(var alreadyChecked : ArrayList<String>
             viewModel.collapseText = collapseText
 
         }
+        else{
+            dismiss()
+        }
 
         viewModel.list.observe(this){
 
