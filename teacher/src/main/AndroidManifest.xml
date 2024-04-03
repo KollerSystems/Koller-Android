@@ -40,6 +40,9 @@
         <activity
             android:name=".activities.MainActivity"
             android:exported="false" />
+        <activity
+            android:name=".activities.UserPresenceActivity"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

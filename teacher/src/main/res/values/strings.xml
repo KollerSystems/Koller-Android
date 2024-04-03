@@ -10,4 +10,6 @@
     <string name="app_name">Koller Tanároknak</string>
 
     <string name="create_new_x_outgoing_last_part">kimenő létrehozása</string>
+
+    <string name="students_in_studygroup">Diákok a szakkörön</string>
 </resources>

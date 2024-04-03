@@ -15,7 +15,10 @@ import com.norbert.koller.shared.fragments.bottomsheet.BaseProgramDetailsFragmen
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 
-class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
+abstract class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
+
+    abstract fun onItemPress(fragmentActivity: FragmentActivity, item : BaseProgramData)
+
     override fun getViewType(): Int {
         return R.layout.view_user_item
     }
@@ -46,8 +49,8 @@ class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
 
         holder.itemView.setOnClickListener {
 
-            val dialog = BaseProgramDetailsFragment(item)
-            dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBottomSheet.TAG)
+            onItemPress((holder.itemView.context as FragmentActivity), item)
+
 
         }
     }

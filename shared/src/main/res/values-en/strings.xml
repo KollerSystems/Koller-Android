@@ -331,7 +331,7 @@
     <string name="door">Door</string>
     <string name="phone_number">Phone number</string>
     <string name="caretaker">Caretaker</string>
-    <string name="students_in_the_room">Diákok a szobában</string>
+    <string name="students_in_the_room">Students in the room</string>
     <string name="evaluation_criteria">Evaluation criteria</string>
     <string name="grade">Grade</string>
     <string name="add_continuous_outgoing">Add continuous outgoing</string>
@@ -354,4 +354,5 @@
     <string name="personal_data">Personal data</string>
     <string name="nearest_duty_teacher">Nearest duty teacher: %1$s (%2$s)</string>
     <string name="manage_notifications">Manage notifications</string>
+    <string name="details">Details</string>
 </resources>

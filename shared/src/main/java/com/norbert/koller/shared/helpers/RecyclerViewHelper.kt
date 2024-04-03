@@ -17,7 +17,8 @@ class RecyclerViewHelper {
     companion object{
         fun roundRecyclerItemsVerticallyWithSeparator(view : View, position : Int, pagingDataAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>){
 
-            if(pagingDataAdapter.getItemViewType(position) == 1) return
+
+            if(pagingDataAdapter.getItemViewType(position) != 0) return
 
             if(position == pagingDataAdapter.itemCount -1) {
                 if(pagingDataAdapter.getItemViewType(position - 1) != 0){

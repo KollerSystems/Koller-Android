@@ -16,7 +16,8 @@
         android:layout_height="@dimen/expanded_toolbar_height"
         android:background="?attr/colorSurface"
         app:elevation="1dp"
-        app:expanded="false">
+        app:expanded="false"
+        tools:visibility="gone">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             style="@style/CollapsingToolbarLayout"

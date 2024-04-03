@@ -10,4 +10,6 @@
     <string name="app_name">Koller for Teachers</string>
 
     <string name="create_new_x_outgoing_last_part">outgoing</string>
+
+    <string name="students_in_studygroup">Students in the studygroup</string>
 </resources>

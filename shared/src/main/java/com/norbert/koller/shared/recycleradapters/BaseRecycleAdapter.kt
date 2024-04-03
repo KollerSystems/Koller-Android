@@ -27,6 +27,8 @@ abstract class BaseRecycleAdapter() :
     var state: Int = STATE_NONE
     var withLoadingAnim: Boolean = true
 
+    var setOffsetToZero : Boolean = false
+
     var beforeRefresh: (() -> Unit)? = null
 
     var chipGroupSort: ChipGroup? = null
@@ -83,7 +85,10 @@ abstract class BaseRecycleAdapter() :
 
     fun seemlessRefresh() {
         beforeRefresh?.invoke()
+        RecyclerView.scrollToPosition(0)
+        setOffsetToZero = true
         refresh()
+        RecyclerView.scrollToPosition(0)
     }
 
     fun fullRefresh() {

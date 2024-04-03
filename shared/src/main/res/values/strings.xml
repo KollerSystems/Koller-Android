@@ -367,7 +367,6 @@
     <string name="door">Ajtó</string>
     <string name="phone_number">Telefonszám</string>
     <string name="caretaker">Gondviselő</string>
-    <string name="students_in_the_room">Students in the room</string>
     <string name="evaluation_criteria">Értékelési szempontok</string>
     <string name="grade">Osztályzat</string>
     <string name="add_continuous_outgoing">Folyamatos kimenő hozzáadása</string>
@@ -390,5 +389,7 @@
     <string name="personal_data">Személyes adatok</string>
     <string name="nearest_duty_teacher">Legközelebbi ügyeletes tanár: %1$s (%2$s)</string>
     <string name="manage_notifications">Értesítések kezelése</string>
+    <string name="students_in_the_room">Diákok a szobában</string>
+    <string name="details">Részletek</string>
 
 </resources>

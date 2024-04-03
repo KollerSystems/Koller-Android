@@ -73,8 +73,9 @@ abstract class BasePagingSource(val context: Context, val viewModel: BaseViewMod
 
         var offset = params.key ?: 0
 
-        if(recyclerAdapter.snapshot().size == 0){
+        if(recyclerAdapter.snapshot().size == 0 || recyclerAdapter.setOffsetToZero){
             offset = 0
+            recyclerAdapter.setOffsetToZero = false
         }
 
         if(recyclerAdapter.withLoadingAnim) {

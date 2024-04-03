@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.UserPresenceActivity">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fitsSystemWindows="true">
+
+                <com.google.android.material.appbar.AppBarLayout
+                    android:id="@+id/appbar"
+
+                    style="@null"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/expanded_toolbar_height"
+                    android:background="@null"
+                    android:outlineProvider="none"
+                    android:visibility="visible"
+                    app:expanded="false"
+                    tools:visibility="gone">
+
+                        <com.google.android.material.appbar.CollapsingToolbarLayout
+                            android:id="@+id/CollapsingToolbarLayout1"
+                            style="@style/CollapsingToolbarLayout"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:title="Szakkör címe"
+                            app:toolbarId="@+id/toolbar">
+
+
+                                <Button
+                                    android:id="@+id/toolbar_exit"
+                                    style="@style/ToolbarNavigationButton"
+                                    android:layout_gravity="bottom|start" />
+
+                                <androidx.appcompat.widget.Toolbar
+                                    android:id="@+id/toolbar1"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="@dimen/header_footer_size"
+                                    android:clickable="false"
+                                    app:titleMargin="@null"
+                                    app:titleMarginEnd="49dp"
+                                    app:titleMarginStart="49dp" />
+
+                                <Button
+                                    android:id="@+id/toolbar_edit"
+                                    style="@style/ToolbarNavigationButton"
+                                    android:layout_width="@dimen/toolbar_button_size"
+                                    android:layout_height="@dimen/toolbar_button_size"
+                                    android:layout_gravity="bottom|end"
+                                    app:icon="@drawable/pencil" />
+
+                        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+                </com.google.android.material.appbar.AppBarLayout>
+
+
+                <com.norbert.koller.shared.customviews.NestedCoordinatorLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:fitsSystemWindows="false"
+                    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                        <com.google.android.material.appbar.AppBarLayout
+                            android:id="@+id/appbar2"
+
+                            style="@null"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@null"
+                            android:outlineProvider="none"
+                            android:visibility="visible"
+                            app:expanded="true"
+                            tools:visibility="gone">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:paddingHorizontal="@dimen/application_padding"
+                                    android:paddingTop="@dimen/application_padding"
+                                    app:layout_scrollFlags="scroll">
+
+                                        <TextView
+                                            android:id="@+id/textView14"
+                                            style="@style/Separator"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+
+                                            android:paddingHorizontal="@dimen/application_padding"
+                                            android:text="@string/details"
+                                            android:translationZ="1dp" />
+
+                                        <com.google.android.material.textfield.TextInputLayout
+                                            android:id="@+id/create_new_post_til_title"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="@dimen/text_container_margin"
+
+                                            android:hint="@string/date"
+                                            app:boxCornerRadiusBottomEnd="0dp"
+                                            app:boxCornerRadiusBottomStart="0dp"
+                                            app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
+                                            app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
+                                            app:counterEnabled="false">
+
+                                                <com.google.android.material.textfield.TextInputEditText
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:editable="false"
+                                                    android:focusable="false"
+                                                    android:inputType="datetime|date"
+                                                    android:maxLength="50"
+                                                    android:textAppearance="@style/Text" />
+                                        </com.google.android.material.textfield.TextInputLayout>
+
+                                        <LinearLayout
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_marginHorizontal="@dimen/text_container_margin"
+                                            android:layout_marginBottom="@dimen/text_container_margin"
+                                            android:orientation="horizontal">
+
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/create_new_post_til_title2"
+                                                    android:layout_width="0dp"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_weight="1"
+                                                    android:hint="@string/teacher"
+                                                    app:boxCornerRadiusBottomEnd="0dp"
+                                                    app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+                                                    app:boxCornerRadiusTopEnd="0dp"
+                                                    app:boxCornerRadiusTopStart="0dp"
+                                                    custom:counterEnabled="false">
+
+                                                        <com.google.android.material.textfield.TextInputEditText
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:inputType="text|textCapSentences|textMultiLine"
+                                                            android:maxLength="50"
+                                                            android:textAppearance="@style/Text" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+
+                                                <Button
+                                                    android:id="@+id/button3"
+                                                    style="@style/ButtonTonalIcon"
+                                                    android:layout_width="wrap_content"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_marginTop="@dimen/text_container_margin"
+                                                    android:layout_weight="0"
+                                                    android:text="Átveszem"
+                                                    app:icon="@drawable/person_wave"
+                                                    app:shapeAppearance="@style/OverlayRoundedCardBottomRight" />
+                                        </LinearLayout>
+                                </LinearLayout>
+                        </com.google.android.material.appbar.AppBarLayout>
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                                <TextView
+                                    android:id="@+id/textView4"
+                                    style="@style/Separator"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="0"
+                                    android:text="@string/students_in_studygroup"
+                                    android:translationZ="1dp" />
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="0dp"
+                                    android:layout_weight="1" />
+                        </LinearLayout>
+
+
+                </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>
+
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/bottom_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:cardCornerRadius="0dp"
+            app:cardElevation="@dimen/header_footer_elevation">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/header_footer_size"
+                    android:layout_weight="0"
+                    android:gravity="end|center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="@dimen/header_margin_horizontal">
+
+                        <Button
+                            android:id="@+id/button_more"
+                            style="@style/IconButtonOutline"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/spacing"
+                            app:icon="@drawable/more_thick" />
+
+                        <Button
+                            android:id="@+id/button_publish_all"
+                            style="@style/ButtonIcon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/save"
+                            app:icon="@drawable/save" />
+                </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+
+</merge>
