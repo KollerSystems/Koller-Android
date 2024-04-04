@@ -69,7 +69,7 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
             refresh()
         }
 
-        if(viewModel.id == null){
+        if(savedInstanceState == null){
             viewModel.id = id!!
 
             val key = Pair(getDataTag(), viewModel.id)

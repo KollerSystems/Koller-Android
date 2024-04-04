@@ -1,14 +1,13 @@
 package com.norbert.koller.student.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.CalendarCanteenFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.norbert.koller.student.fragments.CalendarStudyGroupFragment
 
 class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() {
 

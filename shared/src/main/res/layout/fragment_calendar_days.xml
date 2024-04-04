@@ -8,6 +8,12 @@
     android:orientation="vertical"
     tools:context=".fragments.CalendarDaysFragment">
 
+    <com.norbert.koller.shared.customviews.TipView
+        android:id="@+id/Tip_calendar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        custom:text="TEST" />
+
     <View style="@style/SeparatorLine" />
 
     <com.google.android.material.card.MaterialCardView

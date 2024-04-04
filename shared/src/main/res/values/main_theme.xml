@@ -285,7 +285,7 @@
     </style>
 
 
-    <style name="CardButton" parent="@style/Button">
+    <style name="CardButton" parent="@style/ButtonIcon">
          <item name="android:paddingTop">@dimen/card_padding</item>
         <item name="android:paddingBottom">@dimen/card_padding</item>
         <item name="android:backgroundTint">?attr/colorSurfaceContainerLow</item>

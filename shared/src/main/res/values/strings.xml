@@ -391,5 +391,11 @@
     <string name="manage_notifications">Értesítések kezelése</string>
     <string name="students_in_the_room">Diákok a szobában</string>
     <string name="details">Részletek</string>
+    <string name="me">Én</string>
+    <string name="silence">Szilencium</string>
+    <string name="help">Segítség</string>
+    <string name="more">Több</string>
+    <string name="less">Kevesebb</string>
+    <string name="done">Kész</string>
 
 </resources>

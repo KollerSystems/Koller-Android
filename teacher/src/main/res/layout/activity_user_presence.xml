@@ -77,87 +77,201 @@
                             android:outlineProvider="none"
                             android:visibility="visible"
                             app:expanded="true"
-                            tools:visibility="gone">
+                            tools:visibility="visible">
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
+                                    android:animateLayoutChanges="true"
                                     android:orientation="vertical"
                                     android:paddingHorizontal="@dimen/application_padding"
                                     android:paddingTop="@dimen/application_padding"
                                     app:layout_scrollFlags="scroll">
 
                                         <TextView
-                                            android:id="@+id/textView14"
-                                            style="@style/Separator"
+                                            android:id="@+id/textView7"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-
-                                            android:paddingHorizontal="@dimen/application_padding"
-                                            android:text="@string/details"
-                                            android:translationZ="1dp" />
-
-                                        <com.google.android.material.textfield.TextInputLayout
-                                            android:id="@+id/create_new_post_til_title"
-                                            android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginHorizontal="@dimen/text_container_margin"
-
-                                            android:hint="@string/date"
-                                            app:boxCornerRadiusBottomEnd="0dp"
-                                            app:boxCornerRadiusBottomStart="0dp"
-                                            app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
-                                            app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
-                                            app:counterEnabled="false">
-
-                                                <com.google.android.material.textfield.TextInputEditText
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:editable="false"
-                                                    android:focusable="false"
-                                                    android:inputType="datetime|date"
-                                                    android:maxLength="50"
-                                                    android:textAppearance="@style/Text" />
-                                        </com.google.android.material.textfield.TextInputLayout>
+                                            android:layout_marginBottom="@dimen/text_container_margin"
+                                            android:drawablePadding="@dimen/text_container_margin"
+                                            android:text="Az alábbi adatok csak erre a specifikus szakkörre vonatkoznak."
+                                            android:textAppearance="@style/Description"
+                                            app:drawableLeftCompat="@drawable/info" />
 
                                         <LinearLayout
+                                            android:id="@+id/Ly_read"
                                             android:layout_width="match_parent"
-                                            android:layout_height="wrap_content"
-                                            android:layout_marginHorizontal="@dimen/text_container_margin"
-                                            android:layout_marginBottom="@dimen/text_container_margin"
-                                            android:orientation="horizontal">
+                                            android:layout_height="match_parent"
+                                            android:orientation="vertical"
+                                            android:paddingHorizontal="@dimen/text_container_margin"
+                                            android:paddingTop="@dimen/text_container_margin">
+
+                                                <com.norbert.koller.shared.customviews.NameContentView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    app:detail="február 15."
+                                                    app:icon="@drawable/calendar"
+                                                    app:name="@string/date" />
+
+                                                <com.norbert.koller.shared.customviews.NameContentView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    app:detail="3rd lesson"
+                                                    app:icon="@drawable/clock"
+                                                    app:name="@string/lesson" />
+
+                                                <com.norbert.koller.shared.customviews.NameContentView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    app:detail="17"
+                                                    app:icon="@drawable/room"
+                                                    app:name="@string/classroom" />
+
+                                                <com.norbert.koller.shared.customviews.NameContentView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    app:detail="12.B"
+                                                    app:icon="@drawable/groups"
+                                                    app:name="@string/class_" />
+
+                                                <com.norbert.koller.shared.customviews.NameContentView
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    app:detail="Kis Gazsi"
+                                                    app:icon="@drawable/user"
+                                                    app:name="@string/teacher" />
+
+                                        </LinearLayout>
+
+                                        <LinearLayout
+                                            android:id="@+id/Ly_edit"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            android:orientation="vertical"
+                                            android:visibility="gone"
+                                            tools:visibility="visible">
+
+                                                <TextView
+                                                    android:id="@+id/textView14"
+                                                    style="@style/Separator"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+
+                                                    android:paddingHorizontal="@dimen/application_padding"
+                                                    android:text="@string/details"
+                                                    android:translationZ="1dp" />
+
+                                                <LinearLayout
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                                                    android:orientation="horizontal">
+
+                                                        <com.google.android.material.textfield.TextInputLayout
+                                                            android:id="@+id/til_teacher"
+                                                            android:layout_width="0dp"
+                                                            android:layout_height="wrap_content"
+                                                            android:layout_weight="1"
+                                                            android:hint="@string/teacher"
+                                                            app:boxCornerRadiusBottomEnd="0dp"
+                                                            app:boxCornerRadiusBottomStart="0dp"
+                                                            app:boxCornerRadiusTopEnd="0dp"
+                                                            app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
+                                                            custom:counterEnabled="false">
+
+                                                                <com.google.android.material.textfield.TextInputEditText
+                                                                    android:layout_width="match_parent"
+                                                                    android:layout_height="wrap_content"
+                                                                    android:inputType="text|textCapSentences|textMultiLine"
+                                                                    android:maxLength="50"
+                                                                    android:textAppearance="@style/Text" />
+                                                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                                                        <Button
+                                                            android:id="@+id/button_teacher"
+                                                            style="@style/ButtonTonalIcon"
+                                                            android:layout_width="wrap_content"
+                                                            android:layout_height="match_parent"
+                                                            android:layout_marginTop="@dimen/text_container_margin"
+                                                            android:layout_weight="0"
+                                                            android:text="Helyettesítek"
+                                                            app:cornerRadius="@null"
+                                                            app:icon="@drawable/person_wave"
+                                                            app:shapeAppearance="@style/OverlayRoundedCardTopRight" />
+
+                                                </LinearLayout>
 
                                                 <com.google.android.material.textfield.TextInputLayout
-                                                    android:id="@+id/create_new_post_til_title2"
-                                                    android:layout_width="0dp"
-                                                    android:layout_height="wrap_content"
-                                                    android:layout_weight="1"
-                                                    android:hint="@string/teacher"
-                                                    app:boxCornerRadiusBottomEnd="0dp"
-                                                    app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
-                                                    app:boxCornerRadiusTopEnd="0dp"
-                                                    app:boxCornerRadiusTopStart="0dp"
+                                                    android:id="@+id/create_new_post_til_title3211"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="match_parent"
+                                                    android:layout_marginHorizontal="@dimen/text_container_margin"
+
+                                                    android:hint="@string/classroom"
+                                                    custom:boxCornerRadiusBottomEnd="0dp"
+                                                    custom:boxCornerRadiusBottomStart="0dp"
+                                                    custom:boxCornerRadiusTopEnd="0dp"
+                                                    custom:boxCornerRadiusTopStart="0dp"
                                                     custom:counterEnabled="false">
 
                                                         <com.google.android.material.textfield.TextInputEditText
                                                             android:layout_width="match_parent"
                                                             android:layout_height="wrap_content"
-                                                            android:inputType="text|textCapSentences|textMultiLine"
+                                                            android:inputType="text|textCapSentences"
                                                             android:maxLength="50"
                                                             android:textAppearance="@style/Text" />
                                                 </com.google.android.material.textfield.TextInputLayout>
 
-                                                <Button
-                                                    android:id="@+id/button3"
-                                                    style="@style/ButtonTonalIcon"
-                                                    android:layout_width="wrap_content"
+                                                <com.google.android.material.textfield.TextInputLayout
+                                                    android:id="@+id/create_new_post_til_title23"
+                                                    android:layout_width="match_parent"
+                                                    android:layout_height="wrap_content"
+                                                    android:layout_marginHorizontal="@dimen/text_container_margin"
+
+                                                    android:hint="@string/date"
+                                                    app:boxCornerRadiusBottomEnd="0dp"
+                                                    app:boxCornerRadiusBottomStart="0dp"
+                                                    app:boxCornerRadiusTopEnd="0dp"
+                                                    app:boxCornerRadiusTopStart="0dp"
+                                                    app:counterEnabled="false">
+
+                                                        <com.google.android.material.textfield.TextInputEditText
+                                                            android:layout_width="match_parent"
+                                                            android:layout_height="wrap_content"
+                                                            android:editable="false"
+                                                            android:focusable="false"
+                                                            android:inputType="datetime|date"
+                                                            android:maxLength="50"
+                                                            android:textAppearance="@style/Text" />
+                                                </com.google.android.material.textfield.TextInputLayout>
+
+                                                <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                                    android:layout_width="match_parent"
                                                     android:layout_height="match_parent"
-                                                    android:layout_marginTop="@dimen/text_container_margin"
-                                                    android:layout_weight="0"
-                                                    android:text="Átveszem"
-                                                    app:icon="@drawable/person_wave"
-                                                    app:shapeAppearance="@style/OverlayRoundedCardBottomRight" />
+                                                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                                                    android:layout_marginTop="@dimen/card_full_margin"
+                                                    app:cardCornerRadius="@null"
+                                                    app:shapeAppearance="@style/OverlayRoundedCardBottom" />
                                         </LinearLayout>
+
+                                        <com.google.android.material.button.MaterialButton
+                                            android:id="@+id/Button_more"
+                                            style="@style/TextButton"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:layout_margin="@dimen/text_container_margin"
+                                            android:text="@string/edit"
+                                            app:icon="@drawable/pencil"
+                                            app:iconGravity="textStart" />
+
+                                        <View
+                                            android:id="@+id/view223"
+                                            style="@style/SeparatorLine"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="1dp"
+                                            android:layout_marginBottom="@dimen/text_container_margin" />
+
                                 </LinearLayout>
                         </com.google.android.material.appbar.AppBarLayout>
 

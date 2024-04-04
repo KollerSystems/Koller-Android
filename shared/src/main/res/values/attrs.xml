@@ -50,6 +50,10 @@
 
     <declare-styleable name="tipView">
         <attr name="text"/>
+        <attr name="type" format="enum">
+            <enum name="tip" value="0"/>
+            <enum name="help" value="1"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="eventPoint">

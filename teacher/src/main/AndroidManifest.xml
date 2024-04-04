@@ -17,6 +17,9 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".activities.EditStudyGroupActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.EditUserActivity"
             android:exported="false" />
         <activity

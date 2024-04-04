@@ -1,12 +1,11 @@
-package com.norbert.koller.student.fragments
+package com.norbert.koller.teacher.fragments
 
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.CalendarStudyGroupFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.student.recycleradapters.StudyGroupRecyclerAdapter
-import com.norbert.koller.student.recycleradapters.BaseProgramRecyclerAdapter
+import com.norbert.koller.teacher.recycleradapters.StudyGroupRecyclerAdapter
 
 class CalendarStudyGroupFragment : CalendarStudyGroupFragment() {
 

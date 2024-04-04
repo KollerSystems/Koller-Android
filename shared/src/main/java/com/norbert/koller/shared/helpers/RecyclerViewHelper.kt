@@ -4,9 +4,12 @@ import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.FrameLayout
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
@@ -272,7 +275,7 @@ class RecyclerViewHelper {
                 0
             ).build()
 
-            (view as MaterialCardView).shapeAppearanceModel = shapeAppearance
+            (view as Shapeable).shapeAppearanceModel = shapeAppearance
             if(view2 != null) (view2 as Shapeable).shapeAppearanceModel = shapeAppearance
 
             (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(leftPadding,topPadding,rightPadding,bottomPadding)
@@ -334,7 +337,7 @@ class RecyclerViewHelper {
 
         fun deroundCardX(view : View, view2 : View?, leftMargin : Int, topMargin : Int, rightMargin : Int, bottomMargin : Int){
 
-            (view as MaterialCardView).shapeAppearanceModel = ShapeAppearanceModel()
+            (view as Shapeable).shapeAppearanceModel = ShapeAppearanceModel()
             if(view2 != null) (view2 as Shapeable).shapeAppearanceModel = ShapeAppearanceModel()
 
             (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(leftMargin,topMargin,rightMargin,bottomMargin)
