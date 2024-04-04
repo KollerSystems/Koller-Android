@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.api.RetrofitInstance
@@ -21,7 +22,27 @@ class LaunchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
 
-        ApplicationManager.currentContext = this
+        AuthenticationManager.handleFailedTokenRefresh = {
+
+            lifecycleScope.launch {
+                DataStoreManager.remove(this@LaunchActivity, DataStoreManager.TOKENS)
+                finishAffinity()
+                ApplicationManager.openActivity(
+                    this@LaunchActivity,
+                    ApplicationManager.loginActivity()::class.java
+                )
+            }
+
+        }
+
+        AuthenticationManager.handleRefreshedTokenSaving = {
+            lifecycleScope.launch {
+                DataStoreManager.save(
+                    this@LaunchActivity,
+                    LoginTokensData.instance!!
+                )
+            }
+        }
 
         if(!isTaskRoot){
             finish()

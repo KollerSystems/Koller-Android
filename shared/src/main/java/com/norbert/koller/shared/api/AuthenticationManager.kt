@@ -3,6 +3,7 @@ package com.norbert.koller.shared.api
 import android.app.Activity
 import android.util.Log
 import androidx.core.content.ContextCompat
+import androidx.datastore.dataStore
 import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.data.ApiLoginRefreshData
 import com.norbert.koller.shared.data.LoginTokensData
@@ -30,6 +31,11 @@ class AuthenticationManager : Authenticator {
     private var tokenRefreshInProgress: AtomicBoolean = AtomicBoolean(false)
     private var request: Request? = null
 
+    companion object{
+        var handleFailedTokenRefresh: (() -> Unit)? = null
+        var handleRefreshedTokenSaving: (() -> Unit)? = null
+    }
+
     fun getToken() : ApiLoginRefreshData{
         return ApiLoginRefreshData("refresh_token", LoginTokensData.instance!!.refreshToken)
     }
@@ -55,13 +61,7 @@ class AuthenticationManager : Authenticator {
                             Calendar.getInstance().timeInMillis + tokenData.expiresIn - RetrofitInstance.timeout,
                             tokenData.refreshToken
                         )
-                        runBlocking {
-                            DataStoreManager.save(
-                                ApplicationManager.currentContext!!,
-                                LoginTokensData.instance!!
-                            )
-
-                        }
+                        handleRefreshedTokenSaving?.invoke()
 
                         request = response.request.newBuilder()
                             .header("Authorization", "Bearer ${LoginTokensData.instance?.accessToken}")
@@ -92,18 +92,8 @@ class AuthenticationManager : Authenticator {
                 Log.d("TESTTESTS", "333333")
 
                 tokenRefreshInProgress.set(false)
-                val activity = (ApplicationManager.currentContext!! as Activity)
-                DataStoreManager.remove(activity, DataStoreManager.TOKENS)
 
-
-                    activity.runOnUiThread {
-                        activity.finishAffinity()
-                        ApplicationManager.openActivity(
-                            activity,
-                            ApplicationManager.loginActivity()::class.java
-                        )
-                    }
-
+                handleFailedTokenRefresh?.invoke()
 
                 request = null
 

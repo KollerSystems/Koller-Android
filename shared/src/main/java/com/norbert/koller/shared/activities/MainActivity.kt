@@ -4,6 +4,7 @@ import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -28,6 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
@@ -36,15 +38,21 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
+import com.norbert.koller.shared.KollerHostApduService
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.AuthenticationManager
+import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.fragments.UserFragment
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getColorOfPixel
 import com.norbert.koller.shared.managers.getStringResourceByName
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.launch
 import org.w3c.dom.Text
 
 
@@ -71,7 +79,32 @@ abstract class MainActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
 
         super.onPostCreate(savedInstanceState)
-        ApplicationManager.currentContext = this
+
+        AuthenticationManager.handleFailedTokenRefresh = {
+
+            lifecycleScope.launch {
+                DataStoreManager.remove(this@MainActivity, DataStoreManager.TOKENS)
+                finishAffinity()
+                ApplicationManager.openActivity(
+                    this@MainActivity,
+                    ApplicationManager.loginActivity()::class.java
+                )
+            }
+
+        }
+
+        AuthenticationManager.handleRefreshedTokenSaving = {
+            lifecycleScope.launch {
+                DataStoreManager.save(
+                    this@MainActivity,
+                    LoginTokensData.instance!!
+                )
+            }
+        }
+
+        KollerHostApduService.handleNFC = { uid ->
+            addFragment(ApplicationManager.userFragment(uid))
+        }
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 

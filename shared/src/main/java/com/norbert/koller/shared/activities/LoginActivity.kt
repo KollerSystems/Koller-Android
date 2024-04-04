@@ -22,6 +22,7 @@ import com.norbert.koller.shared.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.managers.getColorOfPixel
@@ -39,7 +40,6 @@ open class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
 
         setContentView(R.layout.activity_login)
 
