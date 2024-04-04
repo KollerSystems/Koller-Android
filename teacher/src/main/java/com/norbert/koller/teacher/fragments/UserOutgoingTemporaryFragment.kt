@@ -6,9 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.teacher.activities.CreateOutgoingActivity
 
-class UserOutgoingTemporaryFragment : com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment() {
+class UserOutgoingTemporaryFragment(userData: UserData? = null) : com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment(userData) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -18,8 +19,9 @@ class UserOutgoingTemporaryFragment : com.norbert.koller.shared.fragments.UserOu
         buttonLayout.visibility = View.VISIBLE
 
         buttonAddNew.setOnClickListener{
+            CreateOutgoingActivity.type = CreateOutgoingActivity.TEMPORARY
+            CreateOutgoingActivity.userData = userData
             val intent = Intent(requireContext(), CreateOutgoingActivity::class.java)
-            intent.putExtra("type", CreateOutgoingActivity.TEMPORARY)
             requireContext().startActivity(intent)
         }
 

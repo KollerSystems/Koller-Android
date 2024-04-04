@@ -6,6 +6,7 @@ import android.view.View
 import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.customviews.SimpleCardButton
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 import com.norbert.koller.teacher.activities.EditUserActivity
@@ -18,7 +19,7 @@ class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.User
         val scbOutgoings : SimpleCardButton = view.findViewById(R.id.scb_outgoings)
 
         scbOutgoings.setOnClickListener {
-            (context as MainActivity).addFragment(UserOutgoingsFragment())
+            (context as MainActivity).addFragment(UserOutgoingsFragment(viewModel.response.value as UserData))
         }
 
         val scbGate : SimpleCardButton = view.findViewById(R.id.scb_gate)

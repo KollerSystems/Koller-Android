@@ -58,8 +58,8 @@ class ApplicationManager : ApplicationManager() {
         roomsFragment = {RoomsFragment()}
         usersFragment = {UsersFragment()}
 
-        userOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
-        userOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
+        userOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment(it) }
+        userOutgoingPermanentFragment = { UserOutgoingPermanentFragment(it) }
     }
 
 

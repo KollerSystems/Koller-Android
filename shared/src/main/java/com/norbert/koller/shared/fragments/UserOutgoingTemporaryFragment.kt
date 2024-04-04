@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.UserData
 
-open class UserOutgoingTemporaryFragment : Fragment() {
+open class UserOutgoingTemporaryFragment(val userData : UserData? = null) : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

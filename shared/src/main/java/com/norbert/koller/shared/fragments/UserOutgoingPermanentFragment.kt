@@ -6,8 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.UserData
 
-open class UserOutgoingPermanentFragment : Fragment() {
+open class UserOutgoingPermanentFragment(val userData: UserData? = null) : Fragment() {
 
 
 

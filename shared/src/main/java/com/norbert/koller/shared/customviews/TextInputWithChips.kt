@@ -19,9 +19,9 @@ import com.norbert.koller.shared.R
 
 class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs)  {
 
-    private lateinit var tilAddresse: TextInputLayout
-    private lateinit var actvAddresse: AutoCompleteTextView
-    lateinit var chipsAddresse: ChipGroup
+    private var tilAddresse: TextInputLayout
+    private var actvAddresse: AutoCompleteTextView
+    var chipsAddresse: ChipGroup
 
     var onChipChange : (() -> Unit)? = null
     
@@ -33,6 +33,31 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayo
 
     fun containsChip() : Boolean{
         return (chipsAddresse.size > 1)
+    }
+
+    fun removeChip(chip : Chip){
+        chipsAddresse.removeView(chip)
+        onChipChange?.invoke()
+    }
+
+    fun addChip(text : String){
+        val chip = Chip(context)
+        chip.text = text
+        actvAddresse.text = null
+        chip.isCheckable = false
+        chip.isCloseIconVisible = true
+        chip.ensureAccessibleTouchTarget(0)
+        chip.setOnCloseIconClickListener {
+            removeChip(chip)
+            emptyAddresses()
+        }
+        chipsAddresse.addView(chip, chipsAddresse.childCount-1)
+        onChipChange?.invoke()
+        uiFilled()
+    }
+
+    fun uiFilled(){
+        tilAddresse.editText!!.setText(" ")
     }
     
     init {
@@ -54,7 +79,7 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayo
             if (hasFocus){
                 val imm = context.getSystemService(AppCompatActivity.INPUT_METHOD_SERVICE) as InputMethodManager
                 imm.showSoftInput(actvAddresse, InputMethodManager.SHOW_IMPLICIT)
-                tilAddresse.editText!!.setText(" ")
+                uiFilled()
                 tilAddresse.boxStrokeWidth = tilAddresse.boxStrokeWidthFocused
                 tilAddresse.error = " "
             } else
@@ -65,29 +90,15 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayo
             }
         }
 
-        val addresseItems = listOf("Nagy Géza", "Andrásosfi Norberto", "Kovács Gábor", "Nagy Norbert", "Lányok", "Fiúk", "F1", "F2", "F3", "L1", "L2", "L3")
+        val addresseItems = listOf("Lányok", "Fiúk")
         val addresseAdapter = ArrayAdapter(context, R.layout.view_list_item_text, addresseItems)
 
         actvAddresse.setAdapter(addresseAdapter)
 
-        fun removeChip(chip : Chip){
-            chipsAddresse.removeView(chip)
-            onChipChange?.invoke()
-        }
+
 
         actvAddresse.setOnItemClickListener { parent, view, position, id ->
-            val chip = Chip(context)
-            chip.text = actvAddresse.text
-            actvAddresse.text = null
-            chip.isCheckable = false
-            chip.isCloseIconVisible = true
-            chip.ensureAccessibleTouchTarget(0)
-            chip.setOnCloseIconClickListener {
-                removeChip(chip)
-                emptyAddresses()
-            }
-            chipsAddresse.addView(chip, chipsAddresse.childCount-1)
-            onChipChange?.invoke()
+            addChip(actvAddresse.text.toString())
         }
 
 

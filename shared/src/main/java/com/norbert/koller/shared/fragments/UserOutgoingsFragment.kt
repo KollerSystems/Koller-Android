@@ -12,15 +12,16 @@ import androidx.viewpager2.widget.ViewPager2
 import com.norbert.koller.shared.R
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.ApplicationManager
 
-class UserOutgoingsFragment(uid : Int? = null) : PagedFragment() {
+class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 
-        val adapter = UserOutgoingViewPagerAdapter(childFragmentManager, lifecycle)
+        val adapter = UserOutgoingViewPagerAdapter(userData, childFragmentManager, lifecycle)
 
         viewPager.adapter = adapter
 
@@ -38,7 +39,7 @@ class UserOutgoingsFragment(uid : Int? = null) : PagedFragment() {
     }
 }
 
-class UserOutgoingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle)
+class UserOutgoingViewPagerAdapter(val userData: UserData?, fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle)
 {
     override fun getItemCount(): Int {
         return 2
@@ -47,10 +48,10 @@ class UserOutgoingViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: 
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                ApplicationManager.userOutgoingTemporaryFragment()
+                ApplicationManager.userOutgoingTemporaryFragment(userData)
             }
             1->{
-                ApplicationManager.userOutgoingPermanentFragment()
+                ApplicationManager.userOutgoingPermanentFragment(userData)
             }
             else->{
                 Fragment()

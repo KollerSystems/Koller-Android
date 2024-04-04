@@ -5,12 +5,16 @@ import android.os.Bundle
 import android.view.View.GONE
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.customviews.TextInputWithChips
+import com.norbert.koller.shared.data.OutgoingData
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
 import com.norbert.koller.shared.helpers.connectToDatePicker
@@ -18,13 +22,19 @@ import com.norbert.koller.shared.helpers.connectToTimePicker
 import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.norbert.koller.teacher.R
 
 class CreateOutgoingActivity() : AppCompatActivity() {
 
+
+
     companion object{
         const val TEMPORARY : Int = 0
         const val PERMANENT : Int = 1
+
+        var type : Int = 0
+        var userData: UserData? = null
     }
 
     private lateinit var tilDateFrom : TextInputLayout
@@ -33,6 +43,12 @@ class CreateOutgoingActivity() : AppCompatActivity() {
     private lateinit var tilTimeTo : TextInputLayout
     private lateinit var tilTitle: TextInputLayout
     private lateinit var tilAddresse: TextInputWithChips
+
+    lateinit var viewModel : ResponseViewModel
+
+    fun outgoingData() : OutgoingData{
+        return (viewModel.response.value as OutgoingData)
+    }
 
     override fun onBackPressed() {
         if(true){
@@ -57,6 +73,17 @@ class CreateOutgoingActivity() : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_outgoing)
+
+        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+
+        if(savedInstanceState == null){
+            val data = OutgoingData()
+            if(userData != null){
+                data.addresses = arrayListOf(userData!!)
+            }
+            viewModel.response.value = data
+
+        }
 
         findViewById<AppBarLayout>(com.norbert.koller.shared.R.id.appbar).setup()
 
@@ -88,17 +115,17 @@ class CreateOutgoingActivity() : AppCompatActivity() {
 
         val tilType: TextInputLayout = findViewById(com.norbert.koller.shared.R.id.create_new_post_til_type)
 
-        if(intent.extras != null)
-            when (intent.extras!!.getInt("type")){
-                TEMPORARY ->{
-                    tilType.editText!!.setText(com.norbert.koller.shared.R.string.temporary)
-                    tilType.editText!!.tag = TEMPORARY
-                }
-                PERMANENT ->{
-                    tilType.editText!!.setText(com.norbert.koller.shared.R.string.continuous)
-                    tilType.editText!!.tag = PERMANENT
-                }
+
+        when (type){
+            TEMPORARY ->{
+                tilType.editText!!.setText(com.norbert.koller.shared.R.string.temporary)
+                tilType.editText!!.tag = TEMPORARY
             }
+            PERMANENT ->{
+                tilType.editText!!.setText(com.norbert.koller.shared.R.string.continuous)
+                tilType.editText!!.tag = PERMANENT
+            }
+        }
 
         tilType.editText!!.setOnClickListener{
 
@@ -138,5 +165,13 @@ class CreateOutgoingActivity() : AppCompatActivity() {
         tilAddresse.onChipChange = onChange
 
         onChange.invoke()
+
+
+        viewModel.response.observe(this){
+            for (user in outgoingData().addresses){
+                tilAddresse.addChip(user.name!!)
+            }
+
+        }
     }
 }

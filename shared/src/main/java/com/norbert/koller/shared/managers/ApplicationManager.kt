@@ -38,11 +38,13 @@ import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.LoginActivity
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import java.nio.ByteBuffer
 import java.util.Date
 import java.util.Locale
 
@@ -61,7 +63,7 @@ open class ApplicationManager : Application() {
 
         lateinit var version : String
 
-        var currentContext : Context? = null
+
 
         lateinit var openSettings: (context : Context) -> Unit
         lateinit var openLogin: (context : Context) -> Unit
@@ -83,8 +85,8 @@ open class ApplicationManager : Application() {
         var roomsFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomsFragment = {map-> RoomsFragment(map) }
         var usersFragment: (map : MutableMap<String, ArrayList<String>>?) -> UsersFragment = {map-> UsersFragment(map) }
 
-        var userOutgoingTemporaryFragment: () -> UserOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment() }
-        var userOutgoingPermanentFragment: () -> UserOutgoingPermanentFragment = { UserOutgoingPermanentFragment() }
+        var userOutgoingTemporaryFragment: (userData : UserData?) -> UserOutgoingTemporaryFragment = {userData -> UserOutgoingTemporaryFragment(userData) }
+        var userOutgoingPermanentFragment: (userData : UserData?) -> UserOutgoingPermanentFragment = {userData -> UserOutgoingPermanentFragment(userData) }
 
         const val minLengthBeforeDismiss : Int = 3
 
@@ -203,6 +205,13 @@ open class ApplicationManager : Application() {
         }
     }
 }
+
+fun Int.toBytes(): ByteArray =
+    ByteBuffer.allocate(Int.SIZE_BYTES).putInt(this).array()
+
+fun ByteArray.toInt(): Int =
+    ByteBuffer.wrap(this).int
+
 
 fun Chip.checkByPass(isChecked : Boolean){
     isCheckable = true
