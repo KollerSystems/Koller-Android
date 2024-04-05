@@ -6,6 +6,7 @@ import android.util.AttributeSet
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.TextView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.slider.RangeSlider
@@ -14,17 +15,17 @@ import com.norbert.koller.shared.managers.orderSingleNumber
 import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.managers.setVisibilityBy
 
-class TimeRangeCardView(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
+class TimeRangeCardView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     val rangeSlider: RangeSlider
 
     init {
 
+        orientation = VERTICAL
+
         this.inflate()
 
         rangeSlider = findViewById(R.id.RangeSlider_time)
-
-        this.preventCornerOverlap = false
 
         rangeSlider.values = listOf(1f,1f)
 
@@ -43,7 +44,7 @@ class TimeRangeCardView(context: Context, attrs: AttributeSet) : MaterialCardVie
         rangeSlider.addOnChangeListener { slider, value, fromUser ->
 
             val distance = sliderDistance()
-            if (distance >= 2f) {
+            if (distance >= 4f) {
                 if(fromUser) {
                     if (value > rangeSlider.values[0]) {
                         rangeSlider.setValues(value - 1, rangeSlider.values[1])

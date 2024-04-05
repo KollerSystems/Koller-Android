@@ -66,6 +66,8 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
             this.radius = 0f
         }
 
+        preventCornerOverlap = false
+
         val padding = resources.getDimensionPixelSize(R.dimen.card_padding)
 
         this.setContentPadding(padding,padding,padding,padding)

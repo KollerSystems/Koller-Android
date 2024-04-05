@@ -5,11 +5,11 @@ import androidx.fragment.app.FragmentActivity
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.recycleradapters.StudyGroupRecyclerAdapter
-import com.norbert.koller.teacher.activities.UserPresenceActivity
+import com.norbert.koller.teacher.fragments.UserPresenceFragment
 
 class StudyGroupRecyclerAdapter : StudyGroupRecyclerAdapter() {
     override fun onItemPress(fragmentActivity: FragmentActivity, item: StudyGroupData) {
-        val intent = Intent(fragmentActivity as MainActivity, UserPresenceActivity::class.java)
-        fragmentActivity.startActivity(intent)
+        (fragmentActivity as MainActivity).addFragment(UserPresenceFragment(item))
+
     }
 }

@@ -15,6 +15,7 @@
         <item name="materialAlertDialogTheme">@style/Popup</item>
         <item name="toolbarStyle">@style/Toolbar</item>
         <item name="checkboxStyle">@style/Checkbox</item>
+        <item name="radioButtonStyle">@style/Radio</item>
         <item name="floatingActionButtonStyle">@style/FloatingActionButton</item>
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
         <item name="appBarLayoutStyle">@style/AppBarStyle</item>
@@ -181,6 +182,15 @@
     <style name="Checkbox" parent="@style/Widget.Material3.CompoundButton.CheckBox">
         <item name="android:minHeight">0dp</item>
         <item name="android:minWidth">0dp</item>
+        <item name="android:textAppearance">@style/Text</item>
+        <item name="android:paddingStart">@dimen/text_container_margin</item>
+    </style>
+
+    <style name="Radio" parent="@style/Widget.Material3.CompoundButton.RadioButton">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textAppearance">@style/Text</item>
+        <item name="android:paddingStart">@dimen/text_container_margin</item>
     </style>
 
     <style name="TrickyToolbar">

@@ -184,7 +184,9 @@ abstract class MainActivity : AppCompatActivity() {
             viewModel.descriptionHeight = toolbarDescription.measuredHeight;
         }
         else{
-            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()))
+            val title = this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase())
+            setToolbarTitle(title)
+
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -192,7 +194,10 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         supportFragmentManager.addOnBackStackChangedListener {
-            setToolbarTitle(this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()))
+            val title = this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase())
+            if(!title.isNullOrBlank()) {
+                setToolbarTitle(title)
+            }
             appBar.setExpanded(false)
             showBackButtonIfNeeded()
 

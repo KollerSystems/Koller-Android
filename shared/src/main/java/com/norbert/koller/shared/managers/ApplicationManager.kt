@@ -189,12 +189,13 @@ open class ApplicationManager : Application() {
 
                 val orderedNumber = (i + 1).orderSingleNumber(context)
 
-                if (i < lesson+length-1){
-                    description += "${orderedNumber} ${context.getString(R.string.and)} "
-                }
-                else if(i < lesson+length-1-1) {
+
+                if(i < lesson+length-1-1) {
 
                     description += "${orderedNumber}, "
+                }
+                else if (i < lesson+length-1){
+                    description += "${orderedNumber} ${context.getString(R.string.and)} "
                 }
                 else{
                     description += "${orderedNumber} ${ context.getString(R.string.lesson).lowercase()}"

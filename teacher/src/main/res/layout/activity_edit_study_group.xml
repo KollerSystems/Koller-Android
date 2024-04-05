@@ -60,37 +60,54 @@
 
             <com.google.android.material.appbar.AppBarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:gravity="top"
+                app:layout_anchorGravity="top">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="top"
                     android:layout_marginHorizontal="@dimen/application_padding"
                     android:layout_marginTop="@dimen/application_padding"
+                    android:animateLayoutChanges="true"
+                    android:gravity="top"
                     android:orientation="vertical"
                     android:padding="@dimen/text_container_margin"
                     app:layout_scrollFlags="scroll">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_new_post_til_title12"
+                    <TextView
+                        android:id="@+id/textView6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/spacing"
+                        android:text="Melyik szakköröket szeretné szerkeszteni?"
+                        android:textAppearance="@style/Title" />
 
-                        android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="@string/title"
-                        app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
-                        app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
-                        app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
-                        app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
-                        app:counterEnabled="false">
+                    <RadioGroup
+                        android:id="@+id/RadioGroup_to_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/spacing"
+                        android:checkedButton="@id/RadioButton_only_this">
 
-                        <com.google.android.material.textfield.TextInputEditText
+                        <RadioButton
+                            android:id="@+id/RadioButton_only_this"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text|textCapSentences"
-                            android:maxLength="50"
-                            android:textAppearance="@style/Title" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:paddingStart="@dimen/text_container_margin"
+                            android:text="Csak ezt"
+                            android:textAppearance="@style/Text" />
+
+                        <RadioButton
+                            android:id="@+id/radioButtowerrerwn"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="@dimen/text_container_margin"
+                            android:text="Ezt és az összes ezt követőt"
+                            android:textAppearance="@style/Text" />
+                    </RadioGroup>
 
                     <TextView
                         android:id="@+id/textView14"
@@ -103,15 +120,37 @@
                         android:translationZ="1dp" />
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_new_post_til_title"
+                        android:id="@+id/Til_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
-                        android:hint="@string/description"
+                        android:enabled="false"
+                        android:hint="@string/title"
                         app:boxCornerRadiusBottomEnd="0dp"
                         app:boxCornerRadiusBottomStart="0dp"
                         app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
                         app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
+                        app:counterEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="text|textCapSentences"
+                            android:maxLength="50"
+                            android:textAppearance="@style/Title" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/Til_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+                        android:enabled="false"
+                        android:hint="@string/description"
+                        app:boxCornerRadiusBottomEnd="0dp"
+                        app:boxCornerRadiusBottomStart="0dp"
+                        app:boxCornerRadiusTopEnd="0dp"
+                        app:boxCornerRadiusTopStart="0dp"
                         custom:counterEnabled="false">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -177,15 +216,13 @@
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:editable="false"
-                            android:focusable="false"
                             android:inputType="text|textCapCharacters"
                             android:maxLength="50"
                             android:textAppearance="@style/Text" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/create_new_post_til_title1223"
+                        android:id="@+id/Til_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
 
@@ -206,12 +243,199 @@
                             android:textAppearance="@style/Text" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/Mc_days"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
+                        android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_full_margin"
-                        custom:cardCornerRadius="@null"
-                        custom:shapeAppearance="@style/OverlayRoundedCardBottom" />
+                        android:visibility="gone"
+                        app:cardCornerRadius="0dp"
+                        app:cardPreventCornerOverlap="false"
+                        app:contentPadding="@dimen/card_padding"
+                        tools:visibility="visible">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textdsasdView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/text_container_margin"
+                                android:padding="@dimen/text_container_margin"
+                                android:text="Hét napjai" />
+
+                            <CheckBox
+                                android:id="@+id/CheckBox_monday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/monday"
+                                android:textAppearance="@style/Text" />
+
+                            <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                android:id="@+id/Trcw_monday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:layout_marginBottom="@dimen/spacing"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:visibility="gone"
+                                custom:cardCornerRadius="@null"
+                                custom:shapeAppearance="@style/OverlayRoundedCardBottom"
+                                tools:visibility="visible">
+
+                                <View
+                                    android:id="@+id/viewdsadsa2"
+                                    style="@style/SeparatorLine"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="1dp"
+                                    android:layout_marginEnd="@dimen/spacing" />
+                            </com.norbert.koller.teacher.customviews.TimeRangeCardView>
+
+                            <CheckBox
+                                android:id="@+id/CheckBox_thuesday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tuesday" />
+
+                            <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                android:id="@+id/Trcw_thuesday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:layout_marginBottom="@dimen/spacing"
+                                android:visibility="gone"
+                                custom:cardCornerRadius="@null"
+                                custom:shapeAppearance="@style/OverlayRoundedCardBottom" >
+
+                                <View
+                                    android:id="@+id/viewdsaaaaaaadsa2"
+                                    style="@style/SeparatorLine"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="1dp"
+                                    android:layout_marginEnd="@dimen/spacing" />
+                            </com.norbert.koller.teacher.customviews.TimeRangeCardView>
+
+                            <CheckBox
+                                android:id="@+id/CheckBox_wednessday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/wednesday"
+                                android:textAppearance="@style/Text" />
+
+                            <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                android:id="@+id/Trcv_wednessday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:layout_marginBottom="@dimen/spacing"
+                                android:visibility="gone"
+                                custom:cardCornerRadius="@null"
+                                custom:shapeAppearance="@style/OverlayRoundedCardBottom" >
+
+                                <View
+                                    android:id="@+id/viefdffw2"
+                                    style="@style/SeparatorLine"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="1dp"
+                                    android:layout_marginEnd="@dimen/spacing" />
+                            </com.norbert.koller.teacher.customviews.TimeRangeCardView>
+
+                            <CheckBox
+                                android:id="@+id/CheckBox_thursday"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/thursday"
+                                android:textAppearance="@style/Text" />
+
+                            <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                android:id="@+id/Trcv_thursday"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginStart="@dimen/spacing"
+                                android:layout_marginBottom="@dimen/spacing"
+                                android:visibility="gone"
+                                custom:cardCornerRadius="@null"
+                                custom:shapeAppearance="@style/OverlayRoundedCardBottom" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/Mc_repeat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_full_margin"
+                        android:visibility="gone"
+                        app:cardCornerRadius="@null"
+                        app:cardPreventCornerOverlap="false"
+                        app:contentPadding="@dimen/card_padding"
+                        app:shapeAppearance="@style/OverlayRoundedCardBottom"
+                        tools:visibility="visible">
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/textView8"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/text_container_margin"
+                                android:padding="@dimen/text_container_margin"
+                                android:text="Ismétlődés" />
+
+                            <RadioGroup
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:checkedButton="@id/radioButtdsadason2">
+
+                                <RadioButton
+                                    android:id="@+id/radioButtdsadason2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Hetente" />
+
+                                <RadioButton
+                                    android:id="@+id/radioButaaaaaaton2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Két hetente" />
+
+                                <RadioButton
+                                    android:id="@+id/radsdioButton2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Négy hetente" />
+                            </RadioGroup>
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/Mc_range"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/card_full_margin"
+                        app:cardCornerRadius="@null"
+                        app:cardPreventCornerOverlap="false"
+                        app:contentPadding="@dimen/card_padding"
+                        app:shapeAppearance="@style/OverlayRoundedCardBottom">
+
+                        <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_marginTop="@dimen/card_full_margin"
+                            custom:cardCornerRadius="@null"
+                            custom:shapeAppearance="@style/OverlayRoundedCardBottom" />
+                    </com.google.android.material.card.MaterialCardView>
 
 
                 </LinearLayout>
@@ -236,6 +460,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="0" />
+
             </LinearLayout>
         </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>
 

@@ -1,38 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
 
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:paddingHorizontal="@dimen/card_padding"
-    android:paddingTop="@dimen/card_padding"
-    android:paddingBottom="@dimen/text_container_margin">
+    android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/Text_time_range"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/text_container_margin"
-            android:layout_marginTop="@dimen/text_container_margin"
-            android:text="Időtartam" />
+    <TextView
+        android:id="@+id/Text_time_range"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_container_margin"
+        android:layout_marginTop="@dimen/text_container_margin"
+        android:text="Időtartam" />
 
-        <com.google.android.material.slider.RangeSlider
+    <com.google.android.material.slider.RangeSlider
 
-            android:id="@+id/RangeSlider_time"
-            app:labelBehavior="visible"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:stepSize="1"
-            android:valueFrom="1"
-            android:valueTo="4" />
+        android:id="@+id/RangeSlider_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stepSize="1"
+        android:valueFrom="1"
+        android:valueTo="4"
+        app:labelBehavior="withinBounds" />
 
-        <com.norbert.koller.shared.customviews.TipView
-            android:id="@+id/Tip_time_range_help"
-            custom:text="Az időtartam beállításához fogja meg a fent látható csúszkát és a jobbra / balra mozgatásával állítsa be, hogy ezt a tanórát melyik órákon szeretné tartani."
-            custom:type="help"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing" />
-    </LinearLayout>
+    <com.norbert.koller.shared.customviews.TipView
+        android:id="@+id/Tip_time_range_help"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_container_margin"
+        custom:text="Az időtartam beállításához fogja meg a fent látható csúszkát és a jobbra / balra mozgatásával állítsa be, hogy ezt a tanórát melyik órákon szeretné tartani."
+        custom:type="help" />
+</merge>
