@@ -142,10 +142,10 @@
 
             <com.norbert.koller.shared.customviews.SimpleCardButton
                 android:id="@+id/settings_scb_test_activity"
-                custom:description="Hell yeah. Test activity!"
-                custom:text="Open test Activity"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                app:description="Hell yeah. An activity!"
+                app:text="Maybe open an activity" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

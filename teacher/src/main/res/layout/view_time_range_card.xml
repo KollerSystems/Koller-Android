@@ -20,6 +20,7 @@
         android:id="@+id/RangeSlider_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/n_text_container_margin"
         android:stepSize="1"
         android:valueFrom="1"
         android:valueTo="4"
@@ -30,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/text_container_margin"
+        android:layout_marginBottom="@dimen/text_container_margin"
         custom:text="Az időtartam beállításához fogja meg a fent látható csúszkát és a jobbra / balra mozgatásával állítsa be, hogy ezt a tanórát melyik órákon szeretné tartani."
         custom:type="help" />
 </merge>

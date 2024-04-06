@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
@@ -32,6 +33,8 @@ open class SettingsActivity : AppCompatActivity() {
 
     var isUpdatingChildren = false
 
+    lateinit var openAnActivity : SimpleCardButton
+
     fun setParentState(
         checkBoxParent: SimpleCardButtonWithToggle,
         childrenCheckBoxes: List<SimpleCardButtonWithToggle>,
@@ -56,7 +59,7 @@ open class SettingsActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        val settingsSCB : SimpleCardButton = findViewById(R.id.settings_scb_test_activity)
+        openAnActivity = findViewById(R.id.settings_scb_test_activity)
 
 
 
@@ -64,11 +67,6 @@ open class SettingsActivity : AppCompatActivity() {
         val appBar : AppBarLayout = findViewById(R.id.appbar)
 
         appBar.setup()
-
-        settingsSCB.setOnClickListener {
-            val intent = Intent(this, CreateNewPostActivity::class.java)
-            startActivity(intent)
-        }
 
 
         val rangeSlider : RangeSlider = findViewById(R.id.settings_slider_list_loading_delay)
