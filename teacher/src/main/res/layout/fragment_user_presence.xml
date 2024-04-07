@@ -115,24 +115,25 @@
             android:translationZ="1dp" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
-        <com.norbert.koller.shared.customviews.SimpleCardButton
-            android:id="@+id/Scb_edit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|end"
-            android:layout_marginHorizontal="@dimen/full_card_padding"
-            android:layout_marginBottom="@dimen/full_card_padding"
-            android:layout_weight="0"
-            app:cardCornerRadius="@null"
-            app:icon="@drawable/pencil"
-            app:shapeAppearance="@style/OverlayRoundedCardBottom"
-            app:text="@string/edit"
-            app:rounded="true"/>
     </LinearLayout>
+
+    <com.norbert.koller.shared.customviews.SimpleCardButton
+        android:id="@+id/Scb_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginHorizontal="@dimen/full_card_padding"
+        android:layout_marginBottom="@dimen/full_card_padding"
+        android:layout_weight="0"
+        app:cardBackgroundColor="?attr/colorSurfaceContainer"
+        app:icon="@drawable/pencil"
+        app:rounded="true"
+        app:text="@string/edit" />
 
 
 </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>

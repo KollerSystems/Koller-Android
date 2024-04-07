@@ -76,27 +76,17 @@
             android:textAppearance="@style/Text" />
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/text_container_margin">
-
-        <androidx.constraintlayout.helper.widget.Flow
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginHorizontal="@dimen/text_container_margin"
-            android:layout_marginBottom="@dimen/text_container_margin"
-            android:orientation="horizontal"
-            app:constraint_referenced_ids="user_view_email,user_view_phone,user_view_facebook,user_view_instagram,user_view_discord"
-            app:flow_horizontalAlign="center"
-            app:flow_horizontalGap="@dimen/spacing"
-            app:flow_horizontalStyle="packed"
-            app:flow_verticalGap="@dimen/spacing"
-            app:flow_wrapMode="chain"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginHorizontal="@dimen/text_container_margin"
+        android:layout_marginBottom="@dimen/spacing"
+        app:dividerDrawable="@drawable/divider_space"
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:justifyContent="center"
+        app:showDivider="middle">
 
         <com.google.android.material.chip.Chip
             android:id="@id/user_view_email"
@@ -113,11 +103,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/phone"
             custom:chipIconVisible="true"
             tools:layout_editor_absoluteX="38dp"
+            tools:text="@string/unknown"
             tools:visibility="visible" />
 
         <com.google.android.material.chip.Chip
@@ -125,11 +115,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/facebook"
             custom:chipIconVisible="true"
             tools:layout_editor_absoluteX="127dp"
+            tools:text="@string/unknown"
             tools:visibility="visible" />
 
         <com.google.android.material.chip.Chip
@@ -137,11 +127,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/instagram"
             custom:chipIconVisible="true"
             tools:layout_editor_absoluteX="236dp"
+            tools:text="@string/unknown"
             tools:visibility="visible" />
 
         <com.google.android.material.chip.Chip
@@ -149,15 +139,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
-            tools:text="@string/unknown"
             android:visibility="gone"
             custom:chipIcon="@drawable/discord"
             custom:chipIconVisible="true"
             tools:layout_editor_absoluteX="38dp"
             tools:layout_editor_absoluteY="39dp"
+            tools:text="@string/unknown"
             tools:visibility="visible" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
     <TextView
         android:id="@+id/text_status"

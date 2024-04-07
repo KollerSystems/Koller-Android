@@ -25,36 +25,49 @@
         android:layout_height="wrap_content"
         android:layout_weight="0">
 
-        <LinearLayout
-            style="@style/MainCardLayout"
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:elevation="@dimen/card_elevation"
-            android:orientation="horizontal">
+            app:dividerDrawable="@drawable/divider"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:showDivider="middle">
 
             <Button
                 android:id="@+id/student_hostel_button_rooms"
                 style="@style/CardButton"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:paddingLeft="@dimen/card_padding"
+                android:paddingRight="@dimen/card_padding"
                 android:text="@string/places"
-                app:icon="@drawable/room" />
+                app:icon="@drawable/room"
+                app:layout_flexGrow="1" />
 
             <Button
                 android:id="@+id/student_hostel_button_users"
                 style="@style/CardButton"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:paddingLeft="0dp"
-                android:paddingRight="0dp"
+                android:paddingLeft="@dimen/card_padding"
+                android:paddingRight="@dimen/card_padding"
                 android:text="@string/users"
-                app:icon="@drawable/people" />
+                app:icon="@drawable/people"
+                app:layout_flexGrow="1" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/button_study_groups"
+                style="@style/CardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/card_padding"
+                android:paddingRight="@dimen/card_padding"
+                android:text="@string/study_groups"
+                app:icon="@drawable/rocket"
+                app:layout_flexGrow="1" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+
     </androidx.cardview.widget.CardView>
 
 </LinearLayout>

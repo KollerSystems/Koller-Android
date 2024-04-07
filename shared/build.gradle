@@ -69,5 +69,5 @@ dependencies {
 
     implementation 'androidx.fragment:fragment-ktx:1.6.2'
 
-
+    implementation 'com.google.android.flexbox:flexbox:3.0.0'
 }
