@@ -46,10 +46,12 @@ open class LoginActivity : AppCompatActivity() {
         val textVersion : TextView = findViewById(R.id.text_version)
         textVersion.text = ApplicationManager.version
 
-        val bottomView : View = findViewById(R.id.bottom_view)
-        bottomView.post{
-            val navViewColor = bottomView.getColorOfPixel( 100, 100)
+        val bottomView : View? = findViewById(R.id.bottom_view)
+        bottomView?.post {
+            val navViewColor = bottomView.getColorOfPixel(100, 100)
             window.navigationBarColor = navViewColor
+
+
         }
 
         loginButton = findViewById (R.id.login_button_login)

@@ -16,7 +16,10 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/bottom_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="@null"
+        app:cardPreventCornerOverlap="false"
+        app:shapeAppearance="@style/OverlayRoundedCardTop">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,6 +30,14 @@
                 layout="@layout/view_activity_login_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <View
+                android:id="@+id/view2"
+                style="@style/SeparatorLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginHorizontal="@dimen/full_card_padding"
+                android:layout_marginVertical="@dimen/text_container_margin" />
 
             <include
                 layout="@layout/view_activity_login_footer"

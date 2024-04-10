@@ -20,7 +20,7 @@
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
         <item name="appBarLayoutStyle">@style/AppBarStyle</item>
         <item name="materialButtonStyle">@style/Button</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">?android:attr/colorBackground</item>
         <item name="editTextStyle">@style/EditText</item>
         <item name="textInputStyle">@style/TextInput</item>
         <item name="recyclerViewStyle">@style/RecyclerView</item>

@@ -27,9 +27,11 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:cardCornerRadius="@null"
+        app:cardPreventCornerOverlap="false"
+        app:shapeAppearance="@style/OverlayRoundedCardTop">
 
         <include
             layout="@layout/view_activity_login_body"
