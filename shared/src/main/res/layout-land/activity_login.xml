@@ -34,6 +34,7 @@
         app:shapeAppearance="@style/OverlayRoundedCardTop">
 
         <include
+            android:id="@+id/login_linear_login"
             layout="@layout/view_activity_login_body"
             android:layout_width="wrap_content"
             android:layout_height="match_parent" />

@@ -22,6 +22,7 @@
         app:shapeAppearance="@style/OverlayRoundedCardTop">
 
         <LinearLayout
+            android:id="@+id/login_linear_login"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">

@@ -39,7 +39,7 @@ class StudyGroupTypeRecyclerAdapter() : BaseRecycleAdapter() {
 
         holder.title.text = item.topic
 
-        val description = ""
+        val description = "${item.teacher?.name} • ${item.rid}"
 
         holder.description.text = description
 

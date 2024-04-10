@@ -95,7 +95,7 @@ open class LoginActivity : AppCompatActivity() {
             }
         })
 
-        val loginLayout : LinearLayout = findViewById(R.id.login_linear_login)
+        val loginLayout : View = findViewById(R.id.login_linear_login)
         val loadingBar : View = findViewById(R.id.login_loading)
 
         fun returnLoginLayoutToNormal(){

@@ -16,7 +16,7 @@
         android:enableOnBackInvokedCallback="false"
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu"
-        android:screenOrientation="portrait" >
+        android:screenOrientation="portrait">
 
         <receiver android:name=".broadcastreceivers.MyNotificationPublisher"
             android:enabled="true"/>

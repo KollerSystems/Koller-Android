@@ -7,16 +7,16 @@ import com.norbert.koller.shared.managers.formatDate
 import java.util.Date
 
 open class ProgramData(
-    @SerializedName("ID") var id: Int,
-    @SerializedName("Type") var type: Int,
-    @SerializedName("Topic") var topic: String,
-    @SerializedName("RID") var rid : Int,
-    @SerializedName("Teacher") var teacher: UserData?,
+    id: Int,
+    type: Int,
+    topic: String,
+    rid : Int,
+    teacher: UserData?,
     @SerializedName("ProgramID") var prgraomID: Int,
     @SerializedName("Date") var date: Date,
     @SerializedName("Lesson") var lesson: Int,
     @SerializedName("Length") var length: Int
-) : BaseData() {
+) : ProgramBaseData(id, type, topic, rid, teacher) {
 
     override fun diffrentDecider(context: Context): String {
         return date.formatDate(DateTimeHelper.monthDay)
