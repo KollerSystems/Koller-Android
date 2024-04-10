@@ -27,13 +27,17 @@ open class StudentHostelFragment : Fragment() {
 
         val roomsButton: Button = view.findViewById(R.id.student_hostel_button_rooms)
         val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
+        val studyGroupButton: Button = view.findViewById(R.id.button_study_groups)
 
         roomsButton.setOnClickListener{
             (context as MainActivity).addFragment(ApplicationManager.roomsFragment(null))
         }
-
         usersButton.setOnClickListener{
             (context as MainActivity).addFragment(ApplicationManager.usersFragment(null))
+        }
+
+        studyGroupButton.setOnClickListener {
+            (context as MainActivity).addFragment(ApplicationManager.studyGroupsFragment(null))
         }
 
         return view

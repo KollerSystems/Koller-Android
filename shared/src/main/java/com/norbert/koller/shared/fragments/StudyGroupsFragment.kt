@@ -1,25 +1,39 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.RetrofitInstance
+import com.norbert.koller.shared.api.RoomPagingSource
+import com.norbert.koller.shared.api.StudyGroupTypePagingSource
+import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
+import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.StudyGroupTypeRecyclerAdapter
 
 class StudyGroupsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+
     override fun getPagingSource(): BasePagingSource {
-        TODO("Not yet implemented")
+        return StudyGroupTypePagingSource(requireContext(), viewModel)
     }
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_study_groups, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        setupSort(R.string.abc, R.string.zyx,"Topic")
+
+        baseRecycleAdapter = StudyGroupTypeRecyclerAdapter()
+        baseRecycleAdapter.chipGroupSort = chipGroupSort
+        baseRecycleAdapter.chipGroupFilter = chipGroupFilter
+
+
+        addSearchbar("Topic")
+
+
+        super.onViewCreated(view, savedInstanceState)
     }
 
 }

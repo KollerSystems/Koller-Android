@@ -47,6 +47,7 @@ import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.nio.ByteBuffer
 import java.util.Date
 import java.util.Locale
+import com.norbert.koller.shared.fragments.StudyGroupsFragment
 
 
 open class ApplicationManager : Application() {
@@ -84,6 +85,8 @@ open class ApplicationManager : Application() {
 
         var roomsFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomsFragment = {map-> RoomsFragment(map) }
         var usersFragment: (map : MutableMap<String, ArrayList<String>>?) -> UsersFragment = {map-> UsersFragment(map) }
+
+        var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupsFragment = {map-> StudyGroupsFragment(map) }
 
         var userOutgoingTemporaryFragment: (userData : UserData?) -> UserOutgoingTemporaryFragment = {userData -> UserOutgoingTemporaryFragment(userData) }
         var userOutgoingPermanentFragment: (userData : UserData?) -> UserOutgoingPermanentFragment = {userData -> UserOutgoingPermanentFragment(userData) }

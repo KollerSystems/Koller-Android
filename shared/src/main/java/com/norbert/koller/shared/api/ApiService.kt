@@ -14,6 +14,7 @@ import com.norbert.koller.shared.data.ClassData
 import com.norbert.koller.shared.data.CrossingData
 import com.norbert.koller.shared.data.GroupData
 import com.norbert.koller.shared.data.StudyGroupData
+import com.norbert.koller.shared.data.StudyGroupTypeData
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import retrofit2.Response
 import retrofit2.http.*
@@ -81,6 +82,7 @@ interface APIInterface {
         @Query(value = "filter") filter : String? = null,
     ) : Response<List<RoomData>>
 
+
     @Headers("Content-Type: application/json")
     @GET("api/timetable/mandatory")
     suspend fun getBasePrograms(
@@ -128,6 +130,24 @@ interface APIInterface {
     @Headers("Content-Type: application/json")
     @GET("api/institution/classes")
     suspend fun getClasses() : Response<List<ClassData>>
+
+    @Headers("Content-Type: application/json")
+    @GET("api/timetable/studygroup/types")
+    suspend fun getStudyGroupTypes(
+        @Query(value = "limit") limit : Int,
+        @Query(value = "offset") offset : Int,
+        @Query(value = "sort") sort : String = "Topic:asc",
+        @Query(value = "filter") filter : String? = null,
+    ) : Response<List<StudyGroupTypeData>>
+}
+
+class StudyGroupTypePagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+
+        return apiResponse.getStudyGroupTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
+
 }
 
 class CrossingPagingSource(context: Context, val uid : Int, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
