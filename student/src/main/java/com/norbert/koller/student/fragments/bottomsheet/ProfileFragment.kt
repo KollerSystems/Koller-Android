@@ -29,7 +29,7 @@ class ProfileFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileF
 
         fbtnOutgoing.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(UserOutgoingsFragment(UserData.instance.uid))
+            (requireContext() as MainActivity).addFragment(UserOutgoingsFragment(UserData.instance))
             this.dismiss()
         }
     }

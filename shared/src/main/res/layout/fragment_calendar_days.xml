@@ -8,11 +8,21 @@
     android:orientation="vertical"
     tools:context=".fragments.CalendarDaysFragment">
 
-    <com.norbert.koller.shared.customviews.TipView
-        android:id="@+id/Tip_calendar"
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        custom:text="TEST" />
+        app:cardBackgroundColor="?attr/colorSurfaceContainer"
+        app:cardCornerRadius="0dp">
+
+        <com.norbert.koller.shared.customviews.TipView
+            android:id="@+id/Tip_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            custom:text="TEST" />
+    </com.google.android.material.card.MaterialCardView>
+
+
 
     <View style="@style/SeparatorLine" />
 

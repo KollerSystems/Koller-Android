@@ -20,7 +20,7 @@
         <item name="android:windowSplashScreenBrandingImage" tools:targetApi="s">@drawable/company_logo</item>
         <item name="appBarLayoutStyle">@style/AppBarStyle</item>
         <item name="materialButtonStyle">@style/Button</item>
-        <item name="android:navigationBarColor">?android:attr/colorBackground</item>
+        <item name="android:navigationBarColor">?attr/colorSurfaceContainer</item>
         <item name="editTextStyle">@style/EditText</item>
         <item name="textInputStyle">@style/TextInput</item>
         <item name="recyclerViewStyle">@style/RecyclerView</item>
@@ -58,7 +58,7 @@
     <style name="SeparatorTitleMain" parent="@style/Title">
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">@dimen/n_text_container_margin</item>
-        <item name="android:layout_marginLeft">@dimen/n_text_container_margin</item>
+        <item name="android:layout_marginStart">@dimen/n_text_container_margin</item>
     </style>
 
     <style name="TextInput" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox">
@@ -114,7 +114,7 @@
     </style>
 
     <style name="ButtonTonalIcon" parent="@style/ButtonTonal">
-        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingStart">16dp</item>
     </style>
 
     <style name="ButtonOutline" parent="@style/Button">
@@ -125,17 +125,17 @@
     </style>
 
     <style name="ButtonIcon" parent="@style/Button">
-        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingStart">16dp</item>
     </style>
 
     <style name="ButtonOutlineIcon" parent="@style/ButtonOutline">
-        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingStart">16dp</item>
         <item name="iconTint">?android:attr/colorPrimary</item>
     </style>
 
     <style name="IconButton" parent="@style/Button">
-        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
-        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
+        <item name="android:paddingStart">@dimen/button_vertical_padding</item>
+        <item name="android:paddingEnd">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
     </style>
 
@@ -148,20 +148,20 @@
         <item name="android:insetRight">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:minHeight">0dp</item>
-        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
-        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
+        <item name="android:paddingStart">@dimen/button_vertical_padding</item>
+        <item name="android:paddingEnd">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
     </style>
 
     <style name="IconButtonOutline" parent="@style/ButtonOutlineIcon">
-        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
-        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
+        <item name="android:paddingStart">@dimen/button_vertical_padding</item>
+        <item name="android:paddingEnd">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
     </style>
 
     <style name="IconButtonTonal" parent="@style/ButtonTonalIcon">
-        <item name="android:paddingLeft">@dimen/button_vertical_padding</item>
-        <item name="android:paddingRight">@dimen/button_vertical_padding</item>
+        <item name="android:paddingStart">@dimen/button_vertical_padding</item>
+        <item name="android:paddingEnd">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>
     </style>
 
@@ -170,9 +170,9 @@
     </style>
 
     <style name="FloatingActionButton" parent="@style/Widget.Material3.FloatingActionButton.Primary">
-        <item name="android:layout_gravity">bottom|right</item>
+        <item name="android:layout_gravity">bottom|end</item>
         <item name="android:layout_margin">@null</item>
-        <item name="android:layout_marginLeft">@dimen/application_padding</item>
+        <item name="android:layout_marginStart">@dimen/application_padding</item>
         <item name="android:layout_marginBottom">@dimen/application_padding</item>
         <item name="android:backgroundTint">?attr/colorSecondaryContainer</item>
         <item name="android:tint">?attr/colorOnSecondaryContainer</item>
@@ -205,8 +205,8 @@
         <item name="android:orientation">horizontal</item>
         <item name="android:paddingHorizontal">20dp</item>
         <item name="android:paddingVertical">@dimen/text_container_margin</item>
-        <item name="android:layout_marginLeft">@dimen/n_card_padding</item>
-        <item name="android:layout_marginRight">@dimen/n_card_padding</item>
+        <item name="android:layout_marginStart">@dimen/n_card_padding</item>
+        <item name="android:layout_marginEnd">@dimen/n_card_padding</item>
     </style>
     
     <style name="ImageAddButton" parent="Button">
@@ -236,7 +236,7 @@
         <item name="android:layout_marginTop">15dp</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:alpha">0.666</item>
-        <item name="android:layout_marginRight">@dimen/spacing</item>
+        <item name="android:layout_marginEnd">@dimen/spacing</item>
     </style>
 
     <style name="DefaultTextView">
@@ -378,10 +378,10 @@
         <item name="android:minHeight">0dp</item>
         <item name="android:paddingHorizontal">12dp</item>
         <item name="android:paddingVertical">4dp</item>
-        <item name="android:paddingLeft">0dp</item>
-        <item name="android:paddingRight">0dp</item>
-        <item name="android:paddingBottom">0dp</item>
-        <item name="android:paddingTop">0dp</item>
+        <item name="android:paddingStart">@null</item>
+        <item name="android:paddingEnd">@null</item>
+        <item name="android:paddingBottom">@null</item>
+        <item name="android:paddingTop">@null</item>
         <item name="android:textAppearance">@style/Description</item>
     </style>
 
@@ -454,6 +454,14 @@
         <item name="cornerSizeBottomRight">0dp</item>
         <item name="cornerSizeTopLeft">@dimen/card_corner_radius</item>
         <item name="cornerSizeTopRight">@dimen/card_corner_radius</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="OverlayLargeRoundedCardTop">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeTopLeft">@dimen/application_corner_radius</item>
+        <item name="cornerSizeTopRight">@dimen/application_corner_radius</item>
         <item name="cornerFamily">rounded</item>
     </style>
 
@@ -539,8 +547,8 @@
         <item name="android:clipChildren">false</item>
         <item name="android:layout_marginTop">5dp</item>
         <item name="android:layout_marginBottom">5dp</item>
-        <item name="android:layout_marginRight">5dp</item>
-        <item name="android:layout_marginLeft">5dp</item>
+        <item name="android:layout_marginEnd">5dp</item>
+        <item name="android:layout_marginStart">5dp</item>
         <item name="android:layout_height">wrap_content</item>
     </style>
 
@@ -556,12 +564,14 @@
     <style name="BottomSheetMainLayout">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">0dp</item>
-        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
         <item name="android:layout_marginTop">0dp</item>
         <item name="cardElevation">-16dp</item>
-        <item name="cardCornerRadius">@dimen/application_corner_radius</item>
+        <item name="cardCornerRadius">@null</item>
         <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="shapeAppearance">@style/OverlayLargeRoundedCardTop</item>
+        <item name="cardPreventCornerOverlap">false</item>
 
     </style>
 
@@ -648,13 +658,13 @@
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="contentPaddingBottom">10dp</item>
         <item name="contentPaddingTop">0dp</item>
-        <item name="contentPaddingLeft">0dp</item>
-        <item name="contentPaddingRight">0dp</item>
+        <item name="contentPaddingStart">0dp</item>
+        <item name="contentPaddingEnd">0dp</item>
         <item name="android:layout_margin">@null</item>
         <item name="android:layout_marginBottom">-20dp</item>
         <item name="android:layout_marginTop">0dp</item>
-        <item name="android:layout_marginLeft">0dp</item>
-        <item name="android:layout_marginRight">0dp</item>
+        <item name="android:layout_marginStart">0dp</item>
+        <item name="android:layout_marginEnd">0dp</item>
     </style>
 
     <style name="CustomShapeAppearanceBottomSheetDialog" parent="">
@@ -670,8 +680,8 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:orientation">vertical</item>
         <item name="android:paddingBottom">@dimen/application_padding</item>
-        <item name="android:paddingRight">@dimen/application_padding</item>
-        <item name="android:paddingLeft">@dimen/application_padding</item>
+        <item name="android:paddingEnd">@dimen/application_padding</item>
+        <item name="android:paddingStart">@dimen/application_padding</item>
         <item name="android:paddingTop">@dimen/application_padding</item>
         <item name="android:background">?android:attr/colorBackground</item>
     </style>
