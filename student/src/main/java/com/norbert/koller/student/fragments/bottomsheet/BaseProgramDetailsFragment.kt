@@ -1,4 +1,4 @@
-package com.norbert.koller.shared.fragments.bottomsheet
+package com.norbert.koller.student.fragments.bottomsheet
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -17,12 +17,18 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.ProgramData
+import com.norbert.koller.shared.fragments.ProgramFragmentInterface
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
-import java.text.SimpleDateFormat
 
-class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomSheetDialogFragment() {
+class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomSheetDialogFragment(), ProgramFragmentInterface {
+
+    override lateinit var ncwDate: NameContentView
+    override lateinit var ncwTime: NameContentView
+    override lateinit var ncbClassroom: NameContentButton
+    override lateinit var ncbClass: NameContentButton
+    override lateinit var ncbTeacher: NameContentButton
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,13 +45,9 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
 
         val textTitle : TextView = view.findViewById(R.id.text_title)
         val imageState : ImageView = view.findViewById(R.id.image_state)
-
         val ncwState : NameContentView = view.findViewById(R.id.ncw_state)
-        val ncwDate : NameContentView = view.findViewById(R.id.ncw_date)
-        val ncwTime : NameContentView = view.findViewById(R.id.ncw_time)
-        val ncbClassroom : NameContentButton = view.findViewById(R.id.ncb_classroom)
-        val ncbClass : NameContentButton = view.findViewById(R.id.ncb_class)
-        val ncbTeacher : NameContentButton = view.findViewById(R.id.ncb_teacher)
+
+        findViews(view)
 
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
 
@@ -53,37 +55,11 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
 
             response as ProgramData
 
+            setViews(response, requireContext())
+            ncwState.visibility = GONE
+
             textTitle.text = response.topic
 
-            ncwState.visibility = GONE
-            ncwDate.textContent.text = response.date.formatDate(DateTimeHelper.monthDay)
-            ncwTime.textContent.text = ApplicationManager.createClassesText(requireContext(), response.lesson, response.length)
-            ncbClassroom.buttonContent.text = response.rid.toString()
-
-            if(response is BaseProgramData) {
-                ncbClass.visibility = VISIBLE
-                ncbClass.buttonContent.text = response.class_.class_
-                ncbClass.buttonContent.setOnClickListener {
-                    val userFragment = ApplicationManager.usersFragment(null)
-                        .setFilter("Class.ID", response.class_.id.toString())
-                    (requireContext() as MainActivity).addFragment(userFragment)
-                    dismiss()
-                }
-            }
-
-
-            ncbTeacher.buttonContent.text = response.teacher!!.name.toString()
-
-            ncbClassroom.buttonContent.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
-                dismiss()
-            }
-
-            ncbTeacher.buttonContent.setOnClickListener {
-
-                (requireContext() as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
-                dismiss()
-            }
 
         }
 
@@ -91,4 +67,6 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
             viewModel.response.value = program
         }
     }
+
+
 }

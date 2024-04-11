@@ -26,6 +26,7 @@ import com.norbert.koller.shared.customviews.NameContentView
 import com.norbert.koller.shared.customviews.SimpleCardButton
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.ProgramData
+import com.norbert.koller.shared.fragments.ProgramFragmentInterface
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.formatDate
@@ -38,8 +39,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 
-class UserPresenceFragment(val program : ProgramData? = null) : Fragment() {
+class UserPresenceFragment(val program : ProgramData? = null) : Fragment(), ProgramFragmentInterface {
 
+
+    override lateinit var ncwDate : NameContentView
+    override lateinit var ncwTime : NameContentView
+    override lateinit var ncbClassroom : NameContentButton
+    override lateinit var ncbClass : NameContentButton
+    override lateinit var ncbTeacher : NameContentButton
 
     lateinit var viewModel : ResponseViewModel
 
@@ -63,28 +70,13 @@ class UserPresenceFragment(val program : ProgramData? = null) : Fragment() {
             startActivity(intent)
         }
 
-        val ss = SpannableString("Az alábbi adatok csak erre a kiválasztott szakkörre vonatkoznak. Szakkör megtekintése")
-        val clickableSpan: ClickableSpan = object : ClickableSpan() {
-            override fun onClick(textView: View) {
-                Toast.makeText(requireContext(), "Not implemented hahaha", Toast.LENGTH_SHORT).show()
-            }
+        val toGeneralButton : Button = view.findViewById(R.id.Button_to_general)
 
-            override fun updateDrawState(ds: TextPaint) {
-                super.updateDrawState(ds)
-                ds.isUnderlineText = false
-            }
+        toGeneralButton.setOnClickListener{
+            Toast.makeText(requireContext(), "Not implemented hahaha", Toast.LENGTH_SHORT).show()
         }
-        ss.setSpan(clickableSpan, 65, 85, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE)
 
-        val textView = view.findViewById(R.id.Text_hint) as TextView
-        textView.text = ss
-        textView.movementMethod = LinkMovementMethod.getInstance()
-
-        val ncwDate : NameContentView = view.findViewById(com.norbert.koller.shared.R.id.ncw_date)
-        val ncwTime : NameContentView = view.findViewById(com.norbert.koller.shared.R.id.ncw_time)
-        val ncbClassroom : NameContentButton = view.findViewById(com.norbert.koller.shared.R.id.ncb_classroom)
-        val ncbClass : NameContentButton = view.findViewById(com.norbert.koller.shared.R.id.ncb_class)
-        val ncbTeacher : NameContentButton = view.findViewById(com.norbert.koller.shared.R.id.ncb_teacher)
+        findViews(view)
 
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
 
@@ -92,36 +84,9 @@ class UserPresenceFragment(val program : ProgramData? = null) : Fragment() {
 
             response as ProgramData
 
-
             (context as MainActivity).setToolbarTitle(response.topic)
 
-
-
-            ncwDate.textContent.text = response.date.formatDate(DateTimeHelper.monthDay)
-            ncwTime.textContent.text = ApplicationManager.createClassesText(requireContext(), response.lesson, response.length)
-            ncbClassroom.buttonContent.text = response.rid.toString()
-
-            if(response is BaseProgramData) {
-                ncbClass.visibility = View.VISIBLE
-                ncbClass.buttonContent.text = response.class_.class_
-                ncbClass.buttonContent.setOnClickListener {
-                    val userFragment = ApplicationManager.usersFragment(null)
-                        .setFilter("Class.ID", response.class_.id.toString())
-                    (requireContext() as MainActivity).addFragment(userFragment)
-                }
-            }
-
-
-            ncbTeacher.buttonContent.text = response.teacher!!.name.toString()
-
-            ncbClassroom.buttonContent.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
-            }
-
-            ncbTeacher.buttonContent.setOnClickListener {
-
-                (requireContext() as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
-            }
+            setViews(response, requireContext())
 
         }
 

@@ -34,48 +34,17 @@
             android:paddingBottom="@dimen/text_container_margin"
             app:layout_scrollFlags="scroll">
 
-            <TextView
-                android:id="@+id/Text_hint"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/Button_to_general"
+                style="@style/ButtonTonal"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="@dimen/spacing"
-                android:drawablePadding="@dimen/text_container_margin"
-                android:text="Az alábbi adatok csak erre a specifikus szakkörre vonatkoznak."
-                android:textAppearance="@style/Description"
-                app:drawableLeftCompat="@drawable/info" />
-
-            <com.norbert.koller.shared.customviews.NameContentButton
-                android:id="@+id/ncb_teacher"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                app:detail="Kis Gazsi"
-                app:icon="@drawable/user"
-                app:name="@string/teacher" />
-
-            <com.norbert.koller.shared.customviews.NameContentButton
-                android:id="@+id/ncb_classroom"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                app:detail="17"
-                app:icon="@drawable/room"
-                app:name="@string/classroom" />
-
-            <com.norbert.koller.shared.customviews.NameContentButton
-                android:id="@+id/ncb_class"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                app:detail="12.B"
-                app:icon="@drawable/groups"
-                app:name="@string/class_" />
+                android:paddingEnd="16dp"
+                android:text="Szakkör általános adatai"
+                app:icon="@drawable/arrow_right"
+                app:iconGravity="textEnd" />
 
             <com.norbert.koller.shared.customviews.NameContentView
                 android:id="@+id/ncw_date"
@@ -94,6 +63,41 @@
                 app:detail="3rd lesson"
                 app:icon="@drawable/clock"
                 app:name="@string/lesson" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:detail="Kis Gazsi"
+                app:icon="@drawable/user"
+                app:name="@string/teacher" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_class"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:visibility="gone"
+                app:detail="12.B"
+                app:icon="@drawable/groups"
+                app:name="@string/class_"
+                tools:visibility="visible" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_classroom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                app:detail="17"
+                app:icon="@drawable/room"
+                app:name="@string/classroom" />
 
         </LinearLayout>
     </com.google.android.material.appbar.AppBarLayout>

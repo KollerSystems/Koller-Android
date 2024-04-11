@@ -2,7 +2,7 @@ package com.norbert.koller.student.recycleradapters
 
 import androidx.fragment.app.FragmentActivity
 import com.norbert.koller.shared.data.BaseProgramData
-import com.norbert.koller.shared.fragments.bottomsheet.BaseProgramDetailsFragment
+import com.norbert.koller.student.fragments.bottomsheet.BaseProgramDetailsFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBottomSheet
 import com.norbert.koller.shared.recycleradapters.BaseProgramRecyclerAdapter
 
