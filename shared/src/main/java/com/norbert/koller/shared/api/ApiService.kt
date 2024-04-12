@@ -139,6 +139,12 @@ interface APIInterface {
         @Query(value = "sort") sort : String = "Topic:asc",
         @Query(value = "filter") filter : String? = null,
     ) : Response<List<StudyGroupTypeData>>
+
+    @Headers("Content-Type: application/json")
+    @GET("api/timetable/studygroup/types/{pid}")
+    suspend fun getStudyGroupType(
+        @Path("pid") searchById:Int,
+    ) : Response<StudyGroupTypeData>
 }
 
 class StudyGroupTypePagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {

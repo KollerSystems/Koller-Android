@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ncl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProgramTypeFragment">
+
+    <com.norbert.koller.shared.customviews.NestedCoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appbar2"
+
+            style="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:outlineProvider="none"
+            android:visibility="visible"
+            app:expanded="true"
+            tools:visibility="visible">
+
+            <LinearLayout
+                android:id="@+id/ly"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:orientation="vertical"
+                android:paddingHorizontal="@dimen/application_padding"
+                android:paddingTop="@dimen/application_padding"
+                app:layout_scrollFlags="scroll">
+
+                <TextView
+                    android:id="@+id/text_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:padding="@dimen/text_container_margin"
+                    android:text="This site uses cookies from Google to deliver its services and to analyze traffic. Learn more  close Your Privacy and Google Fonts Learn how building websites with Google Fonts is safe for you and your users." />
+
+                <com.norbert.koller.shared.customviews.NameContentButton
+                    android:id="@+id/ncb_teacher"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:detail="Kis Gazsi"
+                    app:icon="@drawable/user"
+                    app:name="@string/teacher" />
+
+                <com.norbert.koller.shared.customviews.NameContentButton
+                    android:id="@+id/ncb_class"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:visibility="gone"
+                    app:detail="12.B"
+                    app:icon="@drawable/groups"
+                    app:name="@string/class_"
+                    tools:visibility="visible" />
+
+                <com.norbert.koller.shared.customviews.NameContentButton
+                    android:id="@+id/ncb_classroom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    app:detail="17"
+                    app:icon="@drawable/room"
+                    app:name="@string/classroom">
+
+                </com.norbert.koller.shared.customviews.NameContentButton>
+
+                <com.norbert.koller.shared.customviews.NameContentView
+                    android:id="@+id/ncw_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                    app:icon="@drawable/clock"
+                    app:name="@string/lesson">
+
+                </com.norbert.koller.shared.customviews.NameContentView>
+
+                <com.norbert.koller.shared.customviews.NameContentView
+                    android:id="@+id/ncw_monday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:paddingHorizontal="@dimen/text_container_margin"
+                    app:detail="1. óra"
+                    app:name="@string/monday" />
+
+                <com.norbert.koller.shared.customviews.NameContentView
+                    android:id="@+id/ncw_tuesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:paddingHorizontal="@dimen/text_container_margin"
+                    app:detail="1. óra"
+                    app:name="@string/tuesday" />
+
+                <com.norbert.koller.shared.customviews.NameContentView
+                    android:id="@+id/ncw_wednesday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:paddingHorizontal="@dimen/text_container_margin"
+                    app:detail="2. óra"
+                    app:name="@string/wednesday" />
+
+                <com.norbert.koller.shared.customviews.NameContentView
+                    android:id="@+id/ncw_thursday"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="40dp"
+                    android:paddingHorizontal="@dimen/text_container_margin"
+                    app:detail="1. óra"
+                    app:name="@string/thursday" />
+
+                <com.norbert.koller.shared.customviews.NameContentView
+                    android:id="@+id/ncw_repeat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                    app:detail="2 hetente"
+                    app:icon="@drawable/replay"
+                    app:name="Ismétlődik" />
+
+                <TextView
+                    android:id="@+id/textView7"
+                    style="@style/Separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:layout_weight="0"
+                    android:paddingHorizontal="@dimen/card_padding"
+                    android:text="Következő szakkör"
+                    android:translationZ="1dp" />
+
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+
+                    android:id="@+id/Scb_next_program"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+                    app:description="Kis Gazsi • 16"
+                    app:icon="@null"
+                    app:rounded="true"
+                    app:text="Január 24., 3. óra" />
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <TextView
+                android:id="@+id/textView4"
+                style="@style/Separator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="@string/students_in_studygroup"
+                android:translationZ="1dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+    </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>
+
+
+
+    <com.norbert.koller.shared.customviews.SimpleCardButton
+        android:id="@+id/Scb_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginHorizontal="@dimen/full_card_padding"
+        android:layout_marginBottom="@dimen/full_card_padding"
+        android:layout_weight="0"
+        app:cardBackgroundColor="?attr/colorSurfaceContainer"
+        app:icon="@drawable/pencil"
+        app:rounded="true"
+        app:text="@string/edit" />
+
+</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

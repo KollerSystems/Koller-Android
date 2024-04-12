@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".fragments.UserFragment">
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swrl"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
 
 
         <androidx.core.widget.NestedScrollView
@@ -122,11 +117,3 @@
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-    <com.norbert.koller.shared.customviews.FullScreenLoading
-        android:id="@+id/loading_overlay"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:visibility="gone" />
-
-</FrameLayout>
