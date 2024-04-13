@@ -1,10 +1,14 @@
 package com.norbert.koller.shared.recycleradapters
 
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.data.StudyGroupTypeData
 
-class StudyGroupTypeRecyclerAdapter() : BaseRecycleAdapter() {
+abstract class StudyGroupTypeRecyclerAdapter() : BaseRecycleAdapter() {
+
+    abstract fun onItemPress(fragmentActivity: FragmentActivity, item: StudyGroupTypeData)
 
 
     override fun getViewType(): Int {
@@ -20,6 +24,7 @@ class StudyGroupTypeRecyclerAdapter() : BaseRecycleAdapter() {
 
 
         val context = holder.itemView.context
+
         holder as BaseViewHolder
 
         item as StudyGroupTypeData
@@ -34,7 +39,7 @@ class StudyGroupTypeRecyclerAdapter() : BaseRecycleAdapter() {
 
         holder.itemView.setOnClickListener {
 
-
+            onItemPress((holder.itemView.context as FragmentActivity), item)
 
         }
     }

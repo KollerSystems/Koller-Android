@@ -9,6 +9,6 @@ import com.norbert.koller.teacher.fragments.UserPresenceFragment
 
 class BaseProgramRecyclerAdapter : BaseProgramRecyclerAdapter() {
     override fun onItemPress(fragmentActivity: FragmentActivity, item : BaseProgramData) {
-        (fragmentActivity as MainActivity).addFragment(UserPresenceFragment(item))
+        (fragmentActivity as MainActivity).addFragment(UserPresenceFragment(item.id))
     }
 }

@@ -13,7 +13,7 @@ import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.recycleradapters.BaseProgramRecyclerAdapter
 
-class CalendarBaseProgramsFragment : CalendarBaseProgramsFragment() {
+class CalendarBaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : CalendarBaseProgramsFragment(defaultFilters) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

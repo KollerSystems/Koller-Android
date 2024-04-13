@@ -2,6 +2,7 @@
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/swrl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="false"
@@ -21,9 +22,9 @@
         app:text="@string/edit" />
 
     <com.norbert.koller.shared.customviews.NestedCoordinatorLayout
+        android:id="@+id/ncl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/ncl">
+        android:layout_height="match_parent">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appbar2"

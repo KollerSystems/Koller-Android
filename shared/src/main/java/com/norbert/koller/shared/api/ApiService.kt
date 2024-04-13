@@ -102,6 +102,12 @@ interface APIInterface {
     ) : Response<List<StudyGroupData>>
 
     @Headers("Content-Type: application/json")
+    @GET("api/timetable/studygroup/{id}")
+    suspend fun getStudyGroup(
+        @Path("id") searchById:Int,
+    ) : Response<StudyGroupData>
+
+    @Headers("Content-Type: application/json")
     @GET("api/users/{id}")
     suspend fun getUser(
         @Path("id") searchById:Int,

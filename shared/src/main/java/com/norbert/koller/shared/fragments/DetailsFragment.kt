@@ -63,7 +63,9 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
 
         swrl = view.findViewById(R.id.swrl)
-        loadingOl = view.findViewById(R.id.loading_overlay)
+        swrl.isEnabled = false
+        loadingOl = FullScreenLoading(requireContext())
+        swrl.addView(loadingOl)
 
         swrl.setOnRefreshListener {
             refresh()
@@ -165,6 +167,7 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
                     viewModel.response.value = baseData
                     CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
                     loadingOl.setState(FullScreenLoading.NONE)
+                    swrl.isEnabled = true
                     disableVeils()
                 },
                 {errorMsg, errorBody ->

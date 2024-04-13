@@ -9,7 +9,16 @@ import android.widget.Button
 import android.widget.LinearLayout
 import com.norbert.koller.shared.R
 
-class FullScreenLoading(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+class FullScreenLoading : LinearLayout {
+
+    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
+        context!!,
+        attrs,
+        defStyle
+    )
+
+    constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
+    constructor(context: Context?) : super(context!!)
 
     private var state: Int = LOADING
     private val overlay : View

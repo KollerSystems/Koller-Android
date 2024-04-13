@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.norbert.koller.shared.fragments.NotificationsFragment
+import com.norbert.koller.shared.fragments.StudyGroupsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
 import com.norbert.koller.teacher.BuildConfig
@@ -60,6 +61,8 @@ class ApplicationManager : ApplicationManager() {
 
         userOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment(it) }
         userOutgoingPermanentFragment = { UserOutgoingPermanentFragment(it) }
+
+        studyGroupsFragment = {map-> com.norbert.koller.teacher.fragments.StudyGroupsFragment(map) }
     }
 
 

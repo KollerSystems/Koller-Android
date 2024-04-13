@@ -86,7 +86,7 @@ open class ApplicationManager : Application() {
         var roomsFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomsFragment = {map-> RoomsFragment(map) }
         var usersFragment: (map : MutableMap<String, ArrayList<String>>?) -> UsersFragment = {map-> UsersFragment(map) }
 
-        var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupsFragment = {map-> StudyGroupsFragment(map) }
+        lateinit var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupsFragment
 
         var userOutgoingTemporaryFragment: (userData : UserData?) -> UserOutgoingTemporaryFragment = {userData -> UserOutgoingTemporaryFragment(userData) }
         var userOutgoingPermanentFragment: (userData : UserData?) -> UserOutgoingPermanentFragment = {userData -> UserOutgoingPermanentFragment(userData) }

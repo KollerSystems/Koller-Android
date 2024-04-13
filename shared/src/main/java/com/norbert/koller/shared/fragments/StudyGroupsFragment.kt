@@ -13,25 +13,20 @@ import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.StudyGroupTypeRecyclerAdapter
 
-class StudyGroupsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+abstract class StudyGroupsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
     override fun getPagingSource(): BasePagingSource {
         return StudyGroupTypePagingSource(requireContext(), viewModel)
     }
 
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(R.string.abc, R.string.zyx,"Topic")
 
-        baseRecycleAdapter = StudyGroupTypeRecyclerAdapter()
         baseRecycleAdapter.chipGroupSort = chipGroupSort
         baseRecycleAdapter.chipGroupFilter = chipGroupFilter
 
-
         addSearchbar("Topic")
-
 
         super.onViewCreated(view, savedInstanceState)
     }

@@ -62,5 +62,7 @@ class ApplicationManager : ApplicationManager() {
             UserFragment(uid) }
 
         loginActivity = {LoginActivity()}
+
+        studyGroupsFragment = {map-> com.norbert.koller.student.fragments.StudyGroupsFragment(map) }
     }
 }

@@ -21,11 +21,13 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.AppBarLayout
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.NameContentButton
 import com.norbert.koller.shared.customviews.NameContentView
 import com.norbert.koller.shared.customviews.SimpleCardButton
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.ProgramData
+import com.norbert.koller.shared.fragments.DetailsFragment
 import com.norbert.koller.shared.fragments.ProgramFragmentInterface
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -35,11 +37,13 @@ import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.EditStudyGroupActivity
+import com.skydoves.androidveil.VeilLayout
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 
-class UserPresenceFragment(val program : ProgramData? = null) : Fragment(), ProgramFragmentInterface {
+class UserPresenceFragment(id : Int? = null) : DetailsFragment(id), ProgramFragmentInterface {
 
 
     override lateinit var ncwDate : NameContentView
@@ -48,14 +52,24 @@ class UserPresenceFragment(val program : ProgramData? = null) : Fragment(), Prog
     override lateinit var ncbClass : NameContentButton
     override lateinit var ncbTeacher : NameContentButton
 
-    lateinit var viewModel : ResponseViewModel
+    override fun getDataTag(): String {
+        return "program"
+    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_presence, container, false)
+    override fun apiFunctionToCall(): suspend () -> Response<*> {
+        return { RetrofitInstance.api.getStudyGroup(viewModel.id!!)}
+    }
+
+    override fun getVeils(): List<VeilLayout> {
+        return emptyList()
+    }
+
+    override fun getLayout(): Int {
+        return R.layout.fragment_user_presence
+    }
+
+    override fun getTimeLimit(): Int {
+        return DateTimeHelper.TIME_IMPORTANT
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -78,8 +92,6 @@ class UserPresenceFragment(val program : ProgramData? = null) : Fragment(), Prog
 
         findViews(view)
 
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
-
         viewModel.response.observe(viewLifecycleOwner) {response ->
 
             response as ProgramData
@@ -88,10 +100,6 @@ class UserPresenceFragment(val program : ProgramData? = null) : Fragment(), Prog
 
             setViews(response, requireContext())
 
-        }
-
-        if(!viewModel.response.isInitialized) {
-            viewModel.response.value = program
         }
     }
 
