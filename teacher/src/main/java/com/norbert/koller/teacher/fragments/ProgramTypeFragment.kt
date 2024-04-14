@@ -16,6 +16,7 @@ import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.teacher.R
+import com.norbert.koller.teacher.activities.EditSpecificStudyGroupActivity
 import com.norbert.koller.teacher.activities.EditStudyGroupActivity
 import com.skydoves.androidveil.VeilLayout
 import retrofit2.Response
@@ -72,11 +73,17 @@ class ProgramTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
 
         ncwRepeat = view.findViewById(R.id.ncw_repeat)
 
+        scbNextProgram = view.findViewById(R.id.Scb_next_program)
+
+        scbNextProgram.setOnClickListener{
+
+        }
+
 
         val editButton : SimpleCardButton = view.findViewById(R.id.Scb_edit)
 
         editButton.setOnClickListener {
-            val intent = Intent(requireContext(), EditStudyGroupActivity::class.java)
+            val intent = Intent(requireContext(), EditSpecificStudyGroupActivity::class.java)
             startActivity(intent)
         }
 

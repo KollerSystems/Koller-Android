@@ -23,69 +23,32 @@ import com.norbert.koller.teacher.customviews.TimeRangeCardView
 import java.util.Locale
 
 
-class EditStudyGroupActivity : AppCompatActivity() {
+class EditStudyGroupActivity : EditSpecificStudyGroupActivity() {
 
 
+    lateinit var radioText : TextView
+
+    lateinit var radioGroupToEdit : RadioGroup
+
+    lateinit var cardTimeRange : MaterialCardView
+
+    lateinit var cardRepeat : MaterialCardView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_study_group)
+
+        cardRepeat = findViewById(R.id.Mc_repeat)
+
+        radioText = findViewById(R.id.Text_radio)
+
+        radioGroupToEdit = findViewById(R.id.RadioGroup_to_edit)
+
+        cardTimeRange = findViewById(R.id.Mc_range)
+
+        radioText.isVisible = true
+        radioGroupToEdit.isVisible = true
 
 
-        window.setToolbarToViewColor(findViewById(R.id.bottom_view))
-
-        val appBar : AppBarLayout = findViewById(R.id.appbar)
-
-        appBar.setup()
-
-        val backButton : Button = findViewById(R.id.toolbar_exit)
-
-        backButton.setOnClickListener{
-            onBackPressed()
-        }
-
-        val saveButton : Button = findViewById(R.id.button_publish_all)
-
-        saveButton.setOnClickListener {
-
-        }
-
-        val radioGroupToEdit : RadioGroup = findViewById(R.id.RadioGroup_to_edit)
-
-        val cardDays : MaterialCardView = findViewById(R.id.Mc_days)
-
-        val tilTitle : TextInputLayout = findViewById(R.id.Til_title)
-        val tilDescription : TextInputLayout = findViewById(R.id.Til_description)
-        val tilDate : TextInputLayout = findViewById(R.id.Til_date)
-
-        val checkBoxMonday : CheckBox = findViewById(R.id.CheckBox_monday)
-        val checkBoxTuesday : CheckBox = findViewById(R.id.CheckBox_thuesday)
-        val checkBoxWednesday : CheckBox = findViewById(R.id.CheckBox_wednessday)
-        val checkBoxThursday : CheckBox = findViewById(R.id.CheckBox_thursday)
-
-        val timeRangeMonday : TimeRangeCardView = findViewById(R.id.Trcw_monday)
-        val timeRangeTuesday : TimeRangeCardView = findViewById(R.id.Trcw_thuesday)
-        val timeRangeWednesday : TimeRangeCardView = findViewById(R.id.Trcv_wednessday)
-        val timeRangeThursday : TimeRangeCardView = findViewById(R.id.Trcv_thursday)
-
-        val cardRepeat : MaterialCardView = findViewById(R.id.Mc_repeat)
-        val cardTimeRange : MaterialCardView = findViewById(R.id.Mc_range)
-
-        checkBoxMonday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeMonday.isVisible = isChecked
-        }
-
-        checkBoxTuesday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeTuesday.isVisible = isChecked
-        }
-
-        checkBoxWednesday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeWednesday.isVisible = isChecked
-        }
-
-        checkBoxThursday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeThursday.isVisible = isChecked
-        }
 
         radioGroupToEdit.setOnCheckedChangeListener { radioGroup, id ->
             val onlyThis = id == R.id.RadioButton_only_this
@@ -103,5 +66,8 @@ class EditStudyGroupActivity : AppCompatActivity() {
                 tilDate.hint = "Kezdés dátuma"
             }
         }
+
+        radioGroupToEdit.check(R.id.RadioButton_only_this)
     }
+
 }

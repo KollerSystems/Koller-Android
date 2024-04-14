@@ -78,19 +78,22 @@
                     app:layout_scrollFlags="scroll">
 
                     <TextView
-                        android:id="@+id/textView6"
+                        android:id="@+id/Text_radio"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/spacing"
                         android:text="Melyik szakköröket szeretné szerkeszteni?"
-                        android:textAppearance="@style/Title" />
+                        android:textAppearance="@style/Title"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
 
                     <RadioGroup
                         android:id="@+id/RadioGroup_to_edit"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="@dimen/spacing"
-                        android:checkedButton="@id/RadioButton_only_this">
+                        android:visibility="gone"
+                        tools:visibility="visible">
 
                         <RadioButton
                             android:id="@+id/RadioButton_only_this"
@@ -124,7 +127,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
-                        android:enabled="false"
                         android:hint="@string/title"
                         app:boxCornerRadiusBottomEnd="0dp"
                         app:boxCornerRadiusBottomStart="0dp"
@@ -145,7 +147,6 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
-                        android:enabled="false"
                         android:hint="@string/description"
                         app:boxCornerRadiusBottomEnd="0dp"
                         app:boxCornerRadiusBottomStart="0dp"
@@ -226,7 +227,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
 
-                        android:hint="@string/date"
+                        android:hint="Kezdés dátuma"
                         custom:boxCornerRadiusBottomEnd="0dp"
                         custom:boxCornerRadiusBottomStart="0dp"
                         custom:boxCornerRadiusTopEnd="0dp"
@@ -248,11 +249,9 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_full_margin"
-                        android:visibility="gone"
                         app:cardCornerRadius="0dp"
                         app:cardPreventCornerOverlap="false"
-                        app:contentPadding="@dimen/card_padding"
-                        tools:visibility="visible">
+                        app:contentPadding="@dimen/card_padding">
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -309,7 +308,7 @@
                                 android:layout_marginBottom="@dimen/spacing"
                                 android:visibility="gone"
                                 custom:cardCornerRadius="@null"
-                                custom:shapeAppearance="@style/OverlayRoundedCardBottom" >
+                                custom:shapeAppearance="@style/OverlayRoundedCardBottom">
 
                                 <View
                                     android:id="@+id/viewdsaaaaaaadsa2"
@@ -334,7 +333,7 @@
                                 android:layout_marginBottom="@dimen/spacing"
                                 android:visibility="gone"
                                 custom:cardCornerRadius="@null"
-                                custom:shapeAppearance="@style/OverlayRoundedCardBottom" >
+                                custom:shapeAppearance="@style/OverlayRoundedCardBottom">
 
                                 <View
                                     android:id="@+id/viefdffw2"
@@ -371,12 +370,10 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_full_margin"
-                        android:visibility="gone"
                         app:cardCornerRadius="@null"
                         app:cardPreventCornerOverlap="false"
                         app:contentPadding="@dimen/card_padding"
-                        app:shapeAppearance="@style/OverlayRoundedCardBottom"
-                        tools:visibility="visible">
+                        app:shapeAppearance="@style/OverlayRoundedCardBottom">
 
 
                         <LinearLayout
@@ -424,10 +421,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/card_full_margin"
+                        android:visibility="gone"
                         app:cardCornerRadius="@null"
                         app:cardPreventCornerOverlap="false"
                         app:contentPadding="@dimen/card_padding"
-                        app:shapeAppearance="@style/OverlayRoundedCardBottom">
+                        app:shapeAppearance="@style/OverlayRoundedCardBottom"
+                        tools:visibility="visible">
 
                         <com.norbert.koller.teacher.customviews.TimeRangeCardView
                             android:layout_width="match_parent"

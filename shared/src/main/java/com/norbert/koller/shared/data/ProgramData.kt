@@ -12,7 +12,7 @@ open class ProgramData(
     topic: String,
     rid : Int,
     teacher: UserData?,
-    @SerializedName("ProgramID") var prgraomID: Int,
+    @SerializedName("ProgramID") var programID: Int,
     @SerializedName("Date") var date: Date,
     @SerializedName("Lesson") var lesson: Int,
     @SerializedName("Length") var length: Int

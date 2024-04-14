@@ -12,8 +12,8 @@ class StudyGroupData(
     topic: String,
     rid : Int,
     teacher: UserData?,
-    prgraomId: Int,
+    programId: Int,
     date: Date,
     lesson: Int,
     length: Int
-) : ProgramData(id, type, topic, rid, teacher, prgraomId, date, lesson, length)
+) : ProgramData(id, type, topic, rid, teacher, programId, date, lesson, length)

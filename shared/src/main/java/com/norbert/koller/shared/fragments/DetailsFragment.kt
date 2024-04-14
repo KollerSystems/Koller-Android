@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewTreeObserver
+import android.widget.LinearLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
@@ -63,15 +64,14 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
 
         swrl = view.findViewById(R.id.swrl)
-        swrl.isEnabled = false
         loadingOl = FullScreenLoading(requireContext())
-        swrl.addView(loadingOl)
-
+        loadingOl.setLayoutParams(LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        (swrl.parent as ViewGroup).addView(loadingOl)
         swrl.setOnRefreshListener {
             refresh()
         }
 
-        if(savedInstanceState == null){
+        if(!viewModel.response.isInitialized){
             viewModel.id = id!!
 
             val key = Pair(getDataTag(), viewModel.id)
@@ -167,7 +167,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
                     viewModel.response.value = baseData
                     CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
                     loadingOl.setState(FullScreenLoading.NONE)
-                    swrl.isEnabled = true
                     disableVeils()
                 },
                 {errorMsg, errorBody ->

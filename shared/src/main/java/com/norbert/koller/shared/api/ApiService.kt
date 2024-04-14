@@ -93,6 +93,12 @@ interface APIInterface {
     ) : Response<List<BaseProgramData>>
 
     @Headers("Content-Type: application/json")
+    @GET("api/timetable/mandatory/{id}")
+    suspend fun getMandatory(
+        @Path("id") searchById:Int,
+    ) : Response<BaseProgramData>
+
+    @Headers("Content-Type: application/json")
     @GET("api/timetable/studygroup")
     suspend fun getStudyGroups(
         @Query(value = "limit") limit : Int,

@@ -16,14 +16,12 @@ interface ProgramFragmentInterface {
     var ncwDate : NameContentView
     var ncwTime : NameContentView
     var ncbClassroom : NameContentButton
-    var ncbClass : NameContentButton
     var ncbTeacher : NameContentButton
 
     fun findViews(view : View){
         ncwDate = view.findViewById(com.norbert.koller.shared.R.id.ncw_date)
         ncwTime = view.findViewById(com.norbert.koller.shared.R.id.ncw_time)
         ncbClassroom = view.findViewById(com.norbert.koller.shared.R.id.ncb_classroom)
-        ncbClass = view.findViewById(com.norbert.koller.shared.R.id.ncb_class)
         ncbTeacher = view.findViewById(com.norbert.koller.shared.R.id.ncb_teacher)
     }
 
@@ -32,15 +30,6 @@ interface ProgramFragmentInterface {
         ncwTime.textContent.text = ApplicationManager.createClassesText(context, response.lesson, response.length)
         ncbClassroom.buttonContent.text = response.rid.toString()
 
-        if(response is BaseProgramData) {
-            ncbClass.visibility = View.VISIBLE
-            ncbClass.buttonContent.text = response.class_.class_
-            ncbClass.buttonContent.setOnClickListener {
-                val userFragment = ApplicationManager.usersFragment(null)
-                    .setFilter("Class.ID", response.class_.id.toString())
-                (context as MainActivity).addFragment(userFragment)
-            }
-        }
 
 
         ncbTeacher.buttonContent.text = response.teacher!!.name.toString()
