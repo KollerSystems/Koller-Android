@@ -42,17 +42,7 @@
                     android:paddingBottom="@dimen/text_container_margin"
                     app:layout_scrollFlags="scroll">
 
-                    <Button
-                        android:id="@+id/Button_to_general"
-                        style="@style/ButtonTonal"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginBottom="@dimen/spacing"
-                        android:paddingEnd="16dp"
-                        android:text="Szakkör általános adatai"
-                        app:icon="@drawable/arrow_right"
-                        app:iconGravity="textEnd" />
+
 
                     <com.norbert.koller.shared.customviews.NameContentView
                         android:id="@+id/ncw_date"
@@ -84,7 +74,7 @@
                         app:name="@string/teacher" />
 
                     <com.norbert.koller.shared.customviews.NameContentButton
-                        android:id="@+id/ncb_class"
+                        android:id="@id/ncb_class"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
@@ -137,17 +127,42 @@
         </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
-    <com.norbert.koller.shared.customviews.SimpleCardButton
-        android:id="@+id/Scb_edit"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
+        android:orientation="vertical"
         android:layout_marginHorizontal="@dimen/full_card_padding"
-        android:layout_marginBottom="@dimen/full_card_padding"
-        app:cardBackgroundColor="?attr/colorSurfaceContainer"
-        app:icon="@drawable/pencil"
-        app:rounded="true"
-        app:text="@string/edit" />
+        android:layout_marginBottom="@dimen/full_card_padding">
+
+        <Button
+            android:id="@id/Button_to_general"
+            style="@style/CardButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="@dimen/card_full_margin"
+            android:backgroundTint="?attr/colorSurfaceContainer"
+            android:paddingEnd="16dp"
+            android:text="Szakkör általános adatai"
+            app:cornerRadius="@null"
+            app:icon="@drawable/arrow_right"
+            app:iconGravity="textEnd"
+            app:shapeAppearance="@style/OverlayRoundedCardTop" />
+
+        <com.norbert.koller.shared.customviews.SimpleCardButton
+            android:id="@+id/Scb_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="?attr/colorSurfaceContainer"
+            app:cardCornerRadius="@null"
+            app:icon="@drawable/pencil"
+            app:rounded="true"
+            app:shapeAppearance="@style/OverlayRoundedCardBottom"
+            app:text="@string/edit" />
+    </LinearLayout>
+
+
 
 
 </FrameLayout>

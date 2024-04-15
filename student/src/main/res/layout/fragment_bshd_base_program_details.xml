@@ -73,7 +73,7 @@
                 custom:name="@string/state" />
 
             <com.norbert.koller.shared.customviews.NameContentView
-                android:id="@+id/ncw_date"
+                android:id="@id/ncw_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:detail="-"
@@ -97,7 +97,7 @@
                 custom:name="@string/classroom" />
 
             <com.norbert.koller.shared.customviews.NameContentButton
-                android:id="@+id/ncb_class"
+                android:id="@id/ncb_class"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone"
@@ -115,6 +115,21 @@
                 custom:name="@string/teacher">
 
             </com.norbert.koller.shared.customviews.NameContentButton>
+
+            <Button
+                android:id="@id/Button_to_general"
+                style="@style/CardButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing"
+                android:paddingEnd="16dp"
+                android:text="Szakkör általános adatai"
+                android:visibility="gone"
+                custom:cornerRadius="@dimen/card_corner_radius"
+                custom:icon="@drawable/arrow_right"
+                custom:iconGravity="textEnd"
+                tools:visibility="visible" />
         </LinearLayout>
     </LinearLayout>
 

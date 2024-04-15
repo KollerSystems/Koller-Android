@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/application_padding"
+    android:paddingTop="@dimen/application_padding">
+
+    <TextView
+        android:id="@+id/text_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_container_margin"
+        android:padding="@dimen/text_container_margin"
+        android:text="This site uses cookies from Google to deliver its services and to analyze traffic. Learn more  close Your Privacy and Google Fonts Learn how building websites with Google Fonts is safe for you and your users." />
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_container_margin"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:strokeColor="?attr/colorSurfaceContainerLow"
+        app:strokeWidth="1dp">
+
+        <com.norbert.koller.shared.customviews.SeparatorLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/card_padding"
+                app:detail="Kis Gazsi"
+                app:icon="@drawable/user"
+                app:name="@string/teacher" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_classroom"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:paddingHorizontal="@dimen/card_padding"
+                app:detail="17"
+                app:icon="@drawable/room"
+                app:name="@string/classroom">
+
+            </com.norbert.koller.shared.customviews.NameContentButton>
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_time"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/card_padding"
+                app:icon="@drawable/clock"
+                app:name="@string/lessons">
+
+            </com.norbert.koller.shared.customviews.NameContentView>
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_monday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="50dp"
+                android:paddingEnd="@dimen/card_padding"
+                app:detail="1. óra"
+                app:name="@string/monday" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_tuesday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="50dp"
+                android:paddingEnd="@dimen/card_padding"
+                app:detail="1. óra"
+                app:name="@string/tuesday" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_wednesday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="50dp"
+                android:paddingEnd="@dimen/card_padding"
+                app:detail="2. óra"
+                app:name="@string/wednesday" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_thursday"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingStart="50dp"
+                android:paddingEnd="@dimen/card_padding"
+                app:detail="1. óra"
+                app:name="@string/thursday" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_repeat"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/card_padding"
+                app:detail="2 hetente"
+                app:icon="@drawable/replay"
+                app:name="Ismétlődik" />
+        </com.norbert.koller.shared.customviews.SeparatorLinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/textView7"
+        style="@style/Separator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:paddingHorizontal="@dimen/card_padding"
+        android:text="Következő szakkör"
+        android:translationZ="1dp" />
+
+    <com.norbert.koller.shared.customviews.SimpleCardButton
+
+        android:id="@+id/Scb_next_program"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:layout_marginHorizontal="@dimen/text_container_margin"
+        app:description="Kis Gazsi • 16"
+        app:icon="@null"
+        app:rounded="true"
+        app:text="Január 24., 3. óra" />
+
+</LinearLayout>

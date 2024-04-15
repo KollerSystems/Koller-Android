@@ -65,6 +65,19 @@
                 android:text="@string/study_groups"
                 app:icon="@drawable/rocket"
                 app:layout_flexGrow="1" />
+
+            <Button
+                android:id="@+id/button_base_programs"
+                style="@style/CardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/card_padding"
+                android:paddingRight="@dimen/card_padding"
+                android:text="@string/base_programs"
+                android:visibility="gone"
+                app:icon="@drawable/base_program"
+                app:layout_flexGrow="1"
+                tools:visibility="visible" />
         </com.google.android.flexbox.FlexboxLayout>
 
 

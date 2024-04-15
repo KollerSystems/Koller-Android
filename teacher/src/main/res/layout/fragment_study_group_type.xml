@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.StudyGroupTypeFragment">
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swrl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.norbert.koller.shared.customviews.NestedCoordinatorLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appbar2"
+
+                style="@null"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:outlineProvider="none"
+                android:visibility="visible"
+                app:expanded="true"
+                tools:visibility="visible">
+
+                <include
+                    layout="@layout/view_fragment_study_group_type_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_scrollFlags="scroll"></include>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+                <TextView
+                    android:id="@+id/textView4"
+                    style="@style/Separator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:text="@string/students_in_studygroup"
+                    android:translationZ="1dp" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1" />
+
+            </LinearLayout>
+
+        </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    <com.norbert.koller.shared.customviews.SimpleCardButton
+        android:id="@+id/Scb_edit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_marginHorizontal="@dimen/full_card_padding"
+        android:layout_marginBottom="@dimen/full_card_padding"
+        android:layout_weight="0"
+        app:cardBackgroundColor="?attr/colorSurfaceContainer"
+        app:icon="@drawable/pencil"
+        app:rounded="true"
+        app:text="@string/edit" />
+
+
+</FrameLayout>

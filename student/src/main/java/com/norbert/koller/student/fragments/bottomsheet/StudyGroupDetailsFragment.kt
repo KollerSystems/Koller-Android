@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -18,17 +19,17 @@ import com.norbert.koller.student.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.ProgramData
-import com.norbert.koller.shared.fragments.BaseProgramFragmentInterface
+import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.fragments.ProgramFragmentInterface
+import com.norbert.koller.shared.fragments.StudyGroupTypeFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 
-class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomSheetDialogFragment(), BaseProgramFragmentInterface {
+class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheetDialogFragment(), ProgramFragmentInterface {
 
     override lateinit var ncwDate: NameContentView
     override lateinit var ncwTime: NameContentView
-    override lateinit var ncbClass: NameContentButton
     override lateinit var ncbClassroom: NameContentButton
     override lateinit var ncbTeacher: NameContentButton
     override lateinit var toGeneralButton: Button
@@ -49,12 +50,15 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
         val textTitle : TextView = view.findViewById(R.id.text_title)
         val imageState : ImageView = view.findViewById(R.id.image_state)
         val ncwState : NameContentView = view.findViewById(R.id.ncw_state)
-
         findViews(view)
 
+        toGeneralButton.isVisible = true
+        toGeneralButton.setOnClickListener{
+            dismiss()
+            (context as MainActivity).addFragment(com.norbert.koller.student.fragments.StudyGroupTypeFragment((viewModel.response.value as StudyGroupData).programID))
+        }
+
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
-
-
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 
@@ -72,4 +76,6 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
             viewModel.response.value = program
         }
     }
+
+
 }

@@ -1,10 +1,14 @@
 package com.norbert.koller.shared.customviews
 
 import android.content.Context
+import android.graphics.Canvas
 import android.util.AttributeSet
+import android.view.View
+import android.view.ViewGroup
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.managers.getAttributeColor
 
 abstract class NameContentShared(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
@@ -39,7 +43,11 @@ abstract class NameContentShared(context: Context, attrs: AttributeSet) : Linear
         textName.setCompoundDrawablesWithIntrinsicBounds(mIconID, 0, 0, 0);
 
 
+
     }
+
+
+
 
     abstract fun inflate()
 

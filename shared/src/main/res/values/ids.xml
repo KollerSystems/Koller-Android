@@ -42,4 +42,8 @@
     <item name="loading_overlay" type="id" />
     <item name="fl_root" type="id" />
     <item name="swrl" type="id" />
+    <item name="separ" type="id" />
+    <item name="ncb_class" type="id" />
+    <item name="ncw_date" type="id" />
+    <item name="Button_to_general" type="id" />
 </resources>

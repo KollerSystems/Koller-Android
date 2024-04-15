@@ -10,6 +10,7 @@ import com.norbert.koller.shared.data.ApiLoginRefreshData
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.data.BaseProgramData
+import com.norbert.koller.shared.data.BaseProgramTypeData
 import com.norbert.koller.shared.data.ClassData
 import com.norbert.koller.shared.data.CrossingData
 import com.norbert.koller.shared.data.GroupData
@@ -153,10 +154,28 @@ interface APIInterface {
     ) : Response<List<StudyGroupTypeData>>
 
     @Headers("Content-Type: application/json")
+    @GET("api/timetable/mandatory/types")
+    suspend fun getBaseProgramTypes(
+        @Query(value = "limit") limit : Int,
+        @Query(value = "offset") offset : Int,
+        @Query(value = "sort") sort : String = "Topic:asc",
+        @Query(value = "filter") filter : String? = null,
+    ) : Response<List<BaseProgramTypeData>>
+
+    @Headers("Content-Type: application/json")
     @GET("api/timetable/studygroup/types/{pid}")
     suspend fun getStudyGroupType(
         @Path("pid") searchById:Int,
     ) : Response<StudyGroupTypeData>
+}
+
+class BaseProgramTypePagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+
+        return apiResponse.getBaseProgramTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
+
 }
 
 class StudyGroupTypePagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {

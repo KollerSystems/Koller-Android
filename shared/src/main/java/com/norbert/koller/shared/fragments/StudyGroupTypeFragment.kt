@@ -1,27 +1,25 @@
-package com.norbert.koller.teacher.fragments
+package com.norbert.koller.shared.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.NameContentButton
 import com.norbert.koller.shared.customviews.NameContentView
 import com.norbert.koller.shared.customviews.SimpleCardButton
-import com.norbert.koller.shared.data.BaseProgramData
-import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.data.StudyGroupTypeData
-import com.norbert.koller.shared.fragments.DetailsFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.managers.formatDate
-import com.norbert.koller.teacher.R
-import com.norbert.koller.teacher.activities.EditSpecificStudyGroupActivity
-import com.norbert.koller.teacher.activities.EditStudyGroupActivity
 import com.skydoves.androidveil.VeilLayout
 import retrofit2.Response
 
-class ProgramTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
+
+abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
 
     lateinit var ncbClassroom : NameContentButton
     lateinit var ncbClass : NameContentButton
@@ -49,9 +47,7 @@ class ProgramTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
         return listOf()
     }
 
-    override fun getLayout(): Int {
-        return R.layout.fragment_program_type
-    }
+
 
 
     override fun getTimeLimit(): Int {
@@ -62,9 +58,8 @@ class ProgramTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ncbClassroom = view.findViewById(com.norbert.koller.shared.R.id.ncb_classroom)
-        ncbClass = view.findViewById(com.norbert.koller.shared.R.id.ncb_class)
-        ncbTeacher = view.findViewById(com.norbert.koller.shared.R.id.ncb_teacher)
+        ncbClassroom = view.findViewById(R.id.ncb_classroom)
+        ncbTeacher = view.findViewById(R.id.ncb_teacher)
 
         ncwMonday = view.findViewById(R.id.ncw_monday)
         ncwTuesday = view.findViewById(R.id.ncw_tuesday)
@@ -80,12 +75,6 @@ class ProgramTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
         }
 
 
-        val editButton : SimpleCardButton = view.findViewById(R.id.Scb_edit)
-
-        editButton.setOnClickListener {
-            val intent = Intent(requireContext(), EditSpecificStudyGroupActivity::class.java)
-            startActivity(intent)
-        }
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 
@@ -106,4 +95,5 @@ class ProgramTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
             }
         }
     }
+
 }

@@ -14,7 +14,6 @@ import com.norbert.koller.shared.customviews.SimpleCardButton
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.fragments.BaseProgramFragmentInterface
 import com.norbert.koller.shared.fragments.DetailsFragment
-import com.norbert.koller.shared.fragments.ProgramFragmentInterface
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.EditStudyGroupActivity
@@ -30,6 +29,7 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
     override lateinit var ncbClassroom : NameContentButton
     override lateinit var ncbClass : NameContentButton
     override lateinit var ncbTeacher : NameContentButton
+    override lateinit var toGeneralButton: Button
 
     override fun getDataTag(): String {
         return "base_program"
@@ -44,7 +44,7 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
     }
 
     override fun getLayout(): Int {
-        return R.layout.fragment_user_presence
+        return R.layout.fragment_program
     }
 
     override fun getTimeLimit(): Int {
@@ -63,13 +63,11 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
             startActivity(intent)
         }
 
-        val toGeneralButton : Button = view.findViewById(R.id.Button_to_general)
+        findViews(view)
 
         toGeneralButton.setOnClickListener{
             Toast.makeText(requireContext(), "Not implemented hahaha", Toast.LENGTH_SHORT).show()
         }
-
-        findViews(view)
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 

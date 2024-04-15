@@ -27,6 +27,7 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
     override lateinit var ncwTime : NameContentView
     override lateinit var ncbClassroom : NameContentButton
     override lateinit var ncbTeacher : NameContentButton
+    override lateinit var toGeneralButton: Button
 
     override fun getDataTag(): String {
         return "study_group"
@@ -41,7 +42,7 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
     }
 
     override fun getLayout(): Int {
-        return R.layout.fragment_user_presence
+        return R.layout.fragment_program
     }
 
     override fun getTimeLimit(): Int {
@@ -60,13 +61,12 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
             startActivity(intent)
         }
 
-        val toGeneralButton : Button = view.findViewById(R.id.Button_to_general)
+        findViews(view)
 
         toGeneralButton.setOnClickListener{
-            (requireContext() as MainActivity).addFragment(ProgramTypeFragment((viewModel.response.value as StudyGroupData).programID))
+            (requireContext() as MainActivity).addFragment(StudyGroupTypeFragment((viewModel.response.value as StudyGroupData).programID))
         }
 
-        findViews(view)
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 
