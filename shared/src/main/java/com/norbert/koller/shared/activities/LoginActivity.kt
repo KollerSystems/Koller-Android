@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.activities
 
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
 import android.text.Editable
@@ -25,6 +26,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
+import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getColorOfPixel
 import kotlinx.coroutines.launch
 import java.util.Calendar
@@ -47,11 +49,12 @@ open class LoginActivity : AppCompatActivity() {
         textVersion.text = ApplicationManager.version
 
         val bottomView : View? = findViewById(R.id.bottom_view)
-        bottomView?.post {
-            val navViewColor = bottomView.getColorOfPixel(100, 100)
-            window.navigationBarColor = navViewColor
 
-
+        if(bottomView != null){
+            window.navigationBarColor = this.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow)
+        }
+        else{
+            window.navigationBarColor = Color.TRANSPARENT
         }
 
         loginButton = findViewById (R.id.login_button_login)

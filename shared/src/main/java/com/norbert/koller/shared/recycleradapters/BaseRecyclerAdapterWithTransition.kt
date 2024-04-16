@@ -24,7 +24,7 @@ abstract class BaseRecyclerAdapterWithTransition() : BaseRecycleAdapter() {
         fragment.reenterTransition = MaterialElevationScale(/* growing= */ true)
 
         fragment.postponeEnterTransition()
-        (fragment.requireView().parent as ViewGroup).viewTreeObserver
+        (fragment.requireView() as ViewGroup).viewTreeObserver
             .addOnPreDrawListener {
                 fragment.startPostponedEnterTransition()
                 true

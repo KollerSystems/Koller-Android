@@ -224,6 +224,7 @@
         <item name="cardElevation">0dp</item>
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
         <item name="cardBackgroundColor">?attr/colorSurfaceContainerLow</item>
+        <item name="cardPreventCornerOverlap">false</item>
     </style>
 
     <style name="BottomSheetDrag" parent="Widget.Material3.BottomSheet.DragHandle">
@@ -652,6 +653,7 @@
         <item name="behavior_fitToContents">true</item>
         <item name="behavior_peekHeight">500dp</item>
         <item name="behavior_skipCollapsed">true</item>
+        <item name="cardPreventCornerOverlap">false</item>
     </style>
 
     <style name="FakeBottomSheet" parent="Card">

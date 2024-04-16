@@ -10,7 +10,6 @@ import androidx.core.view.isVisible
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
-import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.customviews.TimeRangeCardView
@@ -28,7 +27,6 @@ open class EditSpecificStudyGroupActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_study_group)
 
 
-        window.setToolbarToViewColor(findViewById(R.id.bottom_view))
 
         val appBar : AppBarLayout = findViewById(R.id.appbar)
 

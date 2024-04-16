@@ -19,7 +19,7 @@ interface ProgramFragmentInterface {
     var ncwTime : NameContentView
     var ncbClassroom : NameContentButton
     var ncbTeacher : NameContentButton
-    var toGeneralButton : Button
+    var toGeneralButton : View
 
     fun findViews(view : View){
         ncwDate = view.findViewById(com.norbert.koller.shared.R.id.ncw_date)

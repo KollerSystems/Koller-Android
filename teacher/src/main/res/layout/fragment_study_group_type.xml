@@ -6,61 +6,23 @@
     android:layout_height="match_parent"
     tools:context=".fragments.StudyGroupTypeFragment">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swrl"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <com.norbert.koller.shared.customviews.NestedCoordinatorLayout
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabs"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:layout_weight="0" />
 
-            <com.google.android.material.appbar.AppBarLayout
-                android:id="@+id/appbar2"
-
-                style="@null"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@null"
-                android:outlineProvider="none"
-                android:visibility="visible"
-                app:expanded="true"
-                tools:visibility="visible">
-
-                <include
-                    layout="@layout/view_fragment_study_group_type_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_scrollFlags="scroll"></include>
-
-            </com.google.android.material.appbar.AppBarLayout>
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-                <TextView
-                    android:id="@+id/textView4"
-                    style="@style/Separator"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="@string/students_in_studygroup"
-                    android:translationZ="1dp" />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recycler_view"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
-
-        </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
     <com.norbert.koller.shared.customviews.SimpleCardButton
         android:id="@+id/Scb_edit"

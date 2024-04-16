@@ -12,7 +12,6 @@ import com.google.android.material.tabs.TabLayout
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
-import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
 
@@ -52,8 +51,6 @@ abstract class RoomsActivity : AppCompatActivity() {
         tabLayout = findViewById(R.id.tab_layout)
         collapsingToolbarLayout = findViewById(R.id.CollapsingToolbarLayout)
 
-
-        window.setToolbarToViewColor(findViewById(R.id.bottom_view))
 
 
         val appBar : AppBarLayout = findViewById(R.id.appbar)

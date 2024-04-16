@@ -16,7 +16,6 @@ import com.google.android.material.slider.RangeSlider
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.orderSingleNumber
-import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.customviews.TimeRangeCardView

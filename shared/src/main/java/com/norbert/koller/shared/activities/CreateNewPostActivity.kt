@@ -19,7 +19,6 @@ import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.bottomsheet.FragmentPostTypes
 import com.norbert.koller.shared.fragments.bottomsheet.ScheduleFragment
-import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.recycleradapters.EditableImageRecyclerAdapter
 
 
@@ -51,7 +50,7 @@ class CreateNewPostActivity : AppCompatActivity() {
         setContentView(R.layout.activity_create_new_post)
 
         val bottomView : View = findViewById(R.id.bottom_view)
-        window.setToolbarToViewColor(bottomView)
+
 
         val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)

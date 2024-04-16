@@ -362,4 +362,5 @@
     <string name="less">Less</string>
     <string name="done">Done</string>
     <string name="lessons">Lessons</string>
+    <string name="quantity_of_completions">Quantity of completions</string>
 </resources>

@@ -398,5 +398,6 @@
     <string name="less">Kevesebb</string>
     <string name="done">Kész</string>
     <string name="lessons">Órák</string>
+    <string name="quantity_of_completions">Teljesítések száma</string>
 
 </resources>

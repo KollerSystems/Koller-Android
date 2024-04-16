@@ -228,13 +228,6 @@ fun Chip.restoreDropDown(){
     setOnCloseIconClickListener(null)
 }
 
-fun Window.setToolbarToViewColor(bottomView : View){
-    bottomView.post{
-        val navViewColor = bottomView.getColorOfPixel(0, 0)
-        navigationBarColor = navViewColor
-    }
-}
-
 fun String.orderSingleNumber(context : Context) : String{
 
     return when (last()){

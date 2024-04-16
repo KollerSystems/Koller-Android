@@ -50,8 +50,6 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase) : RecyclerView.
         notifyDataSetChanged()
     }
 
-    //TODO: a leírásra is keresni
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.view_list_item, parent, false)
         return ListViewHolder(view)

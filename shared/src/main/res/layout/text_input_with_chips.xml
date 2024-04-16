@@ -3,65 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/create_new_post_til_addresse"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:hint="@string/addressee"
-        app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
-        app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
-        app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
-        app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
-        app:boxStrokeErrorColor="?attr/colorPrimary"
-        app:cursorErrorColor="?attr/colorPrimary"
-        app:errorEnabled="true"
-        app:errorIconDrawable="@null"
-        app:errorIconTint="?attr/colorPrimary"
-        app:errorTextColor="?attr/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/create_new_post_til_addresse"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="@string/addressee"
+            app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
+            app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+            app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
+            app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
+            app:boxStrokeErrorColor="?attr/colorPrimary"
+            app:cursorErrorColor="?attr/colorPrimary"
+            app:errorEnabled="true"
+            app:errorIconDrawable="@null"
+            app:errorIconTint="?attr/colorPrimary"
+            app:errorTextColor="?attr/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="top"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:textAppearance="@style/Text" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/create_new_post_chips_addresse"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="top"
-            android:importantForAutofill="no"
-            android:inputType="text"
-            android:textAppearance="@style/Text" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/create_new_post_chips_addresse"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+            <EditText
+                android:id="@+id/create_new_post_edt_addresse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="text|textCapWords"
+                android:minWidth="2dp"
+                android:paddingStart="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="7.25dp"
+                android:paddingEnd="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="7.25dp"
+                android:singleLine="false"
+                android:textAppearance="@style/Text" />
+
+        </com.google.android.material.chip.ChipGroup>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="-2dp"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@null"
+        app:shapeAppearance="@style/OverlayRoundedCardBottom"
+        app:strokeColor="?attr/colorPrimary"
+        app:strokeWidth="2dp">
 
-        <com.google.android.material.textfield.MaterialAutoCompleteTextView
-            android:id="@+id/create_new_post_edt_addresse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:dropDownAnchor="@id/create_new_post_til_addresse"
-            android:inputType="text|textCapWords"
-            android:minWidth="2dp"
-            android:paddingStart="0dp"
-            android:paddingLeft="0dp"
-            android:paddingTop="7.25dp"
-            android:paddingEnd="0dp"
-            android:paddingRight="0dp"
-            android:paddingBottom="7.25dp"
-            android:singleLine="false"
-            android:textAppearance="@style/Text" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    </com.google.android.material.chip.ChipGroup>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
+
 </merge>

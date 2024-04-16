@@ -173,10 +173,6 @@ abstract class MainActivity : AppCompatActivity() {
             .noPlaceholder()
             .into(userImage)
 
-        bottomNavigationView.post{
-            val navViewColor = bottomNavigationView.getColorOfPixel(0,0)
-            window.navigationBarColor = navViewColor
-        }
 
         if(savedInstanceState == null) {
             changeBackStackState(R.id.home)

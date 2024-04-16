@@ -29,7 +29,7 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
     override lateinit var ncbClassroom : NameContentButton
     override lateinit var ncbClass : NameContentButton
     override lateinit var ncbTeacher : NameContentButton
-    override lateinit var toGeneralButton: Button
+    override lateinit var toGeneralButton: View
 
     override fun getDataTag(): String {
         return "base_program"

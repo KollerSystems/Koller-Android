@@ -135,25 +135,22 @@
         android:layout_marginHorizontal="@dimen/full_card_padding"
         android:layout_marginBottom="@dimen/full_card_padding">
 
-        <Button
-            android:id="@id/Button_to_general"
-            style="@style/CardButton"
+        <com.norbert.koller.shared.customviews.SimpleCardButton
+            android:id="@+id/Button_to_general"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="@dimen/card_full_margin"
-            android:backgroundTint="?attr/colorSurfaceContainer"
-            android:paddingEnd="16dp"
-            android:text="Szakkör általános adatai"
-            app:cornerRadius="@null"
-            app:icon="@drawable/arrow_right"
-            app:iconGravity="textEnd"
-            app:shapeAppearance="@style/OverlayRoundedCardTop" />
+            android:layout_height="match_parent"
+            app:cardBackgroundColor="?attr/colorSurfaceContainer"
+            app:cardCornerRadius="@null"
+            app:icon="@drawable/data"
+            app:rounded="true"
+            app:shapeAppearance="@style/OverlayRoundedCardTop"
+            app:text="Általános adatok" />
 
         <com.norbert.koller.shared.customviews.SimpleCardButton
             android:id="@+id/Scb_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_full_margin"
             app:cardBackgroundColor="?attr/colorSurfaceContainer"
             app:cardCornerRadius="@null"
             app:icon="@drawable/pencil"

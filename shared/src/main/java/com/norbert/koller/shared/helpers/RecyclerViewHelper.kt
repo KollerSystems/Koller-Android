@@ -202,6 +202,27 @@ class RecyclerViewHelper {
 
         }
 
+        fun marginItemsVertically(view : View, position : Int, size : Int){
+
+            val margin = view.context.resources.getDimensionPixelSize(R.dimen.card_margin)
+
+            if (size == 1) {
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,0,0,0)
+            }
+            else if(position == 0){
+
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,0,0,margin)
+            }
+            else if (position == size-1){
+
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,margin,0,0)
+            }
+            else{
+                (view.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,margin,0,margin)
+            }
+
+        }
+
         fun roundRecyclerItemsHorizontally(view: View, view2: View?, position: Int, size: Int){
             if (size == 1){
 

@@ -19,7 +19,6 @@ import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBas
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
-import com.norbert.koller.shared.managers.setToolbarToViewColor
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
@@ -91,8 +90,6 @@ class CreateOutgoingActivity() : AppCompatActivity() {
         if(textFirst.text.isNullOrBlank()){
             textFirst.visibility = GONE
         }
-
-        window.setToolbarToViewColor(findViewById(com.norbert.koller.shared.R.id.bottom_view))
 
         val buttonExit : Button = findViewById(R.id.toolbar_exit)
 

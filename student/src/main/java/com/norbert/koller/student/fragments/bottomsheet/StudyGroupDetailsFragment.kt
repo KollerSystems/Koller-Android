@@ -32,7 +32,7 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheet
     override lateinit var ncwTime: NameContentView
     override lateinit var ncbClassroom: NameContentButton
     override lateinit var ncbTeacher: NameContentButton
-    override lateinit var toGeneralButton: Button
+    override lateinit var toGeneralButton: View
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

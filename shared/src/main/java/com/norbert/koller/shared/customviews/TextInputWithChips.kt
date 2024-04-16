@@ -9,18 +9,40 @@ import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
+import android.widget.EditText
+import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.isVisible
 import androidx.core.view.size
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.APIInterface
+import com.norbert.koller.shared.api.RetrofitInstance
+import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.recycleradapters.SimpleUserRecyclerAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
-class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayout(context, attrs)  {
+class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs)  {
 
     private var tilAddresse: TextInputLayout
-    private var actvAddresse: AutoCompleteTextView
+    private var actvAddresse: EditText
+
+    var radii : Float = 0f
+    var addresseItems : List<String> = listOf()
+
+    lateinit var addresseAdapter : SimpleUserRecyclerAdapter
+
+    lateinit var recyclerView : RecyclerView
+
     var chipsAddresse: ChipGroup
 
     var onChipChange : (() -> Unit)? = null
@@ -63,9 +85,12 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayo
     init {
         this.inflate()
 
+        orientation = VERTICAL
+
         tilAddresse = findViewById (R.id.create_new_post_til_addresse)
         actvAddresse = findViewById (R.id.create_new_post_edt_addresse)
         chipsAddresse = findViewById (R.id.create_new_post_chips_addresse)
+        recyclerView = findViewById(R.id.recycler_view)
 
         val startBoxStrokeWidth = tilAddresse.boxStrokeWidth
         tilAddresse.editText!!.setOnFocusChangeListener{ view, hasFocus ->
@@ -82,24 +107,32 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayo
                 uiFilled()
                 tilAddresse.boxStrokeWidth = tilAddresse.boxStrokeWidthFocused
                 tilAddresse.error = " "
+                if(addresseAdapter.userList.isNotEmpty()){
+                    recyclerView.isVisible = true
+                }
             } else
             {
                 emptyAddresses()
                 tilAddresse.boxStrokeWidth = startBoxStrokeWidth
                 tilAddresse.error = null
+                recyclerView.isVisible = false
             }
         }
 
-        val addresseItems = listOf("Lányok", "Fiúk")
-        val addresseAdapter = ArrayAdapter(context, R.layout.view_list_item_text, addresseItems)
 
-        actvAddresse.setAdapter(addresseAdapter)
+        addresseAdapter = SimpleUserRecyclerAdapter(listOf())
 
 
 
-        actvAddresse.setOnItemClickListener { parent, view, position, id ->
-            addChip(actvAddresse.text.toString())
-        }
+        recyclerView.setAdapter(addresseAdapter)
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+
+
+
+        //addChip(actvAddresse.text.toString())
+
 
 
         actvAddresse.setOnKeyListener { _, keyCode, event ->
@@ -122,6 +155,8 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayo
             true
         }
 
+        radii = tilAddresse.boxCornerRadiusTopStart
+
         actvAddresse.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
@@ -138,11 +173,49 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : ConstraintLayo
                     currentChip.isCheckable = false
                 }
 
+                if(actvAddresse.text.length >= 2){
+                    CoroutineScope(Dispatchers.IO).launch {
+                        RetrofitInstance.communicate({RetrofitInstance.api.getUsers(25, 0, filter = "Name:${ApplicationManager.searchApiWithRegex(actvAddresse.text.toString())}")}, {
+
+                            val response = it as List<UserData>
+
+                            addresseAdapter.userList = response
+
+                            CoroutineScope(Dispatchers.Main).launch {
+                                recyclerView.isVisible = true
+                                addresseAdapter.notifyDataSetChanged()
+                                tilAddresse.setBoxCornerRadii(radii,radii,0f,0f)
+
+                            }
+
+                        }, { error, errorBody ->
+                            addresseAdapter.userList = listOf()
+
+                                emptyList()
+
+
+                        })
+                    }
+
+                }
+                else{
+                    emptyList()
+                }
+
             }
         })
     }
 
-    open fun inflate(){
+    fun emptyList(){
+        addresseAdapter.userList = listOf()
+        CoroutineScope(Dispatchers.Main).launch {
+            addresseAdapter.notifyDataSetChanged()
+            tilAddresse.setBoxCornerRadii(radii,radii,radii,radii)
+            recyclerView.isVisible = false
+        }
+    }
+
+    fun inflate(){
         View.inflate(context, R.layout.text_input_with_chips, this)
     }
 
