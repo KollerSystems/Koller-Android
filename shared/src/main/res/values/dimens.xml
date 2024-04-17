@@ -10,6 +10,7 @@
     <dimen name="card_padding">15dp</dimen>
     <dimen name="n_card_padding">-15dp</dimen>
     <dimen name="full_card_padding">20dp</dimen>
+    <dimen name="full_card_padding_double">40dp</dimen>
 
     <dimen name="card_margin">0.5dp</dimen>
     <dimen name="card_full_margin">1dp</dimen>
@@ -52,7 +53,7 @@
 
     <dimen name="toolbar_button_size">50dp</dimen>
 
-    <dimen name="header_footer_elevation">0dp</dimen>
+    <dimen name="header_footer_elevation">3dp</dimen>
 
     <dimen name="header_footer_size">60dp</dimen>
 
@@ -76,5 +77,7 @@
     <dimen name="image_height">200dp</dimen>
 
     <dimen name="image_list_height">150dp</dimen>
+
+
 
 </resources>

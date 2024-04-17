@@ -64,5 +64,7 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         addSearchbar("Name")
 
         super.onViewCreated(view, savedInstanceState)
+
+
     }
 }

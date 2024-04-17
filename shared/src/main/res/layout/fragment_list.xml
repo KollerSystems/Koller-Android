@@ -20,6 +20,7 @@
             style="@style/TrickyToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:animateLayoutChanges="true"
             android:orientation="vertical">
 
             <LinearLayout
@@ -93,30 +94,22 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ly_filters"
+            <TextView
+                android:id="@+id/textView_filters"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:translationZ="-10dp">
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:layout_marginTop="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:text="@string/filters"
+                android:textAppearance="@style/Description"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:id="@+id/textView_filters"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/text_container_margin"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:text="@string/filters"
-                    android:textAppearance="@style/Description"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/chip_group_filter"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/text_container_margin" />
-            </LinearLayout>
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/text_container_margin" />
 
             <TextView
                 android:id="@+id/textView21"

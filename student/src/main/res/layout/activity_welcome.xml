@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="top"
         android:background="?attr/colorSurfaceContainer"
-        android:elevation="@dimen/header_footer_elevation"
+
         android:fitsSystemWindows="true"
         android:translationY="@dimen/n_tab_height"
         android:visibility="invisible"
@@ -40,8 +40,7 @@
         android:translationY="60dp"
         android:visibility="invisible"
         app:cardCornerRadius="100dp"
-        app:cardElevation="@dimen/header_footer_elevation">
-
+        app:cardElevation="@dimen/header_footer_elevation"
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

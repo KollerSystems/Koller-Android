@@ -1,36 +1,41 @@
 package com.norbert.koller.shared.fragments
 
+
 import android.animation.LayoutTransition
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
-import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup.MarginLayoutParams
-import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
+import android.widget.LinearLayout.VERTICAL
 import android.widget.TextView
-import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
+import androidx.appcompat.content.res.AppCompatResources
+import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
+import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.button.MaterialButton
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.LoginActivity
+import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
-import com.norbert.koller.shared.helpers.arrayToString
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
-import com.norbert.koller.shared.helpers.resetSimpleChip
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
@@ -38,6 +43,7 @@ import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 import retrofit2.Response
 
 
@@ -48,7 +54,6 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     lateinit var baseRecycleAdapter : BaseRecycleAdapter
     lateinit var chipGroupFilter : ChipGroup
     lateinit var chipGroupSort : ChipGroup
-    lateinit var lyFilters : LinearLayout
     lateinit var lyParameters : LinearLayout
 
 
@@ -66,8 +71,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         chipGroupFilter = view.findViewById(R.id.chip_group_filter)
         chipGroupSort = view.findViewById(R.id.chip_group_sort)
 
+
         superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
-        lyFilters = view.findViewById(R.id.ly_filters)
         lyParameters = view.findViewById(R.id.ly_parameters)
 
         superCoolRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
@@ -136,17 +141,94 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     }
 
     fun addSearchbar(filterName : String){
-        checkIfFiltersShouldBeShowed(false)
+        val surfaceColor = requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
 
+        val card = MaterialCardView(requireContext())
         val searchBar = SearchView(requireContext())
-        val marginLayoutParams = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        marginLayoutParams.topMargin = resources.getDimensionPixelSize(R.dimen.text_container_margin)
-        marginLayoutParams.bottomMargin = resources.getDimensionPixelSize(R.dimen.spacing)
-        searchBar.layoutParams = marginLayoutParams
-        lyParameters.addView(searchBar,0)
+        val linearLayout = LinearLayout(requireContext())
+        val closeButton = MaterialButton(ContextThemeWrapper(requireContext() as MainActivity, R.style.TextButton))
+        closeButton.setBackgroundColor(surfaceColor)
+        closeButton.cornerRadius = 0
+
+        card.setCardBackgroundColor(Color.TRANSPARENT)
+        card.strokeWidth = ApplicationManager.convertDpToPixel(1, requireContext())
+        card.strokeColor = searchBar.cardBackgroundColor.defaultColor
+        searchBar.radius = 0f
+
+        val textColor = requireContext().getAttributeColor(R.attr.colorForeground)
+
+        val textViewFilters : TextView = requireView().findViewById(R.id.textView_filters)
+        (textViewFilters.parent as ViewGroup).removeView(textViewFilters)
+
+
+        closeButton.text = "Becsuk"
+        closeButton.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.expand_less_thick)
+
+        closeButton.setTextColor(textColor)
+        closeButton.iconTint = closeButton.textColors
+
+        linearLayout.orientation = VERTICAL
+
+
+        card.preventCornerOverlap = false
+        val layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        val cardMarginLayoutParams = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        cardMarginLayoutParams.topMargin = resources.getDimensionPixelSize(R.dimen.text_container_margin)
+        cardMarginLayoutParams.bottomMargin = resources.getDimensionPixelSize(R.dimen.spacing)
+        val chipMarginLayoutParams = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        val margin = resources.getDimensionPixelSize(R.dimen.card_padding)
+        chipMarginLayoutParams.setMargins(margin,margin,margin,margin)
+        chipGroupFilter.layoutParams = chipMarginLayoutParams
+
+
+        viewModel.filtersShown.observe(this){
+            if(it){
+                chipGroupFilter.isVisible = true
+                closeButton.isVisible = true
+            }
+            else{
+                chipGroupFilter.isVisible = false
+                closeButton.isVisible = false
+            }
+        }
+
+        if(viewModel.filtersShown.value == false) {
+            var anyOfHas = false
+            for (chip in chipGroupFilter.children) {
+                chip as Chip
+                if (chip.isChecked) {
+                    anyOfHas = true
+                }
+            }
+            viewModel.filtersShown.value = anyOfHas
+
+        }
+        searchBar.layoutParams = layoutParams
+        linearLayout.layoutParams = layoutParams
+        closeButton.layoutParams = layoutParams
+        card.layoutParams = cardMarginLayoutParams
+        lyParameters.addView(card,0)
+        card.addView(linearLayout)
+        linearLayout.addView(searchBar)
+        (chipGroupFilter.parent as ViewGroup).removeView(chipGroupFilter)
+        searchBar.post {
+            card.radius = searchBar.height / 2f
+            linearLayout.addView(chipGroupFilter)
+            linearLayout.addView(closeButton)
+            linearLayout.setLayoutTransition(LayoutTransition())
+        }
+
 
         searchBar.editTextSearch.setOnFocusChangeListener{focusedView, isFocused ->
-            checkIfFiltersShouldBeShowed(isFocused)
+            if(isFocused){
+                viewModel.filtersShown.value = true
+            }
+        }
+
+        closeButton.setOnClickListener{
+
+            viewModel.filtersShown.value = false
+            searchBar.editTextSearch.clearFocus()
         }
 
         if(viewModel.filters.containsKey(filterName)){
@@ -164,19 +246,13 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             }
         }
 
-        for (chip in chipGroupFilter.children){
-            chip as Chip
-            chip.doOnTextChanged{ _, _, _, _ ->
-                checkIfFiltersShouldBeShowed(searchBar.isFocused)
-                searchBar.clearFocus()
-            }
-        }
-
         lyParameters.layoutTransition = LayoutTransition()
 
         viewModel.filters
 
         baseRecycleAdapter.searchBar = searchBar
+
+
     }
 
     fun addDateChip(filterName : String = "Date"){
@@ -195,22 +271,6 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
         val chip = createChip()
         chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, getValues, viewModel, tag, collapseText)
-    }
-
-    fun checkIfFiltersShouldBeShowed(isFocused : Boolean){
-        if(isFocused){
-            lyFilters.setVisibilityBy(true)
-        }
-        else{
-            var anyOfHas = false
-            for (chip in chipGroupFilter.children){
-                chip as Chip
-                if(chip.isChecked){
-                    anyOfHas = true
-                }
-            }
-            lyFilters.setVisibilityBy(anyOfHas)
-        }
     }
 
 

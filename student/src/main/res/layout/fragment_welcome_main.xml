@@ -77,7 +77,7 @@
         android:layout_marginEnd="-35dp"
         android:layout_marginBottom="-35dp"
         android:alpha="0.5"
-        android:elevation="@dimen/header_footer_elevation"
+
         android:text="👋"
         android:textSize="200dp"
         tools:ignore="HardcodedText,SpUsage" />

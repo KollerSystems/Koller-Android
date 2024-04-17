@@ -384,6 +384,7 @@
         <item name="android:paddingBottom">@null</item>
         <item name="android:paddingTop">@null</item>
         <item name="android:textAppearance">@style/Description</item>
+        <item name="iconGravity">textEnd</item>
     </style>
 
     <style name="OverlayRoundedCardLeft">

@@ -108,14 +108,14 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
                 tilAddresse.boxStrokeWidth = tilAddresse.boxStrokeWidthFocused
                 tilAddresse.error = " "
                 if(addresseAdapter.userList.isNotEmpty()){
-                    recyclerView.isVisible = true
+                    showList()
                 }
             } else
             {
                 emptyAddresses()
                 tilAddresse.boxStrokeWidth = startBoxStrokeWidth
                 tilAddresse.error = null
-                recyclerView.isVisible = false
+                disableList()
             }
         }
 
@@ -175,17 +175,25 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
 
                 if(actvAddresse.text.length >= 2){
                     CoroutineScope(Dispatchers.IO).launch {
-                        RetrofitInstance.communicate({RetrofitInstance.api.getUsers(25, 0, filter = "Name:${ApplicationManager.searchApiWithRegex(actvAddresse.text.toString())}")}, {
+                        RetrofitInstance.communicate({RetrofitInstance.api.getUsers(25, 0, filter = "Name:${ApplicationManager.searchApiWithRegex(actvAddresse.text.toString())},Role:1")}, {
 
                             val response = it as List<UserData>
+                            if(actvAddresse.text.length >= 2) {
 
-                            addresseAdapter.userList = response
 
-                            CoroutineScope(Dispatchers.Main).launch {
-                                recyclerView.isVisible = true
-                                addresseAdapter.notifyDataSetChanged()
-                                tilAddresse.setBoxCornerRadii(radii,radii,0f,0f)
+                                if(response.isNotEmpty()) {
+                                    addresseAdapter.userList = response
 
+                                    CoroutineScope(Dispatchers.Main).launch {
+                                        addresseAdapter.notifyDataSetChanged()
+                                        if(actvAddresse.isFocused) {
+                                            showList()
+                                        }
+                                    }
+                                }
+                                else{
+                                    emptyList()
+                                }
                             }
 
                         }, { error, errorBody ->
@@ -210,9 +218,20 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
         addresseAdapter.userList = listOf()
         CoroutineScope(Dispatchers.Main).launch {
             addresseAdapter.notifyDataSetChanged()
-            tilAddresse.setBoxCornerRadii(radii,radii,radii,radii)
-            recyclerView.isVisible = false
+            disableList()
         }
+    }
+
+    fun disableList() {
+
+        tilAddresse.setBoxCornerRadii(radii, radii, radii, radii)
+        recyclerView.isVisible = false
+
+    }
+
+    fun showList(){
+        recyclerView.isVisible = true
+        tilAddresse.setBoxCornerRadii(radii,radii,0f,0f)
     }
 
     fun inflate(){

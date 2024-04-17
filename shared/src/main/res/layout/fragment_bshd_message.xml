@@ -16,7 +16,7 @@
             style="@style/CardHeader"
             android:layout_width="match_parent"
             android:layout_height="@dimen/header_footer_size"
-            app:cardElevation="@dimen/header_footer_elevation">
+   >
 
             <FrameLayout
                 android:layout_width="match_parent"

@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import android.widget.Button
+import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
@@ -20,7 +21,7 @@ class SearchView : MaterialCardView {
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
     constructor(context: Context?) : super(context!!)
 
-    val editTextSearch : ExtraEditText
+    val editTextSearch : EditText
     val buttonSearchCancel : Button
 
     init {

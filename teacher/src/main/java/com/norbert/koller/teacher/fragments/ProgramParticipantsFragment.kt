@@ -40,6 +40,8 @@ class ProgramParticipantsFragment(defaultFilters : MutableMap<String, ArrayList<
         addSearchbar("Name")
 
         super.onViewCreated(view, savedInstanceState)
+
+
     }
 
 }

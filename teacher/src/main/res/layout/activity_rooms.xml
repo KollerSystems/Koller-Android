@@ -79,7 +79,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:cardCornerRadius="0dp"
-        app:cardElevation="@dimen/header_footer_elevation">
+>
 
         <LinearLayout
             android:layout_width="match_parent"

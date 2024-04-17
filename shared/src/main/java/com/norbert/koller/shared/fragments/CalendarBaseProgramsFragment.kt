@@ -15,6 +15,7 @@ abstract class CalendarBaseProgramsFragment(defaultFilters : MutableMap<String, 
         return BaseProgramPagingSource(requireContext(), viewModel)
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(com.norbert.koller.shared.R.string.newest, com.norbert.koller.shared.R.string.oldest,"Date", "desc,Lesson:desc", "asc,Lesson:asc")

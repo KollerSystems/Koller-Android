@@ -60,6 +60,10 @@ class SimpleUserRecyclerAdapter(var userList : List<UserData>) : RecyclerView.Ad
         holder.description.text = currentItem.createDescription()
 
 
+        if(position == 0){
+            (holder.itemView as MaterialCardView).setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerHigh))
+        }
+
         holder.itemView.setOnClickListener {
 
         }

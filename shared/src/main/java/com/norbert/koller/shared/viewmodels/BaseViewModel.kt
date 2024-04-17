@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.viewmodels
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
@@ -20,7 +21,7 @@ class BaseViewModel : ViewModel() {
     var filters : MutableMap<String, ArrayList<String>> = mutableMapOf()
     var dateFilters : MutableMap<String, androidx.core.util.Pair<Long, Long>> = mutableMapOf()
 
-    //var sort : Boolean = false
+    var filtersShown : MutableLiveData<Boolean> = MutableLiveData(false)
 
     lateinit var pagingSource: (()-> BasePagingSource)
     lateinit var currentPagingSource : BasePagingSource
