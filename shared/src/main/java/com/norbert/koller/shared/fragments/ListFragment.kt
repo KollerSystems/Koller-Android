@@ -2,23 +2,22 @@ package com.norbert.koller.shared.fragments
 
 
 import android.animation.LayoutTransition
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup.MarginLayoutParams
+import android.view.ViewGroup.VISIBLE
 import android.widget.LinearLayout
 import android.widget.LinearLayout.VERTICAL
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.content.ContextCompat
 import androidx.core.view.children
-import androidx.core.view.isVisible
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -36,14 +35,12 @@ import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.recycleradapters.BasePagingSource
 import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 import retrofit2.Response
 
 
@@ -141,7 +138,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     }
 
     fun addSearchbar(filterName : String){
-        val surfaceColor = requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
+        val surfaceColor = requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow)
 
         val card = MaterialCardView(requireContext())
         val searchBar = SearchView(requireContext())
@@ -161,8 +158,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         (textViewFilters.parent as ViewGroup).removeView(textViewFilters)
 
 
-        closeButton.text = "Becsuk"
-        closeButton.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.expand_less_thick)
+        closeButton.text = "Szűrők törlése"
+        closeButton.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.close)
 
         closeButton.setTextColor(textColor)
         closeButton.iconTint = closeButton.textColors
@@ -183,12 +180,12 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
         viewModel.filtersShown.observe(this){
             if(it){
-                chipGroupFilter.isVisible = true
-                closeButton.isVisible = true
+                chipGroupFilter.visibility = VISIBLE
+                closeButton.visibility = VISIBLE
             }
             else{
-                chipGroupFilter.isVisible = false
-                closeButton.isVisible = false
+                chipGroupFilter.visibility = GONE
+                closeButton.visibility = GONE
             }
         }
 
@@ -208,6 +205,9 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         closeButton.layoutParams = layoutParams
         card.layoutParams = cardMarginLayoutParams
         lyParameters.addView(card,0)
+
+
+
         card.addView(linearLayout)
         linearLayout.addView(searchBar)
         (chipGroupFilter.parent as ViewGroup).removeView(chipGroupFilter)
@@ -215,7 +215,6 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             card.radius = searchBar.height / 2f
             linearLayout.addView(chipGroupFilter)
             linearLayout.addView(closeButton)
-            linearLayout.setLayoutTransition(LayoutTransition())
         }
 
 
@@ -229,6 +228,14 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
             viewModel.filtersShown.value = false
             searchBar.editTextSearch.clearFocus()
+
+            viewModel.filters.entries.removeIf { it.key != filterName }
+
+            viewModel.dateFilters.entries.removeIf { it.key != filterName }
+
+            for(chip in chipGroupFilter.children){
+                (chip as Chip).performCloseIconClick()
+            }
         }
 
         if(viewModel.filters.containsKey(filterName)){
@@ -248,7 +255,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
         lyParameters.layoutTransition = LayoutTransition()
 
-        viewModel.filters
+
 
         baseRecycleAdapter.searchBar = searchBar
 
