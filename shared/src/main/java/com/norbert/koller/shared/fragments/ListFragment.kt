@@ -1,9 +1,12 @@
 package com.norbert.koller.shared.fragments
 
 
-import android.animation.LayoutTransition
+import android.animation.Animator
+
+import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Bundle
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
@@ -17,6 +20,7 @@ import android.widget.LinearLayout.VERTICAL
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.core.animation.doOnEnd
 import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -52,6 +56,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     lateinit var chipGroupFilter : ChipGroup
     lateinit var chipGroupSort : ChipGroup
     lateinit var lyParameters : LinearLayout
+    var duration : Long = 0
 
 
     abstract fun getPagingSource() : BasePagingSource
@@ -137,6 +142,25 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         return chip
     }
 
+    fun addButton(text : String, onClick: () -> Unit) {
+        val button = MaterialButton(ContextThemeWrapper(requireContext() as MainActivity, R.style.ButtonTonalIcon))
+        button.text = text
+        button.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.add)
+        val textColor = requireContext().getAttributeColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
+        button.setTextColor(textColor)
+        button.iconTint = button.textColors
+        val params = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+        val textContainer = resources.getDimensionPixelSize(R.dimen.text_container_margin)
+        params.setMargins(textContainer,textContainer,textContainer,textContainer)
+        params.gravity = Gravity.CENTER
+        button.layoutParams = params
+        lyParameters.addView(button)
+        button.setOnClickListener {
+            onClick.invoke()
+        }
+    }
+
+
     fun addSearchbar(filterName : String){
         val surfaceColor = requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow)
 
@@ -178,17 +202,6 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         chipGroupFilter.layoutParams = chipMarginLayoutParams
 
 
-        viewModel.filtersShown.observe(this){
-            if(it){
-                chipGroupFilter.visibility = VISIBLE
-                closeButton.visibility = VISIBLE
-            }
-            else{
-                chipGroupFilter.visibility = GONE
-                closeButton.visibility = GONE
-            }
-        }
-
         if(viewModel.filtersShown.value == false) {
             var anyOfHas = false
             for (chip in chipGroupFilter.children) {
@@ -196,10 +209,16 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
                 if (chip.isChecked) {
                     anyOfHas = true
                 }
+
+                chip.measure(WRAP_CONTENT, WRAP_CONTENT)
+                chip.layoutParams.height = chip.measuredHeight
             }
             viewModel.filtersShown.value = anyOfHas
-
         }
+
+
+
+
         searchBar.layoutParams = layoutParams
         linearLayout.layoutParams = layoutParams
         closeButton.layoutParams = layoutParams
@@ -215,6 +234,32 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             card.radius = searchBar.height / 2f
             linearLayout.addView(chipGroupFilter)
             linearLayout.addView(closeButton)
+
+            closeButton.measure(MATCH_PARENT, WRAP_CONTENT)
+            closeButton.layoutParams.height = closeButton.measuredHeight
+
+            viewModel.filtersShown.observe(this){ checked ->
+                val animator : ValueAnimator
+                if(checked){
+                    card.measure(MATCH_PARENT, WRAP_CONTENT);
+                    val height = card.measuredHeight;
+                    animator = ValueAnimator.ofInt(card.height, height)
+                    animator.doOnEnd {
+                        card.layoutParams.height = WRAP_CONTENT
+                    }
+                }
+                else{
+                    animator = ValueAnimator.ofInt(card.height, searchBar.height)
+                }
+                animator.addUpdateListener {
+                    val params = card.layoutParams
+                    params.height = it.animatedValue as Int
+                    card.layoutParams = params
+                }
+                animator.duration = duration
+                duration = 250
+                animator.start()
+            }
         }
 
 
@@ -225,6 +270,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         }
 
         closeButton.setOnClickListener{
+
+
 
             viewModel.filtersShown.value = false
             searchBar.editTextSearch.clearFocus()
@@ -253,7 +300,6 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             }
         }
 
-        lyParameters.layoutTransition = LayoutTransition()
 
 
 
