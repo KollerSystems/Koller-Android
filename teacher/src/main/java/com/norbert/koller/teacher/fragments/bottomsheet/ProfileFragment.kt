@@ -25,14 +25,7 @@ class ProfileFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileF
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val scb : SimpleCardButton = view.findViewById(R.id.profile_card_my_groups)
-        val mainActivity = context as MainActivity
-
-        scb.setOnClickListener {
-
-            val usersFragment = UsersFragment()
-            mainActivity.addFragment(usersFragment)
-        }
+   
 
     }
 

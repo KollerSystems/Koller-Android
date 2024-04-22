@@ -167,7 +167,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
             DevData("Bencsik Gergő", "API és Adatbázis", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gergo)!!, "https://github.com/lolfail"),
             DevData("Zsiga Róbert", "Adatbázis", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_robert)!!, "https://github.com/IronNight007"),
             DevData("Fehér Dávid", "Windows back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_david)!!, "https://github.com/TheBlueLines"),
-            DevData("Várnagy Miklós T.", "Windows front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_miklos)!!, "https://github.com/Ararakalari"),
+            DevData("Juhos Gergely J.", "TBA", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_juhos)!!, "https://github.com/enderember003"),
             DevData("Bende Ákos Gy.", "Szerver", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gyorgy)!!, "https://github.com/kutzlect"),
             DevData("Kovács Gábor", "iOS", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gabor)!!, "https://github.com/mrSajt2"),
         )

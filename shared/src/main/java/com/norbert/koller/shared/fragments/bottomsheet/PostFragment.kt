@@ -109,7 +109,7 @@ class PostFragment : BottomSheetDialogFragment() {
 
         commentDataArrayList = arrayListOf(
             CommentData("Kovács Norbert", context?.getDrawable(R.drawable.norbert), "Ez nagyon jó 🤣🤣🤣🤣"),
-            CommentData("Kovács Péter", context?.getDrawable(R.drawable.pfp_miklos), "anyad 👍"),
+            CommentData("Kovács Péter", context?.getDrawable(R.drawable.pfp_juhos), "anyad 👍"),
             CommentData("Kovács Géza", context?.getDrawable(R.drawable.pfp_robert), "A nagyobb társadalmi és intellektuális kontextus széles spektrumában számos szempont és érvelés áll rendelkezésre annak megítélésére, hogy egy adott állítás, tézis vagy érv alátámasztottsága milyen mértékben felel meg a valóságos körülményeknek és megfigyelhető jelenségeknek. Azonban az említett kontextus és szempontok diverzitása miatt nem mindig van lehetőségünk teljes bizonyossággal állást foglalni egy adott kérdésben, és gyakran előfordul, hogy az argumentáció valójában semmitmondó és jelentéktelen.")
         )
 
