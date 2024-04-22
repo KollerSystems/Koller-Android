@@ -24,6 +24,7 @@ import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.teacher.ProgramTypeViewPagerAdapter
 import com.norbert.koller.teacher.R
+import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.teacher.activities.EditSpecificStudyGroupActivity
 import com.skydoves.androidveil.VeilLayout
 import retrofit2.Response
@@ -50,7 +51,7 @@ class StudyGroupTypeFragment(val pid : Int? = null) : Fragment() {
             startActivity(intent)
         }
 
-        val tabs : TabLayout = view.findViewById(R.id.tabs)
+        val tabs : TabLayout = view.findViewById(Rs.id.tabs)
 
         val viewPager : ViewPager2 = view.findViewById(R.id.viewPager)
 

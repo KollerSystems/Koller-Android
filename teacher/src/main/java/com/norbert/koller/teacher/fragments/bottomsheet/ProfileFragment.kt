@@ -25,7 +25,7 @@ class ProfileFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileF
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-   
+
 
     }
 

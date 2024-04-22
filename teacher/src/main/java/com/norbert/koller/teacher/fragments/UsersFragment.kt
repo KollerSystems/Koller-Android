@@ -12,10 +12,9 @@ class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = nu
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*val buttonAddNew : Button = view.findViewById(Rs.id.button_add_new)
+        addButton("Felhasználó felvétele") {
 
-        val buttonLayout = buttonAddNew.parent as ViewGroup
-        buttonLayout.visibility = VISIBLE*/
+        }
     }
 
 }
