@@ -230,6 +230,9 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         card.addView(linearLayout)
         linearLayout.addView(searchBar)
         (chipGroupFilter.parent as ViewGroup).removeView(chipGroupFilter)
+
+        duration = 0
+
         searchBar.post {
             card.radius = searchBar.height / 2f
             linearLayout.addView(chipGroupFilter)
