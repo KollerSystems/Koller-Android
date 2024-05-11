@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso
 
 class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
 
-    private var mStrokeWidth: Float = 0f
+    private var mStrokeWidth: Int = 0
     lateinit var image : ImageView
 
     val red : Int = 10
@@ -65,7 +65,6 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCar
         layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         radius = 99999f
         strokeColor = Color.BLACK
-        strokeWidth = context.resources.getDimensionPixelSize(R.dimen.text_container_margin)
 
         setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorPrimaryContainer))
 
@@ -76,7 +75,7 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCar
         )
 
         try {
-            mStrokeWidth = typedArray.getDimension(R.styleable.roundedBadgeImageView_stroke_width, ApplicationManager.convertDpToPixel(5, context).toFloat())
+            mStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.roundedBadgeImageView_stroke_width, context.resources.getDimensionPixelSize(R.dimen.text_container_half_margin))
         } finally {
             typedArray.recycle()
         }
@@ -86,7 +85,7 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCar
 
         image = findViewById(R.id.image)
 
-        val mStrokeWidthInt = mStrokeWidth.toInt()
+        val mStrokeWidthInt = mStrokeWidth
         setContentPadding(mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt)
         strokeWidth = mStrokeWidthInt
     }

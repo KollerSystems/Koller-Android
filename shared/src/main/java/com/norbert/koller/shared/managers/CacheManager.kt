@@ -10,5 +10,4 @@ object CacheManager {
     var savedListsOfValues : MutableMap<String, ArrayList<BaseData>> = mutableMapOf()
 
     var savedValues : MutableMap<Pair<String, Int>, BaseData> = mutableMapOf()
-
 }

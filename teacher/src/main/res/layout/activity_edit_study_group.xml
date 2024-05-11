@@ -34,10 +34,7 @@
                 app:toolbarId="@+id/toolbar">
 
 
-                <Button
-                    android:id="@+id/toolbar_exit"
-                    style="@style/ToolbarNavigationButton"
-                    android:layout_gravity="bottom|start" />
+
 
                 <androidx.appcompat.widget.Toolbar
                     android:id="@+id/toolbar1"
@@ -47,6 +44,11 @@
                     app:titleMargin="@null"
                     app:titleMarginEnd="49dp"
                     app:titleMarginStart="49dp" />
+
+                <Button
+                    android:id="@+id/toolbar_exit"
+                    style="@style/ToolbarNavigationButton"
+                    android:layout_gravity="bottom|start" />
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>
 

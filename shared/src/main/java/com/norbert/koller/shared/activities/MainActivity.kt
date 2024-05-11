@@ -14,6 +14,7 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
@@ -35,6 +36,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.navigation.NavigationBarView
+import com.google.android.material.navigationrail.NavigationRailView
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
@@ -62,7 +66,7 @@ abstract class MainActivity : AppCompatActivity() {
     lateinit var toolbarTitleSwitcher : TextSwitcher
     lateinit var toolbarDescription : TextView
 
-    lateinit var bottomNavigationView : BottomNavigationView
+    lateinit var bottomNavigationView : NavigationBarView
 
     var defaultTitlePadding : Int = 0
 
@@ -73,12 +77,21 @@ abstract class MainActivity : AppCompatActivity() {
 
     lateinit var mainFragment: FragmentContainerView
 
+    abstract fun getAppIcon() : Int
 
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+
+    }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
 
         super.onPostCreate(savedInstanceState)
+
+
 
         AuthenticationManager.handleFailedTokenRefresh = {
 
@@ -134,18 +147,33 @@ abstract class MainActivity : AppCompatActivity() {
         }
         toolbarTitleSwitcher.measureAllChildren = false
 
-        appBar.setup()
-
         val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
-        val listener = AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
-            val seekPosition = -verticalOffset / appBar.totalScrollRange.toFloat()
-            motionLayout.progress = seekPosition
+        if(!appBar.setup()){
+
+            val listener = AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
+                val seekPosition = -verticalOffset / appBar.totalScrollRange.toFloat()
+                motionLayout.progress = seekPosition
+            }
+            appBar.addOnOffsetChangedListener(listener)
         }
-        appBar.addOnOffsetChangedListener(listener)
+        else{
+            motionLayout.progress = 1f
+        }
+
+
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
 
+        if(bottomNavigationView is NavigationRailView){
 
+            /*val image = ImageView(this)
+            image.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+            image.adjustViewBounds = true
+            image.setImageResource(getAppIcon())
+            (bottomNavigationView as NavigationRailView).addHeaderView(image)*/
+
+
+        }
 
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
 
@@ -188,6 +216,9 @@ abstract class MainActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112)
         }
+
+        appBar.setExpanded(false)
+        showBackButtonIfNeeded()
 
         supportFragmentManager.addOnBackStackChangedListener {
             val title = this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase())

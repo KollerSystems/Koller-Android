@@ -8,13 +8,22 @@
 
     android:orientation="vertical">
 
-    <com.norbert.koller.shared.customviews.RoundedBadgeImageView
-        android:id="@+id/badge_user"
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/application_padding"
-        android:layout_marginBottom="@dimen/application_padding"
-        custom:stroke_width="20dp" />
+        app:justifyContent="center">
+
+        <com.norbert.koller.shared.customviews.RoundedBadgeImageView
+            android:id="@+id/badge_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/application_padding"
+            android:layout_marginBottom="@dimen/application_padding"
+            app:layout_maxHeight="400dp"
+            app:layout_maxWidth="400dp"
+            custom:stroke_width="10dp" />
+    </com.google.android.flexbox.FlexboxLayout>
+
 
     <TextView
         android:id="@+id/user_text_name"

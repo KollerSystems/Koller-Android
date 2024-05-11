@@ -28,10 +28,7 @@ tools:context=".activities.EditUserActivity">
             app:toolbarId="@id/toolbar">
 
 
-            <Button
-                android:id="@id/toolbar_exit"
-                style="@style/ToolbarNavigationButton"
-                android:layout_gravity="bottom|start" />
+
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@id/toolbar"
@@ -40,6 +37,11 @@ tools:context=".activities.EditUserActivity">
                 android:clickable="false"
                 app:titleMargin="@null"
                 app:titleMarginStart="49dp" />
+
+            <Button
+                android:id="@id/toolbar_exit"
+                style="@style/ToolbarNavigationButton"
+                android:layout_gravity="bottom|start" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
@@ -66,7 +68,7 @@ tools:context=".activities.EditUserActivity">
                 android:id="@+id/rbiv_pfp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                custom:stroke_width="20dp">
+                custom:stroke_width="10dp">
 
             </com.norbert.koller.shared.customviews.RoundedBadgeImageView>
 

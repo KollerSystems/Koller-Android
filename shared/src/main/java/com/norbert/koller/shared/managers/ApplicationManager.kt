@@ -1,53 +1,56 @@
 package com.norbert.koller.shared.managers
 
+import android.app.Activity
 import android.app.Application
 import android.app.Dialog
 import android.content.ClipData
 import android.content.Context
 import android.content.Intent
+import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
-import android.icu.text.SimpleDateFormat
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.text.Layout
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.Window
 import android.view.WindowManager
-import android.widget.Button
 import android.widget.EditText
+import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.appbar.AppBarLayout
-import com.norbert.koller.shared.fragments.CalendarFragment
-import com.norbert.koller.shared.fragments.HomeFragment
-import com.norbert.koller.shared.fragments.NotificationsFragment
-import com.norbert.koller.shared.fragments.RoomFragment
-import com.norbert.koller.shared.fragments.StudentHostelFragment
-import com.norbert.koller.shared.fragments.UserFragment
-import com.google.android.material.card.MaterialCardView
+import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.fragments.CalendarFragment
+import com.norbert.koller.shared.fragments.HomeFragment
+import com.norbert.koller.shared.fragments.NotificationsFragment
+import com.norbert.koller.shared.fragments.RoomFragment
 import com.norbert.koller.shared.fragments.RoomsFragment
+import com.norbert.koller.shared.fragments.StudentHostelFragment
+import com.norbert.koller.shared.fragments.StudyGroupsFragment
+import com.norbert.koller.shared.fragments.UserFragment
 import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import java.nio.ByteBuffer
 import java.util.Date
 import java.util.Locale
-import com.norbert.koller.shared.fragments.StudyGroupsFragment
 
 
 open class ApplicationManager : Application() {
@@ -58,6 +61,8 @@ open class ApplicationManager : Application() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
     }
+
+
 
 
     companion object Comp{
@@ -290,13 +295,34 @@ fun String.camelToSnakeCase() = fold(StringBuilder(length)) { acc, c ->
 }.toString()
 
 
-fun AppBarLayout.setup(){
+fun AppBarLayout.setup() : Boolean{
 
-    setBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
-    addOnOffsetChangedListener { _, verticalOffset ->
-        val collapsedSize: Int = resources.getDimensionPixelSize(R.dimen.header_footer_size)
-        background.alpha =  ((verticalOffset / -570f) * 255).toInt()
+    val color = context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
+    setBackgroundColor(color)
+    val orientation = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+    if (orientation) {
+        setExpanded(false)
+        val layout = getChildAt(0)
+        val params = layout.layoutParams as AppBarLayout.LayoutParams
+
+        layout.layoutParams = params
+        layoutParams.height = resources.getDimensionPixelSize(R.dimen.header_footer_size) + 1
+        (context as Activity).window.statusBarColor = color
+
+        if(layout is CollapsingToolbarLayout){
+            layout.titleCollapseMode = CollapsingToolbarLayout.TITLE_COLLAPSE_MODE_FADE
+            layout.scrimVisibleHeightTrigger = 10000
+        }
+
+
+    } else {
+
+        addOnOffsetChangedListener { _, verticalOffset ->
+            val collapsedSize: Int = resources.getDimensionPixelSize(R.dimen.header_footer_size)
+            background.alpha =  ((verticalOffset / -570f) * 255).toInt()
+        }
     }
+    return orientation
 }
 
 fun View.setVisibilityBy(boolean : Boolean){

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    tools:context=".activities.MainActivity"
+
+        android:id="@id/layout_cordinator"
+        android:layout_weight="1"
+        android:fitsSystemWindows="true">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@id/appbar"
+
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/expanded_toolbar_height"
+            app:expanded="false">
+
+
+            <include
+                layout="@layout/activity_main_header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </com.google.android.material.appbar.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+        <com.google.android.material.navigationrail.NavigationRailView
+            android:id="@id/bottom_navigation_view"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:background="?attr/colorSurfaceContainer"
+            android:translationZ="1000dp"
+            app:itemIconTint="@drawable/bottom_navigation_view_text"
+            app:labelVisibilityMode="unlabeled"
+            app:menu="@menu/bottom_navigation_view"
+            app:menuGravity="center"
+            app:paddingBottomSystemWindowInsets="false"
+            app:paddingStartSystemWindowInsets="false"
+            app:paddingTopSystemWindowInsets="false">
+
+        </com.google.android.material.navigationrail.NavigationRailView>
+
+        <FrameLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@id/main_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <View
+                android:id="@+id/cornerL"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="top|left"
+                android:background="@drawable/corner"
+                android:backgroundTint="?attr/colorSurfaceContainer"
+                android:scaleX="-1" />
+
+            <View
+                android:id="@+id/cornerR"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="right|top"
+                android:background="@drawable/corner"
+                android:backgroundTint="?attr/colorSurfaceContainer" />
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

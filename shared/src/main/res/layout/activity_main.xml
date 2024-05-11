@@ -43,12 +43,7 @@
         android:minHeight="@dimen/header_footer_size"
         android:translationZ="1000dp"
         app:itemIconTint="@drawable/bottom_navigation_view_text"
-        app:itemPaddingBottom="0dp"
-        app:itemPaddingTop="0dp"
         app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/bottom_navigation_view">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
