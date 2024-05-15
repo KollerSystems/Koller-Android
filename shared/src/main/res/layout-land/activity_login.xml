@@ -27,10 +27,11 @@
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_width="0dp"
+        android:id="@+id/bottom_view"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:layout_weight="1"
+        android:layout_weight="0"
         app:cardCornerRadius="@null"
         app:cardPreventCornerOverlap="false"
         app:shapeAppearance="@style/OverlayRoundedCardTop">

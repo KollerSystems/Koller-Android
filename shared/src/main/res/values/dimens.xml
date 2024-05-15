@@ -79,6 +79,7 @@
 
     <dimen name="image_list_height">150dp</dimen>
 
+    <dimen name="tablet_max_width">750dp</dimen>
 
 
 </resources>

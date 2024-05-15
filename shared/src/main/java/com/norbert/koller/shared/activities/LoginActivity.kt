@@ -1,12 +1,15 @@
 package com.norbert.koller.shared.activities
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.os.SystemClock
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -39,6 +42,7 @@ open class LoginActivity : AppCompatActivity() {
     lateinit var inplID: TextInputLayout
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -48,13 +52,28 @@ open class LoginActivity : AppCompatActivity() {
         val textVersion : TextView = findViewById(R.id.text_version)
         textVersion.text = ApplicationManager.version
 
-        val bottomView : View? = findViewById(R.id.bottom_view)
+        val bottomView : View = findViewById(R.id.bottom_view)
 
-        if(bottomView != null){
+        val isLandscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+
+        if(!isLandscape){
             window.navigationBarColor = this.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow)
         }
         else{
+            val root : ViewGroup = bottomView.parent as ViewGroup
             window.navigationBarColor = Color.TRANSPARENT
+
+            root.post{
+
+                if(root.width / 3f > bottomView.width){
+                    val layoutParams = bottomView.layoutParams as LinearLayout.LayoutParams
+                    layoutParams.weight = 1f
+                    layoutParams.width = 0
+                    bottomView.layoutParams = layoutParams
+                }
+
+            }
+
         }
 
         loginButton = findViewById (R.id.login_button_login)

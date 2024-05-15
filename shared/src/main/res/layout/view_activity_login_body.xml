@@ -1,130 +1,138 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/full_card_padding"
-    android:paddingTop="@dimen/full_card_padding">
-
-    <TextView
-        android:id="@+id/textView2"
-        style="@style/MainTitleExpanded"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/login" />
-
-    <TextView
-        android:id="@+id/login_text_please_login"
-        style="@style/Description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/please_login" />
+>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_inpl_id"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/full_card_padding"
+        android:paddingTop="@dimen/full_card_padding">
+        <TextView
+            android:id="@+id/textView2"
+            style="@style/MainTitleExpanded"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/username"
-            app:counterEnabled="true"
-            app:counterMaxLength="11"
-            app:counterOverflowTextAppearance="@style/Description"
-            app:counterTextAppearance="@style/Description"
-            app:errorEnabled="true"
-            app:errorTextAppearance="@style/Description"
-            app:helperText="@string/education_ID_hint"
-            app:helperTextTextAppearance="@style/Description">
+            android:text="@string/login" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/tiet_ip"
-                style="@style/EditText"
+        <TextView
+            android:id="@+id/login_text_please_login"
+            style="@style/Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/please_login" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_inpl_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:text="tweinek5"
-                android:textAppearance="@style/Title" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="@string/username"
+                app:counterEnabled="true"
+                app:counterMaxLength="11"
+                app:counterOverflowTextAppearance="@style/Description"
+                app:counterTextAppearance="@style/Description"
+                app:errorEnabled="true"
+                app:errorTextAppearance="@style/Description"
+                app:helperText="@string/education_ID_hint"
+                app:helperTextTextAppearance="@style/Description">
 
-        <android.widget.Space
-            android:layout_width="match_parent"
-            android:layout_height="5dp" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tiet_ip"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:text="tweinek5"
+                    android:textAppearance="@style/Title" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_inpl_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/prompt_password"
-            app:errorEnabled="true"
-            app:errorTextAppearance="@style/Description"
-            app:passwordToggleEnabled="true">
+            <android.widget.Space
+                android:layout_width="match_parent"
+                android:layout_height="5dp" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_inpf_password"
-                style="@style/EditText"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/login_inpl_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textWebPassword"
-                android:singleLine="true"
-                android:text="rT1>k.U'`B?&amp;AsA9"
-                android:textAppearance="@style/Title" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:hint="@string/prompt_password"
+                app:errorEnabled="true"
+                app:errorTextAppearance="@style/Description"
+                app:passwordToggleEnabled="true">
 
-        <Button
-            android:id="@+id/login_button_forgot_password"
-            style="@style/Widget.Material3.Button.TextButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginHorizontal="4dp"
-            android:layout_marginTop="-20sp"
-            android:insetTop="0dp"
-            android:insetBottom="0dp"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="4dp"
-            android:paddingLeft="0dp"
-            android:paddingTop="0dp"
-            android:paddingRight="0dp"
-            android:paddingBottom="0dp"
-            android:text="@string/forgotten_password"
-            android:textAppearance="@style/Description" />
-
-        <com.google.android.flexbox.FlexboxLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_container_margin"
-            app:flexWrap="wrap">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/login_inpf_password"
+                    style="@style/EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textWebPassword"
+                    android:singleLine="true"
+                    android:text="rT1>k.U'`B?&amp;AsA9"
+                    android:textAppearance="@style/Title" />
+            </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/login_button_no_account"
-                style="@style/ButtonOutline"
+                android:id="@+id/login_button_forgot_password"
+                style="@style/Widget.Material3.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginHorizontal="4dp"
+                android:layout_marginTop="-20sp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="4dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="@string/forgotten_password"
+                android:textAppearance="@style/Description" />
+
+            <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_container_margin"
-                android:text="@string/no_account_yet"
-                app:layout_flexGrow="1" />
+                app:flexWrap="wrap">
 
-            <Button
-                android:id="@+id/login_button_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_container_margin"
-                android:enabled="false"
-                android:text="@string/login"
-                app:layout_flexGrow="1" />
-        </com.google.android.flexbox.FlexboxLayout>
+                <Button
+                    android:id="@+id/login_button_no_account"
+                    style="@style/ButtonOutline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_container_margin"
+                    android:text="@string/no_account_yet"
+                    app:layout_flexGrow="1" />
+
+                <Button
+                    android:id="@+id/login_button_login"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_container_margin"
+                    android:enabled="false"
+                    android:text="@string/login"
+                    app:layout_flexGrow="1" />
+            </com.google.android.flexbox.FlexboxLayout>
 
 
+        </LinearLayout>
     </LinearLayout>
 
 
-</LinearLayout>
+
+
+</ScrollView>

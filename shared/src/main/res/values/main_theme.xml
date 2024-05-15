@@ -339,7 +339,7 @@
     <style name="CategoryCardName" parent="@style/Text">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?attr/colorForeground066</item>
-        <item name="android:layout_marginHorizontal">15dp</item>
+        <item name="android:paddingHorizontal">15dp</item>
     </style>
 
     <style name="Description">

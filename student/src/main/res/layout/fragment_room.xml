@@ -16,14 +16,16 @@
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-            <LinearLayout
+            <com.google.android.flexbox.FlexboxLayout
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical"
-                tools:context=".fragments.RoomFragment">
+                tools:context=".fragments.RoomFragment"
+                app:flexDirection="column"
+                app:alignItems="center">
 
                 <include
                     layout="@layout/view_fragment_room_header"
@@ -37,14 +39,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/manage_room"
                     android:visibility="gone"
-                    tools:visibility="visible" />
+                    tools:visibility="visible"
+                    app:layout_maxWidth="@dimen/tablet_max_width"/>
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/MainCard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone"
-                    tools:visibility="visible">
+                    tools:visibility="visible"
+                    app:layout_maxWidth="@dimen/tablet_max_width">
 
                     <LinearLayout
                         style="@style/MainCardLayout"
@@ -65,7 +69,7 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-            </LinearLayout>
+            </com.google.android.flexbox.FlexboxLayout>
 
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

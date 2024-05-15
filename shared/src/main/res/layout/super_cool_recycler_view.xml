@@ -1,23 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:nestedScrollingEnabled="false">
 
-    <TextView
-        android:id="@+id/text_view_recycler_view_header"
-        style="@style/CategoryCardName"
+
+    <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@null"
-        android:layout_marginTop="@null"
-        android:background="?android:attr/colorBackground"
-        android:outlineProvider="none"
-        android:paddingHorizontal="30dp"
-        android:paddingVertical="@dimen/text_container_margin"
-        android:text="@string/title"
-        android:translationZ="1dp" />
+        android:translationZ="1dp"
+        app:justifyContent="center">
+
+        <TextView
+            android:id="@+id/text_view_recycler_view_header"
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@null"
+            android:layout_marginTop="@null"
+            android:background="?android:attr/colorBackground"
+            android:outlineProvider="none"
+            android:paddingHorizontal="30dp"
+            android:paddingVertical="@dimen/text_container_margin"
+            android:text="@string/title"
+            app:layout_maxWidth="@dimen/tablet_max_width" />
+    </com.google.android.flexbox.FlexboxLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab_scroll_to_top"
@@ -34,14 +44,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            style="@style/MainCardLayout"
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingHorizontal="@dimen/full_card_padding"
-            android:paddingBottom="85dp"
-            tools:listitem="@layout/view_readable_item" />
+            app:justifyContent="center">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                style="@style/MainCardLayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingHorizontal="@dimen/full_card_padding"
+                android:paddingBottom="85dp"
+                app:layout_maxWidth="@dimen/tablet_max_width"
+                tools:listitem="@layout/view_readable_item" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 </merge>
