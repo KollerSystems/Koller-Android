@@ -36,27 +36,12 @@ import kotlinx.coroutines.launch
 open class ProfileFragment : BottomSheetDialogFragment() {
 
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.BottomSheetDialogFull)
-
+    override fun getTheme(): Int {
+        return R.style.BottomSheetDialogFull
     }
 
     private lateinit var textName : TextView
     private lateinit var textDescription : TextView
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val dialog = super.onCreateDialog(savedInstanceState) as BottomSheetDialog
-        dialog.setOnShowListener { dialog1: DialogInterface ->
-            val d = dialog1 as BottomSheetDialog
-            val bottomSheet =
-                d.findViewById<View>(com.google.android.material.R.id.design_bottom_sheet) as FrameLayout?
-            if (bottomSheet != null) BottomSheetBehavior.from(bottomSheet).state =
-                BottomSheetBehavior.STATE_EXPANDED
-        }
-        return dialog
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

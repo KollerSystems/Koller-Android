@@ -641,7 +641,11 @@
     </style>
 
     <style name="BottomSheetDialogFull" parent="@style/ThemeOverlay.MaterialComponents.BottomSheetDialog">
-        <item name="bottomSheetStyle">@style/CustomBottomSheet</item>
+        <item name="bottomSheetStyle">@style/FullCustomBottomSheetDialog</item>
+    </style>
+
+    <style name="FullCustomBottomSheetDialog" parent="@style/CustomBottomSheet">
+        <item name="behavior_peekHeight">9999dp</item>
     </style>
 
     <style name="CustomBottomSheet" parent="Widget.MaterialComponents.BottomSheet">
