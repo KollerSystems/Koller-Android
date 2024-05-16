@@ -17,7 +17,7 @@
             style="@style/CardHeader"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
- >
+            app:shapeAppearance="@style/OverlayLargeRoundedCardTop">
 
             <com.google.android.material.bottomsheet.BottomSheetDragHandleView
                 android:id="@+id/drag_handle"
