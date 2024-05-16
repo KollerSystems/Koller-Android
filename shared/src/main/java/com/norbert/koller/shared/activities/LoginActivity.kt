@@ -15,6 +15,7 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -31,6 +32,7 @@ import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getColorOfPixel
+import com.stfalcon.imageviewer.common.extensions.isVisible
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
@@ -40,7 +42,7 @@ open class LoginActivity : AppCompatActivity() {
     lateinit var buttonNoAccount: Button
     lateinit var inplPassword: TextInputLayout
     lateinit var inplID: TextInputLayout
-
+    lateinit var buttonForgotPassword : Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,9 +122,19 @@ open class LoginActivity : AppCompatActivity() {
         val loginLayout : View = findViewById(R.id.login_linear_login)
         val loadingBar : View = findViewById(R.id.login_loading)
 
+        fun changeLoadingStateTo(isEnabled : Boolean){
+            loadingBar.isVisible = isEnabled
+            inplPassword.editText!!.isEnabled = !isEnabled
+            inplID.editText!!.isEnabled = !isEnabled
+            buttonNoAccount.isClickable = !isEnabled
+            loginButton.isClickable = !isEnabled
+            loginButton.isLongClickable = !isEnabled
+            buttonForgotPassword.isClickable = !isEnabled
+        }
+
         fun returnLoginLayoutToNormal(){
             loginLayout.alpha = 1f
-            loadingBar.visibility = View.GONE
+            changeLoadingStateTo(false)
         }
 
         loginButton.setOnClickListener {
@@ -134,7 +146,7 @@ open class LoginActivity : AppCompatActivity() {
                 if((inplID.editText!!.text?.length ?: 0) > 0) {
 
                     loginLayout.alpha = 0.25f
-                    loadingBar.visibility = View.VISIBLE
+                    changeLoadingStateTo(true)
 
                     val loginData = ApiLoginUsernameAndPasswordData("password", inplID.editText!!.text.toString(), inplPassword.editText!!.text.toString())
 
@@ -204,7 +216,7 @@ open class LoginActivity : AppCompatActivity() {
         }
 
 
-        val buttonForgotPassword : Button = findViewById(R.id.login_button_forgot_password)
+        buttonForgotPassword = findViewById(R.id.login_button_forgot_password)
         buttonForgotPassword.setOnClickListener{
             if(inplID.editText!!.text.isNullOrBlank()){
                 inplID.error = getString(R.string.mandatory_field)
