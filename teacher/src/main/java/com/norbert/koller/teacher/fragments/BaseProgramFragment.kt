@@ -39,10 +39,6 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
         return { RetrofitInstance.api.getMandatory(viewModel.id!!)}
     }
 
-    override fun getVeils(): List<VeilLayout> {
-        return emptyList()
-    }
-
     override fun getLayout(): Int {
         return R.layout.fragment_program
     }

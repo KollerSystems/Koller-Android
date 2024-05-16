@@ -43,7 +43,6 @@ import retrofit2.Response
 
 abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
-    lateinit var veilStatus : VeilLayout
     lateinit var scbStatus : SimpleCardButton
     lateinit var textStatus : TextView
 
@@ -55,22 +54,12 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
         return "user"
     }
 
-    override fun getVeils(): List<VeilLayout> {
-        if(veilStatus.isVeiled && (viewModel.response.value as BaseData).testState == "hello"){
-            scbStatus.textText.text = "Kint (16:34 óta)"
-
-            scbStatus.imageViewIcon!!.setImageDrawable(AppCompatResources.getDrawable(requireContext(), R.drawable.out))
-        }
-        return listOf(veilStatus)
-    }
-
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return {RetrofitInstance.api.getUser(viewModel.id!!)}
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        veilStatus = view.findViewById(R.id.veil_status)
 
         super.onViewCreated(view, savedInstanceState)
 

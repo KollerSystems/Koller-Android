@@ -18,11 +18,10 @@
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@null"
+            android:layout_marginHorizontal="@dimen/card_padding"
             android:layout_marginTop="@null"
             android:background="?android:attr/colorBackground"
             android:outlineProvider="none"
-            android:paddingHorizontal="30dp"
             android:paddingVertical="@dimen/text_container_margin"
             android:text="@string/title"
             app:layout_maxWidth="@dimen/tablet_max_width" />
@@ -44,22 +43,14 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.google.android.flexbox.FlexboxLayout
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            style="@style/MainCardLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:justifyContent="center">
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/recycler_view"
-                style="@style/MainCardLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingHorizontal="@dimen/full_card_padding"
-                android:paddingBottom="85dp"
-                app:layout_maxWidth="@dimen/tablet_max_width"
-                tools:listitem="@layout/view_readable_item" />
-
-        </com.google.android.flexbox.FlexboxLayout>
+            android:paddingHorizontal="@dimen/full_card_padding"
+            android:paddingBottom="85dp"
+            tools:listitem="@layout/view_readable_item" />
 
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

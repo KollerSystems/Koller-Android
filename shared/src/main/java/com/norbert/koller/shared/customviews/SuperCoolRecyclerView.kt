@@ -2,11 +2,15 @@ package com.norbert.koller.shared.customviews
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Canvas
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.view.marginTop
+import androidx.core.view.setPadding
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,6 +44,8 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
         textHeader.visibility = GONE
 
 
+
+
         FABScrollUp.setOnClickListener{
 
             recyclerView.smoothScrollToPosition(0)
@@ -69,8 +75,10 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
 
 
 
-        //TODO: ennek a törlése, ha minden recycler view fasza
+
         recyclerView.post {
+
+            //TODO: ezek törlése, ha minden recycler view fasza
             if (recyclerView.adapter is BaseRecycleAdapter) {
 
                 recyclerAdapter = (recyclerView.adapter as BaseRecycleAdapter)
@@ -96,6 +104,33 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
                     updateTitle()
 
                 }
+            }
+        }
+    }
+
+    override fun onLayout(changed: Boolean, left: Int, top: Int, right: Int, bottom: Int) {
+        super.onLayout(changed, left, top, right, bottom)
+
+        if(changed) {
+            val tabletMaxWidth = resources.getDimensionPixelSize(R.dimen.tablet_max_width_with_text_container)
+            val fullCardPadding = resources.getDimensionPixelSize(R.dimen.full_card_padding)
+            if (recyclerView.width - fullCardPadding * 2 > tabletMaxWidth) {
+                Log.d("TAGHELLO", "AJAJAJAJAJ")
+                val correctPadding = (recyclerView.width - tabletMaxWidth) / 2
+                recyclerView.setPadding(
+                    correctPadding,
+                    recyclerView.paddingTop,
+                    correctPadding,
+                    recyclerView.paddingBottom
+                )
+            }
+            else{
+                recyclerView.setPadding(
+                    fullCardPadding,
+                    recyclerView.paddingTop,
+                    fullCardPadding,
+                    recyclerView.paddingBottom
+                )
             }
         }
     }

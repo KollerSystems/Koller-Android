@@ -43,10 +43,6 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
         return { RetrofitInstance.api.getStudyGroupType(viewModel.id!!)}
     }
 
-    override fun getVeils(): List<VeilLayout> {
-        return listOf()
-    }
-
 
 
 

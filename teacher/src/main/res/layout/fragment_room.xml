@@ -43,7 +43,7 @@
                     style="@style/MainCard"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_maxWidth="@dimen/tablet_max_width">
+                    app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
                     <LinearLayout
                         style="@style/MainCardLayout"

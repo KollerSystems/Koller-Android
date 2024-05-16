@@ -27,6 +27,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
@@ -55,7 +56,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     lateinit var baseRecycleAdapter : BaseRecycleAdapter
     lateinit var chipGroupFilter : ChipGroup
     lateinit var chipGroupSort : ChipGroup
-    lateinit var lyParameters : LinearLayout
+    lateinit var lyParameters : FlexboxLayout
     var duration : Long = 0
 
 
@@ -192,11 +193,12 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
         card.preventCornerOverlap = false
-        val layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        val cardMarginLayoutParams = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        val layoutParams = FlexboxLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        val cardMarginLayoutParams = FlexboxLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         cardMarginLayoutParams.topMargin = resources.getDimensionPixelSize(R.dimen.text_container_margin)
         cardMarginLayoutParams.bottomMargin = resources.getDimensionPixelSize(R.dimen.spacing)
-        val chipMarginLayoutParams = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        cardMarginLayoutParams.maxWidth = (chipGroupFilter.layoutParams as FlexboxLayout.LayoutParams).maxWidth
+        val chipMarginLayoutParams = FlexboxLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         val margin = resources.getDimensionPixelSize(R.dimen.card_padding)
         chipMarginLayoutParams.setMargins(margin,margin,margin,margin)
         chipGroupFilter.layoutParams = chipMarginLayoutParams
@@ -219,21 +221,26 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
 
-        searchBar.layoutParams = layoutParams
         linearLayout.layoutParams = layoutParams
         closeButton.layoutParams = layoutParams
         card.layoutParams = cardMarginLayoutParams
         lyParameters.addView(card,0)
-
+        searchBar.layoutParams = layoutParams
 
 
         card.addView(linearLayout)
         linearLayout.addView(searchBar)
         (chipGroupFilter.parent as ViewGroup).removeView(chipGroupFilter)
 
+
+
         duration = 0
 
         searchBar.post {
+
+
+            lyParameters.requestLayout()
+
             card.radius = searchBar.height / 2f
             linearLayout.addView(chipGroupFilter)
             linearLayout.addView(closeButton)

@@ -37,9 +37,6 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
         return { RetrofitInstance.api.getStudyGroup(viewModel.id!!)}
     }
 
-    override fun getVeils(): List<VeilLayout> {
-        return emptyList()
-    }
 
     override fun getLayout(): Int {
         return R.layout.fragment_program

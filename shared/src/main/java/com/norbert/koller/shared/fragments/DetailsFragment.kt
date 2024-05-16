@@ -36,7 +36,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
     abstract fun apiFunctionToCall() : suspend () -> retrofit2.Response<*>
 
-    abstract fun getVeils() : List<VeilLayout>
 
     abstract fun getLayout() : Int
 
@@ -101,7 +100,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
                 if(foundIndex != null){
                     viewModel.response.value = CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!]
                     refresh()
-                    enableVeils()
                     return
                 }
             }
@@ -112,7 +110,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
         if((viewModel.response.value as BaseData).testState != "hello"){
             refresh()
-            enableVeils()
         }
     }
 
@@ -125,7 +122,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
                 viewModel.response.value = baseData
                 (viewModel.response.value as BaseData).testState = "hello"
                 CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
-                disableVeils()
                 if(snackbar != null){
                     snackbar!!.dismiss()
                 }
@@ -167,7 +163,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
                     viewModel.response.value = baseData
                     CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
                     loadingOl.setState(FullScreenLoading.NONE)
-                    disableVeils()
                 },
                 {errorMsg, errorBody ->
                     loadingOl.setState(FullScreenLoading.ERROR)
@@ -176,17 +171,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
         }
     }
 
-    fun enableVeils(){
-        for (veil in getVeils()){
-            veil.veil()
-        }
-    }
-
-    fun disableVeils(){
-        for (veil in getVeils()){
-            veil.unVeil()
-        }
-    }
 
     override fun onStop() {
         super.onStop()

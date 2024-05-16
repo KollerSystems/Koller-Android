@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
 
     android:orientation="vertical">
 
@@ -21,7 +20,7 @@
             android:layout_marginBottom="@dimen/application_padding"
             app:layout_maxHeight="400dp"
             app:layout_maxWidth="400dp"
-            custom:stroke_width="10dp" />
+            app:stroke_width="10dp" />
     </com.google.android.flexbox.FlexboxLayout>
 
 
@@ -35,7 +34,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_horizontal"
         android:orientation="horizontal">
 
@@ -103,8 +102,8 @@
             android:layout_height="wrap_content"
             android:checkable="false"
             android:text="@string/none"
-            custom:chipIcon="@drawable/mail"
-            custom:chipIconVisible="true"
+            app:chipIcon="@drawable/mail"
+            app:chipIconVisible="true"
             tools:layout_editor_absoluteX="38dp" />
 
         <com.google.android.material.chip.Chip
@@ -113,8 +112,8 @@
             android:layout_height="wrap_content"
             android:checkable="false"
             android:visibility="gone"
-            custom:chipIcon="@drawable/phone"
-            custom:chipIconVisible="true"
+            app:chipIcon="@drawable/phone"
+            app:chipIconVisible="true"
             tools:layout_editor_absoluteX="38dp"
             tools:text="@string/unknown"
             tools:visibility="visible" />
@@ -125,8 +124,8 @@
             android:layout_height="wrap_content"
             android:checkable="false"
             android:visibility="gone"
-            custom:chipIcon="@drawable/facebook"
-            custom:chipIconVisible="true"
+            app:chipIcon="@drawable/facebook"
+            app:chipIconVisible="true"
             tools:layout_editor_absoluteX="127dp"
             tools:text="@string/unknown"
             tools:visibility="visible" />
@@ -137,8 +136,8 @@
             android:layout_height="wrap_content"
             android:checkable="false"
             android:visibility="gone"
-            custom:chipIcon="@drawable/instagram"
-            custom:chipIconVisible="true"
+            app:chipIcon="@drawable/instagram"
+            app:chipIconVisible="true"
             tools:layout_editor_absoluteX="236dp"
             tools:text="@string/unknown"
             tools:visibility="visible" />
@@ -149,8 +148,8 @@
             android:layout_height="wrap_content"
             android:checkable="false"
             android:visibility="gone"
-            custom:chipIcon="@drawable/discord"
-            custom:chipIconVisible="true"
+            app:chipIcon="@drawable/discord"
+            app:chipIconVisible="true"
             tools:layout_editor_absoluteX="38dp"
             tools:layout_editor_absoluteY="39dp"
             tools:text="@string/unknown"
@@ -164,34 +163,18 @@
         android:layout_height="wrap_content"
         android:text="@string/state" />
 
-    <com.skydoves.androidveil.VeilLayout
-        android:id="@+id/veil_status"
+    <com.norbert.koller.shared.customviews.SimpleCardButton
+
+        android:id="@+id/scb_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:veilLayout_defaultChildVisible="true"
-        app:veilLayout_baseAlpha="1.0"
-        app:veilLayout_baseColor="?attr/colorSurfaceContainer"
-        app:veilLayout_dropOff="0.5"
-        app:veilLayout_highlightAlpha="1.0"
-        app:veilLayout_highlightColor="?attr/colorSurfaceContainerHigh"
-        app:veilLayout_radius="6dp"
-        app:veilLayout_shimmerEnable="true">
+        android:layout_margin="@dimen/text_container_margin"
+        app:icon="@drawable/out"
 
-        <com.norbert.koller.shared.customviews.SimpleCardButton
-
-            android:id="@+id/scb_status"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_margin="@dimen/text_container_margin"
-            custom:cardBackgroundColor="@android:color/transparent"
-
-            custom:icon="@null"
-            custom:rounded="true"
-            custom:strokeWidth="1dp"
-            custom:text="⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀" />
-
-    </com.skydoves.androidveil.VeilLayout>
-
+        app:cardBackgroundColor="@android:color/transparent"
+        app:rounded="true"
+        app:strokeWidth="1dp"
+        app:text="Blabla" />
 
 
 </LinearLayout>

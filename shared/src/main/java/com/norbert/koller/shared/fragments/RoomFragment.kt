@@ -43,10 +43,6 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
         return "room"
     }
 
-    override fun getVeils(): List<VeilLayout> {
-        return listOf()
-    }
-
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return {RetrofitInstance.api.getRoom(viewModel.id!!)}
     }

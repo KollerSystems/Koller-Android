@@ -15,19 +15,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/ly_parameters"
             style="@style/TrickyToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:alignItems="center"
+            app:flexDirection="column"
+            app:justifyContent="center">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginBottom="@dimen/text_container_margin"
                 android:orientation="vertical"
-                android:visibility="gone">
+                android:visibility="gone"
+                app:layout_maxWidth="@dimen/tablet_max_width">
 
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
@@ -97,29 +101,28 @@
                 android:id="@+id/textView_filters"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:layout_marginTop="@dimen/text_container_margin"
-                android:layout_marginBottom="@dimen/text_container_margin"
+                android:padding="@dimen/text_container_margin"
                 android:text="@string/filters"
                 android:textAppearance="@style/Description"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_maxWidth="@dimen/tablet_max_width" />
 
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/text_container_margin" />
+                android:layout_marginBottom="@dimen/text_container_margin"
+                app:layout_maxWidth="@dimen/tablet_max_width" />
 
             <TextView
                 android:id="@+id/textView21"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:layout_marginTop="@dimen/text_container_margin"
-                android:layout_marginBottom="@dimen/text_container_margin"
+                android:padding="@dimen/text_container_margin"
                 android:text="@string/arrangement"
                 android:textAppearance="@style/Description"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:layout_maxWidth="@dimen/tablet_max_width" />
 
 
             <com.google.android.material.chip.ChipGroup
@@ -128,6 +131,7 @@
                 android:layout_height="wrap_content"
                 app:checkedChip="@id/first"
                 app:chipSpacingHorizontal="0dp"
+                app:layout_maxWidth="@dimen/tablet_max_width"
                 app:selectionRequired="true"
                 app:singleSelection="true">
 
@@ -155,7 +159,7 @@
                 android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="@dimen/text_container_margin" />
 
-        </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
     <com.norbert.koller.shared.customviews.SuperCoolRecyclerView
