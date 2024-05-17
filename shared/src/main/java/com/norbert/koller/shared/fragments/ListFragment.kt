@@ -177,7 +177,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         card.strokeColor = searchBar.cardBackgroundColor.defaultColor
         searchBar.radius = 0f
 
-        val textColor = requireContext().getAttributeColor(R.attr.colorForeground)
+        val textColor = searchBar.editTextSearch.textColors.defaultColor
 
         val textViewFilters : TextView = requireView().findViewById(R.id.textView_filters)
         (textViewFilters.parent as ViewGroup).removeView(textViewFilters)
@@ -235,6 +235,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
         duration = 0
+        var animator : ValueAnimator
+
 
         searchBar.post {
 
@@ -249,7 +251,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             closeButton.layoutParams.height = closeButton.measuredHeight
 
             viewModel.filtersShown.observe(this){ checked ->
-                val animator : ValueAnimator
+
+
                 if(checked){
                     card.measure(MATCH_PARENT, WRAP_CONTENT);
                     val height = card.measuredHeight;
@@ -261,6 +264,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
                 else{
                     animator = ValueAnimator.ofInt(card.height, searchBar.height)
                 }
+
+                animator.cancel()
                 animator.addUpdateListener {
                     val params = card.layoutParams
                     params.height = it.animatedValue as Int
@@ -268,6 +273,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
                 }
                 animator.duration = duration
                 duration = 250
+
                 animator.start()
             }
         }

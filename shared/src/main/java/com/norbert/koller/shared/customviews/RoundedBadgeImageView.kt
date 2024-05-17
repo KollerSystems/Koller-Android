@@ -17,11 +17,13 @@ import com.squareup.picasso.Picasso
 
 class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
 
-    private var mStrokeWidth: Int = 0
-    lateinit var image : ImageView
 
-    val red : Int = 10
-    val yellow : Int = 12
+
+    private var mStrokeWidth: Int = 0
+    val image : ImageView
+
+    private val red : Int = 10
+    private val yellow : Int = 12
 
     fun setUser(userData : com.norbert.koller.shared.data.UserData){
 
@@ -34,7 +36,7 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCar
         setColorBasedOnClass(userData)
     }
 
-    fun setColorBasedOnClass(userData : com.norbert.koller.shared.data.UserData){
+    private fun setColorBasedOnClass(userData : com.norbert.koller.shared.data.UserData){
 
         val class_ = userData.class_?.class_
         if(class_.isNullOrBlank()){
@@ -61,13 +63,6 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCar
 
     init {
 
-
-        layoutParams = LayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        radius = 99999f
-        strokeColor = Color.BLACK
-
-        setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorPrimaryContainer))
-
         val typedArray = context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.roundedBadgeImageView,
@@ -82,6 +77,17 @@ class RoundedBadgeImageView(context: Context, attrs: AttributeSet) : MaterialCar
 
 
         View.inflate(context, R.layout.view_rounded_badge_image, this)
+
+        radius = 99999f
+        strokeColor = Color.BLACK
+
+        setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorPrimaryContainer))
+
+
+
+
+
+
 
         image = findViewById(R.id.image)
 
