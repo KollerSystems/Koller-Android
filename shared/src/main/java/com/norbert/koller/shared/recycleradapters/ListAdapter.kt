@@ -11,10 +11,12 @@ import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.getAttributeColor
 import java.util.Locale
 
 data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
@@ -57,7 +59,9 @@ class ListAdapter (val bottomSheet : ItemListDialogFragmentBase) : RecyclerView.
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
-        RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, position, itemCount)
+        val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)
+
+        (holder.itemView.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,margin,0,margin)
 
         val currentItem = bottomSheet.viewModel.list.value!![position]
 

@@ -99,6 +99,12 @@
         <item name="layout_maxWidth">@dimen/tablet_max_width</item>
     </style>
 
+    <style name="HeaderCard">
+        <item name="cardCornerRadius">@null</item>
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
+        <item name="shapeAppearance">@style/OverlayLargeRoundedCardTop</item>
+    </style>
+
     <style name="Button" parent="@style/Widget.Material3.Button">
         <item name="android:paddingTop">@dimen/button_vertical_padding</item>
         <item name="android:paddingBottom">@dimen/button_vertical_padding</item>
@@ -230,6 +236,9 @@
 
     <style name="BottomSheetDrag" parent="Widget.Material3.BottomSheet.DragHandle">
         <item name="tint">?attr/colorForeground066</item>
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingTop">12dp</item>
     </style>
 
     <style name="CategoryIcon" parent="@style/Icon">

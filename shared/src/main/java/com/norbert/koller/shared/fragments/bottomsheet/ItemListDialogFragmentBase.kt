@@ -18,6 +18,7 @@ import androidx.core.widget.doOnTextChanged
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ListAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.ItemListDialogApiViewModel
@@ -71,13 +72,11 @@ abstract class ItemListDialogFragmentBase(var alreadyChecked : ArrayList<String>
 
         viewModel.list.observe(this){
 
-            Log.d("JIOSA", viewModel.list.value.toString())
-
-                if (savedInstanceState == null && alreadyChecked != null) {
-                    for (item in viewModel.list.value!!) {
-                        item.isChecked = alreadyChecked!!.contains(item.tag)
-                    }
+            if (savedInstanceState == null && alreadyChecked != null) {
+                for (item in viewModel.list.value!!) {
+                    item.isChecked = alreadyChecked!!.contains(item.tag)
                 }
+            }
 
             setList()
         }
@@ -94,6 +93,7 @@ abstract class ItemListDialogFragmentBase(var alreadyChecked : ArrayList<String>
 
 
             val searchView = com.norbert.koller.shared.customviews.SearchView(requireContext())
+            val frameLayout = FrameLayout(requireContext())
             val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing)
             val mlp = ViewGroup.MarginLayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -101,10 +101,14 @@ abstract class ItemListDialogFragmentBase(var alreadyChecked : ArrayList<String>
             )
             mlp.setMargins(margin,0,margin,margin)
             searchView.layoutParams = mlp
+            searchView.editTextSearch.hint = requireContext().getString(R.string.search)
+
+            frameLayout.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
 
             val mainLayout : LinearLayout = requireView().findViewById(R.id.ly)
 
-            mainLayout.addView(searchView, 1)
+            mainLayout.addView(frameLayout, 1)
+            frameLayout.addView(searchView)
 
             searchView.editTextSearch.doOnTextChanged { text, start, before, count ->
                 adapter.filter(text.toString())

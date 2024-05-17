@@ -11,10 +11,15 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/drag_handle"
+        <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            style="@style/HeaderCard">
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@id/drag_handle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.card.MaterialCardView>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/NestedScrollView"
@@ -29,7 +34,7 @@
                 android:background="@null"
                 android:orientation="vertical"
                 android:paddingLeft="@dimen/application_padding"
-                android:paddingTop="0dp"
+                android:paddingTop="@dimen/application_padding"
                 android:paddingRight="@dimen/application_padding"
                 android:paddingBottom="0dp">
 
@@ -114,7 +119,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
                 <include
-                    layout="@layout/fragment_bshd_profile_footer"
+                    layout="@layout/view_fragment_bshd_profile_footer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />
 

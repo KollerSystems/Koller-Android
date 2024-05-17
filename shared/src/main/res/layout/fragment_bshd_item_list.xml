@@ -13,18 +13,26 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/drag_handle4"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/HeaderCard"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="0dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="12dp" />
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+                android:id="@+id/drag_handle4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </com.google.android.material.card.MaterialCardView>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/simple_list_bottom_fragment_recycle_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingTop="@dimen/card_margin"
+            android:paddingBottom="@dimen/card_margin"
+            android:scrollbars="vertical"
             tools:listitem="@layout/view_list_item" />
 
     </LinearLayout>

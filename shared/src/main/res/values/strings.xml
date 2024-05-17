@@ -167,7 +167,8 @@
     <string name="privacy_policy">Adatvédelmi irányelvek</string>
     <string name="manage_account">Fiók kezelése</string>
     <string name="places">Helyiségek</string>
-    <string name="search">Keresés és szűrök</string>
+    <string name="search">Keresés</string>
+    <string name="search_and_filters">Keresés és szűrök</string>
     <string name="posts">Bejegyzések</string>
     <string name="from_student">Tanulótól</string>
     <string name="from_teacher">Tanártól</string>
