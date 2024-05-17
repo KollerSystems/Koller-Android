@@ -50,12 +50,12 @@
         android:fillViewport="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             style="@style/MainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            app:alignItems="center"
+            app:flexDirection="column">
 
             <com.norbert.koller.shared.customviews.RoundedBadgeImageView
                 android:id="@+id/rbiv"
@@ -72,12 +72,14 @@
                 android:layout_marginBottom="@dimen/text_container_margin"
                 android:padding="@dimen/text_container_margin"
                 android:text="@string/unknown"
-                android:textAppearance="@style/MainTitle" />
+                android:textAppearance="@style/MainTitle"
+                app:layout_maxWidth="@dimen/tablet_max_width"/>
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/MainCard"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
                 <LinearLayout
                     style="@style/MainCardLayout"
@@ -101,7 +103,7 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-        </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -50,22 +50,31 @@
         android:fillViewport="true"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             style="@style/MainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            app:justifyContent="center">
 
-            <include
-                layout="@layout/view_activity_settings_developer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            <LinearLayout
 
-            <include
-                layout="@layout/view_activity_settings_notifications"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_maxWidth="@dimen/tablet_max_width">
+
+                <include
+                    layout="@layout/view_activity_settings_developer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <include
+                    layout="@layout/view_activity_settings_notifications"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 

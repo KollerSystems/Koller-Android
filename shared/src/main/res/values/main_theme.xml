@@ -89,13 +89,14 @@
     </style>
 
     <style name="Separator" parent="@style/CategoryCardName">
-        <item name="android:layout_marginHorizontal">@null</item>
         <item name="android:layout_marginTop">@null</item>
         <item name="android:background">?android:attr/colorBackground</item>
-        <item name="android:paddingHorizontal">30dp</item>
+        <item name="android:paddingHorizontal">@dimen/card_padding</item>
+        <item name="android:layout_marginHorizontal">@dimen/card_padding</item>
         <item name="android:paddingVertical">@dimen/text_container_margin</item>
         <item name="android:translationZ">1dp</item>
         <item name="android:outlineProvider">none</item>
+        <item name="layout_maxWidth">@dimen/tablet_max_width</item>
     </style>
 
     <style name="Button" parent="@style/Widget.Material3.Button">

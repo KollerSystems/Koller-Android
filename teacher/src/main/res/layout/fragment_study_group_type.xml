@@ -35,7 +35,8 @@
         android:paddingHorizontal="@dimen/full_card_padding"
         android:paddingTop="@dimen/full_card_padding_double"
         android:paddingBottom="@dimen/full_card_padding"
-        app:alignItems="center">
+        app:justifyContent="center"
+        app:flexDirection="column">
 
         <com.norbert.koller.shared.customviews.SimpleCardButton
             android:id="@+id/Scb_edit"

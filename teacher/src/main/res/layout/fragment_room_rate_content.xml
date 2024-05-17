@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/ly_content"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="true"
-        android:orientation="vertical"
+        app:flexDirection="column"
+        app:alignItems="center"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <TextView
@@ -25,22 +26,23 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:paddingHorizontal="@dimen/full_card_padding"
             android:paddingBottom="@dimen/card_margin"
+            app:layout_flexGrow="1"
             tools:listitem="@layout/view_rating" />
 
-    </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
-    <LinearLayout
+    <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/ly_fixed_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="?android:attr/windowBackground"
-        android:orientation="vertical">
+        app:alignItems="center"
+        app:flexDirection="column">
 
         <com.google.android.material.card.MaterialCardView
             style="@style/Card"
@@ -50,6 +52,7 @@
             android:layout_marginBottom="@dimen/full_card_padding"
             app:cardBackgroundColor="?attr/colorSurfaceContainer"
             app:cardPreventCornerOverlap="false"
+            app:layout_maxWidth="@dimen/tablet_max_width_with_text_container"
             app:shapeAppearanceOverlay="@style/OverlayRoundedCardBottom">
 
             <LinearLayout
@@ -164,6 +167,6 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-    </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
 
 </FrameLayout>

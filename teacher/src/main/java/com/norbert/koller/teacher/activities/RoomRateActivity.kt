@@ -88,9 +88,9 @@ class RoomRateViewPagerAdapter() : RecyclerView.Adapter<RoomRateViewPagerAdapter
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val recyclerView : RecyclerView = itemView.findViewById(com.norbert.koller.shared.R.id.recycler_view)
-        val lyContent : LinearLayout = itemView.findViewById(R.id.ly_content)
+        val lyContent : View = itemView.findViewById(R.id.ly_content)
 
-        val lyFooter : LinearLayout = itemView.findViewById(R.id.ly_fixed_footer)
+        val lyFooter : View = itemView.findViewById(R.id.ly_fixed_footer)
 
 
         val chipGroup : ChipGroup = itemView.findViewById(R.id.chip_group)
