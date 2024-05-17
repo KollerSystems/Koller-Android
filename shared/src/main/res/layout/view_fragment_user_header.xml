@@ -18,8 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/application_padding"
             android:layout_marginBottom="@dimen/application_padding"
-            app:layout_maxHeight="400dp"
-            app:layout_maxWidth="400dp"
+            app:layout_maxHeight="300dp"
+            app:layout_maxWidth="300dp"
             app:stroke_width="10dp" />
     </com.google.android.flexbox.FlexboxLayout>
 
