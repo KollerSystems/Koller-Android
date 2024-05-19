@@ -27,15 +27,13 @@
             app:toolbarId="@+id/toolbar">
 
 
-
-
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/header_footer_size"
                 android:clickable="false"
                 app:titleMargin="@null"
-                app:titleMarginStart="49dp" />
+                app:titleMarginStart="50dp" />
             <Button
                 android:id="@+id/toolbar_exit"
                 style="@style/ToolbarNavigationButton"

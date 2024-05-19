@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="?attr/colorSurfaceContainer"
+    android:orientation="horizontal">
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/card_padding"
+        android:layout_marginTop="@dimen/text_container_margin"
+        android:layout_marginEnd="@dimen/card_padding"
+        android:layout_marginBottom="@dimen/n_text_container_margin"
+        android:layout_weight="0">
+
+        <ImageView
+            android:id="@+id/Image_app_icon"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/text_container_margin"
+            app:srcCompat="@drawable/discord" />
+
+        <Button
+
+            android:id="@+id/toolbar_exit"
+            style="@style/ToolbarNavigationButton"
+            android:layout_width="@dimen/toolbar_button_size"
+            android:layout_height="@dimen/toolbar_button_size"
+            android:layout_margin="@null"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/guideline"
+            tools:visibility="gone" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/toolbar_ly_text_container"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/card_padding"
+        android:text="@string/title"
+        android:textColor="?attr/colorForeground066"
+        android:textSize="@dimen/text_main_title">
+
+        <TextSwitcher
+            android:id="@+id/text_switcher"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inAnimation="@anim/anim_in"
+            android:outAnimation="@anim/anim_out">
+
+
+        </TextSwitcher>
+
+
+        <TextView
+            android:id="@+id/toolbar_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:text="@string/description"
+            android:textColor="?attr/colorForeground066" />
+    </LinearLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/user_card"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/card_padding"
+        android:layout_marginTop="@dimen/spacing"
+        android:layout_marginEnd="@dimen/full_card_padding"
+        android:layout_marginBottom="@dimen/spacing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/toolbar_title"
+        app:layout_constraintTop_toBottomOf="@id/guideline">
+
+
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="?attr/colorPrimaryContainer"
+            android:scaleType="centerCrop"
+            app:srcCompat="@drawable/person" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

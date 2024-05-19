@@ -10,6 +10,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
@@ -19,10 +20,13 @@ import android.util.TypedValue
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup.MarginLayoutParams
 import android.view.WindowManager
+import android.widget.Button
 import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.TextView
+import android.widget.Toolbar
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
@@ -294,35 +298,50 @@ fun String.camelToSnakeCase() = fold(StringBuilder(length)) { acc, c ->
     else acc.append(c)
 }.toString()
 
+fun AppBarLayout.setupPortrait() : Button{
+    val backButton : Button = findViewById(R.id.toolbar_exit)
 
-fun AppBarLayout.setup() : Boolean{
+    addOnOffsetChangedListener { _, verticalOffset ->
+        val collapsedSize: Int = resources.getDimensionPixelSize(R.dimen.header_footer_size)
+        background.alpha =  ((verticalOffset / -570f) * 255).toInt()
+    }
 
-    val color = context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
-    setBackgroundColor(color)
-    val orientation = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-    if (orientation) {
-        setExpanded(false)
-        val layout = getChildAt(0)
-        val params = layout.layoutParams as AppBarLayout.LayoutParams
+    return backButton
+}
 
-        layout.layoutParams = params
-        layoutParams.height = resources.getDimensionPixelSize(R.dimen.header_footer_size) + 1
-        (context as Activity).window.statusBarColor = color
+fun AppBarLayout.setupLandscape() : Button{
+    val backButton : Button = findViewById(R.id.toolbar_exit)
+    (backButton.layoutParams as MarginLayoutParams).marginStart = context.resources.getDimensionPixelSize(R.dimen.card_padding)
 
-        if(layout is CollapsingToolbarLayout){
-            layout.titleCollapseMode = CollapsingToolbarLayout.TITLE_COLLAPSE_MODE_FADE
-            layout.scrimVisibleHeightTrigger = 10000
-        }
+    setExpanded(false)
+    val layout = getChildAt(0) as CollapsingToolbarLayout
+    val params = layout.layoutParams as AppBarLayout.LayoutParams
 
+    layout.layoutParams = params
+    layoutParams.height = resources.getDimensionPixelSize(R.dimen.header_footer_size) + 1
+    (context as Activity).window.statusBarColor = solidColor
+
+    layout.titleCollapseMode = CollapsingToolbarLayout.TITLE_COLLAPSE_MODE_FADE
+    layout.scrimVisibleHeightTrigger = 10000
+
+    val toolbar = layout.getChildAt(0) as androidx.appcompat.widget.Toolbar
+    toolbar.titleMarginStart = ApplicationManager.convertDpToPixel(80, context)
+
+    return backButton
+}
+
+fun AppBarLayout.setup() : Button {
+
+    val backButton : Button
+    setBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
+    val landscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+    if (landscape) {
+        backButton = setupLandscape()
 
     } else {
-
-        addOnOffsetChangedListener { _, verticalOffset ->
-            val collapsedSize: Int = resources.getDimensionPixelSize(R.dimen.header_footer_size)
-            background.alpha =  ((verticalOffset / -570f) * 255).toInt()
-        }
+        backButton = setupPortrait()
     }
-    return orientation
+    return backButton
 }
 
 fun View.setVisibilityBy(boolean : Boolean){

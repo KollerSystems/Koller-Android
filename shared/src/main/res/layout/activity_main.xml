@@ -17,11 +17,12 @@
 
             android:layout_width="match_parent"
             android:layout_height="@dimen/expanded_toolbar_height"
+            android:background="?attr/colorSurfaceContainer"
             app:expanded="false">
 
 
             <include
-                layout="@layout/activity_main_header"
+                layout="@layout/view_activity_main_header"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
         </com.google.android.material.appbar.AppBarLayout>

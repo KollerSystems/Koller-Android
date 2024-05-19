@@ -5,6 +5,7 @@ import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
@@ -54,6 +55,7 @@ import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getColorOfPixel
 import com.norbert.koller.shared.managers.getStringResourceByName
 import com.norbert.koller.shared.managers.setup
+import com.norbert.koller.shared.managers.setupPortrait
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
@@ -70,12 +72,14 @@ abstract class MainActivity : AppCompatActivity() {
 
     var defaultTitlePadding : Int = 0
 
-    lateinit var appBar : AppBarLayout
+    var appBar : AppBarLayout? = null
     lateinit var backButton : Button
 
     lateinit var viewModel: MainActivityViewModel
 
     lateinit var mainFragment: FragmentContainerView
+
+    var appImage : ImageView? = null
 
     abstract fun getAppIcon() : Int
 
@@ -123,12 +127,9 @@ abstract class MainActivity : AppCompatActivity() {
 
         mainFragment = findViewById(R.id.main_fragment)
 
-        backButton = findViewById(R.id.toolbar_exit)
-        backButton.setOnClickListener{
-            onBackPressed()
-        }
 
-        appBar = findViewById(R.id.appbar)
+
+
         toolbarContainer = findViewById(R.id.toolbar_ly_text_container)
         toolbarTitleSwitcher = findViewById(R.id.text_switcher)
         toolbarDescription = findViewById(R.id.toolbar_description)
@@ -147,33 +148,32 @@ abstract class MainActivity : AppCompatActivity() {
         }
         toolbarTitleSwitcher.measureAllChildren = false
 
-        val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
-        if(!appBar.setup()){
 
+
+
+        val landscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        if(!landscape){
+            appBar = findViewById(R.id.appbar)
+            backButton = appBar!!.setupPortrait()
+            val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
             val listener = AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
                 val seekPosition = -verticalOffset / appBar.totalScrollRange.toFloat()
                 motionLayout.progress = seekPosition
             }
-            appBar.addOnOffsetChangedListener(listener)
+            appBar!!.addOnOffsetChangedListener(listener)
         }
         else{
-            motionLayout.progress = 1f
+            backButton = findViewById(R.id.toolbar_exit)
+            appImage = findViewById(R.id.Image_app_icon)
+            appImage!!.setImageResource(getAppIcon())
         }
 
+        backButton.setOnClickListener{
+            onBackPressed()
+        }
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation_view)
-
-        if(bottomNavigationView is NavigationRailView){
-
-            /*val image = ImageView(this)
-            image.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, MATCH_PARENT)
-            image.adjustViewBounds = true
-            image.setImageResource(getAppIcon())
-            (bottomNavigationView as NavigationRailView).addHeaderView(image)*/
-
-
-        }
 
         bottomNavigationView.setOnItemSelectedListener { menuItem ->
 
@@ -217,7 +217,7 @@ abstract class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112)
         }
 
-        appBar.setExpanded(false)
+        appBar?.setExpanded(false)
         showBackButtonIfNeeded()
 
         supportFragmentManager.addOnBackStackChangedListener {
@@ -225,7 +225,7 @@ abstract class MainActivity : AppCompatActivity() {
             if(!title.isNullOrBlank()) {
                 setToolbarTitle(title)
             }
-            appBar.setExpanded(false)
+            appBar?.setExpanded(false)
             showBackButtonIfNeeded()
 
         }
@@ -239,7 +239,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     override fun onBackPressed() {
 
-        appBar.setExpanded(false)
+        appBar?.setExpanded(false)
             if (supportFragmentManager.backStackEntryCount > 1) {
                 dropLastFragment()
 
@@ -405,8 +405,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         if (supportFragmentManager.backStackEntryCount == 1) {
 
-            val dp15: Int = ApplicationManager.convertDpToPixel(15, this)
-            toPadding = dp15
+            toPadding = resources.getDimensionPixelSize(R.dimen.card_padding)
             toAlpha = 0f
             backButton.isClickable = false
 
@@ -416,16 +415,25 @@ abstract class MainActivity : AppCompatActivity() {
             toAlpha = 1f
             backButton.isClickable = true
         }
-        val animator = ValueAnimator.ofInt(toolbarContainer.paddingRight, toPadding)
-        val buttonAnimator = ValueAnimator.ofFloat(backButton.alpha, toAlpha)
 
-        animator.addUpdateListener { valueAnimator ->
-            toolbarContainer.setPadding(
-                valueAnimator.animatedValue as Int,
-                0,
-                valueAnimator.animatedValue as Int,
-                0
-            )
+        val buttonAnimator = ValueAnimator.ofFloat(backButton.alpha, toAlpha)
+        val animator : ValueAnimator
+        if(appImage == null) {
+            animator = ValueAnimator.ofInt(toolbarContainer.paddingRight, toPadding)
+            animator.addUpdateListener { valueAnimator ->
+                toolbarContainer.setPadding(
+                    valueAnimator.animatedValue as Int,
+                    0,
+                    valueAnimator.animatedValue as Int,
+                    0
+                )
+            }
+        }
+        else{
+            animator = ValueAnimator.ofFloat(appImage!!.alpha, (toAlpha - 1) * -1)
+            animator.addUpdateListener { valueAnimator ->
+                appImage!!.alpha = valueAnimator.animatedValue as Float
+            }
         }
         buttonAnimator.addUpdateListener { valueAnimator ->
             backButton.alpha = valueAnimator.animatedValue as Float
