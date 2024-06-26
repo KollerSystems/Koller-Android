@@ -1,18 +1,11 @@
-package com.norbert.koller.student.fragments
+package com.norbert.koller.shared.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import com.norbert.koller.shared.fragments.WelcomeFragmentBase
-import com.norbert.koller.student.activities.MainActivity
-import com.norbert.koller.student.R
-import com.norbert.koller.student.activities.WelcomeActivity
 
-class WelcomeSemiDoneFragment : WelcomeFragmentBase() {
+class InformationSchoolFragment : WelcomeFragmentBase() {
 
     override fun checkIfAllCorrect(): Boolean {
         return true
@@ -24,13 +17,13 @@ class WelcomeSemiDoneFragment : WelcomeFragmentBase() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_welcome_institution_id, container, false)
-
-
+        return inflater.inflate(com.norbert.koller.shared.R.layout.fragment_information_school, container, false)
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
     }
 
 }

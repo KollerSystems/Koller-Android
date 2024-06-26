@@ -4,11 +4,8 @@
     <string name="app_name">Koller Diákoknak</string>
     <string name="you_are_done">Elkészültél!</string>
     <string name="registration_done_description">Adataidat sikeresen rögzítettük!\\nIgyekezni fogunk úgy összeállítani a szobaközösségedet, hogy az mindőtöknek a legjobb legyen.\\nKérlek most várd meg, míg Email-ben értesítünk felvételedről.</string>
-    <string name="dream_roomates">A megálmodott szobaközösséged</string>
-    <string name="dream_roomates_description">Az alábbiakban megadthatod, hogy milyen szobatársakkal lennél szívesen.</string>
-    <string name="introvert_description">Introvertált: Nem egy partyarc, csöndes, el van magával.</string>
-    <string name="extrovert_description">Extrovertált: Partyarc, nyüzsgő, folyamatosan társaságban van.</string>
-    <string name="other_information">Egyéb közlendő</string>
+
+
 
     <string name="everything_provided_so_far">Minden amit eddig megadtál</string>
     <string name="everything_provided_so_far_description">Kérlek fuss át mindenen mégegyszer utoljára</string>

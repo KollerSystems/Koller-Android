@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context=".fragments.WelcomeMainFragment">
+    tools:context="com.norbert.koller.shared.fragments.WelcomeMainFragment">
 
     <LinearLayout
         android:id="@+id/linearLayout4"

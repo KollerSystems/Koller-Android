@@ -21,7 +21,7 @@
             android:name=".activities.SettingsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.WelcomeActivity"
+            android:name="com.norbert.koller.shared.activities.WelcomeActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"

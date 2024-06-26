@@ -162,7 +162,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         val cardSupport: View = view.findViewById(R.id.profile_card_support)
 
         cardSupport.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/norberttechnologies"))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/kollersystems"))
             startActivity(browserIntent)
 
         }

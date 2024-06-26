@@ -12,6 +12,7 @@
         <item name="android:textViewStyle">@style/DefaultTextView</item>
         <item name="bottomSheetDragHandleStyle">@style/BottomSheetDrag</item>
         <item name="materialCardViewStyle">@style/SimpleCard</item>
+        <item name="cardViewStyle">@style/SimpleCard</item>
         <item name="materialAlertDialogTheme">@style/Popup</item>
         <item name="toolbarStyle">@style/Toolbar</item>
         <item name="checkboxStyle">@style/Checkbox</item>
@@ -112,6 +113,7 @@
         <item name="android:insetBottom">0dp</item>
         <item name="android:insetTop">0dp</item>
         <item name="android:minHeight">0dp</item>
+        <item name="iconGravity">textStart</item>
     </style>
 
     <style name="ButtonTonal" parent="@style/Button">
@@ -349,7 +351,11 @@
     <style name="CategoryCardName" parent="@style/Text">
         <item name="android:textStyle">bold</item>
         <item name="android:textColor">?attr/colorForeground066</item>
-        <item name="android:paddingHorizontal">15dp</item>
+        <item name="android:paddingHorizontal">@dimen/card_padding</item>
+    </style>
+
+    <style name="CategoryCardNameBald" parent="@style/CategoryCardName">
+        <item name="android:paddingHorizontal">@dimen/spacing</item>
     </style>
 
     <style name="Description">
@@ -453,6 +459,7 @@
         <item name="cornerFamily">rounded</item>
     </style>
 
+
     <style name="OverlaySmallRoundedCard">
         <item name="cornerSizeBottomLeft">@dimen/card_corner_radius_small</item>
         <item name="cornerSizeBottomRight">@dimen/card_corner_radius_small</item>
@@ -544,6 +551,25 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:outlineProvider">none</item>
         <item name="cardPreventCornerOverlap">false</item>
+    </style>
+
+    <style name="CardTop" parent="@style/Card">
+        <item name="shapeAppearance">@style/OverlayRoundedCardTop</item>
+        <item name="android:layout_marginBottom">@dimen/card_margin</item>
+        <item name="android:layout_marginTop">@dimen/text_container_margin</item>
+    </style>
+    <style name="CardMiddle" parent="@style/Card">
+        <item name="android:layout_marginVertical">@dimen/card_margin</item>
+    </style>
+    <style name="CardBottom" parent="@style/Card">
+        <item name="shapeAppearance">@style/OverlayRoundedCardBottom</item>
+        <item name="android:layout_marginTop">@dimen/card_margin</item>
+        <item name="android:layout_marginBottom">@dimen/text_container_margin</item>
+    </style>
+
+    <style name="CardSingle" parent="@style/Card">
+        <item name="shapeAppearance">@style/OverlayRoundedCard</item>
+        <item name="android:layout_marginVertical">@dimen/text_container_margin</item>
     </style>
 
     <style name="CardHeader" parent="Card">

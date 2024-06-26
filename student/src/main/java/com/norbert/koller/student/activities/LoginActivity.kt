@@ -2,6 +2,7 @@ package com.norbert.koller.student.activities
 
 import android.content.Intent
 import android.os.Bundle
+import com.norbert.koller.shared.activities.WelcomeActivity
 
 class LoginActivity : com.norbert.koller.shared.activities.LoginActivity() {
 

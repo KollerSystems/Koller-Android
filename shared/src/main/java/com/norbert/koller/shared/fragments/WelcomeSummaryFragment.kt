@@ -1,12 +1,11 @@
-package com.norbert.koller.student.fragments
+package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.google.android.material.checkbox.MaterialCheckBox
-import com.norbert.koller.shared.fragments.WelcomeFragmentBase
-import com.norbert.koller.student.R
+import com.norbert.koller.shared.R
 
 class WelcomeSummaryFragment : WelcomeFragmentBase() {
 

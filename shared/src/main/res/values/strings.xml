@@ -401,4 +401,8 @@
     <string name="lessons">Órák</string>
     <string name="quantity_of_completions">Teljesítések száma</string>
 
+    <string name="introvert_description">Introvertált: Nem egy partyarc, csöndes, el van magával.</string>
+    <string name="extrovert_description">Extrovertált: Partyarc, nyüzsgő, folyamatosan társaságban van.</string>
+
+    <string name="other_information">Egyéb közlendő</string>
 </resources>

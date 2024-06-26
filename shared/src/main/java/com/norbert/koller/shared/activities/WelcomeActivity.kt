@@ -1,4 +1,4 @@
-package com.norbert.koller.student.activities
+package com.norbert.koller.shared.activities
 
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
@@ -12,15 +12,16 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
+import androidx.core.view.marginBottom
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.norbert.koller.student.R
-import com.norbert.koller.shared.R as Rs
-import com.norbert.koller.student.fragments.WelcomeFragmentAdapter
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.WelcomeFragmentBase
+import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.recycleradapters.WelcomeFragmentAdapter
+import com.norbert.koller.shared.R as Rs
 
 
 class WelcomeActivity : AppCompatActivity() {
@@ -29,6 +30,9 @@ class WelcomeActivity : AppCompatActivity() {
     lateinit var tabs: TabLayout
     var currentFragment : WelcomeFragmentBase? = null
     lateinit var btnForward : Button
+    lateinit var btnBackward : Button
+    var bottomPadding : Int = 0
+    var topPadding : Int = 0
 
     fun scrollForward(){
         viewPager.setCurrentItem(viewPager.currentItem+1, true)
@@ -65,21 +69,24 @@ class WelcomeActivity : AppCompatActivity() {
                     tab.view.setPadding(0,0,0,0)
                 }
                 1->{
-                    tab.text = "Intézmény azonosító"
+                    tab.text = getString(com.norbert.koller.shared.R.string.student_hostel)
                 }
                 2->{
-                    tab.text = "Adatok"
+                    tab.text = getString(com.norbert.koller.shared.R.string.student)
                 }
                 3->{
-                    tab.text = "Személyes preferenciák"
+                    tab.text = "Gondviselő"
                 }
                 4->{
-                    tab.text = "Összegzés"
+                    tab.text = "Közeli rokon"
                 }
                 5->{
-                    tab.text = "Jelszó"
+                    tab.text = getString(com.norbert.koller.shared.R.string.school)
                 }
                 6->{
+                    tab.text = "Összegzés"
+                }
+                7->{
                     tab.view.minimumWidth = 1
                     tab.view.post{
                         tab.view.layoutParams.width = ApplicationManager.convertDpToPixel(10, tab.view.context)
@@ -92,15 +99,23 @@ class WelcomeActivity : AppCompatActivity() {
 
         }.attach()
 
-        val btnBackward : Button = findViewById(R.id.welcome_backward)
+        btnBackward = findViewById(R.id.welcome_backward)
         btnForward = findViewById(R.id.welcome_foreward)
 
         btnBackward.setOnClickListener {
+            if(!btnBackward.isClickable) return@setOnClickListener
+
+            btnForward.isClickable = false
+            btnBackward.isClickable = false
             scrollBackward()
         }
 
         btnForward.setOnClickListener {
+
+            if(!btnForward.isClickable) return@setOnClickListener
             if(viewPager.currentItem != viewPager.adapter!!.itemCount - 1 - 1) {
+                btnForward.isClickable = false
+                btnBackward.isClickable = false
                 scrollForward()
             }
             else{
@@ -156,8 +171,22 @@ class WelcomeActivity : AppCompatActivity() {
             animatorSet.start()
         }
 
+        bottomPadding = btnNavigation.layoutParams.height + btnNavigation.marginBottom +
+                resources.getDimensionPixelSize(com.norbert.koller.shared.R.dimen.application_padding)
+
+
+        val statusBarHeight = resources.getDimensionPixelSize(
+            resources.getIdentifier("status_bar_height", "dimen", "android")
+        )
+        tabs.post {
+            topPadding = tabs.height - statusBarHeight
+        }
+
+
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
+
+
                 if (position == 0 || position == viewPager.adapter!!.itemCount - 1) {
                     if(navigatedAtLEastOnce)
                         animateOutNavigation()
@@ -167,37 +196,32 @@ class WelcomeActivity : AppCompatActivity() {
                 }
                 else{
 
-                    currentFragment = supportFragmentManager.findFragmentByTag("f" + position) as WelcomeFragmentBase?
-
-
-                    currentFragment?.onChange = { value ->
-                        btnForward.isEnabled = value
-                    }
-                    currentFragment?.onChange?.invoke(currentFragment!!.checkIfAllCorrect())
-
-                    if (position == 0 + 1){
-                        btnBackward.text = getString(Rs.string.back)
-                        btnForward.text = getString(Rs.string.next)
-                    }
-                    else if (position == viewPager.adapter!!.itemCount - 1 - 1){
-                        btnForward.text = getString(Rs.string.finnish)
-                        btnBackward.text = getString(Rs.string.backward)
-                    }
-                    else{
-                        btnBackward.text = getString(Rs.string.backward)
-                        btnForward.text = getString(Rs.string.next)
-                    }
-
                     animateInNavigation()
                 }
 
                 navigatedAtLEastOnce = true
                 super.onPageSelected(position)
-
             }
 
 
         })
+    }
+
+    fun onFragmentResume(){
+        btnForward.isClickable = true
+        btnBackward.isClickable = true
+        if (viewPager.currentItem == 0 + 1){
+            btnBackward.text = getString(Rs.string.back)
+            btnForward.text = getString(Rs.string.next)
+        }
+        else if (viewPager.currentItem == viewPager.adapter!!.itemCount - 1 - 1){
+            btnForward.text = getString(Rs.string.finnish)
+            btnBackward.text = getString(Rs.string.backward)
+        }
+        else{
+            btnBackward.text = getString(Rs.string.backward)
+            btnForward.text = getString(Rs.string.next)
+        }
     }
 
     override fun onBackPressed() {

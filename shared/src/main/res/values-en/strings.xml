@@ -364,4 +364,9 @@
     <string name="done">Done</string>
     <string name="lessons">Lessons</string>
     <string name="quantity_of_completions">Quantity of completions</string>
+
+    <string name="introvert_description">Introverted: Not a party guy, quiet, likes to be alone.</string>
+    <string name="extrovert_description">Extrovert: Party guy, lively, constantly in company.</string>
+
+    <string name="other_information">Other infromation</string>
 </resources>

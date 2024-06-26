@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context=".activities.WelcomeActivity">
+    tools:context="com.norbert.koller.shared.activities.WelcomeActivity">
 
 
     <androidx.viewpager2.widget.ViewPager2
@@ -37,6 +37,9 @@
         android:layout_height="50dp"
         android:layout_gravity="bottom|center_horizontal"
         android:layout_marginBottom="@dimen/spacing"
+        android:addStatesFromChildren="false"
+        android:clickable="true"
+        android:duplicateParentState="false"
         android:translationY="60dp"
         android:visibility="invisible"
         app:cardCornerRadius="100dp"
@@ -52,21 +55,26 @@
                 style="@style/Widget.Material3.Button.TonalButton"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:duplicateParentState="false"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:text="@string/backward"
-                app:cornerRadius="0dp" />
+                app:cornerRadius="0dp"
+                app:toggleCheckedStateOnClick="false" />
 
             <Button
                 android:id="@+id/welcome_foreward"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/card_full_margin"
+                android:duplicateParentState="false"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:layoutDirection="rtl"
                 android:text="@string/next"
                 app:cornerRadius="0dp"
                 app:icon="@drawable/arrow_right"
+                app:toggleCheckedStateOnClick="false"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>
 

@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment"
+        android:id="@+id/scrollView2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+        style="@style/MainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/CategoryCardNameBald"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Iskola adatai" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardTop"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/building" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                    android:hint="Neve">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/home" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                        android:enabled="false"
+                        android:hint="@string/country">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textPostalAddress" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/city"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+
+                            android:enabled="false"
+                            android:hint="@string/settlement">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                style="@style/EditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPostalAddress" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/number"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                            android:enabled="false"
+                            android:hint="@string/zip_code">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                style="@style/EditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPostalAddress" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/addres"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+
+                            android:enabled="false"
+                            android:hint="@string/street">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                style="@style/EditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPostalAddress" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/housenum"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                            android:enabled="false"
+                            android:hint="@string/house_number">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                style="@style/EditText"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="textPostalAddress" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/check_circle" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textView10"
+            style="@style/CategoryCardNameBald"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanulmányi adatok" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/calculate" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                    android:hint="Képzés típusa">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    android:src="@drawable/money" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                    android:hint="Képzés formája">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardMiddle"
+            android:layout_width="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/groups" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                    android:hint="Évfolyam">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/graduate" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    android:layout_marginStart="@dimen/text_container_margin"
+                    android:layout_weight="1"
+                    android:paddingVertical="17dp"
+                    android:text="Nem érettségizett"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    app:chipBackgroundColor="@color/color_worst_toggle"
+                    app:chipEndPadding="0dp"
+                    app:chipStartPadding="0dp"
+                    app:shapeAppearance="@style/OverlayRoundedLeft"
+                    app:textEndPadding="@dimen/text_container_margin"
+                    app:textStartPadding="@dimen/text_container_margin" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    android:layout_marginEnd="@dimen/text_container_margin"
+                    android:layout_weight="1"
+                    android:paddingVertical="17dp"
+                    android:text="Érettségizett"
+                    android:textAlignment="center"
+                    android:textSize="14sp"
+                    app:chipBackgroundColor="@color/color_best_toggle"
+                    app:chipEndPadding="0dp"
+                    app:chipStartPadding="0dp"
+                    app:shapeAppearance="@style/OverlayRoundedRight"
+                    app:textEndPadding="@dimen/text_container_margin"
+                    app:textStartPadding="@dimen/text_container_margin" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/engineer" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                    android:hint="Szakma / Tagozat">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="number"
+                        android:maxLength="2" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/book" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            android:id="@+id/textView11"
+            style="@style/CategoryCardNameBald"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Osztályfőnök" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardTop"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/user" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                        android:hint="@string/last_name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+
+                        android:hint="@string/first_name">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            style="@style/EditText"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/phone" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/text_container_margin"
+android:layout_marginBottom="@dimen/text_container_margin"
+                    android:hint="@string/phone_number">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        style="@style/EditText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="phone" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+
+</ScrollView>
