@@ -79,7 +79,7 @@
 
     <dimen name="image_list_height">150dp</dimen>
 
-    <dimen name="tablet_max_width">700dp</dimen>
-    <dimen name="tablet_max_width_with_text_container">690dp</dimen>
+    <dimen name="tablet_max_width">760dp</dimen>
+    <dimen name="tablet_max_width_with_text_container">750dp</dimen>
 
 </resources>
