@@ -345,10 +345,10 @@ fun AppBarLayout.setup() : Button {
 }
 
 fun View.setVisibilityBy(boolean : Boolean){
-    if(!boolean){
-        visibility = GONE
+    visibility = if(!boolean){
+        GONE
     } else{
-        visibility = VISIBLE
+        VISIBLE
     }
 }
 

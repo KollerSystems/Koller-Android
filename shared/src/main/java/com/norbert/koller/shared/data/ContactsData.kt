@@ -7,4 +7,5 @@ class ContactsData(
     @SerializedName("Discord") val discord : String? = null,
     @SerializedName("Facebook") val facebook : String? = null,
     @SerializedName("Instagram") val instagram : String? = null,
-    @SerializedName("Email") val email : String? = null)
+    @SerializedName("Email") val email : String? = null,
+    @SerializedName("Phone") val phone : Long? = null)

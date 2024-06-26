@@ -1,43 +1,26 @@
 package com.norbert.koller.shared.fragments
 
+import android.content.ActivityNotFoundException
+import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Rect
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.core.view.ViewCompat
 import androidx.core.widget.NestedScrollView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
-import com.google.android.material.transition.MaterialContainerTransform
-import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.FullScreenLoading
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
 import com.norbert.koller.shared.customviews.SimpleCardButton
-import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.managers.setVisibilityBy
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
-import com.skydoves.androidveil.VeilLayout
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.stfalcon.imageviewer.StfalconImageViewer
-import com.stfalcon.imageviewer.common.extensions.isVisible
-import retrofit2.Call
-import retrofit2.Callback
 import retrofit2.Response
 
 
@@ -66,15 +49,16 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
 
         val textName : TextView = view.findViewById(R.id.user_text_name)
-        val buttonGroup : Button = view.findViewById(R.id.user_button_group)
-        val buttonRoom : Button = view.findViewById(R.id.user_button_room)
-        val buttonClass : Button = view.findViewById(R.id.user_button_class)
+        val buttonGroup : Button = view.findViewById(R.id.button_group)
+        val buttonRoom : Button = view.findViewById(R.id.button_room)
+        val buttonClass : Button = view.findViewById(R.id.button_class_or_profession)
         val badgeUser : RoundedBadgeImageView = view.findViewById(R.id.badge_user)
 
         val discordChip : Chip = view.findViewById(R.id.user_view_discord)
         val facebookChip : Chip = view.findViewById(R.id.user_view_facebook)
         val instagramChip : Chip = view.findViewById(R.id.user_view_instagram)
         val emailChip : Chip = view.findViewById(R.id.user_view_email)
+        val phoneChip : Chip = view.findViewById(R.id.user_view_phone)
 
         val NestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
 
@@ -95,14 +79,70 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
         }
 
 
-        fun showAndSetIfNotNull(chip : Chip, string : String?){
-            if (!string.isNullOrBlank()) {
-                chip.visibility = View.VISIBLE
-                chip.text = string
-                chip.setOnClickListener{
-                    ApplicationManager.setClipboard(requireContext(), string)
+        fun showAndSetIfNotNull(chip : Chip, any : Any?) : Boolean{
+            if (any != null && any.toString().isNotBlank()) {
+                chip.visibility = VISIBLE
+                chip.text = any.toString()
+                return true
+            }
+            return false
+        }
+
+        fun copyTextOnLongClick(chip : Chip){
+            chip.setOnLongClickListener{
+
+                ApplicationManager.setClipboard(requireContext(), chip.text.toString())
+                return@setOnLongClickListener true
+            }
+        }
+
+        fun openUserPageOnClick(packageName : String, url : String, chip : Chip){
+            chip.setOnClickListener {
+
+                val uri = Uri.parse("http://${url}/${chip.text}")
+                val likeIng = Intent(Intent.ACTION_VIEW, uri)
+
+                likeIng.setPackage(packageName)
+
+                try {
+                    startActivity(likeIng)
+                } catch (e: ActivityNotFoundException) {
+                    startActivity(
+                        Intent(
+                            Intent.ACTION_VIEW,
+                            Uri.parse("http://${url}/${chip.text}")
+                        )
+                    )
                 }
             }
+
+            copyTextOnLongClick(chip)
+        }
+
+        fun openInstagramOnClick(){
+            openUserPageOnClick("com.instagram.android", "instagram.com/_u", instagramChip)
+        }
+
+        fun openFacebookOnClick(){
+            openUserPageOnClick("com.facebook.katana", "facebook.com", facebookChip)
+        }
+
+        fun openEmailOnClick(){
+            emailChip.setOnClickListener{
+                val intent = Intent(Intent.ACTION_SENDTO)
+                intent.data = Uri.parse("mailto:${emailChip.text}")
+                startActivity(intent)
+            }
+            copyTextOnLongClick(emailChip)
+        }
+
+        fun openPhoneOnClick(){
+            phoneChip.setOnClickListener{
+                val intent = Intent(Intent.ACTION_DIAL)
+                intent.setData(Uri.parse("tel:${phoneChip.text}"))
+                startActivity(intent)
+            }
+            copyTextOnLongClick(phoneChip)
         }
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
@@ -147,9 +187,28 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
             }
 
             if(response.contacts != null){
-                showAndSetIfNotNull(discordChip, response.contacts.discord)
-                showAndSetIfNotNull(facebookChip, response.contacts.facebook)
-                showAndSetIfNotNull(instagramChip, response.contacts.instagram)
+                if(showAndSetIfNotNull(discordChip, response.contacts.discord)){
+                    discordChip.setOnClickListener{
+                        ApplicationManager.setClipboard(requireContext(), discordChip.text.toString())
+                    }
+                }
+
+                if(showAndSetIfNotNull(facebookChip, response.contacts.facebook)){
+                    openFacebookOnClick()
+                }
+
+                if(showAndSetIfNotNull(instagramChip, response.contacts.instagram)){
+                    openInstagramOnClick()
+                }
+
+                if(showAndSetIfNotNull(phoneChip, response.contacts.phone)){
+                    openPhoneOnClick()
+                }
+
+                if (!response.contacts.email.isNullOrBlank()) {
+                    emailChip.text = response.contacts.email
+                    openEmailOnClick()
+                }
             }
 
         }

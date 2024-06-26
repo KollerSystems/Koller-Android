@@ -39,7 +39,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/user_button_group"
+            android:id="@+id/button_group"
             style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,6 +48,7 @@
             android:textAppearance="@style/Text" />
 
         <TextView
+            android:id="@+id/first_dot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing"
@@ -57,7 +58,7 @@
             tools:ignore="HardcodedText" />
 
         <Button
-            android:id="@+id/user_button_room"
+            android:id="@+id/button_room"
             style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -66,6 +67,7 @@
             android:textAppearance="@style/Text" />
 
         <TextView
+            android:id="@+id/second_dot"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing"
@@ -75,7 +77,7 @@
             tools:ignore="HardcodedText" />
 
         <Button
-            android:id="@+id/user_button_class"
+            android:id="@+id/button_class_or_profession"
             style="@style/TextButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -88,8 +90,9 @@
         android:id="@+id/fl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/text_container_margin"
-        android:layout_marginBottom="@dimen/spacing"
+        android:paddingHorizontal="@dimen/application_corner_radius"
+        android:paddingTop="@dimen/text_container_margin"
+        android:paddingBottom="@dimen/card_padding"
         app:dividerDrawable="@drawable/divider_space"
         app:flexDirection="row"
         app:flexWrap="wrap"
@@ -101,6 +104,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
+            android:ellipsize="none"
             android:text="@string/none"
             app:chipIcon="@drawable/mail"
             app:chipIconVisible="true"
@@ -110,7 +114,7 @@
             android:id="@+id/user_view_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checkable="false"
+            android:ellipsize="none"
             android:visibility="gone"
             app:chipIcon="@drawable/phone"
             app:chipIconVisible="true"
@@ -123,9 +127,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
+            android:ellipsize="none"
             android:visibility="gone"
-            app:chipIcon="@drawable/facebook"
+            app:chipIcon="@drawable/facebook_icon"
             app:chipIconVisible="true"
+            app:chipStrokeColor="#1877F1"
             tools:layout_editor_absoluteX="127dp"
             tools:text="@string/unknown"
             tools:visibility="visible" />
@@ -135,9 +141,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
+            android:ellipsize="none"
             android:visibility="gone"
-            app:chipIcon="@drawable/instagram"
+            app:chipIcon="@drawable/instagram_icon"
             app:chipIconVisible="true"
+            app:chipStrokeColor="#D33377"
             tools:layout_editor_absoluteX="236dp"
             tools:text="@string/unknown"
             tools:visibility="visible" />
@@ -147,9 +155,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:checkable="false"
+            android:ellipsize="none"
             android:visibility="gone"
-            app:chipIcon="@drawable/discord"
+            app:chipIcon="@drawable/discord_icon"
             app:chipIconVisible="true"
+            app:chipStrokeColor="#5865F1"
             tools:layout_editor_absoluteX="38dp"
             tools:layout_editor_absoluteY="39dp"
             tools:text="@string/unknown"
