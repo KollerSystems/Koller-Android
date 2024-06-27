@@ -1,5 +1,12 @@
 <resources>
 
+    <string name="registration_done_description">Adataidat sikeresen rögzítettük!\\nIgyekezni fogunk úgy összeállítani a szobaközösségedet, hogy az mindőtöknek a legjobb legyen.\\nKérlek most várd meg, míg Email-ben értesítünk felvételedről.</string>
+
+
+    <string name="you_are_done">Elkészültél!</string>
+    <string name="everything_provided_so_far">Minden amit eddig megadtál</string>
+    <string name="everything_provided_so_far_description">Kérlek fuss át mindenen mégegyszer utoljára</string>
+
     <!-- Strings related to login -->
     <string name="prompt_email" translatable="false">Email</string>
     <string name="prompt_password">Jelszó</string>

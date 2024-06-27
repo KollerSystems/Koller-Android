@@ -107,6 +107,10 @@
     </style>
 
     <style name="Button" parent="@style/Widget.Material3.Button">
+        <item name="android:paddingLeft">@null</item>
+        <item name="android:paddingRight">@null</item>
+        <item name="android:paddingStart">@dimen/button_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/button_horizontal_padding</item>
         <item name="android:paddingTop">@dimen/button_vertical_padding</item>
         <item name="android:paddingBottom">@dimen/button_vertical_padding</item>
         <item name="android:minWidth">0dp</item>
@@ -169,6 +173,7 @@
     </style>
 
     <style name="IconButtonTonal" parent="@style/ButtonTonalIcon">
+
         <item name="android:paddingStart">@dimen/button_vertical_padding</item>
         <item name="android:paddingEnd">@dimen/button_vertical_padding</item>
         <item name="iconPadding">0dp</item>

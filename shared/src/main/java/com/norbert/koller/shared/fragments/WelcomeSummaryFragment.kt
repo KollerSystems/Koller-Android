@@ -20,19 +20,21 @@ class WelcomeSummaryFragment : WelcomeFragmentBase() {
 
     lateinit var checkBoxRules : MaterialCheckBox
     lateinit var checkBoxTrueData : MaterialCheckBox
+    lateinit var checkBoxParents : MaterialCheckBox
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         checkBoxRules = view.findViewById(R.id.checkbox_rules)
         checkBoxTrueData = view.findViewById(R.id.checkbox_true_data)
+        checkBoxParents = view.findViewById(R.id.checkbox_parents)
 
-        waitForChange(checkBoxRules, checkBoxTrueData)
+        waitForChange(checkBoxRules, checkBoxTrueData, checkBoxParents)
     }
 
 
     override fun checkIfAllCorrect() : Boolean{
-        return (checkBoxRules.isChecked && checkBoxTrueData.isChecked)
+        return (checkBoxRules.isChecked && checkBoxTrueData.isChecked && checkBoxParents.isChecked)
     }
 
 

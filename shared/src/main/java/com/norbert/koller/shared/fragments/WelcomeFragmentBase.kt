@@ -20,7 +20,10 @@ abstract class WelcomeFragmentBase : Fragment() {
 
         val linearLayout = (view as ViewGroup).getChildAt(0)
 
-        linearLayout.setPadding(linearLayout.paddingLeft, welcomeActivity.topPadding, linearLayout.paddingRight, welcomeActivity.bottomPadding)
+        linearLayout.post {
+            linearLayout.setPadding(linearLayout.paddingLeft, welcomeActivity.topPadding, linearLayout.paddingRight, welcomeActivity.bottomPadding)
+        }
+
     }
 
     override fun onResume() {

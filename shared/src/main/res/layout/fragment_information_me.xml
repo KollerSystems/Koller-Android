@@ -91,39 +91,41 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:alpha="0.666"
                     app:srcCompat="@drawable/wc" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
+                <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/text_container_margin"
-                    android:layout_marginStart="@dimen/text_container_margin"
                     android:layout_weight="1"
-                    android:paddingVertical="17dp"
-                    android:text="@string/woman"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    app:chipEndPadding="0dp"
-                    app:chipStartPadding="0dp"
-                    app:shapeAppearance="@style/OverlayRoundedLeft"
-                    app:textEndPadding="0dp"
-                    app:textStartPadding="0dp" />
+                    android:layout_margin="@dimen/text_container_margin"
+                    app:flexWrap="wrap"
+                    app:flexDirection="row">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/text_container_margin"
-                    android:layout_marginEnd="@dimen/text_container_margin"
-                    android:layout_weight="1"
-                    android:paddingVertical="17dp"
-                    android:text="@string/man"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    app:chipEndPadding="0dp"
-                    app:chipStartPadding="0dp"
-                    app:shapeAppearance="@style/OverlayRoundedRight"
-                    app:textEndPadding="0dp"
-                    app:textStartPadding="0dp" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_flexGrow="1"
+                        app:layout_flexShrink="1"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="17dp"
+                        android:text="Nő"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        app:shapeAppearance="@style/OverlayRoundedLeft" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_flexGrow="1"
+                        app:layout_flexShrink="1"
+                        android:paddingVertical="17dp"
+                        android:paddingHorizontal="16dp"
+                        android:text="Férfi"
+                        android:textAlignment="center"
+                        android:textSize="14sp"
+                        app:shapeAppearance="@style/OverlayRoundedRight" />
+
+                </com.google.android.flexbox.FlexboxLayout>
 
             </LinearLayout>
 
@@ -391,21 +393,35 @@ android:layout_marginBottom="@dimen/text_container_margin"
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageView
-                    style="@style/CategoryIcon"
-                    android:adjustViewBounds="true"
-                    android:alpha="1"
-                    app:srcCompat="@drawable/id_card"
-                    app:tint="?attr/colorPrimary" />
+                <Button
+                    android:id="@+id/student_id"
+                    style="@style/IconButtonTransparent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/n_text_container_margin"
+                    android:layout_marginTop="@dimen/spacing"
+                    android:layout_marginEnd="@dimen/text_container_margin"
+                    android:gravity="bottom"
+                    android:padding="@dimen/text_container_margin"
+                    android:paddingStart="@null"
+                    android:paddingLeft="@null"
+                    android:paddingTop="@null"
+                    android:paddingEnd="@null"
+                    android:paddingRight="@null"
+                    android:paddingBottom="@null"
+                    android:textSize="0sp"
+                    app:icon="@drawable/id_card"
+                    app:iconSize="30dp" />
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_weight="1"
                     android:hint="Tanuló azonosító">
 
                     <com.google.android.material.textfield.TextInputEditText

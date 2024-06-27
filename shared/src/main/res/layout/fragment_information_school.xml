@@ -2,10 +2,10 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment"
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment">
 
     <LinearLayout
         style="@style/MainLayout"
@@ -40,9 +40,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
 
-                    android:hint="Neve">
+                    android:hint="@string/name">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditText"
@@ -75,23 +75,6 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/country"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
-
-                        android:enabled="false"
-                        android:hint="@string/country">
-
-                        <com.google.android.material.textfield.TextInputEditText
-                            style="@style/EditText"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:inputType="textPostalAddress" />
-                    </com.google.android.material.textfield.TextInputLayout>
-
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -103,7 +86,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_weight="1"
 
                             android:enabled="false"
@@ -121,7 +104,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
 
                             android:enabled="false"
                             android:hint="@string/zip_code">
@@ -146,7 +129,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_weight="1"
 
                             android:enabled="false"
@@ -164,7 +147,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_width="100dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
 
                             android:enabled="false"
                             android:hint="@string/house_number">
@@ -200,6 +183,11 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:alpha="0.666"
                     app:srcCompat="@drawable/check_circle" />
 
+                <com.norbert.koller.shared.customviews.AttachView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_container_margin" />
+
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -231,7 +219,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
 
                     android:hint="Képzés típusa">
 
@@ -267,7 +255,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
 
                     android:hint="Képzés formája">
 
@@ -302,7 +290,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
 
                     android:hint="Évfolyam">
 
@@ -325,7 +313,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -334,41 +322,60 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:alpha="0.666"
                     app:srcCompat="@drawable/graduate" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip2"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/text_container_margin"
-                    android:layout_marginStart="@dimen/text_container_margin"
                     android:layout_weight="1"
-                    android:paddingVertical="17dp"
-                    android:text="Nem érettségizett"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    app:chipBackgroundColor="@color/color_worst_toggle"
-                    app:chipEndPadding="0dp"
-                    app:chipStartPadding="0dp"
-                    app:shapeAppearance="@style/OverlayRoundedLeft"
-                    app:textEndPadding="@dimen/text_container_margin"
-                    app:textStartPadding="@dimen/text_container_margin" />
+                    android:orientation="vertical">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/text_container_margin"
-                    android:layout_marginEnd="@dimen/text_container_margin"
-                    android:layout_weight="1"
-                    android:paddingVertical="17dp"
-                    android:text="Érettségizett"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
-                    app:chipBackgroundColor="@color/color_best_toggle"
-                    app:chipEndPadding="0dp"
-                    app:chipStartPadding="0dp"
-                    app:shapeAppearance="@style/OverlayRoundedRight"
-                    app:textEndPadding="@dimen/text_container_margin"
-                    app:textStartPadding="@dimen/text_container_margin" />
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_container_margin"
+                        app:flexDirection="row"
+                        app:flexWrap="wrap">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="17dp"
+                            android:text="Nem érettségizett"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            app:chipBackgroundColor="@color/color_worst_toggle"
+                            app:layout_flexGrow="1"
+                            app:layout_flexShrink="1"
+
+                            app:shapeAppearance="@style/OverlayRoundedLeft" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chip3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="17dp"
+                            android:text="Érettségizett"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            app:chipBackgroundColor="@color/color_best_toggle"
+                            app:layout_flexGrow="1"
+                            app:layout_flexShrink="1"
+                            app:shapeAppearance="@style/OverlayRoundedRight" />
+
+                    </com.google.android.flexbox.FlexboxLayout>
+
+
+                    <com.norbert.koller.shared.customviews.AttachView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+
 
             </LinearLayout>
 
@@ -394,9 +401,10 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
 
-                    android:hint="Szakma / Tagozat">
+                    android:hint="Szakma / Tagozat"
+                    app:helperText="@string/optional">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditText"
@@ -425,6 +433,11 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
                     app:srcCompat="@drawable/book" />
+
+                <com.norbert.koller.shared.customviews.AttachView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_container_margin" />
 
             </LinearLayout>
 
@@ -462,9 +475,10 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
 
-                        android:hint="@string/last_name">
+                        android:hint="@string/last_name"
+                        app:helperText="@string/optional">
 
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"
@@ -476,9 +490,10 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
 
-                        android:hint="@string/first_name">
+                        android:hint="@string/first_name"
+                        app:helperText="@string/optional">
 
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"
@@ -511,7 +526,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
                     android:hint="@string/phone_number">
 
                     <com.google.android.material.textfield.TextInputEditText

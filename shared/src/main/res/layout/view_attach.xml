@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:cardBackgroundColor="?android:attr/colorBackground"
+    app:cardCornerRadius="@null"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintDimensionRatio="H,1:1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:shapeAppearance="@style/OverlaySmallRoundedCard"
+    app:strokeColor="?attr/colorOutline"
+    app:strokeWidth="1dp">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:adjustViewBounds="true"
+        android:visibility="gone"
+        app:srcCompat="@drawable/hills" />
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|top"
+        android:paddingVertical="17dp"
+        android:paddingStart="16dp"
+        android:text="Érettségi bizonyítvány"
+        android:textColor="?attr/colorOnSurface" />
+
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:drawableTop="@drawable/add_image"
+        android:drawablePadding="@dimen/text_container_margin"
+        android:text="Nyomj ide a kép feltöltéséhez"
+        android:textAlignment="center"
+        android:textAppearance="@style/Description" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl_buttons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_margin="@dimen/spacing"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:dividerDrawable="@drawable/divider_space"
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:showDivider="middle">
+
+        <Button
+            android:id="@+id/button_remove"
+            style="@style/ButtonTonalIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Törlés"
+            app:icon="@drawable/close" />
+
+        <Button
+            android:id="@+id/button_change"
+            style="@style/ButtonOutlineIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Új kép"
+            app:icon="@drawable/add_image" />
+
+    </com.google.android.flexbox.FlexboxLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -15,7 +15,7 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/text"
             style="@style/Separator"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

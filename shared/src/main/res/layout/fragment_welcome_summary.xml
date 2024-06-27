@@ -76,6 +76,21 @@
                     android:layout_height="wrap_content"
                     android:text="Táncsics Mihály Tehetséggondozó Kollégium"
                     android:textAppearance="@style/Description" />
+
+                <TextView
+
+                    style="@style/SeparatorTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cím"
+                    android:textStyle="bold" />
+
+                <TextView
+
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Magyarország, 1119. Budapest, Lajus utca 4-6."
+                    android:textAppearance="@style/Description" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -134,10 +149,10 @@
                     android:text="Születési idő" />
 
                 <TextView
-
+                    android:id="@+id/textView43"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Budapest 8."
+                    android:text="2005. 07. 22."
                     android:textAppearance="@style/Description" />
 
                 <TextView
@@ -148,10 +163,10 @@
                     android:text="Születési hely" />
 
                 <TextView
-                    android:id="@+id/textView43"
+
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2005. 07. 22."
+                    android:text="Budapest 8."
                     android:textAppearance="@style/Description" />
 
                 <TextView
@@ -174,7 +189,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@null"
-                    android:text="Taj" />
+                    android:text="TAJ szám" />
 
                 <TextView
                     android:id="@+id/textView89"
@@ -222,7 +237,7 @@
                     android:id="@+id/textView93"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="-"
+                    android:text="@string/none"
                     android:textAppearance="@style/Description" />
 
             </LinearLayout>
@@ -759,8 +774,6 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-
-
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/checkbox_rules"
             android:layout_width="match_parent"
@@ -768,6 +781,7 @@
             android:layout_marginHorizontal="@dimen/text_container_margin"
             android:layout_marginTop="@dimen/spacing"
             android:layout_marginBottom="@dimen/text_container_margin"
+            android:gravity="top"
             android:paddingStart="@dimen/spacing"
             android:text="A kollégium házirendjét és adatkezelési tájékoztatóját megismertem és az abban foglaltakat elfogadom." />
 
@@ -776,8 +790,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
+            android:gravity="top"
             android:paddingStart="@dimen/spacing"
             android:text="Kijelentem, hogy a jelentkezés során megadott adatok a valóságnak megfelelnek." />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/checkbox_parents"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:gravity="top"
+            android:paddingStart="@dimen/spacing"
+            android:text="Tudomásul veszem, hogy a szülői felügyeleti jog közös gyakorlása esetén a hatályos jogszabály szerint a gyermekem iskolába járásával, neveltetésével kapcsolatos döntésekben a szülők egyetértése szükséges, így a jelen kollégiumi jelentkezéshez is. Büntetőjogi felelősségem tudatában nyilatkozom, hogy a gyermek szülői felügyeleti jogát a másik szülővel közösen gyakoroljuk, és az ő kifejezett beleegyezésével nyújtom be a kérelmet; vagy a másik szülő beleegyezése nem volt beszerezhető, mert ismeretlen helyen tartózkodik, vagy jogai gyakorlásában ténylegesen akadályozott; vagy a szülői felügyeleti jogot egyedül gyakorlom." />
 
 
     </LinearLayout>

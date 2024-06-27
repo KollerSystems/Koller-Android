@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <string name="you_are_done">You\'re done!</string>
+    <string name="registration_done_description">We have successfully recorded your data!\\nWe will try to organize your room community in such a way that it is the best for all of you.\\nPlease wait now while we notify you by email about your admission.</string>
+
+
     <string name="prompt_password">Password</string>
     <string name="invalid_username">Invalid Username</string>
     <string name="invalid_password">Invalid password</string>

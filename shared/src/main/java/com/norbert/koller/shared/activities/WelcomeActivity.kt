@@ -121,7 +121,7 @@ class WelcomeActivity : AppCompatActivity() {
             else{
                 MaterialAlertDialogBuilder(this@WelcomeActivity)
                     .setTitle("Mindent megnéztél kétszer is?")
-                    .setMessage("Amint a befejezés gombra nyomsz, adataid elküldésre kerülnek, amiket egészen addig nem fogsz tudni módosítani, amíg fel nem vesznek.")
+                    .setMessage("Amint a befejezés gombra nyomsz, adataid elküldésre kerülnek, amiket egészen addig nem fogsz tudni módosítani, amíg jelentkezésed elfogadásra nem kerül.")
                     .setPositiveButton(getString(Rs.string.finnish)) { _, _ ->
                         scrollForward()
                     }
@@ -171,15 +171,16 @@ class WelcomeActivity : AppCompatActivity() {
             animatorSet.start()
         }
 
-        bottomPadding = btnNavigation.layoutParams.height + btnNavigation.marginBottom +
-                resources.getDimensionPixelSize(com.norbert.koller.shared.R.dimen.application_padding)
+        val appPadding = resources.getDimensionPixelSize(com.norbert.koller.shared.R.dimen.application_padding)
+
+        bottomPadding = btnNavigation.layoutParams.height + btnNavigation.marginBottom + appPadding
 
 
         val statusBarHeight = resources.getDimensionPixelSize(
             resources.getIdentifier("status_bar_height", "dimen", "android")
         )
         tabs.post {
-            topPadding = tabs.height - statusBarHeight
+            topPadding = tabs.height - statusBarHeight + appPadding
         }
 
 

@@ -2,7 +2,5 @@
 <resources>
     <string name="this_app_is_not_for_everyone_desc">This application is intended fordiákok whose student hostel use our system. If you are a college student whose college does this, then if everything is right, you have received an email with your temporary password. If this did not happen, please report it to yourdiákok teacher.</string>
     <string name="app_name">Koller for Students</string>
-    <string name="you_are_done">You\'re done!</string>
-    <string name="registration_done_description">We have successfully recorded your data!\\nWe will try to organize your room community in such a way that it is the best for all of you.\\nPlease wait now while we notify you by email about your admission.</string>
 
 </resources>
