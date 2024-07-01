@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.animation.ValueAnimator
 import android.content.Intent
 import android.net.Uri
 import android.os.Handler
@@ -32,6 +33,8 @@ class DevRecyclerAdapter (private var devList : ArrayList<DevData>) : RecyclerVi
 
     }
 
+    private lateinit var autoScrollAnimator: ValueAnimator
+
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
 
@@ -39,14 +42,12 @@ class DevRecyclerAdapter (private var devList : ArrayList<DevData>) : RecyclerVi
             val random: Int = (0 + Math.random() * (((lastView.width + lastView.marginRight * 2) * devList.size) - 0)).toInt()
             recyclerView.layoutManager!!.scrollToPosition((Integer.MAX_VALUE / 2) - random)
 
-            val handler = Handler()
-            val runnable: Runnable = object : Runnable {
-                override fun run() {
-                    recyclerView.scrollBy(1, 0)
-                    handler.postDelayed(this, 0)
-                }
+            autoScrollAnimator = ValueAnimator.ofInt(0, Int.MAX_VALUE)
+            autoScrollAnimator.duration = Long.MAX_VALUE
+            autoScrollAnimator.addUpdateListener {
+                recyclerView.scrollBy(1, 0)
             }
-            handler.postDelayed(runnable, 0)
+            autoScrollAnimator.start()
         }
     }
 

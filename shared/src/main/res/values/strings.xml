@@ -16,7 +16,7 @@
     <string name="login">Bejelentkezés</string>
     <string name="username">Oktatási azonsoító</string>
     <string name="education_ID_hint">11 számjegyű kód a diákigazolványodon</string>
-    <string name="made_by" translatable="false">Norbert©</string>
+    <string name="made_by" translatable="false">Koller Systems</string>
     <string name="or">Vagy</string>
     <string name="touch_nfc">Közelítsd az NFC bilétád</string>
     <string name="please_login">Kérlek jelentkezz be a folytatáshoz</string>
