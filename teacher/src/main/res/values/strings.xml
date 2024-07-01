@@ -1,5 +1,5 @@
 <resources>
-    <string name="this_app_is_not_for_everyone_desc">Ez az alkalmazás olyan kollégiumidiákok készült, akiknek a kollégiuma használja a rendszerünket. Amennyiben az ön kollégiuma így tesz, akkor ha minden igaz, kapott egy emailt benne az ideiglenes jelszavával. Ha ez mégsem történt meg, kérem jelezze ezt a vezetőségnek.</string>
+    <string name="this_app_is_not_for_everyone_desc">Ez az alkalmazás olyan kollégiumi XXXXXX készült, akiknek a kollégiuma használja a rendszerünket. Amennyiben az ön kollégiuma így tesz, akkor ha minden igaz, kapott egy emailt benne az ideiglenes jelszavával. Ha ez mégsem történt meg, kérem jelezze ezt a vezetőségnek.</string>
     <string name="room_rate">Szoba értékelés</string>
     <string name="are_you_sure_publish_all_grade">Biztosan közzé akarja tenni az összes értékelést?</string>
     <string name="are_you_sure_delete_all_grade">Biztosan törölni akarja az összes értékelést?</string>
