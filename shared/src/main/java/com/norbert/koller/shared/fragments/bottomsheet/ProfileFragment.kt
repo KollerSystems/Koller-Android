@@ -136,7 +136,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         val fbtnPrivacyPolicy: View = view.findViewById(R.id.profile_fbtn_privacy_policy)
 
         fbtnPrivacyPolicy.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/orgs/4E-6F-72-62-65-72-74"))
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@Marci599"))
             startActivity(browserIntent)
         }
 
@@ -145,7 +145,7 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         val RecyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
 
         RecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        RecyclerView.setHasFixedSize(true)
+        RecyclerView.setHasFixedSize(false)
 
         val devArrayList = arrayListOf(
             DevData("Katona Márton B.", "Menedzsment és Android", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_marton)!!, "https://github.com/Marci599"),
@@ -167,7 +167,12 @@ open class ProfileFragment : BottomSheetDialogFragment() {
 
         }
 
-        val cardBug: View = view.findViewById(R.id.profile_card_bug)
+        val cardGitHub: View = view.findViewById(R.id.profile_card_github)
+
+        cardGitHub.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/KollerSystems"))
+            startActivity(browserIntent)
+        }
 
         val fbtnEmail: View = view.findViewById(R.id.profile_fbtn_email)
 
