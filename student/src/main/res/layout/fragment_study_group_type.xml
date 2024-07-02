@@ -10,7 +10,9 @@
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="?android:attr/colorBackground"
+            android:fillViewport="true">
 
             <include
                 layout="@layout/view_fragment_study_group_type_header"

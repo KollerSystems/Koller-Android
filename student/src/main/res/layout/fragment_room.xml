@@ -11,9 +11,11 @@
         android:id="@+id/swrl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fillViewport="true"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <com.google.android.flexbox.FlexboxLayout
@@ -23,9 +25,9 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical"
-                tools:context=".fragments.RoomFragment"
+                app:alignItems="center"
                 app:flexDirection="column"
-                app:alignItems="center">
+                tools:context=".fragments.RoomFragment">
 
                 <include
                     layout="@layout/view_fragment_room_header"
@@ -39,16 +41,16 @@
                     android:layout_height="wrap_content"
                     android:text="@string/manage_room"
                     android:visibility="gone"
-                    tools:visibility="visible"
-                    app:layout_maxWidth="@dimen/tablet_max_width"/>
+                    app:layout_maxWidth="@dimen/tablet_max_width"
+                    tools:visibility="visible" />
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/MainCard"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:visibility="gone"
-                    tools:visibility="visible"
-                    app:layout_maxWidth="@dimen/tablet_max_width">
+                    app:layout_maxWidth="@dimen/tablet_max_width"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         style="@style/MainCardLayout"

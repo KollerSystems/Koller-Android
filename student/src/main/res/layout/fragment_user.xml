@@ -11,18 +11,20 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/swrl">
+
         <androidx.core.widget.NestedScrollView
             android:id="@id/nested_scroll_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
 
             <com.google.android.flexbox.FlexboxLayout
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:flexDirection="column"
-                app:alignItems="center">
+                app:alignItems="center"
+                app:flexDirection="column">
 
 
                 <include
@@ -30,7 +32,7 @@
                     layout="@layout/view_fragment_user_header"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_maxWidth="@dimen/tablet_max_width"/>
+                    app:layout_maxWidth="@dimen/tablet_max_width" />
 
                 <TextView
                     android:id="@+id/textView42"
@@ -39,9 +41,8 @@
                     android:layout_height="wrap_content"
                     android:text="@string/manage_student"
                     android:visibility="gone"
-                    tools:visibility="visible"
                     app:layout_maxWidth="@dimen/tablet_max_width"
-                    />
+                    tools:visibility="visible" />
 
                 <com.google.android.material.card.MaterialCardView
                     style="@style/MainCard"
