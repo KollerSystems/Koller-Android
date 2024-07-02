@@ -62,9 +62,6 @@ open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCar
 
         imageViewIcon?.setVisibilityBy(mIcon)
 
-        if(!mRounded) {
-            this.radius = 0f
-        }
 
         preventCornerOverlap = false
 

@@ -142,6 +142,13 @@ open class ProfileFragment : BottomSheetDialogFragment() {
 
         //DEVS
 
+        val fbtnOrganization: View = view.findViewById(R.id.card_organization)
+
+        fbtnOrganization.setOnClickListener{
+            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://kollegium.tech/"))
+            startActivity(browserIntent)
+        }
+
         val RecyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
 
         RecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)

@@ -33,90 +33,40 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:orientation="vertical"
-                android:paddingLeft="@dimen/application_padding"
-                android:paddingTop="@dimen/application_padding"
-                android:paddingRight="@dimen/application_padding"
+                android:paddingStart="@dimen/full_card_padding"
+                android:paddingEnd="@dimen/full_card_padding"
                 android:paddingBottom="0dp">
 
-                <TextView
-                    android:id="@+id/textView13"
-                    style="@style/CategoryCardName"
+
+                <include layout="@layout/view_fragment_bshd_profile_header" />
+
+
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    android:id="@+id/profile_card_my_room"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    custom:icon="@drawable/room"
+                    custom:text="@string/my_room" />
+
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    android:id="@+id/profile_card_my_groups"
+                    style="@style/CardMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/your_profile" />
+                    android:visibility="gone"
+                    custom:icon="@drawable/groups"
+                    custom:text="@string/my_groups"
+                    tools:visibility="visible" />
 
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/MainCard"
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    android:id="@+id/profile_fbtn_gate"
+                    style="@style/CardMiddle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    custom:icon="@drawable/gate"
+                    custom:text="@string/port_exits_and_entrances" />
 
-                    <LinearLayout
-                        style="@style/MainCardLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="0dp"
-                        android:layout_marginTop="0dp"
-                        android:layout_marginRight="0dp"
-                        android:layout_marginBottom="0dp"
-                        android:divider="@drawable/divider"
-                        android:orientation="vertical"
-                        android:showDividers="middle">
-
-
-                        <include
-                            layout="@layout/view_fragment_bshd_profile_header"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/profile_card_my_room"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            custom:icon="@drawable/room"
-                            custom:text="@string/my_room" />
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/profile_card_my_groups"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            custom:icon="@drawable/groups"
-                            custom:text="@string/my_groups"
-                            tools:visibility="visible" />
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/profile_fbtn_gate"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            custom:icon="@drawable/gate"
-                            custom:text="@string/port_exits_and_entrances" />
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/profile_card_devices"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            custom:icon="@drawable/devices"
-                            custom:text="@string/devices"
-                            tools:visibility="visible" />
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/profile_fbtn_settings"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            custom:icon="@drawable/settings"
-                            custom:text="@string/settings" />
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/profile_fbtn_privacy_policy"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            custom:icon="@drawable/policy"
-                            custom:text="@string/privacy_policy" />
-
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
                 <include
                     layout="@layout/view_fragment_bshd_profile_footer"
