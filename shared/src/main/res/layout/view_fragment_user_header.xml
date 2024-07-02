@@ -168,20 +168,21 @@
 
     <TextView
         android:id="@+id/text_status"
-        style="@style/CategoryCardName"
+        style="@style/CategoryCardNameBald"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/state" />
 
     <com.norbert.koller.shared.customviews.SimpleCardButton
 
+        style="@style/CardSingle"
         android:id="@+id/scb_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_container_margin"
-        app:icon="@drawable/out"
 
         app:cardBackgroundColor="@android:color/transparent"
+
+        app:icon="@drawable/out"
         app:rounded="true"
         app:strokeWidth="1dp"
         app:text="Blabla" />

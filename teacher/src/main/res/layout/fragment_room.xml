@@ -23,93 +23,86 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical"
-                app:flexDirection="column"
-                app:alignItems="center">
+                android:paddingStart="@dimen/full_card_padding"
+                android:paddingTop="@dimen/full_card_padding"
+                android:paddingEnd="@dimen/full_card_padding"
+                android:paddingBottom="@dimen/full_card_padding"
+                app:alignItems="center"
+                app:flexDirection="column">
 
                 <include
-                    layout="@layout/view_fragment_room_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    layout="@layout/view_fragment_room_header" />
 
                 <TextView
                     android:id="@+id/textView42"
-                    style="@style/CategoryCardName"
+                    style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/manage_room"
                     app:layout_maxWidth="@dimen/tablet_max_width" />
 
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/MainCard"
+
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardTop"
+                    android:id="@+id/room_scb_room_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+                    app:icon="@drawable/clean"
+                    app:text="@string/room_order">
 
-                    <LinearLayout
-                        style="@style/MainCardLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                </com.norbert.koller.shared.customviews.SimpleCardButton>
 
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/room_scb_room_order"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:icon="@drawable/clean"
-                            app:text="@string/room_order">
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardMiddle"
+                    android:id="@+id/room_scb_presence"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/person_wave"
+                    app:text="@string/presence">
 
-                        </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.SimpleCardButton>
 
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/room_scb_presence"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:icon="@drawable/person_wave"
-                            app:text="@string/presence">
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/error"
+                    app:text="@string/error_report"
+                    tools:visibility="visible">
 
-                        </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.SimpleCardButton>
 
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:icon="@drawable/error"
-                            app:text="@string/error_report"
-                            tools:visibility="visible">
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:badge="9"
+                    app:icon="@drawable/flag"
+                    app:text="@string/reports"
+                    tools:visibility="visible">
 
-                        </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.SimpleCardButton>
 
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:visibility="gone"
-                            app:badge="9"
-                            app:icon="@drawable/flag"
-                            app:text="@string/reports"
-                            tools:visibility="visible">
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardMiddle"
+                    android:id="@+id/scb_edit"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/pencil"
+                    app:text="@string/edit">
 
-                        </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.SimpleCardButton>
 
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:id="@+id/scb_edit"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:icon="@drawable/pencil"
-                            app:text="@string/edit">
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/close"
+                    app:text="@string/remove">
 
-                        </com.norbert.koller.shared.customviews.SimpleCardButton>
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            app:icon="@drawable/close"
-                            app:text="@string/remove">
-
-                        </com.norbert.koller.shared.customviews.SimpleCardButton>
-
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
+                </com.norbert.koller.shared.customviews.SimpleCardButton>
 
             </com.google.android.flexbox.FlexboxLayout>
 

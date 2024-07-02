@@ -52,6 +52,10 @@
             style="@style/MainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingStart="@dimen/full_card_padding"
+            android:paddingTop="@dimen/full_card_padding"
+            android:paddingEnd="@dimen/full_card_padding"
+            android:paddingBottom="@dimen/full_card_padding"
             app:alignItems="center"
             app:flexDirection="column">
 
@@ -59,7 +63,7 @@
                 android:id="@+id/rbiv"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
-                custom:stroke_width="10dp">
+                app:stroke_width="5dp">
 
             </com.norbert.koller.shared.customviews.RoundedBadgeImageView>
 
@@ -71,35 +75,25 @@
                 android:padding="@dimen/text_container_margin"
                 android:text="@string/unknown"
                 android:textAppearance="@style/MainTitle"
-                app:layout_maxWidth="@dimen/tablet_max_width"/>
+                app:layout_maxWidth="@dimen/tablet_max_width" />
 
-            <com.google.android.material.card.MaterialCardView
-                style="@style/MainCard"
+
+            <com.norbert.koller.shared.customviews.SimpleCardButton
+                android:id="@+id/scb_personal"
+                style="@style/CardTop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+                custom:icon="@drawable/data"
+                custom:text="Személyes adatok kezelése" />
 
-                <LinearLayout
-                    style="@style/MainCardLayout"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
+            <com.norbert.koller.shared.customviews.SimpleCardButton
+                android:id="@+id/scb_password"
+                style="@style/CardBottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                custom:icon="@drawable/key"
+                custom:text="Jelszó módosítása" />
 
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:id="@+id/scb_personal"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        custom:icon="@drawable/data"
-                        custom:text="Személyes adatok kezelése" />
-
-                    <com.norbert.koller.shared.customviews.SimpleCardButton
-                        android:id="@+id/scb_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        custom:icon="@drawable/key"
-                        custom:text="Jelszó módosítása" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
 
         </com.google.android.flexbox.FlexboxLayout>
     </androidx.core.widget.NestedScrollView>

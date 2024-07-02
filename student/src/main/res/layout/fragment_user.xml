@@ -23,20 +23,24 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
+                android:paddingStart="@dimen/full_card_padding"
+                android:paddingTop="@dimen/full_card_padding"
+                android:paddingEnd="@dimen/full_card_padding"
+                android:paddingBottom="@dimen/full_card_padding"
                 app:alignItems="center"
                 app:flexDirection="column">
 
 
                 <include
                     android:id="@+id/include_header"
+                    style="@style/CardSingle"
                     layout="@layout/view_fragment_user_header"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+
                     app:layout_maxWidth="@dimen/tablet_max_width" />
 
                 <TextView
                     android:id="@+id/textView42"
-                    style="@style/CategoryCardName"
+                    style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/manage_student"
@@ -44,29 +48,15 @@
                     app:layout_maxWidth="@dimen/tablet_max_width"
                     tools:visibility="visible" />
 
-                <com.google.android.material.card.MaterialCardView
-                    style="@style/MainCard"
+
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardSingle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"
-                    app:layout_maxWidth="@dimen/tablet_max_width"
-                    tools:visibility="visible">
+                    android:layout_height="wrap_content"
+                    custom:description="@string/report_desc"
+                    custom:icon="@drawable/flag"
+                    custom:text="@string/report" />
 
-                    <LinearLayout
-                        style="@style/MainCardLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical">
-
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            custom:description="@string/report_desc"
-                            custom:icon="@drawable/flag"
-                            custom:text="@string/report" />
-                    </LinearLayout>
-
-                </com.google.android.material.card.MaterialCardView>
 
             </com.google.android.flexbox.FlexboxLayout>
         </androidx.core.widget.NestedScrollView>

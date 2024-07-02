@@ -8,145 +8,135 @@
 
     <TextView
         android:id="@+id/text_crossing2"
-        style="@style/CategoryCardName"
+        style="@style/CategoryCardNameBald"
         tools:ignore="HardcodedText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Developer Settings" />
 
-    <androidx.cardview.widget.CardView
-        style="@style/MainCard"
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/CardTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
 
         <LinearLayout
-            style="@style/MainCardLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Card"
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="horizontal">
+                android:layout_margin="@dimen/text_container_margin"
+                android:text="Time offset"
+                android:textAppearance="@style/Title"
+                tools:ignore="HardcodedText" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        tools:ignore="HardcodedText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/text_container_margin"
-                        android:text="Time offset"
-                        android:textAppearance="@style/Title" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <com.google.android.material.slider.Slider
-                            android:id="@+id/settings_slider_time_offset"
-                            app:labelBehavior="gone"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:value="0"
-                            android:valueFrom="-24"
-                            android:valueTo="24" />
-
-                        <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/settings_til_hours"
-                            tools:ignore="HardcodedText"
-                            android:layout_width="75dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="0"
-                            android:hint="Offset">
-
-                            <com.google.android.material.textfield.TextInputEditText
-                                android:id="@+id/settings_tiet_hours"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:inputType="number" />
-                        </com.google.android.material.textfield.TextInputLayout>
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Card"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:clipToPadding="false"
+                android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <com.google.android.material.slider.Slider
+                    android:id="@+id/settings_slider_time_offset"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_weight="1"
+                    android:value="0"
+                    android:valueFrom="-24"
+                    android:valueTo="24"
+                    app:labelBehavior="gone" />
 
-                    <TextView
-                        tools:ignore="HardcodedText"
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/settings_til_hours"
+                    android:layout_width="75dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0"
+                    android:hint="Offset"
+                    tools:ignore="HardcodedText">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/settings_tiet_hours"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="@dimen/text_container_margin"
-                        android:text="List loading delay"
-                        android:textAppearance="@style/Title" />
+                        android:inputType="number" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginHorizontal="@dimen/text_container_margin"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
+            </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/textView9"
-                            tools:ignore="HardcodedText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="0" />
+        </LinearLayout>
 
-                        <com.google.android.material.slider.RangeSlider
-                            android:id="@+id/settings_slider_list_loading_delay"
-                            app:labelBehavior="floating"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:stepSize="0.5"
-                            android:valueFrom="0"
-                            android:valueTo="10" />
+    </com.google.android.material.card.MaterialCardView>
 
-                        <TextView
-                            android:id="@+id/textView13"
-                            tools:ignore="HardcodedText"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="10" />
-                    </LinearLayout>
+    <com.google.android.material.card.MaterialCardView
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
 
-                </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-            </com.google.android.material.card.MaterialCardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_container_margin"
+                android:text="List loading delay"
+                android:textAppearance="@style/Title"
+                tools:ignore="HardcodedText" />
 
-            <com.norbert.koller.shared.customviews.SimpleCardButton
-                android:id="@+id/settings_scb_test_activity"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    tools:ignore="HardcodedText" />
+
+                <com.google.android.material.slider.RangeSlider
+                    android:id="@+id/settings_slider_list_loading_delay"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:stepSize="0.5"
+                    android:valueFrom="0"
+                    android:valueTo="10"
+                    app:labelBehavior="floating" />
+
+                <TextView
+                    android:id="@+id/textView13"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="10"
+                    tools:ignore="HardcodedText" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+            <com.norbert.koller.shared.customviews.SimpleCardButton
+                style="@style/CardBottom"
+                android:id="@+id/settings_scb_test_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 app:description="Hell yeah. An activity!"
                 app:text="Maybe open an activity" />
 
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
 </merge>

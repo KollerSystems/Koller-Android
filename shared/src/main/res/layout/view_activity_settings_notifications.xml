@@ -6,34 +6,26 @@
     android:layout_height="wrap_content">
 
 
-    <androidx.cardview.widget.CardView
-        style="@style/MainCard"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
 
-        <LinearLayout
-            style="@style/MainCardLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
 
             <com.norbert.koller.shared.customviews.SimpleCardButton
+                style="@style/CardTop"
                 android:id="@+id/notifics_full_settings"
                 custom:icon="@drawable/notifications"
                 custom:text="@string/notifications"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="wrap_content" />
 
             <com.norbert.koller.shared.customviews.SimpleCardButton
+                style="@style/CardBottom"
                 android:id="@+id/language_full_settings"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:visibility="gone"
                 custom:icon="@drawable/language"
                 custom:text="@string/language"
                 tools:visibility="visible" />
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+
 
 
 </merge>
