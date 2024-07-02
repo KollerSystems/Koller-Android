@@ -43,13 +43,17 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
     lateinit var swrl : SwipeRefreshLayout
 
+    open fun setupTransition(view : View){
+        ViewCompat.setTransitionName(view, "cardTransition_${id}position")
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(getLayout(), container, false)
-        ViewCompat.setTransitionName(view!!.rootView, "cardTransition_${id}position")
+        setupTransition(view.rootView)
         return view
     }
 

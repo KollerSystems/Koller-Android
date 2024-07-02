@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.transition.MaterialElevationScale
+import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.fragments.ListFragment
 
@@ -18,10 +19,7 @@ abstract class BaseRecyclerAdapterWithTransition() : BaseRecycleAdapter() {
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)
 
-        fragment = recyclerView.findFragment<ListFragment>()
-
-        fragment.exitTransition = null
-        fragment.reenterTransition = MaterialElevationScale(/* growing= */ true)
+        val fragment = (recyclerView.context as MainActivity).supportFragmentManager.fragments[0]
 
         fragment.postponeEnterTransition()
         (fragment.requireView() as ViewGroup).viewTreeObserver
@@ -29,6 +27,7 @@ abstract class BaseRecyclerAdapterWithTransition() : BaseRecycleAdapter() {
                 fragment.startPostponedEnterTransition()
                 true
             }
+
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
@@ -36,11 +35,7 @@ abstract class BaseRecyclerAdapterWithTransition() : BaseRecycleAdapter() {
         item as BaseData
         val transitionName = getTransitionName(item.getMainID())
         ViewCompat.setTransitionName(holder.itemView as MaterialCardView, transitionName)
-
-        afterBindViewHolder(holder, item, position)
     }
-
-    abstract fun afterBindViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int)
 
     fun getTransitionName(id : Int) : String{
         return "cardTransition_${id}position"

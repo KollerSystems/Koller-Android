@@ -8,9 +8,9 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.BaseProgramData
 
-abstract class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
+abstract class BaseProgramRecyclerAdapter() : BaseRecyclerAdapterWithTransition() {
 
-    abstract fun onItemPress(fragmentActivity: FragmentActivity, item : BaseProgramData)
+    abstract fun onItemPress(holder: RecyclerView.ViewHolder, item : BaseProgramData)
 
     override fun getViewType(): Int {
         return R.layout.view_user_item
@@ -26,6 +26,7 @@ abstract class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int) {
 
+        super.onBindViewHolder(holder, item, position)
 
         val context = holder.itemView.context
         holder as ViewHolder
@@ -42,7 +43,7 @@ abstract class BaseProgramRecyclerAdapter() : BaseRecycleAdapter() {
 
         holder.itemView.setOnClickListener {
 
-            onItemPress((holder.itemView.context as FragmentActivity), item)
+            onItemPress(holder, item)
 
 
         }

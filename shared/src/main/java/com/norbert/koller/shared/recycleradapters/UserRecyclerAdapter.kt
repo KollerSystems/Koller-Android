@@ -40,9 +40,9 @@ class UserRecyclerAdapter() : BaseRecyclerAdapterWithTransition() {
         return UserViewHolder(view)
     }
 
-    override fun afterBindViewHolder(holder: RecyclerView.ViewHolder, item : BaseData, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int) {
 
-
+        super.onBindViewHolder(holder, item, position)
 
         val context = holder.itemView.context
         holder as UserViewHolder

@@ -32,7 +32,9 @@ class RoomRecyclerAdapter() : BaseRecyclerAdapterWithTransition(){
         return nameParts[0][0] + ". " + nameParts[1]
     }
 
-    override fun afterBindViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+
+        super.onBindViewHolder(holder, item, position)
 
         holder as RoomsViewHolder
 

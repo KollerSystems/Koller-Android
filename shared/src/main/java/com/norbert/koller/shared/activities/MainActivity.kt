@@ -368,7 +368,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun addFragmentWithTransition(fragment: Fragment, view : View, name : String) : FragmentTransaction {
 
-        supportFragmentManager.fragments[0].exitTransition = MaterialElevationScale(/* growing= */ false)
+
 
         fragment.sharedElementEnterTransition = MaterialContainerTransform().apply {
             drawingViewId = R.id.main_fragment
