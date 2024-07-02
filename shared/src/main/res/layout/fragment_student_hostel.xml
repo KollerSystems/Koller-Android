@@ -38,45 +38,57 @@
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="none"
                 android:paddingLeft="@dimen/card_padding"
                 android:paddingRight="@dimen/card_padding"
+                android:singleLine="true"
                 android:text="@string/places"
                 app:icon="@drawable/room"
-                app:layout_flexGrow="1" />
+                app:layout_flexGrow="1"
+                app:layout_flexShrink="1" />
 
             <Button
                 android:id="@+id/student_hostel_button_users"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="none"
                 android:paddingLeft="@dimen/card_padding"
                 android:paddingRight="@dimen/card_padding"
+                android:singleLine="true"
                 android:text="@string/users"
                 app:icon="@drawable/people"
-                app:layout_flexGrow="1" />
+                app:layout_flexGrow="1"
+                app:layout_flexShrink="1" />
 
             <Button
                 android:id="@+id/button_study_groups"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="none"
                 android:paddingLeft="@dimen/card_padding"
                 android:paddingRight="@dimen/card_padding"
+                android:singleLine="true"
                 android:text="@string/study_groups"
                 app:icon="@drawable/rocket"
-                app:layout_flexGrow="1" />
+                app:layout_flexGrow="1"
+                app:layout_flexShrink="1" />
 
             <Button
                 android:id="@+id/button_base_programs"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:ellipsize="none"
                 android:paddingLeft="@dimen/card_padding"
                 android:paddingRight="@dimen/card_padding"
+                android:singleLine="true"
                 android:text="@string/base_programs"
                 android:visibility="gone"
                 app:icon="@drawable/base_program"
                 app:layout_flexGrow="1"
+                app:layout_flexShrink="1"
                 tools:visibility="visible" />
         </com.google.android.flexbox.FlexboxLayout>
 
