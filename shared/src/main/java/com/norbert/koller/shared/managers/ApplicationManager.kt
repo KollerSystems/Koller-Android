@@ -327,6 +327,8 @@ fun AppBarLayout.setupLandscape() : Button{
     val toolbar = layout.getChildAt(0) as androidx.appcompat.widget.Toolbar
     toolbar.titleMarginStart = ApplicationManager.convertDpToPixel(80, context)
 
+    (context as Activity).window.statusBarColor = context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
+
     return backButton
 }
 

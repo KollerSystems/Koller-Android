@@ -4,28 +4,21 @@ import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import android.app.Activity
 import android.content.res.Configuration
-import android.graphics.Color
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.Window
 import android.view.animation.AnimationUtils
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextSwitcher
 import android.widget.TextView
-import android.widget.ViewSwitcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.motion.widget.MotionLayout
-import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
@@ -33,13 +26,9 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.navigation.NavigationBarView
-import com.google.android.material.navigationrail.NavigationRailView
-import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
 import com.google.android.material.transition.MaterialElevationScale
@@ -48,18 +37,15 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.UserFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
-import com.norbert.koller.shared.managers.getColorOfPixel
+import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getStringResourceByName
-import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.managers.setupPortrait
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
-import org.w3c.dom.Text
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -166,6 +152,7 @@ abstract class MainActivity : AppCompatActivity() {
             backButton = findViewById(R.id.toolbar_exit)
             appImage = findViewById(R.id.Image_app_icon)
             appImage!!.setImageResource(getAppIcon())
+            window.statusBarColor = this.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
         }
 
         backButton.setOnClickListener{
