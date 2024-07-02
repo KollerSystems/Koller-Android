@@ -54,14 +54,18 @@
             style="@style/MainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:justifyContent="center">
+            app:justifyContent="center"
+            android:paddingStart="@dimen/full_card_padding"
+            android:paddingTop="@dimen/full_card_padding"
+            android:paddingEnd="@dimen/full_card_padding"
+            android:paddingBottom="@dimen/full_card_padding">
 
             <LinearLayout
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                app:layout_maxWidth="@dimen/tablet_max_width">
+                app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
                 <include
                     layout="@layout/view_activity_settings_developer"
