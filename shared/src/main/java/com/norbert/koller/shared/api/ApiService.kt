@@ -28,18 +28,21 @@ interface APIInterface {
         var loadingDelayFrom : Float = 0f
         var loadingDelayTo : Float = 0f
 
-        fun serverErrorPopup(context: Context?, errorCode: String? = "No error message"){
+        fun serverErrorPopup(context: Context?, errorCode: String? = "-", onDismiss : (() -> Unit)? = null){
             if(context == null) return
             MaterialAlertDialogBuilder(context)
-                .setTitle("Szerver hiba!")
-                .setMessage("Az applikáció és a szerver között hiba lépett fel.\n" +
-                        "Kérlek própád újra.\n" +
+                .setTitle("Sikertelen kapcsolódás!")
+                .setMessage("Az applikáció és a szerver közötti kapcsolódás sikertlen.\n" +
+                        "Kérlek própád újra.\nHiba: " +
                         errorCode)
                 .setPositiveButton(
                     context.getString(R.string.ok)
                 )
                 { _, _ ->
 
+                }
+                .setOnDismissListener {
+                    onDismiss?.invoke()
                 }
                 .show()
         }

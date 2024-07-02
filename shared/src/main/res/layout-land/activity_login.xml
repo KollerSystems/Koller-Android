@@ -40,7 +40,7 @@
             android:id="@+id/login_linear_login"
             layout="@layout/view_activity_login_body"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="wrap_content" />
 
 
         <com.google.android.material.progressindicator.CircularProgressIndicator

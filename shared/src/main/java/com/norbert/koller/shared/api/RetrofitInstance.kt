@@ -3,6 +3,7 @@ package com.norbert.koller.shared.api
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.google.gson.Gson
 import com.norbert.koller.shared.data.ErrorData
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -43,7 +44,7 @@ object RetrofitInstance {
             .create(APIInterface::class.java)
     }
 
-    fun communicate(lifecycleCoroutineScope: LifecycleCoroutineScope, functionToCall: suspend () -> Response<*>, onSuccess: (data : Any) -> Unit, onError: (error : String?, errorBody : ErrorData?) -> Unit){
+    fun communicate(lifecycleCoroutineScope: CoroutineScope, functionToCall: suspend () -> Response<*>, onSuccess: (data : Any) -> Unit, onError: (error : String?, errorBody : ErrorData?) -> Unit){
 
         lifecycleCoroutineScope.launch {
             val response : Response<*> = try{

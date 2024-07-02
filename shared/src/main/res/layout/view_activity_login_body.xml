@@ -3,16 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
->
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/full_card_padding"
         android:paddingTop="@dimen/full_card_padding">
+
         <TextView
             android:id="@+id/textView2"
             style="@style/MainTitleExpanded"
@@ -30,7 +30,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/full_card_padding"
             android:gravity="center"
             android:orientation="vertical">
 
@@ -44,9 +44,7 @@
                 app:counterOverflowTextAppearance="@style/Description"
                 app:counterTextAppearance="@style/Description"
                 app:errorEnabled="true"
-                app:errorTextAppearance="@style/Description"
-                app:helperText="@string/education_ID_hint"
-                app:helperTextTextAppearance="@style/Description">
+                app:errorTextAppearance="@style/Description">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tiet_ip"
@@ -58,14 +56,11 @@
                     android:textAppearance="@style/Title" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <android.widget.Space
-                android:layout_width="match_parent"
-                android:layout_height="5dp" />
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/login_inpl_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_container_margin"
                 android:hint="@string/prompt_password"
                 app:errorEnabled="true"
                 app:errorTextAppearance="@style/Description"
@@ -89,7 +84,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:layout_marginHorizontal="4dp"
-                android:layout_marginTop="-20sp"
+                android:layout_marginTop="-20dp"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
                 android:minWidth="0dp"
@@ -106,33 +101,33 @@
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_container_margin"
-                app:flexWrap="wrap">
+                android:layout_marginVertical="@dimen/spacing"
+                app:dividerDrawable="@drawable/divider_space"
+                app:flexWrap="wrap"
+                app:showDivider="middle">
 
                 <Button
                     android:id="@+id/login_button_no_account"
                     style="@style/ButtonOutline"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_container_margin"
                     android:text="@string/no_account_yet"
-                    app:layout_flexGrow="1" />
+                    app:layout_flexGrow="1"
+                    app:layout_flexShrink="1" />
 
                 <Button
                     android:id="@+id/login_button_login"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_container_margin"
                     android:enabled="false"
                     android:text="@string/login"
-                    app:layout_flexGrow="1" />
+                    app:layout_flexGrow="1"
+                    app:layout_flexShrink="1" />
             </com.google.android.flexbox.FlexboxLayout>
 
 
         </LinearLayout>
     </LinearLayout>
-
-
 
 
 </ScrollView>

@@ -16,6 +16,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -32,6 +34,8 @@ import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getColorOfPixel
+import com.norbert.koller.shared.viewmodels.LoginViewModel
+import com.norbert.koller.shared.viewmodels.MainActivityViewModel
 import com.stfalcon.imageviewer.common.extensions.isVisible
 import kotlinx.coroutines.launch
 import java.util.Calendar
@@ -44,19 +48,32 @@ open class LoginActivity : AppCompatActivity() {
     lateinit var inplID: TextInputLayout
     lateinit var buttonForgotPassword : Button
 
+    lateinit var viewModel: LoginViewModel
+
+    fun checkInputsRefreshButton(){
+        loginButton.isEnabled = (inplID.editText!!.text?.length ?: 0) > 0 && (inplPassword.editText!!.text?.length ?: 0) > 0
+    }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-
         setContentView(R.layout.activity_login)
 
+        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+
         val textVersion : TextView = findViewById(R.id.text_version)
-        textVersion.text = ApplicationManager.version
-
         val bottomView : View = findViewById(R.id.bottom_view)
-
         val isLandscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
+        loginButton = findViewById (R.id.login_button_login)
+        buttonNoAccount = findViewById (R.id.login_button_no_account)
+        inplID = findViewById(R.id.login_inpl_id)
+        inplPassword = findViewById(R.id.login_inpl_password)
+        val loginLayout : View = findViewById(R.id.login_linear_login)
+        val loadingBar : View = findViewById(R.id.login_loading)
+
+        textVersion.text = ApplicationManager.version
 
         if(!isLandscape){
             window.navigationBarColor = this.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow)
@@ -78,49 +95,9 @@ open class LoginActivity : AppCompatActivity() {
 
         }
 
-        loginButton = findViewById (R.id.login_button_login)
-        buttonNoAccount = findViewById (R.id.login_button_no_account)
-        inplID = findViewById(R.id.login_inpl_id)
-        inplPassword = findViewById(R.id.login_inpl_password)
-
-        fun checkInputsRefreshButton(){
-            loginButton.isEnabled = (inplID.editText!!.text?.length ?: 0) > 0 && (inplPassword.editText!!.text?.length ?: 0) > 0
-        }
 
         checkInputsRefreshButton()
 
-        inplID.editText!!.addTextChangedListener(object : TextWatcher {
-
-            override fun afterTextChanged(s: Editable) {}
-
-            override fun beforeTextChanged(s: CharSequence, start: Int,
-                                           count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int,
-                                       before: Int, count: Int) {
-                checkInputsRefreshButton()
-                inplID.error = ""
-            }
-        })
-
-        inplPassword.editText!!.addTextChangedListener(object : TextWatcher {
-
-            override fun afterTextChanged(s: Editable) {}
-
-            override fun beforeTextChanged(s: CharSequence, start: Int,
-                                           count: Int, after: Int) {
-            }
-
-            override fun onTextChanged(s: CharSequence, start: Int,
-                                       before: Int, count: Int) {
-                checkInputsRefreshButton()
-                inplPassword.error = ""
-            }
-        })
-
-        val loginLayout : View = findViewById(R.id.login_linear_login)
-        val loadingBar : View = findViewById(R.id.login_loading)
 
         fun changeLoadingStateTo(isEnabled : Boolean){
             loadingBar.isVisible = isEnabled
@@ -141,60 +118,10 @@ open class LoginActivity : AppCompatActivity() {
 
             if(ApplicationManager.isOnline(this)){
 
-
-
                 if((inplID.editText!!.text?.length ?: 0) > 0) {
 
-                    loginLayout.alpha = 0.25f
-                    changeLoadingStateTo(true)
-
                     val loginData = ApiLoginUsernameAndPasswordData("password", inplID.editText!!.text.toString(), inplPassword.editText!!.text.toString())
-
-
-                    RetrofitInstance.communicate(lifecycleScope, {RetrofitInstance.api.postLogin(loginData)},
-                        {
-                            it as LoginTokensResponseData
-                            LoginTokensData.instance = LoginTokensData(it.accessToken, Calendar.getInstance().timeInMillis + it.expiresIn-RetrofitInstance.timeout, it.refreshToken)
-
-                            lifecycleScope.launch {
-                                DataStoreManager.save(this@LoginActivity, LoginTokensData.instance!!)
-                            }
-
-
-                            RetrofitInstance.communicate(lifecycleScope, RetrofitInstance.api::getCurrentUser,
-                                {
-                                    UserData.instance = it as UserData
-
-                                    ApplicationManager.openMain.invoke(this@LoginActivity)
-                                    finish()
-                                },
-                                {errorMsg, errorBody ->
-                                    APIInterface.serverErrorPopup(this@LoginActivity, errorMsg)
-                                    returnLoginLayoutToNormal()
-                                })
-
-                        },
-                        {errorMsg, errorBody ->
-
-                            if(errorBody == null){
-                                APIInterface.serverErrorPopup(this@LoginActivity, errorBody?.error)
-                            }
-                            else{
-                                when(errorBody.error){
-                                    "invalid_username" ->{
-                                        inplID.error = getString(R.string.invalid_id)
-                                    }
-                                    "invalid_password" ->{
-                                        inplPassword.error = getString(R.string.invalid_password)
-                                    }
-                                    else -> {
-                                        APIInterface.serverErrorPopup(this@LoginActivity, errorBody.error)
-                                    }
-                                }
-                            }
-                            
-                            returnLoginLayoutToNormal()
-                        })
+                    viewModel.login(loginData)
 
                 }
                 else{
@@ -203,7 +130,7 @@ open class LoginActivity : AppCompatActivity() {
             }
             else{
                 MaterialAlertDialogBuilder(this@LoginActivity)
-                    .setTitle("Nincs internet")
+                    .setTitle("Nincs internet!")
                     .setIcon(R.drawable.no_internet)
                     .setPositiveButton(
                         getString(R.string.ok)
@@ -255,6 +182,91 @@ open class LoginActivity : AppCompatActivity() {
             return@setOnLongClickListener true
         }
 
+        viewModel.loading.observe(this){loading ->
+            if(loading){
+                loginLayout.alpha = 0.25f
+                changeLoadingStateTo(true)
+            }
+            else{
+                returnLoginLayoutToNormal()
+            }
+        }
+
+        viewModel.userData.observe(this){
+            lifecycleScope.launch {
+                DataStoreManager.save(this@LoginActivity, LoginTokensData.instance!!)
+            }
+
+            UserData.instance = it as UserData
+
+            ApplicationManager.openMain.invoke(this@LoginActivity)
+            finish()
+        }
+
+        viewModel.getUserError.observe(this){
+            if(it == null) return@observe
+
+            APIInterface.serverErrorPopup(this@LoginActivity, it){
+                viewModel.getUserError.value = null
+            }
+        }
+
+        viewModel.postLoginError.observe(this){
+            when(it){
+                "invalid_username" ->{
+                    inplID.error = getString(R.string.invalid_id)
+                }
+                "invalid_password" ->{
+                    inplPassword.error = getString(R.string.invalid_password)
+                }
+                "-" -> {
+                    APIInterface.serverErrorPopup(this@LoginActivity, it){
+                        viewModel.postLoginError.value = null
+                    }
+                }
+                null ->{
+                    inplID.error = null
+                    inplPassword.error = null
+                }
+            }
+        }
+
+    }
+
+    override fun onPostCreate(savedInstanceState: Bundle?) {
+        super.onPostCreate(savedInstanceState)
+
+        inplID.editText!!.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                checkInputsRefreshButton()
+                viewModel.postLoginError.value = null
+            }
+        })
+
+        inplPassword.editText!!.addTextChangedListener(object : TextWatcher {
+
+            override fun afterTextChanged(s: Editable) {}
+
+            override fun beforeTextChanged(s: CharSequence, start: Int,
+                                           count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence, start: Int,
+                                       before: Int, count: Int) {
+                checkInputsRefreshButton()
+                if(!inplPassword.error.isNullOrEmpty()) {
+                    viewModel.postLoginError.value = null
+                }
+            }
+        })
     }
 
 }
