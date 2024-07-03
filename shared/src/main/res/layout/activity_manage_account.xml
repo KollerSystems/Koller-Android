@@ -71,28 +71,74 @@
                 android:id="@+id/text_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/application_padding"
                 android:padding="@dimen/text_container_margin"
                 android:text="@string/unknown"
                 android:textAppearance="@style/MainTitle"
                 app:layout_maxWidth="@dimen/tablet_max_width" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Személyes adatok kezelése"
+                style="@style/CategoryCardNameBald"/>
 
             <com.norbert.koller.shared.customviews.SimpleCardButton
-                android:id="@+id/scb_personal"
+                android:id="@+id/scb_student"
                 style="@style/CardTop"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                custom:icon="@drawable/data"
-                custom:text="Személyes adatok kezelése" />
+                app:text="Te / Tanuló"
+                app:icon="@drawable/user" />
 
             <com.norbert.koller.shared.customviews.SimpleCardButton
-                android:id="@+id/scb_password"
+                android:id="@+id/scb_caretaker"
+                style="@style/CardMiddle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/parent"
+                app:text="Gondviselő" />
+
+            <com.norbert.koller.shared.customviews.SimpleCardButton
+                android:id="@+id/scb_close_relative"
+                style="@style/CardMiddle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/close_person"
+                app:text="Közeli rokon" />
+
+            <com.norbert.koller.shared.customviews.SimpleCardButton
                 style="@style/CardBottom"
+                android:id="@+id/scb_school"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:icon="@drawable/building"
+                app:text="@string/school" />
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Biztonság"
+                style="@style/CategoryCardNameBald"/>
+            <com.norbert.koller.shared.customviews.SimpleCardButton
+                android:id="@+id/scb_password"
+                style="@style/CardSingle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:icon="@drawable/key"
                 custom:text="Jelszó módosítása" />
+
+            <com.norbert.koller.shared.customviews.SimpleCardButton
+                style="@style/CardBottom"
+                android:id="@+id/scb_devices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                app:icon="@drawable/devices"
+                app:text="@string/devices"
+                tools:visibility="visible" />
 
 
         </com.google.android.flexbox.FlexboxLayout>

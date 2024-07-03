@@ -120,13 +120,6 @@ open class ProfileFragment : BottomSheetDialogFragment() {
             this.dismiss()
         }
 
-        val cardDevices: View = view.findViewById(R.id.profile_card_devices)
-
-        cardDevices.setOnClickListener{
-            val intent = Intent(view.context, DevicesActivity::class.java)
-            startActivity(intent)
-        }
-
         val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
 
         fbtnSettings.setOnClickListener{

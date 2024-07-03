@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="registration_done_description">Adataidat sikeresen rögzítettük!\\nIgyekezni fogunk úgy összeállítani a szobaközösségedet, hogy az mindőtöknek a legjobb legyen.\\nKérlek most várd meg, míg Email-ben értesítünk felvételedről.</string>
+    <string name="registration_done_description">Adataidat sikeresen rögzítettük!\nIgyekezni fogunk úgy összeállítani a szobaközösségedet, hogy az mindőtöknek a legjobb legyen.\nKérlek most várd meg, míg Email-ben értesítünk felvételedről.</string>
 
 
     <string name="you_are_done">Elkészültél!</string>
@@ -355,7 +355,7 @@
     <string name="create_new_x_first_part">" "</string>
     <string name="recommended">Ajánlott</string>
     <string name="purpose">Célja</string>
-    <string name="devices_menu_description">Itt látható az összes olyan eszköz, amelyben be vagy jelentkezve a Kollerbe.\\n\\nHa az itt szereplő eszközök között van olyan, amit nem imsersz meg, jelentkezz ki abból, és azonnal változtasd meg a jelszavadat.</string>
+    <string name="devices_menu_description">Itt látható az összes olyan eszköz, amelyben be vagy jelentkezve a Kollerbe.\n\nHa az itt szereplő eszközök között van olyan, amit nem imsersz meg, jelentkezz ki abból, és azonnal változtasd meg a jelszavadat.</string>
     <string name="room_number">Szobaszám</string>
     <string name="institutional_data">Intézményi adatok</string>
     <string name="unknown">Ismeretlen</string>
@@ -384,7 +384,7 @@
     <string name="institiution_id_description">A kollégiumod weboldalán a jelentkezés menüpontban találsz egy kódot. Azt másold be az alábbi mezőbe.</string>
     <string name="institutions_id">Intézmény azonosító</string>
     <string name="litle_about_you">Most pedig egy kicsit rólad!</string>
-    <string name="happy_you_choose_us">Örülünk hogy a mi kollégiumunkat választottad!\\nMost pedig kérlek szánj ránk egy kis időt, és add meg a szükséges adataidat.</string>
+    <string name="happy_you_choose_us">Örülünk hogy a mi kollégiumunkat választottad!\nMost pedig kérlek szánj ránk egy kis időt, és add meg a szükséges adataidat.</string>
     <string name="password_for_account">Jelszó a fiókodhoz</string>
     <string name="make_pasword_strong">Kérlek ügyelj arra, hogy minél erősebb legyen.</string>
     <string name="password">Jelszó</string>

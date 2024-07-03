@@ -5,15 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <com.norbert.koller.shared.customviews.SimpleCardButton
-        android:id="@+id/profile_card_devices"
-        style="@style/CardMiddle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:visibility="gone"
-        app:icon="@drawable/devices"
-        app:text="@string/devices"
-        tools:visibility="visible" />
+
 
     <com.norbert.koller.shared.customviews.SimpleCardButton
         android:id="@+id/profile_fbtn_settings"

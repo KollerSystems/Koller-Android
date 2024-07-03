@@ -14,7 +14,6 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.skydoves.androidveil.VeilLayout
 
-
 open class SimpleCardButton(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
 
     private var mText: String = ""
