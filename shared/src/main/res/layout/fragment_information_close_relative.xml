@@ -14,16 +14,6 @@
         android:padding="@dimen/full_card_padding">
 
         <TextView
-            android:id="@+id/textView13"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/full_card_padding"
-            android:drawablePadding="@dimen/text_container_margin"
-            android:text="@string/optional"
-            android:textAppearance="@style/Description"
-            app:drawableLeftCompat="@drawable/info" />
-
-        <TextView
             android:id="@+id/textView51"
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
@@ -116,8 +106,8 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="2"
 
                             android:hint="@string/settlement">
 
@@ -130,11 +120,12 @@ android:layout_marginBottom="@dimen/text_container_margin"
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/number"
-                            android:layout_width="100dp"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
 
+                            android:layout_weight="1"
                             android:hint="@string/zip_code">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -157,8 +148,8 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="2"
 
                             android:hint="@string/street">
 
@@ -171,11 +162,12 @@ android:layout_marginBottom="@dimen/text_container_margin"
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/housenum"
-                            android:layout_width="100dp"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
 
+                            android:layout_weight="1"
                             android:hint="@string/house_number">
 
                             <com.google.android.material.textfield.TextInputEditText

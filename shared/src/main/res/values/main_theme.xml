@@ -251,7 +251,7 @@
     <style name="CategoryIcon" parent="@style/Icon">
         <item name="android:layout_width">30dp</item>
         <item name="android:layout_height">30dp</item>
-        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginVertical">15dp</item>
         <item name="android:adjustViewBounds">true</item>
         <item name="android:alpha">0.666</item>
         <item name="android:layout_marginEnd">@dimen/spacing</item>

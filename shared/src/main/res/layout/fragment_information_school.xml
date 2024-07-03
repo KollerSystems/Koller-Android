@@ -87,7 +87,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
                             android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
 
                             android:enabled="false"
                             android:hint="@string/settlement">
@@ -101,11 +101,12 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/number"
-                            android:layout_width="100dp"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
                             android:layout_marginBottom="@dimen/text_container_margin"
 
+                            android:layout_weight="1"
                             android:enabled="false"
                             android:hint="@string/zip_code">
 
@@ -130,7 +131,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
                             android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
+                            android:layout_weight="2"
 
                             android:enabled="false"
                             android:hint="@string/street">
@@ -144,11 +145,12 @@
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/housenum"
-                            android:layout_width="100dp"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
                             android:layout_marginBottom="@dimen/text_container_margin"
 
+                            android:layout_weight="1"
                             android:enabled="false"
                             android:hint="@string/house_number">
 
@@ -186,7 +188,8 @@
                 <com.norbert.koller.shared.customviews.AttachView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_container_margin" />
+                    android:layout_margin="@dimen/text_container_margin"
+                    app:title="Iskolalátogatási igazolás"/>
 
             </LinearLayout>
 
@@ -373,6 +376,7 @@
                         android:layout_height="match_parent"
                         android:layout_margin="@dimen/text_container_margin"
                         android:visibility="gone"
+                        app:title="Érettségi bizonyítvány"
                         tools:visibility="visible" />
                 </LinearLayout>
 
@@ -437,7 +441,8 @@
                 <com.norbert.koller.shared.customviews.AttachView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/text_container_margin" />
+                    android:layout_margin="@dimen/text_container_margin"
+                    app:title="Iskolai bizonyítvány"/>
 
             </LinearLayout>
 
@@ -527,7 +532,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
                     android:layout_marginBottom="@dimen/text_container_margin"
-                    android:hint="@string/phone_number">
+                    android:hint="@string/phone_number"
+                    app:helperText="@string/optional">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditText"

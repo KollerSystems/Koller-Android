@@ -93,16 +93,26 @@ android:layout_marginBottom="@dimen/text_container_margin"
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:orientation="vertical">
+
+                    <CheckBox
+                        android:id="@+id/checkBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginHorizontal="@dimen/text_container_margin"
+                        android:checked="true"
+                        android:paddingVertical="@dimen/spacing"
+                        android:text="Lakcím megegyezik a diákéval" />
 
                     <com.google.android.material.textfield.TextInputLayout
                         android:id="@+id/country"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
-
-                        android:hint="@string/country">
+                        android:layout_marginBottom="@dimen/text_container_margin"
+                        android:hint="@string/country"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"
@@ -112,18 +122,20 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:baselineAligned="false"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/city"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="2"
 
                             android:hint="@string/settlement">
 
@@ -136,11 +148,12 @@ android:layout_marginBottom="@dimen/text_container_margin"
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/number"
-                            android:layout_width="100dp"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
 
+                            android:layout_weight="1"
                             android:hint="@string/zip_code">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -153,18 +166,20 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout5"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:baselineAligned="false"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/addres"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
-                            android:layout_weight="1"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="2"
 
                             android:hint="@string/street">
 
@@ -177,11 +192,12 @@ android:layout_marginBottom="@dimen/text_container_margin"
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/housenum"
-                            android:layout_width="100dp"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
 
+                            android:layout_weight="1"
                             android:hint="@string/house_number">
 
                             <com.google.android.material.textfield.TextInputEditText
@@ -193,17 +209,19 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/linearLayout6"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:baselineAligned="false"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputLayout
                             android:id="@+id/floor"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_weight="1"
 
                             android:hint="@string/floor_level"
@@ -221,7 +239,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
                             android:layout_weight="1"
 
                             android:hint="@string/door"
@@ -234,15 +252,6 @@ android:layout_marginBottom="@dimen/text_container_margin"
                                 android:inputType="textPostalAddress" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
-
-                    <Button
-                        android:layout_marginTop="@dimen/text_container_margin"
-                        android:id="@+id/button3"
-                        style="@style/ButtonTonalIcon"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Diák címének beillesztése"
-                        app:icon="@drawable/duplicate" />
 
                 </LinearLayout>
 

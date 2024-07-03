@@ -19,18 +19,12 @@ import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBas
 import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
 import com.norbert.koller.shared.recycleradapters.ListItem
 
-class AttachView : ConstraintLayout {
+class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(context, attrs) {
 
-    constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
-        context!!,
-        attrs,
-        defStyle
-    )
-
-    constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
-    constructor(context: Context?) : super(context!!)
+    var mTitle : String = ""
 
     val card : MaterialCardView
+    val textTitle : TextView
     val textTip : TextView
     val image : ImageView
     val buttons : FlexboxLayout
@@ -39,14 +33,29 @@ class AttachView : ConstraintLayout {
 
     init {
 
+        val typedArray = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.attachView,
+            0, 0
+        )
+
+        try {
+            mTitle = typedArray.getString(R.styleable.attachView_title) ?: ""
+        } finally {
+            typedArray.recycle()
+        }
+
         View.inflate(context, R.layout.view_attach, this)
 
         card = findViewById(R.id.card)
+        textTitle = findViewById(R.id.title)
         textTip = findViewById(R.id.text)
         image = findViewById(R.id.image)
         buttons = findViewById(R.id.fl_buttons)
         buttonRemove = findViewById(R.id.button_remove)
         buttonChange = findViewById(R.id.button_change)
+
+        textTitle.text = mTitle
 
         card.setOnClickListener{
             val fragmentManager = (context as AppCompatActivity)

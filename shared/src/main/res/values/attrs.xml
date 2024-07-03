@@ -71,5 +71,9 @@
         <attr name="stroke_width" format="dimension" />
     </declare-styleable>
 
+    <declare-styleable name="attachView">
+        <attr name="title" format="string" />
+    </declare-styleable>
+
 
 </resources>

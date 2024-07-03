@@ -2,7 +2,7 @@
 <resources>
 
     <string name="you_are_done">You\'re done!</string>
-    <string name="registration_done_description">We have successfully recorded your data!\\nWe will try to organize your room community in such a way that it is the best for all of you.\\nPlease wait now while we notify you by email about your admission.</string>
+    <string name="registration_done_description">We have successfully recorded your data!\nWe will try to organize your room community in such a way that it is the best for all of you.\nPlease wait now while we notify you by email about your admission.</string>
 
 
     <string name="prompt_password">Password</string>
@@ -317,7 +317,7 @@
     <string name="loading">Loading...</string>
     <string name="recommended">Recommended</string>
     <string name="purpose">Purpose</string>
-    <string name="devices_menu_description">Here you can see all the devices in which you are logged in to Koller.\\n\\nIf there are any devices listed here that you do not recognize, log out of them and change your password immediately.</string>
+    <string name="devices_menu_description">Here you can see all the devices in which you are logged in to Koller.\n\nIf there are any devices listed here that you do not recognize, log out of them and change your password immediately.</string>
     <string name="room_number">Room number</string>
     <string name="institutional_data">Institutional data</string>
     <string name="unknown">Unknown</string>
@@ -347,7 +347,7 @@
     <string name="institiution_id_description">You can find a code in the application menu on the website of your student hostel. Copy that into the field below.</string>
     <string name="institutions_id">Institiution ID</string>
     <string name="litle_about_you">Now a little about you!</string>
-    <string name="happy_you_choose_us">We are glad that you have chosen our dormitory!\\nNow please take some time for us and enter your necessary information.</string>
+    <string name="happy_you_choose_us">We are glad that you have chosen our dormitory!\nNow please take some time for us and enter your necessary information.</string>
     <string name="password_for_account">Password for your account</string>
     <string name="make_pasword_strong">Please make it as strong as possible.</string>
     <string name="password">Password</string>
