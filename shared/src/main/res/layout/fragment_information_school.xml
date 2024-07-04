@@ -186,10 +186,11 @@
                     app:srcCompat="@drawable/check_circle" />
 
                 <com.norbert.koller.shared.customviews.AttachView
+                    android:id="@+id/attach_school"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_container_margin"
-                    app:title="Iskolalátogatási igazolás"/>
+                    app:title="Iskolalátogatási igazolás" />
 
             </LinearLayout>
 
@@ -439,6 +440,7 @@
                     app:srcCompat="@drawable/book" />
 
                 <com.norbert.koller.shared.customviews.AttachView
+                    android:id="@+id/attach_school_certificate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="@dimen/text_container_margin"

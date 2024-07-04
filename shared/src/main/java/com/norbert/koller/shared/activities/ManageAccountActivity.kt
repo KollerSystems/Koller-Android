@@ -9,6 +9,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customviews.RoundedBadgeImageView
 import com.norbert.koller.shared.customviews.SimpleCardButton
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.setup
 import com.stfalcon.imageviewer.StfalconImageViewer
 
@@ -43,27 +44,27 @@ class ManageAccountActivity : AppCompatActivity() {
 
         val scbStudent : SimpleCardButton = findViewById(R.id.scb_student)
         scbStudent.setOnClickListener{
-
+            ApplicationManager.openActivity(this, InformationStudentActivity::class.java)
         }
 
         val scbCaretaker : SimpleCardButton = findViewById(R.id.scb_caretaker)
         scbCaretaker.setOnClickListener{
-
+            ApplicationManager.openActivity(this, InformationCaretakerActivity::class.java)
         }
 
         val scbCloseRelative : SimpleCardButton = findViewById(R.id.scb_close_relative)
         scbCloseRelative.setOnClickListener{
-
+            ApplicationManager.openActivity(this, InformationCloseRelativeActivity::class.java)
         }
 
         val scbSchool : SimpleCardButton = findViewById(R.id.scb_school)
         scbSchool.setOnClickListener{
-
+            ApplicationManager.openActivity(this, InformationSchoolActivity::class.java)
         }
 
         val scbPassword : SimpleCardButton = findViewById(R.id.scb_password)
         scbPassword.setOnClickListener{
-
+            ApplicationManager.openActivity(this, ChangePasswordActivity::class.java)
         }
     }
 }

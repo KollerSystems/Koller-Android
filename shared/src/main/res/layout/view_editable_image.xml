@@ -41,8 +41,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|top"
-        android:backgroundTint="?attr/colorTertiary"
+        android:layout_marginTop="@dimen/text_container_margin"
+        android:layout_marginEnd="@dimen/text_container_margin"
+        android:backgroundTint="?attr/colorErrorContainer"
         app:icon="@drawable/close_thick"
-        app:iconTint="?attr/colorOnTertiary" />
+        app:iconTint="?attr/colorOnErrorContainer" />
 
 </com.google.android.material.card.MaterialCardView>

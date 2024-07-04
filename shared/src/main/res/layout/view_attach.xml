@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:visibility="gone"
         app:srcCompat="@drawable/hills" />
 
@@ -62,18 +63,17 @@
 
         <Button
             android:id="@+id/button_remove"
-            style="@style/ButtonTonalIcon"
+            style="@style/IconButtonTonal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Törlés"
             app:icon="@drawable/close" />
 
         <Button
             android:id="@+id/button_change"
-            style="@style/ButtonOutlineIcon"
+            style="@style/ButtonTonalIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Új kép"
+            android:text="Másik kép"
             app:icon="@drawable/add_image" />
 
     </com.google.android.flexbox.FlexboxLayout>

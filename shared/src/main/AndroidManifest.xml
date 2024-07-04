@@ -11,6 +11,7 @@
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:enableOnBackInvokedCallback="false"
@@ -32,6 +33,21 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.InformationStudentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.InformationCaretakerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.InformationCloseRelativeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.InformationSchoolActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.ChangePasswordActivity"
+            android:exported="false" />
 
         <!-->
         <activity
