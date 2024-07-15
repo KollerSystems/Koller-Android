@@ -72,10 +72,10 @@
                 android:duplicateParentState="false"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:layoutDirection="rtl"
                 android:text="@string/next"
                 app:cornerRadius="0dp"
-                app:icon="@drawable/arrow_right"
+                app:icon="@drawable/arrow_forward"
+                app:iconGravity="textEnd"
                 app:toggleCheckedStateOnClick="false"
                 tools:ignore="ButtonStyle" />
         </LinearLayout>

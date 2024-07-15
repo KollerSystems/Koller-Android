@@ -31,7 +31,7 @@
             android:background="?attr/colorPrimary"
             android:padding="@dimen/text_container_margin"
             android:text="@string/cover"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
             android:textColor="?android:attr/colorBackground" />
     </com.google.android.material.card.MaterialCardView>
 

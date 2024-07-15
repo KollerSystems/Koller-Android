@@ -41,6 +41,6 @@
 
         android:text="-"
 
-        android:textAlignment="textEnd" />
+        android:gravity="end" />
 
 </LinearLayout>

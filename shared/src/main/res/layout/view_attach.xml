@@ -32,7 +32,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start|top"
         android:paddingVertical="17dp"
-        android:paddingStart="16dp"
+        android:paddingHorizontal="16dp"
         android:text="Érettségi bizonyítvány"
         android:textColor="?attr/colorOnSurface" />
 
@@ -42,11 +42,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:drawableTop="@drawable/add_image"
         android:drawablePadding="@dimen/text_container_margin"
         android:text="Nyomj ide a kép feltöltéséhez"
-        android:textAlignment="center"
-        android:textAppearance="@style/Description" />
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/Description"
+        app:drawableTopCompat="@drawable/add_image" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:id="@+id/fl_buttons"

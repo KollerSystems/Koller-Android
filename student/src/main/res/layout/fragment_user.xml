@@ -53,9 +53,11 @@
                     style="@style/CardSingle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:visibility="gone"
                     custom:description="@string/report_desc"
                     custom:icon="@drawable/flag"
-                    custom:text="@string/report" />
+                    custom:text="@string/report"
+                    tools:visibility="visible" />
 
 
             </com.google.android.flexbox.FlexboxLayout>

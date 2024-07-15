@@ -32,7 +32,7 @@
             android:layout_marginRight="-5dp"
             android:layout_marginBottom="@dimen/text_container_margin"
             tools:text="Katona\nMárton"
-            android:textAlignment="center" />
+            android:gravity="center_horizontal"/>
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

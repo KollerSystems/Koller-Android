@@ -24,7 +24,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Andrásosfi Norberto"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
             android:textAppearance="@style/Title" />
 
         <TextView
@@ -33,9 +33,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing"
             android:drawablePadding="@dimen/text_container_margin"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:text="Kint"
-            android:textAlignment="center"
             app:drawableLeftCompat="@drawable/out" />
 
         <TextView
@@ -44,9 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing"
             android:drawablePadding="@dimen/text_container_margin"
-            android:gravity="center_vertical"
+            android:gravity="center"
             android:text="Engedéllyel"
-            android:textAlignment="center"
             android:textAppearance="@style/Description" />
 
         <TextView
@@ -55,7 +53,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/text_container_margin"
             android:text="@string/presence_colon"
-            android:textAlignment="center" />
+            android:gravity="center_horizontal"/>
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipgroup_presence"

@@ -112,6 +112,6 @@
         android:layout_height="wrap_content"
         android:minHeight="@dimen/card_padding"
         android:text="@string/version"
-        android:textAlignment="center"
+        android:gravity="center_horizontal"
         android:layout_marginBottom="@dimen/text_container_margin"/>
 </merge>

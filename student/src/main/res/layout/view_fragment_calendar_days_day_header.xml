@@ -23,7 +23,7 @@
             android:paddingTop="@dimen/text_container_margin"
             android:paddingBottom="@dimen/text_container_margin"
             android:text="@string/dummy_date_MMddw"
-            android:textAlignment="center" />
+            android:gravity="center_horizontal"/>
 
         <View
             android:id="@+id/view"
@@ -46,10 +46,10 @@
                 style="@style/Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
+                android:layout_gravity="center"
                 android:layout_weight="1"
                 android:text="@string/nearest_duty_teacher"
-                android:textAlignment="center" />
+                />
 
             <ImageView
                 android:layout_width="18dp"

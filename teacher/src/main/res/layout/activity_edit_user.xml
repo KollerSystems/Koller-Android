@@ -90,7 +90,7 @@ tools:context=".activities.EditUserActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@android:string/unknownName"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
             android:textAppearance="@style/MainTitle"
             android:layout_marginBottom="@dimen/spacing"/>
 

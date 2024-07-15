@@ -21,7 +21,7 @@
             <com.google.android.flexbox.FlexboxLayout
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical"
@@ -46,17 +46,17 @@
                     tools:visibility="visible" />
 
 
+                <com.norbert.koller.shared.customviews.SimpleCardButton
+                    style="@style/CardSingle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    custom:description="@string/report_room_desc"
+                    custom:icon="@drawable/flag"
+                    custom:text="@string/report"
+                    tools:visibility="visible">
 
-                        <com.norbert.koller.shared.customviews.SimpleCardButton
-                            style="@style/CardSingle"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            custom:description="@string/report_room_desc"
-                            custom:icon="@drawable/flag"
-                            custom:text="@string/report">
-
-                        </com.norbert.koller.shared.customviews.SimpleCardButton>
-
+                </com.norbert.koller.shared.customviews.SimpleCardButton>
 
 
             </com.google.android.flexbox.FlexboxLayout>

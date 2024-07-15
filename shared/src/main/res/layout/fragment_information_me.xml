@@ -108,7 +108,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:paddingHorizontal="16dp"
                         android:paddingVertical="17dp"
                         android:text="Nő"
-                        android:textAlignment="center"
+                        android:gravity="center_horizontal"
                         android:textSize="14sp"
                         app:shapeAppearance="@style/OverlayRoundedLeft" />
 
@@ -121,7 +121,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:paddingVertical="17dp"
                         android:paddingHorizontal="16dp"
                         android:text="Férfi"
-                        android:textAlignment="center"
+                        android:gravity="center_horizontal"
                         android:textSize="14sp"
                         app:shapeAppearance="@style/OverlayRoundedRight" />
 

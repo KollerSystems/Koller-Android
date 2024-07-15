@@ -55,7 +55,7 @@
                     android:alpha="0.666"
                     android:minWidth="0dp"
                     app:cornerRadius="1000dp"
-                    app:icon="@drawable/arrow_back"
+                    app:icon="@drawable/arrow_left"
                     app:iconGravity="textStart"
                     app:iconPadding="0dp"
                     app:iconSize="25dp"
@@ -277,7 +277,7 @@
                                 android:id="@+id/create_new_post_text_view_image_limit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:textAlignment="textEnd"
+                                android:gravity="end"
                                 android:textAppearance="@style/Description"
                                 tools:text="25/25" />
 

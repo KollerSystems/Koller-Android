@@ -23,7 +23,6 @@
             android:layout_height="@dimen/card_icon"
             android:gravity="center"
             android:text="n."
-            android:textAlignment="center"
             android:textSize="40sp"
             tools:ignore="HardcodedText" />
 
@@ -63,8 +62,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:lineSpacingExtra="-5sp"
-            android:text="@string/time"
-            android:textAlignment="center" />
+            android:text="@string/time" />
 
     </LinearLayout>
 

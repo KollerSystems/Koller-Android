@@ -26,7 +26,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/you_are_done"
-                android:textAlignment="center"
+                android:gravity="center_horizontal"
                 android:textAllCaps="false"
                 android:textAppearance="@style/MainTitleExpanded"
                 android:textSize="40sp" />
@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:text="@string/registration_done_description"
-                android:textAlignment="center" />
+                android:gravity="center_horizontal"/>
 
             <Button
                 android:id="@+id/button_exit"
@@ -54,8 +54,8 @@
         android:id="@+id/textView63"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="-35dp"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="-35dp"
         android:layout_marginBottom="-35dp"
         android:alpha="0.5"
 

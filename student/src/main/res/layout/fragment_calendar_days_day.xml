@@ -81,7 +81,7 @@
                     android:layout_marginStart="@dimen/spacing"
                     android:lineSpacingExtra="-5sp"
                     android:text="6:00"
-                    android:textAlignment="center" />
+                    android:gravity="center_horizontal"/>
 
             </LinearLayout>
 
@@ -117,7 +117,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="6:00"
-                    android:textAlignment="textEnd" />
+                    android:gravity="end" />
 
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
@@ -169,7 +169,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="16:00"
-                    android:textAlignment="textEnd" />
+                    android:gravity="end" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -641,7 +641,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="19:15"
-                    android:textAlignment="textEnd" />
+                    android:gravity="end" />
 
 
                 <LinearLayout
@@ -682,7 +682,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="22:00"
-                    android:textAlignment="textEnd" />
+                    android:gravity="end" />
             </LinearLayout>
 
 
@@ -733,7 +733,7 @@
                     android:layout_marginStart="@dimen/spacing"
                     android:lineSpacingExtra="-5sp"
                     android:text="22:00"
-                    android:textAlignment="center" />
+                    android:gravity="center_horizontal"/>
 
             </LinearLayout>
 

@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/everything_provided_so_far"
-            android:textAlignment="center"
+            android:gravity="center_horizontal"
             android:textAppearance="@style/MainTitle" />
 
         <TextView
@@ -26,7 +26,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/everything_provided_so_far_description"
-            android:textAlignment="center" />
+            android:gravity="center_horizontal"/>
 
         <TextView
             style="@style/CategoryCardNameBald"

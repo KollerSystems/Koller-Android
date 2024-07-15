@@ -83,7 +83,7 @@
                                             android:id="@+id/home_text_lessons_number"
                                             style="@style/IconLikeText"
                                             android:text="n"
-                                            android:textAlignment="center"
+                                            android:gravity="center_horizontal"
                                             android:textSize="38sp" />
 
                                         <LinearLayout
@@ -115,7 +115,7 @@
                                                     android:layout_width="match_parent"
                                                     android:layout_height="wrap_content"
                                                     android:text="@string/description"
-                                                    android:textAlignment="textStart" />
+                                                    android:gravity="start" />
                                             </LinearLayout>
 
                                             <TextView
@@ -125,8 +125,7 @@
                                                 android:layout_height="match_parent"
                                                 android:gravity="center"
                                                 android:lineSpacingExtra="-5sp"
-                                                android:text="@string/hours"
-                                                android:textAlignment="center" />
+                                                android:text="@string/hours" />
 
                                         </LinearLayout>
 

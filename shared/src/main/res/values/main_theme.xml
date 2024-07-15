@@ -141,6 +141,11 @@
         <item name="android:paddingStart">16dp</item>
     </style>
 
+    <style name="ButtonIconReverse" parent="@style/Button">
+        <item name="android:paddingEnd">16dp</item>
+        <item name="iconGravity">textEnd</item>
+    </style>
+
     <style name="ButtonOutlineIcon" parent="@style/ButtonOutline">
         <item name="android:paddingStart">16dp</item>
         <item name="iconTint">?android:attr/colorPrimary</item>
@@ -269,6 +274,8 @@
 
     <style name="DefaultTextView">
         <item name="android:textAppearance">@style/Text</item>
+        <item name="android:gravity">start</item>
+        <item name="android:textDirection">locale</item>
     </style>
 
     <style name="ChipFilter" parent="@style/Widget.Material3.Chip.Filter">
@@ -319,7 +326,7 @@
     <style name="DialogTitle" parent="MainTitle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">center</item>
     </style>
 
 
@@ -361,6 +368,7 @@
     <style name="Text">
         <item name="android:textSize">@dimen/text</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
+
     </style>
 
     <style name="CategoryCardName" parent="@style/Text">
@@ -633,10 +641,10 @@
         <item name="android:layout_height">@dimen/toolbar_button_size</item>
         <item name="android:layout_margin">@dimen/text_container_margin</item>
         <item name="cornerRadius">999dp</item>
-        <item name="icon">@drawable/arrow_back</item>
+        <item name="icon">@drawable/arrow_left</item>
         <item name="iconGravity">textStart</item>
         <item name="iconPadding">0dp</item>
-        <item name="iconSize">25dp</item>
+        <item name="iconSize">30dp</item>
         <item name="iconTint">?attr/colorForeground066</item>
         <item name="minWidth">0dp</item>
     </style>

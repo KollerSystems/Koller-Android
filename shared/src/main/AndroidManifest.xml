@@ -17,7 +17,7 @@
         android:enableOnBackInvokedCallback="false"
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu"
-        android:screenOrientation="portrait">
+        android:supportsRtl="true">
 
         <receiver android:name=".broadcastreceivers.MyNotificationPublisher"
             android:enabled="true"/>
@@ -52,9 +52,6 @@
         <!-->
         <activity
             android:name=".activities.DevicesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".activities.FeedbackActivity"
             android:exported="false" />
         <activity
             android:name=".activities.TestActivity"
