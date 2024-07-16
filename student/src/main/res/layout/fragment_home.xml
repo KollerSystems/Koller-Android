@@ -25,36 +25,29 @@
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@null"
                 android:orientation="vertical"
-                android:paddingBottom="80dp">
+                android:paddingBottom="80dp"
+                android:paddingStart="@dimen/full_card_padding"
+                android:paddingEnd="@dimen/full_card_padding">
 
                 <TextView
                     android:id="@id/home_text_now"
-                    style="@style/CategoryCardName"
+                    style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="15dp"
                     android:text="@string/now" />
 
-                <androidx.cardview.widget.CardView
-                    style="@style/MainCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <LinearLayout
-                        style="@style/MainCardLayout"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/home_card_outgoing"
-                            style="@style/Card"
+                            style="@style/CardSingle"
                             android:layout_width="match_parent"
                             android:clickable="true"
                             android:visibility="gone"
                             app:contentPadding="0dp"
-                            tools:visibility="visible">
+                            tools:visibility="visible"
+                            >
 
                             <com.google.android.material.card.MaterialCardView
                                 android:layout_width="match_parent"
@@ -95,7 +88,7 @@
                                     android:layout_height="@dimen/card_icon"
                                     android:layout_gravity="center_vertical"
                                     android:adjustViewBounds="true"
-                                    android:src="@drawable/tree"
+                                    android:src="@drawable/moon"
                                     app:tint="?android:attr/colorForeground" />
 
                                 <LinearLayout
@@ -129,7 +122,7 @@
 
                         <com.google.android.material.card.MaterialCardView
                             android:id="@+id/home_card_lessons"
-                            style="@style/Card"
+                            style="@style/CardSingle"
                             android:layout_width="match_parent"
                             android:clickable="true"
                             android:orientation="vertical"
@@ -161,69 +154,28 @@
 
                         </com.google.android.material.card.MaterialCardView>
 
-                    </LinearLayout>
-                </androidx.cardview.widget.CardView>
 
                 <TextView
-                    style="@style/CategoryCardName"
+                    style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_marginStart="@dimen/card_padding"
                     android:layout_weight="1"
                     android:text="@string/today" />
 
                 <androidx.cardview.widget.CardView
-                    style="@style/MainCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-
-
-                        <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@id/todayRecyclerView"
-                                style="@style/MainCardLayout"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:isScrollContainer="false"
-                                android:nestedScrollingEnabled="false"
-                                tools:itemCount="2"
-                                tools:listitem="@layout/view_readable_item" />
-                        </RelativeLayout>
-
-
-                </androidx.cardview.widget.CardView>
-
-                <TextView
-                    android:id="@id/home_text_unread"
-                    style="@style/CategoryCardName"
+                    app:cardBackgroundColor="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@null"
-                    android:layout_marginStart="@dimen/card_padding"
-                    android:layout_weight="1"
-                    android:text="@string/unread" />
+                    android:layout_marginVertical="@dimen/text_container_margin">
 
-                <androidx.cardview.widget.CardView
-                    style="@style/MainCard"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
 
                     <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
                         <androidx.recyclerview.widget.RecyclerView
-                            android:id="@id/home_recycle_view_unread"
+                            android:id="@id/todayRecyclerView"
                             style="@style/MainCardLayout"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -232,6 +184,73 @@
                             tools:itemCount="2"
                             tools:listitem="@layout/view_readable_item" />
                     </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    style="@style/CategoryCardNameBald"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nemrég" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@android:color/transparent">
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@id/todayRecyclerViewWeek"
+                            style="@style/MainCardLayout"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:isScrollContainer="false"
+                            android:nestedScrollingEnabled="false"
+                            tools:itemCount="2"
+                            tools:listitem="@layout/view_readable_item" />
+                    </RelativeLayout>
+
+
+                </androidx.cardview.widget.CardView>
+
+                <TextView
+                    android:id="@id/home_text_unread"
+                    style="@style/CategoryCardNameBald"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Egyéb olvasatlan" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:cardBackgroundColor="@android:color/transparent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@id/home_recycle_view_unread"
+                                style="@style/MainCardLayout"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:isScrollContainer="false"
+                                android:nestedScrollingEnabled="false"
+                                tools:itemCount="2"
+                                tools:listitem="@layout/view_readable_item" />
+                        </RelativeLayout>
 
                     </LinearLayout>
 

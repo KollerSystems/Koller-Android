@@ -3,6 +3,7 @@ package com.norbert.koller.shared.fragments
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,6 +17,8 @@ abstract class HomeFragment : Fragment() {
 
     private lateinit var todayRecyclerView: RecyclerView
     private lateinit var todayDataArrayList: ArrayList<TodayData>
+    private lateinit var weekRecyclerView: RecyclerView
+    private lateinit var weekDataArrayList: ArrayList<TodayData>
     private lateinit var unreadRecyclerView: RecyclerView
     private lateinit var unreadDataArrayList: ArrayList<TodayData>
     lateinit var refresh : SwipeRefreshLayout
@@ -46,8 +49,9 @@ abstract class HomeFragment : Fragment() {
         todayRecyclerView.setHasFixedSize(true)
 
         todayDataArrayList = arrayListOf(
-            TodayData(false, context?.getDrawable(R.drawable.room), getString(R.string.room_order), "K, P", "4,"),
-            TodayData(false, context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
+            TodayData(false, context?.getDrawable(R.drawable.wave),"Kimenő", "Bevásárlás • 16:00 - 18:00"),
+            TodayData(true, context?.getDrawable(R.drawable.room), getString(R.string.room_order), "K, P", "4"),
+            TodayData(true, context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mert miért ne."
             )
         )
 
@@ -66,16 +70,28 @@ abstract class HomeFragment : Fragment() {
             TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
                 R.string.perfect), "5"),
             TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
-                R.string.perfect), "4"),
-            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
-            R.string.perfect), "5"),
-            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
-            R.string.perfect), "4"),
-            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(R.string.perfect), "4"),
+                R.string.perfect), "4")
         )
 
         unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList)
 
-        val fabRoot: View = view.findViewById(R.id.home_fab_root)
+
+        weekRecyclerView = view.findViewById(R.id.todayRecyclerViewWeek)
+        weekRecyclerView.layoutManager = LinearLayoutManager(context)
+        weekRecyclerView.setHasFixedSize(true)
+
+        weekDataArrayList = arrayListOf(
+            TodayData(true, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
+                R.string.perfect), "5"),
+            TodayData(true, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
+                R.string.perfect), "4"),
+            TodayData(true, context?.getDrawable(R.drawable.rocket),"Online Marketing", "Megjelent", AppCompatResources.getDrawable(requireContext(), R.drawable.check_circle)),
+            TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
+                R.string.perfect), "5"),
+            TodayData(true, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
+                R.string.perfect), "4"),
+        )
+
+        weekRecyclerView.adapter = TodayRecyclerAdapter(weekDataArrayList)
     }
 }

@@ -11,6 +11,7 @@ import android.view.View.GONE
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
 import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -18,6 +19,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.marginLeft
 import androidx.core.view.setMargins
+import androidx.core.view.setPadding
 import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
@@ -66,7 +68,15 @@ class TodayRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recy
         holder.description.text = currentItem.description
         if (currentItem.iconRight != null || currentItem.charRight != "") {
             holder.iconRight.visibility = VISIBLE
-            holder.iconRight.background = currentItem.iconRight
+            if(currentItem.iconRight != null) {
+                holder.iconRight.background = currentItem.iconRight
+                val marginEnd = context.resources.getDimensionPixelSize(R.dimen.text_container_margin)
+                val layoutParams = holder.iconRight.layoutParams as MarginLayoutParams
+                layoutParams.height = ApplicationManager.convertDpToPixel(35, context)
+                layoutParams.width = ApplicationManager.convertDpToPixel(35, context)
+                layoutParams.marginEnd = marginEnd
+                holder.iconRight.layoutParams = layoutParams
+            }
             holder.iconRight.text = currentItem.charRight
         }
         else{

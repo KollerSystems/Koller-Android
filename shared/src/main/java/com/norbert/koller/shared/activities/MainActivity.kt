@@ -5,10 +5,12 @@ import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.res.Configuration
+import android.graphics.drawable.ColorDrawable
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.Window
 import android.view.animation.AnimationUtils
@@ -18,8 +20,11 @@ import android.widget.LinearLayout
 import android.widget.TextSwitcher
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
@@ -42,10 +47,15 @@ import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getStringResourceByName
+import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.managers.setupPortrait
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
+import com.sofakingforever.stars.AnimatedStarsView
+
 import com.squareup.picasso.Picasso
+import com.stfalcon.imageviewer.common.extensions.isVisible
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -69,6 +79,8 @@ abstract class MainActivity : AppCompatActivity() {
 
     abstract fun getAppIcon() : Int
 
+    var stars : AnimatedStarsView? = null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,9 +89,25 @@ abstract class MainActivity : AppCompatActivity() {
 
     }
 
+    override fun onStart() {
+        super.onStart()
+        stars = findViewById(R.id.stars)
+        stars?.onStart()
+    }
+
+    override fun onStop() {
+        stars?.onStop()
+        super.onStop()
+    }
+
+    val backgroundAnimatorIn = ValueAnimator.ofFloat(0f, 1f)
+    val backgroundAnimatorOut = ValueAnimator.ofFloat(1f, 0f)
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
 
         super.onPostCreate(savedInstanceState)
+
+
 
 
 
@@ -195,9 +223,10 @@ abstract class MainActivity : AppCompatActivity() {
             viewModel.descriptionHeight = toolbarDescription.measuredHeight;
         }
         else{
-            val title = this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase())
+            val id = supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()
+            val title = this.getStringResourceByName(id)
             setToolbarTitle(title)
-
+            showNightBgIfNeeded(id)
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -207,13 +236,30 @@ abstract class MainActivity : AppCompatActivity() {
         appBar?.setExpanded(false)
         showBackButtonIfNeeded()
 
+        backgroundAnimatorIn.addUpdateListener { valueAnimator ->
+            stars?.alpha = valueAnimator.animatedValue as Float
+        }
+        backgroundAnimatorOut.addUpdateListener { valueAnimator ->
+            stars?.alpha = valueAnimator.animatedValue as Float
+        }
+        backgroundAnimatorIn.duration = 200
+        backgroundAnimatorOut.duration = 200
+
         supportFragmentManager.addOnBackStackChangedListener {
-            val title = this.getStringResourceByName(supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase())
+            val id = supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()
+            val title = this.getStringResourceByName(id)
             if(!title.isNullOrBlank()) {
                 setToolbarTitle(title)
             }
             appBar?.setExpanded(false)
+
+            showNightBgIfNeeded(id)
+
+
+
             showBackButtonIfNeeded()
+
+            viewModel.lastFragmentId = id
 
         }
 
@@ -221,7 +267,35 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
 
+fun showNightBgIfNeeded(id : String){
+    when (resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+        Configuration.UI_MODE_NIGHT_YES -> {
+            val c: Calendar = Calendar.getInstance()
+            val hours: Float =
+                ((c.get(Calendar.SECOND) / 60f / 60f + c.get(Calendar.MINUTE) / 60f + c.get(
+                    Calendar.HOUR_OF_DAY
+                ))) + SettingsActivity.timeOffset
+            if (id == "home" && (hours > 22 || hours < 3)) {
+                appBar?.background = AppCompatResources.getDrawable(this, R.drawable.separator)
+                backgroundAnimatorOut.cancel()
+                stars?.setVisibilityBy(true)
+                backgroundAnimatorIn.start()
 
+            } else if (viewModel.lastFragmentId == "home" && stars?.visibility == VISIBLE) {
+                appBar?.background =
+                    ColorDrawable(getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
+                backgroundAnimatorIn.cancel()
+                backgroundAnimatorOut.doOnEnd {
+                    stars?.setVisibilityBy(false)
+                }
+                backgroundAnimatorOut.reverse()
+                backgroundAnimatorOut.start()
+            }
+        }
+        Configuration.UI_MODE_NIGHT_NO -> {}
+        Configuration.UI_MODE_NIGHT_UNDEFINED -> {}
+    }
+}
 
 
     override fun onBackPressed() {

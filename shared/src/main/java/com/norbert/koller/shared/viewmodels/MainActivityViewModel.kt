@@ -11,6 +11,8 @@ class MainActivityViewModel : ViewModel()  {
 
     var savedBackStacks : MutableSet<Int> = mutableSetOf()
 
+    var lastFragmentId : String = "home"
+
     var descriptionHeight : Int = 0
 
 }

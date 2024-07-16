@@ -8,6 +8,7 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:outlineProvider="none"
+    app:cardBackgroundColor="#54000000"
     app:contentPadding="0dp">
 
     <com.google.android.material.card.MaterialCardView
@@ -90,12 +91,13 @@
             android:id="@+id/notification_icon_end"
             style="@style/IconLikeText"
             android:layout_marginStart="@dimen/text_container_margin"
+            android:backgroundTint="?attr/colorForeground066"
             android:text="C"
             android:textColor="#00BF9F"
             android:textStyle="bold"
             android:visibility="gone"
-            tools:visibility="visible"
-            tools:ignore="HardcodedText" />
+            tools:ignore="HardcodedText"
+            tools:visibility="visible" />
 
     </LinearLayout>
 

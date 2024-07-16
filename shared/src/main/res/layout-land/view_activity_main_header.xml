@@ -4,39 +4,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/header_footer_size"
     android:background="?attr/colorSurfaceContainer"
     android:orientation="horizontal">
-
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/card_padding"
-        android:layout_marginTop="@dimen/text_container_margin"
-        android:layout_marginEnd="@dimen/card_padding"
-        android:layout_marginBottom="@dimen/n_text_container_margin"
-        android:layout_weight="0">
-
-        <ImageView
-            android:id="@+id/Image_app_icon"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_margin="@dimen/text_container_margin"
-            app:srcCompat="@drawable/discord" />
-
-        <Button
-
-            android:id="@+id/toolbar_exit"
-            style="@style/ToolbarNavigationButton"
-            android:layout_width="@dimen/toolbar_button_size"
-            android:layout_height="@dimen/toolbar_button_size"
-            android:layout_margin="@null"
-            app:icon="@drawable/arrow_back"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/guideline"
-            tools:visibility="gone" />
-    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/toolbar_ly_text_container"

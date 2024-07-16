@@ -2,9 +2,11 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:height="1dp"
-        android:gravity="center">
+        android:gravity="bottom"
+        android:left="@dimen/spacing"
+        android:right="@dimen/spacing">
         <shape android:shape="rectangle">
-            <solid android:color="#80000000" />
+            <solid android:color="?attr/colorSurfaceContainerHigh" />
         </shape>
     </item>
 </layer-list>

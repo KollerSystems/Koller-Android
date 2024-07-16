@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="star_color_1">#ffffff</color>
+    <color name="star_color_2">#BFE7FF</color>
+    <color name="star_color_3">#8DADFF</color>
+    <color name="star_color_4">#FFFCC4</color>
 
+    <color name="star_color_5">#74CBFF</color>
+    <color name="star_color_6">#FFF7DC</color>
+    <color name="star_color_7">#FFDEC4</color>
+
+    <color name="night_bg">#141C2C</color>
 </resources>
