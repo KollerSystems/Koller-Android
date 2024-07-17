@@ -37,12 +37,13 @@
         app:contentPadding="@dimen/spacing">
 
         <TextView
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:textColor="?android:attr/colorForeground"
+            style="@style/CategoryCardName"
             android:id="@+id/text_crossing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="18dp"
-            android:text="@string/dummy_date_MMddw"
-            android:gravity="center_horizontal"/>
+            android:text="@string/dummy_date_MMddw" />
 
         <ImageView
             android:id="@+id/button2"

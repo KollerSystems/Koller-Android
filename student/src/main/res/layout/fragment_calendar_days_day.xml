@@ -10,17 +10,19 @@
     tools:context=".fragments.DayFragment">
 
 
-    <View
-        android:layout_width="@dimen/full_card_padding"
-        android:layout_height="110dp"
-        android:background="@drawable/connector"
-        android:translationY="740dp" />
+
 
     <View
         android:layout_width="@dimen/full_card_padding"
-        android:layout_height="134dp"
+        android:layout_height="98dp"
         android:background="@drawable/connector"
-        android:translationY="130dp" />
+        android:translationY="126dp" />
+
+    <View
+        android:layout_width="@dimen/full_card_padding"
+        android:layout_height="72dp"
+        android:background="@drawable/connector"
+        android:translationY="373dp" />
 
     <LinearLayout
         style="@style/MainLayout"
@@ -35,18 +37,17 @@
         android:paddingBottom="0dp">
 
 
-        <include
-            layout="@layout/view_fragment_calendar_days_day_header"
+
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-20dp"
-            android:layout_marginEnd="-20dp"
-            android:layout_marginTop="@dimen/card_margin"
-            android:layout_marginBottom="@dimen/card_margin"/>
+            android:text="Augusztus 5. péntek"
+            style="@style/CategoryCardNameBald">
 
+        </TextView>
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/CardBottom"
+            style="@style/CardTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardPreventCornerOverlap="false">
@@ -57,18 +58,20 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <com.google.android.material.imageview.ShapeableImageView
+                <ImageView
                     style="@style/Icon"
                     android:layout_width="@dimen/card_icon"
                     android:layout_height="@dimen/card_icon"
                     android:layout_gravity="center"
                     android:layout_marginEnd="@dimen/spacing"
+                    android:alpha="0.666"
                     android:src="@drawable/moon" />
 
                 <TextView
                     style="@style/Title"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_margin="@dimen/text_container_margin"
                     android:layout_weight="1"
                     android:text="@string/sleeping_time" />
 
@@ -87,16 +90,11 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.norbert.koller.shared.customviews.EventPoint
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
 
-            custom:text="@string/start_of_optional_leaving_period"
-            custom:time="6:00" />
 
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/CardSingle"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -106,14 +104,14 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical">
-
-                <TextView
-
-                    style="@style/Description"
+                <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="6:00"
-                    android:gravity="end" />
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/n_card_padding"
+                    android:layout_marginEnd="@dimen/n_card_padding"
+                    custom:text="@string/start_of_optional_leaving_period"
+                    custom:time="6:00" />
+
 
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
@@ -131,18 +129,20 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.google.android.material.imageview.ShapeableImageView
+                    <ImageView
                         style="@style/Icon"
                         android:layout_width="@dimen/card_icon"
                         android:layout_height="@dimen/card_icon"
                         android:layout_gravity="center"
                         android:layout_marginEnd="@dimen/spacing"
+                        android:alpha="0.666"
                         android:src="@drawable/walk" />
 
                     <TextView
                         style="@style/Title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_container_margin"
                         android:layout_weight="1"
                         android:text="@string/doing_things" />
 
@@ -154,8 +154,6 @@
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/n_card_padding"
                     android:layout_marginEnd="@dimen/n_card_padding"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
                     custom:text="@string/expected_arrival"
                     custom:time="15:45" />
 
@@ -170,35 +168,34 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            android:id="@+id/text_presence"
-            style="@style/CategoryCardNameBald"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/time_frame_of_student_hostel_sessions" />
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/CardTop"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="?attr/colorSurfaceContainerHigh"
+            android:clickable="true"
+            app:cardBackgroundColor="?attr/colorSurfaceContainerHigh">
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <TextView
-
-                    style="@style/IconLikeText"
-                    android:text="1" />
+                <ImageView
+                    style="@style/Icon"
+                    android:layout_width="@dimen/card_icon"
+                    android:layout_height="@dimen/card_icon"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="@dimen/spacing"
+                    android:alpha="0.666"
+                    android:src="@drawable/present" />
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_margin="@dimen/text_container_margin"
                     android:layout_weight="1"
                     android:clipChildren="false"
                     android:clipToPadding="false"
@@ -210,20 +207,21 @@
                         style="@style/Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/independent_study" />
+                        android:text="Foglalkozások időkerete" />
 
                     <TextView
 
                         style="@style/Description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="216" />
+                        android:text="Online Marketing" />
 
                 </LinearLayout>
 
                 <androidx.appcompat.widget.LinearLayoutCompat
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:gravity="end"
                     android:orientation="vertical">
 
                     <TextView
@@ -240,351 +238,26 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text="16:45" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/CardMiddle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:contentPadding="@null"
-            app:contentPaddingBottom="@dimen/text_container_margin"
-            app:contentPaddingLeft="@dimen/card_padding"
-            app:contentPaddingRight="@dimen/card_padding"
-            app:contentPaddingTop="@dimen/text_container_margin">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-
-                <TextView
-
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Szünet" />
-
-
-                <TextView
-
-                    style="@style/Description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="5 minutes" />
-
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/CardMiddle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-
-                    style="@style/IconLikeText"
-                    android:text="2" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:layout_weight="1"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-
-                        style="@style/Title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/independent_study" />
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="216" />
-
-                </LinearLayout>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="16:50" />
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0"
-                        android:text="17:35" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/CardMiddle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:contentPadding="@null"
-            app:contentPaddingBottom="@dimen/text_container_margin"
-            app:contentPaddingLeft="@dimen/card_padding"
-            app:contentPaddingRight="@dimen/card_padding"
-            app:contentPaddingTop="@dimen/text_container_margin">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-
-                <TextView
-
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Szünet" />
-
-
-                <TextView
-
-                    style="@style/Description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="5 minutes" />
-
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/CardMiddle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-
-                    style="@style/IconLikeText"
-                    android:text="3" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:layout_weight="1"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-
-                        style="@style/Title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/independent_study" />
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="216" />
-
-                </LinearLayout>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="17:40" />
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0"
-                        android:text="18:25" />
-                </androidx.appcompat.widget.LinearLayoutCompat>
-
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/CardMiddle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:contentPadding="@null"
-            app:contentPaddingBottom="@dimen/text_container_margin"
-            app:contentPaddingLeft="@dimen/card_padding"
-            app:contentPaddingRight="@dimen/card_padding"
-            app:contentPaddingTop="@dimen/text_container_margin">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-
-                <TextView
-
-
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Szünet" />
-
-
-                <TextView
-
-                    style="@style/Description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:text="5 minutes" />
-
-
-            </LinearLayout>
-
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/CardBottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-
-                    style="@style/IconLikeText"
-                    android:text="4" />
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:layout_weight="1"
-                    android:clipChildren="false"
-                    android:clipToPadding="false"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical">
-
-                    <TextView
-
-                        style="@style/Title"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/independent_study" />
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="216" />
-
-                </LinearLayout>
-
-                <androidx.appcompat.widget.LinearLayoutCompat
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="0dp"
-                        android:layout_weight="1"
-                        android:text="18:30" />
-
-                    <TextView
-
-                        style="@style/Description"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="0"
                         android:text="19:15" />
                 </androidx.appcompat.widget.LinearLayoutCompat>
 
 
             </LinearLayout>
 
+            <View
+                android:layout_width="@dimen/card_padding"
+                android:layout_height="@dimen/card_padding"
+                android:layout_marginStart="@dimen/n_text_container_margin"
+                android:layout_marginTop="@dimen/n_text_container_margin"
+                android:background="@drawable/circle"
+                android:backgroundTint="?attr/colorPrimary" />
+
         </com.google.android.material.card.MaterialCardView>
 
 
-        <com.norbert.koller.shared.customviews.EventPoint
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?android:attr/windowBackground"
-            custom:text="@string/start_of_optional_leaving_period"
-            custom:time="19:15" />
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/CardSingle"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -594,14 +267,14 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical">
-
-                <TextView
-
-                    style="@style/Description"
+                <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="19:15"
-                    android:gravity="end" />
+                    android:layout_height="match_parent"
+                    custom:text="@string/start_of_optional_leaving_period"
+                    android:layout_marginStart="@dimen/n_card_padding"
+                    android:layout_marginEnd="@dimen/n_card_padding"
+                    custom:time="19:15" />
+
 
 
                 <LinearLayout
@@ -610,18 +283,20 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-                    <com.google.android.material.imageview.ShapeableImageView
+                    <ImageView
                         style="@style/Icon"
                         android:layout_width="@dimen/card_icon"
                         android:layout_height="@dimen/card_icon"
                         android:layout_gravity="center"
                         android:layout_marginEnd="@dimen/spacing"
+                        android:alpha="0.666"
                         android:src="@drawable/walk" />
 
                     <TextView
                         style="@style/Title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_container_margin"
                         android:layout_weight="1"
                         android:text="@string/doing_things" />
 
@@ -648,50 +323,52 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-        <com.norbert.koller.shared.customviews.EventPoint
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            custom:text="@string/headcount_check"
-            custom:time="22:00" />
+
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/CardTop"
+            style="@style/CardBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <com.norbert.koller.shared.customviews.EventPoint
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/n_card_padding"
+                    android:layout_marginEnd="@dimen/n_card_padding"
+                    custom:text="@string/headcount_check"
+                    custom:time="22:00" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    style="@style/Icon"
-                    android:layout_width="@dimen/card_icon"
-                    android:layout_height="@dimen/card_icon"
-                    android:layout_gravity="center"
-                    android:layout_marginEnd="@dimen/spacing"
-                    android:src="@drawable/moon" />
+                    <ImageView
+                        style="@style/Icon"
+                        android:layout_width="@dimen/card_icon"
+                        android:layout_height="@dimen/card_icon"
+                        android:layout_gravity="center"
+                        android:layout_marginEnd="@dimen/spacing"
+                        android:alpha="0.666"
+                        android:src="@drawable/moon" />
 
-                <TextView
-                    style="@style/Title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/sleeping_time" />
+                    <TextView
+                        style="@style/Title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/text_container_margin"
+                        android:layout_weight="1"
+                        android:text="@string/sleeping_time" />
 
-                <TextView
 
-                    style="@style/Description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top"
-                    android:layout_marginStart="@dimen/spacing"
-                    android:lineSpacingExtra="-5sp"
-                    android:text="22:00"
-                    android:gravity="center_horizontal"/>
 
+                </LinearLayout>
             </LinearLayout>
+
 
         </com.google.android.material.card.MaterialCardView>
 
