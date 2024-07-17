@@ -11,16 +11,16 @@
 
 
     <View
-        android:layout_width="20dp"
-        android:layout_height="108dp"
+        android:layout_width="@dimen/full_card_padding"
+        android:layout_height="110dp"
         android:background="@drawable/connector"
-        android:translationY="772.5dp" />
+        android:translationY="740dp" />
 
     <View
-        android:layout_width="20dp"
+        android:layout_width="@dimen/full_card_padding"
         android:layout_height="134dp"
         android:background="@drawable/connector"
-        android:translationY="165.5dp" />
+        android:translationY="130dp" />
 
     <LinearLayout
         style="@style/MainLayout"
@@ -29,9 +29,9 @@
         android:background="@null"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingLeft="@dimen/full_card_padding"
+        android:paddingStart="@dimen/full_card_padding"
         android:paddingTop="0dp"
-        android:paddingRight="@dimen/full_card_padding"
+        android:paddingEnd="@dimen/full_card_padding"
         android:paddingBottom="0dp">
 
 
@@ -40,16 +40,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="-20dp"
-            android:layout_marginEnd="-20dp" />
+            android:layout_marginEnd="-20dp"
+            android:layout_marginTop="@dimen/card_margin"
+            android:layout_marginBottom="@dimen/card_margin"/>
+
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardBottom"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_margin"
-            android:layout_marginBottom="@dimen/text_container_margin"
-            app:cardPreventCornerOverlap="false"
-            app:shapeAppearance="@style/OverlayRoundedCardBottom">
+            app:cardPreventCornerOverlap="false">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -79,30 +79,26 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:layout_marginStart="@dimen/spacing"
+                    android:gravity="center_horizontal"
                     android:lineSpacingExtra="-5sp"
-                    android:text="6:00"
-                    android:gravity="center_horizontal"/>
+                    android:text="6:00" />
 
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
 
-
         <com.norbert.koller.shared.customviews.EventPoint
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="?android:attr/windowBackground"
+
             custom:text="@string/start_of_optional_leaving_period"
             custom:time="6:00" />
 
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardSingle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/text_container_margin"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardPreventCornerOverlap="false">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -176,22 +172,15 @@
 
         <TextView
             android:id="@+id/text_presence"
-            style="@style/CategoryCardName"
+            style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/spacing"
             android:text="@string/time_frame_of_student_hostel_sessions" />
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardTop"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_container_margin"
-            android:layout_marginBottom="@dimen/card_margin"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            app:shapeAppearance="@style/OverlayRoundedCardTop">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -260,13 +249,9 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/card_margin"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
             app:contentPadding="@null"
             app:contentPaddingBottom="@dimen/text_container_margin"
             app:contentPaddingLeft="@dimen/card_padding"
@@ -302,13 +287,9 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/card_margin"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -377,13 +358,9 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/card_margin"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
             app:contentPadding="@null"
             app:contentPaddingBottom="@dimen/text_container_margin"
             app:contentPaddingLeft="@dimen/card_padding"
@@ -419,13 +396,9 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/card_margin"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -494,13 +467,9 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/card_margin"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
             app:contentPadding="@null"
             app:contentPaddingBottom="@dimen/text_container_margin"
             app:contentPaddingLeft="@dimen/card_padding"
@@ -536,15 +505,9 @@
         </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardBottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/card_margin"
-            android:layout_marginBottom="@dimen/text_container_margin"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            app:shapeAppearance="@style/OverlayRoundedCardBottom">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -621,12 +584,9 @@
             custom:time="19:15" />
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardSingle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/text_container_margin"
-            app:cardCornerRadius="@dimen/card_corner_radius"
-            app:cardPreventCornerOverlap="false">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -695,13 +655,9 @@
             custom:time="22:00" />
 
         <com.google.android.material.card.MaterialCardView
-            style="@style/Card"
+            style="@style/CardTop"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/text_container_margin"
-            android:layout_marginBottom="@dimen/card_margin"
-            app:cardPreventCornerOverlap="false"
-            app:shapeAppearance="@style/OverlayRoundedCardTop">
+            android:layout_height="wrap_content">
 
             <LinearLayout
                 android:layout_width="match_parent"

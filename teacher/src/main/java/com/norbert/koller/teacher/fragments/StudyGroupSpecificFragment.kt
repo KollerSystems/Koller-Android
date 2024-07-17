@@ -73,6 +73,14 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
 
             setViews(response, requireContext())
 
+            ncbTeacher.buttonContent.setOnClickListener{
+                teacherClick(response, requireContext())
+            }
+
+            ncbClassroom.buttonContent.setOnClickListener{
+                classRoomClick(response, requireContext())
+            }
+
         }
     }
 

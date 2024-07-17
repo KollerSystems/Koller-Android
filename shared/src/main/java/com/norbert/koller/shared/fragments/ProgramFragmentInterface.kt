@@ -38,16 +38,14 @@ interface ProgramFragmentInterface {
 
         ncbTeacher.buttonContent.text = response.teacher!!.name.toString()
 
-        ncbClassroom.buttonContent.setOnClickListener {
-            (context as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
-        }
+    }
 
-        ncbTeacher.buttonContent.setOnClickListener {
+    fun teacherClick(response : ProgramData, context : Context){
+        (context as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
+    }
 
-            (context as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
-        }
-
-
+    fun classRoomClick(response : ProgramData, context : Context){
+        (context as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
     }
 
 }

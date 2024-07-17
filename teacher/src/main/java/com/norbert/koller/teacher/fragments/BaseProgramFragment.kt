@@ -11,6 +11,7 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.NameContentButton
 import com.norbert.koller.shared.customviews.NameContentView
 import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.fragments.BaseProgramFragmentInterface
 import com.norbert.koller.shared.fragments.DetailsFragment
@@ -67,11 +68,26 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 
-            response as ProgramData
+            response as BaseProgramData
 
             (context as MainActivity).setToolbarTitle(response.topic)
 
             setViews(response, requireContext())
+
+            ncbClass.buttonContent.setOnClickListener{
+                classClick(response, requireContext())
+
+            }
+
+            ncbTeacher.buttonContent.setOnClickListener{
+                teacherClick(response, requireContext())
+
+            }
+
+            ncbClassroom.buttonContent.setOnClickListener{
+                classRoomClick(response, requireContext())
+
+            }
 
         }
     }

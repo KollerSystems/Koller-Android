@@ -27,12 +27,15 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() 
                     tab.text = getString(R.string.days)
                 }
                 1->{
-                    tab.text = getString(R.string.canteen)
+                    tab.text = "Ügyeletesek"
                 }
                 2->{
-                    tab.text = getString(R.string.base_programs)
+                    tab.text = getString(R.string.canteen)
                 }
                 3->{
+                    tab.text = getString(R.string.base_programs)
+                }
+                4->{
                     tab.text = getString(R.string.study_groups)
                 }
             }
@@ -43,7 +46,7 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() 
 class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment)
 {
     override fun getItemCount(): Int {
-        return 4
+        return 5
     }
 
     override fun createFragment(position: Int): Fragment {
@@ -52,12 +55,15 @@ class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
                 CalendarDaysFragment()
             }
             1->{
-                CalendarCanteenFragment()
+                Fragment()
             }
             2->{
-                CalendarBaseProgramsFragment()
+                CalendarCanteenFragment()
             }
             3->{
+                CalendarBaseProgramsFragment()
+            }
+            4->{
                 CalendarStudyGroupFragment()
             }
             else->{

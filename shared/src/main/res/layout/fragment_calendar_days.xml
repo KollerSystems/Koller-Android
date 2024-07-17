@@ -23,8 +23,9 @@
     </com.google.android.material.card.MaterialCardView>
 
 
-
     <View style="@style/SeparatorLine" />
+
+
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcard_date"
@@ -46,7 +47,7 @@
         <ImageView
             android:id="@+id/button2"
             android:layout_width="18dp"
-            android:layout_height="match_parent"
+            android:layout_height="18dp"
             android:layout_gravity="end"
             android:adjustViewBounds="true"
             app:srcCompat="@drawable/arrow_drop" />

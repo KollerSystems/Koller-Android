@@ -31,12 +31,16 @@ interface BaseProgramFragmentInterface : ProgramFragmentInterface {
         ncbClass.visibility = View.VISIBLE
         ncbClass.buttonContent.text = response.class_.class_
         ncbClass.buttonContent.setOnClickListener {
-            val userFragment = ApplicationManager.usersFragment(null)
-                .setFilter("Class.ID", response.class_.id.toString())
-            (context as MainActivity).addFragment(userFragment)
+
         }
 
 
+    }
+
+    fun classClick(response : BaseProgramData, context : Context){
+        val userFragment = ApplicationManager.usersFragment(null)
+            .setFilter("Class.ID", response.class_.id.toString())
+        (context as MainActivity).addFragment(userFragment)
     }
 
 }

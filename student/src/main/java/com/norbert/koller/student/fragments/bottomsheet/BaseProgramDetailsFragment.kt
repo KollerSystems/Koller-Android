@@ -58,13 +58,26 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 
-            response as ProgramData
+            response as BaseProgramData
 
             setViews(response, requireContext())
             ncwState.visibility = GONE
-
             textTitle.text = response.topic
 
+            ncbClass.buttonContent.setOnClickListener{
+                classClick(response, requireContext())
+                dismiss()
+            }
+
+            ncbTeacher.buttonContent.setOnClickListener{
+                teacherClick(response, requireContext())
+                dismiss()
+            }
+
+            ncbClassroom.buttonContent.setOnClickListener{
+                classRoomClick(response, requireContext())
+                dismiss()
+            }
 
         }
 

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.norbert.koller.shared.fragments.bottomsheet.DutyTeachersFragment
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.recycleradapters.BaseComparator
 import com.norbert.koller.student.R
@@ -22,10 +21,6 @@ class DayRecyclerAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseC
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         holder as TodayViewHolder
-        holder.mcardDutyTeachers.setOnClickListener{
-            val dialog = DutyTeachersFragment()
-            dialog.show((holder.itemView.context as AppCompatActivity).supportFragmentManager, DutyTeachersFragment.TAG)
-        }
 
     }
 
@@ -37,7 +32,7 @@ class DayRecyclerAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>(BaseC
 
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-        val mcardDutyTeachers : MaterialCardView = itemView.findViewById(R.id.mcard_duty_teachers)
+
 
     }
 

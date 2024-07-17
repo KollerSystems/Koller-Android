@@ -70,6 +70,17 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheet
             textTitle.text = response.topic
 
 
+            ncbTeacher.buttonContent.setOnClickListener{
+                teacherClick(response, requireContext())
+                dismiss()
+            }
+
+            ncbClassroom.buttonContent.setOnClickListener{
+                classRoomClick(response, requireContext())
+                dismiss()
+            }
+
+
         }
 
         if(!viewModel.response.isInitialized) {
