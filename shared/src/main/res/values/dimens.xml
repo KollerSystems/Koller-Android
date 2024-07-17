@@ -12,6 +12,8 @@
     <dimen name="full_card_padding">20dp</dimen>
     <dimen name="full_card_padding_double">40dp</dimen>
 
+    <dimen name="test">-2px</dimen>
+
     <dimen name="card_margin">0.5dp</dimen>
     <dimen name="card_full_margin">1dp</dimen>
 

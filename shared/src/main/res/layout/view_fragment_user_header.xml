@@ -90,21 +90,19 @@
         android:id="@+id/fl"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/application_corner_radius"
-        android:paddingTop="@dimen/text_container_margin"
-        android:paddingBottom="@dimen/card_padding"
-        app:dividerDrawable="@drawable/divider_space"
+        android:layout_marginHorizontal="@dimen/full_card_padding"
+        android:layout_marginBottom="@dimen/spacing"
+
         app:flexDirection="row"
         app:flexWrap="wrap"
-        app:justifyContent="center"
-        app:showDivider="middle">
+        app:justifyContent="center">
 
         <com.google.android.material.chip.Chip
             android:id="@id/user_view_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
             android:checkable="false"
-            android:ellipsize="none"
             android:text="@string/none"
             app:chipIcon="@drawable/mail"
             app:chipIconVisible="true"
@@ -114,7 +112,7 @@
             android:id="@+id/user_view_phone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:ellipsize="none"
+            android:layout_margin="@dimen/text_container_margin"
             android:visibility="gone"
             app:chipIcon="@drawable/phone"
             app:chipIconVisible="true"
@@ -126,8 +124,8 @@
             android:id="@id/user_view_facebook"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
             android:checkable="false"
-            android:ellipsize="none"
             android:visibility="gone"
             app:chipIcon="@drawable/facebook_icon"
             app:chipIconVisible="true"
@@ -140,8 +138,8 @@
             android:id="@id/user_view_instagram"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
             android:checkable="false"
-            android:ellipsize="none"
             android:visibility="gone"
             app:chipIcon="@drawable/instagram_icon"
             app:chipIconVisible="true"
@@ -154,8 +152,8 @@
             android:id="@id/user_view_discord"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
             android:checkable="false"
-            android:ellipsize="none"
             android:visibility="gone"
             app:chipIcon="@drawable/discord_icon"
             app:chipIconVisible="true"
@@ -175,8 +173,8 @@
 
     <com.norbert.koller.shared.customviews.SimpleCardButton
 
-        style="@style/CardSingle"
         android:id="@+id/scb_status"
+        style="@style/CardSingle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
