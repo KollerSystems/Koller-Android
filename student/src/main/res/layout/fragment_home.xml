@@ -88,7 +88,7 @@
                                     android:layout_height="@dimen/card_icon"
                                     android:layout_gravity="center_vertical"
                                     android:adjustViewBounds="true"
-                                    android:src="@drawable/moon"
+                                    android:src="@drawable/walk"
                                     app:tint="?android:attr/colorForeground" />
 
                                 <LinearLayout

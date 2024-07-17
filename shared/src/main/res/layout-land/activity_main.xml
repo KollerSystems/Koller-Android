@@ -1,48 +1,21 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
+    <include
+        layout="@layout/view_activity_main_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="0"
-        android:background="?attr/colorSurfaceContainer"
-        android:orientation="vertical">
+        android:orientation="horizontal">
 
-        <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/card_padding"
-            android:layout_marginTop="@dimen/text_container_margin"
-            android:layout_marginEnd="@dimen/card_padding"
-            android:layout_marginBottom="@dimen/text_container_margin"
-            android:layout_weight="0">
-
-            <ImageView
-                android:id="@+id/Image_app_icon"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_margin="@dimen/text_container_margin"
-                app:srcCompat="@drawable/discord" />
-
-            <Button
-
-                android:id="@+id/toolbar_exit"
-                style="@style/ToolbarNavigationButton"
-                android:layout_width="@dimen/toolbar_button_size"
-                android:layout_height="@dimen/toolbar_button_size"
-                android:layout_margin="@null"
-                app:icon="@drawable/arrow_back"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/guideline"
-                tools:visibility="gone" />
-        </FrameLayout>
 
         <com.google.android.material.navigationrail.NavigationRailView
             android:id="@id/bottom_navigation_view"
@@ -60,40 +33,28 @@
             app:paddingTopSystemWindowInsets="false">
 
         </com.google.android.material.navigationrail.NavigationRailView>
-    </LinearLayout>
 
-    <FrameLayout
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        android:orientation="vertical">
-
-        <com.sofakingforever.stars.AnimatedStarsView
-            android:id="@+id/stars"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/night_bg"
-            android:foreground="@drawable/background_gradient"
-            android:foregroundTint="#000000"
-            android:visibility="gone"
-            app:starsView_maxStarSize="2dp"
-            app:starsView_meteoritesColors="@array/meteorites_colors"
-            app:starsView_meteoritesEnabled="true"
-            app:starsView_meteoritesInterval="20000"
-            app:starsView_minStarSize="1dp"
-            app:starsView_starColors="@array/star_colors_small"
-            app:starsView_starCount="50" />
-
-        <include
-            layout="@layout/view_activity_main_header"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0" />
 
         <FrameLayout
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/header_footer_size">
+            android:layout_weight="1">
+
+            <com.sofakingforever.stars.AnimatedStarsView
+                android:id="@+id/stars"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/night_bg"
+                android:foreground="@drawable/background_gradient"
+                android:foregroundTint="#000000"
+                android:visibility="gone"
+                app:starsView_maxStarSize="2dp"
+                app:starsView_meteoritesColors="@array/meteorites_colors"
+                app:starsView_meteoritesEnabled="true"
+                app:starsView_meteoritesInterval="20000"
+                app:starsView_minStarSize="1dp"
+                app:starsView_starColors="@array/star_colors_small"
+                app:starsView_starCount="50" />
 
             <androidx.fragment.app.FragmentContainerView
                 android:id="@id/main_fragment"
@@ -119,7 +80,7 @@
 
         </FrameLayout>
 
-    </FrameLayout>
+    </LinearLayout>
 
 
 </LinearLayout>
