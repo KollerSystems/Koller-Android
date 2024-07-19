@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Card"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        app:shapeAppearance="@style/OverlayRoundedCardTop">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:text="Zöccség leves, Finom főzelék" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0">
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/application_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_stfkate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/bolt"
+                app:name="Energia" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_stasdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/timeline"
+                app:name="Fehérje" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_stfsdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/humidity"
+                app:name="Zsír" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_stgfdgdsaate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/question_box"
+                app:name="T. zsírsav (jelentsen bármit is)" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_stfate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/wheat"
+                app:name="Szénhidrát" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_stasdfgate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/cube"
+                app:name="Cukor" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_statdsae"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/salt"
+                app:name="Só">
+
+            </com.norbert.koller.shared.customviews.NameContentView>
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing"
+                app:flexWrap="wrap">
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:foreground="@drawable/ring_warning"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/egg" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:foreground="@drawable/ring_maybe"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/doctor" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:foreground="@drawable/ring_maybe"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/egg" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:foreground="@drawable/ring_warning"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/egg" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:foreground="@drawable/ring_warning"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/doctor" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:foreground="@drawable/ring_maybe"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/egg" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:foreground="@drawable/ring_warning"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/doctor" />
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

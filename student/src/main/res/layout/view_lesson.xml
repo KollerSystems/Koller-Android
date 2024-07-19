@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="horizontal"
+    tools:layout_editor_absoluteX="1dp"
+    tools:layout_editor_absoluteY="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/lesson_text_index"
+            style="@style/Title"
+            android:layout_width="@dimen/card_icon"
+            android:layout_height="@dimen/card_icon"
+            android:layout_marginEnd="@dimen/spacing"
+            android:autoSizeMinTextSize="1sp"
+            android:autoSizeTextType="uniform"
+            android:gravity="center"
+            android:maxLines="1"
+            android:text="1"
+            android:textSize="@null"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/lesson_text_title"
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing"
+                android:text="Online Marketing • Szakkör" />
+
+            <com.norbert.koller.shared.customviews.NameContentView
+                android:id="@+id/ncw_state"
+                app:detail="-"
+                app:icon="@drawable/question_box"
+                app:name="@string/state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_classroom"
+                app:detail="-"
+                app:icon="@drawable/room"
+                app:name="@string/classroom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@id/ncb_class"
+                app:detail="-"
+                app:icon="@drawable/groups"
+                app:name="@string/class_"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <com.norbert.koller.shared.customviews.NameContentButton
+                android:id="@+id/ncb_teacher"
+                app:detail="-"
+                app:icon="@drawable/user"
+                app:name="@string/teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+            </com.norbert.koller.shared.customviews.NameContentButton>
+
+            <Button
+                android:id="@id/Button_to_general"
+                style="@style/CardButton"
+                app:cornerRadius="@dimen/card_corner_radius"
+                app:icon="@drawable/arrow_right"
+                app:iconGravity="textEnd"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/spacing"
+                android:backgroundTint="?attr/colorSurfaceContainer"
+                android:paddingEnd="16dp"
+                android:text="Szakkör általános adatai"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginStart="@dimen/spacing"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+
+                style="@style/Description"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:text="16:00" />
+
+            <TextView
+
+                style="@style/Description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:text="19:15" />
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

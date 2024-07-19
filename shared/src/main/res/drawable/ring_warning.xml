@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:left="@dimen/text_container_margin"
+        android:right="@dimen/text_container_margin"
+        android:top="@dimen/text_container_margin"
+        android:bottom="@dimen/text_container_margin">
+
+        <shape android:shape="oval">
+            <stroke android:color="?attr/colorWorst" android:width="2dp"/>
+
+        </shape>
+    </item>
+    <item android:width="25dp"
+        android:height="25dp"
+        android:gravity="top|start">
+        <layer-list>
+            <item>
+                <shape
+                    android:shape="oval">
+                    <stroke android:width="2dp" android:color="?attr/colorWorst" />
+                    <solid android:color="?android:attr/colorBackground"/>
+
+                </shape>
+            </item>
+            <item android:drawable="@drawable/priority" android:top="@dimen/text_container_margin"
+                android:bottom="@dimen/text_container_margin"
+                android:left="@dimen/text_container_margin"
+                android:right="@dimen/text_container_margin"/>
+        </layer-list>
+    </item>
+
+</layer-list>
