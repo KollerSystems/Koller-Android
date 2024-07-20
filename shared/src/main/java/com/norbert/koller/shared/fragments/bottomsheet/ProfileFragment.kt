@@ -148,13 +148,13 @@ open class ProfileFragment : BottomSheetDialogFragment() {
         RecyclerView.setHasFixedSize(false)
 
         val devArrayList = arrayListOf(
-            DevData("Katona Márton Barnabás", "- Főmenedzser\n- UI/UX tervező\n- Android app fejlesztő\n- Grafikai Tervező", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_marton)!!, "https://Marci599.github.io"),
-            DevData("Bencsik Gergő", "- Menedzser\n- API fejlesztő\n- Adatbázis fejlesztő/kezelő\n- Webfejlesztő", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gergo)!!, "https://github.com/lolfail"),
-            DevData("Zsiga Róbert", "- Adatbázis fejlesztő", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_robert)!!, "https://github.com/IronNight007"),
-            DevData("Bende Ákos György", "- Menedzser", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gyorgy)!!, "https://github.com/kutzlect"),
-            DevData("Kovács Gábor", "- iOS app fejlesztő", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gabor)!!, "https://github.com/mrSajt2"),
-            DevData("Fehér Dávid", "- Szerver üzemeltető\n- Fejlesztői eszközfejlesztő", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_david)!!, "https://github.com/TheBlueLines"),
-            DevData("Juhos Gergely János", "- Marketing szakértő", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_juhos)!!, "https://github.com/enderember003"),
+            DevData("Katona Márton Barnabás", "Főmenedzsment • Front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_marton)!!, "https://Marci599.github.io"),
+            DevData("Bencsik Gergő", "Menedzsment • Back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gergo)!!, "https://github.com/lolfail"),
+            DevData("Zsiga Róbert", "Back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_robert)!!, "https://github.com/IronNight007"),
+            DevData("Bende Ákos György", "Menedzsment", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gyorgy)!!, "https://github.com/kutzlect"),
+            DevData("Kovács Gábor", "Front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gabor)!!, "https://github.com/mrSajt2"),
+            DevData("Fehér Dávid", "Back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_david)!!, "https://github.com/TheBlueLines"),
+            DevData("Juhos Gergely János", "Marketing", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_juhos)!!, "https://github.com/enderember003"),
         )
 
         RecyclerView.adapter = DevRecyclerAdapter(devArrayList)
