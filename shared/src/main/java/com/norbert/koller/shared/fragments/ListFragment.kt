@@ -149,6 +149,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         button.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.add)
         val textColor = requireContext().getAttributeColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
         button.setTextColor(textColor)
+        button.setPaddingRelative(ApplicationManager.convertDpToPixel(16, requireContext()), button.paddingTop, button.paddingEnd, button.paddingBottom)
         button.iconTint = button.textColors
         val params = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
         val textContainer = resources.getDimensionPixelSize(R.dimen.text_container_margin)
