@@ -762,6 +762,12 @@
         <item name="tabTextColor">?colorForeground066</item>
         <item name="tabIndicatorColor">?attr/colorPrimary</item>
         <item name="tabUnboundedRipple">false</item>
+        <item name="tabTextAppearance">@style/TabTextAppearance</item>
+    </style>
+
+    <style name="TabTextAppearance">
+        <item name="android:fontFamily">@font/roboto</item>
+        <item name="android:textSize">@dimen/text</item>
     </style>
 
     <style name="NestedScrollView">
