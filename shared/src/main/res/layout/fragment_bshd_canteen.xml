@@ -6,17 +6,23 @@
     android:orientation="vertical">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        app:cardCornerRadius="@null"
         app:shapeAppearance="@style/OverlayRoundedCardTop">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/drag_handle4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="@dimen/text_container_margin"
-            android:text="Zöccség leves, Finom főzelék" />
+            android:layout_margin="@dimen/full_card_padding"
+            android:text="Zöccség leves, Finom főzelék"
+            android:textAppearance="@style/Title" />
     </com.google.android.material.card.MaterialCardView>
 
     <ScrollView
@@ -66,8 +72,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:detail="-"
-                app:icon="@drawable/question_box"
-                app:name="T. zsírsav (jelentsen bármit is)" />
+                app:icon="@drawable/humidity_percentage"
+                app:name="Telített zsírsav" />
 
             <com.norbert.koller.shared.customviews.NameContentView
                 android:id="@+id/ncw_stfate"
@@ -96,56 +102,64 @@
             </com.norbert.koller.shared.customviews.NameContentView>
 
             <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/spacing"
                 app:flexWrap="wrap">
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:foreground="@drawable/ring_warning"
                     android:padding="@dimen/spacing"
                     android:src="@drawable/egg" />
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:foreground="@drawable/ring_maybe"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/wheat" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:foreground="@drawable/ring_maybe"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/egg" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:foreground="@drawable/ring_warning"
+                    android:padding="@dimen/spacing"
+                    android:src="@drawable/egg" />
+
+                <ImageView
+                    android:layout_width="60dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:foreground="@drawable/ring_warning"
                     android:padding="@dimen/spacing"
                     android:src="@drawable/doctor" />
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:foreground="@drawable/ring_maybe"
                     android:padding="@dimen/spacing"
                     android:src="@drawable/egg" />
 
                 <ImageView
                     android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:foreground="@drawable/ring_warning"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/egg" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:foreground="@drawable/ring_warning"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/doctor" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
-                    android:foreground="@drawable/ring_maybe"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/egg" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
                     android:foreground="@drawable/ring_warning"
                     android:padding="@dimen/spacing"
                     android:src="@drawable/doctor" />

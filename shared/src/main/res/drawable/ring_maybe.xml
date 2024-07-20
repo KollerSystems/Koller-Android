@@ -15,7 +15,7 @@
                         <stroke android:width="2dp"
                             android:color="?attr/colorYellow"
                             android:dashGap="5dp"
-                            android:dashWidth="10dp"/>
+                            android:dashWidth="15dp"/>
                     </shape>
                 </rotate>
             </item>
