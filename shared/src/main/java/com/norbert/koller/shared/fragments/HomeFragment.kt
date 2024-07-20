@@ -85,7 +85,7 @@ abstract class HomeFragment : Fragment() {
                 R.string.perfect), "5"),
             TodayData(true, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
                 R.string.perfect), "4"),
-            TodayData(true, context?.getDrawable(R.drawable.rocket),"Online Marketing", "Megjelent", AppCompatResources.getDrawable(requireContext(), R.drawable.check_circle)),
+            TodayData(true, context?.getDrawable(R.drawable.rocket),"Szakkör", "Online Marketing • Megjelent", AppCompatResources.getDrawable(requireContext(), R.drawable.check_circle)),
             TodayData(false, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
                 R.string.perfect), "5"),
             TodayData(true, context?.getDrawable(R.drawable.room),getString(R.string.room_order), getString(
