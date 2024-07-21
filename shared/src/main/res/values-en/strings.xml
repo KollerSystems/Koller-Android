@@ -374,4 +374,7 @@
     <string name="extrovert_description">Extrovert: Party guy, lively, constantly in company.</string>
 
     <string name="other_information">Other infromation</string>
+    <string name="close_relative">Close relative</string>
+    <string name="new_password">New password</string>
+    <string name="change_password">Change password</string>
 </resources>

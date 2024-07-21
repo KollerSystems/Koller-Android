@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment"
-        android:id="@+id/scrollView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/full_card_padding">
+        style="@style/FullMainLayout">
 
         <TextView
             android:id="@+id/textView51"
@@ -45,7 +45,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
 
                         android:hint="@string/last_name">
 
@@ -59,7 +59,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
 
                         android:hint="@string/first_name">
 
@@ -290,7 +290,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
 
                         android:hint="@string/phone_number">
 
@@ -331,7 +331,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
 
                         android:hint="@string/email">
 
@@ -350,4 +350,4 @@ android:layout_marginBottom="@dimen/text_container_margin"
     </LinearLayout>
 
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>

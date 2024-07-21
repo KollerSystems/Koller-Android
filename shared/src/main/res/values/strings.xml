@@ -412,4 +412,7 @@
     <string name="extrovert_description">Extrovertált: Partyarc, nyüzsgő, folyamatosan társaságban van.</string>
 
     <string name="other_information">Egyéb közlendő</string>
+    <string name="close_relative">Közeli rokon</string>
+    <string name="new_password">Új jelszó</string>
+    <string name="change_password">Jelszó módosítása</string>
 </resources>

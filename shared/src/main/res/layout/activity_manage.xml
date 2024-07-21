@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/header_footer_size"
+        android:fitsSystemWindows="true">
+
+        <com.norbert.koller.shared.customviews.AppBarLayout
+            android:id="@+id/appbar"
+
+            style="@null"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/expanded_toolbar_height"
+            android:background="@null"
+            android:outlineProvider="none"
+            app:expanded="false">
+
+            <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/CollapsingToolbarLayout"
+                style="@style/CollapsingToolbarLayout"
+
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:title="csumi"
+                app:toolbarId="@+id/toolbar">
+
+
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/header_footer_size"
+                    android:clickable="false"
+                    app:titleMargin="@null"
+                    app:titleMarginStart="49dp" />
+
+                <Button
+                    android:id="@+id/toolbar_exit"
+                    style="@style/ToolbarNavigationButton"
+                    android:layout_gravity="bottom|start" />
+            </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+        </com.norbert.koller.shared.customviews.AppBarLayout>
+
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/bottom_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:cardBackgroundColor="?attr/colorSurfaceContainer"
+        app:cardCornerRadius="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/header_footer_size"
+            android:layout_weight="0"
+            android:gravity="end|center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/header_margin_horizontal">
+
+            <Button
+                android:id="@+id/button_publish_all"
+                style="@style/ButtonIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save"
+                app:icon="@drawable/save" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

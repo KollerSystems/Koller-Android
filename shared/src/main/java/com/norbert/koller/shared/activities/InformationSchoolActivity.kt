@@ -5,12 +5,20 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.norbert.koller.shared.R
 
-class InformationSchoolActivity : AppCompatActivity(){
+class InformationSchoolActivity : ManageActivity(){
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.fragment_information_school)
 
     }
+
+    override fun getContentLayout(): Int {
+        return R.layout.fragment_information_school
+    }
+
+    override fun getName(): Int {
+        return R.string.school
+    }
+
 
 }

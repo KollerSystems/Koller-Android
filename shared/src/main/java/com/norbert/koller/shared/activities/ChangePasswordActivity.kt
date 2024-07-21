@@ -5,10 +5,18 @@ import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.norbert.koller.shared.R
 
-class ChangePasswordActivity : AppCompatActivity() {
+class ChangePasswordActivity : ManageActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_change_password)
+    }
+
+
+    override fun getContentLayout(): Int {
+        return R.layout.activity_change_password
+    }
+
+    override fun getName(): Int {
+        return R.string.change_password
     }
 }

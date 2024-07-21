@@ -387,6 +387,11 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="Info" parent="@style/Description">
+        <item name="android:drawableStart">@drawable/info</item>
+        <item name="android:drawablePadding">@dimen/text_container_margin</item>
+    </style>
+
     <style name="RoundImageView">
         <item name="cornerSize">50%</item>
         <item name="cornerFamily">rounded</item>
@@ -636,6 +641,8 @@
 
     </style>
 
+
+
     <style name="ToolbarNavigationButton" parent="@style/IconButtonTransparent">
         <item name="android:layout_width">@dimen/toolbar_button_size</item>
         <item name="android:layout_height">@dimen/toolbar_button_size</item>
@@ -750,6 +757,12 @@
         <item name="android:paddingStart">@dimen/application_padding</item>
         <item name="android:paddingTop">@dimen/application_padding</item>
         <item name="android:background">?android:attr/colorBackground</item>
+    </style>
+
+    <style name="FullMainLayout" parent="@style/MainLayout">
+        <item name="android:paddingBottom">@dimen/full_card_padding</item>
+        <item name="android:paddingEnd">@dimen/full_card_padding</item>
+        <item name="android:paddingStart">@dimen/full_card_padding</item>
     </style>
 
     <style name="Tab" parent="@style/Widget.Material3.TabLayout">

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment"
@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/full_card_padding">
+        style="@style/FullMainLayout">
 
         <TextView
             android:id="@+id/textView51"
@@ -277,4 +277,4 @@ android:layout_marginBottom="@dimen/text_container_margin"
     </LinearLayout>
 
 
-</ScrollView>
+</androidx.core.widget.NestedScrollView>
