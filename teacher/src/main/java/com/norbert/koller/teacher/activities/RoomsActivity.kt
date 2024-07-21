@@ -2,6 +2,7 @@ package com.norbert.koller.teacher.activities
 
 import android.os.Bundle
 import android.widget.Button
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.viewpager2.widget.ViewPager2
@@ -25,27 +26,32 @@ abstract class RoomsActivity : AppCompatActivity() {
 
     lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
 
-    override fun onBackPressed() {
 
-        MaterialAlertDialogBuilder(this)
-            .setTitle(getString(R.string.are_you_sure_discard_all_grade))
-            .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
-                super.onBackPressed()
-            }
-            .setNegativeButton(getString(com.norbert.koller.shared.R.string.no)){ _, _ ->
-
-            }
-            .setNeutralButton(getString(com.norbert.koller.shared.R.string.create_a_draft)){ _, _ ->
-                super.onBackPressed()
-            }
-            .show()
-
-
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_rooms)
+
+
+
+        val callback = this.onBackPressedDispatcher.addCallback(
+            owner = this,
+            enabled = true
+        ){
+            MaterialAlertDialogBuilder(this@RoomsActivity)
+                .setTitle(getString(R.string.are_you_sure_discard_all_grade))
+                .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
+
+                    finish()
+                }
+                .setNegativeButton(getString(com.norbert.koller.shared.R.string.no)){ _, _ ->
+
+                }
+                .setNeutralButton(getString(com.norbert.koller.shared.R.string.create_a_draft)){ _, _ ->
+                    finish()
+                }
+                .show()
+        }
 
         viewPager  = findViewById(R.id.view_pager)
         tabLayout = findViewById(R.id.tab_layout)
@@ -60,7 +66,7 @@ abstract class RoomsActivity : AppCompatActivity() {
         val backButton : Button = findViewById(R.id.toolbar_exit)
 
         backButton.setOnClickListener{
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
         buttonPublishAll = findViewById(R.id.button_publish_all)

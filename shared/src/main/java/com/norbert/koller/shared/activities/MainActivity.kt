@@ -19,6 +19,8 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextSwitcher
 import android.widget.TextView
+import android.window.OnBackInvokedCallback
+import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.motion.widget.MotionLayout
@@ -184,7 +186,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         backButton.setOnClickListener{
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
 
@@ -264,6 +266,49 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
+            ){
+                handleBackPress()
+            }
+        }
+    }
+
+    private fun handleBackPress(){
+        appBar?.setExpanded(false)
+        if (supportFragmentManager.backStackEntryCount > 1) {
+            dropLastFragment()
+
+        } else {
+            if (viewModel.mainFragmentList.size == 1) {
+
+                if (bottomNavigationView.selectedItemId != R.id.home) {
+                    bottomNavigationView.selectedItemId = R.id.home
+                    viewModel.mainFragmentList = arrayListOf(0)
+                }
+                else{
+
+                    finish()
+                }
+
+            }
+            else{
+
+                viewModel.mainFragmentList.removeLast()
+                bottomNavigationView.selectedItemId = viewModel.mainFragmentList.last()
+
+            }
+
+        }
+    }
+
+
+
+    override fun onBackPressed() {
+        handleBackPress()
     }
 
 
@@ -296,39 +341,6 @@ fun showNightBgIfNeeded(id : String){
         Configuration.UI_MODE_NIGHT_UNDEFINED -> {}
     }
 }
-
-
-    override fun onBackPressed() {
-
-        appBar?.setExpanded(false)
-            if (supportFragmentManager.backStackEntryCount > 1) {
-                dropLastFragment()
-
-            } else {
-                if (viewModel.mainFragmentList.size == 1) {
-
-                    if (bottomNavigationView.selectedItemId != R.id.home) {
-                        bottomNavigationView.selectedItemId = R.id.home
-                        viewModel.mainFragmentList = arrayListOf(0)
-                    }
-                    else{
-
-                        finish()
-                    }
-
-                }
-                else{
-
-                    viewModel.mainFragmentList.removeLast()
-                    bottomNavigationView.selectedItemId = viewModel.mainFragmentList.last()
-
-                }
-
-            }
-
-
-    }
-
 
     fun dropLastFragment(){
         supportFragmentManager.popBackStack()

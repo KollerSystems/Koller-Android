@@ -14,21 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MainTheme"
         android:usesCleartextTraffic="true"
-        android:enableOnBackInvokedCallback="false"
         tools:targetApi="tiramisu">
 
         <activity
             android:name=".activities.SettingsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name="com.norbert.koller.shared.activities.WelcomeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.MainActivity"
             android:exported="false"
+            android:enableOnBackInvokedCallback="true"
 />
 
         <meta-data

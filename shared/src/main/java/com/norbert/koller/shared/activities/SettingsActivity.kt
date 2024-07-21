@@ -83,7 +83,7 @@ open class SettingsActivity : AppCompatActivity() {
 
 
         findViewById<Button>(R.id.toolbar_exit).setOnClickListener{
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
         val timeOffsetSlider : Slider = findViewById(R.id.settings_slider_time_offset)

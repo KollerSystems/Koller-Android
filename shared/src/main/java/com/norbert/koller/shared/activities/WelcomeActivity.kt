@@ -9,6 +9,7 @@ import android.view.View.VISIBLE
 import android.view.animation.AnimationUtils
 import android.view.animation.PathInterpolator
 import android.widget.Button
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.animation.doOnEnd
@@ -206,6 +207,22 @@ class WelcomeActivity : AppCompatActivity() {
 
 
         })
+
+        onBackPressedDispatcher.addCallback(this){
+            if(viewPager.currentItem != 0) {
+
+                if (viewPager.currentItem == tabs.tabCount-1){
+                    finishAffinity()
+
+                }
+                else{
+                    scrollBackward()
+                }
+            }
+            else{
+                finish()
+            }
+        }
     }
 
     fun onFragmentResume(){
@@ -224,24 +241,4 @@ class WelcomeActivity : AppCompatActivity() {
             btnForward.text = getString(Rs.string.next)
         }
     }
-
-    override fun onBackPressed() {
-        if(viewPager.currentItem != 0) {
-
-            if (viewPager.currentItem == tabs.tabCount-1){
-                finishAffinity()
-
-            }
-            else{
-                scrollBackward()
-            }
-        }
-        else{
-            finish()
-        }
-    }
-    //override fun onDestroy() {
-    //    super.onDestroy()
-    //    viewPager.unregisterOnPageChangeCallback(this)
-    //}
 }

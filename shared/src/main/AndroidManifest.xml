@@ -14,7 +14,7 @@
     <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
-        android:enableOnBackInvokedCallback="false"
+        android:enableOnBackInvokedCallback="true"
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu"
         android:supportsRtl="true">
@@ -23,10 +23,12 @@
             android:enabled="true"/>
         <activity
             android:name=".activities.ManageAccountActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.LaunchActivity"
-            android:exported="true">
+            android:exported="true"
+            android:enableOnBackInvokedCallback="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -35,19 +37,24 @@
         </activity>
         <activity
             android:name=".activities.InformationStudentActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.InformationCaretakerActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.InformationCloseRelativeActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.InformationSchoolActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.ChangePasswordActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
 
         <!-->
         <activity

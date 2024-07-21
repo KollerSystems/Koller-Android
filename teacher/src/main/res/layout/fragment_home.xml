@@ -25,6 +25,7 @@
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@null"
                 android:orientation="vertical"
                 android:paddingStart="@dimen/full_card_padding"
                 android:paddingEnd="@dimen/full_card_padding"
@@ -38,102 +39,101 @@
                     android:text="@string/to_do" />
 
 
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@id/home_card_lessons"
+                    style="@style/CardSingle"
+                    android:layout_width="match_parent"
+                    android:clickable="true"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:clipChildren="false"
+                        android:clipToPadding="false"
+                        android:orientation="vertical">
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@id/home_card_lessons"
-                            style="@style/CardSingle"
                             android:layout_width="match_parent"
-                            android:clickable="true"
-                            android:orientation="vertical">
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-7.5dp"
+                            android:layout_marginTop="-7.5dp"
+                            android:layout_marginRight="-7.5dp"
+                            android:layout_marginBottom="7.5dp"
+                            app:cardBackgroundColor="?attr/colorErrorContainer"
+                            app:cardCornerRadius="15dp"
+                            app:cardElevation="0dp">
 
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:clipChildren="false"
-                                android:clipToPadding="false"
-                                android:orientation="vertical">
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="7.5dp">
 
-                                <com.google.android.material.card.MaterialCardView
+                                <TextView
+                                    android:id="@+id/home_text_lessons_number"
+                                    style="@style/IconLikeText"
+                                    android:gravity="center_horizontal"
+                                    android:text="n"
+                                    android:textSize="38sp" />
+
+                                <LinearLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_marginLeft="-7.5dp"
-                                    android:layout_marginTop="-7.5dp"
-                                    android:layout_marginRight="-7.5dp"
-                                    android:layout_marginBottom="7.5dp"
-                                    app:cardBackgroundColor="?attr/colorErrorContainer"
-                                    app:cardCornerRadius="15dp"
-                                    app:cardElevation="0dp">
+                                    android:layout_marginStart="10dp"
+                                    android:layout_marginTop="@dimen/text_container_margin"
+                                    android:layout_marginEnd="@dimen/text_container_margin"
+                                    android:layout_marginBottom="@dimen/text_container_margin"
+                                    android:orientation="horizontal">
 
                                     <LinearLayout
-                                        android:layout_width="match_parent"
+                                        android:layout_width="0dp"
                                         android:layout_height="wrap_content"
-                                        android:gravity="center_vertical"
-                                        android:orientation="horizontal"
-                                        android:padding="7.5dp">
+                                        android:layout_marginStart="10dp"
+                                        android:layout_weight="1"
+                                        android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/home_text_lessons_number"
-                                            style="@style/IconLikeText"
-                                            android:text="n"
-                                            android:gravity="center_horizontal"
-                                            android:textSize="38sp" />
-
-                                        <LinearLayout
+                                            android:id="@+id/home_text_lessons_title"
+                                            style="@style/Title"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
-                                            android:layout_marginStart="10dp"
-                                            android:layout_marginTop="@dimen/text_container_margin"
-                                            android:layout_marginEnd="@dimen/text_container_margin"
-                                            android:layout_marginBottom="@dimen/text_container_margin"
-                                            android:orientation="horizontal">
+                                            android:text="@string/title" />
 
-                                            <LinearLayout
-                                                android:layout_width="0dp"
-                                                android:layout_height="wrap_content"
-                                                android:layout_marginStart="10dp"
-                                                android:layout_weight="1"
-                                                android:orientation="vertical">
-
-                                                <TextView
-                                                    android:id="@+id/home_text_lessons_title"
-                                                    style="@style/Title"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:text="@string/title" />
-
-                                                <TextView
-                                                    android:id="@+id/home_text_lessons_description"
-                                                    style="@style/Description"
-                                                    android:layout_width="match_parent"
-                                                    android:layout_height="wrap_content"
-                                                    android:text="@string/description"
-                                                    android:gravity="start" />
-                                            </LinearLayout>
-
-                                            <TextView
-                                                android:id="@+id/home_text_lessons_time"
-                                                style="@style/Description"
-                                                android:layout_width="35sp"
-                                                android:layout_height="match_parent"
-                                                android:gravity="center"
-                                                android:lineSpacingExtra="-5sp"
-                                                android:text="@string/hours" />
-
-                                        </LinearLayout>
-
+                                        <TextView
+                                            android:id="@+id/home_text_lessons_description"
+                                            style="@style/Description"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:gravity="start"
+                                            android:text="@string/description" />
                                     </LinearLayout>
-                                </com.google.android.material.card.MaterialCardView>
 
-                                <include
-                                    layout="@layout/view_todo"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginTop="7.5dp" />
+                                    <TextView
+                                        android:id="@+id/home_text_lessons_time"
+                                        style="@style/Description"
+                                        android:layout_width="35sp"
+                                        android:layout_height="match_parent"
+                                        android:gravity="center"
+                                        android:lineSpacingExtra="-5sp"
+                                        android:text="@string/hours" />
 
+                                </LinearLayout>
 
                             </LinearLayout>
-
                         </com.google.android.material.card.MaterialCardView>
+
+                        <include
+                            layout="@layout/view_todo"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="7.5dp" />
+
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
 
 
                 <TextView
@@ -145,10 +145,10 @@
                     android:text="@string/today" />
 
                 <androidx.cardview.widget.CardView
-                    app:cardBackgroundColor="@android:color/transparent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginVertical="@dimen/text_container_margin">
+                    android:layout_marginVertical="@dimen/text_container_margin"
+                    app:cardBackgroundColor="@android:color/transparent">
 
 
                     <RelativeLayout
@@ -176,9 +176,9 @@
                     android:text="Nemrég" />
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginVertical="@dimen/text_container_margin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/text_container_margin"
                     app:cardBackgroundColor="@android:color/transparent">
 
 
@@ -208,9 +208,9 @@
                     android:text="Egyéb olvasatlan" />
 
                 <androidx.cardview.widget.CardView
-                    android:layout_marginVertical="@dimen/text_container_margin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_marginVertical="@dimen/text_container_margin"
                     app:cardBackgroundColor="@android:color/transparent">
 
                     <LinearLayout

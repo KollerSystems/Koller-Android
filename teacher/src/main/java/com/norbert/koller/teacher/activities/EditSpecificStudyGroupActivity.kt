@@ -35,7 +35,7 @@ open class EditSpecificStudyGroupActivity : AppCompatActivity() {
         val backButton : Button = findViewById(R.id.toolbar_exit)
 
         backButton.setOnClickListener{
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
         val saveButton : Button = findViewById(R.id.button_publish_all)

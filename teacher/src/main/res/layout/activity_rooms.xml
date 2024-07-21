@@ -18,7 +18,7 @@
 
             style="@null"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/expanded_toolbar_height"
+            android:layout_height="wrap_content"
             android:background="@null"
             android:outlineProvider="none"
             app:expanded="false">
@@ -28,11 +28,9 @@
                 style="@style/CollapsingToolbarLayout"
 
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="@dimen/expanded_toolbar_height"
                 app:title="@string/room_rate"
                 app:toolbarId="@+id/toolbar">
-
-
 
 
                 <androidx.appcompat.widget.Toolbar
@@ -42,11 +40,17 @@
                     android:clickable="false"
                     app:titleMargin="@null"
                     app:titleMarginStart="49dp" />
+
                 <Button
                     android:id="@+id/toolbar_exit"
                     style="@style/ToolbarNavigationButton"
                     android:layout_gravity="bottom|start" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/tab_height" />
 
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -56,11 +60,6 @@
             android:layout_height="match_parent"
             android:orientation="vertical"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/tab_height" />
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/view_pager"

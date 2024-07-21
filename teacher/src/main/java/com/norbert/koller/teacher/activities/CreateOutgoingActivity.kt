@@ -6,6 +6,7 @@ import android.view.View.GONE
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.addCallback
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
@@ -49,26 +50,6 @@ class CreateOutgoingActivity() : AppCompatActivity() {
         return (viewModel.response.value as OutgoingData)
     }
 
-    override fun onBackPressed() {
-        if(true){
-            MaterialAlertDialogBuilder(this)
-                .setTitle(getString(com.norbert.koller.shared.R.string.are_you_sure_you_want_to_discard_the_post))
-                .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
-                    super.onBackPressed()
-                }
-                .setNegativeButton(getString(com.norbert.koller.shared.R.string.no)) { _, _ ->
-
-                }
-                .setNeutralButton(getString(com.norbert.koller.shared.R.string.create_a_draft)){ _, _->
-                    super.onBackPressed()
-                }
-                .show()
-        }
-        else{
-            super.onBackPressed()
-        }
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_outgoing)
@@ -94,7 +75,7 @@ class CreateOutgoingActivity() : AppCompatActivity() {
         val buttonExit : Button = findViewById(R.id.toolbar_exit)
 
         buttonExit.setOnClickListener{
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
 
@@ -169,6 +150,21 @@ class CreateOutgoingActivity() : AppCompatActivity() {
                 tilAddresse.addChip(user.name!!)
             }
 
+        }
+
+        onBackPressedDispatcher.addCallback(this){
+            MaterialAlertDialogBuilder(this@CreateOutgoingActivity)
+                .setTitle(getString(com.norbert.koller.shared.R.string.are_you_sure_you_want_to_discard_the_post))
+                .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
+                    finish()
+                }
+                .setNegativeButton(getString(com.norbert.koller.shared.R.string.no)) { _, _ ->
+
+                }
+                .setNeutralButton(getString(com.norbert.koller.shared.R.string.create_a_draft)){ _, _->
+                    finish()
+                }
+                .show()
         }
     }
 }

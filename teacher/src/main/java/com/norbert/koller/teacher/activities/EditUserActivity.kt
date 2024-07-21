@@ -19,7 +19,7 @@ class EditUserActivity : AppCompatActivity() {
         val backButton : Button = findViewById(R.id.toolbar_exit)
 
         backButton.setOnClickListener{
-            onBackPressed()
+            onBackPressedDispatcher.onBackPressed()
         }
 
     }
