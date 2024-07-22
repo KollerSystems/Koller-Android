@@ -127,12 +127,12 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
 
         return when (viewType) {
             0 -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_editable_image, parent, false)
+                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_editable_image, parent, false)
                 ImageViewHolder(itemView)
             }
 
             else -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_add_image_button, parent, false)
+                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.button_add_image, parent, false)
                 ButtonViewHolder(itemView)
             }
         }

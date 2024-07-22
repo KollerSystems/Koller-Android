@@ -1,39 +1,34 @@
 package com.norbert.koller.shared.fragments
 
-import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.NameContentButton
-import com.norbert.koller.shared.customviews.NameContentView
-import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.customviews.DescriptionButton
+import com.norbert.koller.shared.customviews.DescriptionView
+import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.shared.data.StudyGroupTypeData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.skydoves.androidveil.VeilLayout
 import retrofit2.Response
 
 
 abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
 
-    lateinit var ncbClassroom : NameContentButton
-    lateinit var ncbClass : NameContentButton
-    lateinit var ncbTeacher : NameContentButton
+    lateinit var ncbClassroom : DescriptionButton
+    lateinit var ncbClass : DescriptionButton
+    lateinit var ncbTeacher : DescriptionButton
 
 
-    lateinit var ncwMonday : NameContentView
-    lateinit var ncwTuesday : NameContentView
-    lateinit var ncwWednesday : NameContentView
-    lateinit var ncwThursday : NameContentView
+    lateinit var ncwMonday : DescriptionView
+    lateinit var ncwTuesday : DescriptionView
+    lateinit var ncwWednesday : DescriptionView
+    lateinit var ncwThursday : DescriptionView
 
-    lateinit var ncwRepeat : NameContentView
+    lateinit var ncwRepeat : DescriptionView
 
-    lateinit var scbNextProgram : SimpleCardButton
+    lateinit var cbNextProgram : CardButton
 
     override fun getDataTag(): String {
         return "study_group_type"
@@ -64,9 +59,9 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
 
         ncwRepeat = view.findViewById(R.id.ncw_repeat)
 
-        scbNextProgram = view.findViewById(R.id.Scb_next_program)
+        cbNextProgram = view.findViewById(R.id.cb_next_program)
 
-        scbNextProgram.setOnClickListener{
+        cbNextProgram.setOnClickListener{
 
         }
 

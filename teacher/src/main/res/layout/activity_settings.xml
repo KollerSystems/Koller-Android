@@ -9,8 +9,7 @@
     tools:context=".activities.SettingsActivity">
 
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@id/appbar"
+    <com.norbert.koller.shared.customviews.AppBarLayout
 
         android:layout_width="match_parent"
         android:layout_height="@dimen/expanded_toolbar_height"
@@ -18,7 +17,7 @@
         app:expanded="false">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@id/CollapsingToolbarLayout"
+            android:id="@id/collapsing_toolbar"
             style="@style/CollapsingToolbarLayout"
 
             android:layout_width="match_parent"
@@ -29,7 +28,6 @@
 
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/header_footer_size"
                 android:clickable="false"
@@ -37,12 +35,12 @@
                 app:titleMarginStart="49dp" />
 
             <Button
-                android:id="@id/toolbar_exit"
+                android:id="@id/button_back"
                 style="@style/ToolbarNavigationButton"
                 android:layout_gravity="bottom|start" />
 
         </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
+    </com.norbert.koller.shared.customviews.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -51,14 +49,10 @@
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.google.android.flexbox.FlexboxLayout
-            style="@style/MainLayout"
+            style="@style/FullMainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:justifyContent="center"
-            android:paddingStart="@dimen/full_card_padding"
-            android:paddingTop="@dimen/full_card_padding"
-            android:paddingEnd="@dimen/full_card_padding"
-            android:paddingBottom="@dimen/full_card_padding">
+            app:justifyContent="center">
 
             <LinearLayout
 
@@ -68,14 +62,12 @@
                 app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
                 <include
-                    layout="@layout/view_activity_settings_developer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:id="@+id/developer"
+                    layout="@layout/content_activity_settings_developer" />
 
                 <include
-                    layout="@layout/view_activity_settings_notifications"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:id="@+id/external"
+                    layout="@layout/content_activity_settings_external" />
             </LinearLayout>
         </com.google.android.flexbox.FlexboxLayout>
 

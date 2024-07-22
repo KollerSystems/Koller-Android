@@ -2,20 +2,13 @@ package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.api.RoomPagingSource
 import com.norbert.koller.shared.api.StudyGroupTypePagingSource
-import com.norbert.koller.shared.fragments.ListFragment
-import com.norbert.koller.shared.recycleradapters.BasePagingSource
-import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.StudyGroupTypeRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.PagingSource
 
 abstract class StudyGroupsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
-    override fun getPagingSource(): BasePagingSource {
+    override fun getPagingSource(): PagingSource {
         return StudyGroupTypePagingSource(requireContext(), viewModel)
     }
 
@@ -23,8 +16,8 @@ abstract class StudyGroupsFragment(defaultFilters : MutableMap<String, ArrayList
 
         setupSort(R.string.abc, R.string.zyx,"Topic")
 
-        baseRecycleAdapter.chipGroupSort = chipGroupSort
-        baseRecycleAdapter.chipGroupFilter = chipGroupFilter
+        apiRecyclerAdapter.chipGroupSort = chipGroupSort
+        apiRecyclerAdapter.chipGroupFilter = chipGroupFilter
 
         addSearchbar("Topic")
 

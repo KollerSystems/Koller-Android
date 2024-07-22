@@ -8,7 +8,7 @@ import com.norbert.koller.shared.data.UserData
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.data.ApiLoginRefreshData
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
-import com.norbert.koller.shared.recycleradapters.BasePagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.BaseProgramTypeData
 import com.norbert.koller.shared.data.ClassData
@@ -172,7 +172,7 @@ interface APIInterface {
     ) : Response<StudyGroupTypeData>
 }
 
-class BaseProgramTypePagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+class ProgramTypePagingSource(context : Context, viewModel: BaseViewModel) : PagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -181,7 +181,7 @@ class BaseProgramTypePagingSource(context : Context, viewModel: BaseViewModel) :
 
 }
 
-class StudyGroupTypePagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+class StudyGroupTypePagingSource(context : Context, viewModel: BaseViewModel) : PagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -190,7 +190,7 @@ class StudyGroupTypePagingSource(context : Context, viewModel: BaseViewModel) : 
 
 }
 
-class CrossingPagingSource(context: Context, val uid : Int, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+class CrossingPagingSource(context: Context, val uid : Int, viewModel: BaseViewModel) : PagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -200,7 +200,7 @@ class CrossingPagingSource(context: Context, val uid : Int, viewModel: BaseViewM
 
 }
 
-class UserPagingSource(context: Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+class UserPagingSource(context: Context, viewModel: BaseViewModel) : PagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -210,7 +210,7 @@ class UserPagingSource(context: Context, viewModel: BaseViewModel) : BasePagingS
 
 }
 
-class RoomPagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+class RoomPagingSource(context : Context, viewModel: BaseViewModel) : PagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -219,7 +219,7 @@ class RoomPagingSource(context : Context, viewModel: BaseViewModel) : BasePaging
 
 }
 
-class BaseProgramPagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+class ProgramPagingSource(context : Context, viewModel: BaseViewModel) : PagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 
@@ -229,7 +229,7 @@ class BaseProgramPagingSource(context : Context, viewModel: BaseViewModel) : Bas
 
 }
 
-class StudyGroupPagingSource(context : Context, viewModel: BaseViewModel) : BasePagingSource(context, viewModel) {
+class StudyGroupPagingSource(context : Context, viewModel: BaseViewModel) : PagingSource(context, viewModel) {
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
 

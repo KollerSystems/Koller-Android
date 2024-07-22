@@ -15,6 +15,6 @@ class WelcomeInterestsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_welcome_interests, container, false)
+        return inflater.inflate(R.layout.fragment_register_interests, container, false)
     }
 }

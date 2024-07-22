@@ -3,7 +3,6 @@ package com.norbert.koller.shared.recycleradapters
 import android.animation.ValueAnimator
 import android.content.Intent
 import android.net.Uri
-import android.os.Handler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +22,7 @@ class DevRecyclerAdapter (private var devList : ArrayList<DevData>) : RecyclerVi
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DevViewHolder {
 
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_dev, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_dev, parent, false)
 
         lastView = view
         return DevViewHolder(view)

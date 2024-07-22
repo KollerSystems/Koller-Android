@@ -27,6 +27,6 @@
         android:paddingHorizontal="@dimen/full_card_padding"
         android:paddingBottom="@dimen/full_card_padding"
         app:layout_flexGrow="1"
-        tools:listitem="@layout/view_user_presence_vertical" />
+        tools:listitem="@layout/item_user_presence_vertical" />
 
 </com.google.android.flexbox.FlexboxLayout>

@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.student.recycleradapters.DayRecyclerAdapter
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 
 class CalendarDaysFragment : Fragment() {
@@ -26,7 +25,7 @@ class CalendarDaysFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calendar_days, container, false)
+        return inflater.inflate(R.layout.fragment_days, container, false)
 
     }
 

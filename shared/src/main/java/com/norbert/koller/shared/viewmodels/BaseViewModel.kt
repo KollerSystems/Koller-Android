@@ -7,7 +7,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
-import com.norbert.koller.shared.recycleradapters.BasePagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSource
 import kotlinx.coroutines.flow.Flow
 
 class BaseViewModel : ViewModel() {
@@ -23,8 +23,8 @@ class BaseViewModel : ViewModel() {
 
     var filtersShown : MutableLiveData<Boolean> = MutableLiveData(false)
 
-    lateinit var pagingSource: (()-> BasePagingSource)
-    lateinit var currentPagingSource : BasePagingSource
+    lateinit var pagingSource: (()-> PagingSource)
+    lateinit var currentPagingSource : PagingSource
 
     val pagingData: Flow<PagingData<Any>> = Pager(
         config = PagingConfig(

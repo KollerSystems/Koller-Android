@@ -10,13 +10,13 @@ import com.norbert.koller.teacher.R
 class EditRoomActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_edit_room)
+        setContentView(R.layout.content_edit_room)
 
-        val appBar : AppBarLayout = findViewById(R.id.appbar)
+        val appBar : AppBarLayout = findViewById(R.id.app_bar)
 
         appBar.setup()
 
-        val backButton : Button = findViewById(R.id.toolbar_exit)
+        val backButton : Button = findViewById(R.id.button_back)
 
         backButton.setOnClickListener{
             onBackPressedDispatcher.onBackPressed()

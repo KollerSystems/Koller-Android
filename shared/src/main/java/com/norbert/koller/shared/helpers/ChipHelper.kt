@@ -1,27 +1,18 @@
 package com.norbert.koller.shared.helpers
 
-import android.app.Activity
-import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.util.Pair
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentApi
+import com.norbert.koller.shared.fragments.bottomsheet.ListApiBsdFragment
 import com.norbert.koller.shared.managers.checkByPass
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.recycleradapters.ListItem
@@ -107,9 +98,9 @@ fun Chip.createAndSetChipText(viewModel: BaseViewModel, filterName: String, tag:
 
 }
 
-fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ItemListDialogFragmentBase, viewModel: BaseViewModel, filterName: String, localizedFilterId: Int){
+fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBsdFragment, viewModel: BaseViewModel, filterName: String, localizedFilterId: Int){
 
-    dialog.show(fragmentManager, ItemListDialogFragmentBase.TAG)
+    dialog.show(fragmentManager, ListBsdFragment.TAG)
 
     if(dialog.getValuesOnFinish == null){
     dialog.getValuesOnFinish = { values, locNames ->
@@ -170,7 +161,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ItemListDialogFragmentApi(getValues, viewModel.filters[filterName], tag)
+        val dialog = ListApiBsdFragment(getValues, viewModel.filters[filterName], tag)
         dialog.collapseText = collapseText
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
@@ -202,7 +193,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ItemListDialogFragmentStatic(arrayList, viewModel.filters[filterName])
+        val dialog = ListStaticBsdFragment(arrayList, viewModel.filters[filterName])
 
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)

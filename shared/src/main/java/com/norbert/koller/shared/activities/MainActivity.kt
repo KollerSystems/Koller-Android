@@ -12,38 +12,28 @@ import android.util.Log
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.view.Window
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextSwitcher
 import android.widget.TextView
-import android.window.OnBackInvokedCallback
 import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentContainerView
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
-import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.KollerHostApduService
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
@@ -52,53 +42,38 @@ import com.norbert.koller.shared.managers.getStringResourceByName
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.managers.setupPortrait
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
-import com.sofakingforever.stars.AnimatedStarsView
 
 import com.squareup.picasso.Picasso
-import com.stfalcon.imageviewer.common.extensions.isVisible
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
 
 abstract class MainActivity : AppCompatActivity() {
 
-    lateinit var toolbarContainer : LinearLayout
-    lateinit var toolbarTitleSwitcher : TextSwitcher
-    lateinit var toolbarDescription : TextView
-
-    lateinit var bottomNavigationView : NavigationBarView
-
     var defaultTitlePadding : Int = 0
 
-    var appBar : AppBarLayout? = null
-    lateinit var backButton : Button
-
     lateinit var viewModel: MainActivityViewModel
-
-    lateinit var mainFragment: FragmentContainerView
-
-    var appImage : ImageView? = null
-
     abstract fun getAppIcon() : Int
-
-    var stars : AnimatedStarsView? = null
-
+    private lateinit var binding : ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+    }
 
+    fun bottomNavigationView() : NavigationBarView{
+        return (binding.navigationView as NavigationBarView)
     }
 
     override fun onStart() {
         super.onStart()
-        stars = findViewById(R.id.stars)
-        stars?.onStart()
+        binding.stars.onStart()
     }
 
     override fun onStop() {
-        stars?.onStop()
+        binding.stars.onStop()
         super.onStop()
     }
 
@@ -141,19 +116,12 @@ abstract class MainActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 
-        mainFragment = findViewById(R.id.main_fragment)
 
-
-
-
-        toolbarContainer = findViewById(R.id.toolbar_ly_text_container)
-        toolbarTitleSwitcher = findViewById(R.id.text_switcher)
-        toolbarDescription = findViewById(R.id.toolbar_description)
-        defaultTitlePadding = toolbarContainer.paddingLeft
+        defaultTitlePadding = binding.lyTitleContainer.paddingLeft
 
         var textView : TextView
 
-        toolbarTitleSwitcher.setFactory {
+        binding.textSwitcher.setFactory {
             textView = TextView(
                 this@MainActivity
             )
@@ -162,37 +130,32 @@ abstract class MainActivity : AppCompatActivity() {
             textView.setTypeface(resources.getFont(R.font.rubik_medium))
             textView
         }
-        toolbarTitleSwitcher.measureAllChildren = false
+        binding.textSwitcher.measureAllChildren = false
 
 
 
 
         val landscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
         if(!landscape){
-            appBar = findViewById(R.id.appbar)
-            backButton = appBar!!.setupPortrait()
-            val motionLayout : MotionLayout = findViewById(R.id.main_motion_layout)
+            binding.appBar!!.setupPortrait()
             val listener = AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
                 val seekPosition = -verticalOffset / appBar.totalScrollRange.toFloat()
-                motionLayout.progress = seekPosition
+                binding.motionLayout!!.progress = seekPosition
             }
-            appBar!!.addOnOffsetChangedListener(listener)
+            binding.appBar!!.addOnOffsetChangedListener(listener)
         }
         else{
-            backButton = findViewById(R.id.toolbar_exit)
-            appImage = findViewById(R.id.Image_app_icon)
-            appImage!!.setImageResource(getAppIcon())
+            binding.imageAppIcon!!.setImageResource(getAppIcon())
             window.statusBarColor = this.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
         }
 
-        backButton.setOnClickListener{
+        binding.buttonBack.setOnClickListener{
             onBackPressedDispatcher.onBackPressed()
         }
 
 
-        bottomNavigationView = findViewById(R.id.bottom_navigation_view)
 
-        bottomNavigationView.setOnItemSelectedListener { menuItem ->
+        bottomNavigationView().setOnItemSelectedListener { menuItem ->
 
 
             changeBackStackState(menuItem.itemId)
@@ -201,28 +164,26 @@ abstract class MainActivity : AppCompatActivity() {
             return@setOnItemSelectedListener true
         }
 
-        bottomNavigationView.setOnItemReselectedListener {
+        bottomNavigationView().setOnItemReselectedListener {
 
             dropAllFragments()
 
         }
 
-        val userImage = findViewById<ImageView>(R.id.user_image)
-        val userCard = findViewById<MaterialCardView>(R.id.user_card)
-        userCard.setOnClickListener{
+        binding.cardUser.setOnClickListener{
             ApplicationManager.openProfile.invoke(this)
         }
 
         Picasso.get()
             .load(UserData.instance.picture)
             .noPlaceholder()
-            .into(userImage)
+            .into(binding.imageUser)
 
 
         if(savedInstanceState == null) {
             changeBackStackState(R.id.home)
-            toolbarDescription.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            viewModel.descriptionHeight = toolbarDescription.measuredHeight;
+            binding.textTitleDescription.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            viewModel.descriptionHeight = binding.textTitleDescription.measuredHeight;
         }
         else{
             val id = supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()
@@ -235,14 +196,14 @@ abstract class MainActivity : AppCompatActivity() {
             ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 112)
         }
 
-        appBar?.setExpanded(false)
+        binding.appBar?.setExpanded(false)
         showBackButtonIfNeeded()
 
         backgroundAnimatorIn.addUpdateListener { valueAnimator ->
-            stars?.alpha = valueAnimator.animatedValue as Float
+            binding.stars.alpha = valueAnimator.animatedValue as Float
         }
         backgroundAnimatorOut.addUpdateListener { valueAnimator ->
-            stars?.alpha = valueAnimator.animatedValue as Float
+            binding.stars.alpha = valueAnimator.animatedValue as Float
         }
         backgroundAnimatorIn.duration = 200
         backgroundAnimatorOut.duration = 200
@@ -253,7 +214,7 @@ abstract class MainActivity : AppCompatActivity() {
             if(!title.isNullOrBlank()) {
                 setToolbarTitle(title)
             }
-            appBar?.setExpanded(false)
+            binding.appBar?.setExpanded(false)
 
             showNightBgIfNeeded(id)
 
@@ -278,15 +239,15 @@ abstract class MainActivity : AppCompatActivity() {
     }
 
     private fun handleBackPress(){
-        appBar?.setExpanded(false)
+        binding.appBar?.setExpanded(false)
         if (supportFragmentManager.backStackEntryCount > 1) {
             dropLastFragment()
 
         } else {
             if (viewModel.mainFragmentList.size == 1) {
 
-                if (bottomNavigationView.selectedItemId != R.id.home) {
-                    bottomNavigationView.selectedItemId = R.id.home
+                if (bottomNavigationView().selectedItemId != R.id.home) {
+                    bottomNavigationView().selectedItemId = R.id.home
                     viewModel.mainFragmentList = arrayListOf(0)
                 }
                 else{
@@ -298,7 +259,7 @@ abstract class MainActivity : AppCompatActivity() {
             else{
 
                 viewModel.mainFragmentList.removeLast()
-                bottomNavigationView.selectedItemId = viewModel.mainFragmentList.last()
+                bottomNavigationView().selectedItemId = viewModel.mainFragmentList.last()
 
             }
 
@@ -307,6 +268,8 @@ abstract class MainActivity : AppCompatActivity() {
 
 
 
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
         handleBackPress()
     }
@@ -321,17 +284,17 @@ fun showNightBgIfNeeded(id : String){
                     Calendar.HOUR_OF_DAY
                 ))) + SettingsActivity.timeOffset
             if (id == "home" && (hours > 22 || hours < 3)) {
-                appBar?.background = AppCompatResources.getDrawable(this, R.drawable.separator)
+                binding.appBar?.background = AppCompatResources.getDrawable(this, R.drawable.separator)
                 backgroundAnimatorOut.cancel()
-                stars?.setVisibilityBy(true)
+                binding.stars.setVisibilityBy(true)
                 backgroundAnimatorIn.start()
 
-            } else if (viewModel.lastFragmentId == "home" && stars?.visibility == VISIBLE) {
-                appBar?.background =
+            } else if (viewModel.lastFragmentId == "home" && binding.stars.visibility == VISIBLE) {
+                binding.appBar?.background =
                     ColorDrawable(getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
                 backgroundAnimatorIn.cancel()
                 backgroundAnimatorOut.doOnEnd {
-                    stars?.setVisibilityBy(false)
+                    binding.stars.setVisibilityBy(false)
                 }
                 backgroundAnimatorOut.reverse()
                 backgroundAnimatorOut.start()
@@ -352,7 +315,7 @@ fun showNightBgIfNeeded(id : String){
 
         return Snackbar
             .make(
-                mainFragment,
+                binding.fragmentContainer,
                 text,
                 time
             )
@@ -384,10 +347,10 @@ fun showNightBgIfNeeded(id : String){
     fun changeBackStackState(idToSelect : Int){
 
 
-        if(idToSelect != bottomNavigationView.selectedItemId) {
-            supportFragmentManager.saveBackStack(bottomNavigationView.selectedItemId.toString())
+        if(idToSelect != bottomNavigationView().selectedItemId) {
+            supportFragmentManager.saveBackStack(bottomNavigationView().selectedItemId.toString())
 
-            viewModel.savedBackStacks.add(bottomNavigationView.selectedItemId)
+            viewModel.savedBackStacks.add(bottomNavigationView().selectedItemId)
         }
 
         supportFragmentManager.restoreBackStack(idToSelect.toString())
@@ -436,16 +399,16 @@ fun showNightBgIfNeeded(id : String){
     }
 
 
-    fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId) : FragmentTransaction{
+    fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction{
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.main_fragment, fragment, "${selectedItemId}${supportFragmentManager.backStackEntryCount}")
+        fragmentTransaction.replace(R.id.fragment_container, fragment, "${selectedItemId}${supportFragmentManager.backStackEntryCount}")
         fragmentTransaction.setReorderingAllowed(true)
         fragmentTransaction.commit()
         return fragmentTransaction
     }
 
 
-    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView.selectedItemId) : FragmentTransaction {
+    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction {
         val fragmentTransaction = replaceFragmentWithoutBackStack(fragment, selectedItemId)
         fragmentTransaction.addToBackStack(selectedItemId.toString())
 
@@ -457,7 +420,7 @@ fun showNightBgIfNeeded(id : String){
 
 
         fragment.sharedElementEnterTransition = MaterialContainerTransform().apply {
-            drawingViewId = R.id.main_fragment
+            drawingViewId = R.id.fragment_container
             fadeMode = MaterialContainerTransform.FADE_MODE_CROSS
         }
 
@@ -480,21 +443,21 @@ fun showNightBgIfNeeded(id : String){
 
             toPadding = resources.getDimensionPixelSize(R.dimen.card_padding)
             toAlpha = 0f
-            backButton.isClickable = false
+            binding.buttonBack.isClickable = false
 
         } else {
 
             toPadding = defaultTitlePadding
             toAlpha = 1f
-            backButton.isClickable = true
+            binding.buttonBack.isClickable = true
         }
 
-        val buttonAnimator = ValueAnimator.ofFloat(backButton.alpha, toAlpha)
+        val buttonAnimator = ValueAnimator.ofFloat(binding.buttonBack.alpha, toAlpha)
         val animator : ValueAnimator
-        if(appImage == null) {
-            animator = ValueAnimator.ofInt(toolbarContainer.paddingRight, toPadding)
+        if(binding.imageAppIcon == null) {
+            animator = ValueAnimator.ofInt(binding.lyTitleContainer.paddingRight, toPadding)
             animator.addUpdateListener { valueAnimator ->
-                toolbarContainer.setPadding(
+                binding.lyTitleContainer.setPadding(
                     valueAnimator.animatedValue as Int,
                     0,
                     valueAnimator.animatedValue as Int,
@@ -503,13 +466,13 @@ fun showNightBgIfNeeded(id : String){
             }
         }
         else{
-            animator = ValueAnimator.ofFloat(appImage!!.alpha, (toAlpha - 1) * -1)
+            animator = ValueAnimator.ofFloat(binding.imageAppIcon!!.alpha, (toAlpha - 1) * -1)
             animator.addUpdateListener { valueAnimator ->
-                appImage!!.alpha = valueAnimator.animatedValue as Float
+                binding.imageAppIcon!!.alpha = valueAnimator.animatedValue as Float
             }
         }
         buttonAnimator.addUpdateListener { valueAnimator ->
-            backButton.alpha = valueAnimator.animatedValue as Float
+            binding.buttonBack.alpha = valueAnimator.animatedValue as Float
         }
 
         val animationSet = AnimatorSet()
@@ -528,20 +491,20 @@ fun showNightBgIfNeeded(id : String){
     @SuppressLint("PrivateResource")
     fun setToolbarTitle(title : String?, description : String = ""){
 
-        val descriptionChanges = description != toolbarDescription.text.toString()
-        if(title == (toolbarTitleSwitcher.currentView as TextView).text.toString() && !descriptionChanges) {
+        val descriptionChanges = description != binding.textTitleDescription.text.toString()
+        if(title == (binding.textSwitcher.currentView as TextView).text.toString() && !descriptionChanges) {
 
             return
         }
 
-        Log.d("RETGIJASDIKUFHASDIOLCHBHJYXFV", "${description} :::::: ${toolbarDescription.text.toString()}")
+        Log.d("RETGIJASDIKUFHASDIOLCHBHJYXFV", "${description} :::::: ${binding.textTitleDescription.text.toString()}")
 
         if(descriptionChanges) {
             if (description.isBlank()) {
 
-                val animator = ValueAnimator.ofInt(toolbarDescription.height, 0)
+                val animator = ValueAnimator.ofInt(binding.textTitleDescription.height, 0)
                 animator.addUpdateListener { valueAnimator ->
-                    toolbarDescription.height = valueAnimator.animatedValue as Int
+                    binding.textTitleDescription.height = valueAnimator.animatedValue as Int
                 }
 
                 animator.setDuration(resources.getInteger(R.integer.default_transition).toLong())
@@ -551,11 +514,11 @@ fun showNightBgIfNeeded(id : String){
                 )
                 animator.start()
 
-            } else if(toolbarDescription.text.toString().isBlank()) {
+            } else if(binding.textTitleDescription.text.toString().isBlank()) {
 
-                val animator = ValueAnimator.ofInt(toolbarDescription.height, viewModel.descriptionHeight)
+                val animator = ValueAnimator.ofInt(binding.textTitleDescription.height, viewModel.descriptionHeight)
                 animator.addUpdateListener { valueAnimator ->
-                    toolbarDescription.height = valueAnimator.animatedValue as Int
+                    binding.textTitleDescription.height = valueAnimator.animatedValue as Int
                 }
 
                 animator.setDuration(resources.getInteger(R.integer.default_transition).toLong())
@@ -565,11 +528,11 @@ fun showNightBgIfNeeded(id : String){
                 )
                 animator.start()
             }
-            toolbarDescription.text = description
+            binding.textTitleDescription.text = description
         }
-        toolbarTitleSwitcher.setText(title)
+        binding.textSwitcher.setText(title)
 
-        toolbarTitleSwitcher.requestLayout()
+        binding.textSwitcher.requestLayout()
 
     }
 

@@ -11,8 +11,8 @@ import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.norbert.koller.shared.managers.setup
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
 
@@ -55,15 +55,15 @@ abstract class RoomsActivity : AppCompatActivity() {
 
         viewPager  = findViewById(R.id.view_pager)
         tabLayout = findViewById(R.id.tab_layout)
-        collapsingToolbarLayout = findViewById(R.id.CollapsingToolbarLayout)
+        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
 
 
 
-        val appBar : AppBarLayout = findViewById(R.id.appbar)
+        val appBar : AppBarLayout = findViewById(R.id.app_bar)
 
         appBar.setup()
 
-        val backButton : Button = findViewById(R.id.toolbar_exit)
+        val backButton : Button = findViewById(R.id.button_back)
 
         backButton.setOnClickListener{
             onBackPressedDispatcher.onBackPressed()
@@ -85,7 +85,7 @@ abstract class RoomsActivity : AppCompatActivity() {
         }
 
         buttonMore.setOnClickListener{
-            val dialog = ItemListDialogFragmentStatic(arrayListOf(
+            val dialog = ListStaticBsdFragment(arrayListOf(
                 ListItem(getString(com.norbert.koller.shared.R.string.delete_all), null, AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.close), null, {
                     MaterialAlertDialogBuilder(this)
                         .setTitle(getString(R.string.are_you_sure_delete_all_grade))
@@ -97,7 +97,7 @@ abstract class RoomsActivity : AppCompatActivity() {
                         }
                         .show()
                 })))
-            dialog.show(supportFragmentManager, ItemListDialogFragmentBase.TAG)
+            dialog.show(supportFragmentManager, ListBsdFragment.TAG)
 
         }
 

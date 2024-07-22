@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.EventsData
-import com.norbert.koller.shared.fragments.bottomsheet.PostFragment
+import com.norbert.koller.shared.fragments.PostFragment
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -21,7 +21,7 @@ import com.norbert.koller.shared.managers.setVisibilityBy
 class EventsRecyclerAdapter (private val eventsList : ArrayList<EventsData>) : RecyclerView.Adapter<EventsRecyclerAdapter.EventsViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventsViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_post, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_post, parent, false)
         return EventsViewHolder(itemView)
     }
 

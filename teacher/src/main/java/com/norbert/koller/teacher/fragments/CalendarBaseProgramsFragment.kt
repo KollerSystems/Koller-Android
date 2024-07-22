@@ -1,23 +1,16 @@
 package com.norbert.koller.teacher.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.ListFragment
-import com.norbert.koller.shared.api.BaseProgramPagingSource
-import com.norbert.koller.shared.fragments.CalendarBaseProgramsFragment
-import com.norbert.koller.shared.recycleradapters.BasePagingSource
+import com.norbert.koller.shared.fragments.BaseProgramsFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.teacher.R
-import com.norbert.koller.teacher.recycleradapters.BaseProgramRecyclerAdapter
+import com.norbert.koller.teacher.recycleradapters.ProgramRecyclerAdapter
 
-class CalendarBaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : CalendarBaseProgramsFragment(defaultFilters) {
+class CalendarBaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : BaseProgramsFragment(defaultFilters) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        baseRecycleAdapter = BaseProgramRecyclerAdapter()
+        apiRecyclerAdapter = ProgramRecyclerAdapter()
 
 
         addDateChip()

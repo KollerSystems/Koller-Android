@@ -16,7 +16,7 @@ import java.util.ArrayList
 class ImageRecyclerAdapter (private val imageList : ArrayList<Drawable>, val context : Context) : RecyclerView.Adapter<ImageRecyclerAdapter.ImageViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ImageViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_image, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_image, parent, false)
         return ImageViewHolder(itemView)
     }
 

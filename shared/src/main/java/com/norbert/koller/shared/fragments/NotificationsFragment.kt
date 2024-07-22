@@ -14,7 +14,7 @@ import com.norbert.koller.shared.broadcastreceivers.MyNotificationPublisher
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.TodayData
-import com.norbert.koller.shared.recycleradapters.TodayRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 
 
 class NotificationsFragment : Fragment() {
@@ -29,7 +29,7 @@ class NotificationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_notifications, container, false)
+        return inflater.inflate(R.layout.obs_fragment_notifications, container, false)
     }
 
 
@@ -51,7 +51,7 @@ class NotificationsFragment : Fragment() {
             )
         )
 
-        notificsRecyclerView.recyclerView.adapter = TodayRecyclerAdapter(notificationDataArrayList)
+        notificsRecyclerView.recyclerView.adapter = ObsRecyclerAdapter(notificationDataArrayList)
 
 
         sendNotification()

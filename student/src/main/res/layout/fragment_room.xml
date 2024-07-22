@@ -33,7 +33,7 @@
                 app:flexDirection="column"
                 tools:context=".fragments.RoomFragment">
 
-                <include layout="@layout/view_fragment_room_header" />
+                <include layout="@layout/content_fragment_room_header" />
 
                 <TextView
                     android:id="@+id/textView42"
@@ -46,7 +46,7 @@
                     tools:visibility="visible" />
 
 
-                <com.norbert.koller.shared.customviews.SimpleCardButton
+                <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardSingle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     custom:text="@string/report"
                     tools:visibility="visible">
 
-                </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.CardButton>
 
 
             </com.google.android.flexbox.FlexboxLayout>

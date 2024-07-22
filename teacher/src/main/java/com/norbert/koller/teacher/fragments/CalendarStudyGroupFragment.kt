@@ -11,7 +11,7 @@ class CalendarStudyGroupFragment : CalendarStudyGroupFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        baseRecycleAdapter = StudyGroupRecyclerAdapter()
+        apiRecyclerAdapter = StudyGroupRecyclerAdapter()
 
 
         addDateChip()

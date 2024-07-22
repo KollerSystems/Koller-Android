@@ -163,7 +163,7 @@
                             android:isScrollContainer="false"
                             android:nestedScrollingEnabled="false"
                             tools:itemCount="2"
-                            tools:listitem="@layout/view_readable_item" />
+                            tools:listitem="@layout/item_readable" />
                     </RelativeLayout>
 
 
@@ -194,7 +194,7 @@
                             android:isScrollContainer="false"
                             android:nestedScrollingEnabled="false"
                             tools:itemCount="2"
-                            tools:listitem="@layout/view_readable_item" />
+                            tools:listitem="@layout/item_readable" />
                     </RelativeLayout>
 
 
@@ -230,7 +230,7 @@
                                 android:isScrollContainer="false"
                                 android:nestedScrollingEnabled="false"
                                 tools:itemCount="2"
-                                tools:listitem="@layout/view_readable_item" />
+                                tools:listitem="@layout/item_readable" />
                         </RelativeLayout>
 
                     </LinearLayout>

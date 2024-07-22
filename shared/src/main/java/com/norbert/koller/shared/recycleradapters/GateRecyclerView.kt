@@ -4,19 +4,17 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CrossingData
 import com.norbert.koller.shared.data.DefaultDayTimes
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.formatDate
-import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 
 
-class GateRecyclerAdapter() :BaseRecycleAdapter(){
+class GateRecyclerAdapter() :ApiRecyclerAdapter(){
 
     override fun getViewType(): Int {
         return R.layout.view_descriptive_icon_item

@@ -6,7 +6,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams
-import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
@@ -41,7 +40,7 @@ class RoomRateViewPagerAdapter() : RecyclerView.Adapter<RoomRateViewPagerAdapter
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_room_rate_content, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.fragment_room_rate, parent, false)
         return ViewHolder(view)
     }
 

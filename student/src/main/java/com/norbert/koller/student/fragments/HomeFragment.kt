@@ -49,12 +49,12 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
 
         val cardOutgoing : View = view.findViewById(R.id.home_card_outgoing)
         cardOutgoing.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.studentHostel
+            (requireActivity() as MainActivity).bottomNavigationView().selectedItemId = Rs.id.studentHostel
         }
 
         val cardLessons : View = view.findViewById(R.id.home_card_lessons)
         cardLessons.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView.selectedItemId = Rs.id.calendar
+            (requireActivity() as MainActivity).bottomNavigationView().selectedItemId = Rs.id.calendar
         }
 
         fun setupHome(){

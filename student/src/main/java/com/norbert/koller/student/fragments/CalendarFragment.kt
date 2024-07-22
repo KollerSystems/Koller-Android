@@ -5,9 +5,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.CalendarCanteenFragment
+import com.norbert.koller.shared.fragments.CanteenFragment
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.student.fragments.CalendarStudyGroupFragment
 
 class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() {
 
@@ -58,10 +57,10 @@ class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
                 Fragment()
             }
             2->{
-                CalendarCanteenFragment()
+                CanteenFragment()
             }
             3->{
-                CalendarBaseProgramsFragment()
+                BaseProgramsFragment()
             }
             4->{
                 CalendarStudyGroupFragment()

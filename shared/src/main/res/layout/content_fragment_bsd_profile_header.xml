@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <TextView
+        android:id="@+id/textView13"
+        style="@style/CategoryCardNameBald"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/your_profile" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/CardTop">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing"
+            android:orientation="horizontal">
+
+            <com.norbert.koller.shared.customviews.UserView
+                android:id="@+id/badge_user"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginEnd="@dimen/spacing" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/text_container_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/profile_text_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/title"
+                    android:textAppearance="@style/MainTitle" />
+
+                <TextView
+                    android:id="@+id/profile_text_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description"
+                    android:textAppearance="@style/Description" />
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:dividerDrawable="@drawable/divider_space"
+            app:flexDirection="row"
+            app:flexWrap="wrap"
+            app:showDivider="middle">
+
+            <Button
+                android:id="@+id/btn_manage_account"
+                style="@style/ButtonOutline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/manage_account"
+                app:layout_flexGrow="1" />
+
+            <Button
+                android:id="@+id/button_logout"
+                style="@style/ButtonIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/logout"
+                app:icon="@drawable/out"
+                app:iconGravity="textStart"
+                app:layout_flexGrow="1" />
+        </com.google.android.flexbox.FlexboxLayout>
+
+
+    </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</merge>

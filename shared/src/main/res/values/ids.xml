@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="layout_cordinator" type="id" />
-    <item name="main_fragment" type="id" />
+    <item name="coordinator" type="id" />
+    <item name="fragment_container" type="id" />
 
-    <item name="bottom_navigation_view" type="id" />
+    <item name="navigation_view" type="id" />
     <item name="studentHostelFragment" type="id" />
     <item name="roomsFragment" type="id" />
     <item name="usersFragment" type="id" />
@@ -34,10 +34,10 @@
     <item name="user_view_discord" type="id" />
     <item name="nested_scroll_view" type="id" />
     <item name="super_cool_recycler_view" type="id" />
-    <item name="settings_slider_time_offset" type="id" />
+    <item name="slider_time_offset" type="id" />
     <item name="settings_til_hours" type="id" />
-    <item name="settings_slider_list_loading_delay" type="id" />
-    <item name="settings_scb_test_activity" type="id" />
+    <item name="slider_list_loading_delay" type="id" />
+    <item name="cb_test_activity" type="id" />
     <item name="drag_handle" type="id" />
     <item name="loading_overlay" type="id" />
     <item name="fl_root" type="id" />

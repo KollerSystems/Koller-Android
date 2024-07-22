@@ -4,43 +4,40 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.provider.Settings
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View.VISIBLE
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.customviews.SimpleCardButton
-import com.norbert.koller.shared.customviews.SimpleCardButtonWithToggle
+import com.norbert.koller.shared.customviews.CardButton
+import com.norbert.koller.shared.customviews.CardToggle
 import com.norbert.koller.shared.api.APIInterface
 import com.google.android.material.checkbox.MaterialCheckBox
-import com.google.android.material.slider.RangeSlider
 import com.google.android.material.slider.Slider
 import com.google.android.material.textfield.TextInputLayout
-import com.norbert.koller.shared.managers.setup
+import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
+import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
 import java.util.Calendar
-import java.util.Locale
 
-open class SettingsActivity : AppCompatActivity() {
+abstract class SettingsActivity : AppCompatActivity() {
+
+    abstract fun getExternalBinding() : ContentActivitySettingsExternalBinding
+    abstract fun getDeveloperBinding() : ContentActivitySettingsDeveloperBinding
+
     companion object {
         var timeOffset : Float = 0f
     }
 
     var isUpdatingChildren = false
 
-    lateinit var openAnActivity : SimpleCardButton
-
     fun setParentState(
-        checkBoxParent: SimpleCardButtonWithToggle,
-        childrenCheckBoxes: List<SimpleCardButtonWithToggle>,
+        checkBoxParent: CardToggle,
+        childrenCheckBoxes: List<CardToggle>,
         parentOnCheckedStateChangedListener: MaterialCheckBox.OnCheckedStateChangedListener
     ) {
-        val checkedCount = childrenCheckBoxes.stream().filter { obj: SimpleCardButtonWithToggle -> obj.checkBox.isChecked }
+        val checkedCount = childrenCheckBoxes.stream().filter { obj: CardToggle -> obj.checkBox.isChecked }
             .count()
             .toInt()
         val allChecked = checkedCount == childrenCheckBoxes.size
@@ -59,89 +56,45 @@ open class SettingsActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        openAnActivity = findViewById(R.id.settings_scb_test_activity)
+        getDeveloperBinding().sliderListLoadingDelay.setValues(APIInterface.loadingDelayFrom, APIInterface.loadingDelayTo)
 
-
-
-
-        val appBar : AppBarLayout = findViewById(R.id.appbar)
-
-        appBar.setup()
-
-
-        val rangeSlider : RangeSlider = findViewById(R.id.settings_slider_list_loading_delay)
-
-        rangeSlider.setValues(APIInterface.loadingDelayFrom, APIInterface.loadingDelayTo)
-
-        rangeSlider.addOnChangeListener{ slider, value, fromUser ->
+        getDeveloperBinding().sliderListLoadingDelay.addOnChangeListener{ slider, value, fromUser ->
 
             APIInterface.loadingDelayFrom = slider.values[0]
             APIInterface.loadingDelayTo = slider.values[1]
 
         }
 
-
-
-        findViewById<Button>(R.id.toolbar_exit).setOnClickListener{
-            onBackPressedDispatcher.onBackPressed()
-        }
-
-        val timeOffsetSlider : Slider = findViewById(R.id.settings_slider_time_offset)
         val c : Calendar = Calendar.getInstance()
         val hours : Float = (c.get(Calendar.SECOND)  / 60f / 60f+ c.get(Calendar.MINUTE) / 60f + c.get(Calendar.HOUR_OF_DAY))
-        val hoursTIL : TextInputLayout = findViewById(R.id.settings_til_hours)
-        hoursTIL.editText!!.setText((timeOffset).toString())
+        getDeveloperBinding().buttonTimeOffsetReset.text = (hours + timeOffset).toString()
 
+        getDeveloperBinding().sliderTimeOffset.valueFrom = hours * -1
+        getDeveloperBinding().sliderTimeOffset.valueTo = (hours - 24) *-1
 
-        timeOffsetSlider.value = timeOffset
-
-        hoursTIL.hint = (hours + timeOffset).toString()
-
-        timeOffsetSlider.addOnChangeListener { slider, value, fromUser ->
-            timeOffset = value
-            if(timeOffsetSlider.value.toString() != hoursTIL.editText!!.text.toString())
-                hoursTIL.editText!!.setText((timeOffset).toString())
+        getDeveloperBinding().buttonTimeOffsetReset.setOnClickListener{
+            getDeveloperBinding().sliderTimeOffset.value = 0f
         }
 
-        hoursTIL.editText!!.addTextChangedListener(object : TextWatcher {
+        getDeveloperBinding().sliderTimeOffset.value = timeOffset
 
-            override fun afterTextChanged(s: Editable) {}
+        getDeveloperBinding().sliderTimeOffset.addOnChangeListener { slider, value, fromUser ->
+            timeOffset = value
+            getDeveloperBinding().buttonTimeOffsetReset.text = (hours + timeOffset).toString()
+        }
 
-            override fun beforeTextChanged(s: CharSequence, start: Int,
-                                           count: Int, after: Int) {
-            }
 
-            override fun onTextChanged(s: CharSequence, start: Int,
-                                       before: Int, count: Int) {
-
-                try {
-                    if(hoursTIL.editText!!.text.toString() == "") hoursTIL.editText!!.setText("0")
-                    if(hoursTIL.editText!!.text.toString().toFloat() > 24) hoursTIL.editText!!.setText((24).toString())
-                    if(hoursTIL.editText!!.text.toString().toFloat() < -24) hoursTIL.editText!!.setText((-24).toString())
-                    if(timeOffsetSlider.value.toString() != hoursTIL.editText!!.text.toString())
-                        timeOffsetSlider.value = hoursTIL.editText!!.text.toString().toFloat()
-                    hoursTIL.hint = (hours + timeOffset).toString()
-                }catch(asd : Exception){
-
-                }
-
-            }
-        })
-
-        val notifFullSettings : SimpleCardButton = findViewById(R.id.notifics_full_settings)
-
-        notifFullSettings.setOnClickListener {
+        getExternalBinding().cbNotification.setOnClickListener {
             val notificationsIntent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
                 putExtra(Settings.EXTRA_APP_PACKAGE, packageName)
             }
             startActivity(notificationsIntent)
         }
 
-        val languageFullSettings : SimpleCardButton = findViewById(R.id.language_full_settings)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            languageFullSettings.visibility = VISIBLE
-            languageFullSettings.setOnClickListener {
+            getExternalBinding().cbLanguage.visibility = VISIBLE
+            getExternalBinding().cbLanguage.setOnClickListener {
                 val languageIntent = Intent(Settings.ACTION_APP_LOCALE_SETTINGS)
                 languageIntent.data = Uri.fromParts("package", packageName, null)
                 startActivity(languageIntent)

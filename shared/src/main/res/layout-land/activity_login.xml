@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
@@ -14,20 +13,20 @@
         android:orientation="vertical">
 
         <include
-            layout="@layout/view_activity_login_header"
+            layout="@layout/content_activity_login_header"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1" />
 
         <include
-            layout="@layout/view_activity_login_footer"
+            layout="@layout/content_activity_login_footer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0" />
     </LinearLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_view"
+        android:id="@+id/card_body"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -37,23 +36,28 @@
         app:shapeAppearance="@style/OverlayRoundedCardTop">
 
         <include
-            android:id="@+id/login_linear_login"
-            layout="@layout/view_activity_login_body"
+            android:id="@+id/body"
+            layout="@layout/content_activity_login_body"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/login_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:trackCornerRadius="999dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+                app:trackCornerRadius="999dp" />
+        </com.google.android.material.card.MaterialCardView>
+
 
     </com.google.android.material.card.MaterialCardView>
-
 
 
 </LinearLayout>

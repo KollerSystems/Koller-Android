@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        app:cardCornerRadius="@null"
+        app:shapeAppearance="@style/OverlayRoundedCardTop">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/drag_handle4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/full_card_padding"
+            android:text="Bevásárlás"
+            android:textAppearance="@style/Title" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0">
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:padding="@dimen/application_padding"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+
+            <com.norbert.koller.shared.customviews.DescriptionView
+                android:id="@+id/ncw_stfkate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/calendar"
+                app:name="@string/date" />
+
+            <com.norbert.koller.shared.customviews.DescriptionView
+                android:id="@+id/ncw_stasdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:detail="-"
+                app:icon="@drawable/clock"
+                app:name="Időtartam" />
+
+
+            <include
+                layout="@layout/content_message_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/text_container_margin" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

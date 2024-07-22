@@ -4,13 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
 
 
-    android:id="@+id/test"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/app_bar"
 
         android:layout_width="match_parent"
         android:layout_height="@dimen/expanded_toolbar_height"
@@ -48,7 +47,7 @@
                 android:paddingVertical="@dimen/header_margin_vertical">
 
                 <Button
-                    android:id="@+id/toolbar_exit"
+                    android:id="@+id/button_back"
                     style="@style/ToolbarNavigationButton"
                     android:layout_height="@dimen/toolbar_button_size"
                     android:layout_marginRight="@dimen/spacing"
@@ -191,7 +190,6 @@
                 android:text="@string/content" />
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/test"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_container_margin"
@@ -269,7 +267,7 @@
                                 android:paddingHorizontal="@dimen/card_padding"
                                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                                 tools:itemCount="3"
-                                tools:listitem="@layout/view_editable_image">
+                                tools:listitem="@layout/item_editable_image">
 
                             </androidx.recyclerview.widget.RecyclerView>
 
@@ -528,7 +526,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_view"
+        android:id="@+id/card_body"
         android:layout_width="match_parent"
         android:layout_height="@dimen/header_footer_size"
         android:layout_gravity="bottom"

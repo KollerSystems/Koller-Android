@@ -4,32 +4,29 @@ package com.norbert.koller.teacher.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
 import android.widget.Toast
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.NameContentButton
-import com.norbert.koller.shared.customviews.NameContentView
-import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.customviews.DescriptionButton
+import com.norbert.koller.shared.customviews.DescriptionView
+import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.shared.data.BaseProgramData
-import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.fragments.BaseProgramFragmentInterface
 import com.norbert.koller.shared.fragments.DetailsFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.EditStudyGroupActivity
-import com.skydoves.androidveil.VeilLayout
 import retrofit2.Response
 
 
 class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFragmentInterface {
 
 
-    override lateinit var ncwDate : NameContentView
-    override lateinit var ncwTime : NameContentView
-    override lateinit var ncbClassroom : NameContentButton
-    override lateinit var ncbClass : NameContentButton
-    override lateinit var ncbTeacher : NameContentButton
+    override lateinit var ncwDate : DescriptionView
+    override lateinit var ncwTime : DescriptionView
+    override lateinit var ncbClassroom : DescriptionButton
+    override lateinit var ncbClass : DescriptionButton
+    override lateinit var ncbTeacher : DescriptionButton
     override lateinit var toGeneralButton: View
 
     override fun getDataTag(): String {
@@ -52,7 +49,7 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
         super.onViewCreated(view, savedInstanceState)
 
 
-        val editButton : SimpleCardButton = view.findViewById(R.id.Scb_edit)
+        val editButton : CardButton = view.findViewById(R.id.cb_edit)
 
 
         editButton.setOnClickListener {

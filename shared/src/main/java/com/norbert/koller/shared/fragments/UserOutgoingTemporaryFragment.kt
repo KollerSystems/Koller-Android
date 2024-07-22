@@ -15,6 +15,6 @@ open class UserOutgoingTemporaryFragment(val userData : UserData? = null) : Frag
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_outgoing_temporary, container, false)
+        return inflater.inflate(R.layout.fragment_outgoing_temporary, container, false)
     }
 }

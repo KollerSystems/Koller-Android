@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".activities.MainActivity"
-
-
+    android:layout_width="match_parent"
+android:layout_height="match_parent"
 >
 
 
@@ -28,14 +28,14 @@
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
 
-        android:id="@id/layout_cordinator"
+        android:id="@id/coordinator"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/header_footer_size"
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@id/appbar"
+            android:id="@id/app_bar"
 
             android:layout_width="match_parent"
             android:layout_height="@dimen/expanded_toolbar_height"
@@ -43,14 +43,105 @@
             app:expanded="false">
 
 
-            <include
-                layout="@layout/view_activity_main_header"
+            <androidx.constraintlayout.motion.widget.MotionLayout
+                android:id="@+id/motion_layout"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:minHeight="@dimen/header_footer_size"
+                app:layoutDescription="@xml/activity_main_xml_constraintlayout_scene"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/guideline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="60dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintGuide_end="60dp"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <Button
+
+                    android:id="@+id/button_back"
+                    style="@style/ToolbarNavigationButton"
+                    android:layout_width="@dimen/toolbar_button_size"
+                    android:layout_height="@dimen/toolbar_button_size"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/guideline" />
+
+                <LinearLayout
+                    android:id="@+id/ly_title_container"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="60dp"
+                    android:paddingRight="60dp"
+                    android:text="@string/title"
+                    android:textColor="?attr/colorForeground066"
+                    android:textSize="@dimen/text_main_title"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/guideline">
+
+                    <TextSwitcher
+                        android:id="@+id/text_switcher"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inAnimation="@anim/anim_in"
+                        android:outAnimation="@anim/anim_out">
+
+
+                    </TextSwitcher>
+
+
+                    <TextView
+                        android:id="@+id/text_title_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:singleLine="true"
+                        android:text="@string/title"
+                        android:textColor="?attr/colorForeground066" />
+                </LinearLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_user"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="@dimen/spacing"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginBottom="@dimen/spacing"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/toolbar_title"
+                    app:layout_constraintTop_toBottomOf="@id/guideline">
+
+
+                    <ImageView
+                        android:id="@+id/image_user"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="?attr/colorPrimaryContainer"
+                        android:scaleType="centerCrop"
+                        app:srcCompat="@drawable/person" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </androidx.constraintlayout.motion.widget.MotionLayout>
+
         </com.google.android.material.appbar.AppBarLayout>
 
         <androidx.fragment.app.FragmentContainerView
-            android:id="@id/main_fragment"
+            android:id="@id/fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
@@ -59,7 +150,7 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@id/bottom_navigation_view"
+        android:id="@id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -72,4 +163,4 @@
     </com.google.android.material.bottomnavigation.BottomNavigationView>
 
 
-</merge>
+</FrameLayout>

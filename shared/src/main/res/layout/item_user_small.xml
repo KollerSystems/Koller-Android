@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Card"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    app:cardCornerRadius="@null"
+    app:contentPadding="0dp"
+    app:shapeAppearance="@null">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical">
+
+        <com.norbert.koller.shared.customviews.UserView
+            android:id="@+id/badge_user"
+            android:layout_width="75dp"
+            android:layout_height="75dp" />
+
+        <TextView
+            android:id="@+id/text_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-5dp"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginRight="-5dp"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            tools:text="Katona\nMárton"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

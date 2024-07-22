@@ -47,7 +47,7 @@
                     app:layout_scrollFlags="scroll">
 
 
-                    <com.norbert.koller.shared.customviews.NameContentView
+                    <com.norbert.koller.shared.customviews.DescriptionView
                         android:id="@+id/ncw_date"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -57,7 +57,7 @@
                         app:layout_maxWidth="@dimen/tablet_max_width"
                         app:name="@string/date" />
 
-                    <com.norbert.koller.shared.customviews.NameContentView
+                    <com.norbert.koller.shared.customviews.DescriptionView
                         android:id="@+id/ncw_time"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -67,7 +67,7 @@
                         app:layout_maxWidth="@dimen/tablet_max_width"
                         app:name="@string/lesson" />
 
-                    <com.norbert.koller.shared.customviews.NameContentButton
+                    <com.norbert.koller.shared.customviews.DescriptionButton
                         android:id="@+id/ncb_teacher"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -79,7 +79,7 @@
                         app:layout_maxWidth="@dimen/tablet_max_width"
                         app:name="@string/teacher" />
 
-                    <com.norbert.koller.shared.customviews.NameContentButton
+                    <com.norbert.koller.shared.customviews.DescriptionButton
                         android:id="@id/ncb_class"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -93,7 +93,7 @@
                         app:name="@string/class_"
                         tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customviews.NameContentButton
+                    <com.norbert.koller.shared.customviews.DescriptionButton
                         android:id="@+id/ncb_classroom"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -147,7 +147,7 @@
         app:alignItems="center"
  >
 
-        <com.norbert.koller.shared.customviews.SimpleCardButton
+        <com.norbert.koller.shared.customviews.CardButton
             android:id="@+id/Button_to_general"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -159,8 +159,8 @@
             app:text="Általános adatok"
             app:layout_maxWidth="@dimen/tablet_max_width"/>
 
-        <com.norbert.koller.shared.customviews.SimpleCardButton
-            android:id="@+id/Scb_edit"
+        <com.norbert.koller.shared.customviews.CardButton
+            android:id="@+id/cb_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/card_full_margin"

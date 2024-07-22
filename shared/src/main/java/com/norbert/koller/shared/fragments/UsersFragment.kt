@@ -2,16 +2,13 @@ package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.transition.Hold
-import com.google.android.material.transition.MaterialElevationScale
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.recycleradapters.BasePagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
@@ -22,7 +19,7 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 
 
-    override fun getPagingSource(): BasePagingSource {
+    override fun getPagingSource(): PagingSource {
         return UserPagingSource(requireContext(), viewModel)
     }
 
@@ -30,9 +27,9 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(R.string.abc, R.string.zyx,"Name")
-        baseRecycleAdapter = UserRecyclerAdapter()
-        baseRecycleAdapter.chipGroupSort = chipGroupSort
-        baseRecycleAdapter.chipGroupFilter = chipGroupFilter
+        apiRecyclerAdapter = UserRecyclerAdapter()
+        apiRecyclerAdapter.chipGroupSort = chipGroupSort
+        apiRecyclerAdapter.chipGroupFilter = chipGroupFilter
 
         /*leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)

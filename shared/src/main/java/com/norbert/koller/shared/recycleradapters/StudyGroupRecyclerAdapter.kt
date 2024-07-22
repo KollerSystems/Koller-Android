@@ -1,21 +1,16 @@
 package com.norbert.koller.shared.recycleradapters
 
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.StudyGroupData
-import com.norbert.koller.shared.data.StudyGroupTypeData
 
-abstract class StudyGroupRecyclerAdapter() : BaseRecyclerAdapterWithTransition() {
+abstract class StudyGroupRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
     abstract fun onItemPress(holder: RecyclerView.ViewHolder, item: StudyGroupData)
 
     override fun getViewType(): Int {
-        return R.layout.view_user_item
+        return R.layout.item_user
     }
 
     override fun getDataTag(): String {

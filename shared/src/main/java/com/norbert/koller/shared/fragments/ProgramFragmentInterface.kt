@@ -2,23 +2,20 @@ package com.norbert.koller.shared.fragments
 
 import android.content.Context
 import android.view.View
-import android.widget.Button
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.customviews.NameContentButton
-import com.norbert.koller.shared.customviews.NameContentView
-import com.norbert.koller.shared.data.BaseProgramData
+import com.norbert.koller.shared.customviews.DescriptionButton
+import com.norbert.koller.shared.customviews.DescriptionView
 import com.norbert.koller.shared.data.ProgramData
-import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.formatDate
 
 interface ProgramFragmentInterface {
 
-    var ncwDate : NameContentView
-    var ncwTime : NameContentView
-    var ncbClassroom : NameContentButton
-    var ncbTeacher : NameContentButton
+    var ncwDate : DescriptionView
+    var ncwTime : DescriptionView
+    var ncbClassroom : DescriptionButton
+    var ncbTeacher : DescriptionButton
     var toGeneralButton : View
 
     fun findViews(view : View){

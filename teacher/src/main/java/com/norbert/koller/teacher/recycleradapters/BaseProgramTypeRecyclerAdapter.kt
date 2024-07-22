@@ -1,19 +1,16 @@
 package com.norbert.koller.teacher.recycleradapters
 
-import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.BaseProgramTypeData
-import com.norbert.koller.shared.data.StudyGroupData
-import com.norbert.koller.shared.data.StudyGroupTypeData
-import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 
-class BaseProgramTypeRecyclerAdapter() : BaseRecycleAdapter() {
+class BaseProgramTypeRecyclerAdapter() : ApiRecyclerAdapter() {
 
 
 
     override fun getViewType(): Int {
-        return R.layout.view_user_item
+        return R.layout.item_user
     }
 
     override fun getDataTag(): String {

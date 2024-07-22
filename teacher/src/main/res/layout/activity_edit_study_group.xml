@@ -13,7 +13,7 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
+            android:id="@+id/app_bar"
 
             style="@null"
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                     app:titleMarginStart="49dp" />
 
                 <Button
-                    android:id="@+id/toolbar_exit"
+                    android:id="@+id/button_back"
                     style="@style/ToolbarNavigationButton"
                     android:layout_gravity="bottom|start" />
 
@@ -280,7 +280,7 @@
                                     android:text="@string/monday"
                                     android:textAppearance="@style/Text" />
 
-                                <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                <com.norbert.koller.teacher.customviews.TimeRangeView
                                     android:id="@+id/Trcw_monday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -299,7 +299,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="1dp"
                                         android:layout_marginEnd="@dimen/spacing" />
-                                </com.norbert.koller.teacher.customviews.TimeRangeCardView>
+                                </com.norbert.koller.teacher.customviews.TimeRangeView>
 
                                 <CheckBox
                                     android:id="@+id/CheckBox_thuesday"
@@ -307,7 +307,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="@string/tuesday" />
 
-                                <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                <com.norbert.koller.teacher.customviews.TimeRangeView
                                     android:id="@+id/Trcw_thuesday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -323,7 +323,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="1dp"
                                         android:layout_marginEnd="@dimen/spacing" />
-                                </com.norbert.koller.teacher.customviews.TimeRangeCardView>
+                                </com.norbert.koller.teacher.customviews.TimeRangeView>
 
                                 <CheckBox
                                     android:id="@+id/CheckBox_wednessday"
@@ -332,7 +332,7 @@
                                     android:text="@string/wednesday"
                                     android:textAppearance="@style/Text" />
 
-                                <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                <com.norbert.koller.teacher.customviews.TimeRangeView
                                     android:id="@+id/Trcv_wednessday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -348,7 +348,7 @@
                                         android:layout_width="wrap_content"
                                         android:layout_height="1dp"
                                         android:layout_marginEnd="@dimen/spacing" />
-                                </com.norbert.koller.teacher.customviews.TimeRangeCardView>
+                                </com.norbert.koller.teacher.customviews.TimeRangeView>
 
                                 <CheckBox
                                     android:id="@+id/CheckBox_thursday"
@@ -357,7 +357,7 @@
                                     android:text="@string/thursday"
                                     android:textAppearance="@style/Text" />
 
-                                <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                                <com.norbert.koller.teacher.customviews.TimeRangeView
                                     android:id="@+id/Trcv_thursday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
@@ -435,7 +435,7 @@
                             app:shapeAppearance="@style/OverlayRoundedCardBottom"
                             tools:visibility="visible">
 
-                            <com.norbert.koller.teacher.customviews.TimeRangeCardView
+                            <com.norbert.koller.teacher.customviews.TimeRangeView
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="@dimen/card_full_margin"
@@ -479,7 +479,7 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_view"
+        android:id="@+id/card_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

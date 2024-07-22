@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View.GONE
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
@@ -16,8 +15,8 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.customviews.TextInputWithChips
 import com.norbert.koller.shared.data.OutgoingData
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
 import com.norbert.koller.shared.managers.setup
@@ -65,14 +64,14 @@ class CreateOutgoingActivity() : AppCompatActivity() {
 
         }
 
-        findViewById<AppBarLayout>(com.norbert.koller.shared.R.id.appbar).setup()
+        findViewById<AppBarLayout>(com.norbert.koller.shared.R.id.app_bar).setup()
 
         val textFirst : TextView = findViewById(R.id.text_first)
         if(textFirst.text.isNullOrBlank()){
             textFirst.visibility = GONE
         }
 
-        val buttonExit : Button = findViewById(R.id.toolbar_exit)
+        val buttonExit : Button = findViewById(R.id.button_back)
 
         buttonExit.setOnClickListener{
             onBackPressedDispatcher.onBackPressed()
@@ -109,7 +108,7 @@ class CreateOutgoingActivity() : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = ItemListDialogFragmentStatic(arrayListOf(
+            val dialog = ListStaticBsdFragment(arrayListOf(
                 ListItem(
                     getString(com.norbert.koller.shared.R.string.temporary),
                     null,
@@ -129,7 +128,7 @@ class CreateOutgoingActivity() : AppCompatActivity() {
                     })
 
             ))
-            dialog.show(supportFragmentManager, ItemListDialogFragmentBase.TAG)
+            dialog.show(supportFragmentManager, ListBsdFragment.TAG)
 
         }
 

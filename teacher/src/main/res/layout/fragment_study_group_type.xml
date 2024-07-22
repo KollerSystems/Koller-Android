@@ -38,8 +38,8 @@
         app:justifyContent="center"
         app:flexDirection="column">
 
-        <com.norbert.koller.shared.customviews.SimpleCardButton
-            android:id="@+id/Scb_edit"
+        <com.norbert.koller.shared.customviews.CardButton
+            android:id="@+id/cb_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_maxWidth="@dimen/tablet_max_width"

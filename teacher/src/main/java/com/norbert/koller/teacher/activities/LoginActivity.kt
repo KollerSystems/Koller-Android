@@ -10,10 +10,10 @@ class LoginActivity : com.norbert.koller.shared.activities.LoginActivity()  {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        inplID.isCounterEnabled = false
-        inplID.isHelperTextEnabled = false
+        binding.body.tilUsername.isCounterEnabled = false
+        binding.body.tilUsername.isHelperTextEnabled = false
 
-        buttonNoAccount.setOnClickListener{
+        binding.body.buttonNoAccount.setOnClickListener{
 
             MaterialAlertDialogBuilder(this@LoginActivity)
                 .setTitle(getString(com.norbert.koller.shared.R.string.this_app_is_not_for_everyone))

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.managers.DataStoreManager
-import com.norbert.koller.shared.customviews.RoundedBadgeImageView
+import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.RoomOrderConditionsBase
 import com.norbert.koller.shared.data.RoomOrderData
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -98,7 +98,7 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RoomPresenceViewHolder {
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_user_presence_vertical, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_presence_vertical, parent, false)
         return RoomPresenceViewHolder(view)
     }
 
@@ -126,7 +126,7 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
 
     class RoomPresenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val rbiwPfp : RoundedBadgeImageView = itemView.findViewById(R.id.rbiw_pfp)
+        val rbiwPfp : UserView = itemView.findViewById(R.id.rbiw_pfp)
 
         val textPresence : TextView = itemView.findViewById(R.id.text_presence)
     }

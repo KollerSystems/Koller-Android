@@ -30,7 +30,7 @@ class EventPoint(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             typedArray.recycle()
         }
 
-        View.inflate(context, R.layout.event_point, this)
+        View.inflate(context, R.layout.view_event_point, this)
 
 
         textLabel = findViewById(R.id.text_label)

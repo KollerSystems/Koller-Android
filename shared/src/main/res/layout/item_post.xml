@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parent"
+    style="@style/Card"
+    android:layout_width="match_parent"
+    android:clickable="true"
+    app:contentPadding="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/events_image"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:scaleType="centerCrop"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/hills"
+                tools:srcCompat="@drawable/hills" />
+
+            <FrameLayout
+                android:id="@+id/frame_layout_user"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/card_padding"
+                android:layout_marginTop="@dimen/card_padding"
+                android:clickable="true"
+                android:outlineProvider="none"
+                app:cardCornerRadius="9999dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    app:cardCornerRadius="999999dp"
+                    app:cardUseCompatPadding="false">
+
+                    <TextView
+                        android:id="@+id/textView34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="55dp"
+                        android:layout_marginTop="@dimen/spacing"
+                        android:layout_marginEnd="@dimen/card_padding"
+                        android:layout_marginBottom="@dimen/spacing"
+                        android:text="Nagy Árpád" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.norbert.koller.shared.customviews.UserView
+                    android:id="@+id/roundedBadgeImageView"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:translationZ="1dp">
+
+                </com.norbert.koller.shared.customviews.UserView>
+
+            </FrameLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/text_container_margin"
+            android:layout_marginTop="@dimen/text_container_margin"
+            android:layout_marginRight="@dimen/text_container_margin"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            android:orientation="vertical"
+            android:padding="@dimen/card_padding">
+
+            <TextView
+                android:id="@+id/events_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="@string/title"
+                android:textAppearance="@style/Title" />
+
+            <TextView
+                android:id="@+id/events_description"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="4"
+                android:text="@string/lorem_long" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/spacing">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/view_new_chip_place"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusedByDefault="false"
+                    android:text="Kondi"
+                    android:visibility="gone"
+                    app:chipIcon="@drawable/gps"
+                    app:chipIconVisible="true"
+                    app:chipMinTouchTargetSize="0dp"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/view_new_chip_date_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusedByDefault="false"
+                    android:text="júl. 12. 16:00"
+                    android:visibility="gone"
+                    app:chipIcon="@drawable/calendar"
+                    app:chipIconVisible="true"
+                    app:chipMinTouchTargetSize="0dp"
+                    tools:visibility="visible" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/view_new_chip_base_program_replacement"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checkable="false"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:focusedByDefault="false"
+                    android:text="2"
+                    android:visibility="gone"
+                    app:chipIcon="@drawable/fix_replace"
+                    app:chipIconVisible="true"
+                    app:chipMinTouchTargetSize="0dp"
+                    tools:visibility="visible" />
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -11,8 +11,6 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.data.RoomOrderConditionsBase
-import com.norbert.koller.shared.data.RoomOrderConditionsBoolean
-import com.norbert.koller.shared.data.RoomOrderConditionsInt
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -22,12 +20,12 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
         when (viewType){
-            R.layout.view_rating ->{
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_rating, parent, false)
+            R.layout.item_rating ->{
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rating, parent, false)
                 return RoomOrderConditionsViewHolder(view)
             }
-            R.layout.view_rating_rv_footer ->{
-                val view = LayoutInflater.from(parent.context).inflate(R.layout.view_rating_rv_footer, parent, false)
+            R.layout.item_rating_footer ->{
+                val view = LayoutInflater.from(parent.context).inflate(R.layout.item_rating_footer, parent, false)
                 return RoomOrderConditionsFooter(view)
             }
             else ->{
@@ -44,10 +42,10 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
 
 
         when (getItemViewType(position)){
-            R.layout.view_rating_rv_footer -> {
+            R.layout.item_rating_footer -> {
 
             }
-            R.layout.view_rating -> {
+            R.layout.item_rating -> {
 
                 setupRatingView(holder, position)
 
@@ -92,11 +90,11 @@ class RoomRateRecyclerAdapter (private var roomOrderConditionsData : ArrayList<R
         return when (position) {
             itemCount - 1 ->
             {
-                R.layout.view_rating_rv_footer
+                R.layout.item_rating_footer
             }
             else -> {
 
-                   R.layout.view_rating
+                   R.layout.item_rating
 
             }
         }

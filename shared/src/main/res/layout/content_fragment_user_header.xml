@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+
+    android:orientation="vertical">
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:justifyContent="center">
+
+        <com.norbert.koller.shared.customviews.UserView
+            android:id="@+id/badge_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/application_padding"
+            android:layout_marginBottom="@dimen/application_padding"
+            app:layout_maxHeight="300dp"
+            app:layout_maxWidth="300dp"
+            app:stroke_width="10dp" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+
+    <TextView
+        android:id="@+id/user_text_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@android:string/unknownName"
+        android:gravity="center_horizontal"
+        android:textAppearance="@style/MainTitle" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_group"
+            style="@style/TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="@string/group"
+            android:textAppearance="@style/Text" />
+
+        <TextView
+            android:id="@+id/first_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="•"
+            android:textColor="?colorForeground066"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button_room"
+            style="@style/TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="@string/room"
+            android:textAppearance="@style/Text" />
+
+        <TextView
+            android:id="@+id/second_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="•"
+            android:textColor="?colorForeground066"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/button_class_or_profession"
+            style="@style/TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="@string/class_"
+            android:textAppearance="@style/Text" />
+    </LinearLayout>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/fl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/full_card_padding"
+        android:layout_marginBottom="@dimen/spacing"
+
+        app:flexDirection="row"
+        app:flexWrap="wrap"
+        app:justifyContent="center">
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:checkable="false"
+            android:text="@string/none"
+            app:chipIcon="@drawable/mail"
+            app:chipIconVisible="true"
+            tools:layout_editor_absoluteX="38dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/user_view_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:visibility="gone"
+            app:chipIcon="@drawable/phone"
+            app:chipIconVisible="true"
+            tools:layout_editor_absoluteX="38dp"
+            tools:text="@string/unknown"
+            tools:visibility="visible" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_facebook"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:checkable="false"
+            android:visibility="gone"
+            app:chipIcon="@drawable/facebook_icon"
+            app:chipIconVisible="true"
+            app:chipStrokeColor="#1877F1"
+            tools:layout_editor_absoluteX="127dp"
+            tools:text="@string/unknown"
+            tools:visibility="visible" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_instagram"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:checkable="false"
+            android:visibility="gone"
+            app:chipIcon="@drawable/instagram_icon"
+            app:chipIconVisible="true"
+            app:chipStrokeColor="#D33377"
+            tools:layout_editor_absoluteX="236dp"
+            tools:text="@string/unknown"
+            tools:visibility="visible" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@id/user_view_discord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/text_container_margin"
+            android:checkable="false"
+            android:visibility="gone"
+            app:chipIcon="@drawable/discord_icon"
+            app:chipIconVisible="true"
+            app:chipStrokeColor="#5865F1"
+            tools:layout_editor_absoluteX="38dp"
+            tools:layout_editor_absoluteY="39dp"
+            tools:text="@string/unknown"
+            tools:visibility="visible" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+    <TextView
+        android:id="@+id/text_status"
+        style="@style/CategoryCardNameBald"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/state" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+
+        android:id="@+id/cb_status"
+        style="@style/CardSingle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:cardBackgroundColor="@android:color/transparent"
+
+        app:icon="@drawable/out"
+        app:rounded="true"
+        app:strokeWidth="1dp"
+        app:text="Blabla" />
+
+
+</LinearLayout>

@@ -10,11 +10,9 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
-import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.text.Layout
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -24,9 +22,7 @@ import android.view.ViewGroup.MarginLayoutParams
 import android.view.WindowManager
 import android.widget.Button
 import android.widget.EditText
-import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toolbar
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
@@ -50,8 +46,6 @@ import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.runBlocking
 import java.nio.ByteBuffer
 import java.util.Date
 import java.util.Locale
@@ -299,7 +293,7 @@ fun String.camelToSnakeCase() = fold(StringBuilder(length)) { acc, c ->
 }.toString()
 
 fun AppBarLayout.setupPortrait() : Button{
-    val backButton : Button = findViewById(R.id.toolbar_exit)
+    val backButton : Button = findViewById(R.id.button_back)
 
     addOnOffsetChangedListener { _, verticalOffset ->
         val collapsedSize: Int = resources.getDimensionPixelSize(R.dimen.header_footer_size)
@@ -310,7 +304,7 @@ fun AppBarLayout.setupPortrait() : Button{
 }
 
 fun AppBarLayout.setupLandscape() : Button{
-    val backButton : Button = findViewById(R.id.toolbar_exit)
+    val backButton : Button = findViewById(R.id.button_back)
     (backButton.layoutParams as MarginLayoutParams).marginStart = context.resources.getDimensionPixelSize(R.dimen.card_padding)
 
     setExpanded(false)

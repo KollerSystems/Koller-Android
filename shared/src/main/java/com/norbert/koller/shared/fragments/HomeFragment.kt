@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
-import com.norbert.koller.shared.recycleradapters.TodayRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 import java.util.ArrayList
 
 abstract class HomeFragment : Fragment() {
@@ -55,7 +55,7 @@ abstract class HomeFragment : Fragment() {
             )
         )
 
-        val adapter = TodayRecyclerAdapter(todayDataArrayList)
+        val adapter = ObsRecyclerAdapter(todayDataArrayList)
         todayRecyclerView.adapter = adapter
 
 
@@ -73,7 +73,7 @@ abstract class HomeFragment : Fragment() {
                 R.string.perfect), "4")
         )
 
-        unreadRecyclerView.adapter = TodayRecyclerAdapter(unreadDataArrayList)
+        unreadRecyclerView.adapter = ObsRecyclerAdapter(unreadDataArrayList)
 
 
         weekRecyclerView = view.findViewById(R.id.todayRecyclerViewWeek)
@@ -92,6 +92,6 @@ abstract class HomeFragment : Fragment() {
                 R.string.perfect), "4"),
         )
 
-        weekRecyclerView.adapter = TodayRecyclerAdapter(weekDataArrayList)
+        weekRecyclerView.adapter = ObsRecyclerAdapter(weekDataArrayList)
     }
 }

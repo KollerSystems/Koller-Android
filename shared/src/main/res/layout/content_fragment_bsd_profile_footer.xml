@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/profile_fbtn_settings"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/settings"
+        app:text="@string/settings" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/profile_fbtn_privacy_policy"
+        style="@style/CardBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/policy"
+        app:text="@string/privacy_policy" />
+
+    <TextView
+        android:id="@+id/textView38"
+        style="@style/CategoryCardNameBald"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/development_team" />
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_organization"
+        style="@style/CardTop"
+        android:layout_width="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="horizontal">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/imageView3"
+                android:layout_width="@dimen/card_icon_smaller"
+                android:layout_height="@dimen/card_icon_smaller"
+                android:layout_marginEnd="@dimen/spacing"
+                android:adjustViewBounds="true"
+                app:shapeAppearance="@style/RoundedImageView"
+                app:srcCompat="@drawable/koller_systems" />
+
+            <TextView
+                android:id="@+id/textView40"
+                style="@style/Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/text_container_margin"
+                android:text="@string/made_by"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:itemCount="1"
+        tools:listitem="@layout/item_dev" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/profile_card_support"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/support_us"
+        app:text="@string/support_us" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/profile_card_github"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:description="Forráskódok • Javaslatok • Hibák"
+        app:icon="@drawable/github"
+        app:text="GitHub">
+
+    </com.norbert.koller.shared.customviews.CardButton>
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/profile_fbtn_email"
+        style="@style/CardBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/mail"
+        app:text="@string/email" />
+
+
+    <TextView
+        style="@style/Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_container_margin"
+        android:gravity="center_horizontal"
+        android:minHeight="@dimen/card_padding"
+        android:text="@string/version" />
+</merge>

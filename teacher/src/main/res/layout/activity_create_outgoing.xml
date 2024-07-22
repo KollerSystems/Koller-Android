@@ -9,7 +9,7 @@
     tools:context=".activities.CreateOutgoingActivity">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar"
+        android:id="@+id/app_bar"
 
         android:layout_width="match_parent"
         android:layout_height="@dimen/expanded_toolbar_height"
@@ -46,7 +46,7 @@
                 android:paddingVertical="@dimen/header_margin_vertical">
 
                 <Button
-                    android:id="@+id/toolbar_exit"
+                    android:id="@+id/button_back"
                     style="@style/ToolbarNavigationButton"
                     android:layout_height="@dimen/toolbar_button_size"
                     android:layout_marginEnd="@dimen/spacing"
@@ -321,7 +321,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_view"
+        android:id="@+id/card_body"
         android:layout_width="match_parent"
         android:layout_height="@dimen/header_footer_size"
         android:layout_gravity="bottom"

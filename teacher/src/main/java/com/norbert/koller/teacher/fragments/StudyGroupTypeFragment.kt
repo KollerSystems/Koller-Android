@@ -8,27 +8,13 @@ import android.view.ViewGroup
 import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.NameContentButton
-import com.norbert.koller.shared.customviews.NameContentView
-import com.norbert.koller.shared.customviews.SimpleCardButton
-import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.data.StudyGroupTypeData
-import com.norbert.koller.shared.fragments.DetailsFragment
-import com.norbert.koller.shared.fragments.StudyGroupTypeFragment
-import com.norbert.koller.shared.fragments.UserOutgoingViewPagerAdapter
-import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.teacher.ProgramTypeViewPagerAdapter
+import com.norbert.koller.shared.customviews.CardButton
+import com.norbert.koller.teacher.pageradapter.ProgramTypeViewPagerAdapter
 import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.teacher.activities.EditSpecificStudyGroupActivity
-import com.skydoves.androidveil.VeilLayout
-import retrofit2.Response
 
 class StudyGroupTypeFragment(val pid : Int? = null) : Fragment() {
 
@@ -48,7 +34,7 @@ class StudyGroupTypeFragment(val pid : Int? = null) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val editButton : SimpleCardButton = view.findViewById(R.id.Scb_edit)
+        val editButton : CardButton = view.findViewById(R.id.cb_edit)
 
         editButton.setOnClickListener {
             val intent = Intent(requireContext(), EditSpecificStudyGroupActivity::class.java)

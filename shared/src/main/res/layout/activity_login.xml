@@ -2,19 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include
-        layout="@layout/view_activity_login_header"
+        layout="@layout/content_activity_login_header"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_view"
+        android:id="@+id/card_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="@null"
@@ -22,18 +21,17 @@
         app:shapeAppearance="@style/OverlayRoundedCardTop">
 
         <LinearLayout
-            android:id="@+id/login_linear_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <include
-                layout="@layout/view_activity_login_body"
+                android:id="@+id/body"
+                layout="@layout/content_activity_login_body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 
             <View
-                android:id="@+id/view2"
                 style="@style/SeparatorLine"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -41,19 +39,28 @@
                 android:layout_marginVertical="@dimen/text_container_margin" />
 
             <include
-                layout="@layout/view_activity_login_footer"
+                layout="@layout/content_activity_login_footer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/login_loading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:indeterminate="true"
-            android:visibility="gone"
-            app:trackCornerRadius="999dp" />
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_loading"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:backgroundTint="#BFFFFFFF"
+            android:backgroundTintMode="multiply">
+
+            <com.google.android.material.progressindicator.CircularProgressIndicator
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:indeterminate="true"
+
+                app:trackCornerRadius="999dp" />
+        </com.google.android.material.card.MaterialCardView>
+
 
     </com.google.android.material.card.MaterialCardView>
 

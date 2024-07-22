@@ -16,6 +16,6 @@ class WelcomeRecommendedUserView : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
 
-        return inflater.inflate(R.layout.view_recommended_user, container, false)
+        return inflater.inflate(R.layout.item_recommended_user, container, false)
     }
 }

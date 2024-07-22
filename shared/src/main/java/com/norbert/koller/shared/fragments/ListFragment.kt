@@ -1,20 +1,15 @@
 package com.norbert.koller.shared.fragments
 
 
-import android.animation.Animator
-
 import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.view.ViewGroup.MarginLayoutParams
-import android.view.ViewGroup.VISIBLE
 import android.widget.LinearLayout
 import android.widget.LinearLayout.VERTICAL
 import android.widget.TextView
@@ -40,8 +35,8 @@ import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.recycleradapters.BasePagingSource
-import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
+import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.BaseViewModel
 import kotlinx.coroutines.flow.collectLatest
@@ -53,14 +48,14 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
     lateinit var viewModel : BaseViewModel
     lateinit var superCoolRecyclerView: SuperCoolRecyclerView
-    lateinit var baseRecycleAdapter : BaseRecycleAdapter
+    lateinit var apiRecyclerAdapter : ApiRecyclerAdapter
     lateinit var chipGroupFilter : ChipGroup
     lateinit var chipGroupSort : ChipGroup
     lateinit var lyParameters : FlexboxLayout
     var duration : Long = 0
 
 
-    abstract fun getPagingSource() : BasePagingSource
+    abstract fun getPagingSource() : PagingSource
 
     fun setFilter(filterIn : String, filterTo : String) : Fragment{
         defaultFilters = mutableMapOf(Pair(filterIn, arrayListOf(filterTo)))
@@ -103,7 +98,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
         superCoolRecyclerView.recyclerView.apply {
             layoutManager = LinearLayoutManager(requireContext())
-            adapter = baseRecycleAdapter
+            adapter = apiRecyclerAdapter
         }
 
 
@@ -111,8 +106,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         lifecycleScope.launch {
 
             viewModel.pagingData.collectLatest { pagingData ->
-                viewModel.currentPagingSource.recyclerAdapter = baseRecycleAdapter
-                baseRecycleAdapter.submitData(pagingData)
+                viewModel.currentPagingSource.recyclerAdapter = apiRecyclerAdapter
+                apiRecyclerAdapter.submitData(pagingData)
             }
         }
 
@@ -120,8 +115,8 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
         if(savedInstanceState != null) {
-            if (baseRecycleAdapter.snapshot().isEmpty()) {
-                baseRecycleAdapter.fullRefresh()
+            if (apiRecyclerAdapter.snapshot().isEmpty()) {
+                apiRecyclerAdapter.fullRefresh()
             }
         }
     }
@@ -320,7 +315,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
 
-        baseRecycleAdapter.searchBar = searchBar
+        apiRecyclerAdapter.searchBar = searchBar
 
 
     }

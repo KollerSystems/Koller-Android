@@ -14,7 +14,7 @@
         android:fitsSystemWindows="true">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appbar"
+            android:id="@+id/app_bar"
 
             style="@null"
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
             app:expanded="false">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/CollapsingToolbarLayout"
+                android:id="@+id/collapsing_toolbar"
                 style="@style/CollapsingToolbarLayout"
 
                 android:layout_width="match_parent"
@@ -42,7 +42,7 @@
                     app:titleMarginStart="49dp" />
 
                 <Button
-                    android:id="@+id/toolbar_exit"
+                    android:id="@+id/button_back"
                     style="@style/ToolbarNavigationButton"
                     android:layout_gravity="bottom|start" />
             </com.google.android.material.appbar.CollapsingToolbarLayout>
@@ -73,7 +73,7 @@
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/bottom_view"
+        android:id="@+id/card_body"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

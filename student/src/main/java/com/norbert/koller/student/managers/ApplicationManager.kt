@@ -11,10 +11,9 @@ import com.norbert.koller.student.fragments.HomeFragment
 import com.norbert.koller.student.fragments.RoomFragment
 import com.norbert.koller.student.fragments.StudentHostelFragment
 import com.norbert.koller.student.fragments.UserFragment
-import com.norbert.koller.student.fragments.bottomsheet.ProfileFragment
+import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.student.BuildConfig
 import com.norbert.koller.student.R
 
 class ApplicationManager : ApplicationManager() {
@@ -29,7 +28,6 @@ class ApplicationManager : ApplicationManager() {
         super.onCreate()
         NotificationMakingManager().createNotificationChannels(this)
 
-        version = BuildConfig.VERSION_NAME
 
         openSettings = {context : Context ->
             openActivity(context, SettingsActivity::class.java)
@@ -44,8 +42,8 @@ class ApplicationManager : ApplicationManager() {
         }
 
         openProfile = {context: Context ->
-            val dialog = ProfileFragment()
-            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileFragment.TAG)
+            val dialog = ProfileBsdFragment()
+            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment.TAG)
         }
 
         getAppColor = {context->

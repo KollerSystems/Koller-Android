@@ -25,7 +25,7 @@
             android:scaleY="1.4">
         </Constraint>
         <Constraint
-            android:id="@+id/toolbar_exit"
+            android:id="@+id/button_back"
         android:layout_width="@dimen/toolbar_button_size"
         android:layout_height="@dimen/toolbar_button_size"
         motion:layout_constraintBottom_toBottomOf="parent"
@@ -48,7 +48,7 @@
             motion:layout_constraintTop_toBottomOf="@id/guideline"
             android:id="@+id/user_button" />
         <Constraint
-            android:id="@+id/toolbar_ly_text_container"
+            android:id="@+id/ly_title_container"
             motion:layout_constraintEnd_toEndOf="parent"
             motion:layout_constraintStart_toStartOf="parent"
             android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
             motion:layout_constraintTop_toBottomOf="@id/guideline"
             motion:layout_constraintStart_toStartOf="parent"
             motion:layout_constraintHorizontal_chainStyle="spread_inside"
-            android:id="@+id/toolbar_exit"
+            android:id="@+id/button_back"
             android:layout_marginStart="5dp" />
         <Constraint
             android:layout_marginEnd="20dp"
@@ -98,7 +98,7 @@
             motion:layout_constraintTop_toBottomOf="@id/guideline"
             android:id="@+id/user_button" />
         <Constraint
-            android:id="@+id/toolbar_ly_text_container"
+            android:id="@+id/ly_title_container"
             android:layout_width="0dp"
             android:layout_height="0dp"
             motion:layout_constraintBottom_toBottomOf="parent"

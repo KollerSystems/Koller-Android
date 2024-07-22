@@ -2,12 +2,10 @@ package com.norbert.koller.shared.customviews
 
 import android.Manifest
 import android.app.Activity.RESULT_OK
-import android.content.ClipData
 import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Canvas
 import android.graphics.Color
 import android.net.Uri
 import android.provider.MediaStore
@@ -16,8 +14,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.ActivityResultCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -31,12 +27,10 @@ import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.stfalcon.imageviewer.StfalconImageViewer
-import com.stfalcon.imageviewer.common.extensions.isVisible
 
 
 class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(context, attrs) {
@@ -57,7 +51,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
 
     fun showDialog(){
         val fragmentManager = (context as AppCompatActivity)
-        val dialog = ItemListDialogFragmentStatic(arrayListOf(
+        val dialog = ListStaticBsdFragment(arrayListOf(
             ListItem("Fénykép készítése", null, AppCompatResources.getDrawable(context, R.drawable.camera), null, {
 
                 if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
@@ -85,7 +79,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
                 startGallery!!.launch(galleryIntent)
             })
         ))
-        dialog.show(fragmentManager.supportFragmentManager, ItemListDialogFragmentBase.TAG)
+        dialog.show(fragmentManager.supportFragmentManager, ListBsdFragment.TAG)
     }
 
     fun resetUI(){

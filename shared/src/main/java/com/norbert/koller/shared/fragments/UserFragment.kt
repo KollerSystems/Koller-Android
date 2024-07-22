@@ -15,8 +15,8 @@ import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.RoundedBadgeImageView
-import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.customviews.UserView
+import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -26,7 +26,7 @@ import retrofit2.Response
 
 abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
-    lateinit var scbStatus : SimpleCardButton
+    lateinit var cbStatus : CardButton
     lateinit var textStatus : TextView
 
     override fun getTimeLimit(): Int {
@@ -52,7 +52,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
         val buttonGroup : Button = view.findViewById(R.id.button_group)
         val buttonRoom : Button = view.findViewById(R.id.button_room)
         val buttonClass : Button = view.findViewById(R.id.button_class_or_profession)
-        val badgeUser : RoundedBadgeImageView = view.findViewById(R.id.badge_user)
+        val badgeUser : UserView = view.findViewById(R.id.badge_user)
 
         val discordChip : Chip = view.findViewById(R.id.user_view_discord)
         val facebookChip : Chip = view.findViewById(R.id.user_view_facebook)
@@ -62,11 +62,11 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
         val NestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
 
-        scbStatus = view.findViewById(R.id.scb_status)
+        cbStatus = view.findViewById(R.id.cb_status)
         textStatus = view.findViewById(R.id.text_status)
 
 
-        scbStatus.imageViewIcon!!.visibility = VISIBLE
+        cbStatus.imageViewIcon!!.visibility = VISIBLE
 
         fun isVisible(view: View): Boolean {
             if (!view.isShown) {

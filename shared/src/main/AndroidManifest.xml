@@ -36,19 +36,19 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.InformationStudentActivity"
+            android:name=".activities.EditStudentActivity"
             android:exported="false"
             android:enableOnBackInvokedCallback="true"/>
         <activity
-            android:name=".activities.InformationCaretakerActivity"
+            android:name=".activities.EditCaretakerActivity"
             android:exported="false"
             android:enableOnBackInvokedCallback="true"/>
         <activity
-            android:name=".activities.InformationCloseRelativeActivity"
+            android:name=".activities.EditCloseRelativeActivity"
             android:exported="false"
             android:enableOnBackInvokedCallback="true"/>
         <activity
-            android:name=".activities.InformationSchoolActivity"
+            android:name=".activities.EditSchoolActivity"
             android:exported="false"
             android:enableOnBackInvokedCallback="true"/>
         <activity

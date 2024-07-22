@@ -12,11 +12,11 @@ class EditUserActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_user)
 
-        val appBar : AppBarLayout = findViewById(R.id.appbar)
+        val appBar : AppBarLayout = findViewById(R.id.app_bar)
 
         appBar.setup()
 
-        val backButton : Button = findViewById(R.id.toolbar_exit)
+        val backButton : Button = findViewById(R.id.button_back)
 
         backButton.setOnClickListener{
             onBackPressedDispatcher.onBackPressed()

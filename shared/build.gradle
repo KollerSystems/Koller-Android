@@ -4,6 +4,11 @@ plugins {
 }
 
 android {
+
+    buildFeatures{
+        viewBinding = true
+    }
+
     signingConfigs {
         release {
             Properties properties = new Properties()

@@ -4,10 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.teacher.R
-import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.UserExitsAndEntrancesFragment
+import com.norbert.koller.shared.fragments.CrossingsFragment
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 import com.norbert.koller.teacher.activities.EditUserActivity
 
@@ -16,21 +16,21 @@ class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.User
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val scbOutgoings : SimpleCardButton = view.findViewById(R.id.scb_outgoings)
+        val cbOutgoings : CardButton = view.findViewById(R.id.cb_outgoings)
 
-        scbOutgoings.setOnClickListener {
+        cbOutgoings.setOnClickListener {
             (context as MainActivity).addFragment(UserOutgoingsFragment(viewModel.response.value as UserData))
         }
 
-        val scbGate : SimpleCardButton = view.findViewById(R.id.scb_gate)
+        val cbGate : CardButton = view.findViewById(R.id.cb_gate)
 
-        scbGate.setOnClickListener {
-            (context as MainActivity).addFragment(UserExitsAndEntrancesFragment(viewModel.id))
+        cbGate.setOnClickListener {
+            (context as MainActivity).addFragment(CrossingsFragment(viewModel.id))
         }
 
-        val scbEdit : SimpleCardButton = view.findViewById(R.id.scb_edit)
+        val cbEdit : CardButton = view.findViewById(R.id.cb_edit)
 
-        scbEdit.setOnClickListener {
+        cbEdit.setOnClickListener {
             val intent = Intent(requireContext(), EditUserActivity::class.java)
             startActivity(intent)
         }

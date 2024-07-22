@@ -15,7 +15,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.recycleradapters.BaseRecycleAdapter
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 
 
 @SuppressLint("ClickableViewAccessibility")
@@ -27,7 +27,7 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
     val recyclerView: RecyclerView
     val swipeToRefresh : SwipeRefreshLayout
 
-    private lateinit var recyclerAdapter : BaseRecycleAdapter
+    private lateinit var recyclerAdapter : ApiRecyclerAdapter
 
 
     init {
@@ -76,9 +76,9 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
         recyclerView.post {
 
             //TODO: ezek törlése, ha minden recycler view fasza
-            if (recyclerView.adapter is BaseRecycleAdapter) {
+            if (recyclerView.adapter is ApiRecyclerAdapter) {
 
-                recyclerAdapter = (recyclerView.adapter as BaseRecycleAdapter)
+                recyclerAdapter = (recyclerView.adapter as ApiRecyclerAdapter)
                 recyclerAdapter.addOnPagesUpdatedListener {
                     swipeToRefresh.isRefreshing = false
                     recyclerView.post {

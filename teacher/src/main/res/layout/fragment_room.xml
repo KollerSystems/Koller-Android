@@ -31,7 +31,7 @@
                 app:flexDirection="column">
 
                 <include
-                    layout="@layout/view_fragment_room_header" />
+                    layout="@layout/content_fragment_room_header" />
 
                 <TextView
                     android:id="@+id/textView42"
@@ -42,27 +42,27 @@
                     app:layout_maxWidth="@dimen/tablet_max_width" />
 
 
-                <com.norbert.koller.shared.customviews.SimpleCardButton
+                <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardTop"
-                    android:id="@+id/room_scb_room_order"
+                    android:id="@+id/room_cb_room_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/clean"
                     app:text="@string/room_order">
 
-                </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.SimpleCardButton
+                <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardMiddle"
-                    android:id="@+id/room_scb_presence"
+                    android:id="@+id/room_cb_presence"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/person_wave"
                     app:text="@string/presence">
 
-                </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.SimpleCardButton
+                <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,9 +71,9 @@
                     app:text="@string/error_report"
                     tools:visibility="visible">
 
-                </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.SimpleCardButton
+                <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,26 +83,26 @@
                     app:text="@string/reports"
                     tools:visibility="visible">
 
-                </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.SimpleCardButton
+                <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardMiddle"
-                    android:id="@+id/scb_edit"
+                    android:id="@+id/cb_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/pencil"
                     app:text="@string/edit">
 
-                </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.SimpleCardButton
+                <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardBottom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/close"
                     app:text="@string/remove">
 
-                </com.norbert.koller.shared.customviews.SimpleCardButton>
+                </com.norbert.koller.shared.customviews.CardButton>
 
             </com.google.android.flexbox.FlexboxLayout>
 

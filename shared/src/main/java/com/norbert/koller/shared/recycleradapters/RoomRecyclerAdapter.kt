@@ -4,19 +4,17 @@ import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.RoomData
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.data.BaseData
 
 
-class RoomRecyclerAdapter() : BaseRecyclerAdapterWithTransition(){
+class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
     override fun getViewType(): Int {
-        return R.layout.view_item
+        return R.layout.item_large
     }
 
     override fun getDataTag(): String {

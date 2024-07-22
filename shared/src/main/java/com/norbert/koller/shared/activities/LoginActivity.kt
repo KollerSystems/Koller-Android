@@ -32,6 +32,8 @@ import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
+import com.norbert.koller.shared.databinding.ActivityLoginBinding
+import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getColorOfPixel
 import com.norbert.koller.shared.viewmodels.LoginViewModel
@@ -42,16 +44,12 @@ import java.util.Calendar
 
 open class LoginActivity : AppCompatActivity() {
 
-    lateinit var loginButton: Button
-    lateinit var buttonNoAccount: Button
-    lateinit var inplPassword: TextInputLayout
-    lateinit var inplID: TextInputLayout
-    lateinit var buttonForgotPassword : Button
 
     lateinit var viewModel: LoginViewModel
+    lateinit var binding : ActivityLoginBinding
 
     fun checkInputsRefreshButton(){
-        loginButton.isEnabled = (inplID.editText!!.text?.length ?: 0) > 0 && (inplPassword.editText!!.text?.length ?: 0) > 0
+        binding.body.buttonLogin.isEnabled = (binding.body.tietUsername.text?.length ?: 0) > 0 && (binding.body.tietPassword.text?.length ?: 0) > 0
     }
 
 
@@ -59,36 +57,29 @@ open class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+
+        setContentView(binding.root)
 
         viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
 
-        val textVersion : TextView = findViewById(R.id.text_version)
-        val bottomView : View = findViewById(R.id.bottom_view)
         val isLandscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-        loginButton = findViewById (R.id.login_button_login)
-        buttonNoAccount = findViewById (R.id.login_button_no_account)
-        inplID = findViewById(R.id.login_inpl_id)
-        inplPassword = findViewById(R.id.login_inpl_password)
-        val loginLayout : View = findViewById(R.id.login_linear_login)
-        val loadingBar : View = findViewById(R.id.login_loading)
 
-        textVersion.text = ApplicationManager.version
 
         if(!isLandscape){
             window.navigationBarColor = this.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow)
         }
         else{
-            val root : ViewGroup = bottomView.parent as ViewGroup
+            val root : ViewGroup = binding.cardBody.parent as ViewGroup
             window.navigationBarColor = Color.TRANSPARENT
 
             root.post{
 
-                if(root.width / 3f > bottomView.width){
-                    val layoutParams = bottomView.layoutParams as LinearLayout.LayoutParams
+                if(root.width / 3f > binding.cardBody.width){
+                    val layoutParams = binding.cardBody.layoutParams as LinearLayout.LayoutParams
                     layoutParams.weight = 1f
                     layoutParams.width = 0
-                    bottomView.layoutParams = layoutParams
+                    binding.cardBody.layoutParams = layoutParams
                 }
 
             }
@@ -100,32 +91,21 @@ open class LoginActivity : AppCompatActivity() {
 
 
         fun changeLoadingStateTo(isEnabled : Boolean){
-            loadingBar.isVisible = isEnabled
-            inplPassword.editText!!.isEnabled = !isEnabled
-            inplID.editText!!.isEnabled = !isEnabled
-            buttonNoAccount.isClickable = !isEnabled
-            loginButton.isClickable = !isEnabled
-            loginButton.isLongClickable = !isEnabled
-            buttonForgotPassword.isClickable = !isEnabled
+            binding.cardLoading.isVisible = isEnabled
         }
 
-        fun returnLoginLayoutToNormal(){
-            loginLayout.alpha = 1f
-            changeLoadingStateTo(false)
-        }
-
-        loginButton.setOnClickListener {
+        binding.body.buttonLogin.setOnClickListener {
 
             if(ApplicationManager.isOnline(this)){
 
-                if((inplID.editText!!.text?.length ?: 0) > 0) {
+                if((binding.body.tietUsername.text?.length ?: 0) > 0) {
 
-                    val loginData = ApiLoginUsernameAndPasswordData("password", inplID.editText!!.text.toString(), inplPassword.editText!!.text.toString())
+                    val loginData = ApiLoginUsernameAndPasswordData("password", binding.body.tietUsername.text.toString(), binding.body.tietPassword.text.toString())
                     viewModel.login(loginData)
 
                 }
                 else{
-                    inplID.error = getString(R.string.invalid_id)
+                    binding.body.tilUsername.error = getString(R.string.invalid_id)
                 }
             }
             else{
@@ -143,13 +123,12 @@ open class LoginActivity : AppCompatActivity() {
         }
 
 
-        buttonForgotPassword = findViewById(R.id.login_button_forgot_password)
-        buttonForgotPassword.setOnClickListener{
-            if(inplID.editText!!.text.isNullOrBlank()){
-                inplID.error = getString(R.string.mandatory_field)
+        binding.body.buttonForgotPassword.setOnClickListener{
+            if(binding.body.tietUsername.text.isNullOrBlank()){
+                binding.body.tilUsername.error = getString(R.string.mandatory_field)
             }
             else if(false){
-                inplID.error = getString(R.string.invalid_id)
+                binding.body.tilUsername.error = getString(R.string.invalid_id)
             }
             else{
                 MaterialAlertDialogBuilder(this@LoginActivity)
@@ -173,7 +152,7 @@ open class LoginActivity : AppCompatActivity() {
         }
 
 
-        loginButton.setOnLongClickListener {
+        binding.body.buttonLogin.setOnLongClickListener {
             Toast.makeText(this, "Csak téged csak most kivételesen beengedlek", Toast.LENGTH_SHORT).show()
 
             ApplicationManager.openMain.invoke(this@LoginActivity)
@@ -184,11 +163,10 @@ open class LoginActivity : AppCompatActivity() {
 
         viewModel.loading.observe(this){loading ->
             if(loading){
-                loginLayout.alpha = 0.25f
                 changeLoadingStateTo(true)
             }
             else{
-                returnLoginLayoutToNormal()
+                changeLoadingStateTo(false)
             }
         }
 
@@ -214,10 +192,10 @@ open class LoginActivity : AppCompatActivity() {
         viewModel.postLoginError.observe(this){
             when(it){
                 "invalid_username" ->{
-                    inplID.error = getString(R.string.invalid_id)
+                    binding.body.tilUsername.error = getString(R.string.invalid_id)
                 }
                 "invalid_password" ->{
-                    inplPassword.error = getString(R.string.invalid_password)
+                    binding.body.tilPassword.error = getString(R.string.invalid_password)
                 }
                 "-" -> {
                     APIInterface.serverErrorPopup(this@LoginActivity, it){
@@ -225,8 +203,8 @@ open class LoginActivity : AppCompatActivity() {
                     }
                 }
                 null ->{
-                    inplID.error = null
-                    inplPassword.error = null
+                    binding.body.tilUsername.error = null
+                    binding.body.tilPassword.error = null
                 }
             }
         }
@@ -236,7 +214,7 @@ open class LoginActivity : AppCompatActivity() {
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        inplID.editText!!.addTextChangedListener(object : TextWatcher {
+        binding.body.tietUsername.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
 
@@ -251,7 +229,7 @@ open class LoginActivity : AppCompatActivity() {
             }
         })
 
-        inplPassword.editText!!.addTextChangedListener(object : TextWatcher {
+        binding.body.tilPassword.editText!!.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(s: Editable) {}
 
@@ -262,7 +240,7 @@ open class LoginActivity : AppCompatActivity() {
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
                 checkInputsRefreshButton()
-                if(!inplPassword.error.isNullOrEmpty()) {
+                if(!binding.body.tilPassword.error.isNullOrEmpty()) {
                     viewModel.postLoginError.value = null
                 }
             }

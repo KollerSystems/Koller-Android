@@ -9,7 +9,7 @@ tools:context=".activities.EditUserActivity">
 
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@id/appbar"
+        android:id="@id/app_bar"
 
         android:layout_width="match_parent"
         android:layout_height="@dimen/expanded_toolbar_height"
@@ -19,7 +19,7 @@ tools:context=".activities.EditUserActivity">
         tools:visibility="gone">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@id/CollapsingToolbarLayout"
+            android:id="@id/collapsing_toolbar"
             style="@style/CollapsingToolbarLayout"
 
             android:layout_width="match_parent"
@@ -39,7 +39,7 @@ tools:context=".activities.EditUserActivity">
                 app:titleMarginStart="49dp" />
 
             <Button
-                android:id="@id/toolbar_exit"
+                android:id="@id/button_back"
                 style="@style/ToolbarNavigationButton"
                 android:layout_gravity="bottom|start" />
 
@@ -64,13 +64,13 @@ tools:context=".activities.EditUserActivity">
             android:layout_marginHorizontal="@dimen/application_padding"
             android:layout_marginBottom="@dimen/application_padding">
 
-            <com.norbert.koller.shared.customviews.RoundedBadgeImageView
+            <com.norbert.koller.shared.customviews.UserView
                 android:id="@+id/rbiv_pfp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 custom:stroke_width="10dp">
 
-            </com.norbert.koller.shared.customviews.RoundedBadgeImageView>
+            </com.norbert.koller.shared.customviews.UserView>
 
             <Button
                 android:id="@+id/button_edit_pfp"
@@ -162,9 +162,9 @@ tools:context=".activities.EditUserActivity">
             android:layout_height="wrap_content"
             android:text="Személyes adatok" />
 
-        <com.norbert.koller.shared.customviews.SimpleCardButton
+        <com.norbert.koller.shared.customviews.CardButton
             custom:rounded="true"
-            android:id="@+id/scb_edit_personal"
+            android:id="@+id/cb_edit_personal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"

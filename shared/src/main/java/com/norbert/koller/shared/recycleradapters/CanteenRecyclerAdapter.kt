@@ -12,7 +12,7 @@ import com.norbert.koller.shared.data.CanteenData
 class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) : RecyclerView.Adapter<CanteenRecyclerAdapter.CanteenViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CanteenViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_canteen, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_canteen, parent, false)
         return CanteenViewHolder(itemView)
     }
 

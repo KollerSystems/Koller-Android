@@ -76,7 +76,7 @@
                             </com.google.android.material.card.MaterialCardView>
 
                             <LinearLayout
-                                android:id="@+id/toolbar_ly_text_container"
+                                android:id="@+id/ly_title_container"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_weight="1"
@@ -182,7 +182,7 @@
                             android:isScrollContainer="false"
                             android:nestedScrollingEnabled="false"
                             tools:itemCount="2"
-                            tools:listitem="@layout/view_readable_item" />
+                            tools:listitem="@layout/item_readable" />
                     </RelativeLayout>
 
 
@@ -213,7 +213,7 @@
                             android:isScrollContainer="false"
                             android:nestedScrollingEnabled="false"
                             tools:itemCount="2"
-                            tools:listitem="@layout/view_readable_item" />
+                            tools:listitem="@layout/item_readable" />
                     </RelativeLayout>
 
 
@@ -249,7 +249,7 @@
                                 android:isScrollContainer="false"
                                 android:nestedScrollingEnabled="false"
                                 tools:itemCount="2"
-                                tools:listitem="@layout/view_readable_item" />
+                                tools:listitem="@layout/item_readable" />
                         </RelativeLayout>
 
                     </LinearLayout>

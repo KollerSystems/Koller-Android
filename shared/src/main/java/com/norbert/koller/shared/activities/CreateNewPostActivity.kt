@@ -17,8 +17,8 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.bottomsheet.FragmentPostTypes
-import com.norbert.koller.shared.fragments.bottomsheet.ScheduleFragment
+import com.norbert.koller.shared.fragments.bottomsheet.PostTypesBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ScheduleBsdFragment
 import com.norbert.koller.shared.recycleradapters.EditableImageRecyclerAdapter
 
 
@@ -49,12 +49,12 @@ class CreateNewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
 
-        val bottomView : View = findViewById(R.id.bottom_view)
+        val bottomView : View = findViewById(R.id.card_body)
 
 
         val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
-        val buttonExit: Button = findViewById(R.id.toolbar_exit)
+        val buttonExit: Button = findViewById(R.id.button_back)
 
         tilAddresse = findViewById (R.id.create_new_post_til_addresse)
         tilTitle = findViewById (R.id.create_new_post_til_title)
@@ -117,9 +117,9 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = FragmentPostTypes()
+            val dialog = PostTypesBsdFragment()
 
-            dialog.show(supportFragmentManager, FragmentPostTypes.TAG)
+            dialog.show(supportFragmentManager, PostTypesBsdFragment.TAG)
 
             tilType.post(Runnable {
                 dialog.requireView().findViewById<View>(R.id.post_type_ly_post).setOnClickListener{
@@ -192,8 +192,8 @@ class CreateNewPostActivity : AppCompatActivity() {
 
         scheduleButton.setOnClickListener{
             if(checkImages()) {
-                val dialog = ScheduleFragment()
-                dialog.show(supportFragmentManager, ScheduleFragment.TAG)
+                val dialog = ScheduleBsdFragment()
+                dialog.show(supportFragmentManager, ScheduleBsdFragment.TAG)
             }
         }
     }

@@ -50,7 +50,7 @@
             android:layout_height="match_parent"
             android:paddingHorizontal="@dimen/full_card_padding"
             android:paddingBottom="85dp"
-            tools:listitem="@layout/view_readable_item" />
+            tools:listitem="@layout/item_readable" />
 
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

@@ -8,16 +8,16 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentBase
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CommentData
-import com.norbert.koller.shared.fragments.bottomsheet.ItemListDialogFragmentStatic
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
 
 
 class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CommentViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.view_comment, parent, false)
+        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_comment, parent, false)
         return CommentViewHolder(itemView,context)
     }
 
@@ -51,9 +51,9 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, 
             buttonMore.setOnClickListener {
 
                 val fragmentManager = (context as AppCompatActivity)
-                val dialog = ItemListDialogFragmentStatic(arrayListOf(
+                val dialog = ListStaticBsdFragment(arrayListOf(
                     ListItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag))))
-                dialog.show(fragmentManager.supportFragmentManager, ItemListDialogFragmentBase.TAG)
+                dialog.show(fragmentManager.supportFragmentManager, ListBsdFragment.TAG)
 
 
 

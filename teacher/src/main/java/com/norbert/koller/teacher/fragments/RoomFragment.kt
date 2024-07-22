@@ -3,7 +3,7 @@ package com.norbert.koller.teacher.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.norbert.koller.shared.customviews.SimpleCardButton
+import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.EditRoomActivity
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
@@ -15,21 +15,21 @@ class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.Room
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val scbRoomOrder : SimpleCardButton = view.findViewById(R.id.room_scb_room_order)
-        scbRoomOrder.setOnClickListener{
+        val cbRoomOrder : CardButton = view.findViewById(R.id.room_cb_room_order)
+        cbRoomOrder.setOnClickListener{
             val intent = Intent(requireContext(), RoomRateActivity::class.java)
             startActivity(intent)
         }
 
-        val scbPresence : SimpleCardButton = view.findViewById(R.id.room_scb_presence)
-        scbPresence.setOnClickListener{
+        val cbPresence : CardButton = view.findViewById(R.id.room_cb_presence)
+        cbPresence.setOnClickListener{
             val intent = Intent(requireContext(), RoomPresenceActivity::class.java)
             startActivity(intent)
         }
 
-        val scbEdit : SimpleCardButton = view.findViewById(R.id.scb_edit)
+        val cbEdit : CardButton = view.findViewById(R.id.cb_edit)
 
-        scbEdit.setOnClickListener {
+        cbEdit.setOnClickListener {
             val intent = Intent(requireContext(), EditRoomActivity::class.java)
             startActivity(intent)
         }

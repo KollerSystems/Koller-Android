@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="star_color_1">#ffffff</color>
+    <color name="star_color_1">#E2F6FB</color>
     <color name="star_color_2">#BFE7FF</color>
     <color name="star_color_3">#8DADFF</color>
     <color name="star_color_4">#FFFCC4</color>

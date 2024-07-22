@@ -3,8 +3,6 @@ package com.norbert.koller.teacher.activities
 import android.os.Bundle
 import android.widget.Button
 import android.widget.CheckBox
-import android.widget.RadioGroup
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.google.android.material.appbar.AppBarLayout
@@ -12,7 +10,7 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
-import com.norbert.koller.teacher.customviews.TimeRangeCardView
+import com.norbert.koller.teacher.customviews.TimeRangeView
 
 open class EditSpecificStudyGroupActivity : AppCompatActivity() {
 
@@ -28,11 +26,11 @@ open class EditSpecificStudyGroupActivity : AppCompatActivity() {
 
 
 
-        val appBar : AppBarLayout = findViewById(R.id.appbar)
+        val appBar : AppBarLayout = findViewById(R.id.app_bar)
 
         appBar.setup()
 
-        val backButton : Button = findViewById(R.id.toolbar_exit)
+        val backButton : Button = findViewById(R.id.button_back)
 
         backButton.setOnClickListener{
             onBackPressedDispatcher.onBackPressed()
@@ -55,10 +53,10 @@ open class EditSpecificStudyGroupActivity : AppCompatActivity() {
         val checkBoxWednesday : CheckBox = findViewById(R.id.CheckBox_wednessday)
         val checkBoxThursday : CheckBox = findViewById(R.id.CheckBox_thursday)
 
-        val timeRangeMonday : TimeRangeCardView = findViewById(R.id.Trcw_monday)
-        val timeRangeTuesday : TimeRangeCardView = findViewById(R.id.Trcw_thuesday)
-        val timeRangeWednesday : TimeRangeCardView = findViewById(R.id.Trcv_wednessday)
-        val timeRangeThursday : TimeRangeCardView = findViewById(R.id.Trcv_thursday)
+        val timeRangeMonday : TimeRangeView = findViewById(R.id.Trcw_monday)
+        val timeRangeTuesday : TimeRangeView = findViewById(R.id.Trcw_thuesday)
+        val timeRangeWednesday : TimeRangeView = findViewById(R.id.Trcv_wednessday)
+        val timeRangeThursday : TimeRangeView = findViewById(R.id.Trcv_thursday)
 
         checkBoxMonday.setOnCheckedChangeListener{_, isChecked ->
             timeRangeMonday.isVisible = isChecked

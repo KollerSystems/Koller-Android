@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    style="@style/BottomSheetMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:id="@+id/drag_handle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:translationZ="10dp" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            app:expanded="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|snap">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/imageView20"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintDimensionRatio="16:9"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/hills" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/CardHeader"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/header_footer_size"
+
+                app:contentPadding="@dimen/card_padding">
+
+                <TextView
+                    android:id="@+id/text_text"
+                    style="@style/Title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="@dimen/text_container_margin"
+                    android:text="@string/title" />
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <androidx.core.widget.NestedScrollView
+                android:id="@+id/new_nested_scroll"
+                android:layout_width="match_parent"
+
+
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:clipToPadding="false"
+                    android:orientation="vertical"
+                    android:padding="@dimen/application_padding">
+
+                    <TextView
+                        android:id="@+id/textView46"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_container_margin"
+                        android:text="@string/lorem_medium" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/new_recyclerview_images"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:layout_marginStart="@dimen/n_card_padding"
+                        android:layout_marginTop="@dimen/text_container_margin"
+                        android:layout_marginEnd="@dimen/n_card_padding"
+                        android:clipToPadding="false"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/card_padding"
+                        android:paddingRight="@dimen/card_padding"
+                        tools:itemCount="1"
+                        tools:listitem="@layout/item_image" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginVertical="@dimen/spacing"
+                        android:layoutDirection="rtl"
+                        app:chipSpacingHorizontal="@dimen/spacing"
+                        app:chipSpacingVertical="@dimen/spacing">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/new_chip_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layoutDirection="locale"
+                            android:text="@string/like"
+                            app:checkedIconEnabled="false"
+                            app:chipIcon="@drawable/like_icon"
+                            app:chipIconVisible="true"
+                            app:chipMinTouchTargetSize="0dp" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/new_chip_I_will_be_there"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layoutDirection="locale"
+                            android:text="@string/i_will_be_there"
+                            app:checkedIconEnabled="false"
+                            app:chipIcon="@drawable/gps_icon"
+                            app:chipIconVisible="true"
+                            app:chipMinTouchTargetSize="0dp" />
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                    <com.google.android.material.card.MaterialCardView
+                        style="@style/Widget.Material3.CardView.Outlined"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:cardCornerRadius="@dimen/card_corner_radius">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="-0.75dp"
+                            android:layout_marginTop="-0.75dp"
+                            android:layout_marginRight="-0.75dp"
+                            android:layout_marginBottom="-0.75dp"
+                            android:elevation="@dimen/card_elevation"
+                            android:orientation="vertical">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="0.75dp"
+                                android:clipChildren="false"
+                                android:clipToPadding="false"
+                                android:orientation="vertical"
+                                android:padding="@dimen/card_padding">
+
+                                <TextView
+                                    android:id="@+id/textView47"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginBottom="@dimen/spacing"
+                                    android:text="@string/comment" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:clipChildren="false"
+                                    android:clipToPadding="false"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.imageview.ShapeableImageView
+                                        android:layout_width="40dp"
+                                        android:layout_height="40dp"
+                                        android:layout_gravity="top"
+                                        android:background="@drawable/circle"
+                                        android:backgroundTint="?attr/colorPrimaryContainer"
+                                        android:scaleType="centerInside"
+                                        app:shapeAppearanceOverlay="@style/RoundImageView"
+                                        app:srcCompat="@drawable/norbert" />
+
+                                    <com.google.android.material.textfield.TextInputLayout
+                                        android:id="@+id/news_til_comment"
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginLeft="@dimen/spacing"
+                                        android:layout_marginTop="-3.5dp"
+                                        android:layout_marginRight="@dimen/spacing"
+                                        android:layout_marginBottom="-1dp"
+                                        android:layout_weight="1"
+                                        android:clipChildren="false"
+                                        android:clipToPadding="false"
+                                        android:hint="@string/write_comment">
+
+                                        <com.google.android.material.textfield.TextInputEditText
+                                            android:layout_width="match_parent"
+                                            android:layout_height="wrap_content"
+                                            android:inputType="textAutoCorrect|textMultiLine|text|textCapSentences"
+                                            android:paddingStart="11.5dp"
+                                            android:paddingLeft="11.5dp"
+                                            android:paddingTop="10.5dp"
+                                            android:paddingEnd="11.5dp"
+                                            android:paddingRight="11.5dp"
+                                            android:paddingBottom="10.5dp"
+                                            android:textSize="@dimen/text" />
+
+                                    </com.google.android.material.textfield.TextInputLayout>
+
+                                    <Button
+                                        android:id="@+id/news_button_post_comment"
+                                        style="@style/IconButton"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_gravity="bottom"
+                                        android:enabled="false"
+                                        app:icon="@drawable/send" />
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <androidx.recyclerview.widget.RecyclerView
+                                    android:id="@+id/recycle_view_comment"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:overScrollMode="never"
+                                    tools:itemCount="3"
+                                    tools:listitem="@layout/item_comment">
+
+                                </androidx.recyclerview.widget.RecyclerView>
+                            </RelativeLayout>
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+            </androidx.core.widget.NestedScrollView>
+
+        </LinearLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</com.google.android.material.card.MaterialCardView>

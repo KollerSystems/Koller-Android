@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.customviews.RoundedBadgeImageView
+import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
@@ -19,7 +19,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
 
 
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_user_preview, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_small, parent, false)
         return TodayViewHolder(view)
 
 
@@ -56,7 +56,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
 
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val userBadge : RoundedBadgeImageView = itemView.findViewById(R.id.badge_user)
+        val userBadge : UserView = itemView.findViewById(R.id.badge_user)
         val text : TextView = itemView.findViewById(R.id.text_name)
     }
 

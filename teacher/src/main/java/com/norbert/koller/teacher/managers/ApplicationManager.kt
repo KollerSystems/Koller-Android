@@ -4,10 +4,8 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.norbert.koller.shared.fragments.NotificationsFragment
-import com.norbert.koller.shared.fragments.StudyGroupsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
-import com.norbert.koller.teacher.BuildConfig
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.*
 import com.norbert.koller.teacher.fragments.CalendarFragment
@@ -19,7 +17,7 @@ import com.norbert.koller.teacher.fragments.UserFragment
 import com.norbert.koller.teacher.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.teacher.fragments.UserOutgoingTemporaryFragment
 import com.norbert.koller.teacher.fragments.UsersFragment
-import com.norbert.koller.teacher.fragments.bottomsheet.ProfileFragment
+import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBsdFragment
 
 class ApplicationManager : ApplicationManager() {
 
@@ -27,7 +25,6 @@ class ApplicationManager : ApplicationManager() {
         super.onCreate()
         NotificationMakingManager().createNotificationChannels(this)
 
-        version = BuildConfig.VERSION_NAME
 
         openSettings = {context : Context ->
             openActivity(context, SettingsActivity::class.java)
@@ -42,8 +39,8 @@ class ApplicationManager : ApplicationManager() {
         }
 
         openProfile = {context: Context ->
-            val dialog = ProfileFragment()
-            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileFragment.TAG)
+            val dialog = ProfileBsdFragment()
+            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment.TAG)
         }
 
         getAppColor = {context->

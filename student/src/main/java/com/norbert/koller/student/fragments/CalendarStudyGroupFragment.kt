@@ -6,13 +6,12 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.CalendarStudyGroupFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.student.recycleradapters.StudyGroupRecyclerAdapter
-import com.norbert.koller.student.recycleradapters.BaseProgramRecyclerAdapter
 
 class CalendarStudyGroupFragment : CalendarStudyGroupFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        baseRecycleAdapter = StudyGroupRecyclerAdapter()
+        apiRecyclerAdapter = StudyGroupRecyclerAdapter()
 
 
         addDateChip()
