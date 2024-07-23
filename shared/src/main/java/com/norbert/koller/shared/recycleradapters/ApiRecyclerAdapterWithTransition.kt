@@ -26,7 +26,7 @@ abstract class ApiRecyclerAdapterWithTransition() : ApiRecyclerAdapter() {
 
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
         item as BaseData
         val transitionName = getTransitionName(item.getMainID())

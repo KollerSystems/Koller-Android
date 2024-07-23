@@ -18,8 +18,8 @@ class BaseProgramTypesFragment(defaultFilters : MutableMap<String, ArrayList<Str
 
         setupSort(R.string.abc, R.string.zyx,"Topic")
         apiRecyclerAdapter = BaseProgramTypeRecyclerAdapter()
-        apiRecyclerAdapter.chipGroupSort = binding.chipsSort
-        apiRecyclerAdapter.chipGroupFilter = binding.chipsFilter
+        apiRecyclerAdapter.chipsSort = binding.chipsSort
+        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
 
 
         addSearchbar("Topic")

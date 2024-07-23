@@ -1,6 +1,9 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.view.ViewParent
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
@@ -10,37 +13,36 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.UserView
+import com.norbert.koller.shared.databinding.ItemUserBinding
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
-    override fun getViewType(): Int {
-        return R.layout.item_user
-    }
 
     override fun getDataTag(): String {
         return "user"
     }
 
-    override fun createViewHolder(view: View): RecyclerView.ViewHolder {
-        return UserViewHolder(view)
+    override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
+        return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item : Any, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
-        super.onBindViewHolder(holder, item, position)
+        super.onBindItemViewHolder(holder, item, position)
 
         val context = holder.itemView.context
-        holder as UserViewHolder
+        holder as RecyclerViewHelper.UserViewHolder
 
         item as UserData
-        holder.userBadge.getImage().setImageDrawable(
+        holder.itemBinding.user.getImage().setImageDrawable(
             AppCompatResources.getDrawable(
                 context,
                 R.drawable.person
             )
         )
-        holder.userBadge.setUser(item)
-        holder.title.text = item.name
-        holder.description.text = item.createDescription()
+        holder.itemBinding.user.setUser(item)
+        holder.itemBinding.textTitle.text = item.name
+        holder.itemBinding.textDescription.text = item.createDescription()
 
         holder.itemView.setOnClickListener {
 
@@ -54,13 +56,4 @@ class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
         }
     }
-
-    class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-        val userBadge : UserView = itemView.findViewById(R.id.user_badge)
-        val title : TextView = itemView.findViewById(R.id.text_title)
-        val description : TextView = itemView.findViewById(R.id.text_description)
-    }
-
-
 }

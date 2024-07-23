@@ -20,8 +20,8 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         setupSort(R.string.from_down, R.string.from_up,"RID")
 
         apiRecyclerAdapter = RoomRecyclerAdapter()
-        apiRecyclerAdapter.chipGroupSort = binding.chipsSort
-        apiRecyclerAdapter.chipGroupFilter = binding.chipsFilter
+        apiRecyclerAdapter.chipsSort = binding.chipsSort
+        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
 
         addSortingChip("Floor", R.string.floor_level, arrayListOf(
         ))

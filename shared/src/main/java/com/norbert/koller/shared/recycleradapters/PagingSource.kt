@@ -52,8 +52,8 @@ abstract class PagingSource(val context: Context, val viewModel: BaseViewModel) 
     }
 
     fun getSort() : String{
-        if(recyclerAdapter.chipGroupSort == null) return ""
-        val chip : Chip = recyclerAdapter.chipGroupSort!!.findViewById(recyclerAdapter.chipGroupSort!!.checkedChipId)
+        if(recyclerAdapter.chipsSort == null) return ""
+        val chip : Chip = recyclerAdapter.chipsSort!!.findViewById(recyclerAdapter.chipsSort!!.checkedChipId)
         return chip.tag.toString()
     }
 
@@ -144,13 +144,13 @@ abstract class PagingSource(val context: Context, val viewModel: BaseViewModel) 
     }
 
     fun areParametersDefault() : Boolean{
-        return (viewModel.filters.isEmpty() && viewModel.dateFilters.isEmpty() && (recyclerAdapter.chipGroupSort?.checkedChipId ?: R.id.chip_first) == R.id.chip_first)
+        return (viewModel.filters.isEmpty() && viewModel.dateFilters.isEmpty() && (recyclerAdapter.chipsSort?.checkedChipId ?: R.id.chip_first) == R.id.chip_first)
     }
 
     fun formatRecievedValues(responseAs : List<BaseData>, offset : Int, limit: Int): LoadResult<Int, Any> {
 
         if(offset <= 0){
-            recyclerAdapter.RecyclerView.scrollToPosition(0)
+            recyclerAdapter.recyclerView.scrollToPosition(0)
         }
 
         recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)

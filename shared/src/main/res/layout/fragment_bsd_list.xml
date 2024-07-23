@@ -32,7 +32,7 @@
             android:paddingTop="@dimen/card_margin"
             android:paddingBottom="@dimen/card_margin"
             android:scrollbars="vertical"
-            tools:listitem="@layout/view_list_item" />
+            tools:listitem="@layout/item_check_box" />
 
     </LinearLayout>
 

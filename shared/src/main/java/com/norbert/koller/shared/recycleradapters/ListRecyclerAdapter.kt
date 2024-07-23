@@ -49,7 +49,7 @@ class ListAdapter (val bottomSheet : ListBsdFragment) : RecyclerView.Adapter<Lis
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_list_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_check_box, parent, false)
         return ListViewHolder(view)
     }
 

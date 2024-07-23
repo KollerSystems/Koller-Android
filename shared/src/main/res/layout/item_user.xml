@@ -21,7 +21,7 @@
         android:padding="@dimen/card_padding">
 
         <com.norbert.koller.shared.customviews.UserView
-            android:id="@+id/user_badge"
+            android:id="@+id/user"
             android:layout_width="@dimen/card_icon"
             android:layout_height="@dimen/card_icon"
             android:layout_marginEnd="@dimen/spacing"

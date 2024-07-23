@@ -19,8 +19,8 @@ class CrossingsFragment(val uid : Int? = null) : ListFragment() {
 
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
         apiRecyclerAdapter = GateRecyclerAdapter()
-        apiRecyclerAdapter.chipGroupSort = binding.chipsSort
-        apiRecyclerAdapter.chipGroupFilter = binding.chipsFilter
+        apiRecyclerAdapter.chipsSort = binding.chipsSort
+        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
 
         if(viewModel.id == null) {
             viewModel.id = uid

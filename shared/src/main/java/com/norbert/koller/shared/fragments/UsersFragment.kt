@@ -28,8 +28,8 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
 
         setupSort(R.string.abc, R.string.zyx,"Name")
         apiRecyclerAdapter = UserRecyclerAdapter()
-        apiRecyclerAdapter.chipGroupSort = binding.chipsSort
-        apiRecyclerAdapter.chipGroupFilter = binding.chipsFilter
+        apiRecyclerAdapter.chipsSort = binding.chipsSort
+        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
 
         /*leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)

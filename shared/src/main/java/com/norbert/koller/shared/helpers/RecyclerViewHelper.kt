@@ -14,8 +14,14 @@ import com.google.android.material.card.MaterialCardView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ItemBinding
+import com.norbert.koller.shared.databinding.ItemUserBinding
 
 class RecyclerViewHelper {
+
+    class ItemViewHolder(val itemBinding: ItemBinding) : RecyclerView.ViewHolder(itemBinding.root){}
+
+    class UserViewHolder(val itemBinding: ItemUserBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
     companion object{
         fun roundRecyclerItemsVerticallyWithSeparator(view : View, position : Int, pagingDataAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>){

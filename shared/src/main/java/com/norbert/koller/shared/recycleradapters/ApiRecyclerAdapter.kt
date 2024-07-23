@@ -15,12 +15,16 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customviews.SearchView
+import com.norbert.koller.shared.databinding.ItemBinding
+import com.norbert.koller.shared.databinding.ItemLoadingBinding
+import com.norbert.koller.shared.databinding.ItemNothingToDisplayBinding
+import com.norbert.koller.shared.databinding.TextViewDateBinding
+import com.norbert.koller.shared.databinding.ViewErrorRetryBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
-abstract class ApiRecyclerAdapter() :
-    PagingDataAdapter<Any, RecyclerView.ViewHolder>(Comparator) {
+abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Comparator) {
 
-    lateinit var RecyclerView: RecyclerView
+    lateinit var recyclerView: RecyclerView
 
     var state: Int = STATE_NONE
     var withLoadingAnim: Boolean = true
@@ -29,18 +33,16 @@ abstract class ApiRecyclerAdapter() :
 
     var beforeRefresh: (() -> Unit)? = null
 
-    var chipGroupSort: ChipGroup? = null
-    var chipGroupFilter: ChipGroup? = null
+    var chipsSort: ChipGroup? = null
+    var chipsFilter: ChipGroup? = null
     var searchBar: SearchView? = null
-
-    abstract fun getViewType(): Int
 
     abstract fun getDataTag(): String
 
-    override fun onAttachedToRecyclerView(RecyclerView: RecyclerView) {
-        this.RecyclerView = RecyclerView
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        this.recyclerView = recyclerView
 
-        for (chip in chipGroupFilter!!) {
+        for (chip in chipsFilter!!) {
             chip as Chip
             chip.doBeforeTextChanged { text, start, before, count ->
                 fullRefresh()
@@ -72,8 +74,8 @@ abstract class ApiRecyclerAdapter() :
             }
         }
 
-        RecyclerView.post {
-            chipGroupSort?.setOnCheckedStateChangeListener { chipGroup: ChipGroup, ints: MutableList<Int> ->
+        recyclerView.post {
+            chipsSort?.setOnCheckedStateChangeListener { chipGroup: ChipGroup, ints: MutableList<Int> ->
                 fullRefresh()
             }
         }
@@ -83,21 +85,21 @@ abstract class ApiRecyclerAdapter() :
 
     fun seemlessRefresh() {
         beforeRefresh?.invoke()
-        RecyclerView.scrollToPosition(0)
+        recyclerView.scrollToPosition(0)
         setOffsetToZero = true
         refresh()
-        RecyclerView.scrollToPosition(0)
+        recyclerView.scrollToPosition(0)
     }
 
     fun fullRefresh() {
 
-        RecyclerView.scrollToPosition(0)
+        recyclerView.scrollToPosition(0)
 
         beingEmptied = true
         Log.d("INFO", "START TO EMPTY")
         seemlessRefresh()
 
-        RecyclerView.scrollToPosition(0)
+        recyclerView.scrollToPosition(0)
 
 
         beingEmptied = false
@@ -110,47 +112,40 @@ abstract class ApiRecyclerAdapter() :
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         if (super.getItemCount() == 0 && state == STATE_NONE) {
-            val view = LayoutInflater.from(parent.context)
-                .inflate(R.layout.view_list_element_nothing_to_display, parent, false)
-            return EmptyViewHolder(view)
+            val binding = ItemNothingToDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            return EmptyViewHolder(binding)
         } else {
 
             return when (viewType) {
-                VIEW_TYPE_USER -> {
-                    val view =
-                        LayoutInflater.from(parent.context).inflate(getViewType(), parent, false)
-                    createViewHolder(view)
+                VIEW_TYPE_ITEM -> {
+                    setItemViewHolder(parent)
                 }
 
                 VIEW_TYPE_SEPARATOR -> {
-                    val view = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.text_view_date, parent, false)
-                    DateViewHolder(view)
+                    val binding = TextViewDateBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                    DateViewHolder(binding)
                 }
 
                 VIEW_TYPE_LOADING -> {
-                    val view = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.view_loading, parent, false)
-                    LoadingViewHolder(view)
+                    val binding = ItemLoadingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                    LoadingViewHolder(binding)
                 }
 
                 else -> {
-                    val view = LayoutInflater.from(parent.context)
-                        .inflate(R.layout.view_error_retry, parent, false)
-                    ErrorViewHolder(view)
+                    val binding = ViewErrorRetryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                    ErrorViewHolder(binding)
                 }
             }
         }
     }
 
-    open fun createViewHolder(view: View): RecyclerView.ViewHolder {
-        return BaseViewHolder(view)
+    open fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
+        return RecyclerViewHelper.ItemViewHolder(ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        Log.d("TEST", "state: ${state}, super.getItemCount ${super.getItemCount()}")
         if (state == STATE_NONE && super.getItemCount() == 0)
             return
 
@@ -160,21 +155,20 @@ abstract class ApiRecyclerAdapter() :
                 VIEW_TYPE_RETRY -> {
 
                     val retryViewHolder = holder as ErrorViewHolder
-                    retryViewHolder.button.setOnClickListener {
+                    retryViewHolder.itemBinding.btn.setOnClickListener {
                         retry()
                     }
                 }
             }
-
             return
         }
 
         val item = getItem(position)!!
 
         when (getItemViewType(position)) {
-            VIEW_TYPE_USER -> {
+            VIEW_TYPE_ITEM -> {
 
-                onBindViewHolder(holder, item, position)
+                onBindItemViewHolder(holder, item, position)
 
                 if (position == snapshot().size) {
                     holder.itemView.post {
@@ -187,7 +181,7 @@ abstract class ApiRecyclerAdapter() :
 
                 holder as DateViewHolder
                 item as String
-                holder.text.text = item
+                holder.itemBinding.text.text = item
             }
         }
 
@@ -201,7 +195,7 @@ abstract class ApiRecyclerAdapter() :
 
     }
 
-    abstract fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int)
+    abstract fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int)
 
     override fun getItemCount(): Int {
 
@@ -228,7 +222,7 @@ abstract class ApiRecyclerAdapter() :
 
         return when (getItem(position)) {
             is String -> VIEW_TYPE_SEPARATOR
-            else -> VIEW_TYPE_USER
+            else -> VIEW_TYPE_ITEM
         }
 
 
@@ -241,31 +235,21 @@ abstract class ApiRecyclerAdapter() :
         const val STATE_ERROR = 2
 
 
-        const val VIEW_TYPE_USER = 0
+        const val VIEW_TYPE_ITEM = 0
         const val VIEW_TYPE_SEPARATOR = 1
         const val VIEW_TYPE_LOADING = 2
         const val VIEW_TYPE_RETRY = 3
     }
 
+    class DateViewHolder(val itemBinding: TextViewDateBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
-    class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.text_title)
-        val description: TextView = itemView.findViewById(R.id.text_description)
-    }
-
-    class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val text: TextView = itemView.findViewById(R.id.text)
-    }
-
-    class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
+    class LoadingViewHolder(val itemBinding: ItemLoadingBinding) : RecyclerView.ViewHolder(itemBinding.root){
         init{
             itemView.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT)
         }
     }
 
-    class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
+    class EmptyViewHolder(val itemBinding: ItemNothingToDisplayBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
-    class ErrorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val button: Button = itemView.findViewById(R.id.btn)
-    }
+    class ErrorViewHolder(val itemBinding: ViewErrorRetryBinding) : RecyclerView.ViewHolder(itemBinding.root)
 }

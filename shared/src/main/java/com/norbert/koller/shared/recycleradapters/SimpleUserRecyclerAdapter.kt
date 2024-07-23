@@ -54,7 +54,7 @@ class SimpleUserRecyclerAdapter(var userList : List<UserData>) : RecyclerView.Ad
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val userBadge : UserView = itemView.findViewById(R.id.user_badge)
+        val userBadge : UserView = itemView.findViewById(R.id.user)
         val title : TextView = itemView.findViewById(R.id.text_title)
         val description : TextView = itemView.findViewById(R.id.text_description)
     }

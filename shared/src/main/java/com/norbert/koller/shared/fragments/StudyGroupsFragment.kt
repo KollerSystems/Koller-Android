@@ -16,8 +16,8 @@ abstract class StudyGroupsFragment(defaultFilters : MutableMap<String, ArrayList
 
         setupSort(R.string.abc, R.string.zyx,"Topic")
 
-        apiRecyclerAdapter.chipGroupSort = binding.chipsSort
-        apiRecyclerAdapter.chipGroupFilter = binding.chipsFilter
+        apiRecyclerAdapter.chipsSort = binding.chipsSort
+        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
 
         addSearchbar("Topic")
 
