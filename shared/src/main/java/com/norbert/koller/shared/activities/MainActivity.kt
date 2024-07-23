@@ -15,6 +15,7 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.window.OnBackInvokedDispatcher
+import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.animation.doOnEnd
@@ -61,6 +62,19 @@ abstract class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
+            ){
+                handleBackPress()
+            }
+        }
     }
 
     fun bottomNavigationView() : NavigationBarView{
@@ -227,15 +241,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
-
-            onBackInvokedDispatcher.registerOnBackInvokedCallback(
-                OnBackInvokedDispatcher.PRIORITY_DEFAULT
-            ){
-                handleBackPress()
-            }
-        }
     }
 
     private fun handleBackPress(){
@@ -399,7 +405,7 @@ fun showNightBgIfNeeded(id : String){
     }
 
 
-    fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction{
+    private fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction{
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment, "${selectedItemId}${supportFragmentManager.backStackEntryCount}")
         fragmentTransaction.setReorderingAllowed(true)
@@ -408,7 +414,7 @@ fun showNightBgIfNeeded(id : String){
     }
 
 
-    fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction {
+    private fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction {
         val fragmentTransaction = replaceFragmentWithoutBackStack(fragment, selectedItemId)
         fragmentTransaction.addToBackStack(selectedItemId.toString())
 
@@ -432,9 +438,7 @@ fun showNightBgIfNeeded(id : String){
 
 
 
-
-    @SuppressLint("PrivateResource")
-    fun showBackButtonIfNeeded(){
+    private fun showBackButtonIfNeeded(){
 
         val toPadding: Int
         val toAlpha: Float
