@@ -49,7 +49,7 @@
                     android:value="0"
                     android:valueFrom="-24"
                     android:valueTo="24"
-                    app:labelBehavior="gone" />
+                    app:labelBehavior="floating" />
 
                 <Button
                     android:id="@+id/button_time_offset_reset"

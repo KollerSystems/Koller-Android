@@ -19,6 +19,7 @@ package com.stfalcon.imageviewer.viewer.dialog
 import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.KeyEvent
@@ -26,6 +27,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.ImageView
+import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.Fragment
@@ -76,8 +78,20 @@ class ImageViewerDialog<T>(
                 setOnDismissListener { ((targetFragment ?: activity) as? OnDismissListener)?.onDismiss() }
             }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+
+            dialog.onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_OVERLAY
+            ){
+                onBack()
+            }
+        }
+
         return dialog
     }
+
+
 
 
     fun show(fragmentManager: FragmentManager, animate: Boolean) {
@@ -114,14 +128,18 @@ class ImageViewerDialog<T>(
             event.action == KeyEvent.ACTION_UP &&
             !event.isCanceled
         ) {
-            if (viewerView.isScaled) {
-                viewerView.resetScale()
-            } else {
-                viewerView.close()
-            }
+            onBack()
             return true
         }
         return false
+    }
+
+    private fun onBack(){
+        if (viewerView.isScaled) {
+            viewerView.resetScale()
+        } else {
+            viewerView.close()
+        }
     }
 
     private fun setupViewerView() {

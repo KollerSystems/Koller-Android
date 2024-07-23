@@ -5,6 +5,9 @@ import android.graphics.Color
 import android.util.AttributeSet
 import android.view.View
 import android.widget.ImageView
+import com.github.iielse.imageviewer.ImageViewerBuilder
+import com.github.iielse.imageviewer.core.Photo
+import com.github.iielse.imageviewer.core.SimpleDataProvider
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.getAttributeColor
