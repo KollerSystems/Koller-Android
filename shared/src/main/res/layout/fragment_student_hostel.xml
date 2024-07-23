@@ -9,7 +9,6 @@
     tools:context="fragments.StudentHostelFragment">
 
     <TextView
-        android:id="@+id/textView5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Fejlesztés alatt" />
@@ -34,7 +33,7 @@
             app:showDivider="middle">
 
             <Button
-                android:id="@+id/student_hostel_button_rooms"
+                android:id="@+id/btn_places"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -48,7 +47,7 @@
                 app:layout_flexShrink="1" />
 
             <Button
-                android:id="@+id/student_hostel_button_users"
+                android:id="@+id/btn_users"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -62,7 +61,7 @@
                 app:layout_flexShrink="1" />
 
             <Button
-                android:id="@+id/button_study_groups"
+                android:id="@+id/btn_study_groups"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -76,7 +75,7 @@
                 app:layout_flexShrink="1" />
 
             <Button
-                android:id="@+id/button_base_programs"
+                android:id="@+id/btn_base_programs"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

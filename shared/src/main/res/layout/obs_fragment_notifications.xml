@@ -9,7 +9,7 @@
     tools:context=".fragments.NotificationsFragment">
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/appbar_layout"
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -81,7 +81,7 @@
             </com.google.android.material.chip.ChipGroup>
 
             <View
-                android:id="@+id/divider"
+                android:id="@+id/view_divider"
                 style="@style/SeparatorLine"
                 android:layout_marginTop="@dimen/spacing"
                 android:layout_marginBottom="5dp" />

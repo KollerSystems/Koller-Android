@@ -37,20 +37,20 @@ abstract class SettingsActivity : AppCompatActivity() {
         childrenCheckBoxes: List<CardToggle>,
         parentOnCheckedStateChangedListener: MaterialCheckBox.OnCheckedStateChangedListener
     ) {
-        val checkedCount = childrenCheckBoxes.stream().filter { obj: CardToggle -> obj.checkBox.isChecked }
+        val checkedCount = childrenCheckBoxes.stream().filter { obj: CardToggle -> obj.getCheckBox().isChecked }
             .count()
             .toInt()
         val allChecked = checkedCount == childrenCheckBoxes.size
         val noneChecked = checkedCount == 0
-        checkBoxParent.checkBox.removeOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
+        checkBoxParent.getCheckBox().removeOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
         if (allChecked) {
-            checkBoxParent.checkBox.isChecked = true
+            checkBoxParent.getCheckBox().isChecked = true
         } else if (noneChecked) {
-            checkBoxParent.checkBox.isChecked = false
+            checkBoxParent.getCheckBox().isChecked = false
         } else {
-            checkBoxParent.checkBox.checkedState = MaterialCheckBox.STATE_INDETERMINATE
+            checkBoxParent.getCheckBox().checkedState = MaterialCheckBox.STATE_INDETERMINATE
         }
-        checkBoxParent.checkBox.addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
+        checkBoxParent.getCheckBox().addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

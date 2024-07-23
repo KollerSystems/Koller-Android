@@ -231,7 +231,7 @@ abstract class MainActivity : AppCompatActivity() {
 
 
             onBackInvokedDispatcher.registerOnBackInvokedCallback(
-                OnBackInvokedDispatcher.PRIORITY_OVERLAY
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
             ){
                 handleBackPress()
             }

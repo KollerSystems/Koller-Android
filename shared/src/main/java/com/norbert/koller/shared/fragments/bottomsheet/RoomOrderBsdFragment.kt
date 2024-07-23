@@ -4,12 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.RoomOrderData
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.norbert.koller.shared.databinding.FragmentBsdRoomOrderBinding
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.managers.setupBottomSheet
 import kotlin.math.roundToInt
@@ -17,46 +17,37 @@ import kotlin.math.roundToInt
 class RoomOrderBsdFragment : BottomSheetDialogFragment()  {
 
 
+    lateinit var binding : FragmentBsdRoomOrderBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_bsd_room_order, container, false)
-        dialog!!.setupBottomSheet()
-        val finalGrade: TextView = view.findViewById(R.id.room_order_fragment_text_final_rate)
-        val teacherName: TextView = view.findViewById(R.id.room_order_fragment_text_rater_name)
-        val date: TextView = view.findViewById(R.id.room_order_fragment_text_date)
+        binding = FragmentBsdRoomOrderBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
-        val finalGradeFloat : Float = RoomOrderData.instance[0].FinalGrade.toFloat() / 2
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dialog!!.setupBottomSheet()
+
+        val finalGradeFloat : Float = RoomOrderData.instance[0].finalGrade.toFloat() / 2
         if(finalGradeFloat != (finalGradeFloat).roundToInt().toFloat()){
-            finalGrade.text = "${(finalGradeFloat + 0.5f).roundToInt()},"
+            binding.textGrade.text = "${(finalGradeFloat + 0.5f).roundToInt()},"
         }
         else{
-            finalGrade.text = finalGradeFloat.toString()
+            binding.textGrade.text = finalGradeFloat.toString()
         }
 
-        teacherName.text = "Name"
+        binding.footer.textName.text = RoomOrderData.instance[0].teacher.name
 
 
-        date.text = RoomOrderData.instance[0].date.formatDate("MM. dd.")
+        binding.footer.textDate.text = RoomOrderData.instance[0].date.formatDate("MM. dd.")
 
-        val RecyclerView : RecyclerView = view.findViewById(R.id.room_order_recycler_view)
-
-        RecyclerView.layoutManager = LinearLayoutManager(context)
-        RecyclerView.setHasFixedSize(true)
-
-        /*starsArrayList = arrayListOf(
-            StarData(getString(R.string.floor), 4f),
-            StarData(getString(R.string.beds), 5f)
-        )*/
-
-        //val adapter = StarsRecyclerAdapter(starsArrayList)
-        //RecyclerView.adapter = adapter
-
-        return view
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.setHasFixedSize(true)
     }
 
     companion object {

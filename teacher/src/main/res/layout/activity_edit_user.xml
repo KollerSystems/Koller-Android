@@ -86,7 +86,7 @@ tools:context=".activities.EditUserActivity">
 
 
         <TextView
-            android:id="@+id/user_text_name"
+            android:id="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@android:string/unknownName"

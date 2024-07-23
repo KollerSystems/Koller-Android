@@ -7,24 +7,25 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import com.norbert.koller.student.R
+import com.norbert.koller.student.databinding.FragmentRegisterFinishBinding
 
 class RegisterFinishFragment : Fragment() {
+
+    lateinit var binding : FragmentRegisterFinishBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_finish, container, false)
+        binding = FragmentRegisterFinishBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-        val buttonExit : Button = view.findViewById(R.id.button_exit)
-
-        buttonExit.setOnClickListener{
+        binding.btnExit.setOnClickListener{
             (requireContext() as com.norbert.koller.student.activities.RegisterActivity).finishAffinity()
         }
     }

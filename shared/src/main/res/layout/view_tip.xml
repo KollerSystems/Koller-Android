@@ -22,7 +22,7 @@
         android:padding="@dimen/text_container_margin">
 
         <TextView
-            android:id="@+id/text_name"
+            android:id="@+id/text_label"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/text_container_margin"
@@ -30,7 +30,7 @@
             android:textStyle="italic" />
 
         <TextView
-            android:id="@+id/text_view"
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/description"

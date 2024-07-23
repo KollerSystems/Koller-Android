@@ -5,7 +5,7 @@
     style="@style/MainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.WelcomeInterestsFragment">
+    tools:context=".fragments.RegisterInterestsFragment">
 
     <LinearLayout
         android:layout_width="match_parent"

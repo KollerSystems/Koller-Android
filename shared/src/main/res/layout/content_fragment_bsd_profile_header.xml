@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical">
+
     <TextView
-        android:id="@+id/textView13"
         style="@style/CategoryCardNameBald"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,6 +23,8 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -28,7 +32,7 @@
             android:orientation="horizontal">
 
             <com.norbert.koller.shared.customviews.UserView
-                android:id="@+id/badge_user"
+                android:id="@+id/user"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginEnd="@dimen/spacing" />
@@ -41,14 +45,14 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/profile_text_name"
+                    android:id="@+id/text_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/title"
                     android:textAppearance="@style/MainTitle" />
 
                 <TextView
-                    android:id="@+id/profile_text_description"
+                    android:id="@+id/text_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/description"
@@ -75,7 +79,7 @@
                 app:layout_flexGrow="1" />
 
             <Button
-                android:id="@+id/button_logout"
+                android:id="@+id/btn_logout"
                 style="@style/ButtonIcon"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -88,4 +92,22 @@
 
     </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-</merge>
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@id/cb_room"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:icon="@drawable/room"
+        app:text="@string/my_room" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@id/cb_groups"
+        style="@style/CardMiddle"
+        tools:visibility="visible"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:icon="@drawable/groups"
+        app:text="@string/my_groups" />
+</LinearLayout>

@@ -37,7 +37,7 @@
                     android:textAppearance="@style/Title" />
 
                 <TextView
-                    android:id="@+id/text_view"
+                    android:id="@+id/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     tools:text="210 • 1.B • F9"

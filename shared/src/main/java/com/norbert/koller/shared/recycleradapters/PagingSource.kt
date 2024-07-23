@@ -144,7 +144,7 @@ abstract class PagingSource(val context: Context, val viewModel: BaseViewModel) 
     }
 
     fun areParametersDefault() : Boolean{
-        return (viewModel.filters.isEmpty() && viewModel.dateFilters.isEmpty() && (recyclerAdapter.chipGroupSort?.checkedChipId ?: R.id.first) == R.id.first)
+        return (viewModel.filters.isEmpty() && viewModel.dateFilters.isEmpty() && (recyclerAdapter.chipGroupSort?.checkedChipId ?: R.id.chip_first) == R.id.chip_first)
     }
 
     fun formatRecievedValues(responseAs : List<BaseData>, offset : Int, limit: Int): LoadResult<Int, Any> {

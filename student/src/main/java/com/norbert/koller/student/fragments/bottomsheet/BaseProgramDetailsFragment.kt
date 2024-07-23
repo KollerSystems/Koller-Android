@@ -57,17 +57,17 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
             ncwState.visibility = GONE
             textTitle.text = response.topic
 
-            ncbClass.buttonContent.setOnClickListener{
+            ncbClass.getTextDescription().setOnClickListener{
                 classClick(response, requireContext())
                 dismiss()
             }
 
-            ncbTeacher.buttonContent.setOnClickListener{
+            ncbTeacher.getTextDescription().setOnClickListener{
                 teacherClick(response, requireContext())
                 dismiss()
             }
 
-            ncbClassroom.buttonContent.setOnClickListener{
+            ncbClassroom.getTextDescription().setOnClickListener{
                 classRoomClick(response, requireContext())
                 dismiss()
             }

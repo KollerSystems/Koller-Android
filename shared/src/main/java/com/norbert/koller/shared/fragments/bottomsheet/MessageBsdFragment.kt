@@ -18,7 +18,7 @@ class MessageBsdFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        return inflater.inflate(R.layout.fragment_bhd_message, container, false)
+        return inflater.inflate(R.layout.fragment_bsd_message, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

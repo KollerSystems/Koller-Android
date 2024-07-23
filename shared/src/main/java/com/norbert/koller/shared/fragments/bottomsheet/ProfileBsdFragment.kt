@@ -18,6 +18,9 @@ import com.norbert.koller.shared.activities.ManageAccountActivity
 import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.DevData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileFooterBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileHeaderBinding
+import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -26,34 +29,25 @@ import com.norbert.koller.shared.recycleradapters.DevRecyclerAdapter
 import kotlinx.coroutines.launch
 
 
-open class ProfileBsdFragment : BottomSheetDialogFragment() {
+abstract class ProfileBsdFragment : BottomSheetDialogFragment() {
 
+    abstract fun getHeaderBinding() : ContentFragmentBsdProfileHeaderBinding
+    abstract fun getFooterBinding() : ContentFragmentBsdProfileFooterBinding
 
     override fun getTheme(): Int {
         return R.style.BottomSheetDialogFull
     }
-
-    private lateinit var textName : TextView
-    private lateinit var textDescription : TextView
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
         dialog!!.setupBottomSheet()
 
-        val badgeUser : UserView = view.findViewById(R.id.badge_user)
-        badgeUser.setUser(UserData.instance)
+        getHeaderBinding().user.setUser(UserData.instance)
+        getHeaderBinding().textName.text = UserData.instance.name
+        getHeaderBinding().textDescription.text = UserData.instance.createDescription()
 
-
-        textName = view.findViewById(R.id.profile_text_name)
-        textName.text = UserData.instance.name
-
-        textDescription = view.findViewById(R.id.profile_text_description)
-        textDescription.text = UserData.instance.createDescription()
-
-
-        val buttonLogout: Button = view.findViewById(R.id.button_logout)
-        buttonLogout.setOnClickListener{
+        getHeaderBinding().btnLogout.setOnClickListener{
 
             MaterialAlertDialogBuilder(view.context)
                 .setTitle("Biztosan ki akarsz jelentkezni?")
@@ -86,57 +80,43 @@ open class ProfileBsdFragment : BottomSheetDialogFragment() {
                 .show()
         }
 
-        val btnManageAccount: Button = view.findViewById(R.id.btn_manage_account)
-
-        btnManageAccount.setOnClickListener{
+        getHeaderBinding().btnManageAccount.setOnClickListener{
 
 
             val intent = Intent(view.context, ManageAccountActivity::class.java)
             startActivity(intent)
         }
 
-        val cardMyRoom: View = view.findViewById(R.id.profile_card_my_room)
-
-        cardMyRoom.setOnClickListener{
+        getHeaderBinding().cbRoom.setOnClickListener{
 
             (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(UserData.instance.rid!!))
             this.dismiss()
         }
 
-        val fbtnGate: View = view.findViewById(R.id.profile_fbtn_gate)
-
-        fbtnGate.setOnClickListener{
+        getFooterBinding().cbCrossings.setOnClickListener{
 
             (requireContext() as MainActivity).addFragment(CrossingsFragment(UserData.instance.uid))
             this.dismiss()
         }
 
-        val fbtnSettings: View = view.findViewById(R.id.profile_fbtn_settings)
-
-        fbtnSettings.setOnClickListener{
+        getFooterBinding().cbSettings.setOnClickListener{
             ApplicationManager.openSettings.invoke(requireContext())
         }
 
-        val fbtnPrivacyPolicy: View = view.findViewById(R.id.profile_fbtn_privacy_policy)
-
-        fbtnPrivacyPolicy.setOnClickListener{
+        getFooterBinding().cbPrivacyPolicy.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@Marci599"))
             startActivity(browserIntent)
         }
 
         //DEVS
 
-        val fbtnOrganization: View = view.findViewById(R.id.card_organization)
-
-        fbtnOrganization.setOnClickListener{
+        getFooterBinding().cardOrganization.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://kollegium.tech/"))
             startActivity(browserIntent)
         }
 
-        val RecyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
-
-        RecyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        RecyclerView.setHasFixedSize(false)
+        getFooterBinding().recyclerView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        getFooterBinding().recyclerView.setHasFixedSize(false)
 
         val devArrayList = arrayListOf(
             DevData("Katona Márton Barnabás", "Főmenedzsment • Front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_marton)!!, "https://Marci599.github.io"),
@@ -148,26 +128,20 @@ open class ProfileBsdFragment : BottomSheetDialogFragment() {
             DevData("Juhos Gergely János", "Marketing", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_juhos)!!, "https://github.com/enderember003"),
         )
 
-        RecyclerView.adapter = DevRecyclerAdapter(devArrayList)
+        getFooterBinding().recyclerView.adapter = DevRecyclerAdapter(devArrayList)
 
-        val cardSupport: View = view.findViewById(R.id.profile_card_support)
-
-        cardSupport.setOnClickListener{
+        getFooterBinding().cbSupport.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/kollersystems"))
             startActivity(browserIntent)
 
         }
 
-        val cardGitHub: View = view.findViewById(R.id.profile_card_github)
-
-        cardGitHub.setOnClickListener{
+        getFooterBinding().cbGithub.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/KollerSystems"))
             startActivity(browserIntent)
         }
 
-        val fbtnEmail: View = view.findViewById(R.id.profile_fbtn_email)
-
-        fbtnEmail.setOnClickListener{
+        getFooterBinding().cbEmail.setOnClickListener{
 
             val intent = Intent(Intent.ACTION_SENDTO)
             intent.data = Uri.parse("mailto:contact@norbert.hu?body=Felhasználó azonosítója:")

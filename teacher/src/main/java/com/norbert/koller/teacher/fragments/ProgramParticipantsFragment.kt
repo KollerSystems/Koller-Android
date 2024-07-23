@@ -21,8 +21,8 @@ class ProgramParticipantsFragment(defaultFilters : MutableMap<String, ArrayList<
 
         setupSort(com.norbert.koller.shared.R.string.abc, com.norbert.koller.shared.R.string.zyx,"Name")
         apiRecyclerAdapter = UserRecyclerAdapter()
-        apiRecyclerAdapter.chipGroupSort = chipGroupSort
-        apiRecyclerAdapter.chipGroupFilter = chipGroupFilter
+        apiRecyclerAdapter.chipGroupSort = binding.chipsSort
+        apiRecyclerAdapter.chipGroupFilter = binding.chipsFilter
 
         addSortingChip("Gender", com.norbert.koller.shared.R.string.gender, arrayListOf(
             ListItem(getString(com.norbert.koller.shared.R.string.woman), null, AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.woman), "0"),

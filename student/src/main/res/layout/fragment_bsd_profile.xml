@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
@@ -15,10 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/HeaderCard">
+
             <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                android:id="@id/drag_handle"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
         </com.google.android.material.card.MaterialCardView>
 
 
@@ -32,51 +32,28 @@
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
                 android:background="@null"
+                android:orientation="vertical"
                 android:paddingStart="@dimen/full_card_padding"
                 android:paddingEnd="@dimen/full_card_padding"
                 android:paddingBottom="0dp">
 
 
-                <include layout="@layout/content_fragment_bsd_profile_header" />
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/content_fragment_bsd_profile_header" />
 
                 <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@id/profile_card_my_room"
+                    android:id="@+id/cb_outgoing"
                     style="@style/CardMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    custom:icon="@drawable/room"
-                    custom:text="@string/my_room" />
-
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@id/profile_card_my_groups"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:visibility="gone"
-                    custom:icon="@drawable/groups"
-                    custom:text="@string/my_groups"
-                    tools:visibility="visible" />
-
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/profile_fbtn_outgoing"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    custom:icon="@drawable/wave"
-                    custom:text="@string/user_outgoings" />
-
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@id/profile_fbtn_gate"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    custom:icon="@drawable/gate"
-                    custom:text="@string/port_exits_and_entrances" />
+                    app:icon="@drawable/wave"
+                    app:text="@string/user_outgoings" />
 
 
                 <include
+                    android:id="@+id/footer"
                     layout="@layout/content_fragment_bsd_profile_footer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content" />

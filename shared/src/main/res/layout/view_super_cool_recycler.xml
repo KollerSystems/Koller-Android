@@ -14,7 +14,7 @@
         app:justifyContent="center">
 
         <TextView
-            android:id="@+id/text_view_recycler_view_header"
+            android:id="@+id/text_title"
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -39,7 +39,7 @@
         android:src="@drawable/up" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_to_refresh"
+        android:id="@+id/srl"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

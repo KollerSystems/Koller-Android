@@ -12,20 +12,22 @@ import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.student.recycleradapters.DayRecyclerAdapter
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.student.databinding.FragmentDaysBinding
 
-class CalendarDaysFragment : Fragment() {
+class DaysFragment : Fragment() {
 
 
-
+    lateinit var binding : FragmentDaysBinding
 
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_days, container, false)
+        binding = FragmentDaysBinding.inflate(layoutInflater)
+        return binding.root
 
     }
 
@@ -35,17 +37,14 @@ class CalendarDaysFragment : Fragment() {
 
 
 
-        val mcardDate : MaterialCardView = view.findViewById(R.id.mcard_date)
-        mcardDate.setOnClickListener{
-            DateTimeHelper.setupDbd(mcardDate.getChildAt(0) as TextView, DateTimeHelper.monthDayWeekdayFormat).show(parentFragmentManager,  "MATERIAL_DATE_PICKER")
+        binding.cardDate.setOnClickListener{
+            DateTimeHelper.setupDbd(binding.cardDate.getChildAt(0) as TextView, DateTimeHelper.monthDayWeekdayFormat).show(parentFragmentManager,  "MATERIAL_DATE_PICKER")
         }
 
+        binding.recyclerView.adapter = DayRecyclerAdapter()
 
-        val RecyclerView : RecyclerView = view.findViewById(R.id.recycler_view)
-        RecyclerView.adapter = DayRecyclerAdapter()
-
-        RecyclerView.layoutManager = LinearLayoutManager(context)
-        RecyclerView.setHasFixedSize(true)
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.setHasFixedSize(true)
 
 
 

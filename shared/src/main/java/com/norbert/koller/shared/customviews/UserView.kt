@@ -3,6 +3,7 @@ package com.norbert.koller.shared.customviews
 import android.content.Context
 import android.graphics.Color
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.ImageView
 import com.github.iielse.imageviewer.ImageViewerBuilder
@@ -10,15 +11,19 @@ import com.github.iielse.imageviewer.core.Photo
 import com.github.iielse.imageviewer.core.SimpleDataProvider
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ViewUserBinding
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.squareup.picasso.Picasso
 
 class UserView(context: Context, attrs: AttributeSet) : MaterialCardView(context, attrs) {
 
+    private val binding = ViewUserBinding.inflate(LayoutInflater.from(context), this, true)
 
+    fun getImage() : ImageView{
+        return binding.image
+    }
 
     private var mStrokeWidth: Int = 0
-    val image : ImageView
 
     private val red : Int = 10
     private val yellow : Int = 12
@@ -28,7 +33,7 @@ class UserView(context: Context, attrs: AttributeSet) : MaterialCardView(context
         Picasso.get()
             .load(userData.picture)
             .noPlaceholder()
-            .into(image)
+            .into(binding.image)
 
 
         setColorBasedOnClass(userData)
@@ -73,21 +78,11 @@ class UserView(context: Context, attrs: AttributeSet) : MaterialCardView(context
             typedArray.recycle()
         }
 
-
-        View.inflate(context, R.layout.view_user, this)
-
         radius = 99999f
         strokeColor = Color.BLACK
 
         setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorPrimaryContainer))
 
-
-
-
-
-
-
-        image = findViewById(R.id.image)
 
         val mStrokeWidthInt = mStrokeWidth
         setContentPadding(mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt,mStrokeWidthInt)

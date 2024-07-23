@@ -8,11 +8,12 @@ import com.norbert.koller.shared.R
 
 abstract class Description(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
-    private var mName: String = ""
-    var mContent: String = ""
-    private var mIconID: Int = 0
+    abstract fun getTextTitle() : TextView
+    abstract fun getTextDescription() : TextView
 
-    private val textName: TextView
+    private var mTitle: String = ""
+    var mDescription: String = ""
+    private var mIconID: Int = 0
 
 
     init {
@@ -23,28 +24,24 @@ abstract class Description(context: Context, attrs: AttributeSet) : LinearLayout
         )
 
         try {
-            mName = typedArray.getString(R.styleable.nameContentView_name) ?: ""
-            mContent = typedArray.getString(R.styleable.nameContentView_detail) ?: ""
+            mTitle = typedArray.getString(R.styleable.nameContentView_name) ?: ""
+            mDescription = typedArray.getString(R.styleable.nameContentView_detail) ?: ""
             mIconID = typedArray.getResourceId(R.styleable.nameContentView_icon, 0)
         } finally {
             typedArray.recycle()
         }
 
         this.inflate()
-
-        textName = findViewById(R.id.text_name)
-
-
-        textName.text = mName
-        textName.setCompoundDrawablesWithIntrinsicBounds(mIconID, 0, 0, 0);
-
-
-
     }
 
+    override fun onFinishInflate() {
+        super.onFinishInflate()
 
+        getTextTitle().text = mTitle
+        getTextTitle().setCompoundDrawablesWithIntrinsicBounds(mIconID, 0, 0, 0);
 
+        getTextDescription().text = mDescription
+    }
 
     abstract fun inflate()
-
 }

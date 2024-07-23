@@ -20,20 +20,20 @@
     <item name="home_recycle_view_unread" type="id" />
     <item name="home_fab_root" type="id" />
     <item name="progressBar" type="id" />
-    <item name="profile_card_my_groups" type="id" />
-    <item name="profile_card_my_room" type="id" />
-    <item name="profile_fbtn_gate" type="id" />
+    <item name="cb_groups" type="id" />
+    <item name="cb_room" type="id" />
+    <item name="cb_crossings" type="id" />
     <item name="profile_card_devices" type="id" />
-    <item name="profile_fbtn_settings" type="id" />
-    <item name="profile_fbtn_privacy_policy" type="id" />
+    <item name="cb_settings" type="id" />
+    <item name="cb_privacy_policy" type="id" />
     <item name="home_card_lessons" type="id" />
     <item name="home_text_silence_warning" type="id" />
-    <item name="user_view_email" type="id" />
-    <item name="user_view_instagram" type="id" />
-    <item name="user_view_facebook" type="id" />
-    <item name="user_view_discord" type="id" />
-    <item name="nested_scroll_view" type="id" />
-    <item name="super_cool_recycler_view" type="id" />
+    <item name="chip_email" type="id" />
+    <item name="chip_instagram" type="id" />
+    <item name="chip_facebook" type="id" />
+    <item name="chip_discord" type="id" />
+    <item name="nsv" type="id" />
+    <item name="sc_recycler_view" type="id" />
     <item name="slider_time_offset" type="id" />
     <item name="settings_til_hours" type="id" />
     <item name="slider_list_loading_delay" type="id" />

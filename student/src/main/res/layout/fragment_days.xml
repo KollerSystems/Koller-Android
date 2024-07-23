@@ -15,7 +15,7 @@
         app:cardCornerRadius="0dp">
 
         <com.norbert.koller.shared.customviews.TipView
-            android:id="@+id/Tip_calendar"
+            android:id="@+id/tip"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
@@ -28,7 +28,7 @@
 
 
     <com.google.android.material.card.MaterialCardView
-        android:id="@+id/mcard_date"
+        android:id="@+id/card_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
@@ -40,13 +40,12 @@
             android:layout_marginHorizontal="@dimen/text_container_margin"
             android:textColor="?android:attr/colorForeground"
             style="@style/CategoryCardName"
-            android:id="@+id/text_crossing"
+            android:id="@+id/text_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dummy_date_MMddw" />
 
         <ImageView
-            android:id="@+id/button2"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:layout_gravity="end"

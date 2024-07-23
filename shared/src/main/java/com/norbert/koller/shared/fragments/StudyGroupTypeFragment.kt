@@ -73,15 +73,15 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
 
             (context as MainActivity).setToolbarTitle(response.topic)
 
-            ncbClassroom.buttonContent.text = response.rid.toString()
+            ncbClassroom.getTextDescription().text = response.rid.toString()
 
-            ncbTeacher.buttonContent.text = response.teacher!!.name.toString()
+            ncbTeacher.getTextDescription().text = response.teacher!!.name.toString()
 
-            ncbClassroom.buttonContent.setOnClickListener {
+            ncbClassroom.getTextDescription().setOnClickListener {
                 (context as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
             }
 
-            ncbTeacher.buttonContent.setOnClickListener {
+            ncbTeacher.getTextDescription().setOnClickListener {
                 (context as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
             }
         }

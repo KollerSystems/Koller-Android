@@ -4,10 +4,12 @@ import android.animation.Animator
 import android.animation.AnimatorListenerAdapter
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ViewFullScreenLoadingBinding
 
 class FullScreenLoading : LinearLayout {
 
@@ -20,11 +22,10 @@ class FullScreenLoading : LinearLayout {
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
     constructor(context: Context?) : super(context!!)
 
+    lateinit var binding : ViewFullScreenLoadingBinding
+
     private var state: Int = LOADING
-    private val overlay : View
-    private val loading : View
-    private val error : View
-    private val retry : Button
+
     var loadData: (() -> Unit)? = null
 
     fun crossFade(toHide : View, toShow : View){
@@ -42,10 +43,10 @@ class FullScreenLoading : LinearLayout {
         state = value
         when (state){
             LOADING ->{
-                crossFade(error, loading)
+                crossFade(binding.error.root, binding.progressBar)
             }
             ERROR ->{
-                crossFade(loading, error)
+                crossFade(binding.progressBar, binding.error.root)
             }
             NONE ->{
                 fadeOut()
@@ -60,36 +61,31 @@ class FullScreenLoading : LinearLayout {
     }
 
     fun fadeOut(){
-        overlay.animate()
+        binding.root.animate()
             .alpha(0.0f)
             .setDuration(300)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     super.onAnimationEnd(animation)
-                    overlay.visibility = View.GONE
+                    binding.root.visibility = View.GONE
                 }
             })
     }
 
     init {
-        View.inflate(context, R.layout.view_full_screen_loading, this)
+        binding = ViewFullScreenLoadingBinding.inflate(LayoutInflater.from(context), this, true)
 
-        overlay = findViewById(R.id.overlay)
-        loading = findViewById(R.id.progress_bar)
-        error = findViewById(R.id.error)
-        retry = findViewById(R.id.button)
-
-        retry.setOnClickListener{
+        binding.error.btn.setOnClickListener{
             setState(LOADING)
             loadData!!.invoke()
         }
 
-        overlay.post{
+        binding.root.post{
             if(loadData != null) {
                 loadData!!.invoke()
             }
             else{
-                overlay.visibility = View.GONE
+                binding.root.visibility = View.GONE
             }
         }
     }

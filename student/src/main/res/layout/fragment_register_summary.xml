@@ -188,7 +188,6 @@
                     style="@style/SeparatorTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@null"
                     android:text="TAJ szám" />
 
                 <TextView
@@ -775,7 +774,7 @@
 
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/checkbox_rules"
+            android:id="@+id/cb_rules"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/text_container_margin"
@@ -786,7 +785,7 @@
             android:text="A kollégium házirendjét és adatkezelési tájékoztatóját megismertem és az abban foglaltakat elfogadom." />
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/checkbox_true_data"
+            android:id="@+id/cb_true_data"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
@@ -795,7 +794,7 @@
             android:text="Kijelentem, hogy a jelentkezés során megadott adatok a valóságnak megfelelnek." />
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/checkbox_parents"
+            android:id="@+id/cb_parents"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"

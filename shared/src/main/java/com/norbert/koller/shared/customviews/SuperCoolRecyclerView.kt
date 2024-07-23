@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
@@ -15,6 +16,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ViewSuperCoolRecyclerBinding
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 
 
@@ -22,43 +24,69 @@ import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
 
     var appBar : AppBarLayout? = null
-    private val FABScrollUp : FloatingActionButton
-    private val textHeader: TextView
-    val recyclerView: RecyclerView
-    val swipeToRefresh : SwipeRefreshLayout
+    val binding = ViewSuperCoolRecyclerBinding.inflate(LayoutInflater.from(context), this)
 
     private lateinit var recyclerAdapter : ApiRecyclerAdapter
+
+    fun getRecyclerView() : RecyclerView{
+        return binding.recyclerView
+    }
 
 
     init {
 
-        View.inflate(context, R.layout.super_cool_recycler_view, this)
-        FABScrollUp = findViewById(R.id.fab_scroll_to_top)
-        textHeader = findViewById(R.id.text_view_recycler_view_header)
-        recyclerView = findViewById(R.id.recycler_view)
-        swipeToRefresh = findViewById(R.id.swipe_to_refresh)
+        binding.textTitle.visibility = GONE
 
-        textHeader.visibility = GONE
+        var previousWidth = 0;
+        viewTreeObserver.addOnGlobalLayoutListener {
+            val width = width
 
+            if (width != previousWidth) {
+                val tabletMaxWidth = resources.getDimensionPixelSize(R.dimen.tablet_max_width_with_text_container)
+                val fullCardPadding = resources.getDimensionPixelSize(R.dimen.full_card_padding)
+                if (binding.recyclerView.measuredWidth - fullCardPadding * 2 > tabletMaxWidth) {
+                    Log.d("TAGHELLO", "AJAJAJAJAJ")
+                    val correctPadding = (binding.recyclerView.measuredWidth - tabletMaxWidth) / 2
+                    binding.recyclerView.setPadding(
+                        correctPadding,
+                        binding.recyclerView.paddingTop,
+                        correctPadding,
+                        binding.recyclerView.paddingBottom
+                    )
+                }
+                else{
+                    binding.recyclerView.setPadding(
+                        fullCardPadding,
+                        binding.recyclerView.paddingTop,
+                        fullCardPadding,
+                        binding.recyclerView.paddingBottom
+                    )
+                }
+                previousWidth = width
 
+            }
+        }
+    }
 
+    override fun onFinishInflate() {
+        super.onFinishInflate()
 
-        FABScrollUp.setOnClickListener{
+        binding.fabScrollToTop.setOnClickListener{
 
-            recyclerView.smoothScrollToPosition(0)
+            binding.recyclerView.smoothScrollToPosition(0)
 
-            recyclerView.clearOnScrollListeners()
-            recyclerView.setOnTouchListener(null)
+            binding.recyclerView.clearOnScrollListeners()
+            binding.recyclerView.setOnTouchListener(null)
 
-            recyclerView.setOnTouchListener { v, event ->
+            binding.recyclerView.setOnTouchListener { v, event ->
 
-                recyclerView.clearOnScrollListeners()
-                recyclerView.setOnTouchListener(null)
+                binding.recyclerView.clearOnScrollListeners()
+                binding.recyclerView.setOnTouchListener(null)
 
                 v.onTouchEvent(event)
             }
 
-            recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
                 override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                     super.onScrollStateChanged(recyclerView, newState)
                     if (newState == RecyclerView.SCROLL_STATE_IDLE) {
@@ -70,91 +98,54 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
             })
         }
 
+        //TODO: ezek törlése, ha minden recycler view fasza
+        if (binding.recyclerView.adapter is ApiRecyclerAdapter) {
 
-
-
-        recyclerView.post {
-
-            //TODO: ezek törlése, ha minden recycler view fasza
-            if (recyclerView.adapter is ApiRecyclerAdapter) {
-
-                recyclerAdapter = (recyclerView.adapter as ApiRecyclerAdapter)
-                recyclerAdapter.addOnPagesUpdatedListener {
-                    swipeToRefresh.isRefreshing = false
-                    recyclerView.post {
-                        updateTitle()
-                    }
-                }
-
-
-                swipeToRefresh.setOnRefreshListener {
-
-                    recyclerAdapter.withLoadingAnim = false
-                    recyclerAdapter.seemlessRefresh()
-                }
-
-
-
-                updateTitle()
-                recyclerView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
-
+            recyclerAdapter = (binding.recyclerView.adapter as ApiRecyclerAdapter)
+            recyclerAdapter.addOnPagesUpdatedListener {
+                binding.srl.isRefreshing = false
+                binding.recyclerView.post {
                     updateTitle()
-
                 }
             }
-        }
 
-        var previousWidth = 0;
-        viewTreeObserver.addOnGlobalLayoutListener {
-            val width = width
 
-            if (width != previousWidth) {
-                val tabletMaxWidth = resources.getDimensionPixelSize(R.dimen.tablet_max_width_with_text_container)
-                val fullCardPadding = resources.getDimensionPixelSize(R.dimen.full_card_padding)
-                if (recyclerView.measuredWidth - fullCardPadding * 2 > tabletMaxWidth) {
-                    Log.d("TAGHELLO", "AJAJAJAJAJ")
-                    val correctPadding = (recyclerView.measuredWidth - tabletMaxWidth) / 2
-                    recyclerView.setPadding(
-                        correctPadding,
-                        recyclerView.paddingTop,
-                        correctPadding,
-                        recyclerView.paddingBottom
-                    )
-                }
-                else{
-                    recyclerView.setPadding(
-                        fullCardPadding,
-                        recyclerView.paddingTop,
-                        fullCardPadding,
-                        recyclerView.paddingBottom
-                    )
-                }
-                previousWidth = width
+            binding.srl.setOnRefreshListener {
+
+                recyclerAdapter.withLoadingAnim = false
+                recyclerAdapter.seemlessRefresh()
+            }
+
+
+
+            updateTitle()
+            binding.recyclerView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
+
+                updateTitle()
 
             }
         }
     }
 
 
-
     fun updateTitle(){
-        val layoutManager = (recyclerView.layoutManager as LinearLayoutManager)
+        val layoutManager = (binding.recyclerView.layoutManager as LinearLayoutManager)
         val firstVisibleItemIndex: Int = layoutManager.findFirstVisibleItemPosition()
         val firstCompletelyVisibleIndex: Int = layoutManager.findFirstCompletelyVisibleItemPosition()
 
-        val pagingAdapter = (recyclerView.adapter as PagingDataAdapter<*, *>)
+        val pagingAdapter = (binding.recyclerView.adapter as PagingDataAdapter<*, *>)
 
         if (firstVisibleItemIndex != -1) {
             val firstData = pagingAdapter.getItemViewType(firstVisibleItemIndex)
             val list = pagingAdapter.snapshot()
             if (firstData == 1) {
 
-                textHeader.text = list[firstVisibleItemIndex] as String
+                binding.textTitle.text = list[firstVisibleItemIndex] as String
             } else {
 
                 for (index in (0 until firstVisibleItemIndex).reversed()) {
                     if (list[index] is String) {
-                        textHeader.text = list[index] as String
+                        binding.textTitle.text = list[index] as String
                         break
                     }
                 }
@@ -165,7 +156,7 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
         if (firstCompletelyVisibleIndex != -1) {
             val firstData = pagingAdapter.getItemViewType(firstCompletelyVisibleIndex)
             if(firstCompletelyVisibleIndex != 0) {
-                textHeader.visibility = VISIBLE
+                binding.textTitle.visibility = VISIBLE
                 if (firstData == 1) {
 
                     val firstCompletelyVisibleItem: View = layoutManager.getChildAt(1)!!
@@ -174,15 +165,15 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
                     val fullFirstViewHeight =
                         firstCompletelyVisibleItem.height + firstCompletelyVisibleItem.marginTop * 2
                     if (y < fullFirstViewHeight) {
-                        textHeader.translationY = (y - fullFirstViewHeight).toFloat()
+                        binding.textTitle.translationY = (y - fullFirstViewHeight).toFloat()
                     }
                 } else {
-                    textHeader.translationY = 0f
+                    binding.textTitle.translationY = 0f
                 }
             }
             else{
-                textHeader.translationY = 0f
-                textHeader.visibility = GONE
+                binding.textTitle.translationY = 0f
+                binding.textTitle.visibility = GONE
             }
         }
     }

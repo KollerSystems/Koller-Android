@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/Text_time_range"
+        android:id="@+id/text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/text_container_margin"
@@ -17,7 +17,7 @@
 
     <com.google.android.material.slider.RangeSlider
 
-        android:id="@+id/RangeSlider_time"
+        android:id="@+id/range_slider"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/n_text_container_margin"
@@ -28,7 +28,7 @@
         app:labelBehavior="withinBounds" />
 
     <com.norbert.koller.shared.customviews.TipView
-        android:id="@+id/Tip_time_range_help"
+        android:id="@+id/tip_time_range"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/text_container_margin"

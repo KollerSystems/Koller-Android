@@ -15,10 +15,13 @@ import com.norbert.koller.teacher.pageradapter.ProgramTypeViewPagerAdapter
 import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.teacher.activities.EditSpecificStudyGroupActivity
+import com.norbert.koller.teacher.databinding.FragmentStudyGroupTypeBinding
+import com.norbert.koller.teacher.databinding.FragmentStudyGroupTypeDataBinding
 
 class StudyGroupTypeFragment(val pid : Int? = null) : Fragment() {
 
 
+    lateinit var binding : FragmentStudyGroupTypeBinding
 
 
     override fun onCreateView(
@@ -26,31 +29,26 @@ class StudyGroupTypeFragment(val pid : Int? = null) : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val view = inflater.inflate(R.layout.fragment_study_group_type, container, false)
-        ViewCompat.setTransitionName(view!!.rootView, "cardTransition_${pid}position")
-        return view
+        binding = FragmentStudyGroupTypeBinding.inflate(layoutInflater)
+        ViewCompat.setTransitionName(binding.root.rootView, "cardTransition_${pid}position")
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val editButton : CardButton = view.findViewById(R.id.cb_edit)
-
-        editButton.setOnClickListener {
+        binding.cbEdit.setOnClickListener {
             val intent = Intent(requireContext(), EditSpecificStudyGroupActivity::class.java)
             startActivity(intent)
         }
 
-        val tabs : TabLayout = view.findViewById(Rs.id.tabs)
-
-        val viewPager : ViewPager2 = view.findViewById(R.id.viewPager)
 
         val adapter = ProgramTypeViewPagerAdapter(pid, childFragmentManager, lifecycle)
 
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
 
 
-        TabLayoutMediator(tabs, viewPager){tab,position->
+        TabLayoutMediator(binding.tabs, binding.viewPager){tab,position->
             when(position){
                 0->{
                     tab.text = "Adatok"

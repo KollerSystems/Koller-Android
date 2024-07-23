@@ -73,7 +73,7 @@ class PostFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_bhd_post, container, false)
+        val view : View = inflater.inflate(R.layout.fragment_bsd_post, container, false)
         dialog!!.setupBottomSheet()
         commentTil = view.findViewById(R.id.news_til_comment)
         val buttonPost : Button = view.findViewById(R.id.news_button_post_comment)

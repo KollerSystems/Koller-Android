@@ -399,7 +399,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                 android:orientation="horizontal">
 
                 <Button
-                    android:id="@+id/student_id"
+                    android:id="@+id/btn_student_id"
                     style="@style/IconButtonTransparent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

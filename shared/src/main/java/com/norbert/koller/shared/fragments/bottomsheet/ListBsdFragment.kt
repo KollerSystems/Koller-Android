@@ -5,26 +5,26 @@ import android.os.Bundle
 import android.util.Log
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
-import android.widget.LinearLayout
 import androidx.core.widget.doOnTextChanged
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.FragmentBsdListBinding
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ListAdapter
 import com.norbert.koller.shared.viewmodels.ListBsdFragmentViewModel
 
 abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
 
+    lateinit var binding : FragmentBsdListBinding
+
     var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
 
     lateinit var viewModel: ListBsdFragmentViewModel
 
-    lateinit var recycleView : RecyclerView
     lateinit var adapter : ListAdapter
 
     var collapseText : Boolean = false
@@ -35,9 +35,9 @@ abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) :
     fun setRecyclerView(){
 
         adapter = ListAdapter(this@ListBsdFragment)
-        recycleView.adapter = adapter
-        recycleView.layoutManager = LinearLayoutManager(context)
-        recycleView.setHasFixedSize(true)
+        binding.recyclerView.adapter = adapter
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
+        binding.recyclerView.setHasFixedSize(true)
     }
 
     override fun onCreateView(
@@ -45,12 +45,12 @@ abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) :
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bhd_item_list, container, false)
+        binding = FragmentBsdListBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        recycleView = view.findViewById(R.id.simple_list_bottom_fragment_recycle_view)
 
         if(savedInstanceState == null){
             if(getValuesOnFinish != null) {
@@ -94,16 +94,14 @@ abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) :
             )
             mlp.setMargins(margin,0,margin,margin)
             searchView.layoutParams = mlp
-            searchView.editTextSearch.hint = requireContext().getString(R.string.search)
+            searchView.getEditText().hint = requireContext().getString(R.string.search)
 
             frameLayout.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
 
-            val mainLayout : LinearLayout = requireView().findViewById(R.id.ly)
-
-            mainLayout.addView(frameLayout, 1)
+            binding.ly.addView(frameLayout, 1)
             frameLayout.addView(searchView)
 
-            searchView.editTextSearch.doOnTextChanged { text, start, before, count ->
+            searchView.getEditText().doOnTextChanged { text, start, before, count ->
                 adapter.filter(text.toString())
             }
         }

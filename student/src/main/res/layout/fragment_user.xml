@@ -13,7 +13,7 @@
         android:id="@+id/swrl">
 
         <androidx.core.widget.NestedScrollView
-            android:id="@id/nested_scroll_view"
+            android:id="@id/nsv"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fillViewport="true">
@@ -32,14 +32,14 @@
 
 
                 <include
-                    android:id="@+id/include_header"
+                    android:id="@+id/header"
                     style="@style/CardSingle"
                     layout="@layout/content_fragment_user_header"
 
                     app:layout_maxWidth="@dimen/tablet_max_width" />
 
                 <TextView
-                    android:id="@+id/textView42"
+                    android:id="@+id/text_manage"
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -50,6 +50,7 @@
 
 
                 <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_report"
                     style="@style/CardSingle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

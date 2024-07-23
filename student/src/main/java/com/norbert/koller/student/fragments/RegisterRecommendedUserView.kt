@@ -1,13 +1,13 @@
 package com.norbert.koller.student.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.norbert.koller.student.R
 
-class WelcomeUsersFragment : Fragment() {
+class RegisterRecommendedUserView : Fragment() {
 
 
     override fun onCreateView(
@@ -15,6 +15,7 @@ class WelcomeUsersFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_users, container, false)
+
+        return inflater.inflate(R.layout.item_recommended_user, container, false)
     }
 }

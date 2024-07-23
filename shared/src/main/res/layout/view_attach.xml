@@ -27,7 +27,7 @@
 
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/text_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="start|top"
@@ -38,7 +38,7 @@
 
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/text_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -49,7 +49,7 @@
         app:drawableTopCompat="@drawable/add_image" />
 
     <com.google.android.flexbox.FlexboxLayout
-        android:id="@+id/fl_buttons"
+        android:id="@+id/fl_btns"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|start"
@@ -62,14 +62,14 @@
         app:showDivider="middle">
 
         <Button
-            android:id="@+id/button_remove"
+            android:id="@+id/btn_remove"
             style="@style/IconButtonTonal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:icon="@drawable/close" />
 
         <Button
-            android:id="@+id/button_change"
+            android:id="@+id/btn_change"
             style="@style/ButtonTonalIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

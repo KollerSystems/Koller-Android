@@ -10,26 +10,29 @@ import android.widget.Button
 import android.widget.ImageView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ContentDataStudentBinding
 
 
-class RegisterStudentFragment : com.norbert.koller.student.fragments.RegisterFragment() {
+class RegisterStudentFragment : RegisterFragment() {
+
+    lateinit var binding : ContentDataStudentBinding
+
     override fun checkIfAllCorrect(): Boolean {
         return true
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.content_data_student, container, false)
+    ): View {
+
+        binding = ContentDataStudentBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val buttonStudentId : Button = view.findViewById(R.id.student_id)
-        buttonStudentId.setOnClickListener{
+        binding.btnStudentId.setOnClickListener{
             val image = ImageView(requireContext())
             image.layoutParams = ViewGroup.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
             image.adjustViewBounds = true

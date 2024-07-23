@@ -27,13 +27,13 @@ interface ProgramFragmentInterface {
     }
 
     fun setViews(response : ProgramData, context : Context){
-        ncwDate.textContent.text = response.date.formatDate(DateTimeHelper.monthDay)
-        ncwTime.textContent.text = ApplicationManager.createClassesText(context, response.lesson, response.length)
-        ncbClassroom.buttonContent.text = response.rid.toString()
+        ncwDate.getTextDescription().text = response.date.formatDate(DateTimeHelper.monthDay)
+        ncwTime.getTextDescription().text = ApplicationManager.createClassesText(context, response.lesson, response.length)
+        ncbClassroom.getTextDescription().text = response.rid.toString()
 
 
 
-        ncbTeacher.buttonContent.text = response.teacher!!.name.toString()
+        ncbTeacher.getTextDescription().text = response.teacher!!.name.toString()
 
     }
 

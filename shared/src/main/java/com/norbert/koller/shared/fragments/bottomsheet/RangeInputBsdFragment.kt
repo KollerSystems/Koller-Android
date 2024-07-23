@@ -9,11 +9,12 @@ import androidx.core.widget.doOnTextChanged
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.FragmentBsdRangeInputBinding
 
 class RangeInputBsdFragment(val defaultRange : Pair<Int?, Int?>) : BottomSheetDialogFragment() {
 
-    lateinit var tilFrom : TextInputLayout
-    lateinit var tilTo : TextInputLayout
+    lateinit var binding : FragmentBsdRangeInputBinding
+
     lateinit var getValuesOnFinish: ((range : Pair<Int?, Int?>) -> Unit)
     var userChanged : Boolean = false
     var beingCopied : Boolean = false
@@ -23,30 +24,28 @@ class RangeInputBsdFragment(val defaultRange : Pair<Int?, Int?>) : BottomSheetDi
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bsd_range_input, container, false)
+        binding = FragmentBsdRangeInputBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tilFrom = view.findViewById(R.id.til_from)
-        tilTo = view.findViewById(R.id.til_to)
-
         if(defaultRange.first != null) {
-            tilFrom.editText!!.setText(defaultRange.first!!.toString())
-            tilTo.editText!!.setText(defaultRange.second!!.toString())
+            binding.tilFrom.editText!!.setText(defaultRange.first!!.toString())
+            binding.tilTo.editText!!.setText(defaultRange.second!!.toString())
 
-            userChanged = tilFrom.editText!!.text.toString() != tilTo.editText!!.text.toString()
+            userChanged = binding.tilFrom.editText!!.text.toString() != binding.tilTo.editText!!.text.toString()
         }
 
-        tilFrom.editText!!.doOnTextChanged{text,_,_,_ ->
+        binding.tilFrom.editText!!.doOnTextChanged{text,_,_,_ ->
             if(!userChanged){
                 beingCopied = true
-                tilTo.editText!!.setText(text)
+                binding.tilTo.editText!!.setText(text)
             }
         }
 
-        tilTo.editText!!.doOnTextChanged{text,_,_,_ ->
+        binding.tilTo.editText!!.doOnTextChanged{text,_,_,_ ->
 
             if(!beingCopied){
                 userChanged = !text.isNullOrBlank()
@@ -59,8 +58,8 @@ class RangeInputBsdFragment(val defaultRange : Pair<Int?, Int?>) : BottomSheetDi
     override fun onCancel(dialog: DialogInterface) {
         super.onCancel(dialog)
 
-        var fromInt : Int? = tilFrom.editText!!.text.toString().toIntOrNull()
-        var toInt : Int? = tilTo.editText!!.text.toString().toIntOrNull()
+        var fromInt : Int? = binding.tilFrom.editText!!.text.toString().toIntOrNull()
+        var toInt : Int? = binding.tilTo.editText!!.text.toString().toIntOrNull()
 
         if(fromInt == null && toInt != null){
             fromInt = 0

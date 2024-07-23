@@ -25,10 +25,10 @@ class ManageAccountActivity : AppCompatActivity() {
         binding.user.setUser(UserData.instance)
 
         binding.user.setOnClickListener{
-            StfalconImageViewer.Builder(this, listOf(binding.user.image.drawable)){ view, drawable ->
+            StfalconImageViewer.Builder(this, listOf(binding.user.getImage().drawable)){ view, drawable ->
                 view.setImageDrawable(drawable)
             }
-                .withTransitionFrom(binding.user.image)
+                .withTransitionFrom(binding.user.getImage())
                 .show(this.supportFragmentManager)
         }
 

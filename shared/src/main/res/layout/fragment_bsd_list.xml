@@ -19,14 +19,13 @@
             android:layout_height="wrap_content">
 
             <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                android:id="@+id/drag_handle4"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </com.google.android.material.card.MaterialCardView>
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/simple_list_bottom_fragment_recycle_view"
+            android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"

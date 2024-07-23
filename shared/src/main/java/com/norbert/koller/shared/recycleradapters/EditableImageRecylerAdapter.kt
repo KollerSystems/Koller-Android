@@ -256,7 +256,7 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
     {
         val image : ImageView = itemView.findViewById(R.id.image_view)
         val mcardCoverOverlay : MaterialCardView = itemView.findViewById(R.id.mcard_cover_overlay)
-        val buttonRemove : Button = itemView.findViewById(R.id.button_remove)
+        val buttonRemove : Button = itemView.findViewById(R.id.btn_remove)
     }
 
     class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)

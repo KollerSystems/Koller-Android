@@ -33,7 +33,7 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, 
 
     class CommentViewHolder(itemView: View, private val context: Context) : RecyclerView.ViewHolder(itemView)
     {
-        val userName : TextView = itemView.findViewById(R.id.text_text)
+        val userName : TextView = itemView.findViewById(R.id.text_title)
         val pfp : ImageView = itemView.findViewById(R.id.comment_pfp)
         val text : TextView = itemView.findViewById(R.id.text_description)
 

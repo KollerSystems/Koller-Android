@@ -56,7 +56,7 @@ class CreateNewPostActivity : AppCompatActivity() {
         val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
         val buttonExit: Button = findViewById(R.id.button_back)
 
-        tilAddresse = findViewById (R.id.create_new_post_til_addresse)
+        tilAddresse = findViewById (R.id.til)
         tilTitle = findViewById (R.id.create_new_post_til_title)
         tilDescription = findViewById (R.id.create_new_post_til_description)
 

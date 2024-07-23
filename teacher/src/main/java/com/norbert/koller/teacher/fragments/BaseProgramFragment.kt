@@ -16,11 +16,14 @@ import com.norbert.koller.shared.fragments.DetailsFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.EditStudyGroupActivity
+import com.norbert.koller.teacher.databinding.FragmentBsdProfileBinding
+import com.norbert.koller.teacher.databinding.FragmentProgramBinding
 import retrofit2.Response
 
 
 class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFragmentInterface {
 
+    lateinit var binding : FragmentProgramBinding
 
     override lateinit var ncwDate : DescriptionView
     override lateinit var ncwTime : DescriptionView
@@ -37,8 +40,9 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
         return { RetrofitInstance.api.getMandatory(viewModel.id!!)}
     }
 
-    override fun getLayout(): Int {
-        return R.layout.fragment_program
+    override fun createRootView(): View {
+        binding = FragmentProgramBinding.inflate(layoutInflater)
+        return binding.root
     }
 
     override fun getTimeLimit(): Int {
@@ -49,10 +53,7 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
         super.onViewCreated(view, savedInstanceState)
 
 
-        val editButton : CardButton = view.findViewById(R.id.cb_edit)
-
-
-        editButton.setOnClickListener {
+        binding.cbEdit.setOnClickListener {
             val intent = Intent(requireContext(), EditStudyGroupActivity::class.java)
             startActivity(intent)
         }
@@ -71,17 +72,17 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
 
             setViews(response, requireContext())
 
-            ncbClass.buttonContent.setOnClickListener{
+            ncbClass.getTextDescription().setOnClickListener{
                 classClick(response, requireContext())
 
             }
 
-            ncbTeacher.buttonContent.setOnClickListener{
+            ncbTeacher.getTextDescription().setOnClickListener{
                 teacherClick(response, requireContext())
 
             }
 
-            ncbClassroom.buttonContent.setOnClickListener{
+            ncbClassroom.getTextDescription().setOnClickListener{
                 classRoomClick(response, requireContext())
 
             }

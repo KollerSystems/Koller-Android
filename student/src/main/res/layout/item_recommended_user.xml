@@ -62,7 +62,7 @@
                             android:text="@android:string/unknownName" />
 
                         <TextView
-                            android:id="@+id/text_text"
+                            android:id="@+id/text_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@android:string/unknownName"

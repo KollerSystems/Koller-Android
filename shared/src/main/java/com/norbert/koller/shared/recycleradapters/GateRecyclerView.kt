@@ -86,9 +86,9 @@ class GateRecyclerAdapter() :ApiRecyclerAdapter(){
 
     class CrossingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
+        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.image_icon)
         val iconDesc : TextView = itemView.findViewById(R.id.text_iv_icon)
-        val title : TextView = itemView.findViewById(R.id.text_text)
+        val title : TextView = itemView.findViewById(R.id.text_title)
         val description : TextView = itemView.findViewById(R.id.text_description)
     }
 

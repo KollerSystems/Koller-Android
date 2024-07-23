@@ -18,6 +18,7 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.stfalcon.imageviewer.StfalconImageViewer
@@ -26,8 +27,8 @@ import retrofit2.Response
 
 abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
-    lateinit var cbStatus : CardButton
-    lateinit var textStatus : TextView
+    abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
+    abstract fun getNestedScrollView() : NestedScrollView
 
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
@@ -43,30 +44,9 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        val textName : TextView = view.findViewById(R.id.user_text_name)
-        val buttonGroup : Button = view.findViewById(R.id.button_group)
-        val buttonRoom : Button = view.findViewById(R.id.button_room)
-        val buttonClass : Button = view.findViewById(R.id.button_class_or_profession)
-        val badgeUser : UserView = view.findViewById(R.id.badge_user)
-
-        val discordChip : Chip = view.findViewById(R.id.user_view_discord)
-        val facebookChip : Chip = view.findViewById(R.id.user_view_facebook)
-        val instagramChip : Chip = view.findViewById(R.id.user_view_instagram)
-        val emailChip : Chip = view.findViewById(R.id.user_view_email)
-        val phoneChip : Chip = view.findViewById(R.id.user_view_phone)
-
-        val NestedScrollView : NestedScrollView = view.findViewById(R.id.nested_scroll_view)
-
-        cbStatus = view.findViewById(R.id.cb_status)
-        textStatus = view.findViewById(R.id.text_status)
-
-
-        cbStatus.imageViewIcon!!.visibility = VISIBLE
+        getHeaderBinding().cbStatus.getImageIcon().visibility = VISIBLE
 
         fun isVisible(view: View): Boolean {
             if (!view.isShown) {
@@ -120,29 +100,29 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
         }
 
         fun openInstagramOnClick(){
-            openUserPageOnClick("com.instagram.android", "instagram.com/_u", instagramChip)
+            openUserPageOnClick("com.instagram.android", "instagram.com/_u", getHeaderBinding().chipInstagram)
         }
 
         fun openFacebookOnClick(){
-            openUserPageOnClick("com.facebook.katana", "facebook.com", facebookChip)
+            openUserPageOnClick("com.facebook.katana", "facebook.com", getHeaderBinding().chipFacebook)
         }
 
         fun openEmailOnClick(){
-            emailChip.setOnClickListener{
+            getHeaderBinding().chipEmail.setOnClickListener{
                 val intent = Intent(Intent.ACTION_SENDTO)
-                intent.data = Uri.parse("mailto:${emailChip.text}")
+                intent.data = Uri.parse("mailto:${getHeaderBinding().chipEmail.text}")
                 startActivity(intent)
             }
-            copyTextOnLongClick(emailChip)
+            copyTextOnLongClick(getHeaderBinding().chipEmail)
         }
 
         fun openPhoneOnClick(){
-            phoneChip.setOnClickListener{
+            getHeaderBinding().chipPhone.setOnClickListener{
                 val intent = Intent(Intent.ACTION_DIAL)
-                intent.setData(Uri.parse("tel:${phoneChip.text}"))
+                intent.setData(Uri.parse("tel:${getHeaderBinding().chipPhone.text}"))
                 startActivity(intent)
             }
-            copyTextOnLongClick(phoneChip)
+            copyTextOnLongClick(getHeaderBinding().chipPhone)
         }
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
@@ -150,35 +130,35 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
             response as UserData
 
-            badgeUser.setUser(response)
+            getHeaderBinding().user.setUser(response)
 
-            textName.text = response.name
-
-
-            buttonRoom.text = response.rid.toString()
-            buttonGroup.text = response.group?.group
-            buttonClass.text = response.class_?.class_
+            getHeaderBinding().textName.text = response.name
 
 
+            getHeaderBinding().btnRoom.text = response.rid.toString()
+            getHeaderBinding().btnGroup.text = response.group?.group
+            getHeaderBinding().btnClassOrProfession.text = response.class_?.class_
 
-            buttonRoom.setOnClickListener {
+
+
+            getHeaderBinding().btnRoom.setOnClickListener {
                 (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid!!))
             }
 
-            buttonGroup.setOnClickListener {
+            getHeaderBinding().btnGroup.setOnClickListener {
                 val userFragment = ApplicationManager.usersFragment(null)
                     .setFilter("Group.ID", response.group!!.id.toString())
                 (requireContext() as MainActivity).addFragment(userFragment)
             }
 
-            buttonClass.setOnClickListener {
+            getHeaderBinding().btnClassOrProfession.setOnClickListener {
                 val userFragment = ApplicationManager.usersFragment(null)
                     .setFilter("Class.ID", response.class_!!.id.toString())
                 (requireContext() as MainActivity).addFragment(userFragment)
             }
 
-            NestedScrollView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
-                if (isVisible(textName)) {
+            getNestedScrollView().setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
+                if (isVisible(getHeaderBinding().textName)) {
                     (activity as MainActivity).setToolbarTitle(getString(R.string.user))
 
                 } else {
@@ -187,38 +167,38 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
             }
 
             if(response.contacts != null){
-                if(showAndSetIfNotNull(discordChip, response.contacts.discord)){
-                    discordChip.setOnClickListener{
-                        ApplicationManager.setClipboard(requireContext(), discordChip.text.toString())
+                if(showAndSetIfNotNull(getHeaderBinding().chipDiscord, response.contacts.discord)){
+                    getHeaderBinding().chipDiscord.setOnClickListener{
+                        ApplicationManager.setClipboard(requireContext(), getHeaderBinding().chipDiscord.text.toString())
                     }
                 }
 
-                if(showAndSetIfNotNull(facebookChip, response.contacts.facebook)){
+                if(showAndSetIfNotNull(getHeaderBinding().chipFacebook, response.contacts.facebook)){
                     openFacebookOnClick()
                 }
 
-                if(showAndSetIfNotNull(instagramChip, response.contacts.instagram)){
+                if(showAndSetIfNotNull(getHeaderBinding().chipInstagram, response.contacts.instagram)){
                     openInstagramOnClick()
                 }
 
-                if(showAndSetIfNotNull(phoneChip, response.contacts.phone)){
+                if(showAndSetIfNotNull(getHeaderBinding().chipPhone, response.contacts.phone)){
                     openPhoneOnClick()
                 }
 
                 if (!response.contacts.email.isNullOrBlank()) {
-                    emailChip.text = response.contacts.email
+                    getHeaderBinding().chipEmail.text = response.contacts.email
                     openEmailOnClick()
                 }
             }
 
         }
 
-        badgeUser.setOnClickListener{
-            StfalconImageViewer.Builder(context, listOf(badgeUser.image.drawable)){view, drawable ->
+        getHeaderBinding().user.setOnClickListener{
+            StfalconImageViewer.Builder(context, listOf(getHeaderBinding().user.getImage().drawable)){view, drawable ->
                 view.setImageDrawable(drawable)
             }
                 .withStartPosition(0)
-                .withTransitionFrom(badgeUser.image)
+                .withTransitionFrom(getHeaderBinding().user.getImage())
                 .show(parentFragmentManager)
         }
     }

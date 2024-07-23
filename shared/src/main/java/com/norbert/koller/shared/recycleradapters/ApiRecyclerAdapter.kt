@@ -49,21 +49,21 @@ abstract class ApiRecyclerAdapter() :
 
 
         if (searchBar != null) {
-            searchBar!!.tag = searchBar!!.editTextSearch.text.toString()
-            searchBar!!.editTextSearch.setOnEditorActionListener { _, actionId, _ ->
+            searchBar!!.tag = searchBar!!.getEditText().text.toString()
+            searchBar!!.getEditText().setOnEditorActionListener { _, actionId, _ ->
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (searchBar!!.tag != searchBar!!.editTextSearch.text.toString()) {
+                    if (searchBar!!.tag != searchBar!!.getEditText().text.toString()) {
                         fullRefresh()
                     }
 
-                    searchBar!!.tag = searchBar!!.editTextSearch.text.toString()
+                    searchBar!!.tag = searchBar!!.getEditText().text.toString()
                 }
                 false
             }
 
-            searchBar!!.buttonSearchCancel.setOnClickListener {
-                searchBar!!.editTextSearch.setText("")
-                if (searchBar!!.tag != searchBar!!.editTextSearch.text.toString()) {
+            searchBar!!.getButton().setOnClickListener {
+                searchBar!!.getEditText().setText("")
+                if (searchBar!!.tag != searchBar!!.getEditText().text.toString()) {
                     fullRefresh()
                 }
 
@@ -249,12 +249,12 @@ abstract class ApiRecyclerAdapter() :
 
 
     class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val title: TextView = itemView.findViewById(R.id.text_text)
+        val title: TextView = itemView.findViewById(R.id.text_title)
         val description: TextView = itemView.findViewById(R.id.text_description)
     }
 
     class DateViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val text: TextView = itemView.findViewById(R.id.text_view)
+        val text: TextView = itemView.findViewById(R.id.text)
     }
 
     class LoadingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
@@ -266,6 +266,6 @@ abstract class ApiRecyclerAdapter() :
     class EmptyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
     class ErrorViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val button: Button = itemView.findViewById(R.id.button)
+        val button: Button = itemView.findViewById(R.id.btn)
     }
 }

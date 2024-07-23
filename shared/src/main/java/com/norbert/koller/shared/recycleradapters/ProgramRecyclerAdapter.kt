@@ -51,7 +51,7 @@ abstract class ProgramRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
 
-        val title : TextView = itemView.findViewById(R.id.text_text)
+        val title : TextView = itemView.findViewById(R.id.text_title)
         val description : TextView = itemView.findViewById(R.id.text_description)
     }
 

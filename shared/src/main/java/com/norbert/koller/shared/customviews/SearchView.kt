@@ -2,12 +2,14 @@ package com.norbert.koller.shared.customviews
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ViewSearchBinding
 import com.norbert.koller.shared.managers.setVisibilityBy
 
 class SearchView : MaterialCardView {
@@ -21,28 +23,33 @@ class SearchView : MaterialCardView {
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
     constructor(context: Context?) : super(context!!)
 
-    val editTextSearch : EditText
-    val buttonSearchCancel : Button
+    private lateinit var binding : ViewSearchBinding
+
+    fun getEditText() : EditText{
+        return binding.et
+    }
+
+    fun getButton() : Button{
+        return binding.btn
+    }
 
     init {
 
-        View.inflate(context, R.layout.view_search, this)
+        binding = ViewSearchBinding.inflate(LayoutInflater.from(context), this, true)
 
         this.radius = 9999f
 
-        editTextSearch = findViewById(R.id.editText_search)
-        buttonSearchCancel = findViewById(R.id.button_search)
-
-        editTextSearch.doOnTextChanged{_,_,_,_->
-            buttonSearchCancel.setVisibilityBy(!editTextSearch.text.isNullOrEmpty())
+        binding.et.doOnTextChanged{_,_,_,_->
+            binding.btn.setVisibilityBy(!binding.et.text.isNullOrEmpty())
         }
+    }
 
-        buttonSearchCancel.setOnClickListener{
-            editTextSearch.setText("")
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+
+        binding.btn.setOnClickListener{
+            binding.et.setText("")
         }
-
-
-
     }
 
 }

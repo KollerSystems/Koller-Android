@@ -23,10 +23,10 @@ class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
 
         val adapter = UserOutgoingViewPagerAdapter(userData, childFragmentManager, lifecycle)
 
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
 
 
-        TabLayoutMediator(tabs, viewPager){tab,position->
+        TabLayoutMediator(binding.tabs, binding.viewPager){tab,position->
             when(position){
                 0->{
                     tab.text = requireContext().getString(R.string.temporary)

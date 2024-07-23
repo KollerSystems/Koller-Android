@@ -7,7 +7,6 @@
     tools:context="com.norbert.koller.shared.com.norbert.koller.student.fragments.RegisterFinishFragment">
 
     <LinearLayout
-        android:id="@+id/linearLayout4"
         style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -22,25 +21,23 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/textView44"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/you_are_done"
                 android:gravity="center_horizontal"
+                android:text="@string/you_are_done"
                 android:textAllCaps="false"
                 android:textAppearance="@style/MainTitleExpanded"
                 android:textSize="40sp" />
 
             <TextView
-                android:id="@+id/textView48"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:text="@string/registration_done_description"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal"
+                android:text="@string/registration_done_description" />
 
             <Button
-                android:id="@+id/button_exit"
+                android:id="@+id/btn_exit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
@@ -51,7 +48,6 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/textView63"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"

@@ -3,11 +3,11 @@ package com.norbert.koller.student.fragments
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.CalendarStudyGroupFragment
+import com.norbert.koller.shared.fragments.StudyGroupFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.student.recycleradapters.StudyGroupRecyclerAdapter
 
-class CalendarStudyGroupFragment : CalendarStudyGroupFragment() {
+class StudyGroupFragment : StudyGroupFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

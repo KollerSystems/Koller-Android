@@ -72,7 +72,7 @@ class RoomPresenceViewPagerAdapter() : RecyclerView.Adapter<RoomPresenceViewPage
         holder.recyclerView.layoutManager = GridLayoutManager(holder.itemView.context, 2)
 
 
-        val data : ArrayList<RoomOrderConditionsBase> = RoomOrderData.instance[0].Conditions
+        val data : ArrayList<RoomOrderConditionsBase> = RoomOrderData.instance[0].conditions
 
 
         holder.recyclerView.adapter = RoomPresenceRecyclerAdapter(data)
@@ -110,11 +110,11 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
         RecyclerViewHelper.roundRecyclerItemsVerticallyGrid(holder.itemView, position, roomOrderConditionsData.size)
 
         holder.rbiwPfp.setOnClickListener{
-            StfalconImageViewer.Builder(holder.itemView.context, listOf(holder.rbiwPfp.image.drawable)){view, drawable ->
+            StfalconImageViewer.Builder(holder.itemView.context, listOf(holder.rbiwPfp.getImage().drawable)){view, drawable ->
                 view.setImageDrawable(drawable)
             }
                 .withStartPosition(0)
-                .withTransitionFrom(holder.rbiwPfp.image)
+                .withTransitionFrom(holder.rbiwPfp.getImage())
                 .show((holder.itemView.context as RoomPresenceActivity).supportFragmentManager)
         }
 

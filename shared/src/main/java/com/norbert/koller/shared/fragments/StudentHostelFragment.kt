@@ -10,36 +10,34 @@ import androidx.fragment.app.Fragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.databinding.FragmentStudentHostelBinding
 
 open class StudentHostelFragment : Fragment() {
 
-
+    lateinit var binding : FragmentStudentHostelBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        val view: View = inflater.inflate(R.layout.fragment_student_hostel, container, false)
+    ): View {
+        binding = FragmentStudentHostelBinding.inflate(layoutInflater)
 
+        return binding.root
+    }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-
-        val roomsButton: Button = view.findViewById(R.id.student_hostel_button_rooms)
-        val usersButton: Button = view.findViewById(R.id.student_hostel_button_users)
-        val studyGroupButton: Button = view.findViewById(R.id.button_study_groups)
-
-        roomsButton.setOnClickListener{
+        binding.btnPlaces.setOnClickListener{
             (context as MainActivity).addFragment(ApplicationManager.roomsFragment(null))
         }
-        usersButton.setOnClickListener{
+
+        binding.btnUsers.setOnClickListener{
             (context as MainActivity).addFragment(ApplicationManager.usersFragment(null))
         }
 
-        studyGroupButton.setOnClickListener {
+        binding.btnStudyGroups.setOnClickListener {
             (context as MainActivity).addFragment(ApplicationManager.studyGroupsFragment(null))
         }
-
-        return view
     }
 }

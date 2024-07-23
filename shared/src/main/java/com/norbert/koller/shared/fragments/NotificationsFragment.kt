@@ -40,10 +40,10 @@ class NotificationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         notificsRecyclerView = view.findViewById(R.id.sc_recycler_view)
-        notificsRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
+        notificsRecyclerView.appBar = view.findViewById(R.id.app_bar)
 
-        notificsRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
-        notificsRecyclerView.recyclerView.setHasFixedSize(true)
+        notificsRecyclerView.getRecyclerView().layoutManager = LinearLayoutManager(context)
+        notificsRecyclerView.getRecyclerView().setHasFixedSize(true)
 
         notificationDataArrayList = arrayListOf(
             TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
@@ -51,7 +51,7 @@ class NotificationsFragment : Fragment() {
             )
         )
 
-        notificsRecyclerView.recyclerView.adapter = ObsRecyclerAdapter(notificationDataArrayList)
+        notificsRecyclerView.getRecyclerView().adapter = ObsRecyclerAdapter(notificationDataArrayList)
 
 
         sendNotification()

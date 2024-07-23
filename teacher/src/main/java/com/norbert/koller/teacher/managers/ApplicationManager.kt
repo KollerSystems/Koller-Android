@@ -59,7 +59,7 @@ class ApplicationManager : ApplicationManager() {
         userOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment(it) }
         userOutgoingPermanentFragment = { UserOutgoingPermanentFragment(it) }
 
-        studyGroupsFragment = {map-> com.norbert.koller.teacher.fragments.StudyGroupsFragment(map) }
+        studyGroupsFragment = {map-> com.norbert.koller.teacher.fragments.StudyGroupTypesFragment(map) }
     }
 
 

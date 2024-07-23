@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.student.R
 
-class WelcomeInterestsFragment : Fragment() {
+class RegisterUsersFragment : Fragment() {
 
 
     override fun onCreateView(
@@ -15,6 +15,6 @@ class WelcomeInterestsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_register_interests, container, false)
+        return inflater.inflate(R.layout.fragment_register_users, container, false)
     }
 }

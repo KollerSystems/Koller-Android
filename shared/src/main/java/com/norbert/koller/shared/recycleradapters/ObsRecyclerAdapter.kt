@@ -313,8 +313,8 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
     {
 
         val handler : Handler = Handler(Looper.myLooper()!!)
-        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
-        val title : TextView = itemView.findViewById(R.id.text_text)
+        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.image_icon)
+        val title : TextView = itemView.findViewById(R.id.text_title)
         val description : TextView = itemView.findViewById(R.id.text_description)
         val iconRight : TextView = itemView.findViewById(R.id.notification_icon_end)
         val root : MaterialCardView = itemView as MaterialCardView

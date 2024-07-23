@@ -7,28 +7,31 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import com.norbert.koller.student.R
+import com.norbert.koller.student.databinding.FragmentRegisterStartBinding
 
 class RegisterStartFragment : Fragment() {
 
+    lateinit var binding : FragmentRegisterStartBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        val view : View =  inflater.inflate(R.layout.fragment_register_start, container, false)
+        binding = FragmentRegisterStartBinding.inflate(layoutInflater)
 
-        val btnStart : Button = view.findViewById(R.id.button_exit)
-        val btnBack : Button = view.findViewById(R.id.welcome_main_btn_back)
+        return binding.root
+    }
 
-        btnStart.setOnClickListener {
-            val viewPager = (activity as com.norbert.koller.student.activities.RegisterActivity).scrollForward()
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnNext.setOnClickListener {
+            (activity as com.norbert.koller.student.activities.RegisterActivity).scrollForward()
         }
 
-        btnBack.setOnClickListener {
+        binding.btnBack.setOnClickListener {
             activity?.finish()
         }
-
-        return view
     }
 }

@@ -9,25 +9,23 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.FragmentPagedBinding
 
 open class PagedFragment : Fragment() {
+
+    lateinit var binding : FragmentPagedBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_paged, container, false)
+        binding = FragmentPagedBinding.inflate(layoutInflater)
+        return binding.root
     }
-
-    lateinit var tabs : TabLayout
-    lateinit var viewPager : ViewPager2
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        tabs = view.findViewById(R.id.tabs)
-        viewPager = view.findViewById(R.id.view_pager)
     }
 
 }

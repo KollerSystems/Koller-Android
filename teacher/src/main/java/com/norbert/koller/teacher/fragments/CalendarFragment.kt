@@ -15,10 +15,10 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() 
 
         val adapter = CalendarViewPagerAdapter(this)
 
-        viewPager.adapter = adapter
+        binding.viewPager.adapter = adapter
 
 
-        TabLayoutMediator(tabs, viewPager){tab,position->
+        TabLayoutMediator(binding.tabs, binding.viewPager){tab,position->
             when(position){
                 0->{
                     tab.text = getString(R.string.days)
@@ -49,7 +49,7 @@ class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                CalendarDaysFragment()
+                DaysFragment()
             }
             1->{
                 Fragment()
@@ -58,10 +58,10 @@ class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
                 CanteenFragment()
             }
             3->{
-                CalendarBaseProgramsFragment()
+                BaseProgramsFragment()
             }
             4->{
-                CalendarStudyGroupFragment()
+                StudyGroupFragment()
             }
             else->{
                 Fragment()

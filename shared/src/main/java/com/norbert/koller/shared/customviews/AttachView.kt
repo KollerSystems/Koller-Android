@@ -10,7 +10,7 @@ import android.graphics.Color
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.AttributeSet
-import android.view.View
+import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -27,23 +27,19 @@ import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ViewAttachBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
+import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.stfalcon.imageviewer.StfalconImageViewer
 
 
 class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(context, attrs) {
 
-    var mTitle : String = ""
+    private lateinit var binding : ViewAttachBinding
 
-    val card : MaterialCardView
-    val textTitle : TextView
-    val textTip : TextView
-    val imageView : ImageView
-    val buttons : FlexboxLayout
-    val buttonRemove : Button
-    val buttonChange : Button
+    var mTitle : String = ""
 
     var camUri : Uri? = null
     var startCamera : ActivityResultLauncher<Intent>? = null
@@ -83,51 +79,53 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
     }
 
     fun resetUI(){
-        imageView.setImageDrawable(null)
-        imageView.isVisible = false
-        textTip.isVisible = true
-        buttons.isVisible = false
-        textTitle.background = null
-        textTitle.setShadowLayer(0f,0f,0f,0)
+        binding.image.setImageDrawable(null)
+        binding.image.isVisible = false
+        binding.textTip.isVisible = true
+        binding.flBtns.isVisible = false
+        binding.textTitle.background = null
+        binding.textTitle.setTextColor(Color.WHITE)
+        binding.textTitle.setShadowLayer(0f,0f,0f,0)
 
-        card.setOnClickListener{
+        binding.card.setOnClickListener{
             showDialog()
         }
     }
 
     fun addImage(fragment: Fragment, uri: Uri?){
 
-            imageView.setImageURI(uri)
-            imageView.isVisible = true
-            textTip.isVisible = false
-            buttons.isVisible = true
-            textTitle.background = AppCompatResources.getDrawable(context, R.drawable.gradient_up_down)
-            textTitle.setShadowLayer(1.5f, 0f, 0.75f, Color.parseColor("#80000000"))
+        binding.image.setImageURI(uri)
+        binding.image.isVisible = true
+        binding.textTip.isVisible = false
+        binding.flBtns.isVisible = true
+        binding.textTitle.background = AppCompatResources.getDrawable(context, R.drawable.gradient_up_down)
+        binding.textTitle.setTextColor(context.getAttributeColor(com.google.android.material.R.attr.colorOnSurface))
+        binding.textTitle.setShadowLayer(1.5f, 0f, 0.75f, Color.parseColor("#80000000"))
 
-            card.setOnClickListener{
-                StfalconImageViewer.Builder(context, listOf(imageView.drawable)){ view, drawable ->
-                    view.setImageDrawable(drawable)
+        binding.card.setOnClickListener{
+            StfalconImageViewer.Builder(context, listOf(binding.image.drawable)){ view, drawable ->
+                view.setImageDrawable(drawable)
+            }
+                .withTransitionFrom(binding.image)
+                .show(fragment.parentFragmentManager)
+        }
+
+        binding.btnChange.setOnClickListener{
+            showDialog()
+        }
+
+        binding.btnRemove.setOnClickListener{
+            MaterialAlertDialogBuilder(context)
+                .setTitle("Biztos törli a képet?")
+                .setPositiveButton(context.getString(R.string.remove)){_,_->
+                    resetUI()
                 }
-                    .withTransitionFrom(imageView)
-                    .show(fragment.parentFragmentManager)
-            }
+                .setNegativeButton(context.getString(R.string.cancel)){_,_->
 
-            buttonChange.setOnClickListener{
-                showDialog()
-            }
+                }
+                .show()
 
-            buttonRemove.setOnClickListener{
-                MaterialAlertDialogBuilder(context)
-                    .setTitle("Biztos törli a képet?")
-                    .setPositiveButton(context.getString(R.string.remove)){_,_->
-                        resetUI()
-                    }
-                    .setNegativeButton(context.getString(R.string.cancel)){_,_->
-
-                    }
-                    .show()
-
-            }
+        }
 
     }
 
@@ -166,26 +164,12 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
             typedArray.recycle()
         }
 
-        View.inflate(context, R.layout.view_attach, this)
+        binding = ViewAttachBinding.inflate(LayoutInflater.from(context), this, true)
 
-        card = findViewById(R.id.card)
-        textTitle = findViewById(R.id.title)
-        textTip = findViewById(R.id.text)
-        imageView = findViewById(R.id.image)
-        buttons = findViewById(R.id.fl_buttons)
-        buttonRemove = findViewById(R.id.button_remove)
-        buttonChange = findViewById(R.id.button_change)
-
-        textTitle.text = mTitle
+        binding.textTitle.text = mTitle
 
 
-
-
-
-
-
-
-        card.setOnClickListener{
+        binding.card.setOnClickListener{
            showDialog()
         }
     }

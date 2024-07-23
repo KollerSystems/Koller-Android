@@ -56,7 +56,7 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
 
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val userBadge : UserView = itemView.findViewById(R.id.badge_user)
+        val userBadge : UserView = itemView.findViewById(R.id.user)
         val text : TextView = itemView.findViewById(R.id.text_name)
     }
 

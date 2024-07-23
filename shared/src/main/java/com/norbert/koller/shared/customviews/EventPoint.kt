@@ -2,18 +2,20 @@ package com.norbert.koller.shared.customviews
 
 import android.content.Context
 import android.util.AttributeSet
+import android.view.LayoutInflater
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.databinding.ViewEventPointBinding
 
 class EventPoint(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     private var mLabel: String = ""
     private var mTime: String = ""
 
-    private val textLabel: TextView
-    private val textTime: TextView
+
+    lateinit var binding : ViewEventPointBinding
 
     init {
 
@@ -30,17 +32,15 @@ class EventPoint(context: Context, attrs: AttributeSet) : LinearLayout(context, 
             typedArray.recycle()
         }
 
-        View.inflate(context, R.layout.view_event_point, this)
+        binding = ViewEventPointBinding.inflate(LayoutInflater.from(context), this, true)
+    }
 
+    override fun onFinishInflate() {
+        super.onFinishInflate()
 
-        textLabel = findViewById(R.id.text_label)
+        binding.textLabel.text = mLabel
 
-        textLabel.text = mLabel
-
-        textTime = findViewById(R.id.text_time)
-
-        textTime.text = mTime
-
+        binding.textTime.text = mTime
     }
 
 }

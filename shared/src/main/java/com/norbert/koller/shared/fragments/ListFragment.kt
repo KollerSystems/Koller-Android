@@ -26,11 +26,10 @@ import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.SearchView
-import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
+import com.norbert.koller.shared.databinding.FragmentListBinding
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -46,12 +45,10 @@ import retrofit2.Response
 
 abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : Fragment() {
 
+    lateinit var binding : FragmentListBinding
+
     lateinit var viewModel : BaseViewModel
-    lateinit var superCoolRecyclerView: SuperCoolRecyclerView
     lateinit var apiRecyclerAdapter : ApiRecyclerAdapter
-    lateinit var chipGroupFilter : ChipGroup
-    lateinit var chipGroupSort : ChipGroup
-    lateinit var lyParameters : FlexboxLayout
     var duration : Long = 0
 
 
@@ -64,17 +61,11 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        val view = inflater.inflate(R.layout.fragment_list, container, false)
+        binding = FragmentListBinding.inflate(layoutInflater)
+        val view = binding.root
 
-        chipGroupFilter = view.findViewById(R.id.chip_group_filter)
-        chipGroupSort = view.findViewById(R.id.chip_group_sort)
-
-
-        superCoolRecyclerView = view.findViewById(R.id.super_cool_recycler_view)
-        lyParameters = view.findViewById(R.id.ly_parameters)
-
-        superCoolRecyclerView.recyclerView.layoutManager = LinearLayoutManager(context)
-        superCoolRecyclerView.appBar = view.findViewById(R.id.appbar_layout)
+        binding.scRecyclerView.getRecyclerView().layoutManager = LinearLayoutManager(context)
+        binding.scRecyclerView.appBar = binding.appBar
 
         viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
 
@@ -96,7 +87,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         super.onViewCreated(view, savedInstanceState)
 
 
-        superCoolRecyclerView.recyclerView.apply {
+        binding.scRecyclerView.getRecyclerView().apply {
             layoutManager = LinearLayoutManager(requireContext())
             adapter = apiRecyclerAdapter
         }
@@ -122,10 +113,10 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     }
 
     fun setupSort(firstLocalizedString : Int, secondLocalizedString : Int, sortBy : String, firstSort : String = "asc", secondSort : String = "desc"){
-        val firstChild = chipGroupSort.getChildAt(0) as Chip
+        val firstChild = binding.chipsSort.getChildAt(0) as Chip
         firstChild.tag = sortBy+":"+firstSort
         firstChild.text = getString(firstLocalizedString)
-        val secondChild = chipGroupSort.getChildAt(1) as Chip
+        val secondChild = binding.chipsSort.getChildAt(1) as Chip
         secondChild.tag = sortBy+":"+secondSort
         secondChild.text = getString(secondLocalizedString)
     }
@@ -133,7 +124,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     fun createChip() : Chip{
         val chip = Chip(requireContext())
         chip.layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        chipGroupFilter.addView(chip)
+        binding.chipsFilter.addView(chip)
         chip.isCloseIconVisible = true
         return chip
     }
@@ -151,7 +142,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         params.setMargins(textContainer,textContainer,textContainer,textContainer)
         params.gravity = Gravity.CENTER
         button.layoutParams = params
-        lyParameters.addView(button)
+        binding.lyParameters.addView(button)
         button.setOnClickListener {
             onClick.invoke()
         }
@@ -173,10 +164,9 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         card.strokeColor = searchBar.cardBackgroundColor.defaultColor
         searchBar.radius = 0f
 
-        val textColor = searchBar.editTextSearch.textColors.defaultColor
+        val textColor = searchBar.getEditText().textColors.defaultColor
 
-        val textViewFilters : TextView = requireView().findViewById(R.id.textView_filters)
-        (textViewFilters.parent as ViewGroup).removeView(textViewFilters)
+        (binding.textFilters.parent as ViewGroup).removeView(binding.textFilters)
 
 
         closeButton.text = "Szűrők törlése"
@@ -193,16 +183,16 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         val cardMarginLayoutParams = FlexboxLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         cardMarginLayoutParams.topMargin = resources.getDimensionPixelSize(R.dimen.text_container_margin)
         cardMarginLayoutParams.bottomMargin = resources.getDimensionPixelSize(R.dimen.spacing)
-        cardMarginLayoutParams.maxWidth = (chipGroupFilter.layoutParams as FlexboxLayout.LayoutParams).maxWidth
+        cardMarginLayoutParams.maxWidth = (binding.chipsFilter.layoutParams as FlexboxLayout.LayoutParams).maxWidth
         val chipMarginLayoutParams = FlexboxLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
         val margin = resources.getDimensionPixelSize(R.dimen.card_padding)
         chipMarginLayoutParams.setMargins(margin,margin,margin,margin)
-        chipGroupFilter.layoutParams = chipMarginLayoutParams
+        binding.chipsFilter.layoutParams = chipMarginLayoutParams
 
 
         if(viewModel.filtersShown.value == false) {
             var anyOfHas = false
-            for (chip in chipGroupFilter.children) {
+            for (chip in binding.chipsFilter.children) {
                 chip as Chip
                 if (chip.isChecked) {
                     anyOfHas = true
@@ -220,13 +210,13 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         linearLayout.layoutParams = layoutParams
         closeButton.layoutParams = layoutParams
         card.layoutParams = cardMarginLayoutParams
-        lyParameters.addView(card,0)
+        binding.lyParameters.addView(card,0)
         searchBar.layoutParams = layoutParams
 
 
         card.addView(linearLayout)
         linearLayout.addView(searchBar)
-        (chipGroupFilter.parent as ViewGroup).removeView(chipGroupFilter)
+        (binding.chipsFilter.parent as ViewGroup).removeView(binding.chipsFilter)
 
 
 
@@ -237,10 +227,10 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         searchBar.post {
 
 
-            lyParameters.requestLayout()
+            binding.lyParameters.requestLayout()
 
             card.radius = searchBar.height / 2f
-            linearLayout.addView(chipGroupFilter)
+            linearLayout.addView(binding.chipsFilter)
             linearLayout.addView(closeButton)
 
             closeButton.measure(MATCH_PARENT, WRAP_CONTENT)
@@ -275,7 +265,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         }
 
 
-        searchBar.editTextSearch.setOnFocusChangeListener{focusedView, isFocused ->
+        searchBar.getEditText().setOnFocusChangeListener{focusedView, isFocused ->
             if(isFocused){
                 viewModel.filtersShown.value = true
             }
@@ -286,29 +276,29 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
             viewModel.filtersShown.value = false
-            searchBar.editTextSearch.clearFocus()
+            searchBar.getEditText().clearFocus()
 
             viewModel.filters.entries.removeIf { it.key != filterName }
 
             viewModel.dateFilters.entries.removeIf { it.key != filterName }
 
-            for(chip in chipGroupFilter.children){
+            for(chip in binding.chipsFilter.children){
                 (chip as Chip).performCloseIconClick()
             }
         }
 
         if(viewModel.filters.containsKey(filterName)){
 
-            searchBar.editTextSearch.setText(viewModel.filters[filterName]!![0])
+            searchBar.getEditText().setText(viewModel.filters[filterName]!![0])
         }
 
-        searchBar.editTextSearch.doOnTextChanged { text, start, before, count ->
-            if(searchBar.editTextSearch.text.isNullOrBlank()){
+        searchBar.getEditText().doOnTextChanged { text, start, before, count ->
+            if(searchBar.getEditText().text.isNullOrBlank()){
                 viewModel.filters.remove(filterName)
             }
             else{
 
-                viewModel.filters[filterName] = arrayListOf(ApplicationManager.searchApiWithRegex(searchBar.editTextSearch.text!!.toString()))
+                viewModel.filters[filterName] = arrayListOf(ApplicationManager.searchApiWithRegex(searchBar.getEditText().text!!.toString()))
             }
         }
 

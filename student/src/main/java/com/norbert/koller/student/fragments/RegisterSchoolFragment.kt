@@ -6,31 +6,30 @@ import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customviews.AttachView
+import com.norbert.koller.shared.databinding.ContentDataSchoolBinding
 
 class RegisterSchoolFragment : com.norbert.koller.student.fragments.RegisterFragment() {
+
+    lateinit var binding : ContentDataSchoolBinding
 
     override fun checkIfAllCorrect(): Boolean {
         return true
     }
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(com.norbert.koller.shared.R.layout.content_data_school, container, false)
+    ): View {
+        binding = ContentDataSchoolBinding.inflate(layoutInflater)
+        return binding.root
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val attachSchool : AttachView = view.findViewById(R.id.attach_school)
-        val attachSchoolCertificate : AttachView = view.findViewById(R.id.attach_school_certificate)
-
-        attachSchool.setupCamera(this)
-        attachSchoolCertificate.setupCamera(this)
+        binding.attachSchool.setupCamera(this)
+        binding.attachSchoolCertificate.setupCamera(this)
     }
 
 }

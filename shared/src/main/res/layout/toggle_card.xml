@@ -5,7 +5,18 @@
         android:gravity="center_vertical"
         android:orientation="horizontal">
 
-        <LinearLayout
+    <ImageView
+        android:id="@+id/image_icon"
+        style="@style/Icon"
+        android:layout_width="@dimen/card_icon_smaller"
+        android:layout_height="@dimen/card_icon_smaller"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="@dimen/spacing"
+        android:adjustViewBounds="true"
+        android:alpha="0.666"
+        android:src="@drawable/empty" />
+
+    <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/text_container_margin"
@@ -19,7 +30,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_text"
+                android:id="@+id/text_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/title" />
@@ -32,10 +43,10 @@
                 android:ellipsize="end"
                 android:text="@string/description" />
 
-        </LinearLayout>
+    </LinearLayout>
 
         <com.google.android.material.checkbox.MaterialCheckBox
-            android:id="@+id/toggle"
+            android:id="@+id/cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 

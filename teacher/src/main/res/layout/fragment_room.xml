@@ -31,10 +31,10 @@
                 app:flexDirection="column">
 
                 <include
+                    android:id="@+id/header"
                     layout="@layout/content_fragment_room_header" />
 
                 <TextView
-                    android:id="@+id/textView42"
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -44,7 +44,7 @@
 
                 <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardTop"
-                    android:id="@+id/room_cb_room_order"
+                    android:id="@+id/cb_room_order"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/clean"
@@ -54,7 +54,7 @@
 
                 <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardMiddle"
-                    android:id="@+id/room_cb_presence"
+                    android:id="@+id/cb_presence"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/person_wave"
@@ -63,6 +63,7 @@
                 </com.norbert.koller.shared.customviews.CardButton>
 
                 <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_error_reports"
                     style="@style/CardMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,6 +75,7 @@
                 </com.norbert.koller.shared.customviews.CardButton>
 
                 <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_reports"
                     style="@style/CardMiddle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -96,6 +98,7 @@
                 </com.norbert.koller.shared.customviews.CardButton>
 
                 <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_remove"
                     style="@style/CardBottom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -63,7 +63,7 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
             val mlp = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
             mlp.setMargins(margin,margin,margin,margin)
             progressBar!!.layoutParams = mlp
-            (recycleView.parent as ViewGroup).addView(progressBar)
+            (binding.recyclerView.parent as ViewGroup).addView(progressBar)
         }
 
         viewModel.list.observe(this){
@@ -74,7 +74,7 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
             }
             else{
                 if(progressBar != null){
-                    (recycleView.parent as ViewGroup).removeView(progressBar)
+                    (binding.recyclerView.parent as ViewGroup).removeView(progressBar)
                 }
                 setRecyclerView()
             }

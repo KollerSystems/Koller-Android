@@ -5,10 +5,10 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 data class RoomOrderData(
-    var FinalGrade : Byte,
-    var TID : Long,
+    var finalGrade : Byte,
+    var teacher : UserData,
     var date : Date,
-    var Conditions : ArrayList<RoomOrderConditionsBase>
+    var conditions : ArrayList<RoomOrderConditionsBase>
 ){
     companion object {
         val conditionBoolean : RoomOrderConditionsBoolean = RoomOrderConditionsBoolean()
@@ -23,7 +23,7 @@ data class RoomOrderData(
 
 
         var instance: ArrayList<RoomOrderData> = arrayListOf(
-            RoomOrderData(7, 54253252353, Date(2005, 0,7, 22, 15, 45), listOfConditions)
+            RoomOrderData(7, UserData(name = "Kis Gazsi"), Date(2005, 0,7, 22, 15, 45), listOfConditions)
         )
     }
 }

@@ -16,10 +16,14 @@ import com.norbert.koller.shared.fragments.ProgramFragmentInterface
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.EditStudyGroupActivity
+import com.norbert.koller.teacher.databinding.FragmentProgramBinding
+import com.norbert.koller.teacher.databinding.FragmentStudyGroupTypeBinding
 import retrofit2.Response
 
 
 class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), ProgramFragmentInterface {
+
+    lateinit var binding : FragmentProgramBinding
 
     override lateinit var ncwDate : DescriptionView
     override lateinit var ncwTime : DescriptionView
@@ -35,10 +39,11 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
         return { RetrofitInstance.api.getStudyGroup(viewModel.id!!)}
     }
 
-
-    override fun getLayout(): Int {
-        return R.layout.fragment_program
+    override fun createRootView(): View {
+        binding = FragmentProgramBinding.inflate(layoutInflater)
+        return binding.root
     }
+
 
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
@@ -48,10 +53,7 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
         super.onViewCreated(view, savedInstanceState)
 
 
-        val editButton : CardButton = view.findViewById(R.id.cb_edit)
-
-
-        editButton.setOnClickListener {
+        binding.cbEdit.setOnClickListener {
             val intent = Intent(requireContext(), EditStudyGroupActivity::class.java)
             startActivity(intent)
         }
@@ -71,11 +73,11 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
 
             setViews(response, requireContext())
 
-            ncbTeacher.buttonContent.setOnClickListener{
+            ncbTeacher.getTextDescription().setOnClickListener{
                 teacherClick(response, requireContext())
             }
 
-            ncbClassroom.buttonContent.setOnClickListener{
+            ncbClassroom.getTextDescription().setOnClickListener{
                 classRoomClick(response, requireContext())
             }
 

@@ -17,7 +17,7 @@
         android:orientation="vertical">
 
         <com.norbert.koller.shared.customviews.UserView
-            android:id="@+id/badge_user"
+            android:id="@+id/user"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_marginBottom="@dimen/text_container_margin" />
@@ -29,7 +29,7 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/text_text"
+                android:id="@+id/text_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-5dp"

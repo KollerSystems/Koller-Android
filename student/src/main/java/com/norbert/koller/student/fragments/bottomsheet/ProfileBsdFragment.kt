@@ -7,9 +7,14 @@ import android.view.ViewGroup
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.student.R
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileFooterBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileHeaderBinding
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
+import com.norbert.koller.student.databinding.FragmentBsdProfileBinding
 
 class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment() {
+
+    lateinit var binding : FragmentBsdProfileBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -18,16 +23,23 @@ class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.Profi
     ): View {
 
         super.onCreateView(inflater, container, savedInstanceState)
-        return inflater.inflate(R.layout.fragment_bsd_profile, container, false)
+        binding = FragmentBsdProfileBinding.inflate(layoutInflater)
+        return binding.root
 
+    }
+
+    override fun getHeaderBinding(): ContentFragmentBsdProfileHeaderBinding {
+        return binding.header
+    }
+
+    override fun getFooterBinding(): ContentFragmentBsdProfileFooterBinding {
+        return binding.footer
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val fbtnOutgoing: View = view.findViewById(R.id.profile_fbtn_outgoing)
-
-        fbtnOutgoing.setOnClickListener{
+        binding.cbOutgoing.setOnClickListener{
 
             (requireContext() as MainActivity).addFragment(UserOutgoingsFragment(UserData.instance))
             this.dismiss()

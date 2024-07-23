@@ -66,8 +66,8 @@ class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
     class RoomsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
-        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.iv_icon)
-        val title : TextView = itemView.findViewById(R.id.text_text)
+        val iconLeft : ShapeableImageView = itemView.findViewById(R.id.image_icon)
+        val title : TextView = itemView.findViewById(R.id.text_title)
         val description : TextView = itemView.findViewById(R.id.text_description)
     }
 

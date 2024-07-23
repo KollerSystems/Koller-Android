@@ -32,7 +32,7 @@ class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
         holder as UserViewHolder
 
         item as UserData
-        holder.userBadge.image.setImageDrawable(
+        holder.userBadge.getImage().setImageDrawable(
             AppCompatResources.getDrawable(
                 context,
                 R.drawable.person
@@ -58,7 +58,7 @@ class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
     class UserViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val userBadge : UserView = itemView.findViewById(R.id.user_badge)
-        val title : TextView = itemView.findViewById(R.id.text_text)
+        val title : TextView = itemView.findViewById(R.id.text_title)
         val description : TextView = itemView.findViewById(R.id.text_description)
     }
 

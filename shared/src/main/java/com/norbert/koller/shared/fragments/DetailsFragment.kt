@@ -37,7 +37,7 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
     abstract fun apiFunctionToCall() : suspend () -> retrofit2.Response<*>
 
 
-    abstract fun getLayout() : Int
+    abstract fun createRootView() : View
 
     var snackbar : Snackbar? = null
 
@@ -52,7 +52,7 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(getLayout(), container, false)
+        val view = createRootView()
         setupTransition(view.rootView)
         return view
     }

@@ -33,10 +33,11 @@
                 app:flexDirection="column"
                 tools:context=".fragments.RoomFragment">
 
-                <include layout="@layout/content_fragment_room_header" />
+                <include
+                    android:id="@+id/header"
+                    layout="@layout/content_fragment_room_header" />
 
                 <TextView
-                    android:id="@+id/textView42"
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -47,6 +48,7 @@
 
 
                 <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_report"
                     style="@style/CardSingle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

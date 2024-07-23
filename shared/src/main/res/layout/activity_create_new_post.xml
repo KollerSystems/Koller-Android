@@ -151,7 +151,7 @@
                 android:layout_margin="@dimen/text_container_margin">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_new_post_til_addresse"
+                    android:id="@+id/til"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:hint="@string/addressee"

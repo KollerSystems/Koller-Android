@@ -63,12 +63,12 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheet
             textTitle.text = response.topic
 
 
-            ncbTeacher.buttonContent.setOnClickListener{
+            ncbTeacher.getTextDescription().setOnClickListener{
                 teacherClick(response, requireContext())
                 dismiss()
             }
 
-            ncbClassroom.buttonContent.setOnClickListener{
+            ncbClassroom.getTextDescription().setOnClickListener{
                 classRoomClick(response, requireContext())
                 dismiss()
             }

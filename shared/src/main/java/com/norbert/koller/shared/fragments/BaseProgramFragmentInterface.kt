@@ -25,8 +25,8 @@ interface BaseProgramFragmentInterface : ProgramFragmentInterface {
         response as BaseProgramData
 
         ncbClass.visibility = View.VISIBLE
-        ncbClass.buttonContent.text = response.class_.class_
-        ncbClass.buttonContent.setOnClickListener {
+        ncbClass.getTextDescription().text = response.class_.class_
+        ncbClass.getTextDescription().setOnClickListener {
 
         }
 
