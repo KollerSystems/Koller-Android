@@ -16,21 +16,14 @@ class DayRecyclerAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Compa
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-
         holder as TodayViewHolder
-
     }
 
     override fun getItemCount(): Int {
         return 365
     }
 
-
-
     class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
 
-
-
     }
-
 }

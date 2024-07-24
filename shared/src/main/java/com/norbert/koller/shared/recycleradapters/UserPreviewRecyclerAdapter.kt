@@ -11,31 +11,29 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.databinding.ItemUserSmallBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
-class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, var context : Context) : RecyclerView.Adapter<UserPreviewRecyclerAdapter.TodayViewHolder>(){
+class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, var context : Context) : RecyclerView.Adapter<UserPreviewRecyclerAdapter.ViewHolder>(){
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodayViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.item_user_small, parent, false)
-        return TodayViewHolder(view)
-
-
+        return ViewHolder(ItemUserSmallBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindViewHolder(holder: TodayViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val currentItem = todayList[position]
 
         RecyclerViewHelper.roundRecyclerItemsHorizontallyGrid(holder.itemView, position, todayList.size)
 
-        holder.userBadge.setUser(currentItem)
+        holder.itemBinding.user.setUser(currentItem)
 
         val nameParts : List<String> = currentItem.name!!.split(" ")
         val name = nameParts[0] + " " + nameParts [1]
 
-        holder.text.text = name.replace(" ", "\n")
+        holder.itemBinding.textName.text = name.replace(" ", "\n")
 
         holder.itemView.setOnClickListener {
 
@@ -45,7 +43,6 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
             else{
                 (context as MainActivity).addFragment(ApplicationManager.userFragment(currentItem.uid))
             }
-
         }
     }
 
@@ -53,12 +50,5 @@ class UserPreviewRecyclerAdapter (private var todayList : ArrayList<UserData>, v
         return todayList.size
     }
 
-
-    class TodayViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-        val userBadge : UserView = itemView.findViewById(R.id.user)
-        val text : TextView = itemView.findViewById(R.id.text_name)
-    }
-
-
+    class ViewHolder(val itemBinding: ItemUserSmallBinding) : RecyclerView.ViewHolder(itemBinding.root)
 }
