@@ -98,33 +98,37 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout
             })
         }
 
-        //TODO: ezek törlése, ha minden recycler view fasza
-        if (binding.recyclerView.adapter is ApiRecyclerAdapter) {
+        binding.recyclerView.post{
+            //TODO: ezek törlése, ha minden recycler view fasza
+            if (binding.recyclerView.adapter is ApiRecyclerAdapter) {
 
-            recyclerAdapter = (binding.recyclerView.adapter as ApiRecyclerAdapter)
-            recyclerAdapter.addOnPagesUpdatedListener {
-                binding.srl.isRefreshing = false
-                binding.recyclerView.post {
-                    updateTitle()
+                recyclerAdapter = (binding.recyclerView.adapter as ApiRecyclerAdapter)
+                recyclerAdapter.addOnPagesUpdatedListener {
+                    binding.srl.isRefreshing = false
+                    binding.recyclerView.post {
+                        updateTitle()
+                    }
                 }
-            }
 
 
-            binding.srl.setOnRefreshListener {
+                binding.srl.setOnRefreshListener {
 
-                recyclerAdapter.withLoadingAnim = false
-                recyclerAdapter.seemlessRefresh()
-            }
+                    recyclerAdapter.withLoadingAnim = false
+                    recyclerAdapter.seemlessRefresh()
+                }
 
 
-
-            updateTitle()
-            binding.recyclerView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
 
                 updateTitle()
+                binding.recyclerView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
 
+                    updateTitle()
+
+                }
             }
         }
+
+
     }
 
 
