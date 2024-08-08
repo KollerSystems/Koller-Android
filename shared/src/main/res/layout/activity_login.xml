@@ -49,7 +49,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="#BFFFFFFF"
-            android:backgroundTintMode="multiply">
+            android:backgroundTintMode="multiply"
+            android:clickable="true"
+            android:soundEffectsEnabled="false"
+            app:rippleColor="@android:color/transparent">
 
             <com.google.android.material.progressindicator.CircularProgressIndicator
 
