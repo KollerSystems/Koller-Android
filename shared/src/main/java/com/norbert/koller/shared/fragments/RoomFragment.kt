@@ -20,6 +20,10 @@ import retrofit2.Response
 
 abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.room)
+    }
+
     abstract fun getHeaderBinding() : ContentFragmentRoomHeaderBinding
 
     override fun getTimeLimit(): Int {

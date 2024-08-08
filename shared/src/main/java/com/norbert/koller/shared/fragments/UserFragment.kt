@@ -30,6 +30,10 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
     abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
     abstract fun getNestedScrollView() : NestedScrollView
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.user)
+    }
+
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
     }

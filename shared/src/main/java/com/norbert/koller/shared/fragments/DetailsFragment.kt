@@ -25,7 +25,7 @@ import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.skydoves.androidveil.VeilLayout
 
 
-abstract class DetailsFragment(val id : Int? = null) : Fragment() {
+abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() {
 
 
 
@@ -65,6 +65,35 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
 
 
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+
+        viewModel.onLoadSuccess = {
+            val baseData = it
+            baseData.saveReceivedTime()
+            viewModel.response.value = baseData
+            CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
+            loadingOl.setState(FullScreenLoading.NONE)
+        }
+
+        viewModel.onLoadError = {
+            loadingOl.setState(FullScreenLoading.ERROR)
+        }
+
+        viewModel.onRefreshSuccess = {
+            val baseData = it
+            baseData.saveReceivedTime()
+            viewModel.response.value = baseData
+            (viewModel.response.value as BaseData).testState = "hello"
+            CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
+            if(snackbar != null){
+                snackbar!!.dismiss()
+            }
+            swrl.isRefreshing = false
+        }
+
+        viewModel.onRefreshError = {
+            createSnackBar()
+            swrl.isRefreshing = false
+        }
 
         swrl = view.findViewById(R.id.swrl)
         loadingOl = FullScreenLoading(requireContext())
@@ -108,35 +137,25 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
                 }
             }
 
-            loadFromZero()
+            loadingOl.loadData = {
+                viewModel.load(apiFunctionToCall())
+            }
             return
         }
 
         if((viewModel.response.value as BaseData).testState != "hello"){
             refresh()
         }
+
+
     }
 
     fun refresh(){
 
-        RetrofitInstance.communicate(lifecycleScope, apiFunctionToCall(),
-            {
-                val baseData = it as BaseData
-                baseData.saveReceivedTime()
-                viewModel.response.value = baseData
-                (viewModel.response.value as BaseData).testState = "hello"
-                CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
-                if(snackbar != null){
-                    snackbar!!.dismiss()
-                }
-                swrl.isRefreshing = false
-            },
-            {errorMsg, errorBody ->
-                createSnackBar()
-                swrl.isRefreshing = false
-            }
-        )
+        viewModel.refresh(apiFunctionToCall())
     }
+
+
 
     fun createSnackBar(){
         snackbar = (context as MainActivity).getSnackBar("Friss adatok lekérése sikertelen", Snackbar.LENGTH_INDEFINITE)
@@ -154,27 +173,6 @@ abstract class DetailsFragment(val id : Int? = null) : Fragment() {
             })
         snackbar!!.show()
     }
-
-    private fun loadFromZero(){
-
-        Log.d("LOAFOAFOFORM ZEROOOOOOOOOOO", "FROM ZERRO")
-
-        loadingOl.loadData = {
-            RetrofitInstance.communicate(lifecycleScope, apiFunctionToCall(),
-                {
-                    val baseData = it as BaseData
-                    baseData.saveReceivedTime()
-                    viewModel.response.value = baseData
-                    CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
-                    loadingOl.setState(FullScreenLoading.NONE)
-                },
-                {errorMsg, errorBody ->
-                    loadingOl.setState(FullScreenLoading.ERROR)
-                }
-            )
-        }
-    }
-
 
     override fun onStop() {
         super.onStop()
