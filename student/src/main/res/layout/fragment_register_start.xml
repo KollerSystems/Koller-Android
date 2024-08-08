@@ -58,12 +58,13 @@
             </LinearLayout>
 
             <com.google.android.flexbox.FlexboxLayout
-                app:flexWrap="wrap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
                 android:orientation="horizontal"
                 app:dividerDrawable="@drawable/divider_space"
+                app:flexWrap="wrap"
+                app:justifyContent="center"
                 app:showDivider="middle">
 
                 <Button

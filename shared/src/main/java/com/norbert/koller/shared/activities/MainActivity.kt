@@ -60,6 +60,19 @@ abstract class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        var textView : TextView
+
+        binding.textSwitcher.setFactory {
+            textView = TextView(
+                this@MainActivity
+            )
+
+            textView.setTextAppearance(R.style.MainTitle)
+            textView.setTypeface(resources.getFont(R.font.rubik_medium))
+            textView
+        }
+        binding.textSwitcher.measureAllChildren = false
     }
 
     override fun onResume() {
@@ -131,18 +144,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         defaultTitlePadding = binding.lyTitleContainer.paddingLeft
 
-        var textView : TextView
 
-        binding.textSwitcher.setFactory {
-            textView = TextView(
-                this@MainActivity
-            )
-
-            textView.setTextAppearance(R.style.MainTitle)
-            textView.setTypeface(resources.getFont(R.font.rubik_medium))
-            textView
-        }
-        binding.textSwitcher.measureAllChildren = false
 
 
 
