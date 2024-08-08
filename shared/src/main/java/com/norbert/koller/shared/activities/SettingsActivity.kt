@@ -5,26 +5,23 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
-import android.text.Editable
-import android.text.TextWatcher
 import android.view.View.VISIBLE
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.shared.customviews.CardToggle
 import com.norbert.koller.shared.api.APIInterface
 import com.google.android.material.checkbox.MaterialCheckBox
-import com.google.android.material.slider.Slider
-import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
 import java.util.Calendar
 
-abstract class SettingsActivity : AppCompatActivity() {
+abstract class SettingsActivity : ToolbarActivity() {
 
     abstract fun getExternalBinding() : ContentActivitySettingsExternalBinding
     abstract fun getDeveloperBinding() : ContentActivitySettingsDeveloperBinding
+
+    override fun getName(): String {
+        return getString(R.string.settings)
+    }
 
     companion object {
         var timeOffset : Float = 0f

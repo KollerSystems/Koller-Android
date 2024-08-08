@@ -1,9 +1,9 @@
-package com.norbert.koller.teacher.fragments
+package com.norbert.koller.student.fragments
 
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.fragments.StudyGroupTypesFragment
-import com.norbert.koller.teacher.recycleradapters.StudyGroupTypeRecyclerAdapter
+import com.norbert.koller.student.recycleradapters.StudyGroupTypeRecyclerAdapter
 
 class StudyGroupTypesFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : StudyGroupTypesFragment(defaultFilters) {
 

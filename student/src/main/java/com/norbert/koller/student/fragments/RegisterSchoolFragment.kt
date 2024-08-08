@@ -11,18 +11,16 @@ import com.norbert.koller.shared.databinding.ContentDataSchoolBinding
 class RegisterSchoolFragment : com.norbert.koller.student.fragments.RegisterFragment() {
 
     lateinit var binding : ContentDataSchoolBinding
+    override fun createBinding(): ViewGroup {
+        binding = ContentDataSchoolBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
     override fun checkIfAllCorrect(): Boolean {
         return true
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        binding = ContentDataSchoolBinding.inflate(layoutInflater)
-        return binding.root
-    }
+
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

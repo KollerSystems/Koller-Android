@@ -17,6 +17,10 @@ import com.norbert.koller.shared.managers.ApplicationManager
 
 class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.user_outgoings)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

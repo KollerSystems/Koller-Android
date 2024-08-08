@@ -1,9 +1,8 @@
 package com.norbert.koller.student.activities
 
-import android.os.Bundle
+import android.view.ViewGroup
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
-import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.ActivitySettingsBinding
 
 
@@ -18,11 +17,9 @@ class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity()
         return binding.developer
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun createContentView(): ViewGroup {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
-
-        setContentView(binding.root)
+        return binding.root
     }
 
 }

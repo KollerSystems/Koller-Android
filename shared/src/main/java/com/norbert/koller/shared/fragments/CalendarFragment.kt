@@ -11,6 +11,10 @@ import com.google.android.material.tabs.TabLayout
 
 abstract class CalendarFragment : PagedFragment() {
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.calendar)
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
     }

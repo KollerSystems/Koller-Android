@@ -40,4 +40,8 @@ class ProgramParticipantsFragment(defaultFilters : MutableMap<String, ArrayList<
 
     }
 
+    override fun getFragmentTitle(): String? {
+         return null
+    }
+
 }

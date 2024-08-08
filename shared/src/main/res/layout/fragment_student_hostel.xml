@@ -89,7 +89,24 @@
                 app:layout_flexGrow="1"
                 app:layout_flexShrink="1"
                 tools:visibility="visible" />
+
+            <Button
+                android:id="@+id/btn_stats"
+                style="@style/CardButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="none"
+                android:paddingLeft="@dimen/card_padding"
+                android:paddingRight="@dimen/card_padding"
+                android:singleLine="true"
+                android:text="Statisztikák"
+                android:visibility="gone"
+                app:icon="@drawable/stats"
+                app:layout_flexGrow="1"
+                app:layout_flexShrink="1"
+                tools:visibility="visible" />
         </com.google.android.flexbox.FlexboxLayout>
+
 
 
     </androidx.cardview.widget.CardView>

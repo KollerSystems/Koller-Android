@@ -17,7 +17,7 @@ import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 
 
-class NotificationsFragment : Fragment() {
+class NotificationsFragment : FragmentInMainActivity() {
 
 
 
@@ -34,7 +34,9 @@ class NotificationsFragment : Fragment() {
 
 
 
-
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.notifications)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

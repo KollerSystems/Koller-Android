@@ -21,9 +21,8 @@ class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.Room
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cbRoomOrder.setOnClickListener{
-            val intent = Intent(requireContext(), RoomRateActivity::class.java)
-            startActivity(intent)
+        binding.cbRoomTidiness.setOnClickListener{
+            getMainActivity().addFragment(RoomTidinessFragment())
         }
 
         binding.cbPresence.setOnClickListener{

@@ -44,7 +44,7 @@
 
                 <com.norbert.koller.shared.customviews.CardButton
                     style="@style/CardTop"
-                    android:id="@+id/cb_room_order"
+                    android:id="@+id/cb_room_tidiness"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:icon="@drawable/clean"

@@ -13,7 +13,7 @@ import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 import java.util.ArrayList
 
-abstract class HomeFragment : Fragment() {
+abstract class HomeFragment : FragmentInMainActivity() {
 
     private lateinit var todayRecyclerView: RecyclerView
     private lateinit var todayDataArrayList: ArrayList<TodayData>
@@ -36,6 +36,10 @@ abstract class HomeFragment : Fragment() {
     var lessonsTimerRunning = false
 
     abstract fun responsibleLayout() : Int
+
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.home)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

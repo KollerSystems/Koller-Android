@@ -84,5 +84,9 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
         }
     }
 
+    override fun getFragmentTitle(): String? {
+        return getString(com.norbert.koller.shared.R.string.study_group)
+    }
+
 
 }

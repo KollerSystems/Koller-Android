@@ -2,10 +2,15 @@ package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.View
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ProgramPagingSource
 import com.norbert.koller.shared.recycleradapters.PagingSource
 
 abstract class BaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.base_programs)
+    }
 
     override fun getPagingSource(): PagingSource {
         return ProgramPagingSource(requireContext(), viewModel)

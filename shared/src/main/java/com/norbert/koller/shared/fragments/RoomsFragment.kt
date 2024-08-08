@@ -11,6 +11,10 @@ import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
 
 open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.rooms)
+    }
+
     override fun getPagingSource(): PagingSource {
         return RoomPagingSource(requireContext(), viewModel)
     }

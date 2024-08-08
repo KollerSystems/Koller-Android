@@ -43,7 +43,7 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 
-abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : Fragment() {
+abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : FragmentInMainActivity() {
 
     lateinit var binding : FragmentListBinding
 

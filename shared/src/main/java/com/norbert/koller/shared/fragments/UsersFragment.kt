@@ -15,6 +15,10 @@ import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.users)
+    }
+
     private lateinit var leaderUsersRecyclerView: RecyclerView
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 

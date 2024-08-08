@@ -13,13 +13,13 @@ class EditStudentActivity : ManageActivity(){
         super.onCreate(savedInstanceState)
     }
 
-    override fun getContentView(): ViewGroup {
+    override fun createContentView(): ViewGroup {
         contentBinding = ContentDataStudentBinding.inflate(layoutInflater)
         return contentBinding.root
     }
 
-    override fun getName(): Int {
-        return R.string.student
+    override fun getName(): String {
+        return getString(R.string.student)
     }
 
 

@@ -61,6 +61,6 @@ class ApplicationManager : ApplicationManager() {
 
         loginActivity = {LoginActivity()}
 
-        studyGroupsFragment = {map-> com.norbert.koller.student.fragments.StudyGroupsFragment(map) }
+        studyGroupsFragment = {map-> com.norbert.koller.student.fragments.StudyGroupTypesFragment(map) }
     }
 }

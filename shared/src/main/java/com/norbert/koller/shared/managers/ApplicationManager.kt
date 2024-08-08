@@ -40,7 +40,7 @@ import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.fragments.RoomFragment
 import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.StudentHostelFragment
-import com.norbert.koller.shared.fragments.StudyGroupsFragment
+import com.norbert.koller.shared.fragments.StudyGroupTypesFragment
 import com.norbert.koller.shared.fragments.UserFragment
 import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
@@ -89,7 +89,7 @@ open class ApplicationManager : Application() {
         var roomsFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomsFragment = {map-> RoomsFragment(map) }
         var usersFragment: (map : MutableMap<String, ArrayList<String>>?) -> UsersFragment = {map-> UsersFragment(map) }
 
-        lateinit var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupsFragment
+        lateinit var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupTypesFragment
 
         var userOutgoingTemporaryFragment: (userData : UserData?) -> UserOutgoingTemporaryFragment = {userData -> UserOutgoingTemporaryFragment(userData) }
         var userOutgoingPermanentFragment: (userData : UserData?) -> UserOutgoingPermanentFragment = {userData -> UserOutgoingPermanentFragment(userData) }

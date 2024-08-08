@@ -30,6 +30,10 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
 
     lateinit var cbNextProgram : CardButton
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.study_group)
+    }
+
     override fun getDataTag(): String {
         return "study_group_type"
     }
@@ -71,18 +75,18 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
 
             response as StudyGroupTypeData
 
-            (context as MainActivity).setToolbarTitle(response.topic)
+            getMainActivity().setToolbarTitle(response.topic)
 
             ncbClassroom.getTextDescription().text = response.rid.toString()
 
             ncbTeacher.getTextDescription().text = response.teacher!!.name.toString()
 
             ncbClassroom.getTextDescription().setOnClickListener {
-                (context as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
+                getMainActivity().addFragment(ApplicationManager.roomFragment(response.rid))
             }
 
             ncbTeacher.getTextDescription().setOnClickListener {
-                (context as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
+                getMainActivity().addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
             }
         }
     }

@@ -12,11 +12,7 @@ class RegisterSummaryFragment : RegisterFragment() {
 
     lateinit var binding : FragmentRegisterSummaryBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
+    override fun createBinding(): ViewGroup {
         binding = FragmentRegisterSummaryBinding.inflate(layoutInflater)
         return binding.root
     }

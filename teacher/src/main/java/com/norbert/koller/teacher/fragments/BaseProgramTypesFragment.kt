@@ -10,6 +10,10 @@ import com.norbert.koller.teacher.recycleradapters.BaseProgramTypeRecyclerAdapte
 
 class BaseProgramTypesFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.base_programs)
+    }
+
     override fun getPagingSource(): PagingSource {
         return ProgramTypePagingSource(requireContext(), viewModel)
     }

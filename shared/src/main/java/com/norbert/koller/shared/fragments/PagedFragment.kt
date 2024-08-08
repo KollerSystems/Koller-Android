@@ -11,7 +11,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.FragmentPagedBinding
 
-open class PagedFragment : Fragment() {
+abstract class PagedFragment : FragmentInMainActivity() {
 
     lateinit var binding : FragmentPagedBinding
 

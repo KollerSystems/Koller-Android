@@ -4,21 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     tools:context="com.norbert.koller.shared.com.norbert.koller.student.fragments.RegisterFinishFragment">
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="-35dp"
+        android:layout_marginBottom="-35dp"
+        android:alpha="0.5"
+
+        android:scaleX="-1"
+        android:text="🎉"
+        android:textSize="200dp"
+        tools:ignore="HardcodedText,SpUsage" />
+
+    <com.google.android.flexbox.FlexboxLayout
         style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@null"
         android:gravity="center"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:alignItems="center">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            app:layout_maxWidth="@dimen/tablet_max_width">
 
             <TextView
                 android:layout_width="match_parent"
@@ -45,19 +62,6 @@
 
         </LinearLayout>
 
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginRight="-35dp"
-        android:layout_marginBottom="-35dp"
-        android:alpha="0.5"
-
-        android:scaleX="-1"
-        android:text="🎉"
-        android:textSize="200dp"
-        tools:ignore="HardcodedText,SpUsage" />
+    </com.google.android.flexbox.FlexboxLayout>
 
 </FrameLayout>

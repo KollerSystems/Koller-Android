@@ -415,4 +415,5 @@
     <string name="close_relative">Közeli rokon</string>
     <string name="new_password">Új jelszó</string>
     <string name="change_password">Jelszó módosítása</string>
+    <string name="base_program">Alapprogram</string>
 </resources>

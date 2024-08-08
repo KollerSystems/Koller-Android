@@ -377,4 +377,5 @@
     <string name="close_relative">Close relative</string>
     <string name="new_password">New password</string>
     <string name="change_password">Change password</string>
+    <string name="base_program">Base program</string>
 </resources>

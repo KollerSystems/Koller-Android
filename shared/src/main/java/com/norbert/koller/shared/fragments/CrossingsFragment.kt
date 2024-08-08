@@ -11,6 +11,10 @@ import com.norbert.koller.shared.recycleradapters.ListItem
 
 class CrossingsFragment(val uid : Int? = null) : ListFragment() {
 
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.port_exits_and_entrances)
+    }
+
     override fun getPagingSource(): PagingSource {
         return CrossingPagingSource(requireContext(), viewModel.id!!, viewModel)
     }

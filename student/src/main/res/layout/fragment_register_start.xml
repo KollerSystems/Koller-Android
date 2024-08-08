@@ -4,66 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?android:attr/colorBackground"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context="com.norbert.koller.shared.com.norbert.koller.student.fragments.RegisterStartFragment">
-
-    <LinearLayout
-        style="@style/MainLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/welcome"
-                android:textAllCaps="false"
-                android:textAppearance="@style/MainTitleExpanded"
-                android:textSize="40sp" />
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:gravity="center_horizontal"
-                android:text="@string/happy_you_choose_us" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/btn_back"
-                style="@style/ButtonOutline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:text="@string/back" />
-
-            <Button
-                android:id="@+id/btn_next"
-                style="@style/ButtonIconReverse"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/text_container_margin"
-                android:text="@string/start"
-                app:icon="@drawable/arrow_forward" />
-
-        </LinearLayout>
-
-    </LinearLayout>
 
     <TextView
         android:layout_width="wrap_content"
@@ -76,5 +20,71 @@
         android:text="👋"
         android:textSize="200dp"
         tools:ignore="HardcodedText,SpUsage" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:justifyContent="center">
+
+        <LinearLayout
+            style="@style/MainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@null"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/welcome"
+                    android:textAllCaps="false"
+                    android:textAppearance="@style/MainTitleExpanded"
+                    android:textSize="40sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="25dp"
+                    android:gravity="center_horizontal"
+                    android:text="@string/happy_you_choose_us" />
+
+            </LinearLayout>
+
+            <com.google.android.flexbox.FlexboxLayout
+                app:flexWrap="wrap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:orientation="horizontal"
+                app:dividerDrawable="@drawable/divider_space"
+                app:showDivider="middle">
+
+                <Button
+                    android:id="@+id/btn_back"
+                    style="@style/ButtonOutline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/back" />
+
+                <Button
+                    android:id="@+id/btn_next"
+                    style="@style/ButtonIconReverse"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/start"
+                    app:icon="@drawable/arrow_forward" />
+
+            </com.google.android.flexbox.FlexboxLayout>
+
+        </LinearLayout>
+    </com.google.android.flexbox.FlexboxLayout>
+
 
 </FrameLayout>

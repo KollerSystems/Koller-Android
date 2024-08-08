@@ -13,13 +13,13 @@ class EditCloseRelativeActivity : ManageActivity(){
         super.onCreate(savedInstanceState)
     }
 
-    override fun getContentView(): ViewGroup {
+    override fun createContentView(): ViewGroup {
         contentBinding = ContentDataCloseRelativeBinding.inflate(layoutInflater)
         return contentBinding.root
     }
 
-    override fun getName(): Int {
-        return R.string.close_relative
+    override fun getName(): String {
+        return getString(R.string.close_relative)
     }
 
 }

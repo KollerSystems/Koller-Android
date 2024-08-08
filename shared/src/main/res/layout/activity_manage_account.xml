@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,45 +7,6 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     tools:context=".activities.ManageAccountActivity">
-
-    <com.norbert.koller.shared.customviews.AppBarLayout
-        android:id="@+id/app_bar"
-
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/expanded_toolbar_height"
-        android:visibility="visible"
-        app:expanded="false"
-        tools:visibility="gone">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="@style/CollapsingToolbarLayout"
-
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:title="Fiók kezelése"
-            app:toolbarId="@+id/toolbar">
-
-
-            <androidx.appcompat.widget.Toolbar
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/header_footer_size"
-                android:clickable="false"
-                app:titleMargin="@null"
-                app:titleMarginStart="50dp" />
-
-            <Button
-                android:id="@+id/button_back"
-                style="@style/ToolbarNavigationButton"
-                android:layout_gravity="bottom|start" />
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.norbert.koller.shared.customviews.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
         <com.google.android.flexbox.FlexboxLayout
             style="@style/MainLayout"
@@ -141,6 +102,4 @@
 
 
         </com.google.android.flexbox.FlexboxLayout>
-    </androidx.core.widget.NestedScrollView>
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

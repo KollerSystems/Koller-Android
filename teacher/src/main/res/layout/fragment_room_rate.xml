@@ -57,110 +57,101 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:baselineAligned="false"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <TextView
+                    android:id="@+id/textView23"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_marginBottom="@dimen/spacing"
+                    android:layout_weight="0"
+                    android:text="@string/grade" />
 
-                    <TextView
-                        android:id="@+id/textView23"
-                        android:layout_width="match_parent"
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0"
+                    app:chipSpacingHorizontal="0dp"
+                    app:chipSpacingVertical="0dp"
+                    app:singleSelection="true">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_dislike"
+                        android:layout_width="96px"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="@dimen/spacing"
-                        android:layout_weight="0"
-                        android:text="@string/grade" />
+                        android:text="1"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Title"
+                        app:chipBackgroundColor="@color/color_worst_toggle"
+                        app:chipEndPadding="0dp"
+                        app:chipStartPadding="0dp"
+                        app:shapeAppearance="@style/OverlayRoundedLeft"
+                        app:textEndPadding="0dp"
+                        app:textStartPadding="0dp"
+                        tools:ignore="HardcodedText,PxUsage" />
 
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/chip_group"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="0"
-                        app:chipSpacingHorizontal="0dp"
-                        app:chipSpacingVertical="0dp"
-                        app:singleSelection="true">
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_like"
+                        android:layout_width="96px"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Title"
+                        app:chipBackgroundColor="@color/color_bad_toggle"
+                        app:chipEndPadding="0dp"
+                        app:chipStartPadding="0dp"
+                        app:shapeAppearance="@null"
+                        app:textEndPadding="0dp"
+                        app:textStartPadding="0dp"
+                        tools:ignore="HardcodedText,PxUsage" />
 
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip_dislike"
-                            android:layout_width="96px"
-                            android:layout_height="wrap_content"
-                            android:text="1"
-                            android:gravity="center_horizontal"
-                            android:textAppearance="@style/Title"
-                            app:chipBackgroundColor="@color/color_worst_toggle"
-                            app:chipEndPadding="0dp"
-                            app:chipStartPadding="0dp"
-                            app:shapeAppearance="@style/OverlayRoundedLeft"
-                            app:textEndPadding="0dp"
-                            app:textStartPadding="0dp"
-                            tools:ignore="HardcodedText,PxUsage" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip8"
+                        android:layout_width="96px"
+                        android:layout_height="wrap_content"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Title"
+                        app:chipBackgroundColor="@color/color_ok_toggle"
+                        app:chipEndPadding="0dp"
+                        app:chipStartPadding="0dp"
+                        app:shapeAppearance="@null"
+                        app:textEndPadding="0dp"
+                        app:textStartPadding="0dp"
+                        tools:ignore="HardcodedText,PxUsage" />
 
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip_like"
-                            android:layout_width="96px"
-                            android:layout_height="wrap_content"
-                            android:text="2"
-                            android:gravity="center_horizontal"
-                            android:textAppearance="@style/Title"
-                            app:chipBackgroundColor="@color/color_bad_toggle"
-                            app:chipEndPadding="0dp"
-                            app:chipStartPadding="0dp"
-                            app:shapeAppearance="@null"
-                            app:textEndPadding="0dp"
-                            app:textStartPadding="0dp"
-                            tools:ignore="HardcodedText,PxUsage" />
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip10"
+                        android:layout_width="96px"
+                        android:layout_height="wrap_content"
+                        android:text="4"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Title"
+                        app:chipBackgroundColor="@color/color_good_toggle"
+                        app:chipEndPadding="0dp"
+                        app:chipStartPadding="0dp"
+                        app:shapeAppearance="@null"
+                        app:textEndPadding="0dp"
+                        app:textStartPadding="0dp"
+                        tools:ignore="HardcodedText,PxUsage" />
 
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip8"
-                            android:layout_width="96px"
-                            android:layout_height="wrap_content"
-                            android:text="3"
-                            android:gravity="center_horizontal"
-                            android:textAppearance="@style/Title"
-                            app:chipBackgroundColor="@color/color_ok_toggle"
-                            app:chipEndPadding="0dp"
-                            app:chipStartPadding="0dp"
-                            app:shapeAppearance="@null"
-                            app:textEndPadding="0dp"
-                            app:textStartPadding="0dp"
-                            tools:ignore="HardcodedText,PxUsage" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip10"
-                            android:layout_width="96px"
-                            android:layout_height="wrap_content"
-                            android:text="4"
-                            android:gravity="center_horizontal"
-                            android:textAppearance="@style/Title"
-                            app:chipBackgroundColor="@color/color_good_toggle"
-                            app:chipEndPadding="0dp"
-                            app:chipStartPadding="0dp"
-                            app:shapeAppearance="@null"
-                            app:textEndPadding="0dp"
-                            app:textStartPadding="0dp"
-                            tools:ignore="HardcodedText,PxUsage" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip13"
-                            android:layout_width="96px"
-                            android:layout_height="wrap_content"
-                            android:text="5"
-                            android:gravity="center_horizontal"
-                            android:textAppearance="@style/Title"
-                            app:chipBackgroundColor="@color/color_best_toggle"
-                            app:chipEndPadding="0dp"
-                            app:chipStartPadding="0dp"
-                            app:shapeAppearance="@style/OverlayRoundedRight"
-                            app:textEndPadding="0dp"
-                            app:textStartPadding="0dp"
-                            tools:ignore="HardcodedText,PxUsage" />
-                    </com.google.android.material.chip.ChipGroup>
-
-                </LinearLayout>
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip13"
+                        android:layout_width="96px"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:textAlignment="center"
+                        android:textAppearance="@style/Title"
+                        app:chipBackgroundColor="@color/color_best_toggle"
+                        app:chipEndPadding="0dp"
+                        app:chipStartPadding="0dp"
+                        app:shapeAppearance="@style/OverlayRoundedRight"
+                        app:textEndPadding="0dp"
+                        app:textStartPadding="0dp"
+                        tools:ignore="HardcodedText,PxUsage" />
+                </com.google.android.material.chip.ChipGroup>
 
             </LinearLayout>
 

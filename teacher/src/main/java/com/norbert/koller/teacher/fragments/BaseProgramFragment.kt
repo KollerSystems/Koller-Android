@@ -15,6 +15,7 @@ import com.norbert.koller.shared.fragments.BaseProgramFragmentInterface
 import com.norbert.koller.shared.fragments.DetailsFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.teacher.R
+import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.teacher.activities.EditStudyGroupActivity
 import com.norbert.koller.teacher.databinding.FragmentBsdProfileBinding
 import com.norbert.koller.teacher.databinding.FragmentProgramBinding
@@ -31,6 +32,10 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
     override lateinit var ncbClass : DescriptionButton
     override lateinit var ncbTeacher : DescriptionButton
     override lateinit var toGeneralButton: View
+
+    override fun getFragmentTitle(): String? {
+        return getString(Rs.string.base_programs)
+    }
 
     override fun getDataTag(): String {
         return "base_program"

@@ -2,10 +2,9 @@ package com.norbert.koller.teacher.activities
 
 import android.content.Intent
 import android.os.Bundle
-import com.norbert.koller.shared.activities.CreateNewPostActivity
+import android.view.ViewGroup
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
-import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.databinding.ActivitySettingsBinding
 
 class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity() {
@@ -21,11 +20,9 @@ class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity()
     }
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun createContentView(): ViewGroup {
         binding = ActivitySettingsBinding.inflate(layoutInflater)
-
-        setContentView(binding.root)
+        return binding.root
     }
 
 

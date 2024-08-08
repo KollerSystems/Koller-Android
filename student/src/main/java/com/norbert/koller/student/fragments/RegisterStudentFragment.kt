@@ -21,11 +21,7 @@ class RegisterStudentFragment : RegisterFragment() {
         return true
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
+    override fun createBinding(): ViewGroup {
         binding = ContentDataStudentBinding.inflate(layoutInflater)
         return binding.root
     }

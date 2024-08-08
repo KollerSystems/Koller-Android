@@ -12,9 +12,13 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.databinding.FragmentStudentHostelBinding
 
-open class StudentHostelFragment : Fragment() {
+open class StudentHostelFragment : FragmentInMainActivity() {
 
     lateinit var binding : FragmentStudentHostelBinding
+
+    override fun getFragmentTitle(): String? {
+        return getString(R.string.student_hostel)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

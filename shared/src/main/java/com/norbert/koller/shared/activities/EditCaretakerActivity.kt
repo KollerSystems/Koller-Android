@@ -13,13 +13,13 @@ class EditCaretakerActivity : ManageActivity(){
         super.onCreate(savedInstanceState)
     }
 
-    override fun getContentView(): ViewGroup {
+    override fun createContentView(): ViewGroup {
         contentBinding = ContentDataCaretakerBinding.inflate(layoutInflater)
         return contentBinding.root
     }
 
-    override fun getName(): Int {
-        return R.string.caretaker
+    override fun getName(): String {
+        return getString(R.string.caretaker)
     }
 
 

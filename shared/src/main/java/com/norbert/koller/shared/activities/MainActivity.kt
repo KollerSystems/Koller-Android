@@ -15,7 +15,6 @@ import android.view.ViewGroup
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.window.OnBackInvokedDispatcher
-import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.animation.doOnEnd
@@ -39,7 +38,6 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.managers.getStringResourceByName
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.managers.setupPortrait
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
@@ -201,8 +199,6 @@ abstract class MainActivity : AppCompatActivity() {
         }
         else{
             val id = supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()
-            val title = this.getStringResourceByName(id)
-            setToolbarTitle(title)
             showNightBgIfNeeded(id)
         }
 
@@ -224,10 +220,6 @@ abstract class MainActivity : AppCompatActivity() {
 
         supportFragmentManager.addOnBackStackChangedListener {
             val id = supportFragmentManager.fragments[0].javaClass.simpleName.replace("Fragment", "").camelToSnakeCase()
-            val title = this.getStringResourceByName(id)
-            if(!title.isNullOrBlank()) {
-                setToolbarTitle(title)
-            }
             binding.appBar?.setExpanded(false)
 
             showNightBgIfNeeded(id)
