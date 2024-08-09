@@ -33,12 +33,15 @@ class AppBarLayout : com.google.android.material.appbar.AppBarLayout {
 
         setBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
         val landscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-        backButton = if (landscape) {
-            setupLandscape()
 
-        } else {
-            setupPortrait()
-        }
+            backButton = if (landscape) {
+                setupLandscape()
+
+            } else {
+                setupPortrait()
+            }
+
+
     }
 
 }

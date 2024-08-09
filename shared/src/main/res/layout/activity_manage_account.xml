@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
-    tools:context=".activities.ManageAccountActivity">
-
-        <com.google.android.flexbox.FlexboxLayout
-            style="@style/MainLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="@dimen/full_card_padding"
-            android:paddingTop="@dimen/full_card_padding"
-            android:paddingEnd="@dimen/full_card_padding"
-            android:paddingBottom="@dimen/full_card_padding"
-            app:alignItems="center"
-            app:flexDirection="column">
+    tools:context=".activities.ManageAccountActivity"
+    style="@style/MainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingStart="@dimen/full_card_padding"
+    android:paddingTop="@dimen/full_card_padding"
+    android:paddingEnd="@dimen/full_card_padding"
+    android:paddingBottom="@dimen/full_card_padding"
+    app:alignItems="center"
+    app:flexDirection="column">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_maxWidth="@dimen/tablet_max_width_with_text_container" >
 
             <com.norbert.koller.shared.customviews.UserView
                 android:id="@+id/user"
+                android:layout_gravity="center_horizontal"
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 app:stroke_width="5dp">
@@ -32,10 +34,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/application_padding"
+                android:layout_gravity="center_horizontal"
                 android:padding="@dimen/text_container_margin"
                 android:text="@string/unknown"
                 android:textAppearance="@style/MainTitle"
-                app:layout_maxWidth="@dimen/tablet_max_width" />
+          />
 
             <TextView
                 android:layout_width="match_parent"
@@ -100,6 +103,5 @@
                 app:text="@string/devices"
                 tools:visibility="visible" />
 
-
-        </com.google.android.flexbox.FlexboxLayout>
-</FrameLayout>
+    </LinearLayout>
+</com.google.android.flexbox.FlexboxLayout>

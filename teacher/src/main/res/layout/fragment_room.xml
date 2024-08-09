@@ -34,78 +34,84 @@
                     android:id="@+id/header"
                     layout="@layout/content_fragment_room_header" />
 
-                <TextView
-                    style="@style/CategoryCardNameBald"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/manage_room"
-                    app:layout_maxWidth="@dimen/tablet_max_width" />
+                    android:orientation="vertical"
+                    app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
+                    <TextView
+                        style="@style/CategoryCardNameBald"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/manage_room" />
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    style="@style/CardTop"
-                    android:id="@+id/cb_room_tidiness"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/clean"
-                    app:text="@string/room_order">
+                    <com.norbert.koller.shared.customviews.CardButton
+                        android:id="@+id/cb_room_tidiness"
+                        style="@style/CardTop"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/clean"
+                        app:text="@string/room_order">
 
-                </com.norbert.koller.shared.customviews.CardButton>
+                    </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    style="@style/CardMiddle"
-                    android:id="@+id/cb_presence"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/person_wave"
-                    app:text="@string/presence">
+                    <com.norbert.koller.shared.customviews.CardButton
+                        android:id="@+id/cb_presence"
+                        style="@style/CardMiddle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/person_wave"
+                        app:text="@string/presence">
 
-                </com.norbert.koller.shared.customviews.CardButton>
+                    </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_error_reports"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:icon="@drawable/error"
-                    app:text="@string/error_report"
-                    tools:visibility="visible">
+                    <com.norbert.koller.shared.customviews.CardButton
+                        android:id="@+id/cb_error_reports"
+                        style="@style/CardMiddle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:icon="@drawable/error"
+                        app:text="@string/error_report"
+                        tools:visibility="visible">
 
-                </com.norbert.koller.shared.customviews.CardButton>
+                    </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_reports"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:badge="9"
-                    app:icon="@drawable/flag"
-                    app:text="@string/reports"
-                    tools:visibility="visible">
+                    <com.norbert.koller.shared.customviews.CardButton
+                        android:id="@+id/cb_reports"
+                        style="@style/CardMiddle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        app:badge="9"
+                        app:icon="@drawable/flag"
+                        app:text="@string/reports"
+                        tools:visibility="visible">
 
-                </com.norbert.koller.shared.customviews.CardButton>
+                    </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    style="@style/CardMiddle"
-                    android:id="@+id/cb_edit"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/pencil"
-                    app:text="@string/edit">
+                    <com.norbert.koller.shared.customviews.CardButton
+                        android:id="@+id/cb_edit"
+                        style="@style/CardMiddle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/pencil"
+                        app:text="@string/edit">
 
-                </com.norbert.koller.shared.customviews.CardButton>
+                    </com.norbert.koller.shared.customviews.CardButton>
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_remove"
-                    style="@style/CardBottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/close"
-                    app:text="@string/remove">
+                    <com.norbert.koller.shared.customviews.CardButton
+                        android:id="@+id/cb_remove"
+                        style="@style/CardBottom"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:icon="@drawable/close"
+                        app:text="@string/remove">
 
-                </com.norbert.koller.shared.customviews.CardButton>
+                    </com.norbert.koller.shared.customviews.CardButton>
+                </LinearLayout>
+
 
             </com.google.android.flexbox.FlexboxLayout>
 

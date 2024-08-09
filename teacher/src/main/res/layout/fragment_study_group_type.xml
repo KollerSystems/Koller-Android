@@ -35,17 +35,18 @@
         android:paddingHorizontal="@dimen/full_card_padding"
         android:paddingTop="@dimen/full_card_padding_double"
         android:paddingBottom="@dimen/full_card_padding"
-        app:justifyContent="center"
-        app:flexDirection="column">
+        app:alignItems="center"
+        app:flexDirection="column"
+        app:justifyContent="center">
 
         <com.norbert.koller.shared.customviews.CardButton
             android:id="@+id/cb_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_maxWidth="@dimen/tablet_max_width"
             app:cardBackgroundColor="?attr/colorSurfaceContainer"
             app:cardElevation="@dimen/header_footer_elevation"
             app:icon="@drawable/pencil"
+            app:layout_maxWidth="@dimen/tablet_max_width"
             app:rounded="true"
             app:text="@string/edit" />
     </com.google.android.flexbox.FlexboxLayout>

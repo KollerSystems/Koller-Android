@@ -37,6 +37,13 @@
                     android:id="@+id/header"
                     layout="@layout/content_fragment_room_header" />
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+
+
                 <TextView
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
@@ -59,7 +66,7 @@
                     tools:visibility="visible">
 
                 </com.norbert.koller.shared.customviews.CardButton>
-
+                </LinearLayout>
 
             </com.google.android.flexbox.FlexboxLayout>
 

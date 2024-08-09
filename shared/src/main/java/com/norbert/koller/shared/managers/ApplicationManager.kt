@@ -18,6 +18,8 @@ import android.util.TypedValue
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
+import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.MarginLayoutParams
 import android.view.WindowManager
 import android.widget.Button
@@ -297,10 +299,8 @@ fun AppBarLayout.setupLandscape() : Button{
 
     setExpanded(false)
     val layout = getChildAt(0) as CollapsingToolbarLayout
-    val params = layout.layoutParams as AppBarLayout.LayoutParams
+    layoutParams = AppBarLayout.LayoutParams(MATCH_PARENT, resources.getDimensionPixelSize(R.dimen.header_footer_size) + 1)
 
-    layout.layoutParams = params
-    layoutParams.height = resources.getDimensionPixelSize(R.dimen.header_footer_size) + 1
     (context as Activity).window.statusBarColor = solidColor
 
     layout.titleCollapseMode = CollapsingToolbarLayout.TITLE_COLLAPSE_MODE_FADE

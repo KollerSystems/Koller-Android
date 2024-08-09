@@ -27,12 +27,20 @@
                 app:alignItems="center"
                 app:flexDirection="column">
 
-                <include
-                    android:id="@+id/header"
 
-                    layout="@layout/content_fragment_user_header"
-                    app:layout_maxWidth="@dimen/tablet_max_width" />
 
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+
+    <include
+        android:id="@+id/header"
+
+        layout="@layout/content_fragment_user_header"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent" />
                 <TextView
                     android:id="@+id/text_manage"
                     style="@style/CategoryCardNameBald"
@@ -125,7 +133,7 @@
                     android:layout_height="wrap_content"
                     app:icon="@drawable/close"
                     app:text="@string/remove" />
-
+</LinearLayout>
 
             </com.google.android.flexbox.FlexboxLayout>
         </androidx.core.widget.NestedScrollView>
