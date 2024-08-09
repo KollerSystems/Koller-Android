@@ -38,8 +38,7 @@ class DevRecyclerAdapter (private var devList : ArrayList<DevData>) : RecyclerVi
         super.onAttachedToRecyclerView(recyclerView)
 
         recyclerView.post {
-            val random: Int = (0 + Math.random() * (((lastView.width + lastView.marginRight * 2) * devList.size) - 0)).toInt()
-            recyclerView.layoutManager!!.scrollToPosition((Integer.MAX_VALUE / 2) - random)
+            recyclerView.layoutManager!!.scrollToPosition((Integer.MAX_VALUE / 2))
 
             autoScrollAnimator = ValueAnimator.ofInt(0, Int.MAX_VALUE)
             autoScrollAnimator.duration = Long.MAX_VALUE

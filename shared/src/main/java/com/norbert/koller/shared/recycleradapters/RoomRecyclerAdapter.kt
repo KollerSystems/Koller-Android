@@ -20,7 +20,7 @@ class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
     fun getShortName(name : String) : String{
         val nameParts : List<String> = name.split(" ")
-        return nameParts[0][0] + ". " + nameParts[1]
+        return nameParts[0][0] + ".\u00A0" + nameParts[1]
     }
 
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
@@ -38,12 +38,12 @@ class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
         if(item.residents !=null ) {
 
-            var desc : String = ""
+            var desc = ""
             for (i in 0 until item.residents!!.size){
 
                 desc += getShortName(item.residents!![i].name!!) + ", "
             }
-            desc.trimEnd()
+            desc = desc.dropLast(2)
 
             holder.itemBinding.textDescription.text = desc
         }

@@ -3,24 +3,20 @@ package com.norbert.koller.shared.fragments.bottomsheet
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.activities.ManageAccountActivity
-import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.DevData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileFooterBinding
 import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileHeaderBinding
-import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -37,6 +33,7 @@ abstract class ProfileBsdFragment : BottomSheetDialogFragment() {
     override fun getTheme(): Int {
         return R.style.BottomSheetDialogFull
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
@@ -127,6 +124,8 @@ abstract class ProfileBsdFragment : BottomSheetDialogFragment() {
             DevData("Fehér Dávid", "Back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_david)!!, "https://github.com/TheBlueLines"),
             DevData("Juhos Gergely János", "Marketing", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_juhos)!!, "https://github.com/enderember003"),
         )
+
+        devArrayList.shuffle()
 
         getFooterBinding().recyclerView.adapter = DevRecyclerAdapter(devArrayList)
 
