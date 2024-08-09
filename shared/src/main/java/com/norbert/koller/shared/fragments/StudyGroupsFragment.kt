@@ -9,7 +9,7 @@ import com.norbert.koller.shared.recycleradapters.PagingSource
 abstract class StudyGroupsFragment : ListFragment() {
 
     override fun getFragmentTitle(): String? {
-        return getString(R.string.study_groups)
+        return null
     }
 
 

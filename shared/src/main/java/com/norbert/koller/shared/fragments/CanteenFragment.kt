@@ -12,9 +12,11 @@ import com.norbert.koller.shared.data.CanteenData
 import com.norbert.koller.shared.recycleradapters.CanteenRecyclerAdapter
 import java.util.Date
 
-class CanteenFragment : Fragment() {
+class CanteenFragment : FragmentInMainActivity() {
 
-
+    override fun getFragmentTitle(): String? {
+        return null
+    }
 
     private lateinit var canteenRecyclerView: RecyclerView
     private lateinit var canteenDataArrayList: ArrayList<CanteenData>

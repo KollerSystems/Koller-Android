@@ -11,10 +11,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.student.recycleradapters.DayRecyclerAdapter
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.fragments.FragmentInMainActivity
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.student.databinding.FragmentDaysBinding
 
-class DaysFragment : Fragment() {
+class DaysFragment : FragmentInMainActivity() {
 
 
     lateinit var binding : FragmentDaysBinding
@@ -29,6 +30,10 @@ class DaysFragment : Fragment() {
         binding = FragmentDaysBinding.inflate(layoutInflater)
         return binding.root
 
+    }
+
+    override fun getFragmentTitle(): String? {
+        return null
     }
 
 

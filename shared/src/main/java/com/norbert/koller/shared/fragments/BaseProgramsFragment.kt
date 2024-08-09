@@ -9,7 +9,7 @@ import com.norbert.koller.shared.recycleradapters.PagingSource
 abstract class BaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
     override fun getFragmentTitle(): String? {
-        return getString(R.string.base_programs)
+        return null
     }
 
     override fun getPagingSource(): PagingSource {
