@@ -23,6 +23,8 @@ android {
     compileSdk 34
 
     defaultConfig {
+        resConfigs("en", "hu")
+
         minSdk 26
         targetSdk 34
 

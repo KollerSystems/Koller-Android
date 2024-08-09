@@ -5,6 +5,10 @@ plugins {
 
 android {
 
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     buildFeatures{
         viewBinding = true
     }
@@ -22,6 +26,7 @@ android {
     compileSdk 34
 
     defaultConfig {
+        resConfigs("en", "hu")
         applicationId "com.norbert.koller.teacher"
         minSdk 26
         targetSdk 34
