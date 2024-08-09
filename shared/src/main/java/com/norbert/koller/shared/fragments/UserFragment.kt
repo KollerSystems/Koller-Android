@@ -30,9 +30,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
     abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
     abstract fun getNestedScrollView() : NestedScrollView
 
-    override fun getFragmentTitle(): String? {
-        return getString(R.string.user)
-    }
+
 
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
@@ -46,21 +44,35 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
         return {RetrofitInstance.api.getUser(viewModel.id!!)}
     }
 
+    fun isVisible(view: View): Boolean {
+        if (!view.isShown) {
+            return false
+        }
+        val actualPosition = Rect()
+        view.getGlobalVisibleRect(actualPosition)
+        val screen = Rect(0, 0, Resources.getSystem().displayMetrics.widthPixels, Resources.getSystem().displayMetrics.heightPixels)
+        return actualPosition.intersect(screen)
+    }
+
+    fun checkVisibility(){
+        if (isVisible(getHeaderBinding().textName)) {
+            (activity as MainActivity).setToolbarTitle(getString(R.string.user))
+
+        } else {
+            (activity as MainActivity).setToolbarTitle((viewModel.response.value as UserData).name, (viewModel.response.value as UserData).createDescription())
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         super.onViewCreated(view, savedInstanceState)
 
         getHeaderBinding().cbStatus.getImageIcon().visibility = VISIBLE
 
-        fun isVisible(view: View): Boolean {
-            if (!view.isShown) {
-                return false
-            }
-            val actualPosition = Rect()
-            view.getGlobalVisibleRect(actualPosition)
-            val screen = Rect(0, 0, Resources.getSystem().displayMetrics.widthPixels, Resources.getSystem().displayMetrics.heightPixels)
-            return actualPosition.intersect(screen)
+        getHeaderBinding().user.post{
+            checkVisibility()
         }
+
 
 
         fun showAndSetIfNotNull(chip : Chip, any : Any?) : Boolean{
@@ -162,12 +174,7 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
             }
 
             getNestedScrollView().setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
-                if (isVisible(getHeaderBinding().textName)) {
-                    (activity as MainActivity).setToolbarTitle(getString(R.string.user))
-
-                } else {
-                    (activity as MainActivity).setToolbarTitle(response.name, response.createDescription())
-                }
+                checkVisibility()
             }
 
             if(response.contacts != null){

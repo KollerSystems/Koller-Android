@@ -1,31 +1,41 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.ViewPager2
 import com.norbert.koller.shared.R
-import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.viewmodels.MainActivityViewModel
+import com.norbert.koller.shared.viewmodels.ResponseViewModel
 
 class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
 
-    override fun getFragmentTitle(): String? {
-        return getString(R.string.user_outgoings)
+    lateinit var viewModel : ResponseViewModel
+
+    override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
+        return if(viewModel.owner!!.uid == UserData.instance.uid){
+            Pair(getString(R.string.user_outgoings),"")
+        } else{
+            Pair(viewModel.owner!!.name, getString(R.string.user_outgoings))
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+        if(userData != null){
+            viewModel.owner = userData
+        }
         super.onViewCreated(view, savedInstanceState)
 
 
-        val adapter = UserOutgoingViewPagerAdapter(userData, childFragmentManager, lifecycle)
+
+        val adapter = UserOutgoingViewPagerAdapter(viewModel.owner, childFragmentManager, lifecycle)
 
         binding.viewPager.adapter = adapter
 
@@ -52,10 +62,10 @@ class UserOutgoingViewPagerAdapter(val userData: UserData?, fragmentManager: Fra
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                ApplicationManager.userOutgoingTemporaryFragment(userData)
+                ApplicationManager.outgoingTemporaryFragment(userData)
             }
             1->{
-                ApplicationManager.userOutgoingPermanentFragment(userData)
+                ApplicationManager.outgoingPermanentFragment(userData)
             }
             else->{
                 Fragment()

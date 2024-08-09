@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.LinearLayout.VERTICAL
 import android.widget.TextView
@@ -129,7 +130,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         return chip
     }
 
-    fun addButton(text : String, onClick: () -> Unit) {
+    fun addButton(text : String, onClick: () -> Unit) : Button {
         val button = MaterialButton(ContextThemeWrapper(requireContext() as MainActivity, R.style.ButtonTonalIcon))
         button.text = text
         button.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.add)
@@ -146,6 +147,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         button.setOnClickListener {
             onClick.invoke()
         }
+        return button
     }
 
 

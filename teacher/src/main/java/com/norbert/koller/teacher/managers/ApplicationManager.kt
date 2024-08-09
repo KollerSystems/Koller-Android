@@ -14,8 +14,8 @@ import com.norbert.koller.teacher.fragments.RoomFragment
 import com.norbert.koller.teacher.fragments.RoomsFragment
 import com.norbert.koller.teacher.fragments.StudentHostelFragment
 import com.norbert.koller.teacher.fragments.UserFragment
-import com.norbert.koller.teacher.fragments.UserOutgoingPermanentFragment
-import com.norbert.koller.teacher.fragments.UserOutgoingTemporaryFragment
+import com.norbert.koller.teacher.fragments.OutgoingPermanentFragment
+import com.norbert.koller.teacher.fragments.OutgoingTemporaryFragment
 import com.norbert.koller.teacher.fragments.UsersFragment
 import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBsdFragment
 
@@ -56,8 +56,8 @@ class ApplicationManager : ApplicationManager() {
         roomsFragment = {RoomsFragment()}
         usersFragment = {UsersFragment()}
 
-        userOutgoingTemporaryFragment = { UserOutgoingTemporaryFragment(it) }
-        userOutgoingPermanentFragment = { UserOutgoingPermanentFragment(it) }
+        outgoingTemporaryFragment = { OutgoingTemporaryFragment(it) }
+        outgoingPermanentFragment = { OutgoingPermanentFragment(it) }
 
         studyGroupsFragment = {map-> com.norbert.koller.teacher.fragments.StudyGroupTypesFragment(map) }
     }

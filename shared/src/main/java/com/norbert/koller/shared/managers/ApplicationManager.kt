@@ -26,6 +26,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.appbar.AppBarLayout
@@ -44,8 +45,8 @@ import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.StudentHostelFragment
 import com.norbert.koller.shared.fragments.StudyGroupTypesFragment
 import com.norbert.koller.shared.fragments.UserFragment
-import com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment
-import com.norbert.koller.shared.fragments.UserOutgoingTemporaryFragment
+import com.norbert.koller.shared.fragments.OutgoingPermanentFragment
+import com.norbert.koller.shared.fragments.OutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import java.nio.ByteBuffer
@@ -93,8 +94,8 @@ open class ApplicationManager : Application() {
 
         lateinit var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupTypesFragment
 
-        var userOutgoingTemporaryFragment: (userData : UserData?) -> UserOutgoingTemporaryFragment = {userData -> UserOutgoingTemporaryFragment(userData) }
-        var userOutgoingPermanentFragment: (userData : UserData?) -> UserOutgoingPermanentFragment = {userData -> UserOutgoingPermanentFragment(userData) }
+        var outgoingTemporaryFragment: (userData : UserData?) -> OutgoingTemporaryFragment = { userData -> OutgoingTemporaryFragment(userData) }
+        var outgoingPermanentFragment: (userData : UserData?) -> OutgoingPermanentFragment = { userData -> OutgoingPermanentFragment(userData) }
 
         const val minLengthBeforeDismiss : Int = 3
 
@@ -299,7 +300,13 @@ fun AppBarLayout.setupLandscape() : Button{
 
     setExpanded(false)
     val layout = getChildAt(0) as CollapsingToolbarLayout
-    layoutParams = AppBarLayout.LayoutParams(MATCH_PARENT, resources.getDimensionPixelSize(R.dimen.header_footer_size) + 1)
+    post {
+        layoutParams = CoordinatorLayout.LayoutParams(
+            MATCH_PARENT,
+            resources.getDimensionPixelSize(R.dimen.header_footer_size) + 1
+        )
+    }
+
 
     (context as Activity).window.statusBarColor = solidColor
 

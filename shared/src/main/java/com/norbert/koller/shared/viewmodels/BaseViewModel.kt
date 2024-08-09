@@ -7,6 +7,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +16,8 @@ class BaseViewModel : ViewModel() {
     companion object{
         const val pageSize : Int = 25
     }
+
+    var owner : UserData? = null
 
     var id : Int? = null
 

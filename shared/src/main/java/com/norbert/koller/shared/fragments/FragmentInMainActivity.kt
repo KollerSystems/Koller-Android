@@ -7,7 +7,12 @@ import com.norbert.koller.shared.activities.MainActivity
 
 abstract class FragmentInMainActivity : Fragment() {
 
-    abstract fun getFragmentTitle() : String?
+    open fun getFragmentTitleAndDescription() : Pair<String?, String?>?{
+        return null
+    }
+    open fun getFragmentTitle() : String?{
+        return null
+    }
 
     fun getMainActivity() : MainActivity{
         return (requireContext() as MainActivity)
@@ -15,8 +20,15 @@ abstract class FragmentInMainActivity : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if(getFragmentTitle() != null) {
-            getMainActivity().setToolbarTitle(getFragmentTitle())
+        val pair = getFragmentTitleAndDescription()
+        if(pair != null) {
+            getMainActivity().setToolbarTitle(pair.first, pair.second?:"")
+        }
+        else{
+            val title = getFragmentTitle()
+            if(title != null) {
+                getMainActivity().setToolbarTitle(title)
+            }
         }
     }
 

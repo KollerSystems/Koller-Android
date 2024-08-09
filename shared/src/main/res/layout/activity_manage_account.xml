@@ -1,107 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
-    android:fitsSystemWindows="true"
-    tools:context=".activities.ManageAccountActivity"
-    style="@style/MainLayout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingStart="@dimen/full_card_padding"
-    android:paddingTop="@dimen/full_card_padding"
-    android:paddingEnd="@dimen/full_card_padding"
-    android:paddingBottom="@dimen/full_card_padding"
+    android:fitsSystemWindows="true"
     app:alignItems="center"
-    app:flexDirection="column">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        app:layout_maxWidth="@dimen/tablet_max_width_with_text_container" >
+    app:flexDirection="column"
+    tools:context=".activities.ManageAccountActivity">
 
-            <com.norbert.koller.shared.customviews.UserView
-                android:id="@+id/user"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                app:stroke_width="5dp">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/full_card_padding"
+            android:layout_marginTop="@dimen/application_padding"
+            android:layout_marginBottom="@dimen/full_card_padding"
+            android:orientation="vertical"
+            app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
-            </com.norbert.koller.shared.customviews.UserView>
+                <com.norbert.koller.shared.customviews.UserView
+                    android:id="@+id/user"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_gravity="center_horizontal"
+                    app:stroke_width="5dp">
 
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/application_padding"
-                android:layout_gravity="center_horizontal"
-                android:padding="@dimen/text_container_margin"
-                android:text="@string/unknown"
-                android:textAppearance="@style/MainTitle"
-          />
+                </com.norbert.koller.shared.customviews.UserView>
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Személyes adatok kezelése"
-                style="@style/CategoryCardNameBald"/>
+                <TextView
+                    android:id="@+id/text_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="@dimen/application_padding"
+                    android:padding="@dimen/text_container_margin"
+                    android:text="@string/unknown"
+                    android:textAppearance="@style/MainTitle" />
 
-            <com.norbert.koller.shared.customviews.CardButton
-                android:id="@+id/cb_student"
-                style="@style/CardTop"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:text="Te / Tanuló"
-                app:icon="@drawable/user" />
+                <TextView
+                    style="@style/CategoryCardNameBald"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Személyes adatok kezelése" />
 
-            <com.norbert.koller.shared.customviews.CardButton
-                android:id="@+id/cb_caretaker"
-                style="@style/CardMiddle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/parent"
-                app:text="Gondviselő" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_student"
+                    style="@style/CardTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/user"
+                    app:text="Te / Tanuló" />
 
-            <com.norbert.koller.shared.customviews.CardButton
-                android:id="@+id/cb_close_relative"
-                style="@style/CardMiddle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/close_person"
-                app:text="Közeli rokon" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_caretaker"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/parent"
+                    app:text="Gondviselő" />
 
-            <com.norbert.koller.shared.customviews.CardButton
-                style="@style/CardBottom"
-                android:id="@+id/cb_school"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:icon="@drawable/building"
-                app:text="@string/school" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_close_relative"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/close_person"
+                    app:text="Közeli rokon" />
+
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_school"
+                    style="@style/CardBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/building"
+                    app:text="@string/school" />
 
 
+                <TextView
+                    style="@style/CategoryCardNameBald"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Biztonság" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="Biztonság"
-                style="@style/CategoryCardNameBald"/>
-            <com.norbert.koller.shared.customviews.CardButton
-                android:id="@+id/cb_password"
-                style="@style/CardSingle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                custom:icon="@drawable/key"
-                custom:text="Jelszó módosítása" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_password"
+                    style="@style/CardSingle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    custom:icon="@drawable/key"
+                    custom:text="Jelszó módosítása" />
 
-            <com.norbert.koller.shared.customviews.CardButton
-                style="@style/CardBottom"
-                android:id="@+id/cb_devices"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                app:icon="@drawable/devices"
-                app:text="@string/devices"
-                tools:visibility="visible" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_devices"
+                    style="@style/CardBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/devices"
+                    app:text="@string/devices"
+                    tools:visibility="visible" />
 
-    </LinearLayout>
+        </LinearLayout>
 </com.google.android.flexbox.FlexboxLayout>

@@ -9,21 +9,20 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.teacher.activities.CreateOutgoingActivity
 
-class UserOutgoingPermanentFragment(userData: UserData? = null) : com.norbert.koller.shared.fragments.UserOutgoingPermanentFragment(userData) {
+class OutgoingPermanentFragment(userData: UserData? = null) : com.norbert.koller.shared.fragments.OutgoingPermanentFragment(userData) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        val buttonAddNew : Button = view.findViewById(R.id.button_add_new)
 
-        val buttonLayout = buttonAddNew.parent as ViewGroup
-        buttonLayout.visibility = View.VISIBLE
 
-        buttonAddNew.setOnClickListener{
+        addButton(getString(R.string.add_continuous_outgoing)){
             CreateOutgoingActivity.type = CreateOutgoingActivity.PERMANENT
-            CreateOutgoingActivity.userData = userData
+            CreateOutgoingActivity.userData = viewModel.owner
             val intent = Intent(requireContext(), CreateOutgoingActivity::class.java)
             requireContext().startActivity(intent)
         }
+
+        super.onViewCreated(view, savedInstanceState)
+
     }
 
 }
