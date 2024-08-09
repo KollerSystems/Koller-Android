@@ -28,7 +28,7 @@
             android:orientation="vertical">
 
             <com.norbert.koller.shared.customviews.DescriptionButton
-                android:id="@+id/ncb_teacher"
+                android:id="@+id/db_teacher"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipChildren="false"
@@ -39,7 +39,7 @@
                 app:name="@string/teacher" />
 
             <com.norbert.koller.shared.customviews.DescriptionButton
-                android:id="@+id/ncb_classroom"
+                android:id="@+id/db_classroom"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:clipChildren="false"

@@ -21,9 +21,9 @@ interface ProgramFragmentInterface {
     fun findViews(view : View){
         ncwDate = view.findViewById(com.norbert.koller.shared.R.id.ncw_date)
         ncwTime = view.findViewById(com.norbert.koller.shared.R.id.ncw_time)
-        ncbClassroom = view.findViewById(com.norbert.koller.shared.R.id.ncb_classroom)
-        ncbTeacher = view.findViewById(com.norbert.koller.shared.R.id.ncb_teacher)
-        toGeneralButton = view.findViewById(com.norbert.koller.shared.R.id.Button_to_general)
+        ncbClassroom = view.findViewById(com.norbert.koller.shared.R.id.db_classroom)
+        ncbTeacher = view.findViewById(com.norbert.koller.shared.R.id.db_teacher)
+        toGeneralButton = view.findViewById(com.norbert.koller.shared.R.id.button)
     }
 
     fun setViews(response : ProgramData, context : Context){

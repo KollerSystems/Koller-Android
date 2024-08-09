@@ -48,18 +48,10 @@ class ScheduleBsdFragment : BottomSheetDialogFragment() {
             tilTime.editText!!.setText("${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}")
         }
 
-        val buttonSchedule : Button = view.findViewById(R.id.schedule_button)
 
-        buttonSchedule.setOnClickListener{
-            dismiss()
-            requireActivity().finish()
-        }
 
-        fun checkInputsRefreshButton(){
-            buttonSchedule.isEnabled = (tilDate.editText!!.text?.length ?: 0) > 0 && (tilTime.editText!!.text?.length ?: 0) > 0
-        }
 
-        checkInputsRefreshButton()
+
 
         tilDate.editText!!.addTextChangedListener(object : TextWatcher {
 
@@ -68,7 +60,7 @@ class ScheduleBsdFragment : BottomSheetDialogFragment() {
 
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
-                checkInputsRefreshButton()
+
             }
         })
 
@@ -79,7 +71,7 @@ class ScheduleBsdFragment : BottomSheetDialogFragment() {
 
             override fun onTextChanged(s: CharSequence, start: Int,
                                        before: Int, count: Int) {
-                checkInputsRefreshButton()
+
             }
         })
 

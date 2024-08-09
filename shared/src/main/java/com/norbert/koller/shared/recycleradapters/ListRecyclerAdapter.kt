@@ -56,7 +56,6 @@ class ListAdapter (val bottomSheet : ListBsdFragment) : RecyclerView.Adapter<Lis
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
         val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)
-
         (holder.itemView.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,margin,0,margin)
 
         val currentItem = bottomSheet.viewModel.list.value!![position]

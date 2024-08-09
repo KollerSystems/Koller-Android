@@ -6,19 +6,25 @@ import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.norbert.koller.shared.databinding.FragmentBsdMessageBinding
+import com.norbert.koller.shared.databinding.FragmentBsdTitleBinding
 import com.norbert.koller.shared.managers.setupBottomSheet
 
 
 class MessageBsdFragment : BottomSheetDialogFragment() {
 
-
+    lateinit var containerBinding : FragmentBsdTitleBinding
+    lateinit var contentBinding : FragmentBsdMessageBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        return inflater.inflate(R.layout.fragment_bsd_message, container, false)
+        containerBinding = FragmentBsdTitleBinding.inflate(inflater)
+        contentBinding = FragmentBsdMessageBinding.inflate(inflater)
+        containerBinding.scrollView.addView(contentBinding.root)
+        return containerBinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

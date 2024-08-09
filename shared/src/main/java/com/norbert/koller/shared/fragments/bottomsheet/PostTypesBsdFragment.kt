@@ -10,15 +10,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 class PostTypesBsdFragment : BottomSheetDialogFragment() {
 
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
 
-
-        return inflater.inflate(R.layout.fragment_bsd_post_types, container, false)
-    }
 
 
 

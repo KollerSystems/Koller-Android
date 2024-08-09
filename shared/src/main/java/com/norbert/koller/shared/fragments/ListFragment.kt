@@ -267,10 +267,17 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         }
 
 
-        searchBar.getEditText().setOnFocusChangeListener{focusedView, isFocused ->
-            if(isFocused){
-                viewModel.filtersShown.value = true
+        if(binding.chipsFilter.childCount != 0) {
+
+
+            searchBar.getEditText().setOnFocusChangeListener { focusedView, isFocused ->
+                if (isFocused) {
+                    viewModel.filtersShown.value = true
+                }
             }
+        }
+        else{
+            searchBar.getEditText().hint = getString(R.string.search)
         }
 
         closeButton.setOnClickListener{

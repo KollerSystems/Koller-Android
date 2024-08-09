@@ -1,39 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragments.bottomsheet.ListBsdFragment">
+    tools:context=".fragments.bottomsheet.ListBsdFragment"
+    android:id="@+id/ly"
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ly"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/HeaderCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <com.google.android.material.card.MaterialCardView
-            style="@style/HeaderCard"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.card.MaterialCardView>
+        android:background="?attr/colorSurfaceDim"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/card_margin"
+        android:paddingBottom="@dimen/card_margin"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/item_check_box" />
 
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingTop="@dimen/card_margin"
-            android:paddingBottom="@dimen/card_margin"
-            android:scrollbars="vertical"
-            tools:listitem="@layout/item_check_box" />
-
-    </LinearLayout>
-
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

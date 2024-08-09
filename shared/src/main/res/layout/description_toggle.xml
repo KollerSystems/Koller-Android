@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    android:padding="2.5dp"
+    android:padding="@dimen/text_container_margin"
     android:visibility="visible">
 
     <TextView
@@ -17,8 +17,8 @@
 
     <ImageView
         android:id="@+id/room_order_fragment_image_windows"
-        android:layout_width="18dp"
-        android:layout_height="match_parent"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
         android:layout_weight="0"
         android:src="@drawable/check_thick"
         app:tint="?attr/colorPrimary" />

@@ -121,20 +121,6 @@ class CreateNewPostActivity : AppCompatActivity() {
 
             dialog.show(supportFragmentManager, PostTypesBsdFragment.TAG)
 
-            tilType.post(Runnable {
-                dialog.requireView().findViewById<View>(R.id.post_type_ly_post).setOnClickListener{
-                    tilType.editText!!.setText(getString(R.string.general_post))
-                    dialog.dismiss()
-                }
-                dialog.requireView().findViewById<View>(R.id.post_type_ly_program).setOnClickListener{
-                    tilType.editText!!.setText(getString(R.string.program))
-                    dialog.dismiss()
-                }
-                dialog.requireView().findViewById<View>(R.id.post_type_ly_news).setOnClickListener{
-                    tilType.editText!!.setText(getString(R.string.news_one))
-                    dialog.dismiss()
-                }
-            })
 
         }
 

@@ -585,6 +585,7 @@
         <item name="shapeAppearance">@style/OverlayRoundedCardTop</item>
         <item name="android:layout_marginBottom">@dimen/card_margin</item>
         <item name="android:layout_marginTop">@dimen/text_container_margin</item>
+
     </style>
     <style name="CardMiddle" parent="@style/Card">
         <item name="android:layout_marginVertical">@dimen/card_margin</item>
@@ -600,9 +601,11 @@
         <item name="android:layout_marginVertical">@dimen/text_container_margin</item>
     </style>
 
-    <style name="CardHeader" parent="Card">
+    <style name="CardHeader" parent="@style/Card">
         <item name="android:layout_margin">0dp</item>
         <item name="contentPadding">0dp</item>
+        <item name="cardBackgroundColor">?attr/colorSurfaceContainer</item>
+        <item name="shapeAppearance">@style/OverlayLargeRoundedCardTop</item>
     </style>
 
     <style name="MainCard" parent="@style/SimpleCard">

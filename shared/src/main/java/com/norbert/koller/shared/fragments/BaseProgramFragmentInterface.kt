@@ -15,7 +15,7 @@ interface BaseProgramFragmentInterface : ProgramFragmentInterface {
     override fun findViews(view : View){
 
         super.findViews(view)
-        ncbClass = view.findViewById(com.norbert.koller.shared.R.id.ncb_class)
+        ncbClass = view.findViewById(com.norbert.koller.shared.R.id.db_class)
     }
 
     override fun setViews(response : ProgramData, context : Context){

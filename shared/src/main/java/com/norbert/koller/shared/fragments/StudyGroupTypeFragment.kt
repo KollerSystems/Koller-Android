@@ -3,7 +3,6 @@ package com.norbert.koller.shared.fragments
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.DescriptionButton
 import com.norbert.koller.shared.customviews.DescriptionView
@@ -53,8 +52,8 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        ncbClassroom = view.findViewById(R.id.ncb_classroom)
-        ncbTeacher = view.findViewById(R.id.ncb_teacher)
+        ncbClassroom = view.findViewById(R.id.db_classroom)
+        ncbTeacher = view.findViewById(R.id.db_teacher)
 
         ncwMonday = view.findViewById(R.id.ncw_monday)
         ncwTuesday = view.findViewById(R.id.ncw_tuesday)

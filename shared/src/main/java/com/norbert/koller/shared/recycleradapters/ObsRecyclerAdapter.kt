@@ -69,6 +69,7 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
             holder.iconRight.visibility = VISIBLE
             if(currentItem.iconRight != null) {
                 holder.iconRight.background = currentItem.iconRight
+                holder.iconRight.text = null
                 val marginEnd = context.resources.getDimensionPixelSize(R.dimen.text_container_margin)
                 val layoutParams = holder.iconRight.layoutParams as MarginLayoutParams
                 layoutParams.height = ApplicationManager.convertDpToPixel(35, context)
@@ -76,7 +77,17 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
                 layoutParams.marginEnd = marginEnd
                 holder.iconRight.layoutParams = layoutParams
             }
-            holder.iconRight.text = currentItem.charRight
+            else{
+                holder.iconRight.text = currentItem.charRight
+                holder.iconRight.background = null
+                val size = context.resources.getDimensionPixelSize(R.dimen.card_icon)
+                val layoutParams = holder.iconRight.layoutParams as MarginLayoutParams
+                layoutParams.height = size
+                layoutParams.width = size
+                layoutParams.marginEnd = 0
+                holder.iconRight.layoutParams = layoutParams
+            }
+
         }
         else{
             holder.iconRight.visibility = GONE

@@ -42,7 +42,7 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheet
 
         val textTitle : TextView = view.findViewById(R.id.text_title)
         val imageState : ImageView = view.findViewById(R.id.image_state)
-        val ncwState : DescriptionView = view.findViewById(R.id.ncw_state)
+        val ncwState : DescriptionView = view.findViewById(R.id.db_state)
         findViews(view)
 
         toGeneralButton.isVisible = true

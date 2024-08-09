@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/CardHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        app:cardCornerRadius="@null"
+        app:shapeAppearance="@style/OverlayRoundedCardTop">
+
+        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/full_card_padding"
+            android:text="@string/title"
+            android:textAppearance="@style/Title" />
+    </com.google.android.material.card.MaterialCardView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="0"
+        android:background="?attr/colorSurfaceDim" />
+
+</LinearLayout>
