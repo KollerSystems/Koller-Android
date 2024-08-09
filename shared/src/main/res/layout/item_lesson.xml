@@ -18,17 +18,16 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/lesson_text_index"
+            android:id="@+id/text_index"
             style="@style/Title"
             android:layout_width="@dimen/card_icon"
-            android:layout_height="@dimen/card_icon"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginEnd="@dimen/spacing"
-            android:autoSizeMinTextSize="1sp"
-            android:autoSizeTextType="uniform"
-            android:gravity="center"
-            android:maxLines="1"
+            android:gravity="center_horizontal"
             android:text="1"
-            android:textSize="@null"
+            android:textAlignment="center"
+            android:textSize="40sp"
             tools:ignore="HardcodedText" />
 
         <LinearLayout
@@ -42,51 +41,60 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/lesson_text_title"
+                android:id="@+id/text_title"
                 style="@style/Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_marginBottom="@dimen/spacing"
                 android:text="Online Marketing • Szakkör" />
 
             <com.norbert.koller.shared.customviews.DescriptionView
-                android:id="@+id/ncw_state"
+                android:id="@+id/db_state"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 app:detail="-"
                 app:icon="@drawable/question_box"
-                app:name="@string/state"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                app:name="@string/place_room" />
 
             <com.norbert.koller.shared.customviews.DescriptionButton
-                android:id="@+id/ncb_classroom"
+                android:id="@+id/db_classroom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 app:detail="-"
                 app:icon="@drawable/room"
-                app:name="@string/classroom"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                app:name="@string/classroom" />
 
             <com.norbert.koller.shared.customviews.DescriptionButton
-                android:id="@id/ncb_class"
+                android:id="@id/db_class"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:visibility="gone"
                 app:detail="-"
                 app:icon="@drawable/groups"
                 app:name="@string/class_"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
                 tools:visibility="visible" />
 
             <com.norbert.koller.shared.customviews.DescriptionButton
-                android:id="@+id/ncb_teacher"
+                android:id="@+id/db_teacher"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clipChildren="false"
+                android:clipToPadding="false"
                 app:detail="-"
                 app:icon="@drawable/user"
-                app:name="@string/teacher"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                app:name="@string/teacher">
 
             </com.norbert.koller.shared.customviews.DescriptionButton>
 
             <Button
-                android:id="@id/Button_to_general"
+                android:id="@id/button"
                 style="@style/CardButton"
                 app:cornerRadius="@dimen/card_corner_radius"
                 app:icon="@drawable/arrow_right"
@@ -112,6 +120,7 @@
 
             <TextView
 
+                android:id="@+id/text_from"
                 style="@style/Description"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
@@ -120,6 +129,7 @@
 
             <TextView
 
+                android:id="@+id/text_to"
                 style="@style/Description"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

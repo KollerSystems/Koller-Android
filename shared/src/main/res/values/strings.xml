@@ -390,4 +390,5 @@
     <string name="too_low_char_id">You entered less than 11 numbers!</string>
     <string name="too_much_char_id">You have entered more than 11 numbers!</string>
     <string name="app_name_base" translatable="false">Koller</string>
+    <string name="minutes">minutes</string>
 </resources>
