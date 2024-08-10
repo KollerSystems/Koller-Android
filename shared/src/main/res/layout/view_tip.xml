@@ -5,14 +5,18 @@
     android:layout_height="wrap_content"
     app:cardBackgroundColor="?attr/colorSecondaryContainer">
 
-    <Button
-        android:id="@+id/button_close"
-        style="@style/IconButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end|top"
-        android:layout_margin="@dimen/text_container_margin"
-        app:icon="@drawable/close_thick" />
+    <ImageView
+        android:id="@+id/image_icon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="-10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="-10dp"
+        android:adjustViewBounds="false"
+        android:alpha="0.05"
+        android:scaleType="fitStart"
+        app:srcCompat="@drawable/lamp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -37,17 +41,13 @@
             android:textAppearance="@style/Title" />
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/image_icon"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="-10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="-10dp"
-        android:adjustViewBounds="false"
-        android:alpha="0.05"
-        android:scaleType="fitStart"
-        app:srcCompat="@drawable/lamp" />
+    <Button
+        android:id="@+id/button_close"
+        style="@style/IconButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|top"
+        android:layout_margin="@dimen/text_container_margin"
+        app:icon="@drawable/close_thick" />
 
 </com.google.android.material.card.MaterialCardView>
