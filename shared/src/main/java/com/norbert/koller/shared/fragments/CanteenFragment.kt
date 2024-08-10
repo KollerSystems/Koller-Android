@@ -33,13 +33,15 @@ class CanteenFragment : FragmentInMainActivity() {
         canteenRecyclerView.setHasFixedSize(true)
 
         canteenDataArrayList = arrayListOf(
-            CanteenData(1,"Reggeli", "6:00 - 8:45", "Száraz kenyér", Date()),
-            CanteenData(1,"Ebéd", "13:00 - 15:45", "Zöccség leves és Polipos genyó", Date()),
-            CanteenData(1,"Vacsora", "19:15 - 19:45", "Száraz kenyér", Date())
+            CanteenData(1,0, "6:00 - 8:45", "Száraz kenyér", Date()),
+            CanteenData(1,1, "13:00 - 15:45", "Zöccség leves és Polipos genyó", Date()),
+            CanteenData(1,2, "19:15 - 19:45", "Száraz kenyér", Date())
         )
 
         canteenRecyclerView.adapter = CanteenRecyclerAdapter(canteenDataArrayList)
 
         return view
     }
+
+
 }

@@ -12,12 +12,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.activities.ManageAccountActivity
+import com.norbert.koller.shared.activities.ManageAccountFragment
 import com.norbert.koller.shared.data.DevData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileFooterBinding
 import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingsFragment
+import com.norbert.koller.shared.fragments.PersonalDataFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.setupBottomSheet
@@ -25,7 +26,7 @@ import com.norbert.koller.shared.recycleradapters.DevRecyclerAdapter
 import kotlinx.coroutines.launch
 
 
-abstract class ProfileBsdFragment : BottomSheetDialogFragment() {
+abstract class ProfileBsdFragment : ScrollBsdFragment() {
 
     abstract fun getHeaderBinding() : ContentFragmentBsdProfileHeaderBinding
     abstract fun getFooterBinding() : ContentFragmentBsdProfileFooterBinding
@@ -79,9 +80,8 @@ abstract class ProfileBsdFragment : BottomSheetDialogFragment() {
 
         getHeaderBinding().btnManageAccount.setOnClickListener{
 
-
-            val intent = Intent(view.context, ManageAccountActivity::class.java)
-            startActivity(intent)
+            (context as MainActivity).addFragment(ManageAccountFragment())
+            this.dismiss()
         }
 
         getHeaderBinding().cbRoom.setOnClickListener{

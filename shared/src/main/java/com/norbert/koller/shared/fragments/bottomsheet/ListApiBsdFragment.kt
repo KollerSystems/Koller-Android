@@ -17,7 +17,7 @@ import com.norbert.koller.shared.viewmodels.ListApiBsdFragmentViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var key : String? = null) : ListBsdFragment(alreadyChecked) {
+class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var key : String? = null, private val filterName : Int? = null) : ListBsdFragment(alreadyChecked, filterName) {
 
 
     fun apiViewModel() : ListApiBsdFragmentViewModel{
@@ -25,10 +25,6 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
     }
 
     var progressBar : ProgressBar? = null
-
-
-
-
 
     override fun toggleList(): Boolean {
         return viewModel.getValuesOnFinish != null
@@ -63,7 +59,7 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
             val mlp = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
             mlp.setMargins(margin,margin,margin,margin)
             progressBar!!.layoutParams = mlp
-            (binding.recyclerView.parent as ViewGroup).addView(progressBar)
+            getRoot().addView(progressBar)
         }
 
         viewModel.list.observe(this){
@@ -74,14 +70,11 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
             }
             else{
                 if(progressBar != null){
-                    (binding.recyclerView.parent as ViewGroup).removeView(progressBar)
+                    getRoot().removeView(progressBar)
                 }
                 setRecyclerView()
             }
         }
-
-
-
     }
 
 }

@@ -208,7 +208,7 @@
                         style="@style/Title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Foglalkozások időkerete" />
+                        android:text="@string/time_of_occupations" />
 
                     <TextView
 

@@ -1,37 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/BottomSheetMainLayout"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/HeaderCard">
-
-            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.card.MaterialCardView>
-
-        <androidx.core.widget.NestedScrollView
-            style="@style/NestedScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:orientation="vertical"
+    android:paddingTop="@dimen/card_padding"
                 android:paddingStart="@dimen/full_card_padding"
                 android:paddingEnd="@dimen/full_card_padding"
                 android:paddingBottom="0dp">
@@ -50,8 +25,3 @@
 
 
             </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-
-    </LinearLayout>
-
-</com.google.android.material.card.MaterialCardView>

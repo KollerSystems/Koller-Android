@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -23,14 +24,9 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/full_card_padding"
             android:text="@string/title"
-            android:textAppearance="@style/Title" />
+            android:textAppearance="@style/Title"
+            android:visibility="gone"
+            tools:visibility="visible" />
     </com.google.android.material.card.MaterialCardView>
-
-    <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="0"
-        android:background="?attr/colorSurfaceDim" />
 
 </LinearLayout>

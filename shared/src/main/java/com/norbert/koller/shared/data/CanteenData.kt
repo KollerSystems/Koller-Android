@@ -10,7 +10,7 @@ import java.util.Locale
 
 class CanteenData (
     @SerializedName("ID") var id : Int,
-    @SerializedName("Category") var category : String,
+    @SerializedName("Category") var category : Int,
     @SerializedName("Time") var time : String,
     @SerializedName("FoodName") var foodName : String,
     @SerializedName("Date") val date: Date

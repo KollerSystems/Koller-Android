@@ -11,25 +11,18 @@ import com.norbert.koller.shared.databinding.FragmentBsdTitleBinding
 import com.norbert.koller.shared.managers.setupBottomSheet
 
 
-class MessageBsdFragment : BottomSheetDialogFragment() {
+class MessageBsdFragment : ScrollBsdFragment() {
 
-    lateinit var containerBinding : FragmentBsdTitleBinding
     lateinit var contentBinding : FragmentBsdMessageBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        containerBinding = FragmentBsdTitleBinding.inflate(inflater)
+    override fun getContent(inflater: LayoutInflater): ViewGroup {
         contentBinding = FragmentBsdMessageBinding.inflate(inflater)
-        containerBinding.scrollView.addView(contentBinding.root)
-        return containerBinding.root
+        return contentBinding.root
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog!!.setupBottomSheet()
+        setTitle("Igazgatói dícséret")
     }
 
     companion object {

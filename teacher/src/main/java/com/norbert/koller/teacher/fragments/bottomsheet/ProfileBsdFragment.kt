@@ -13,18 +13,6 @@ class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.Profi
 
     lateinit var binding : FragmentBsdProfileBinding
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-
-        super.onCreateView(inflater, container, savedInstanceState)
-        binding = FragmentBsdProfileBinding.inflate(layoutInflater)
-        return binding.root
-
-    }
-
     override fun getHeaderBinding(): ContentFragmentBsdProfileHeaderBinding {
         return binding.header
     }
@@ -35,6 +23,11 @@ class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.Profi
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun getContent(inflater: LayoutInflater): ViewGroup {
+        binding = FragmentBsdProfileBinding.inflate(layoutInflater)
+        return binding.root
     }
 
 }

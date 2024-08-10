@@ -12,4 +12,5 @@
     <string name="create_new_x_outgoing_last_part">outgoing</string>
 
     <string name="students_in_studygroup">Students in the studygroup</string>
+    <string name="edit_user">Felhasználó szerkesztése</string>
 </resources>

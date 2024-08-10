@@ -23,7 +23,7 @@ class SearchView : MaterialCardView {
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
     constructor(context: Context?) : super(context!!)
 
-    private lateinit var binding : ViewSearchBinding
+    private val binding = ViewSearchBinding.inflate(LayoutInflater.from(context), this, true)
 
     fun getEditText() : EditText{
         return binding.et
@@ -35,21 +35,21 @@ class SearchView : MaterialCardView {
 
     init {
 
-        binding = ViewSearchBinding.inflate(LayoutInflater.from(context), this, true)
-
         this.radius = 9999f
 
         binding.et.doOnTextChanged{_,_,_,_->
             binding.btn.setVisibilityBy(!binding.et.text.isNullOrEmpty())
+        }
+
+        binding.btn.setOnClickListener{
+            binding.et.setText("")
         }
     }
 
     override fun onFinishInflate() {
         super.onFinishInflate()
 
-        binding.btn.setOnClickListener{
-            binding.et.setText("")
-        }
+
     }
 
 }

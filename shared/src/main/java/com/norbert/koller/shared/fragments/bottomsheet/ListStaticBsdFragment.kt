@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.ListStaticBsdFragmentViewModel
 
-class ListStaticBsdFragment(var list : ArrayList<ListItem>? = null, alreadyChecked : ArrayList<String>? = null) : ListBsdFragment(alreadyChecked) {
+class ListStaticBsdFragment(var list : ArrayList<ListItem>? = null, alreadyChecked : ArrayList<String>? = null, private val filterName : Int? = null) : ListBsdFragment(alreadyChecked, filterName) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 

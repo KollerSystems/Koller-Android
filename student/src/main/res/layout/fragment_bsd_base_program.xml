@@ -6,57 +6,6 @@
     style="@style/BottomSheetMainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-    <com.google.android.material.card.MaterialCardView
-        style="@style/CardHeader"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/drag_handle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:padding="@dimen/card_padding">
-
-            <TextView
-                android:id="@+id/text_title"
-                style="@style/Title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="1"
-                android:padding="@dimen/text_container_margin"
-                android:text="@string/title" />
-
-            <ImageView
-                android:id="@+id/image_state"
-                style="@style/Icon"
-                android:layout_width="@dimen/card_icon"
-                android:layout_height="@dimen/card_icon"
-                android:layout_gravity="center"
-                android:layout_marginStart="@dimen/spacing"
-                android:adjustViewBounds="true"
-                android:gravity="center_vertical"
-                android:visibility="gone"
-                app:srcCompat="@drawable/x_circle"
-                tools:visibility="visible" />
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
         android:background="?attr/colorSurfaceDim"
         android:clipChildren="false"
         android:clipToPadding="false"
@@ -130,5 +79,3 @@
             custom:iconGravity="textEnd"
             tools:visibility="visible" />
     </LinearLayout>
-
-</LinearLayout>

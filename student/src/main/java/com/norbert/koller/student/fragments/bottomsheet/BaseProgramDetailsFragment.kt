@@ -15,9 +15,11 @@ import com.norbert.koller.student.R
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.fragments.BaseProgramFragmentInterface
+import com.norbert.koller.shared.fragments.bottomsheet.ScrollBsdFragment
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.norbert.koller.student.databinding.FragmentBsdBaseProgramBinding
 
-class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomSheetDialogFragment(), BaseProgramFragmentInterface {
+class BaseProgramDetailsFragment(val program : ProgramData? = null) : ScrollBsdFragment(), BaseProgramFragmentInterface {
 
     override lateinit var ncwDate: DescriptionView
     override lateinit var ncwTime: DescriptionView
@@ -26,21 +28,17 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
     override lateinit var ncbTeacher: DescriptionButton
     override lateinit var toGeneralButton: View
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bsd_base_program, container, false)
-    }
+    lateinit var binding : FragmentBsdBaseProgramBinding
 
     lateinit var viewModel : ResponseViewModel
+    override fun getContent(inflater: LayoutInflater): ViewGroup {
+        binding = FragmentBsdBaseProgramBinding.inflate(inflater)
+        return binding.root
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val textTitle : TextView = view.findViewById(R.id.text_title)
-        val imageState : ImageView = view.findViewById(R.id.image_state)
         val ncwState : DescriptionView = view.findViewById(R.id.db_state)
 
         findViews(view)
@@ -55,7 +53,7 @@ class BaseProgramDetailsFragment(val program : ProgramData? = null) : BottomShee
 
             setViews(response, requireContext())
             ncwState.visibility = GONE
-            textTitle.text = response.topic
+            setTitle(response.topic)
 
             ncbClass.getTextDescription().setOnClickListener{
                 classClick(response, requireContext())

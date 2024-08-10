@@ -380,4 +380,8 @@
     <string name="change_password">Jelszó módosítása</string>
     <string name="base_program">Alapprogram</string>
     <string name="minutes">perc</string>
+    <string name="time_of_occupations">Foglalkozások időkerete</string>
+    <string name="breakfast">Reggeli</string>
+    <string name="lunch">Ebéd</string>
+    <string name="dinner">Vacsora</string>
 </resources>

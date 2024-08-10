@@ -12,14 +12,11 @@ import android.view.WindowManager
 import android.widget.FrameLayout
 import androidx.core.widget.doOnTextChanged
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.databinding.FragmentBsdListBinding
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ListAdapter
 import com.norbert.koller.shared.viewmodels.ListBsdFragmentViewModel
 
-abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) : BottomSheetDialogFragment() {
-
-    lateinit var binding : FragmentBsdListBinding
+abstract class ListBsdFragment(private var alreadyChecked : ArrayList<String>? = null, private val filterName : Int? = null) : RecyclerBsdFragment() {
 
     var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
 
@@ -35,18 +32,9 @@ abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) :
     fun setRecyclerView(){
 
         adapter = ListAdapter(this@ListBsdFragment)
-        binding.recyclerView.adapter = adapter
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.setHasFixedSize(true)
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        binding = FragmentBsdListBinding.inflate(layoutInflater)
-        return binding.root
+        getRecyclerView().adapter = adapter
+        getRecyclerView().layoutManager = LinearLayoutManager(context)
+        getRecyclerView().setHasFixedSize(true)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,10 +45,15 @@ abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) :
                 viewModel.getValuesOnFinish = getValuesOnFinish
             }
             viewModel.collapseText = collapseText
+            viewModel.filterName = filterName
 
         }
         else{
             dismiss()
+        }
+
+        if(viewModel.filterName != null) {
+            setTitle(getString(viewModel.filterName!!))
         }
 
         viewModel.list.observe(this){
@@ -98,7 +91,7 @@ abstract class ListBsdFragment(var alreadyChecked : ArrayList<String>? = null) :
 
             frameLayout.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
 
-            binding.ly.addView(frameLayout, 1)
+            getRoot().addView(frameLayout, 1)
             frameLayout.addView(searchView)
 
             searchView.getEditText().doOnTextChanged { text, start, before, count ->

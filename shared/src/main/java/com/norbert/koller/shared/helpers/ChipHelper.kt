@@ -161,7 +161,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListApiBsdFragment(getValues, viewModel.filters[filterName], tag)
+        val dialog = ListApiBsdFragment(getValues, viewModel.filters[filterName], tag, localizedFilterId)
         dialog.collapseText = collapseText
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
@@ -193,7 +193,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListStaticBsdFragment(arrayList, viewModel.filters[filterName])
+        val dialog = ListStaticBsdFragment(arrayList, viewModel.filters[filterName], localizedFilterId)
 
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)

@@ -1,67 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@null"
+    android:orientation="vertical"
+    android:paddingStart="@dimen/full_card_padding"
+    android:paddingEnd="@dimen/full_card_padding"
+    android:paddingBottom="0dp"
+    android:paddingTop="@dimen/card_padding">
 
-    <LinearLayout
+
+    <include
+        android:id="@+id/header"
+        layout="@layout/content_fragment_bsd_profile_header" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/cb_outgoing"
+        style="@style/CardMiddle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/HeaderCard">
-
-            <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.card.MaterialCardView>
+        app:icon="@drawable/wave"
+        app:text="@string/user_outgoings" />
 
 
-        <androidx.core.widget.NestedScrollView
-            style="@style/NestedScrollView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <include
+        android:id="@+id/footer"
+        layout="@layout/content_fragment_bsd_profile_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 
-            <LinearLayout
-                style="@style/MainLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@null"
-                android:orientation="vertical"
-                android:paddingStart="@dimen/full_card_padding"
-                android:paddingEnd="@dimen/full_card_padding"
-                android:paddingBottom="0dp">
-
-
-                <include
-                    android:id="@+id/header"
-                    layout="@layout/content_fragment_bsd_profile_header" />
-
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_outgoing"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/wave"
-                    app:text="@string/user_outgoings" />
-
-
-                <include
-                    android:id="@+id/footer"
-                    layout="@layout/content_fragment_bsd_profile_footer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-
-            </LinearLayout>
-        </androidx.core.widget.NestedScrollView>
-
-    </LinearLayout>
-
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>

@@ -38,54 +38,18 @@
                     android:text="@string/unknown"
                     android:textAppearance="@style/MainTitle" />
 
-                <TextView
-                    style="@style/CategoryCardNameBald"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Személyes adatok kezelése" />
 
                 <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_student"
+                    android:id="@+id/cb_personal_data"
                     style="@style/CardTop"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:icon="@drawable/user"
-                    app:text="Te / Tanuló" />
-
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_caretaker"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/parent"
-                    app:text="Gondviselő" />
-
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_close_relative"
-                    style="@style/CardMiddle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/close_person"
-                    app:text="Közeli rokon" />
-
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_school"
-                    style="@style/CardBottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/building"
-                    app:text="@string/school" />
-
-
-                <TextView
-                    style="@style/CategoryCardNameBald"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Biztonság" />
+                    app:icon="@drawable/data"
+                    app:text="@string/personal_data" />
 
                 <com.norbert.koller.shared.customviews.CardButton
                     android:id="@+id/cb_password"
-                    style="@style/CardSingle"
+                    style="@style/CardBottom"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     custom:icon="@drawable/key"

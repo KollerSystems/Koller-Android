@@ -5,37 +5,55 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CanteenData
+import com.norbert.koller.shared.databinding.ItemCanteenBinding
+import com.norbert.koller.shared.fragments.bottomsheet.CanteenBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.LessonsBsdFragment
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
-class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) : RecyclerView.Adapter<CanteenRecyclerAdapter.CanteenViewHolder>() {
+class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) : RecyclerView.Adapter<CanteenRecyclerAdapter.ViewHolder>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CanteenViewHolder {
-        val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_canteen, parent, false)
-        return CanteenViewHolder(itemView)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val binding = ItemCanteenBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: CanteenViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
-
+        RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, position, canteenList.size)
 
         val currentItem = canteenList[position]
-        holder.category.text = currentItem.category
-        holder.time.text = currentItem.time
-        holder.foodName.text = currentItem.foodName
+        holder.itemBinding.textTime.text = currentItem.time
+        holder.itemBinding.textTitle.text = currentItem.foodName
+        val context = holder.itemView.context
+        when(currentItem.category){
+            0 ->{
+                holder.itemBinding.textCategory.text = context.getString(R.string.breakfast)
+                holder.itemBinding.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.breakfast))
+            }
+            1 ->{
+                holder.itemBinding.textCategory.text = context.getString(R.string.lunch)
+                holder.itemBinding.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.lunch))
+            }
+            2 ->{
+                holder.itemBinding.textCategory.text = context.getString(R.string.dinner)
+                holder.itemBinding.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.dinner))
+            }
+        }
+
+        holder.itemView.setOnClickListener{
+            val dialog = CanteenBsdFragment(currentItem)
+            dialog.show((holder.itemView.context as AppCompatActivity).supportFragmentManager, CanteenBsdFragment.TAG)
+        }
     }
 
     override fun getItemCount(): Int {
         return canteenList.size
     }
 
-    class CanteenViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-        val category : TextView = itemView.findViewById(R.id.canteen_text_category)
-        val time : TextView = itemView.findViewById(R.id.canteen_text_time)
-        val foodName : TextView = itemView.findViewById(R.id.canteen_text_food_name)
-        val image : ImageView = itemView.findViewById(R.id.canteen_image)
-    }
-
+    class ViewHolder(val itemBinding: ItemCanteenBinding) : RecyclerView.ViewHolder(itemBinding.root)
 }

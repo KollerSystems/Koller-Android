@@ -17,9 +17,11 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.fragments.ProgramFragmentInterface
+import com.norbert.koller.shared.fragments.bottomsheet.ScrollBsdFragment
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.norbert.koller.student.databinding.FragmentBsdBaseProgramBinding
 
-class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheetDialogFragment(), ProgramFragmentInterface {
+class StudyGroupDetailsFragment(val program : ProgramData? = null) : ScrollBsdFragment(), ProgramFragmentInterface {
 
     override lateinit var ncwDate: DescriptionView
     override lateinit var ncwTime: DescriptionView
@@ -27,12 +29,10 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheet
     override lateinit var ncbTeacher: DescriptionButton
     override lateinit var toGeneralButton: View
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bsd_base_program, container, false)
+    lateinit var binding : FragmentBsdBaseProgramBinding
+    override fun getContent(inflater: LayoutInflater): ViewGroup {
+        binding = FragmentBsdBaseProgramBinding.inflate(inflater)
+        return binding.root
     }
 
     lateinit var viewModel : ResponseViewModel
@@ -40,8 +40,6 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheet
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val textTitle : TextView = view.findViewById(R.id.text_title)
-        val imageState : ImageView = view.findViewById(R.id.image_state)
         val ncwState : DescriptionView = view.findViewById(R.id.db_state)
         findViews(view)
 
@@ -60,7 +58,7 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : BottomSheet
             setViews(response, requireContext())
             ncwState.visibility = GONE
 
-            textTitle.text = response.topic
+            setTitle(response.topic)
 
 
             ncbTeacher.getTextDescription().setOnClickListener{
