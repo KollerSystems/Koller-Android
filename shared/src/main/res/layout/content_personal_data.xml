@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?android:attr/windowBackground"
     android:orientation="vertical">
 
     <LinearLayout
@@ -379,7 +380,6 @@
     </LinearLayout>
 
 
-
     <com.google.android.material.card.MaterialCardView
         style="@style/CardTop"
         android:layout_width="match_parent"
@@ -587,7 +587,6 @@
             android:layout_marginBottom="@dimen/n_text_container_margin"
             app:icon="@drawable/pencil" />
     </LinearLayout>
-
 
 
     <com.google.android.material.card.MaterialCardView

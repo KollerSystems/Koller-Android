@@ -4,13 +4,12 @@
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/BottomSheetMainLayout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/colorSurfaceDim"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:padding="@dimen/application_padding">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:padding="@dimen/application_padding">
 
         <com.norbert.koller.shared.customviews.DescriptionView
             android:id="@+id/db_state"
@@ -78,4 +77,4 @@
             custom:icon="@drawable/arrow_right"
             custom:iconGravity="textEnd"
             tools:visibility="visible" />
-    </LinearLayout>
+</LinearLayout>

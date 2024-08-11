@@ -23,7 +23,7 @@ abstract class BsdFragment : BottomSheetDialogFragment() {
         // Inflate the layout for this fragment
         binding = FragmentBsdTitleBinding.inflate(layoutInflater)
         viewGroup = getContentHolder(inflater)
-        viewGroup.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurfaceDim))
+        viewGroup.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurface))
         binding.root.addView(viewGroup)
         return binding.root
     }

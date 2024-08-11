@@ -5,7 +5,7 @@
     style="@style/BottomSheetMainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/colorSurfaceDim"
+    android:background="?attr/colorSurface"
     android:clipChildren="false"
     android:clipToPadding="false"
     android:orientation="vertical"
