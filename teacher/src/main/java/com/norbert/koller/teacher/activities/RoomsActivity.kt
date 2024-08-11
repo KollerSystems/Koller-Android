@@ -15,24 +15,29 @@ import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
+import com.norbert.koller.teacher.databinding.ActivityRoomsBinding
 
 abstract class RoomsActivity : AppCompatActivity() {
 
-    lateinit var viewPager : ViewPager2
-    lateinit var tabLayout : TabLayout
+    lateinit var contentBinding : ActivityRoomsBinding
 
-    lateinit var buttonPublishAll : Button
-    lateinit var buttonMore : Button
+    fun setTitle(title : String){
+        contentBinding.toolbar.title = title
+    }
 
-    lateinit var collapsingToolbarLayout: CollapsingToolbarLayout
+    fun getViewPager() : ViewPager2{
+        return contentBinding.viewPager
+    }
 
-
+    fun getTabLayout() : TabLayout{
+        return contentBinding.tabLayout
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_rooms)
 
-
+        contentBinding = ActivityRoomsBinding.inflate(layoutInflater)
+        setContentView(contentBinding.root)
 
         val callback = this.onBackPressedDispatcher.addCallback(
             owner = this,
@@ -53,12 +58,6 @@ abstract class RoomsActivity : AppCompatActivity() {
                 .show()
         }
 
-        viewPager  = findViewById(R.id.view_pager)
-        tabLayout = findViewById(R.id.tab_layout)
-        collapsingToolbarLayout = findViewById(R.id.collapsing_toolbar)
-
-
-
         val appBar : AppBarLayout = findViewById(R.id.app_bar)
 
         appBar.setup()
@@ -69,10 +68,8 @@ abstract class RoomsActivity : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-        buttonPublishAll = findViewById(R.id.button_publish_all)
-        buttonMore = findViewById(R.id.button_more)
 
-        buttonPublishAll.setOnClickListener{
+        contentBinding.manageBar.button.setOnClickListener{
             MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.are_you_sure_publish_all_grade))
                 .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
@@ -84,7 +81,7 @@ abstract class RoomsActivity : AppCompatActivity() {
                 .show()
         }
 
-        buttonMore.setOnClickListener{
+        /*buttonMore.setOnClickListener{
             val dialog = ListStaticBsdFragment(arrayListOf(
                 ListItem(getString(com.norbert.koller.shared.R.string.delete_all), null, AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.close), null, {
                     MaterialAlertDialogBuilder(this)
@@ -98,9 +95,6 @@ abstract class RoomsActivity : AppCompatActivity() {
                         .show()
                 })))
             dialog.show(supportFragmentManager, ListBsdFragment.TAG)
-
-        }
-
+        }*/
     }
-
 }

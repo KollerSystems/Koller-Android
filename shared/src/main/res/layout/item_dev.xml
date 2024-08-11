@@ -2,7 +2,6 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/profile_card_marci"
-    style="@style/Card"
     android:layout_width="180dp"
     android:layout_height="match_parent"
     android:clickable="true"

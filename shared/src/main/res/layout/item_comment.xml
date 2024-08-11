@@ -1,87 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    style="@style/Card"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/card_full_margin"
     android:clickable="true"
     app:contentPadding="0dp">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:clipChildren="false"
-        android:clipToPadding="false">
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:padding="@dimen/card_padding">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/comment_pfp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/circle"
+            android:backgroundTint="?attr/colorPrimaryContainer"
+            android:clickable="true"
+            android:scaleType="centerInside"
+            app:shapeAppearanceOverlay="@style/RoundImageView"
+            app:srcCompat="@drawable/norbert" />
 
         <LinearLayout
-            android:id="@+id/linearLayout3"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing"
+            android:layout_marginTop="@dimen/text_container_margin"
+            android:layout_marginEnd="@dimen/text_container_margin"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            android:layout_weight="1"
             android:clipChildren="false"
             android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:padding="@dimen/card_padding"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:orientation="vertical">
 
-            <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/comment_pfp"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:background="@drawable/circle"
-                android:backgroundTint="?attr/colorPrimaryContainer"
-                android:clickable="true"
-                android:scaleType="centerInside"
-                app:shapeAppearanceOverlay="@style/RoundImageView"
-                app:srcCompat="@drawable/norbert" />
-
-            <LinearLayout
-                android:layout_width="0dp"
+            <TextView
+                android:id="@+id/text_title"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing"
-                android:layout_marginTop="@dimen/text_container_margin"
-                android:layout_marginEnd="@dimen/text_container_margin"
-                android:layout_marginBottom="@dimen/text_container_margin"
-                android:layout_weight="1"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="vertical">
+                android:layout_marginEnd="@dimen/full_card_padding"
+                android:ellipsize="none"
+                android:fadingEdgeLength="50dp"
+                android:requiresFadingEdge="horizontal"
+                android:singleLine="true"
+                android:text="@android:string/unknownName"
+                android:textAppearance="@style/Description" />
 
-                <TextView
-                    android:id="@+id/text_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:ellipsize="none"
-                    android:fadingEdgeLength="50dp"
-                    android:requiresFadingEdge="horizontal"
-                    android:singleLine="true"
-                    android:text="@android:string/unknownName"
-                    android:textAppearance="@style/Description" />
-
-                <TextView
-                    android:id="@+id/text_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/lorem_short" />
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/text_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/lorem_short" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/comment_more_options"
-            style="@style/Widget.Material3.Button.IconButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:icon="@drawable/more_thick"
-            app:iconTint="?android:attr/colorForeground"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/comment_more_options"
+        style="@style/IconButtonTransparent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:layout_margin="@dimen/text_container_margin"
+        android:gravity="center"
+        app:icon="@drawable/more_thick"
+        app:iconTint="?android:attr/colorForeground" />
 
 </com.google.android.material.card.MaterialCardView>

@@ -1,4 +1,4 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:custom="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
@@ -7,50 +7,6 @@ android:layout_height="match_parent"
 android:fitsSystemWindows="true"
 tools:context=".activities.EditRoomActivity">
 
-
-<com.norbert.koller.shared.customviews.AppBarLayout
-    android:id="@id/app_bar"
-
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/expanded_toolbar_height"
-    android:outlineProvider="none"
-    android:visibility="visible"
-    app:expanded="false"
-    tools:visibility="gone">
-
-    <com.google.android.material.appbar.CollapsingToolbarLayout
-        android:id="@id/collapsing_toolbar"
-        style="@style/CollapsingToolbarLayout"
-
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:title="Szoba szerkesztése"
-        app:toolbarId="@id/toolbar">
-
-
-
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/header_footer_size"
-            android:clickable="false"
-            app:titleMargin="@null"
-            app:titleMarginStart="49dp" />
-
-        <Button
-            android:id="@id/button_back"
-            style="@style/ToolbarNavigationButton"
-            android:layout_gravity="bottom|start" />
-
-    </com.google.android.material.appbar.CollapsingToolbarLayout>
-</com.norbert.koller.shared.customviews.AppBarLayout>
-
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fillViewport="true"
-    app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
     <LinearLayout
         style="@style/MainLayout"
@@ -103,7 +59,6 @@ tools:context=".activities.EditRoomActivity">
         </com.google.android.material.textfield.TextInputLayout>
 
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</FrameLayout>

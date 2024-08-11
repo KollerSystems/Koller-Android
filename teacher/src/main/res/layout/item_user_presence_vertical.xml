@@ -2,10 +2,10 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    style="@style/CardWithPadding">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,8 +23,8 @@
             android:id="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Andrásosfi Norberto"
             android:gravity="center_horizontal"
+            android:text="Andrásosfi Norberto"
             android:textAppearance="@style/Title" />
 
         <TextView
@@ -52,8 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/text_container_margin"
-            android:text="@string/presence_colon"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="@string/presence_colon" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipgroup_presence"

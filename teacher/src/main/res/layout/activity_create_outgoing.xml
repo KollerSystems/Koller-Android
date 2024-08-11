@@ -1,350 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/test"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
+    android:layout_height="wrap_content"
+    app:justifyContent="center"
     tools:context=".activities.CreateOutgoingActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar"
+    <LinearLayout
 
+        style="@style/MainLayout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/expanded_toolbar_height"
-        android:visibility="visible"
-        app:expanded="false"
-        tools:visibility="gone">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            style="@style/CollapsingToolbarLayout"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-
-            app:title="@null"
-            app:titleCollapseMode="fade"
-            app:toolbarId="@+id/toolbar">
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        app:layout_maxWidth="@dimen/tablet_max_width">
 
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar4"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/header_footer_size"
-                android:clickable="false"
-                android:minHeight="@dimen/header_footer_size"
-                android:visibility="invisible" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/header_footer_size"
-                android:layout_gravity="bottom"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingVertical="@dimen/header_margin_vertical">
-
-                <Button
-                    android:id="@+id/button_back"
-                    style="@style/ToolbarNavigationButton"
-                    android:layout_height="@dimen/toolbar_button_size"
-                    android:layout_marginEnd="@dimen/spacing"
-                    android:alpha="0.666"
-                    android:minWidth="0dp"
-                    app:cornerRadius="1000dp"
-                    app:icon="@drawable/arrow_left"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconSize="25dp"
-                    app:iconTint="?android:attr/colorForeground" />
-
-                <TextView
-                    android:id="@+id/text_first"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/spacing"
-                    android:text="@string/create_new_x_first_part"
-                    android:textAppearance="@style/Title"
-                    android:textColorHint="@android:color/transparent"
-                    android:textStyle="bold" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_new_post_til_type"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    app:boxBackgroundColor="?attr/colorSecondaryContainer"
-                    app:boxBackgroundMode="filled"
-                    app:boxCornerRadiusBottomEnd="10dp"
-                    app:boxCornerRadiusBottomStart="10dp"
-                    app:boxCornerRadiusTopEnd="10dp"
-                    app:boxCornerRadiusTopStart="10dp"
-                    app:boxStrokeWidth="0dp"
-                    app:boxStrokeWidthFocused="0dp"
-                    app:endIconDrawable="@drawable/arrow_drop"
-                    app:endIconMode="custom"
-                    app:endIconScaleType="centerInside"
-                    app:endIconTint="?attr/colorOnSecondaryContainer"
-                    app:hintEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:drawablePadding="-10dp"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:paddingStart="15dp"
-                        android:paddingTop="0dp"
-                        android:paddingEnd="0dp"
-                        android:paddingBottom="0dp"
-                        android:singleLine="true"
-                        android:text="@string/unset"
-                        android:textAppearance="@style/Title"
-                        android:textColor="?attr/colorOnSecondaryContainer"
-                        android:textStyle="bold"
-                        tools:ignore="Deprecated" />
-
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <TextView
-                    android:id="@+id/textView19"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing"
-                    android:text="@string/create_new_x_outgoing_last_part"
-                    android:textAppearance="@style/Title"
-                    android:textStyle="bold" />
-
-
-            </LinearLayout>
-
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
-    </com.google.android.material.appbar.AppBarLayout>
-
-    <androidx.core.widget.NestedScrollView
-        style="@style/NestedScrollView"
-        android:layout_width="match_parent"
-
-
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
-
-        <com.google.android.flexbox.FlexboxLayout
+        <com.norbert.koller.shared.customviews.TextInputWithChips
+            android:id="@+id/til_addresse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:justifyContent="center"
-            style="@style/MainLayout"
-            android:paddingBottom="75dp">
-            <LinearLayout
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:layout_marginBottom="@dimen/text_container_margin" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/til_purpose"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            android:hint="@string/purpose"
+            app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
+            app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+            app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
+            app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
+            app:counterEnabled="false">
+
+            <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="vertical"
-                app:layout_maxWidth="@dimen/tablet_max_width"
-                >
+                android:inputType="text|textCapSentences|textMultiLine"
+                android:maxLength="50"
+                android:textAppearance="@style/Text" />
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-                <com.norbert.koller.shared.customviews.TextInputWithChips
-                    android:id="@+id/til_addresse"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/create_new_post_card_datetime"
+            style="@style/CardSingle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    app:srcCompat="@drawable/calendar" />
+
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/text_container_margin"
-                    android:layout_marginBottom="@dimen/text_container_margin" />
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/create_new_post_til_title"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginHorizontal="@dimen/text_container_margin"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:hint="@string/purpose"
-                    app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
-                    app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
-                    app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
-                    app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
-                    app:counterEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text|textCapSentences|textMultiLine"
-                        android:maxLength="50"
-                        android:textAppearance="@style/Text" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/create_new_post_card_datetime"
-                    style="@style/SimpleCardWithContent"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:orientation="vertical">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:baselineAligned="false"
                         android:orientation="horizontal">
 
-                        <ImageView
-                            style="@style/CategoryIcon"
-                            android:adjustViewBounds="true"
-                            android:alpha="0.666"
-                            app:srcCompat="@drawable/calendar" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_date_from"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:orientation="vertical">
+                            android:layout_marginLeft="@dimen/text_container_margin"
+                            android:layout_marginRight="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:hint="@string/from_date"
+                            app:endIconDrawable="@drawable/close_thick"
+                            app:endIconMode="custom">
 
-                            <LinearLayout
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:baselineAligned="false"
-                                android:orientation="horizontal">
+                                android:drawablePadding="-15dp"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="datetime|date"
+                                android:textAppearance="@style/Text"
+                                tools:ignore="Deprecated" />
+                        </com.google.android.material.textfield.TextInputLayout>
 
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/create_new_post_til_date_from"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:hint="@string/from_date"
-                                    app:endIconDrawable="@drawable/close_thick"
-                                    app:endIconMode="custom">
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_time_from"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/text_container_margin"
+                            android:layout_marginRight="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:hint="@string/from_time"
+                            app:endIconDrawable="@drawable/close_thick"
+                            app:endIconMode="custom">
 
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:drawablePadding="-15dp"
-                                        android:editable="false"
-                                        android:focusable="false"
-                                        android:inputType="datetime|date"
-                                        android:textAppearance="@style/Text"
-                                        tools:ignore="Deprecated" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/create_new_post_til_time_from"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:hint="@string/from_time"
-                                    app:endIconDrawable="@drawable/close_thick"
-                                    app:endIconMode="custom">
-
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:layout_weight="1"
-                                        android:drawablePadding="-15dp"
-                                        android:editable="false"
-                                        android:focusable="false"
-                                        android:inputType="datetime|time"
-                                        android:singleLine="false"
-                                        android:textAppearance="@style/Text"
-                                        tools:ignore="Deprecated" />
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-
-                            <LinearLayout
+                            <com.google.android.material.textfield.TextInputEditText
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:baselineAligned="false"
-                                android:orientation="horizontal">
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/create_new_post_til_date_to"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:hint="@string/to_date"
-                                    app:endIconDrawable="@drawable/close_thick"
-                                    app:endIconMode="custom">
-
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:drawablePadding="-15dp"
-                                        android:editable="false"
-                                        android:focusable="false"
-                                        android:inputType="datetime|date"
-                                        android:singleLine="false"
-                                        android:textAppearance="@style/Text"
-                                        tools:ignore="Deprecated" />
-                                </com.google.android.material.textfield.TextInputLayout>
-
-                                <com.google.android.material.textfield.TextInputLayout
-                                    android:id="@+id/create_new_post_til_time_to"
-                                    android:layout_width="0dp"
-                                    android:layout_height="wrap_content"
-                                    android:layout_marginLeft="@dimen/text_container_margin"
-                                    android:layout_marginRight="@dimen/text_container_margin"
-                                    android:layout_marginBottom="@dimen/text_container_margin"
-                                    android:layout_weight="1"
-                                    android:hint="@string/to_time"
-                                    app:endIconDrawable="@drawable/close_thick"
-                                    app:endIconMode="custom">
-
-                                    <com.google.android.material.textfield.TextInputEditText
-                                        android:layout_width="match_parent"
-                                        android:layout_height="wrap_content"
-                                        android:drawablePadding="-15dp"
-                                        android:editable="false"
-                                        android:focusable="false"
-                                        android:inputType="datetime|time"
-                                        android:singleLine="false"
-                                        android:textAppearance="@style/Text"
-                                        tools:ignore="Deprecated" />
-                                </com.google.android.material.textfield.TextInputLayout>
-                            </LinearLayout>
-
-                        </LinearLayout>
-
+                                android:layout_weight="1"
+                                android:drawablePadding="-15dp"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="datetime|time"
+                                android:singleLine="false"
+                                android:textAppearance="@style/Text"
+                                tools:ignore="Deprecated" />
+                        </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
-                </com.google.android.material.card.MaterialCardView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal">
 
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_date_to"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/text_container_margin"
+                            android:layout_marginRight="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:hint="@string/to_date"
+                            app:endIconDrawable="@drawable/close_thick"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="-15dp"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="datetime|date"
+                                android:singleLine="false"
+                                android:textAppearance="@style/Text"
+                                tools:ignore="Deprecated" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_time_to"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/text_container_margin"
+                            android:layout_marginRight="@dimen/text_container_margin"
+                            android:layout_marginBottom="@dimen/text_container_margin"
+                            android:layout_weight="1"
+                            android:hint="@string/to_time"
+                            app:endIconDrawable="@drawable/close_thick"
+                            app:endIconMode="custom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawablePadding="-15dp"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="datetime|time"
+                                android:singleLine="false"
+                                android:textAppearance="@style/Text"
+                                tools:ignore="Deprecated" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
-        </com.google.android.flexbox.FlexboxLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
 
-    </androidx.core.widget.NestedScrollView>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_body"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/header_footer_size"
-        android:layout_gravity="bottom"
-        app:cardCornerRadius="0dp"
->
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="end|center_vertical"
-            android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/header_margin_horizontal">
-
-            <Button
-                android:id="@+id/create_new_post_button_publish"
-                style="@style/Widget.Material3.Button.Icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/publish"
-                app:icon="@drawable/send" />
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+    </LinearLayout>
+</com.google.android.flexbox.FlexboxLayout>

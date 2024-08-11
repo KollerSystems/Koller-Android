@@ -10,6 +10,7 @@
     <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/text_container_margin"
         app:justifyContent="center">
 
         <com.norbert.koller.shared.customviews.UserView

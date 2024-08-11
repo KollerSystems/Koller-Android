@@ -2,10 +2,10 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    app:contentPadding="@dimen/card_padding">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,15 +33,15 @@
                     android:id="@+id/text_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="Andrásosfi Norberto"
-                    android:textAppearance="@style/Title" />
+                    android:textAppearance="@style/Title"
+                    tools:text="Andrásosfi Norberto" />
 
                 <TextView
                     android:id="@+id/text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    tools:text="210 • 1.B • F9"
-                    android:textAppearance="@style/Description" />
+                    android:textAppearance="@style/Description"
+                    tools:text="210 • 1.B • F9" />
             </LinearLayout>
 
         </LinearLayout>
@@ -50,9 +50,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/text_container_margin"
+            android:baselineAligned="false"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:baselineAligned="false">
+            android:orientation="horizontal">
 
             <LinearLayout
                 android:layout_width="0dp"

@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.databinding.ActivityManageAccountBinding
+import com.norbert.koller.shared.databinding.FragmentManageAccountBinding
 import com.norbert.koller.shared.fragments.FragmentInMainActivity
 import com.norbert.koller.shared.fragments.PersonalDataFragment
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -15,14 +15,14 @@ import com.stfalcon.imageviewer.StfalconImageViewer
 
 class ManageAccountFragment : FragmentInMainActivity() {
 
-    private lateinit var binding : ActivityManageAccountBinding
+    private lateinit var binding : FragmentManageAccountBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = ActivityManageAccountBinding.inflate(layoutInflater)
+        binding = FragmentManageAccountBinding.inflate(layoutInflater)
         return binding.root
     }
 

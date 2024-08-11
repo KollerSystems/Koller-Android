@@ -13,4 +13,7 @@
 
     <string name="students_in_studygroup">Students in the studygroup</string>
     <string name="edit_user">Felhasználó szerkesztése</string>
+    <string name="edit_room">Szoba szerkesztése</string>
+    <string name="edit_study_group">Szakkör szerkesztése</string>
+    <string name="edit_base_program">Alapprogram szerkesztése</string>
 </resources>

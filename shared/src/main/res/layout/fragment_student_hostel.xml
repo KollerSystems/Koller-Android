@@ -22,7 +22,8 @@
         style="@style/MainCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="0">
+        android:layout_weight="0"
+        app:cardCornerRadius="@dimen/card_corner_radius">
 
         <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
@@ -106,7 +107,6 @@
                 app:layout_flexShrink="1"
                 tools:visibility="visible" />
         </com.google.android.flexbox.FlexboxLayout>
-
 
 
     </androidx.cardview.widget.CardView>

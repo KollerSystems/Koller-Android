@@ -27,14 +27,14 @@ class RoomPresenceActivity : RoomsActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
 
-        collapsingToolbarLayout.title = "Szoba jelenlét"
+        setTitle("Szoba jelenlét")
 
         val adapter = RoomPresenceViewPagerAdapter()
 
-        viewPager.adapter = adapter
+        getViewPager().adapter = adapter
 
 
-        TabLayoutMediator(tabLayout, viewPager){tab,position->
+        TabLayoutMediator(getTabLayout(), getViewPager()){tab,position->
             tab.text = (position + 200).toString()
         }.attach()
 

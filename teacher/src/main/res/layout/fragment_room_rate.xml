@@ -49,6 +49,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/full_card_padding"
+            android:layout_marginTop="@null"
             android:layout_marginBottom="@dimen/full_card_padding"
             app:cardBackgroundColor="?attr/colorSurfaceContainer"
             app:cardPreventCornerOverlap="false"

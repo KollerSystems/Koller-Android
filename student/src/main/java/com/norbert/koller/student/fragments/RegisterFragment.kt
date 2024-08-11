@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.slider.RangeSlider
 import com.norbert.koller.shared.databinding.ContentDataSchoolBinding
+import com.norbert.koller.student.activities.RegisterActivity
 
 abstract class RegisterFragment : Fragment() {
 
@@ -25,6 +26,10 @@ abstract class RegisterFragment : Fragment() {
         scrollView.isFillViewport = true
         scrollView.addView(viewGroup)
         return scrollView
+    }
+
+    fun getRegisterActivity() : RegisterActivity{
+        return context as RegisterActivity
     }
 
     abstract fun createBinding() : ViewGroup

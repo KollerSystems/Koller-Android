@@ -49,21 +49,15 @@ class CreateNewPostActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_create_new_post)
 
-        val bottomView : View = findViewById(R.id.card_body)
-
-
-        val publishButton: Button = findViewById (R.id.create_new_post_button_publish)
-        val scheduleButton: Button = findViewById (R.id.create_new_post_button_scheduling)
-        val buttonExit: Button = findViewById(R.id.button_back)
 
         tilAddresse = findViewById (R.id.til)
-        tilTitle = findViewById (R.id.create_new_post_til_title)
+        tilTitle = findViewById (R.id.til_purpose)
         tilDescription = findViewById (R.id.create_new_post_til_description)
 
-        tilDateFrom = findViewById(R.id.create_new_post_til_date_from)
-        tilTimeFrom = findViewById(R.id.create_new_post_til_time_from)
-        tilDateTo = findViewById(R.id.create_new_post_til_date_to)
-        tilTimeTo = findViewById(R.id.create_new_post_til_time_to)
+        tilDateFrom = findViewById(R.id.til_date_from)
+        tilTimeFrom = findViewById(R.id.til_time_from)
+        tilDateTo = findViewById(R.id.til_date_to)
+        tilTimeTo = findViewById(R.id.til_time_to)
 
         textViewImageLimit = findViewById(R.id.create_new_post_text_view_image_limit)
 
@@ -72,16 +66,11 @@ class CreateNewPostActivity : AppCompatActivity() {
         val cardBaseProgram : MaterialCardView = findViewById (R.id.create_new_post_card_base_program)
 
 
-        buttonExit.setOnClickListener{
-
-        }
-
-        val tilType: TextInputLayout = findViewById(R.id.create_new_post_til_type)
 
 
         fun checkInputsRefreshButton(){
-            publishButton.isEnabled = (tilTitle.editText!!.text?.length ?: 0) > 0 && (tilDescription.editText!!.text?.length ?: 0) > 0
-            scheduleButton.isEnabled = publishButton.isEnabled
+            /*publishButton.isEnabled = (tilTitle.editText!!.text?.length ?: 0) > 0 && (tilDescription.editText!!.text?.length ?: 0) > 0
+            scheduleButton.isEnabled = publishButton.isEnabled*/
         }
 
         checkInputsRefreshButton()
@@ -113,7 +102,7 @@ class CreateNewPostActivity : AppCompatActivity() {
         })
 
 
-        tilType.editText!!.setOnClickListener{
+        /*tilType.editText!!.setOnClickListener{
 
             currentFocus?.clearFocus()
 
@@ -122,10 +111,10 @@ class CreateNewPostActivity : AppCompatActivity() {
             dialog.show(supportFragmentManager, PostTypesBsdFragment.TAG)
 
 
-        }
+        }*/
 
 
-        tilType.editText!!.addTextChangedListener {
+        /*tilType.editText!!.addTextChangedListener {
             when (tilType.editText!!.text.toString()) {
                 getString(R.string.news_one) -> {
                     cardDateTime.visibility = VISIBLE
@@ -146,10 +135,10 @@ class CreateNewPostActivity : AppCompatActivity() {
 
                 }
             }
-        }
+        }*/
 
-        if(intent.extras != null)
-            tilType.editText!!.setText(intent.extras!!.getString("type"))
+        /*if(intent.extras != null)
+            tilType.editText!!.setText(intent.extras!!.getString("type"))*/
 
 
         val imageRecyclerView : RecyclerView = findViewById(R.id.recycler_view)
@@ -170,7 +159,7 @@ class CreateNewPostActivity : AppCompatActivity() {
             return true
         }
 
-        publishButton.setOnClickListener{
+        /*publishButton.setOnClickListener{
             if(checkImages()) {
                 finish()
             }
@@ -181,6 +170,6 @@ class CreateNewPostActivity : AppCompatActivity() {
                 val dialog = ScheduleBsdFragment()
                 dialog.show(supportFragmentManager, ScheduleBsdFragment.TAG)
             }
-        }
+        }*/
     }
 }

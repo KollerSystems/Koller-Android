@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/parent"
-    style="@style/Card"
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:clickable="true"
     app:contentPadding="0dp">
 
@@ -55,9 +55,9 @@
                         android:id="@+id/textView34"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="55dp"
+                        android:layout_marginStart="60dp"
                         android:layout_marginTop="@dimen/spacing"
-                        android:layout_marginEnd="@dimen/card_padding"
+                        android:layout_marginEnd="@dimen/full_card_padding"
                         android:layout_marginBottom="@dimen/spacing"
                         android:text="Nagy Árpád" />
 

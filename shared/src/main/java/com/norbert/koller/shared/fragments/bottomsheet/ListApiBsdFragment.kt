@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.viewmodels.ListApiBsdFragmentViewModel
 import kotlinx.coroutines.launch
@@ -24,7 +25,7 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
         return viewModel as ListApiBsdFragmentViewModel
     }
 
-    var progressBar : ProgressBar? = null
+    var itemLoading : ViewGroup? = null
 
     override fun toggleList(): Boolean {
         return viewModel.getValuesOnFinish != null
@@ -54,12 +55,8 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
 
 
         if(!viewModel.list.isInitialized){
-            progressBar = ProgressBar(requireContext())
-            val margin = requireContext().resources.getDimensionPixelSize(R.dimen.text_container_margin)
-            val mlp = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
-            mlp.setMargins(margin,margin,margin,margin)
-            progressBar!!.layoutParams = mlp
-            getRoot().addView(progressBar)
+            itemLoading = ItemLoadingBinding.inflate(layoutInflater).root
+            getRoot().addView(itemLoading)
         }
 
         viewModel.list.observe(this){
@@ -69,8 +66,8 @@ class ListApiBsdFragment(var apiToCall : (suspend () -> Response<*>)? = null, al
                 snackbar.show()
             }
             else{
-                if(progressBar != null){
-                    getRoot().removeView(progressBar)
+                if(itemLoading != null){
+                    getRoot().removeView(itemLoading)
                 }
                 setRecyclerView()
             }

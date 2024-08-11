@@ -6,10 +6,9 @@
     android:layout_height="wrap_content"
     android:background="@null"
     android:orientation="vertical"
-    android:paddingStart="@dimen/full_card_padding"
-    android:paddingEnd="@dimen/full_card_padding"
-    android:paddingBottom="0dp"
-    android:paddingTop="@dimen/card_padding">
+    android:paddingHorizontal="@dimen/application_padding"
+    android:paddingTop="@dimen/application_padding"
+    android:paddingBottom="0dp">
 
 
     <include

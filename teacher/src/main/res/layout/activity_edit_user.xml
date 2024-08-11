@@ -5,12 +5,12 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="wrap_content"
 tools:context=".activities.EditUserActivity">
+
     <LinearLayout
         style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
 
 
         <FrameLayout
@@ -44,10 +44,10 @@ tools:context=".activities.EditUserActivity">
             android:id="@+id/text_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@android:string/unknownName"
+            android:layout_marginBottom="@dimen/spacing"
             android:gravity="center_horizontal"
-            android:textAppearance="@style/MainTitle"
-            android:layout_marginBottom="@dimen/spacing"/>
+            android:text="@android:string/unknownName"
+            android:textAppearance="@style/MainTitle" />
 
         <TextView
             style="@style/CategoryCardName"

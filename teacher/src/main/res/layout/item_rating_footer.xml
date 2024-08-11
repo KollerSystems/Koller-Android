@@ -9,6 +9,7 @@
         android:id="@+id/create_new_post_card_place"
         style="@style/Card"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="@null"
         android:layout_marginTop="@dimen/card_margin"
         app:shapeAppearanceOverlay="@style/OverlayRoundedCardBottom">
 
@@ -16,6 +17,8 @@
             android:id="@+id/create_new_post_til_place"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:layout_marginBottom="@dimen/text_container_margin"
             android:hint="@string/other_comment">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -42,6 +45,7 @@
         style="@style/Card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@null"
         android:layout_marginBottom="@dimen/card_margin"
         app:shapeAppearanceOverlay="@style/OverlayRoundedCardTop">
 
@@ -54,6 +58,8 @@
                 android:id="@+id/textView37"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_margin="@dimen/text_container_margin"
                 android:layout_weight="1"
                 android:text="@string/automatic" />
 

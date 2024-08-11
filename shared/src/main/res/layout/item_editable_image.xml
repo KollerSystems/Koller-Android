@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        app:srcCompat="@drawable/lines" />
+        app:srcCompat="@drawable/hills" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcard_cover_overlay"

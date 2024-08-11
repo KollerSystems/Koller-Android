@@ -21,6 +21,26 @@ class RegisterSummaryFragment : RegisterFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         waitForChange(binding.cbRules, binding.cbTrueData, binding.cbParents)
+
+        binding.btnEditStudentHostel.setOnClickListener {
+            getRegisterActivity().binding.viewPager.setCurrentItem(1, true)
+        }
+
+        binding.personalData.btnEditStudent.setOnClickListener {
+            getRegisterActivity().binding.viewPager.setCurrentItem(2, true)
+        }
+
+        binding.personalData.btnEditCaretaker.setOnClickListener {
+            getRegisterActivity().binding.viewPager.setCurrentItem(3, true)
+        }
+
+        binding.personalData.btnEditCloseRelative.setOnClickListener {
+            getRegisterActivity().binding.viewPager.setCurrentItem(4, true)
+        }
+
+        binding.personalData.btnEditSchool.setOnClickListener {
+            getRegisterActivity().binding.viewPager.setCurrentItem(5, true)
+        }
     }
 
 

@@ -2,24 +2,28 @@ package com.norbert.koller.teacher.activities
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Button
 import com.google.android.material.appbar.AppBarLayout
+import com.norbert.koller.shared.activities.ManageActivity
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
+import com.norbert.koller.teacher.databinding.ContentEditRoomBinding
 
-class EditRoomActivity : AppCompatActivity() {
+class EditRoomActivity : ManageActivity() {
+
+    lateinit var binding : ContentEditRoomBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.content_edit_room)
+    }
 
-        val appBar : AppBarLayout = findViewById(R.id.app_bar)
+    override fun createContentView(): ViewGroup {
+        binding = ContentEditRoomBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
-        appBar.setup()
-
-        val backButton : Button = findViewById(R.id.button_back)
-
-        backButton.setOnClickListener{
-            onBackPressedDispatcher.onBackPressed()
-        }
+    override fun getName(): String {
+        return getString(R.string.edit_room)
     }
 }

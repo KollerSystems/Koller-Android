@@ -245,15 +245,21 @@
         <item name="android:layout_margin">@dimen/text_container_margin</item>
         <item name="android:text">@string/plus_image</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:paddingStart">@dimen/spacing</item>
+        <item name="android:paddingEnd">@dimen/spacing</item>
         <item name="cornerRadius">15dp</item>
     </style>
     
     <style name="SimpleCard" parent="@style/Widget.Material3.CardView.Filled">
-        <item name="cardElevation">0dp</item>
-        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardCornerRadius">@null</item>
+        <item name="shapeAppearance">@null</item>
         <item name="cardBackgroundColor">?attr/colorSurfaceContainerLow</item>
         <item name="cardPreventCornerOverlap">false</item>
+    </style>
+
+    <style name="CardWithPadding" parent="@style/SimpleCard">
+        <item name="contentPadding">@dimen/card_padding</item>
     </style>
 
     <style name="BottomSheetDrag" parent="Widget.Material3.BottomSheet.DragHandle">
@@ -378,7 +384,6 @@
     </style>
 
     <style name="CategoryCardNameBald" parent="@style/CategoryCardName">
-        <item name="android:paddingHorizontal">@dimen/spacing</item>
     </style>
 
     <style name="Description">
@@ -579,6 +584,9 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:outlineProvider">none</item>
         <item name="cardPreventCornerOverlap">false</item>
+        <item name="android:layout_marginHorizontal">@dimen/text_container_margin</item>
+        <item name="android:layout_marginTop">@dimen/text_container_margin</item>
+        <item name="android:layout_marginBottom">@dimen/text_container_margin</item>
     </style>
 
     <style name="CardTop" parent="@style/Card">
@@ -763,9 +771,6 @@
     </style>
 
     <style name="FullMainLayout" parent="@style/MainLayout">
-        <item name="android:paddingBottom">@dimen/full_card_padding</item>
-        <item name="android:paddingEnd">@dimen/full_card_padding</item>
-        <item name="android:paddingStart">@dimen/full_card_padding</item>
     </style>
 
     <style name="Tab" parent="@style/Widget.Material3.TabLayout">

@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/notification_parent"
-    style="@style/Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clickable="true"
@@ -19,7 +18,8 @@
         android:outlineProvider="none"
         android:visibility="invisible"
         app:cardBackgroundColor="?attr/colorPrimary"
-        app:cardElevation="100dp"
+        app:cardCornerRadius="100dp"
+        app:cardElevation="99999dp"
         tools:visibility="visible">
 
         <TextView
@@ -34,6 +34,7 @@
             android:textAppearance="@style/Description"
             android:textColor="?android:attr/colorBackground" />
     </com.google.android.material.card.MaterialCardView>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -110,4 +111,5 @@
         app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
         app:cardCornerRadius="0dp"
         tools:visibility="visible" />
+
 </com.google.android.material.card.MaterialCardView>

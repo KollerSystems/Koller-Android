@@ -11,14 +11,16 @@
         android:id="@+id/text_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_container_margin"
         android:layout_marginBottom="@dimen/text_container_margin"
         android:text="This site uses cookies from Google to deliver its services and to analyze traffic. Learn more  close Your Privacy and Google Fonts Learn how building websites with Google Fonts is safe for you and your users." />
 
     <com.google.android.material.card.MaterialCardView
-        android:layout_marginVertical="@dimen/text_container_margin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_container_margin"
         app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@dimen/card_corner_radius"
         app:strokeColor="?attr/colorSurfaceContainerLow"
         app:strokeWidth="1dp">
 

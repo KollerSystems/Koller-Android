@@ -23,14 +23,14 @@ class RoomRateActivity : RoomsActivity() {
     override fun onCreate(savedInstanceState: Bundle?){
         super.onCreate(savedInstanceState)
 
-        collapsingToolbarLayout.title = getString(R.string.room_rate)
+        setTitle(getString(R.string.room_rate))
 
         val adapter = RoomRateViewPagerAdapter()
 
-        viewPager.adapter = adapter
+        getViewPager().adapter = adapter
 
 
-        TabLayoutMediator(tabLayout, viewPager){tab,position->
+        TabLayoutMediator(getTabLayout(), getViewPager()){tab,position->
             tab.text = (position + 200).toString()
         }.attach()
     }

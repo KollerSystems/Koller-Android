@@ -1,6 +1,7 @@
 package com.norbert.koller.teacher.activities
 
 import android.os.Bundle
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.CheckBox
 import androidx.appcompat.app.AppCompatActivity
@@ -8,70 +9,43 @@ import androidx.core.view.isVisible
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.activities.ManageActivity
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.customviews.TimeRangeView
+import com.norbert.koller.teacher.databinding.ActivityEditStudyGroupBinding
 
-open class EditSpecificStudyGroupActivity : AppCompatActivity() {
+open class EditSpecificStudyGroupActivity : ManageActivity() {
 
-    lateinit var cardDays : MaterialCardView
-
-    lateinit var tilTitle : TextInputLayout
-    lateinit var tilDescription : TextInputLayout
-    lateinit var tilDate : TextInputLayout
+    lateinit var binding : ActivityEditStudyGroupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_study_group)
 
-
-
-        val appBar : AppBarLayout = findViewById(R.id.app_bar)
-
-        appBar.setup()
-
-        val backButton : Button = findViewById(R.id.button_back)
-
-        backButton.setOnClickListener{
-            onBackPressedDispatcher.onBackPressed()
+        binding.checkBoxMonday.setOnCheckedChangeListener{_, isChecked ->
+            binding.trcwMonday.isVisible = isChecked
         }
 
-        val saveButton : Button = findViewById(R.id.button_publish_all)
-
-        saveButton.setOnClickListener {
-
+        binding.checkBoxTuesday.setOnCheckedChangeListener{_, isChecked ->
+            binding.trcvTuesday.isVisible = isChecked
         }
 
-        cardDays = findViewById(R.id.Mc_days)
-
-        tilTitle = findViewById(R.id.Til_title)
-        tilDescription = findViewById(R.id.Til_description)
-        tilDate = findViewById(R.id.Til_date)
-
-        val checkBoxMonday : CheckBox = findViewById(R.id.CheckBox_monday)
-        val checkBoxTuesday : CheckBox = findViewById(R.id.CheckBox_thuesday)
-        val checkBoxWednesday : CheckBox = findViewById(R.id.CheckBox_wednessday)
-        val checkBoxThursday : CheckBox = findViewById(R.id.CheckBox_thursday)
-
-        val timeRangeMonday : TimeRangeView = findViewById(R.id.Trcw_monday)
-        val timeRangeTuesday : TimeRangeView = findViewById(R.id.Trcw_thuesday)
-        val timeRangeWednesday : TimeRangeView = findViewById(R.id.Trcv_wednessday)
-        val timeRangeThursday : TimeRangeView = findViewById(R.id.Trcv_thursday)
-
-        checkBoxMonday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeMonday.isVisible = isChecked
+        binding.checkBoxWednesday.setOnCheckedChangeListener{_, isChecked ->
+            binding.trcvWednesday.isVisible = isChecked
         }
 
-        checkBoxTuesday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeTuesday.isVisible = isChecked
+        binding.checkBoxThursday.setOnCheckedChangeListener{_, isChecked ->
+            binding.trcvThursday.isVisible = isChecked
         }
+    }
 
-        checkBoxWednesday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeWednesday.isVisible = isChecked
-        }
+    override fun createContentView(): ViewGroup {
+        binding = ActivityEditStudyGroupBinding.inflate(layoutInflater)
+        return binding.root
+    }
 
-        checkBoxThursday.setOnCheckedChangeListener{_, isChecked ->
-            timeRangeThursday.isVisible = isChecked
-        }
+    override fun getName(): String {
+        return getString(R.string.edit_study_group)
     }
 }

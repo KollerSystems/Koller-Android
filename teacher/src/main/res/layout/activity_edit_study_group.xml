@@ -1,63 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<com.norbert.koller.shared.customviews.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.EditStudyGroupActivity">
-
-    <androidx.coordinatorlayout.widget.CoordinatorLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true">
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar"
-
-            style="@null"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/expanded_toolbar_height"
-            android:background="@null"
-            android:outlineProvider="none"
-            android:visibility="visible"
-            app:expanded="false"
-            tools:visibility="gone">
-
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:id="@+id/CollapsingToolbarLayout1"
-                style="@style/CollapsingToolbarLayout"
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:title="Szakkör szerkesztése"
-                app:toolbarId="@+id/toolbar">
-
-
-
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar1"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/header_footer_size"
-                    android:clickable="false"
-                    app:titleMargin="@null"
-                    app:titleMarginEnd="49dp"
-                    app:titleMarginStart="49dp" />
-
-                <Button
-                    android:id="@+id/button_back"
-                    style="@style/ToolbarNavigationButton"
-                    android:layout_gravity="bottom|start" />
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-
-        <com.norbert.koller.shared.customviews.NestedCoordinatorLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".activities.EditStudyGroupActivity"
             app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
             <com.google.android.material.appbar.AppBarLayout
@@ -85,7 +33,7 @@
                         app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
                         <TextView
-                            android:id="@+id/Text_radio"
+                            android:id="@+id/text_radio"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/spacing"
@@ -95,7 +43,7 @@
                             tools:visibility="visible" />
 
                         <RadioGroup
-                            android:id="@+id/RadioGroup_to_edit"
+                            android:id="@+id/rgroup_to_edit"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_marginBottom="@dimen/spacing"
@@ -103,7 +51,7 @@
                             tools:visibility="visible">
 
                             <RadioButton
-                                android:id="@+id/RadioButton_only_this"
+                                android:id="@+id/rbtn_only_this"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="@dimen/text_container_margin"
@@ -111,7 +59,7 @@
                                 android:textAppearance="@style/Text" />
 
                             <RadioButton
-                                android:id="@+id/radioButtowerrerwn"
+                                android:id="@+id/rbtn_this_and_all_the_following"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="@dimen/text_container_margin"
@@ -130,7 +78,7 @@
                             android:translationZ="1dp" />
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/Til_title"
+                            android:id="@+id/til_title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
@@ -150,7 +98,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/Til_description"
+                            android:id="@+id/til_description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
@@ -196,7 +144,7 @@
 
 
                             <Button
-                                android:id="@+id/button_teacher"
+                                android:id="@+id/btn_teacher"
                                 style="@style/ButtonTonalIcon"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
@@ -210,7 +158,7 @@
 
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/create_new_post_til_title1"
+                            android:id="@+id/til_classroom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
 
@@ -230,7 +178,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
-                            android:id="@+id/Til_date"
+                            android:id="@+id/til_date"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
 
@@ -252,7 +200,7 @@
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/Mc_days"
+                            android:id="@+id/mcard_days"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/card_full_margin"
@@ -266,7 +214,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textdsasdView8"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/text_container_margin"
@@ -274,14 +221,14 @@
                                     android:text="Hét napjai" />
 
                                 <CheckBox
-                                    android:id="@+id/CheckBox_monday"
+                                    android:id="@+id/check_box_monday"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/monday"
                                     android:textAppearance="@style/Text" />
 
                                 <com.norbert.koller.teacher.customviews.TimeRangeView
-                                    android:id="@+id/Trcw_monday"
+                                    android:id="@+id/trcw_monday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginStart="@dimen/spacing"
@@ -294,7 +241,6 @@
                                     tools:visibility="visible">
 
                                     <View
-                                        android:id="@+id/viewdsadsa2"
                                         style="@style/SeparatorLine"
                                         android:layout_width="wrap_content"
                                         android:layout_height="1dp"
@@ -302,13 +248,13 @@
                                 </com.norbert.koller.teacher.customviews.TimeRangeView>
 
                                 <CheckBox
-                                    android:id="@+id/CheckBox_thuesday"
+                                    android:id="@+id/check_box_tuesday"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/tuesday" />
 
                                 <com.norbert.koller.teacher.customviews.TimeRangeView
-                                    android:id="@+id/Trcw_thuesday"
+                                    android:id="@+id/trcv_tuesday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginStart="@dimen/spacing"
@@ -318,7 +264,6 @@
                                     custom:shapeAppearance="@style/OverlayRoundedCardBottom">
 
                                     <View
-                                        android:id="@+id/viewdsaaaaaaadsa2"
                                         style="@style/SeparatorLine"
                                         android:layout_width="wrap_content"
                                         android:layout_height="1dp"
@@ -326,14 +271,14 @@
                                 </com.norbert.koller.teacher.customviews.TimeRangeView>
 
                                 <CheckBox
-                                    android:id="@+id/CheckBox_wednessday"
+                                    android:id="@+id/check_box_wednesday"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/wednesday"
                                     android:textAppearance="@style/Text" />
 
                                 <com.norbert.koller.teacher.customviews.TimeRangeView
-                                    android:id="@+id/Trcv_wednessday"
+                                    android:id="@+id/trcv_wednesday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginStart="@dimen/spacing"
@@ -343,7 +288,6 @@
                                     custom:shapeAppearance="@style/OverlayRoundedCardBottom">
 
                                     <View
-                                        android:id="@+id/viefdffw2"
                                         style="@style/SeparatorLine"
                                         android:layout_width="wrap_content"
                                         android:layout_height="1dp"
@@ -351,14 +295,14 @@
                                 </com.norbert.koller.teacher.customviews.TimeRangeView>
 
                                 <CheckBox
-                                    android:id="@+id/CheckBox_thursday"
+                                    android:id="@+id/check_box_thursday"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/thursday"
                                     android:textAppearance="@style/Text" />
 
                                 <com.norbert.koller.teacher.customviews.TimeRangeView
-                                    android:id="@+id/Trcv_thursday"
+                                    android:id="@+id/trcv_thursday"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     android:layout_marginStart="@dimen/spacing"
@@ -373,7 +317,7 @@
 
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/Mc_repeat"
+                            android:id="@+id/mcard_repeat"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/card_full_margin"
@@ -389,7 +333,6 @@
                                 android:orientation="vertical">
 
                                 <TextView
-                                    android:id="@+id/textView8"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_marginBottom="@dimen/text_container_margin"
@@ -398,23 +341,22 @@
 
                                 <RadioGroup
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:checkedButton="@id/radioButtdsadason2">
+                                    android:layout_height="wrap_content">
 
                                     <RadioButton
-                                        android:id="@+id/radioButtdsadason2"
+                                        android:id="@+id/rbtn_weekly"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="Hetente" />
 
                                     <RadioButton
-                                        android:id="@+id/radioButaaaaaaton2"
+                                        android:id="@+id/rbtn_every_two_weeks"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="Két hetente" />
 
                                     <RadioButton
-                                        android:id="@+id/radsdioButton2"
+                                        android:id="@+id/rbtn_every_four_weeks"
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:text="Négy hetente" />
@@ -424,7 +366,7 @@
                         </com.google.android.material.card.MaterialCardView>
 
                         <com.google.android.material.card.MaterialCardView
-                            android:id="@+id/Mc_range"
+                            android:id="@+id/mcard_range"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/card_full_margin"
@@ -457,7 +399,6 @@
                 app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior">
 
                 <TextView
-                    android:id="@+id/textView4"
                     style="@style/Separator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -472,45 +413,3 @@
 
             </LinearLayout>
         </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>
-
-
-
-
-    </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_body"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:cardBackgroundColor="?attr/colorSurfaceContainer"
-        app:cardCornerRadius="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/header_footer_size"
-            android:layout_weight="0"
-            android:gravity="end|center_vertical"
-            android:orientation="horizontal"
-            android:paddingHorizontal="@dimen/header_margin_horizontal">
-
-            <Button
-                android:id="@+id/button_more"
-                style="@style/IconButtonOutline"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/spacing"
-                app:icon="@drawable/more_thick" />
-
-            <Button
-                android:id="@+id/button_publish_all"
-                style="@style/ButtonIcon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/save"
-                app:icon="@drawable/save" />
-        </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
-
-
-</merge>

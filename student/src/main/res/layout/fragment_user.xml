@@ -23,14 +23,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingStart="@dimen/full_card_padding"
-                android:paddingTop="@dimen/full_card_padding"
-                android:paddingEnd="@dimen/full_card_padding"
-                android:paddingBottom="@dimen/full_card_padding"
                 app:alignItems="center"
                 app:flexDirection="column">
-
-
 
 
                 <LinearLayout
@@ -38,34 +32,35 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+
                     <include
                         android:id="@+id/header"
                         style="@style/CardSingle"
                         layout="@layout/content_fragment_user_header"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/text_manage"
+                        style="@style/CategoryCardNameBald"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_width="match_parent" />
-
-                <TextView
-                    android:id="@+id/text_manage"
-                    style="@style/CategoryCardNameBald"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/manage_student"
-                    android:visibility="gone"
-                    app:layout_maxWidth="@dimen/tablet_max_width"
-                    tools:visibility="visible" />
+                        android:text="@string/manage_student"
+                        android:visibility="gone"
+                        app:layout_maxWidth="@dimen/tablet_max_width"
+                        tools:visibility="visible" />
 
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_report"
-                    style="@style/CardSingle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    custom:description="@string/report_desc"
-                    custom:icon="@drawable/flag"
-                    custom:text="@string/report"
-                    tools:visibility="visible" />
+                    <com.norbert.koller.shared.customviews.CardButton
+                        android:id="@+id/cb_report"
+                        style="@style/CardSingle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        custom:description="@string/report_desc"
+                        custom:icon="@drawable/flag"
+                        custom:text="@string/report"
+                        tools:visibility="visible" />
                 </LinearLayout>
 
             </com.google.android.flexbox.FlexboxLayout>

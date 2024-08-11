@@ -24,7 +24,7 @@ class PersonalDataFragment : FragmentInMainActivity() {
         savedInstanceState: Bundle?
     ): View {
         binding = ContentPersonalDataBinding.inflate(layoutInflater)
-        val padding = requireContext().resources.getDimensionPixelSize(R.dimen.full_card_padding)
+        val padding = requireContext().resources.getDimensionPixelSize(R.dimen.application_padding)
         val nestedScrollView = NestedScrollView(requireContext())
         binding.root.setPadding(padding,padding,padding,padding)
         nestedScrollView.addView(binding.root)

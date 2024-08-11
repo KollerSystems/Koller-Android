@@ -1,7 +1,6 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -26,7 +25,7 @@ class CanteenFragment : FragmentInMainActivity() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        val view : View = inflater.inflate(R.layout.fragment_canteen, container, false)
+        val view : View = inflater.inflate(R.layout.obs_fragment_canteen, container, false)
 
         canteenRecyclerView = view.findViewById(R.id.recycler_view)
         canteenRecyclerView.layoutManager = LinearLayoutManager(context)

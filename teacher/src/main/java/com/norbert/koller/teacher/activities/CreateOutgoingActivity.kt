@@ -3,6 +3,7 @@ package com.norbert.koller.teacher.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.GONE
+import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.addCallback
@@ -23,8 +24,9 @@ import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.ResponseViewModel
 import com.norbert.koller.teacher.R
+import com.norbert.koller.teacher.databinding.ActivityCreateOutgoingBinding
 
-class CreateOutgoingActivity() : AppCompatActivity() {
+class CreateOutgoingActivity() : EditableToolbarActivity() {
 
 
 
@@ -36,12 +38,7 @@ class CreateOutgoingActivity() : AppCompatActivity() {
         var userData: UserData? = null
     }
 
-    private lateinit var tilDateFrom : TextInputLayout
-    private lateinit var tilDateTo : TextInputLayout
-    private lateinit var tilTimeFrom : TextInputLayout
-    private lateinit var tilTimeTo : TextInputLayout
-    private lateinit var tilTitle: TextInputLayout
-    private lateinit var tilAddresse: TextInputWithChips
+    lateinit var binding : ActivityCreateOutgoingBinding
 
     lateinit var viewModel : ResponseViewModel
 
@@ -51,7 +48,6 @@ class CreateOutgoingActivity() : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_outgoing)
 
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
 
@@ -66,7 +62,7 @@ class CreateOutgoingActivity() : AppCompatActivity() {
 
         findViewById<AppBarLayout>(com.norbert.koller.shared.R.id.app_bar).setup()
 
-        val textFirst : TextView = findViewById(R.id.text_first)
+        val textFirst : TextView = findViewById(R.id.text_title_first)
         if(textFirst.text.isNullOrBlank()){
             textFirst.visibility = GONE
         }
@@ -77,34 +73,24 @@ class CreateOutgoingActivity() : AppCompatActivity() {
             onBackPressedDispatcher.onBackPressed()
         }
 
-
-        tilDateFrom = findViewById(com.norbert.koller.shared.R.id.create_new_post_til_date_from)
-        tilDateTo = findViewById(com.norbert.koller.shared.R.id.create_new_post_til_date_to)
-        tilTimeFrom = findViewById(com.norbert.koller.shared.R.id.create_new_post_til_time_from)
-        tilTimeTo = findViewById(com.norbert.koller.shared.R.id.create_new_post_til_time_to)
-        tilAddresse = findViewById (R.id.til_addresse)
-        tilTitle = findViewById (R.id.create_new_post_til_title)
-
-        tilDateFrom.connectToDatePicker(supportFragmentManager)
-        tilDateTo.connectToDatePicker(supportFragmentManager)
-        tilTimeFrom.connectToTimePicker(supportFragmentManager)
-        tilTimeTo.connectToTimePicker(supportFragmentManager)
-
-        val tilType: TextInputLayout = findViewById(com.norbert.koller.shared.R.id.create_new_post_til_type)
+        binding.tilDateFrom.connectToDatePicker(supportFragmentManager)
+        binding.tilDateTo.connectToDatePicker(supportFragmentManager)
+        binding.tilTimeFrom.connectToTimePicker(supportFragmentManager)
+        binding.tilTimeTo.connectToTimePicker(supportFragmentManager)
 
 
         when (type){
             TEMPORARY ->{
-                tilType.editText!!.setText(com.norbert.koller.shared.R.string.temporary)
-                tilType.editText!!.tag = TEMPORARY
+                getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.temporary)
+                getTitleTil().editText!!.tag = TEMPORARY
             }
             PERMANENT ->{
-                tilType.editText!!.setText(com.norbert.koller.shared.R.string.continuous)
-                tilType.editText!!.tag = PERMANENT
+                getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.continuous)
+                getTitleTil().editText!!.tag = PERMANENT
             }
         }
 
-        tilType.editText!!.setOnClickListener{
+        getTitleTil().editText!!.setOnClickListener{
 
             currentFocus?.clearFocus()
 
@@ -114,8 +100,8 @@ class CreateOutgoingActivity() : AppCompatActivity() {
                     null,
                     AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.transparent_clock),
                     null, {
-                        tilType.editText!!.setText(com.norbert.koller.shared.R.string.temporary)
-                        tilType.editText!!.tag = TEMPORARY
+                        getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.temporary)
+                        getTitleTil().editText!!.tag = TEMPORARY
                     }),
 
                 ListItem(
@@ -123,8 +109,8 @@ class CreateOutgoingActivity() : AppCompatActivity() {
                     null,
                     AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.clock),
                     null, {
-                        tilType.editText!!.setText(com.norbert.koller.shared.R.string.continuous)
-                        tilType.editText!!.tag = PERMANENT
+                        getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.continuous)
+                        getTitleTil().editText!!.tag = PERMANENT
                     })
 
             ))
@@ -132,21 +118,19 @@ class CreateOutgoingActivity() : AppCompatActivity() {
 
         }
 
-        val publishButton: Button = findViewById (com.norbert.koller.shared.R.id.create_new_post_button_publish)
-
         val onChange : (() -> Unit) = {
-            publishButton.isEnabled = (ApplicationManager.allFilled(tilDateFrom, tilDateTo, tilTimeFrom, tilTimeTo, tilTitle) && tilAddresse.containsChip())
+            getConfirmButton().isEnabled = (ApplicationManager.allFilled(binding.tilDateFrom, binding.tilDateTo, binding.tilTimeFrom, binding.tilTimeTo, binding.tilPurpose) && binding.tilAddresse.containsChip())
         }
 
-        ApplicationManager.waitForChange(onChange, tilDateFrom, tilDateTo, tilTimeFrom, tilTimeTo, tilTitle)
-        tilAddresse.onChipChange = onChange
+        ApplicationManager.waitForChange(onChange, binding.tilDateFrom, binding.tilDateTo, binding.tilTimeFrom, binding.tilTimeTo, binding.tilPurpose)
+        binding.tilAddresse.onChipChange = onChange
 
         onChange.invoke()
 
 
         viewModel.response.observe(this){
             for (user in outgoingData().addresses){
-                tilAddresse.addChip(user.name!!)
+                binding.tilAddresse.addChip(user.name!!)
             }
 
         }
@@ -165,5 +149,14 @@ class CreateOutgoingActivity() : AppCompatActivity() {
                 }
                 .show()
         }
+    }
+
+    override fun createContentView(): ViewGroup {
+        binding = ActivityCreateOutgoingBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun getName(): Pair<String, String> {
+        return Pair(getString(com.norbert.koller.shared.R.string.create_new_x_first_part), getString(R.string.create_new_x_outgoing_last_part))
     }
 }

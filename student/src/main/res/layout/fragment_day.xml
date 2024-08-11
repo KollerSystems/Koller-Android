@@ -31,18 +31,15 @@
         android:background="@null"
         android:clipChildren="false"
         android:clipToPadding="false"
-        android:paddingStart="@dimen/full_card_padding"
         android:paddingTop="0dp"
-        android:paddingEnd="@dimen/full_card_padding"
         android:paddingBottom="0dp">
 
 
-
         <TextView
+            style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Augusztus 5. péntek"
-            style="@style/CategoryCardNameBald">
+            android:text="Augusztus 5. péntek">
 
         </TextView>
 
@@ -91,8 +88,6 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-
-
         <com.google.android.material.card.MaterialCardView
             style="@style/CardMiddle"
             android:layout_width="match_parent"
@@ -104,6 +99,7 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical">
+
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -162,8 +158,8 @@
                     style="@style/Description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="16:00"
-                    android:gravity="end" />
+                    android:gravity="end"
+                    android:text="16:00" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -256,7 +252,6 @@
         </com.google.android.material.card.MaterialCardView>
 
 
-
         <com.google.android.material.card.MaterialCardView
             style="@style/CardMiddle"
             android:layout_width="match_parent"
@@ -268,14 +263,14 @@
                 android:clipChildren="false"
                 android:clipToPadding="false"
                 android:orientation="vertical">
+
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    custom:text="@string/start_of_optional_leaving_period"
                     android:layout_marginStart="@dimen/n_card_padding"
                     android:layout_marginEnd="@dimen/n_card_padding"
+                    custom:text="@string/start_of_optional_leaving_period"
                     custom:time="19:15" />
-
 
 
                 <LinearLayout
@@ -317,13 +312,12 @@
                     style="@style/Description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="22:00"
-                    android:gravity="end" />
+                    android:gravity="end"
+                    android:text="22:00" />
             </LinearLayout>
 
 
         </com.google.android.material.card.MaterialCardView>
-
 
 
         <com.google.android.material.card.MaterialCardView
@@ -335,6 +329,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
+
                 <com.norbert.koller.shared.customviews.EventPoint
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -342,6 +337,7 @@
                     android:layout_marginEnd="@dimen/n_card_padding"
                     custom:text="@string/headcount_check"
                     custom:time="22:00" />
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
@@ -364,7 +360,6 @@
                         android:layout_margin="@dimen/text_container_margin"
                         android:layout_weight="1"
                         android:text="@string/sleeping_time" />
-
 
 
                 </LinearLayout>

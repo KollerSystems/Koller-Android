@@ -2,7 +2,6 @@
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Card"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:clickable="true"
@@ -31,8 +30,8 @@
             android:layout_marginTop="@dimen/spacing"
             android:layout_marginRight="-5dp"
             android:layout_marginBottom="@dimen/text_container_margin"
-            tools:text="Katona\nMárton"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            tools:text="Katona\nMárton" />
 
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>
