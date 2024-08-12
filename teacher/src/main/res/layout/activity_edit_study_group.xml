@@ -328,6 +328,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/card_full_margin"
+                    android:layout_marginBottom="@null"
                     app:cardCornerRadius="@null"
                     app:cardPreventCornerOverlap="false"
                     app:contentPadding="@dimen/card_padding"

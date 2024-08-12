@@ -384,4 +384,6 @@
     <string name="breakfast">Reggeli</string>
     <string name="lunch">Ebéd</string>
     <string name="dinner">Vacsora</string>
+    <string name="education_id">Tanuló azonosító</string>
+    <string name="nationalities">Állampolgárságok</string>
 </resources>

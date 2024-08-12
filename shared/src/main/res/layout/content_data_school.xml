@@ -64,7 +64,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/home" />
+                    app:srcCompat="@drawable/gps" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

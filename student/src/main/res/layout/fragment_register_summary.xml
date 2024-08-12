@@ -64,53 +64,29 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="@dimen/text_container_margin"
                 android:orientation="vertical">
 
-                <TextView
-
-                    style="@style/SeparatorTitle"
+                <com.norbert.koller.shared.customviews.SmallView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="0dp"
-                    android:text="@string/id" />
+                    app:text="@string/id"
+                    app:description="532678523"
+                    app:icon="@drawable/tag"/>
 
-                <TextView
-
+                <com.norbert.koller.shared.customviews.SmallView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="532678523"
-                    android:textAppearance="@style/Description" />
+                    app:text="@string/name"
+                    app:description="Táncsics Mihály Tehetséggondozó Kollégium"
+                    app:icon="@drawable/building"/>
 
-                <TextView
-
-                    style="@style/SeparatorTitle"
+                <com.norbert.koller.shared.customviews.SmallView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/name"
-                    android:textStyle="bold" />
+                    app:text="Cím"
+                    app:description="Magyarország, 1119. Budapest, Lajus utca 4-6."
+                    app:icon="@drawable/gps"/>
 
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Táncsics Mihály Tehetséggondozó Kollégium"
-                    android:textAppearance="@style/Description" />
-
-                <TextView
-
-                    style="@style/SeparatorTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Cím"
-                    android:textStyle="bold" />
-
-                <TextView
-
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Magyarország, 1119. Budapest, Lajus utca 4-6."
-                    android:textAppearance="@style/Description" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
