@@ -36,16 +36,26 @@
     <attr name="colorWorstInverse" format="reference|color" />
 
     <attr name="text" format="string" />
-    <attr name="icon" format="reference" />
+    <attr name="description" format="string"/>
+    <attr name="icon" format="reference"/>
 
     <declare-styleable name="simpleCardButton">
         <attr name="swap_description_and_text" format="boolean"/>
         <attr name="rounded" format="boolean"/>
         <attr name="text"/>
-        <attr name="description" format="string" />
+        <attr name="description"/>
         <attr name="badge" format="integer" />
-        <attr name="icon" />
+        <attr name="icon"/>
         <attr name="end_icon" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="allergensView">
+        <attr name="description"/>
+        <attr name="icon"/>
+        <attr name="allergen_type" format="enum">
+            <enum name="contains" value="0"/>
+            <enum name="may_contain" value="1"/>
+        </attr>
     </declare-styleable>
 
     <declare-styleable name="tipView">

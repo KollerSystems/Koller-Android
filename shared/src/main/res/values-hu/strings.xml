@@ -386,4 +386,6 @@
     <string name="dinner">Vacsora</string>
     <string name="education_id">Tanuló azonosító</string>
     <string name="nationalities">Állampolgárságok</string>
+    <string name="contains">%1$s tartalmaz</string>
+    <string name="may_contain">%1$s tartalmazhat</string>
 </resources>

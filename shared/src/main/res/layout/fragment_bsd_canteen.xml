@@ -76,63 +76,27 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="@dimen/spacing"
+                app:showDividerHorizontal="middle"
+                app:dividerDrawable="@drawable/divider_space"
                 app:flexWrap="wrap">
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:foreground="@drawable/ring_warning"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/egg" />
+                <com.norbert.koller.shared.customviews.AllergensView
+                    app:icon="@drawable/egg"
+                    app:description="Tojást"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.norbert.koller.shared.customviews.AllergensView
+                    app:icon="@drawable/wheat"
+                    app:allergen_type="may_contain"
+                    app:description="Glutént"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <com.norbert.koller.shared.customviews.AllergensView
+                    app:icon="@drawable/peanut"
+                    app:description="Mogyorót"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
 
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:foreground="@drawable/ring_maybe"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/wheat" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:foreground="@drawable/ring_maybe"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/egg" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:foreground="@drawable/ring_warning"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/egg" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:foreground="@drawable/ring_warning"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/doctor" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:foreground="@drawable/ring_maybe"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/egg" />
-
-                <ImageView
-                    android:layout_width="60dp"
-                    android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:foreground="@drawable/ring_warning"
-                    android:padding="@dimen/spacing"
-                    android:src="@drawable/doctor" />
             </com.google.android.flexbox.FlexboxLayout>
 
 

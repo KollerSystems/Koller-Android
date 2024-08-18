@@ -398,4 +398,6 @@
     <string name="taj" translatable="false">TAJ</string>
     <string name="education_id">Education ID</string>
     <string name="nationalities">Nationalities</string>
+    <string name="contains">Contains %1$s</string>
+    <string name="may_contain">May contain %1$s</string>
 </resources>
