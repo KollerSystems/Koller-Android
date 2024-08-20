@@ -15,7 +15,13 @@ class StudentHostelFragment : com.norbert.koller.shared.fragments.StudentHostelF
         binding.btnBasePrograms.isVisible = true
 
         binding.btnBasePrograms.setOnClickListener{
-            (requireContext() as MainActivity).addFragment(BaseProgramTypesFragment())
+            getMainActivity().addFragment(BaseProgramTypesFragment())
+        }
+
+        binding.btnStats.isVisible = true
+
+        binding.btnStats.setOnClickListener {
+            getMainActivity().addFragment(StatisticsFragment())
         }
     }
 

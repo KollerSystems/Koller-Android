@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.norbert.koller.teacher.fragments.StatisticsFragment">
+
+    <LinearLayout
+        style="@style/MainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/text_filters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/text_container_margin"
+            android:text="@string/filters"
+            android:textAppearance="@style/Description"
+            android:textStyle="bold"
+            app:layout_maxWidth="@dimen/tablet_max_width" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_date"
+                style="@style/ChipDropdownFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/date"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_gender"
+                style="@style/ChipDropdownFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/gender"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_class"
+                style="@style/ChipDropdownFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/class_"
+                app:closeIconEnabled="true" />
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_group"
+                style="@style/ChipDropdownFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/group"
+                app:closeIconEnabled="true" />
+        </com.google.android.material.chip.ChipGroup>
+
+        <View
+            android:id="@+id/view_divider"
+            style="@style/SeparatorLine"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing"
+            android:layout_marginBottom="@dimen/text_container_margin" />
+
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/separate" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/clean"
+            app:text="@string/room_order" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/gate"
+            app:text="Portai késések" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/base_program"
+            app:text="Alapprogrami elmaradások" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/rocket"
+            app:text="Szakköri elmaradások" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardMiddle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/award"
+            app:text="@string/commendations" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/error"
+            app:text="@string/warnings" />
+
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/aggregated" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/award"
+            app:text="@string/commendations_warnings" />
+
+        <com.norbert.koller.shared.customviews.CardButton
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:icon="@drawable/star"
+            app:text="Pontok" />
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>
