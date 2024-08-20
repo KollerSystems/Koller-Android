@@ -39,7 +39,7 @@
                     android:layout_marginHorizontal="@dimen/text_container_margin"
                     android:layout_marginTop="@dimen/text_container_margin"
                     android:layout_marginBottom="@dimen/spacing"
-                    android:text="Melyik szakköröket szeretné szerkeszteni?"
+                    android:text="@string/which_study_groups_to_edit"
                     android:textAppearance="@style/Title"
                     android:visibility="gone"
                     tools:visibility="visible" />
@@ -57,16 +57,18 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="@dimen/text_container_margin"
-                        android:text="Csak ezt"
-                        android:textAppearance="@style/Text" />
+                        android:text="@string/only_this"
+                        android:textAppearance="@style/Text"
+                        tools:ignore="RtlSymmetry" />
 
                     <RadioButton
                         android:id="@+id/rbtn_this_and_all_the_following"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingStart="@dimen/text_container_margin"
-                        android:text="Ezt és az összes ezt követőt"
-                        android:textAppearance="@style/Text" />
+                        android:text="@string/this_and_all_the_following"
+                        android:textAppearance="@style/Text"
+                        tools:ignore="RtlSymmetry" />
                 </RadioGroup>
 
                 <TextView
@@ -187,7 +189,7 @@
                     android:layout_height="match_parent"
 
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-                    android:hint="Kezdés dátuma"
+                    android:hint="@string/date_of_beginning"
                     custom:boxCornerRadiusBottomEnd="0dp"
                     custom:boxCornerRadiusBottomStart="0dp"
                     custom:boxCornerRadiusTopEnd="0dp"
@@ -201,7 +203,8 @@
                         android:focusable="false"
                         android:inputType="datetime|date"
                         android:maxLength="50"
-                        android:textAppearance="@style/Text" />
+                        android:textAppearance="@style/Text"
+                        tools:ignore="Deprecated" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.card.MaterialCardView
@@ -224,7 +227,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/text_container_margin"
                             android:padding="@dimen/text_container_margin"
-                            android:text="Hét napjai" />
+                            android:text="@string/days_of_week" />
 
                         <CheckBox
                             android:id="@+id/check_box_monday"
@@ -345,7 +348,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="@dimen/text_container_margin"
                             android:padding="@dimen/text_container_margin"
-                            android:text="Ismétlődés" />
+                            android:text="@string/repeats" />
 
                         <RadioGroup
                             android:layout_width="match_parent"
@@ -355,19 +358,19 @@
                                 android:id="@+id/rbtn_weekly"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Hetente" />
+                                android:text="@string/weekly" />
 
                             <RadioButton
                                 android:id="@+id/rbtn_every_two_weeks"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Két hetente" />
+                                android:text="ever0" />
 
                             <RadioButton
                                 android:id="@+id/rbtn_every_four_weeks"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="Négy hetente" />
+                                android:text="@string/every_four_weeks" />
                         </RadioGroup>
                     </LinearLayout>
 

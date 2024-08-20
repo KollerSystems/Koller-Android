@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -51,7 +52,8 @@
                     android:layout_height="wrap_content"
                     android:singleLine="true"
                     android:text="tweinek5"
-                    android:textAppearance="@style/Title" />
+                    android:textAppearance="@style/Title"
+                    tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -72,7 +74,8 @@
                     android:inputType="textWebPassword"
                     android:singleLine="true"
                     android:text="rT1>k.U'`B?&amp;AsA9"
-                    android:textAppearance="@style/Title" />
+                    android:textAppearance="@style/Title"
+                    tools:ignore="HardcodedText" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button

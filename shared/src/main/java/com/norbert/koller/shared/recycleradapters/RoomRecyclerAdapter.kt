@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -23,6 +24,7 @@ class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
         return nameParts[0][0] + ".\u00A0" + nameParts[1]
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
         super.onBindItemViewHolder(holder, item, position)

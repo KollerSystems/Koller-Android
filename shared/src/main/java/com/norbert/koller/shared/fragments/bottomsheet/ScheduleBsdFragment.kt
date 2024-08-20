@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.fragments.bottomsheet
 
+import android.annotation.SuppressLint
 import android.icu.util.Calendar
 import android.icu.util.TimeZone
 import android.os.Bundle
@@ -22,6 +23,7 @@ class ScheduleBsdFragment : BottomSheetDialogFragment() {
 
 
 
+    @SuppressLint("SetTextI18n")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

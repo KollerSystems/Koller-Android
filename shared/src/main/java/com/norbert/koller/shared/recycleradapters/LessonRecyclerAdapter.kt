@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.ViewGroup
@@ -44,6 +45,7 @@ class LessonRecyclerAdapter(private var programDatas : ArrayList<ProgramData>) :
         }
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)

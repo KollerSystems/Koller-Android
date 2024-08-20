@@ -70,11 +70,12 @@
                                 android:padding="7.5dp">
 
                                 <TextView
-                                    android:id="@+id/home_text_lessons_number"
+                                    android:id="@+id/text_lessons_number"
                                     style="@style/IconLikeText"
                                     android:gravity="center_horizontal"
                                     android:text="n"
-                                    android:textSize="38sp" />
+                                    android:textSize="38sp"
+                                    tools:ignore="HardcodedText" />
 
                                 <LinearLayout
                                     android:layout_width="match_parent"
@@ -93,14 +94,14 @@
                                         android:orientation="vertical">
 
                                         <TextView
-                                            android:id="@+id/home_text_lessons_title"
+                                            android:id="@+id/text_lessons_title"
                                             style="@style/Title"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
                                             android:text="@string/title" />
 
                                         <TextView
-                                            android:id="@+id/home_text_lessons_description"
+                                            android:id="@+id/text_lessons_description"
                                             style="@style/Description"
                                             android:layout_width="match_parent"
                                             android:layout_height="wrap_content"
@@ -109,7 +110,7 @@
                                     </LinearLayout>
 
                                     <TextView
-                                        android:id="@+id/home_text_lessons_time"
+                                        android:id="@+id/text_lessons_time"
                                         style="@style/Description"
                                         android:layout_width="35sp"
                                         android:layout_height="match_parent"
@@ -139,7 +140,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_weight="1"
                     android:text="@string/today" />
 
                 <androidx.cardview.widget.CardView
@@ -172,7 +172,7 @@
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nemrég" />
+                    android:text="@string/recently" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -205,7 +205,7 @@
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Egyéb olvasatlan" />
+                    android:text="@string/other_unread" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -251,6 +251,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/application_padding"
         android:layout_marginBottom="@dimen/application_padding"
+        android:contentDescription="@string/create_new_post"
         android:src="@drawable/pencil"
         android:visibility="gone"
         tools:visibility="visible" />

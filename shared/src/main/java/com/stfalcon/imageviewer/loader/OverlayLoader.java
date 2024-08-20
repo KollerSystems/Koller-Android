@@ -1,9 +1,7 @@
 package com.stfalcon.imageviewer.loader;
 
 import android.view.View;
-import android.widget.ImageView;
 
-import com.stfalcon.imageviewer.StfalconImageViewer;
 import com.stfalcon.imageviewer.viewer.dialog.ImageViewerDialog;
 
 /**

@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.activities
 
+import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
@@ -148,6 +149,7 @@ class CreateNewPostActivity : AppCompatActivity() {
 
         imageRecyclerView.adapter = EditableImageRecyclerAdapter(imageUris, this@CreateNewPostActivity, imageLimit, textViewImageLimit)
 
+        @SuppressLint("SetTextI18n")
         fun checkImages() : Boolean{
             if(imageUris.size > imageLimit){
                 if(!textViewImageLimit.text.contains(" • ")) {

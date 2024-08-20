@@ -49,7 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_marginBottom="@dimen/text_container_margin"
-                android:text="Online Marketing • Szakkör" />
+                android:text="Online Marketing • Szakkör"
+                tools:ignore="HardcodedText" />
 
             <com.norbert.koller.shared.customviews.DescriptionView
                 android:id="@+id/db_state"
@@ -109,7 +110,8 @@
                 app:cornerRadius="@dimen/card_corner_radius"
                 app:icon="@drawable/arrow_right"
                 app:iconGravity="textEnd"
-                tools:visibility="visible" />
+                tools:visibility="visible"
+                tools:ignore="HardcodedText,RtlSymmetry" />
 
         </LinearLayout>
 
@@ -127,7 +129,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="16:00" />
+                android:text="16:00"
+                tools:ignore="HardcodedText" />
 
             <TextView
 
@@ -136,7 +139,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="19:15" />
+                android:text="19:15"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
     </LinearLayout>
 

@@ -110,7 +110,7 @@ constructor(
                 invalidateStars()
             }
 
-            timer.scheduleAtFixedRate(task, 0, fps)
+            timer.schedule(task, 0, fps)
 
             started = true
         }

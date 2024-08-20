@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
@@ -41,6 +42,7 @@ abstract class HomeFragment : FragmentInMainActivity() {
         return getString(R.string.home)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

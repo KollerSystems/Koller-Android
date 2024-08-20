@@ -22,6 +22,8 @@
             android:layout_marginBottom="@dimen/n_card_padding"
             android:adjustViewBounds="false"
             android:alpha="0.05"
+            android:importantForAccessibility="no"
+            android:importantForAccessibility="no"
             android:scaleType="fitStart"
             app:srcCompat="@drawable/breakfast" />
     </FrameLayout>
@@ -42,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_container_margin"
-                android:text="Reggeli" />
+                android:text="@string/title" />
 
             <TextView
                 android:id="@+id/text_time"
@@ -51,7 +53,7 @@
                 android:layout_margin="@dimen/text_container_margin"
                 android:layout_weight="1"
                 android:gravity="center_vertical|end"
-                android:text="6:00 - 8:45" />
+                android:text="@string/time" />
         </LinearLayout>
 
         <TextView
@@ -59,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
-            android:text="Gyümölcstea, Margarin  Delma, Barna kenyér,  Újhagyma, Házi körözött  túró"
+            android:text="@string/title"
             android:textAppearance="@style/Title" />
 
     </LinearLayout>

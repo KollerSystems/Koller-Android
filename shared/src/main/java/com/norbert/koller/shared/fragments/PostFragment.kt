@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.fragments
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
 import android.text.Editable
@@ -68,6 +69,7 @@ class PostFragment : BottomSheetDialogFragment() {
         super.onCancel(dialog)
     }
 
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?

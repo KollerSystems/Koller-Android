@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.customviews
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.text.Editable
 import android.text.TextWatcher
@@ -43,6 +44,7 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
 
     var onChipChange : (() -> Unit)? = null
     
+    @SuppressLint("SetTextI18n")
     fun emptyAddresses(){
         if((binding.et.text.length)==0 && !containsChip() && !binding.et.isFocused){
             binding.til.editText!!.setText("")
@@ -74,6 +76,7 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
         uiFilled()
     }
 
+    @SuppressLint("SetTextI18n")
     fun uiFilled(){
         binding.til.editText!!.setText(" ")
     }

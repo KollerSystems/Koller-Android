@@ -6,7 +6,7 @@ import com.norbert.koller.shared.recycleradapters.ListItem
 
 abstract class ListBsdFragmentViewModel : ViewModel() {
 
-    var list = MutableLiveData<ArrayList<ListItem>>()
+    var list = MutableLiveData<ArrayList<ListItem>?>()
 
     var filterName : Int? = null
 

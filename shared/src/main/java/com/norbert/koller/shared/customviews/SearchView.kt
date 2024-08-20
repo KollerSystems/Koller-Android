@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.customviews
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ViewSearchBinding
 import com.norbert.koller.shared.managers.setVisibilityBy
 
+@SuppressLint("SetTextI18n")
 class SearchView : MaterialCardView {
 
     constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(

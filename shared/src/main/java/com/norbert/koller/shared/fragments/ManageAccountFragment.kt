@@ -1,15 +1,13 @@
-package com.norbert.koller.shared.activities
+package com.norbert.koller.shared.fragments
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.ChangePasswordActivity
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.FragmentManageAccountBinding
-import com.norbert.koller.shared.fragments.FragmentInMainActivity
-import com.norbert.koller.shared.fragments.PersonalDataFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.stfalcon.imageviewer.StfalconImageViewer
 

@@ -21,6 +21,7 @@
             android:layout_marginEnd="@dimen/card_padding"
 
             android:adjustViewBounds="true"
+            android:importantForAccessibility="no"
             app:srcCompat="@drawable/search" />
 
         <EditText
@@ -30,9 +31,10 @@
             android:focusable="true"
             android:focusableInTouchMode="true"
             android:hint="@string/search_and_filters"
-            android:inputType="text|textCapSentences"
+            android:importantForAutofill="no" android:importantForAutofill="no" android:inputType="text|textCapSentences"
             android:paddingVertical="@dimen/card_padding"
             android:paddingStart="55dp"
+            android:paddingEnd="@dimen/text_container_margin"
             android:singleLine="true"
             android:textAppearance="@style/Title"
             android:textColorHint="?attr/colorForeground066" />

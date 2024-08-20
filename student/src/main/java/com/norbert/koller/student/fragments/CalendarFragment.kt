@@ -7,6 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.CanteenFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.norbert.koller.shared.fragments.DaysFragment
 
 class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() {
 

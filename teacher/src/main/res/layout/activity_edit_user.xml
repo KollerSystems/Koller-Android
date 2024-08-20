@@ -79,7 +79,7 @@ tools:context=".activities.EditUserActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
-            android:hint="Csoport"
+            android:hint="@string/group"
             app:boxCornerRadiusBottomEnd="0dp"
             app:boxCornerRadiusBottomStart="0dp"
             app:boxCornerRadiusTopEnd="0dp"
@@ -98,7 +98,7 @@ tools:context=".activities.EditUserActivity">
             style="@style/CardTextInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Osztály"
+            android:hint="@string/class_"
             app:boxCornerRadiusTopEnd="0dp"
             app:boxCornerRadiusTopStart="0dp">
 
@@ -115,7 +115,7 @@ tools:context=".activities.EditUserActivity">
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Személyes adatok kezelése" />
+            android:text="@string/manage_personal_data" />
 
         <com.norbert.koller.shared.customviews.CardButton
             android:id="@+id/cb_student"

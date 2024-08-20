@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="@dimen/application_padding"
@@ -12,7 +13,8 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/text_container_margin"
         android:layout_marginBottom="@dimen/text_container_margin"
-        android:text="This site uses cookies from Google to deliver its services and to analyze traffic. Learn more  close Your Privacy and Google Fonts Learn how building websites with Google Fonts is safe for you and your users." />
+        android:text="This site uses cookies from Google to deliver its services and to analyze traffic. Learn more  close Your Privacy and Google Fonts Learn how building websites with Google Fonts is safe for you and your users."
+        tools:ignore="HardcodedText" />
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
@@ -114,7 +116,7 @@
         style="@style/CategoryCardNameBald"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Következő szakkör"
+        android:text="@string/next_study_group"
         android:translationZ="1dp" />
 
     <com.norbert.koller.shared.customviews.CardButton

@@ -39,7 +39,8 @@
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Augusztus 5. péntek">
+            android:text="Augusztus 5. péntek"
+            tools:ignore="HardcodedText">
 
         </TextView>
 
@@ -62,7 +63,8 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="@dimen/spacing"
                     android:alpha="0.666"
-                    android:src="@drawable/moon" />
+                    android:src="@drawable/moon"
+                    android:importantForAccessibility="no"/>
 
                 <TextView
                     style="@style/Title"
@@ -81,7 +83,8 @@
                     android:layout_marginStart="@dimen/spacing"
                     android:gravity="center_horizontal"
                     android:lineSpacingExtra="-5sp"
-                    android:text="6:00" />
+                    android:text="6:00"
+                    tools:ignore="HardcodedText" />
 
             </LinearLayout>
 
@@ -132,7 +135,8 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="@dimen/spacing"
                         android:alpha="0.666"
-                        android:src="@drawable/walk" />
+                        android:src="@drawable/walk"
+                        android:importantForAccessibility="no"/>
 
                     <TextView
                         style="@style/Title"
@@ -159,7 +163,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="16:00" />
+                    android:text="16:00"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
@@ -187,7 +192,8 @@
                     android:layout_gravity="center"
                     android:layout_marginEnd="@dimen/spacing"
                     android:alpha="0.666"
-                    android:src="@drawable/present" />
+                    android:src="@drawable/present"
+                    android:importantForAccessibility="no"/>
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -211,7 +217,8 @@
                         style="@style/Description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Online Marketing" />
+                        android:text="Online Marketing"
+                        tools:ignore="HardcodedText" />
 
                 </LinearLayout>
 
@@ -227,7 +234,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="0dp"
                         android:layout_weight="1"
-                        android:text="16:00" />
+                        android:text="16:00"
+                        tools:ignore="HardcodedText" />
 
                     <TextView
 
@@ -235,7 +243,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="0"
-                        android:text="19:15" />
+                        android:text="19:15"
+                        tools:ignore="HardcodedText" />
                 </LinearLayout>
 
 
@@ -286,7 +295,8 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="@dimen/spacing"
                         android:alpha="0.666"
-                        android:src="@drawable/walk" />
+                        android:src="@drawable/walk"
+                        android:importantForAccessibility="no"/>
 
                     <TextView
                         style="@style/Title"
@@ -313,7 +323,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="end"
-                    android:text="22:00" />
+                    android:text="22:00"
+                    tools:ignore="HardcodedText" />
             </LinearLayout>
 
 
@@ -351,7 +362,8 @@
                         android:layout_gravity="center"
                         android:layout_marginEnd="@dimen/spacing"
                         android:alpha="0.666"
-                        android:src="@drawable/moon" />
+                        android:src="@drawable/moon"
+                        android:importantForAccessibility="no"/>
 
                     <TextView
                         style="@style/Title"

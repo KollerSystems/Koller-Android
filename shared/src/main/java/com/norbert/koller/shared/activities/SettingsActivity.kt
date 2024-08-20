@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.activities
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -50,6 +51,7 @@ abstract class SettingsActivity : ToolbarActivity() {
         checkBoxParent.getCheckBox().addOnCheckedStateChangedListener(parentOnCheckedStateChangedListener)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 

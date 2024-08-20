@@ -85,6 +85,7 @@
                             android:layout_height="@dimen/card_icon"
                             android:layout_gravity="center_vertical"
                             android:adjustViewBounds="true"
+                            android:importantForAccessibility="no"
                             android:src="@drawable/walk"
                             app:tint="?android:attr/colorForeground" />
 
@@ -157,7 +158,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@null"
-                    android:layout_weight="1"
                     android:text="@string/today" />
 
                 <androidx.cardview.widget.CardView
@@ -190,7 +190,7 @@
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Nemrég" />
+                    android:text="@string/recently" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -223,7 +223,7 @@
                     style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Egyéb olvasatlan" />
+                    android:text="@string/other_unread" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -269,7 +269,7 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="@dimen/application_padding"
         android:layout_marginBottom="@dimen/application_padding"
-        android:src="@drawable/pencil"
+        android:contentDescription="@string/create_new_post" android:src="@drawable/pencil"
         android:visibility="gone"
         tools:visibility="visible" />
 

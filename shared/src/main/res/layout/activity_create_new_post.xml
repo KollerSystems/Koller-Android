@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -51,7 +51,8 @@
                         android:importantForAutofill="no"
                         android:inputType="text"
                         android:text="@string/everyone"
-                        android:textAppearance="@style/Text" />
+                        android:textAppearance="@style/Text"
+                        tools:ignore="LabelFor" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -192,6 +193,7 @@
                                 style="@style/CategoryIcon"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
+                                android:importantForAccessibility="no"
                                 app:srcCompat="@drawable/calendar" />
 
                             <LinearLayout
@@ -329,6 +331,7 @@
                                 style="@style/CategoryIcon"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
+                                android:importantForAccessibility="no"
                                 app:srcCompat="@drawable/gps" />
 
                             <com.google.android.material.textfield.TextInputLayout
@@ -365,6 +368,7 @@
                                 style="@style/CategoryIcon"
                                 android:adjustViewBounds="true"
                                 android:alpha="0.666"
+                                android:importantForAccessibility="no"
                                 app:srcCompat="@drawable/fix_replace" />
 
                             <com.google.android.material.textfield.TextInputLayout
@@ -397,4 +401,4 @@
 
 
 
-</FrameLayout>
+</merge>

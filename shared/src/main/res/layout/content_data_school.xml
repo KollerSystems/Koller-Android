@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
-    tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment"
+    tools:context="com.norbert.koller.student.fragments.RegisterSchoolFragment"
         style="@style/FullMainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Iskola adatai" />
+            android:text="@string/school_data" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/CardTop"
@@ -30,6 +30,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
+                    android:importantForAccessibility="no"
                     app:srcCompat="@drawable/building" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -64,7 +65,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/gps" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/gps" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -179,7 +180,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/check_circle" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/check_circle" />
 
                 <com.norbert.koller.shared.customviews.AttachView
                     android:id="@+id/attach_school"
@@ -197,7 +198,7 @@
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Tanulmányi adatok" />
+            android:text="@string/study_data" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/CardTop"
@@ -213,7 +214,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/calculate" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/calculate" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -221,7 +222,7 @@
                     android:layout_marginHorizontal="@dimen/text_container_margin"
                     android:layout_marginBottom="@dimen/text_container_margin"
 
-                    android:hint="Képzés típusa">
+                    android:hint="@string/type_of_schooling">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditText"
@@ -249,7 +250,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    android:src="@drawable/money" />
+                    android:importantForAccessibility="no" android:src="@drawable/money" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -257,7 +258,7 @@
                     android:layout_marginHorizontal="@dimen/text_container_margin"
                     android:layout_marginBottom="@dimen/text_container_margin"
 
-                    android:hint="Képzés formája">
+                    android:hint="@string/form_of_schooling">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditText"
@@ -284,7 +285,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/groups" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/groups" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -292,7 +293,7 @@
                     android:layout_marginHorizontal="@dimen/text_container_margin"
                     android:layout_marginBottom="@dimen/text_container_margin"
 
-                    android:hint="Évfolyam">
+                    android:hint="@string/year_grade">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditText"
@@ -320,7 +321,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/graduate" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/graduate" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -342,7 +343,7 @@
                             android:layout_height="wrap_content"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="17dp"
-                            android:text="Nem érettségizett"
+                            android:text="@string/didnt_graduate"
                             android:textAlignment="center"
                             android:textSize="14sp"
                             app:chipBackgroundColor="@color/color_worst_toggle"
@@ -357,7 +358,7 @@
                             android:layout_height="wrap_content"
                             android:paddingHorizontal="16dp"
                             android:paddingVertical="17dp"
-                            android:text="Érettségizett"
+                            android:text="@string/did_graduate"
                             android:textAlignment="center"
                             android:textSize="14sp"
                             app:chipBackgroundColor="@color/color_best_toggle"
@@ -396,7 +397,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/engineer" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/engineer" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -404,7 +405,7 @@
                     android:layout_marginHorizontal="@dimen/text_container_margin"
                     android:layout_marginBottom="@dimen/text_container_margin"
 
-                    android:hint="Szakma / Tagozat"
+                    android:hint="@string/profession_or_department"
                     app:helperText="@string/optional">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -433,7 +434,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/book" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/book" />
 
                 <com.norbert.koller.shared.customviews.AttachView
                     android:id="@+id/attach_school_certificate"
@@ -451,7 +452,7 @@
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Osztályfőnök" />
+            android:text="@string/class_teacher" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/CardTop"
@@ -467,7 +468,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/user" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/user" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -523,7 +524,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/phone" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/phone" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"

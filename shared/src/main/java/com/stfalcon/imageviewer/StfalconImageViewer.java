@@ -18,7 +18,6 @@ package com.stfalcon.imageviewer;
 
 import android.content.Context;
 import android.util.Log;
-import android.view.View;
 import android.widget.ImageView;
 import androidx.annotation.*;
 import androidx.core.content.ContextCompat;
@@ -29,7 +28,6 @@ import com.stfalcon.imageviewer.viewer.builder.BuilderData;
 import com.stfalcon.imageviewer.viewer.dialog.ImageViewerDialog;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import android.app.Activity;
 
 import java.util.ArrayList;
 import java.util.Arrays;

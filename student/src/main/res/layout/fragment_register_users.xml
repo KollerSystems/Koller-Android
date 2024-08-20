@@ -44,7 +44,8 @@
                     android:id="@+id/chip9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Új a kollégiumban" />
+                    android:text="Új a kollégiumban"
+                    tools:ignore="HardcodedText" />
 
             </com.google.android.material.chip.ChipGroup>
 
@@ -64,7 +65,8 @@
                 app:drawableLeftCompat="@drawable/info"
                 android:drawablePadding="@dimen/text_container_margin"
                 android:text="Érintsd meg azokat az embereket, akivel úgy gondolod, hogy jól meglesztek a jövőben."
-                android:textAppearance="@style/Description" />
+                android:textAppearance="@style/Description"
+                tools:ignore="HardcodedText" />
 
             <androidx.cardview.widget.CardView
                 style="@style/MainCard"

@@ -28,7 +28,7 @@
         android:drawablePadding="@dimen/spacing"
 
         android:padding="@dimen/text_container_margin"
-        android:text="-"
+        android:text="@string/unset"
         app:drawableLeftCompat="@drawable/calendar" />
 
 
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
         android:layout_weight="0"
-        android:text="-"
+        android:text="@string/unset"
         android:textAppearance="@style/Text" />
 
 </LinearLayout>

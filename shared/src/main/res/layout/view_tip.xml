@@ -16,6 +16,7 @@
         android:layout_marginBottom="-10dp"
         android:adjustViewBounds="false"
         android:alpha="0.05"
+        android:importantForAccessibility="no"
         android:scaleType="fitStart"
         app:srcCompat="@drawable/lamp" />
 

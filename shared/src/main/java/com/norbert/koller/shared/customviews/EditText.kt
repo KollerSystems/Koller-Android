@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.customviews
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.KeyEvent
@@ -19,6 +20,7 @@ class EditText : androidx.appcompat.widget.AppCompatEditText {
     var onKeyboardClose: (() -> Unit)? = null
 
 
+    @SuppressLint("GestureBackNavigation")
     override fun onKeyPreIme(keyCode: Int, event: KeyEvent): Boolean {
         if (event.keyCode == KeyEvent.KEYCODE_BACK) {
             onKeyboardClose?.invoke()

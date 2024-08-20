@@ -1,5 +1,6 @@
 package com.norbert.koller.teacher.customviews
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
@@ -16,8 +17,9 @@ class TimeRangeView(context: Context, attrs: AttributeSet) : LinearLayout(contex
 
     val biding = ViewTimeRangeBinding.inflate(LayoutInflater.from(context), this)
 
+    @SuppressLint("SetTextI18n")
     fun setSliderText(distance : Float){
-        biding.text.text = "Időtartam: " + ApplicationManager.createClassesText(context, biding.rangeSlider.values[0].toInt() - 1, distance.toInt() + 1)
+        biding.text.text = context.getString(com.norbert.koller.shared.R.string.time_range) + ": " + ApplicationManager.createClassesText(context, biding.rangeSlider.values[0].toInt() - 1, distance.toInt() + 1)
     }
 
     fun sliderDistance() : Float{

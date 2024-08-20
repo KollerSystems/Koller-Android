@@ -29,6 +29,7 @@
 
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:contentDescription="@string/scroll_to_top"
         android:id="@+id/fab_scroll_to_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -26,7 +26,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Kérlek kategorizáld a következő érdeklődési köröket."
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            tools:ignore="HardcodedText" />
 
     </LinearLayout>
 
@@ -38,7 +39,8 @@
         app:drawableLeftCompat="@drawable/info"
         android:drawablePadding="@dimen/text_container_margin"
         android:text="Húzással tudod mozgatni a kategóriák között a szövegeket."
-        android:textAppearance="@style/Description" />
+        android:textAppearance="@style/Description"
+        tools:ignore="HardcodedText" />
 
     <TextView
         android:id="@+id/textView59"
@@ -48,5 +50,6 @@
         app:drawableLeftCompat="@drawable/info"
         android:drawablePadding="@dimen/text_container_margin"
         android:text="S = 🤩 Imádom\nC = 😐 Semleges\nF = 😤 Ki nem állhatom"
-        android:textAppearance="@style/Description" />
+        android:textAppearance="@style/Description"
+        tools:ignore="HardcodedText" />
 </LinearLayout>

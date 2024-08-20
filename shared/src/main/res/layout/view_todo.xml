@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:clipChildren="false"
@@ -47,14 +48,15 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/home_text_lessons_number"
+                    android:id="@+id/text_lessons_number"
                     style="@style/IconLikeText"
                     android:layout_width="@dimen/card_icon"
                     android:layout_height="@dimen/card_icon"
                     android:layout_gravity="center_vertical"
                     android:backgroundTint="?android:attr/colorForeground"
                     android:gravity="center"
-                    android:text="n" />
+                    android:text="n"
+                    tools:ignore="HardcodedText" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -73,14 +75,14 @@
                         android:orientation="vertical">
 
                         <TextView
-                            android:id="@+id/home_text_lessons_title"
+                            android:id="@+id/text_lessons_title"
                             style="@style/Title"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="@string/title" />
 
                         <TextView
-                            android:id="@+id/home_text_lessons_description"
+                            android:id="@+id/text_lessons_description"
                             style="@style/Description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -89,7 +91,7 @@
                     </LinearLayout>
 
                     <TextView
-                        android:id="@+id/home_text_lessons_time"
+                        android:id="@+id/text_lessons_time"
                         style="@style/Description"
                         android:layout_width="35sp"
                         android:layout_height="match_parent"
@@ -117,7 +119,8 @@
                 android:layout_width="@dimen/card_icon_smaller"
                 android:layout_height="@dimen/card_icon_smaller"
                 android:text="n"
-                android:textColor="?colorForeground066" />
+                android:textColor="?colorForeground066"
+                tools:ignore="HardcodedText" />
 
             <LinearLayout
                 android:layout_width="0dp"

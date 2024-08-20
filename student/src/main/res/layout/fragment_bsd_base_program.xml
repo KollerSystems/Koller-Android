@@ -71,10 +71,11 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/spacing"
             android:paddingEnd="16dp"
-            android:text="Szakkör általános adatai"
+            android:text="@string/general_information_of_study_group"
             android:visibility="gone"
             custom:cornerRadius="@dimen/card_corner_radius"
             custom:icon="@drawable/arrow_right"
             custom:iconGravity="textEnd"
-            tools:visibility="visible" />
+            tools:visibility="visible"
+            tools:ignore="RtlSymmetry" />
 </LinearLayout>

@@ -39,14 +39,16 @@
                 style="@style/Title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kis Gazsi" />
+                android:text="Kis Gazsi"
+                tools:ignore="HardcodedText" />
 
             <TextView
 
                 style="@style/Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="F3 • 2. emelet" />
+                android:text="F3 • 2. emelet"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 
@@ -62,7 +64,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:text="16:00" />
+                android:text="16:00"
+                tools:ignore="HardcodedText" />
 
             <TextView
 
@@ -70,7 +73,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
-                android:text="19:15" />
+                android:text="19:15"
+                tools:ignore="HardcodedText" />
         </LinearLayout>
 
 

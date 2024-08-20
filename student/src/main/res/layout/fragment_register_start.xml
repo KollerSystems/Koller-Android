@@ -7,7 +7,7 @@
     android:background="?android:attr/colorBackground"
     android:clipChildren="false"
     android:clipToPadding="false"
-    tools:context="com.norbert.koller.shared.com.norbert.koller.student.fragments.RegisterStartFragment">
+    tools:context="com.norbert.koller.student.fragments.RegisterStartFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -19,7 +19,7 @@
 
         android:text="👋"
         android:textSize="200dp"
-        tools:ignore="HardcodedText,SpUsage" />
+        tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
     <com.google.android.flexbox.FlexboxLayout
         android:layout_width="match_parent"

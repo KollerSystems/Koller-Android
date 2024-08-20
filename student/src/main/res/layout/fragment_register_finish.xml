@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/colorBackground"
-    tools:context="com.norbert.koller.shared.com.norbert.koller.student.fragments.RegisterFinishFragment">
+    tools:context="com.norbert.koller.student.fragments.RegisterFinishFragment">
 
     <TextView
         android:layout_width="wrap_content"
@@ -18,7 +18,7 @@
         android:scaleX="-1"
         android:text="🎉"
         android:textSize="200dp"
-        tools:ignore="HardcodedText,SpUsage" />
+        tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
     <com.google.android.flexbox.FlexboxLayout
         style="@style/MainLayout"

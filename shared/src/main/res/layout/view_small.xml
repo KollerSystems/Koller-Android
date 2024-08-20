@@ -13,6 +13,7 @@
         android:layout_height="@dimen/card_icon_smaller"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="@dimen/spacing"
+        android:importantForAccessibility="no"
         android:src="@drawable/empty" />
 
     <LinearLayout

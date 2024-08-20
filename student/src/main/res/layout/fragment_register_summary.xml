@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    tools:context="com.norbert.koller.shared.com.norbert.koller.student.fragments.RegisterSummaryFragment">
+    tools:context="com.norbert.koller.student.fragments.RegisterSummaryFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -109,7 +109,8 @@
             android:layout_marginBottom="@dimen/text_container_margin"
             android:gravity="top"
             android:paddingStart="@dimen/spacing"
-            android:text="A kollégium házirendjét és adatkezelési tájékoztatóját megismertem és az abban foglaltakat elfogadom." />
+            android:text="@string/accept_of_student_hostel_rules"
+            tools:ignore="RtlSymmetry" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/cb_true_data"
@@ -118,7 +119,8 @@
             android:layout_margin="@dimen/text_container_margin"
             android:gravity="top"
             android:paddingStart="@dimen/spacing"
-            android:text="Kijelentem, hogy a jelentkezés során megadott adatok a valóságnak megfelelnek." />
+            android:text="@string/accept_all_valid_information"
+            tools:ignore="RtlSymmetry" />
 
         <com.google.android.material.checkbox.MaterialCheckBox
             android:id="@+id/cb_parents"
@@ -127,7 +129,8 @@
             android:layout_margin="@dimen/text_container_margin"
             android:gravity="top"
             android:paddingStart="@dimen/spacing"
-            android:text="Tudomásul veszem, hogy a szülői felügyeleti jog közös gyakorlása esetén a hatályos jogszabály szerint a gyermekem iskolába járásával, neveltetésével kapcsolatos döntésekben a szülők egyetértése szükséges, így a jelen kollégiumi jelentkezéshez is. Büntetőjogi felelősségem tudatában nyilatkozom, hogy a gyermek szülői felügyeleti jogát a másik szülővel közösen gyakoroljuk, és az ő kifejezett beleegyezésével nyújtom be a kérelmet; vagy a másik szülő beleegyezése nem volt beszerezhető, mert ismeretlen helyen tartózkodik, vagy jogai gyakorlásában ténylegesen akadályozott; vagy a szülői felügyeleti jogot egyedül gyakorlom." />
+            android:text="@string/accept_parent"
+            tools:ignore="RtlSymmetry" />
 
 
     </LinearLayout>

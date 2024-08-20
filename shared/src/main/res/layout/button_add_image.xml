@@ -2,7 +2,7 @@
 <Button xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     style="@style/ImageAddButton"
-    android:text="Kép hozzáadása"
+    android:text="@string/add_image"
     app:icon="@drawable/add_image"
     app:iconGravity="textTop"
     app:iconSize="33dp">

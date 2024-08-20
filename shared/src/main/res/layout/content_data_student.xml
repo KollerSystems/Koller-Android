@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.norbert.koller.student.fragments.WelcomeBasicInformationsFragment"
+    tools:context="com.norbert.koller.student.fragments.RegisterStudentFragment"
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Személyes adatok" />
+            android:text="@string/personal_data" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/CardTop"
@@ -29,6 +29,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
+                    android:importantForAccessibility="no"
                     app:srcCompat="@drawable/user" />
 
                 <LinearLayout
@@ -85,7 +86,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/wc" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/wc" />
 
                 <com.google.android.flexbox.FlexboxLayout
                     android:layout_width="0dp"
@@ -103,7 +104,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         app:layout_flexShrink="1"
                         android:paddingHorizontal="16dp"
                         android:paddingVertical="17dp"
-                        android:text="Nő"
+                        android:text="@string/woman"
                         android:textAlignment="center"
                         android:textSize="14sp"
                         app:shapeAppearance="@style/OverlayRoundedLeft" />
@@ -116,7 +117,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         app:layout_flexShrink="1"
                         android:paddingVertical="17dp"
                         android:paddingHorizontal="16dp"
-                        android:text="Férfi"
+                        android:text="@string/man"
                         android:textAlignment="center"
                         android:textSize="14sp"
                         app:shapeAppearance="@style/OverlayRoundedRight" />
@@ -141,7 +142,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/cake" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/cake" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -169,7 +170,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
 
                         android:layout_marginHorizontal="@dimen/text_container_margin"
                         android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="Születési hely">
+                        android:hint="@string/birth_place">
 
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"
@@ -196,7 +197,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/home" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/home" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -364,14 +365,14 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/tag" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/tag" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
-android:layout_marginBottom="@dimen/text_container_margin"
-                    android:hint="TAJ szám"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:hint="@string/taj_number"
                     app:helperText="@string/optional">
 
                     <com.google.android.material.textfield.TextInputEditText
@@ -420,7 +421,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_marginHorizontal="@dimen/text_container_margin"
                     android:layout_marginBottom="@dimen/text_container_margin"
                     android:layout_weight="1"
-                    android:hint="Tanuló azonosító">
+                    android:hint="@string/education_id">
 
                     <com.google.android.material.textfield.TextInputEditText
                         style="@style/EditText"
@@ -446,7 +447,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/distance" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/distance" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -458,7 +459,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
                         android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="Állampolgárság">
+                        android:hint="@string/citizenship">
 
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"
@@ -472,7 +473,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
                         android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="További állampolgárság"
+                        android:hint="@string/other_citizenship"
                         app:helperText="@string/optional">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -492,7 +493,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Elérhetőségek" />
+            android:text="@string/contact_details" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/CardTop"
@@ -507,7 +508,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/phone" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/phone" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -540,7 +541,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/mail" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/mail" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
@@ -686,7 +687,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Egyéb" />
+            android:text="@string/other" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/CardTop"
@@ -701,7 +702,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
-                    app:srcCompat="@drawable/disabled" />
+                    android:importantForAccessibility="no" app:srcCompat="@drawable/disabled" />
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -713,7 +714,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_height="match_parent"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
                         android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="Tartós betegség, fogyaték"
+                        android:hint="@string/permanent_illness_disability"
                         app:helperText="@string/optional">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -728,7 +729,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_height="wrap_content"
                         android:layout_marginHorizontal="@dimen/text_container_margin"
                         android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="Hátrányos helyzetű">
+                        android:hint="@string/has_disadvantage">
 
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"

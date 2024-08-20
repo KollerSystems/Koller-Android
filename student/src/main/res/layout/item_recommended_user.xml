@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     style="@style/Card"
         android:layout_width="match_parent"
         android:clickable="true"
@@ -81,7 +82,8 @@
                             android:layout_height="25dp"
                             android:gravity="center_vertical"
                             android:text="S:"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip23"
@@ -97,7 +99,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip24"
@@ -113,7 +116,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip25"
@@ -129,7 +133,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip26"
@@ -145,7 +150,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip28"
@@ -161,7 +167,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/comment_text3"
@@ -170,7 +177,8 @@
                             android:gravity="center_vertical"
                             android:text="A:"
                             android:textStyle="bold"
-                            android:visibility="visible" />
+                            android:visibility="visible"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip17"
@@ -187,7 +195,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip19"
@@ -204,7 +213,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip21"
@@ -221,7 +231,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/comment_text2"
@@ -230,7 +241,8 @@
                             android:gravity="center_vertical"
                             android:text="D:"
                             android:textStyle="bold"
-                            android:visibility="visible" />
+                            android:visibility="visible"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip12"
@@ -247,7 +259,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip15"
@@ -264,7 +277,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip16"
@@ -281,7 +295,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <TextView
                             android:id="@+id/comment_text4"
@@ -289,7 +304,8 @@
                             android:layout_height="25dp"
                             android:gravity="center_vertical"
                             android:text="F:"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip10"
@@ -305,7 +321,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip32"
@@ -321,7 +338,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                         <com.google.android.material.chip.Chip
                             android:id="@+id/chip35"
@@ -337,7 +355,8 @@
                             app:chipIconEnabled="true"
                             app:chipMinHeight="25dp"
                             app:chipMinTouchTargetSize="0dp"
-                            app:chipStartPadding="@dimen/text_container_margin" />
+                            app:chipStartPadding="@dimen/text_container_margin"
+                            tools:ignore="HardcodedText" />
 
                     </com.google.android.material.chip.ChipGroup>
 

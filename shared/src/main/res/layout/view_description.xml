@@ -25,7 +25,7 @@
 
         android:drawablePadding="@dimen/spacing"
 
-        android:text="-"
+        android:text="@string/unset"
         app:drawableLeftCompat="@drawable/calendar" />
 
 
@@ -39,7 +39,7 @@
 
         android:layout_weight="0"
 
-        android:text="-"
+        android:text="@string/unset"
 
         android:gravity="end" />
 

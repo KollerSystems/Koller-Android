@@ -171,7 +171,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         (binding.textFilters.parent as ViewGroup).removeView(binding.textFilters)
 
 
-        closeButton.text = "Szűrők törlése"
+        closeButton.text = getString(R.string.clear_filters)
         closeButton.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.close)
 
         closeButton.setTextColor(textColor)
@@ -238,7 +238,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             closeButton.measure(MATCH_PARENT, WRAP_CONTENT)
             closeButton.layoutParams.height = closeButton.measuredHeight
 
-            viewModel.filtersShown.observe(this){ checked ->
+            viewModel.filtersShown.observe(viewLifecycleOwner){ checked ->
 
 
                 if(checked){

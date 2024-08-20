@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.icu.text.SimpleDateFormat
 import android.os.Handler
@@ -31,6 +32,7 @@ abstract class PagingSource(val context: Context, val viewModel: BaseViewModel) 
 
     }
 
+    @SuppressLint("WeekBasedYear")
     fun getFilters() : String{
 
         var finalString = ""

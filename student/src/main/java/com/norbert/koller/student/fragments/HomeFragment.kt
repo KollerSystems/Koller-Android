@@ -1,5 +1,6 @@
 package com.norbert.koller.student.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.LayoutInflater
@@ -57,6 +58,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
             (requireActivity() as MainActivity).bottomNavigationView().selectedItemId = Rs.id.calendar
         }
 
+        @SuppressLint("SetTextI18n")
         fun setupHome(){
             val c : Calendar = Calendar.getInstance()
             val seconds : Long = ((c.get(Calendar.SECOND) + c.get(Calendar.MINUTE) * 60 + c.get(
@@ -203,6 +205,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
             val textSmallLessonsNumber : TextView = view.findViewById(Rs.id.home_text_small_lessons_number)
             val textSmallLessonsTime : TextView = view.findViewById(Rs.id.home_text_small_lessons_time)
 
+            @SuppressLint("SetTextI18n")
             fun nextLessonsGraphic(index : Int){
                 realViewLessonsNext.visibility = View.VISIBLE
 

@@ -13,9 +13,17 @@
 
     <string name="students_in_studygroup">Diákok a szakkörön</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment" translatable="false">Hello blank fragment</string>
     <string name="edit_user">Edit user</string>
     <string name="edit_room">Edit room</string>
     <string name="edit_study_group">Edit study group</string>
     <string name="edit_base_program">Edit base program</string>
+    <string name="which_study_groups_to_edit">Which study groups do you want to edit?</string>
+    <string name="only_this">Only this</string>
+    <string name="this_and_all_the_following">This and all the following</string>
+    <string name="date_of_beginning">Date of beginning</string>
+    <string name="days_of_week">Days of week</string>
+    <string name="repeats">Repeats</string>
+    <string name="weekly">Weekly</string>
+    <string name="every_two_weeks">Every two weeks</string>
+    <string name="every_four_weeks">Every four weeks</string>
 </resources>

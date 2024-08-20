@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -39,6 +40,7 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
     abstract fun getDataTag(): String
 
+    @SuppressLint("SetTextI18n")
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         this.recyclerView = recyclerView
 

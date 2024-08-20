@@ -12,7 +12,7 @@
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Személyes adatok" />
+            android:text="@string/personal_data" />
 
     <com.google.android.material.card.MaterialCardView
         style="@style/CardTop"
@@ -28,6 +28,7 @@
                 style="@style/CategoryIcon"
                 android:adjustViewBounds="true"
                 android:alpha="0.666"
+                android:importantForAccessibility="no"
                 app:srcCompat="@drawable/user" />
 
             <LinearLayout
@@ -82,7 +83,7 @@
                 style="@style/CategoryIcon"
                 android:adjustViewBounds="true"
                 android:alpha="0.666"
-                app:srcCompat="@drawable/home" />
+                android:importantForAccessibility="no" app:srcCompat="@drawable/home" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -226,7 +227,7 @@
             style="@style/CategoryCardNameBald"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Elérhetőség" />
+            android:text="@string/contact_details" />
 
     <com.google.android.material.card.MaterialCardView
         style="@style/CardSingle"
@@ -242,7 +243,7 @@
                 style="@style/CategoryIcon"
                 android:adjustViewBounds="true"
                 android:alpha="0.666"
-                app:srcCompat="@drawable/phone" />
+                android:importantForAccessibility="no" app:srcCompat="@drawable/phone" />
 
             <LinearLayout
                 android:layout_width="match_parent"

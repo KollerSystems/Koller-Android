@@ -217,6 +217,7 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
 
     }
 
+    @SuppressLint("SetTextI18n")
     fun updateLimit(text : TextView, current : Int, max : Int){
         text.text = "${current}/${max}"
         if(current > max){

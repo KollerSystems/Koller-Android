@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.annotation.SuppressLint
 import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
@@ -53,6 +54,7 @@ class ListAdapter (val bottomSheet : ListBsdFragment) : RecyclerView.Adapter<Lis
         return ListViewHolder(view)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
         val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)

@@ -25,7 +25,8 @@
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:text="Andrásosfi Norberto"
-            android:textAppearance="@style/Title" />
+            android:textAppearance="@style/Title"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/text_crossing"
@@ -34,7 +35,7 @@
             android:layout_marginTop="@dimen/spacing"
             android:drawablePadding="@dimen/text_container_margin"
             android:gravity="center"
-            android:text="Kint"
+            android:text="@string/out"
             app:drawableLeftCompat="@drawable/out" />
 
         <TextView
@@ -44,7 +45,7 @@
             android:layout_marginBottom="@dimen/spacing"
             android:drawablePadding="@dimen/text_container_margin"
             android:gravity="center"
-            android:text="Engedéllyel"
+            android:text="@string/with_permission"
             android:textAppearance="@style/Description" />
 
         <TextView

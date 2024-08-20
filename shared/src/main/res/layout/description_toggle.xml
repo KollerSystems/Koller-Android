@@ -20,6 +20,7 @@
         android:layout_width="15dp"
         android:layout_height="15dp"
         android:layout_weight="0"
+        android:contentDescription="@string/unknown"
         android:src="@drawable/check_thick"
         app:tint="?attr/colorPrimary" />
 </LinearLayout>

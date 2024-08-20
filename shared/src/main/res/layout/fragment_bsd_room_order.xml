@@ -43,7 +43,8 @@
                 android:layout_marginStart="@dimen/spacing"
                 android:text="4"
                 android:textColor="#00BF9F"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                tools:ignore="HardcodedText" />
 
         </LinearLayout>
 

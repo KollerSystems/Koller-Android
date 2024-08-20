@@ -62,6 +62,7 @@
                     style="@style/CategoryIcon"
                     android:adjustViewBounds="true"
                     android:alpha="0.666"
+                    android:importantForAccessibility="no"
                     app:srcCompat="@drawable/calendar" />
 
                 <LinearLayout

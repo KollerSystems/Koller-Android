@@ -1,11 +1,13 @@
 package com.norbert.koller.shared.helpers
 
+import android.annotation.SuppressLint
 import androidx.fragment.app.FragmentManager
 import com.google.android.material.textfield.TextInputLayout
 
 class EditTextHelper {
 }
 
+@SuppressLint("SetTextI18n")
 fun TextInputLayout.connectToDatePicker(fragmentManager : FragmentManager, ){
 
     isEndIconVisible = false
@@ -27,6 +29,7 @@ fun TextInputLayout.connectToDatePicker(fragmentManager : FragmentManager, ){
 }
 
 
+@SuppressLint("SetTextI18n")
 fun TextInputLayout.connectToTimePicker(fragmentManager : FragmentManager, ){
 
     isEndIconVisible = false

@@ -1,20 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="prompt_password">Password</string>
+    <string name="password">Password</string>
     <string name="invalid_username">Invalid Username</string>
     <string name="invalid_password">Invalid password</string>
     <string name="ok">Okey</string>
     <string name="login_failed">Unsuccessful login</string>
     <string name="login">Login</string>
-    <string name="username">Education ID</string>
+    <string name="username">Username</string>
     <string name="education_ID_hint">The 11-digit code on your student ID</string>
-    <string name="or">Or</string>
+    <string name="or">or</string>
     <string name="touch_nfc">Approach an NFC tag</string>
     <string name="please_login">Please login to continue</string>
-    <string name="action_sign_in_short">Temp</string>
-    <string name="action_sign_in">Temp</string>
-    <string name="hello_blank_fragment">Hello empty fragment</string>
     <string name="language">Language</string>
     <string name="logout">Logout</string>
     <string name="general">General</string>
@@ -24,8 +21,8 @@
     <string name="arrival_reminder_description">Notification in the last hour and last half hour from the end of the outgoing, in case you are out</string>
     <string name="occupation_reminder">Occupation reminder</string>
     <string name="occupation_reminder_description">Notification fifteen minutes before occupations</string>
-    <string name="room_order">Room order</string>
-    <string name="commendation_warning">Commendation/Warning</string>
+    <string name="room_order">Room tidiness</string>
+    <string name="commendation_warning">Commendation / Warning</string>
     <string name="commendations_warnings">Commendations / Warnings</string>
     <string name="news">News</string>
     <string name="appearance">Appearance</string>
@@ -35,8 +32,6 @@
     <string name="website">Website</string>
     <string name="development_team">Development team</string>
     <string name="sleeping">Sleeping</string>
-    <string name="out_in">Out/In</string>
-    <string name="in_">In</string>
     <string name="open_ediary">Open E-Diary</string>
     <string name="monday">Monday</string>
     <string name="tuesday">Tuesday</string>
@@ -63,7 +58,6 @@
     <string name="description">Description</string>
     <string name="icon">Icon</string>
     <string name="today">Today</string>
-    <string name="praises">Praises</string>
     <string name="warnings">Warnings</string>
     <string name="students">Students</string>
     <string name="teachers">Teachers</string>
@@ -79,28 +73,20 @@
     <string name="unwashed">Unwashed</string>
     <string name="floor">Floor</string>
     <string name="shelves">Shelves</string>
-    <string name="order">Order</string>
+    <string name="order">Tidiness</string>
     <string name="home">Home</string>
     <string name="calendar">Calendar</string>
     <string name="absence">Absences</string>
     <string name="everyone">Everyone</string>
-    <string name="nfc_success">Succesfull entry!</string>
     <string name="expand">Expand</string>
-    <string name="successfull_exit">Successful exit!</string>
     <string name="go_out_text">You can go out until %1$s</string>
     <string name="stay_out_text">You can stay out until %1$s</string>
     <string name="will_remain">You will have %1$sto return</string>
     <string name="now_remain">You have %1$sto return</string>
-    <string name="education_ID_colon">Education ID:</string>
-    <string name="education_teacher">Education teacher:</string>
+    <string name="education_teacher">Education teacher</string>
     <string name="school">School</string>
-    <string name="class_colon">Class:</string>
-    <string name="born_date_colon">Born date:</string>
-    <string name="born_place_colon">Born place:</string>
-    <string name="mothers_name">Mother\'s name:</string>
-    <string name="mothers_phone_number_colon">Mother\'s phone number:</string>
-    <string name="accurate_address_colon">Accurate address:</string>
-    <string name="users">People</string>
+    <string name="mothers_name">Mother\'s name</string>
+    <string name="users">Users</string>
     <string name="sunday">Sunday</string>
     <string name="no_account_yet">No account</string>
     <string name="report">Report</string>
@@ -109,14 +95,12 @@
     <string name="manage_student">Manage student</string>
     <string name="add_calendar">Add to calendar</string>
     <string name="like">Like</string>
-    <string name="write_comment">Write comment</string>
     <string name="i_will_be_there">I\'ll be there</string>
     <string name="welcome">Hello!</string>
     <string name="you_are_new_here">Seems like you\'re new in the system.</string>
     <string name="start">Start</string>
     <string name="back">Back</string>
     <string name="next">Next</string>
-    <string name="test123">Ország<font color="#01C6DB">*</font></string>
     <string name="country">Country</string>
     <string name="required">Required</string>
     <string name="optional">Optional</string>
@@ -156,7 +140,6 @@
     <string name="report_room_desc">The room violates the rules</string>
     <string name="manage_room">Manage room</string>
     <string name="content">Content</string>
-    <string name="plus_image">+ image</string>
     <string name="scheduling">Scheduling</string>
     <string name="publish">Publish</string>
     <string name="options">Options</string>
@@ -166,7 +149,6 @@
     <string name="addressee">Addressee</string>
     <string name="unset">Unset</string>
     <string name="are_you_sure_canel_title">Are you sure you want to discard this post?</string>
-    <string name="are_you_sure_canel_post_desc">dsads</string>
     <string name="q_save_a_draft">Would you like to save it as a draft?</string>
     <string name="continue_editing">Continue editing</string>
     <string name="yes">Yes</string>
@@ -226,7 +208,6 @@
     <string name="port_exits_and_entrances">Gate exits and entrances</string>
     <string name="bug_report">Bug report</string>
     <string name="suggestion">Suggestion</string>
-    <string name="automatically_generated_event_text">Automatically generated event from the koller application.</string>
     <string name="send">Send</string>
     <string name="already_reported">Already reported</string>
     <string name="already_suggested">Already reported</string>
@@ -240,7 +221,6 @@
     <string name="edit">Edit</string>
     <string name="reports">Reports</string>
     <string name="port_exits_and_entrances_delays">Gate exits and entrances / Delays</string>
-    <string name="presence_colon">Presence:</string>
     <string name="to_do">To do</string>
     <string name="my_groups">My groups</string>
     <string name="days">Days</string>
@@ -252,7 +232,7 @@
     <string name="none">None</string>
     <string name="try_again">Try again</string>
     <string name="attentive_teachers">Attentive teachers</string>
-    <string name="attentive_near_you">Attentive near you:</string>
+    <string name="attentive_near_you">Attentive near you</string>
     <string name="daily_pastime">Daily pastime</string>
     <string name="student_hostel_sessions">Student hostel sessions</string>
     <string name="evening_pastime">Evening pastime</string>
@@ -267,7 +247,6 @@
     <string name="nd">nd</string>
     <string name="rd">rd</string>
     <string name="th">th</string>
-    <string name="to_current_day">To current day</string>
     <string name="create_new_x_first_part">Create</string>
     <string name="create_new_x_last_part">" "</string>
     <string name="lateness">Lateness</string>
@@ -280,7 +259,6 @@
     <string name="forgotten_password">Forgotten password</string>
     <string name="error_report">Error report</string>
     <string name="room_scoring">Room scoring</string>
-    <string name="dummy_date_MMddw">August 5th friday</string>
     <string name="expected_arrival">Expected arrival</string>
     <string name="break_">Break</string>
     <string name="start_of_optional_leaving_period">Start of optional leaving period</string>
@@ -310,7 +288,7 @@
     <string name="apply">Apply</string>
     <string name="retry">Retry</string>
     <string name="annexe">Annexe</string>
-    <string name="loading">Loading...</string>
+    <string name="loading">Loading…</string>
     <string name="recommended">Recommended</string>
     <string name="purpose">Purpose</string>
     <string name="devices_menu_description">Here you can see all the devices in which you are logged in to Koller.\n\nIf there are any devices listed here that you do not recognize, log out of them and change your password immediately.</string>
@@ -320,7 +298,6 @@
     <string name="comment">Comment</string>
     <string name="from_minute">From</string>
     <string name="to_minute">To</string>
-    <string name="canteen_images_may_not_match">The pictures below may not be the same as the food served.</string>
     <string name="grayed_text_only_with_teacher">The grayed-out fields can only be changed in consultation with the teacher.</string>
     <string name="you">You</string>
     <string name="last_name">Last name</string>
@@ -374,15 +351,14 @@
     <string name="new_password">New password</string>
     <string name="change_password">Change password</string>
     <string name="base_program">Base program</string>
-    <string name="made_by" translatable="false">Koller Systems</string>
     <string name="prompt_email" translatable="false">Email</string>
     <string name="facebook" translatable="false">Facebook</string>
     <string name="team_name" translatable="false">Koller Sysmtes</string>
     <string name="email" translatable="false">Email</string>
     <string name="version" translatable="false">v0.0.3</string>
     <string name="lorem_long" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae dolor nec metus tempus maximus. Vestibulum egestas dictum hendrerit. Pellentesque tellus enim, tempor id quam nec, fringilla gravida velit. Aenean luctus eros eu mi posuere rhoncus. Quisque quis quam augue. Morbi venenatis, libero quis gravida ornare, felis nunc efficitur felis, eu egestas eros sem ac purus. Phasellus ullamcorper ante dolor, sed pretium purus ultrices non. Quisque gravida laoreet finibus. Aenean convallis orci eu nibh faucibus dictum volutpat at felis. Donec vestibulum pulvinar justo, at vehicula enim egestas vel. Sed lectus nulla, ultrices sed sodales rhoncus, suscipit scelerisque ante.  Nulla bibendum dictum massa vel accumsan. Mauris tempor iaculis neque, vel vehicula sem ullamcorper sit amet. Ut luctus mi nunc, ac blandit justo dignissim eu. Etiam a purus a tortor luctus congue. In nec fringilla enim. Vestibulum facilisis nisl in mi venenatis varius quis ut tortor. Nullam pretium laoreet neque at condimentum.  Aliquam viverra massa sed sapien accumsan, id iaculis dolor eleifend. Etiam ex tellus, lobortis ac eros quis, dignissim auctor risus. Cras ligula ligula, bibendum vel lectus quis, posuere ultrices metus. Vivamus lobortis tempus metus, et sagittis justo convallis vel. Aenean id arcu in metus rhoncus molestie. Vestibulum cursus quis diam ac dictum. Nam ut nulla quam. Praesent molestie magna massa, at pharetra purus hendrerit at. Maecenas lobortis volutpat magna nec blandit. Donec elit urna, faucibus laoreet cursus vel, feugiat quis elit.</string>
-    <string name="appdu_description" translatable="false">appdu_description</string>
-    <string name="service_description" translatable="false">service_description</string>
+    <string name="appdu_description">appdu_description</string>
+    <string name="service_description">service_description</string>
     <string name="instagram" translatable="false">Instagram</string>
     <string name="discord" translatable="false">Discord</string>
     <string name="lorem_medium" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae dolor nec metus tempus maximus. Vestibulum egestas dictum hendrerit. Pellentesque tellus enim, tempor id quam nec, fringilla gravida velit. Aenean luctus eros eu mi posuere rhoncus. Quisque quis quam augue. Morbi venenatis, libero quis gravida ornare, felis nunc efficitur felis, eu egestas eros sem ac purus. Phasellus ullamcorper ante dolor, sed pretium purus ultrices non. Quisque gravida laoreet finibus. Aenean convallis orci eu nibh faucibus dictum volutpat at felis. Donec vestibulum pulvinar justo, at vehicula enim egestas vel. Sed lectus nulla, ultrices sed sodales rhoncus, suscipit scelerisque ante.  Nulla bibendum dictum massa vel accumsan. Mauris tempor iaculis neque, vel vehicula sem ullamcorper sit amet. Ut luctus mi nunc, ac blandit justo dignissim eu. Etiam a purus a tortor luctus congue. In nec fringilla enim. Vestibulum facilisis nisl in mi venenatis varius quis ut tortor. Nullam pretium laoreet neque at condimentum.</string>
@@ -398,6 +374,52 @@
     <string name="taj" translatable="false">TAJ</string>
     <string name="education_id">Education ID</string>
     <string name="nationalities">Nationalities</string>
-    <string name="contains">Contains %1$s</string>
-    <string name="may_contain">May contain %1$s</string>
+    <string name="contains">Contains\\n%1$s</string>
+    <string name="may_contain">May contain\\n%1$s</string>
+    <string name="statistics">Statistics</string>
+    <string name="scroll_to_top">Scroll to top</string>
+    <string name="create_new_post">Create new post</string>
+    <string name="manage_personal_data">Manage personal data</string>
+    <string name="add_image">Add image</string>
+    <string name="outer">Outer</string>
+    <string name="old_password">Old password</string>
+    <string name="new_password_again">New password again</string>
+    <string name="you_will_log_all_device_out">You will log all the devices off</string>
+    <string name="address_matches_with_student">The addess matches with the student</string>
+    <string name="contact_details">Contact details</string>
+    <string name="school_data">School data</string>
+    <string name="didnt_graduate">Didn\'t graduate</string>
+    <string name="did_graduate">Did graduate</string>
+    <string name="birth_place">Birth place</string>
+    <string name="taj_number">TAJ number</string>
+    <string name="citizenship">Citizenship</string>
+    <string name="other_citizenship">Other citizenship</string>
+    <string name="other">Other</string>
+    <string name="permanent_illness_disability">Permanent illness, disability</string>
+    <string name="has_disadvantage">Has disadvantage</string>
+    <string name="next_study_group">Next study group</string>
+    <string name="introvert">Introvert</string>
+    <string name="extrovert">Extrovert</string>
+    <string name="general_information_of_study_group">General information of study group</string>
+    <string name="recently">Recently</string>
+    <string name="other_unread">Other unread</string>
+    <string name="save_to_calendar">Save to calendar</string>
+    <string name="accept_of_student_hostel_rules">A kollégium házirendjét és adatkezelési tájékoztatóját megismertem és az abban foglaltakat elfogadom.</string>
+    <string name="accept_all_valid_information">Kijelentem, hogy a jelentkezés során megadott adatok a valóságnak megfelelnek.</string>
+    <string name="accept_parent">Tudomásul veszem, hogy a szülői felügyeleti jog közös gyakorlása esetén a hatályos jogszabály szerint a gyermekem iskolába járásával, neveltetésével kapcsolatos döntésekben a szülők egyetértése szükséges, így a jelen kollégiumi jelentkezéshez is. Büntetőjogi felelősségem tudatában nyilatkozom, hogy a gyermek szülői felügyeleti jogát a másik szülővel közösen gyakoroljuk, és az ő kifejezett beleegyezésével nyújtom be a kérelmet; vagy a másik szülő beleegyezése nem volt beszerezhető, mert ismeretlen helyen tartózkodik, vagy jogai gyakorlásában ténylegesen akadályozott; vagy a szülői felügyeleti jogot egyedül gyakorlom.</string>
+    <string name="separate">Separate</string>
+    <string name="aggregated">Aggregated</string>
+    <string name="with_permission">With permission</string>
+    <string name="graduation_certificate">Graduation certificate</string>
+    <string name="press_here_to_upload_image">Press here to upload image</string>
+    <string name="different_image">Different image</string>
+    <string name="time_range">Time range</string>
+    <string name="clear_filters">Clear filters</string>
+    <string name="sign_up">Sign up</string>
+    <string name="study_data">Study data</string>
+    <string name="type_of_schooling">Type of schooling</string>
+    <string name="form_of_schooling">Form of schooling</string>
+    <string name="year_grade">Grade</string>
+    <string name="profession_or_department">Profession / Department</string>
+    <string name="class_teacher">Class teacher</string>
 </resources>

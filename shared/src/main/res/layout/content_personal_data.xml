@@ -19,7 +19,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="Diák" />
+            android:text="@string/student" />
 
         <Button
             android:id="@+id/btn_edit_student"
@@ -172,7 +172,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Introvertált"
+                    android:text="@string/introvert"
                     android:textStyle="normal|bold" />
 
                 <Space
@@ -185,7 +185,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
-                    android:text="Extrovertált"
+                    android:text="@string/extrovert"
                     android:textStyle="normal|bold"/>
             </LinearLayout>
 
@@ -224,7 +224,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="Gondviselő" />
+            android:text="@string/caretaker" />
 
         <Button
             android:id="@+id/btn_edit_caretaker"
@@ -305,7 +305,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="Közeli rokon" />
+            android:text="@string/close_relative" />
 
         <Button
             android:id="@+id/btn_edit_close_relative"
@@ -378,7 +378,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:text="Iskola" />
+            android:text="@string/school" />
 
         <Button
             android:id="@+id/btn_edit_school"

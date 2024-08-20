@@ -21,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:adjustViewBounds="true"
+        android:importantForAccessibility="no"
         android:scaleType="centerCrop"
         android:visibility="gone"
         app:srcCompat="@drawable/hills" />
@@ -33,7 +34,7 @@
         android:layout_gravity="start|top"
         android:paddingVertical="17dp"
         android:paddingHorizontal="16dp"
-        android:text="Érettségi bizonyítvány"
+        android:text="@string/graduation_certificate"
         android:textColor="?attr/colorOnSurface" />
 
 
@@ -43,7 +44,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:drawablePadding="@dimen/text_container_margin"
-        android:text="Nyomj ide a kép feltöltéséhez"
+        android:text="@string/press_here_to_upload_image"
         android:gravity="center_horizontal"
         android:textAppearance="@style/Description"
         app:drawableTopCompat="@drawable/add_image" />
@@ -73,7 +74,7 @@
             style="@style/ButtonTonalIcon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Másik kép"
+            android:text="@string/different_image"
             app:icon="@drawable/add_image" />
 
     </com.google.android.flexbox.FlexboxLayout>

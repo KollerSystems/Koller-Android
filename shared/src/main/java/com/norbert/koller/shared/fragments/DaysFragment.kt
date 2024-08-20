@@ -1,17 +1,12 @@
-package com.norbert.koller.student.fragments
+package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.student.recycleradapters.DayRecyclerAdapter
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.FragmentInMainActivity
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.student.databinding.FragmentDaysBinding
 
