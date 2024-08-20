@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.norbert.koller.student.recycleradapters.DayRecyclerAdapter
+import com.norbert.koller.shared.databinding.FragmentDaysBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.student.databinding.FragmentDaysBinding
+import com.norbert.koller.shared.recycleradapters.DayRecyclerAdapter
 
 class DaysFragment : FragmentInMainActivity() {
 

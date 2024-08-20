@@ -243,7 +243,7 @@
         <item name="android:layout_width">@dimen/image_list_height</item>
         <item name="android:layout_height">@dimen/image_list_height</item>
         <item name="android:layout_margin">@dimen/text_container_margin</item>
-        <item name="android:text">@string/plus_image</item>
+        <item name="android:text">@string/add_image</item>
         <item name="android:textColor">?attr/colorOnSecondary</item>
         <item name="android:textSize">15sp</item>
         <item name="android:paddingStart">@dimen/spacing</item>
@@ -343,7 +343,7 @@
         <item name="cornerRadius">0dp</item>
         <item name="android:elevation">0dp</item>
         <item name="iconGravity">textStart</item>
-        <item name="iconTint">?android:attr/colorForeground</item>
+        <item name="iconTint">?attr/colorForeground066</item>
         <item name="android:textColor">?android:attr/colorForeground</item>
         <item name="android:textSize">@dimen/text</item>
     </style>

@@ -43,7 +43,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
         textStayOutTop = view.findViewById(R.id.home_text_outgoing_top)
         textStayOutBottom = view.findViewById(R.id.home_text_outgoing_down)
         realViewLessonSlider = view.findViewById(Rs.id.home_view_lesson_slider)
-        realViewStayOutSlider = view.findViewById(com.norbert.koller.shared.R.id.home_view_stay_slider)
+        realViewStayOutSlider = view.findViewById(R.id.home_view_stay_slider)
 
 
 
@@ -194,10 +194,10 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
 
             val textLessonsSilenceWarning : TextView = view.findViewById(R.id.home_text_silence_warning)
 
-            val textLessonsTitle : TextView = view.findViewById(Rs.id.home_text_lessons_title)
-            val textLessonsDescription : TextView = view.findViewById(Rs.id.home_text_lessons_description)
-            val textLessonsNumber : TextView = view.findViewById(Rs.id.home_text_lessons_number)
-            val textLessonsTime : TextView = view.findViewById(Rs.id.home_text_lessons_time)
+            val textLessonsTitle : TextView = view.findViewById(Rs.id.text_lessons_title)
+            val textLessonsDescription : TextView = view.findViewById(Rs.id.text_lessons_description)
+            val textLessonsNumber : TextView = view.findViewById(Rs.id.text_lessons_number)
+            val textLessonsTime : TextView = view.findViewById(Rs.id.text_lessons_time)
 
             val realViewLessonsNext : View = view.findViewById(Rs.id.home_layout_lessons_next)
             var textSmallLessonsTitle : TextView = view.findViewById(Rs.id.home_text_small_lessons_title)

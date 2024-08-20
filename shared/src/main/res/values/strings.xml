@@ -323,7 +323,6 @@
     <string name="happy_you_choose_us">We are glad that you have chosen our dormitory!\nNow please take some time for us and enter your necessary information.</string>
     <string name="password_for_account">Password for your account</string>
     <string name="make_pasword_strong">Please make it as strong as possible.</string>
-    <string name="password">Password</string>
     <string name="password_again">Password again</string>
     <string name="week">Week</string>
     <string name="strong">Strong</string>
@@ -374,8 +373,8 @@
     <string name="taj" translatable="false">TAJ</string>
     <string name="education_id">Education ID</string>
     <string name="nationalities">Nationalities</string>
-    <string name="contains">Contains\\n%1$s</string>
-    <string name="may_contain">May contain\\n%1$s</string>
+    <string name="contains">Contains\n%1$s</string>
+    <string name="may_contain">May contain\n%1$s</string>
     <string name="statistics">Statistics</string>
     <string name="scroll_to_top">Scroll to top</string>
     <string name="create_new_post">Create new post</string>
@@ -422,4 +421,5 @@
     <string name="year_grade">Grade</string>
     <string name="profession_or_department">Profession / Department</string>
     <string name="class_teacher">Class teacher</string>
+    <string name="in_">In</string>
 </resources>

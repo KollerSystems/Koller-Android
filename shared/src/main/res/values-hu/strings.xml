@@ -327,7 +327,6 @@
     <string name="happy_you_choose_us">Örülünk hogy a mi kollégiumunkat választottad!\nMost pedig kérlek szánj ránk egy kis időt, és add meg a szükséges adataidat.</string>
     <string name="password_for_account">Jelszó a fiókodhoz</string>
     <string name="make_pasword_strong">Kérlek ügyelj arra, hogy minél erősebb legyen.</string>
-    <string name="password">Jelszó</string>
     <string name="password_again">Jelszó mégegyszer</string>
     <string name="week">Gyenge</string>
     <string name="strong">Erős</string>
@@ -363,8 +362,8 @@
     <string name="dinner">Vacsora</string>
     <string name="education_id">Tanuló azonosító</string>
     <string name="nationalities">Állampolgárságok</string>
-    <string name="contains">%1$s\\ntartalmaz</string>
-    <string name="may_contain">%1$s\\ntartalmazhat</string>
+    <string name="contains">%1$s\ntartalmaz</string>
+    <string name="may_contain">%1$s\ntartalmazhat</string>
     <string name="statistics">Statisztikák</string>
     <string name="scroll_to_top">Görgetés legfelülre</string>
     <string name="create_new_post">Új bejegyzés létrehozása</string>
@@ -413,4 +412,5 @@
     <string name="year_grade">Évfolyam</string>
     <string name="profession_or_department">Szakma / Tagozat</string>
     <string name="class_teacher">Osztályfőnök</string>
+    <string name="in_">Be</string>
 </resources>

@@ -72,7 +72,7 @@ abstract class ListBsdFragment(private var alreadyChecked : ArrayList<String>? =
 
     fun setList(){
 
-
+        if(viewModel.list.value == null) return;
 
         if(viewModel.list.value!!.size > 15){
             dialog!!.window?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE)

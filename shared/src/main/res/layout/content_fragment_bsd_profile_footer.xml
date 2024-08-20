@@ -67,7 +67,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_container_margin"
-                android:text="@string/made_by"
+                android:text="@string/team_name"
                 android:textStyle="bold" />
         </LinearLayout>
 

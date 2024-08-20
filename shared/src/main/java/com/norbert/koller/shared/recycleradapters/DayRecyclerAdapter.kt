@@ -1,17 +1,14 @@
-package com.norbert.koller.student.recycleradapters
+package com.norbert.koller.shared.recycleradapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.databinding.FragmentDayBinding
 import com.norbert.koller.shared.fragments.bottomsheet.LessonsBsdFragment
-import com.norbert.koller.shared.recycleradapters.Comparator
-import com.norbert.koller.student.R
-import com.norbert.koller.student.databinding.FragmentDayBinding
 import java.util.Date
 
 class DayRecyclerAdapter : PagingDataAdapter<Any, DayRecyclerAdapter.ViewHolder>(Comparator){

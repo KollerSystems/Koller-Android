@@ -15,7 +15,6 @@
         android:layout_marginEnd="@dimen/spacing"
         android:alpha="0.666"
         android:importantForAccessibility="no"
-        android:importantForAccessibility="no"
         android:src="@drawable/empty" />
 
     <LinearLayout

@@ -10,12 +10,17 @@
     app:flexDirection="column"
     tools:context=".fragments.ManageAccountFragment">
 
-        <LinearLayout
+        <com.google.android.flexbox.FlexboxLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MainLayout"
-            android:orientation="vertical"
-            app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+            style="@style/MainLayout">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_maxWidth="@dimen/tablet_max_width">
+
+
 
                 <com.norbert.koller.shared.customviews.UserView
                     android:id="@+id/user"
@@ -62,6 +67,6 @@
                     app:icon="@drawable/devices"
                     app:text="@string/devices"
                     tools:visibility="visible" />
-
-        </LinearLayout>
+                </LinearLayout>
+        </com.google.android.flexbox.FlexboxLayout>
 </androidx.core.widget.NestedScrollView>

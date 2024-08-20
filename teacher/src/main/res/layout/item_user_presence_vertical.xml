@@ -54,7 +54,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/text_container_margin"
             android:gravity="center_horizontal"
-            android:text="@string/presence_colon" />
+            android:text="@string/presence" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipgroup_presence"

@@ -19,7 +19,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:importantForAccessibility="no"
-                android:importantForAccessibility="no"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintDimensionRatio="16:9"
@@ -163,7 +162,7 @@
                                 android:layout_weight="1"
                                 android:clipChildren="false"
                                 android:clipToPadding="false"
-                                android:hint="@string/write_comment">
+                                android:hint="@string/comment">
 
                                 <com.google.android.material.textfield.TextInputEditText
                                     android:layout_width="match_parent"

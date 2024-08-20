@@ -77,7 +77,6 @@
         </LinearLayout>
 
         <com.google.android.material.card.MaterialCardView
-            android:contentDescription="@string/your_profile"
             android:id="@+id/card_user"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -85,6 +84,8 @@
             android:layout_marginTop="@dimen/spacing"
             android:layout_marginEnd="@dimen/full_card_padding"
             android:layout_marginBottom="@dimen/spacing"
+            android:contentDescription="@string/your_profile"
+            app:cardCornerRadius="999dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

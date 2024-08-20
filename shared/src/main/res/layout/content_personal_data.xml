@@ -192,11 +192,7 @@
             <com.google.android.material.slider.RangeSlider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-66.666dp"
-                android:layout_marginRight="-66.666dp"
                 android:enabled="false"
-                android:scaleX="0.7"
-                android:scaleY="0.7"
                 android:stepSize="1"
                 android:valueFrom="0"
                 android:valueTo="10" />

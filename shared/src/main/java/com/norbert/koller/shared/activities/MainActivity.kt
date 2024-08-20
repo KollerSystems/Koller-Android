@@ -534,13 +534,5 @@ fun showNightBgIfNeeded(id : String){
 
     }
 
-    fun NFCSuccess(){
-        MaterialAlertDialogBuilder(this@MainActivity)
-            .setTitle(R.string.nfc_success)
-            .setIcon(R.drawable.check_thick)
-            .setPositiveButton(
-                R.string.ok
-            ) { _, _ -> }
-            .show()
-    }
+
 }
