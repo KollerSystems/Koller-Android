@@ -4,8 +4,12 @@ import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
+import android.app.PendingIntent
 import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
+import android.nfc.NfcAdapter
+import android.nfc.Tag
+import android.nfc.tech.MifareClassic
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -34,20 +38,90 @@ import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ActivityMainBinding
+import com.norbert.koller.shared.fragments.UserFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.managers.setupPortrait
+import com.norbert.koller.shared.managers.toInt
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
 
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
+import java.io.IOException
 import java.util.Calendar
 
 
 abstract class MainActivity : AppCompatActivity() {
+
+    private lateinit var nfcAdapter: NfcAdapter
+
+    @OptIn(ExperimentalStdlibApi::class)
+    private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
+
+
+        val mifareClassic = MifareClassic.get(tag)
+
+        try {
+            mifareClassic.connect()
+
+            var fullInt = ""
+
+            val sectorSector = 1
+            mifareClassic.authenticateSectorWithKeyA(sectorSector, "A0A1A2A3A4A5".hexToByteArray())
+
+            val blockCount = mifareClassic.getBlockCountInSector(sectorSector)
+            for (blockIndex in 0 until blockCount) {
+                val blockNumber = mifareClassic.sectorToBlock(sectorSector) + blockIndex
+                val blockData = mifareClassic.readBlock(blockNumber)
+                val hexData = blockData.toInt()
+                fullInt += hexData.toString()
+            }
+            binding.root.post{
+                addFragment(ApplicationManager.userFragment(fullInt.dropLast(14).toInt()))
+            }
+
+
+        } catch (e: IOException) {
+            e.printStackTrace()
+        } finally {
+            mifareClassic.close()
+
+        }
+    }
+
+    private fun bytesToHex(bytes: ByteArray): String {
+        val hexChars = CharArray(bytes.size * 2)
+        for (i in bytes.indices) {
+            val v = bytes[i].toInt() and 0xFF
+            hexChars[i * 2] = "0123456789ABCDEF"[v shr 4]
+            hexChars[i * 2 + 1] = "0123456789ABCDEF"[v and 0x0F]
+        }
+        return String(hexChars)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        nfcAdapter.disableReaderMode(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+
+        nfcAdapter.enableReaderMode(this, callback, NfcAdapter.FLAG_READER_NFC_A, null)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
+            ){
+                handleBackPress()
+            }
+        }
+    }
 
     var defaultTitlePadding : Int = 0
 
@@ -60,6 +134,8 @@ abstract class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
 
         var textView : TextView
 
@@ -75,18 +151,7 @@ abstract class MainActivity : AppCompatActivity() {
         binding.textSwitcher.measureAllChildren = false
     }
 
-    override fun onResume() {
-        super.onResume()
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-
-            onBackInvokedDispatcher.registerOnBackInvokedCallback(
-                OnBackInvokedDispatcher.PRIORITY_DEFAULT
-            ){
-                handleBackPress()
-            }
-        }
-    }
 
     fun bottomNavigationView() : NavigationBarView{
         return (binding.navigationView as NavigationBarView)
