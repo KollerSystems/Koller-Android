@@ -9,6 +9,7 @@ import android.view.ViewTreeObserver
 import android.widget.LinearLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -67,23 +68,14 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
         viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
 
         viewModel.onLoadSuccess = {
-            val baseData = it
-            baseData.saveReceivedTime()
-            viewModel.response.value = baseData
-            CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
-            loadingOl.setState(FullScreenLoading.NONE)
+            loadingOl.setState(ResponseViewModel.NONE)
         }
 
         viewModel.onLoadError = {
-            loadingOl.setState(FullScreenLoading.ERROR)
+            loadingOl.setState(ResponseViewModel.ERROR)
         }
 
         viewModel.onRefreshSuccess = {
-            val baseData = it
-            baseData.saveReceivedTime()
-            viewModel.response.value = baseData
-            (viewModel.response.value as BaseData).testState = "hello"
-            CacheManager.savedValues[Pair(getDataTag(), baseData.getMainID())] = baseData
             if(snackbar != null){
                 snackbar!!.dismiss()
             }
@@ -103,51 +95,57 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
             refresh()
         }
 
-        if(!viewModel.response.isInitialized){
-            viewModel.id = id!!
-
-            val key = Pair(getDataTag(), viewModel.id)
-            if(CacheManager.savedValues.containsKey(key)){
-                if(!ApplicationManager.isOnline(requireContext())){
-                    CacheManager.savedValues[key]!!.testState = ""
-                    createSnackBar()
-                }
-                else{
-                    if(!CacheManager.savedValues[key]!!.isUnexpired(getTimeLimit())){
-                        refresh()
-                    }
-                }
-                viewModel.response.value = CacheManager.savedValues[key]!!
-                return
-            }
-
-            if(CacheManager.savedListsOfValues.containsKey(getDataTag())) {
-                var foundIndex : Int? = null
-
-                CacheManager.savedListsOfValues[getDataTag()]!!.forEachIndexed{ i, value->
-                    if(value.getMainID() == viewModel.id){
-                        foundIndex = i
-                    }
-                }
-
-                if(foundIndex != null){
-                    viewModel.response.value = CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!]
-                    refresh()
-                    return
-                }
-            }
+        if(!viewModel.response.isInitialized) {
 
             loadingOl.loadData = {
-                viewModel.load(apiFunctionToCall())
+                viewModel.load(apiFunctionToCall(), getDataTag())
             }
-            return
+
+            if (viewModel.id == null) {
+                viewModel.id = id!!
+
+                val key = Pair(getDataTag(), viewModel.id)
+                if (CacheManager.savedValues.containsKey(key)) {
+                    if (!ApplicationManager.isOnline(requireContext())) {
+                        createSnackBar()
+                    } else {
+                        if (!CacheManager.savedValues[key]!!.isUnexpired(getTimeLimit())) {
+                            refresh()
+                        }
+                    }
+                    viewModel.response.value = CacheManager.savedValues[key]!!
+                    return
+                }
+
+                if (CacheManager.savedListsOfValues.containsKey(getDataTag())) {
+                    var foundIndex: Int? = null
+
+                    CacheManager.savedListsOfValues[getDataTag()]!!.forEachIndexed { i, value ->
+                        if (value.getMainID() == viewModel.id) {
+                            foundIndex = i
+                        }
+                    }
+
+                    if (foundIndex != null) {
+                        viewModel.response.value =
+                            CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!]
+                        refresh()
+                        return
+                    }
+                }
+
+                loadingOl.loadData!!.invoke()
+                return
+
+            } else {
+
+                loadingOl.setState(viewModel.state)
+            }
         }
-
-        if((viewModel.response.value as BaseData).testState != "hello"){
-            refresh()
+        else
+        {
+            loadingOl.rootView.isVisible = false
         }
-
-
     }
 
     fun refresh(){

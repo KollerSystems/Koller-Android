@@ -8,8 +8,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
+import androidx.core.view.isVisible
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ViewFullScreenLoadingBinding
+import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.stfalcon.imageviewer.common.extensions.isVisible
 
 class FullScreenLoading : LinearLayout {
 
@@ -24,7 +27,7 @@ class FullScreenLoading : LinearLayout {
 
     lateinit var binding : ViewFullScreenLoadingBinding
 
-    private var state: Int = LOADING
+    private var state: Int = ResponseViewModel.LOADING
 
     var loadData: (() -> Unit)? = null
 
@@ -42,23 +45,19 @@ class FullScreenLoading : LinearLayout {
     fun setState(value : Int){
         state = value
         when (state){
-            LOADING ->{
+            ResponseViewModel.LOADING ->{
                 crossFade(binding.error.root, binding.progressBar)
             }
-            ERROR ->{
+            ResponseViewModel.ERROR ->{
                 crossFade(binding.progressBar, binding.error.root)
             }
-            NONE ->{
+            ResponseViewModel.NONE ->{
                 fadeOut()
             }
         }
     }
 
-    companion object {
-        const val LOADING = 0
-        const val ERROR = 1
-        const val NONE = 2
-    }
+
 
     fun fadeOut(){
         binding.root.animate()
@@ -76,18 +75,14 @@ class FullScreenLoading : LinearLayout {
         binding = ViewFullScreenLoadingBinding.inflate(LayoutInflater.from(context), this, true)
 
         binding.error.btn.setOnClickListener{
-            setState(LOADING)
+            setState(ResponseViewModel.LOADING)
             loadData!!.invoke()
         }
 
-        binding.root.post{
-            if(loadData != null) {
-                loadData!!.invoke()
-            }
-            else{
-                binding.root.visibility = View.GONE
-            }
-        }
+    }
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
     }
 
 }
