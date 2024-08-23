@@ -364,7 +364,7 @@
                                 android:id="@+id/rbtn_every_two_weeks"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="ever0" />
+                                android:text="@string/every_two_weeks" />
 
                             <RadioButton
                                 android:id="@+id/rbtn_every_four_weeks"
