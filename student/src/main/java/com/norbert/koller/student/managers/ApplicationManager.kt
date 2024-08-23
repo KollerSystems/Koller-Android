@@ -3,7 +3,7 @@ package com.norbert.koller.student.managers
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.norbert.koller.student.activities.LoginActivity
+import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.student.activities.MainActivity
 import com.norbert.koller.student.activities.SettingsActivity
 import com.norbert.koller.student.fragments.CalendarFragment
@@ -50,6 +50,8 @@ class ApplicationManager : ApplicationManager() {
             ContextCompat.getColor(context, R.color.app_icon_color)
         }
 
+        loginViewPagerRecyclerAdapter = { com.norbert.koller.student.recycleradapters.LoginViewPagerRecyclerAdapter() }
+
         homeFragment = { HomeFragment() }
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
@@ -58,8 +60,6 @@ class ApplicationManager : ApplicationManager() {
             RoomFragment(rid) }
         userFragment = {uid ->
             UserFragment(uid) }
-
-        loginActivity = {LoginActivity()}
 
         studyGroupsFragment = {map-> com.norbert.koller.student.fragments.StudyGroupTypesFragment(map) }
     }

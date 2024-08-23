@@ -29,7 +29,7 @@ class LaunchActivity : AppCompatActivity() {
                 finishAffinity()
                 ApplicationManager.openActivity(
                     this@LaunchActivity,
-                    ApplicationManager.loginActivity()::class.java
+                    LoginActivity()::class.java
                 )
             }
 

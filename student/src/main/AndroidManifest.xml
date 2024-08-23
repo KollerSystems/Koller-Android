@@ -23,10 +23,7 @@
             android:name=".activities.RegisterActivity"
             android:exported="false"
             android:enableOnBackInvokedCallback="true"/>
-        <activity
-            android:name=".activities.LoginActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+
         <activity
             android:name=".activities.MainActivity"
             android:exported="false"

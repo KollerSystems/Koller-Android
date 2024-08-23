@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -21,8 +20,7 @@
                     app:layout_maxWidth="@dimen/tablet_max_width">
 
 
-
-                <com.norbert.koller.shared.customviews.UserView
+                        <com.norbert.koller.shared.customviews.UserView
                     android:id="@+id/user"
                     android:layout_width="150dp"
                     android:layout_height="150dp"
@@ -50,15 +48,25 @@
                     app:icon="@drawable/data"
                     app:text="@string/personal_data" />
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_password"
-                    style="@style/CardBottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    custom:icon="@drawable/key"
-                    custom:text="Jelszó módosítása" />
+                        <com.norbert.koller.shared.customviews.CardButton
+                            android:id="@+id/cb_password"
+                            style="@style/CardBottom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:text="@string/change_password"
+                            app:icon="@drawable/key" />
 
-                <com.norbert.koller.shared.customviews.CardButton
+                        <com.norbert.koller.shared.customviews.CardButton
+                            android:id="@+id/cb_2fa"
+                            style="@style/CardMiddle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:visibility="gone"
+                            app:icon="@drawable/protect"
+                            app:text="@string/two_factor_authentication"
+                            tools:visibility="visible" />
+
+                        <com.norbert.koller.shared.customviews.CardButton
                     android:id="@+id/cb_devices"
                     style="@style/CardBottom"
                     android:layout_width="match_parent"

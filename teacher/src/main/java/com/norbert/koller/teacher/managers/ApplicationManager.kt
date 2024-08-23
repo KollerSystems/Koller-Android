@@ -3,9 +3,11 @@ package com.norbert.koller.teacher.managers
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
+import com.norbert.koller.shared.recycleradapters.LoginViewPagerRecyclerAdapter
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.*
 import com.norbert.koller.teacher.fragments.CalendarFragment
@@ -46,6 +48,8 @@ class ApplicationManager : ApplicationManager() {
         getAppColor = {context->
             ContextCompat.getColor(context, R.color.app_icon_color)
         }
+
+        loginViewPagerRecyclerAdapter = { com.norbert.koller.teacher.recycleradapters.LoginViewPagerRecyclerAdapter() }
 
         homeFragment = { HomeFragment() }
         calendarFragment = { CalendarFragment() }

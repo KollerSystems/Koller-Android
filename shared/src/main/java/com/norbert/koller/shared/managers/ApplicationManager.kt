@@ -29,6 +29,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.content.ContextCompat
 import androidx.core.widget.doOnTextChanged
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.chip.Chip
@@ -49,6 +50,7 @@ import com.norbert.koller.shared.fragments.OutgoingPermanentFragment
 import com.norbert.koller.shared.fragments.OutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.recycleradapters.LoginViewPagerRecyclerAdapter
 import java.nio.ByteBuffer
 import java.util.Date
 import java.util.Locale
@@ -77,8 +79,6 @@ open class ApplicationManager : Application() {
         lateinit var openMain: (context : Context) -> Unit
         lateinit var openProfile: (context : Context) -> Unit
 
-        lateinit var loginActivity: () -> LoginActivity
-
         lateinit var homeFragment: () -> HomeFragment
         lateinit var calendarFragment: () -> CalendarFragment
         lateinit var studentHostelFragment: () -> StudentHostelFragment
@@ -86,6 +86,8 @@ open class ApplicationManager : Application() {
 
         lateinit var roomFragment: (rid : Int) -> RoomFragment
         lateinit var userFragment: (uid : Int) -> UserFragment
+
+        lateinit var loginViewPagerRecyclerAdapter: () -> LoginViewPagerRecyclerAdapter
 
         lateinit var getAppColor: (context : Context) -> Int
 
@@ -214,6 +216,14 @@ open class ApplicationManager : Application() {
             return description
         }
     }
+}
+
+fun ViewPager2.next(){
+    setCurrentItem(currentItem+1, true)
+}
+
+fun ViewPager2.back(){
+    setCurrentItem(currentItem-1, true)
 }
 
 fun Int.toBytes(): ByteArray =

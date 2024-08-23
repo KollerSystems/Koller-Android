@@ -39,6 +39,10 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
+        <activity
             android:name=".activities.EditStudentActivity"
             android:exported="false"
             android:enableOnBackInvokedCallback="true"/>

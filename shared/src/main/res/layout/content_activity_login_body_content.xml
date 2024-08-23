@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/full_card_padding">
+
+    <TextView
+        android:id="@+id/text"
+        style="@style/Description"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_marginBottom="@dimen/full_card_padding"
+        android:layout_weight="1"
+        android:gravity="top" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+
+        android:id="@+id/til_first"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_container_margin"
+        app:counterOverflowTextAppearance="@style/Description"
+        app:counterTextAppearance="@style/Description"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/Description">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textAppearance="@style/Title"
+            tools:ignore="HardcodedText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_second"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        app:errorTextAppearance="@style/Description">
+
+        <com.google.android.material.textfield.TextInputEditText
+            style="@style/EditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+            android:textAppearance="@style/Title"
+            tools:ignore="HardcodedText" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_forgot"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginHorizontal="4dp"
+        android:layout_marginTop="-20dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="4dp"
+        android:paddingStart="12dp"
+        android:paddingLeft="0dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="12dp"
+        android:paddingRight="0dp"
+        android:paddingBottom="0dp"
+        android:textAppearance="@style/Description" />
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginVertical="@dimen/spacing"
+        app:dividerDrawable="@drawable/divider_space"
+        app:flexWrap="wrap"
+        app:showDivider="middle">
+
+        <Button
+            android:id="@+id/button_secondary"
+            style="@style/ButtonOutline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_flexGrow="1"
+            app:layout_flexShrink="1" />
+
+        <Button
+            android:id="@+id/button_primary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:enabled="false"
+            app:layout_flexGrow="1"
+            app:layout_flexShrink="1" />
+    </com.google.android.flexbox.FlexboxLayout>
+
+
+</LinearLayout>
+

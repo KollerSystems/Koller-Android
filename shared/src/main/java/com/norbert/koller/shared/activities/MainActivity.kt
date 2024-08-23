@@ -185,7 +185,7 @@ abstract class MainActivity : AppCompatActivity() {
                 finishAffinity()
                 ApplicationManager.openActivity(
                     this@MainActivity,
-                    ApplicationManager.loginActivity()::class.java
+                    LoginActivity()::class.java
                 )
             }
 
