@@ -22,7 +22,7 @@ abstract class ListBsdFragment(private var alreadyChecked : ArrayList<String>? =
 
     lateinit var viewModel: ListBsdFragmentViewModel
 
-    lateinit var adapter : ListAdapter
+    var adapter : ListAdapter? = null
 
     var collapseText : Boolean = false
 
@@ -95,7 +95,7 @@ abstract class ListBsdFragment(private var alreadyChecked : ArrayList<String>? =
             frameLayout.addView(searchView)
 
             searchView.getEditText().doOnTextChanged { text, start, before, count ->
-                adapter.filter(text.toString())
+                adapter!!.filter(text.toString())
             }
         }
     }
@@ -103,9 +103,9 @@ abstract class ListBsdFragment(private var alreadyChecked : ArrayList<String>? =
     override fun onCancel(dialog: DialogInterface) {
         Log.d("TEST", "1")
 
-        if(viewModel.getValuesOnFinish != null) {
+        if(viewModel.getValuesOnFinish != null && adapter != null) {
 
-            adapter.filter("")
+            adapter!!.filter("")
 
             val stringList: ArrayList<String> = arrayListOf()
             val localizedStringList: ArrayList<String> = arrayListOf()
