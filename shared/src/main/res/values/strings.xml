@@ -440,4 +440,7 @@
     <string name="make_sure_auth_in_time">Make sure to tap the check button before the code expires</string>
     <string name="enable_2fa">Enable 2FA</string>
     <string name="check">Check</string>
+    <string name="now_widget_fake_title">You can stay out until 15:45</string>
+    <string name="now_widget_fake_description">You have 2 hour 12 minutes to return</string>
+    <string name="enter_current_password">Enter your current password to continue</string>
 </resources>

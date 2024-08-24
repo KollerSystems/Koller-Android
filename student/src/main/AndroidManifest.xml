@@ -14,7 +14,14 @@
         android:theme="@style/Theme.MainTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
-
+        <receiver android:name="com.norbert.koller.student.NowWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_now" />
+        </receiver>
         <activity
             android:name=".activities.SettingsActivity"
             android:exported="false"

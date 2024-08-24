@@ -27,21 +27,21 @@ class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) 
         RecyclerViewHelper.roundRecyclerItemsVertically(holder.itemView, position, canteenList.size)
 
         val currentItem = canteenList[position]
-        holder.itemBinding.textTime.text = currentItem.time
-        holder.itemBinding.textTitle.text = currentItem.foodName
+        holder.itemBinding.content.textTime.text = currentItem.time
+        holder.itemBinding.content.textTitle.text = currentItem.foodName
         val context = holder.itemView.context
         when(currentItem.category){
             0 ->{
-                holder.itemBinding.textCategory.text = context.getString(R.string.breakfast)
-                holder.itemBinding.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.breakfast))
+                holder.itemBinding.content.textCategory.text = context.getString(R.string.breakfast)
+                holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.breakfast))
             }
             1 ->{
-                holder.itemBinding.textCategory.text = context.getString(R.string.lunch)
-                holder.itemBinding.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.lunch))
+                holder.itemBinding.content.textCategory.text = context.getString(R.string.lunch)
+                holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.lunch))
             }
             2 ->{
-                holder.itemBinding.textCategory.text = context.getString(R.string.dinner)
-                holder.itemBinding.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.dinner))
+                holder.itemBinding.content.textCategory.text = context.getString(R.string.dinner)
+                holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.dinner))
             }
         }
 

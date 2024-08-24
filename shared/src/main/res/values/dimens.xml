@@ -8,6 +8,7 @@
 
     <!-- Cards -->
     <dimen name="card_padding">15dp</dimen>
+    <dimen name="card_padding_half">7.5dp</dimen>
     <dimen name="n_card_padding">-15dp</dimen>
     <dimen name="full_card_padding">20dp</dimen>
     <dimen name="full_card_padding_double">40dp</dimen>
@@ -15,6 +16,7 @@
     <dimen name="test">-2px</dimen>
 
     <dimen name="card_margin">0.5dp</dimen>
+    <dimen name="n_card_margin">-0.5dp</dimen>
     <dimen name="card_full_margin">1dp</dimen>
 
     <dimen name="card_elevation">0dp</dimen>
@@ -23,6 +25,7 @@
     <dimen name="n_card_corner_radius">-20dp</dimen>
 
     <dimen name="card_corner_radius_small">15dp</dimen>
+    <dimen name="card_corner_radius_in_between">12.5dp</dimen>
 
     <dimen name="card_icon">45dp</dimen>
     <dimen name="card_icon_smaller">30dp</dimen>

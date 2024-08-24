@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="?attr/colorSurfaceContainerLow"/>
+            <corners android:bottomLeftRadius="@dimen/card_corner_radius"
+                android:bottomRightRadius="@dimen/card_corner_radius"
+                android:topLeftRadius="@dimen/card_corner_radius"
+                android:topRightRadius="@dimen/card_corner_radius"/>
+        </shape>
+    </item>
+    <item android:top="@dimen/card_padding_half"
+        android:left="@dimen/card_padding_half"
+        android:right="@dimen/card_padding_half"
+        android:bottom="@dimen/card_padding_half">
+        <shape android:shape="rectangle">
+            <solid android:color="?android:attr/colorBackground"/>
+            <corners android:bottomLeftRadius="@dimen/card_corner_radius_in_between"
+                android:bottomRightRadius="@dimen/card_corner_radius_in_between"
+                android:topLeftRadius="@dimen/card_corner_radius_in_between"
+                android:topRightRadius="@dimen/card_corner_radius_in_between"/>
+        </shape>
+    </item>
+</layer-list>

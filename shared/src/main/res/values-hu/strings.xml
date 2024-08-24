@@ -431,4 +431,7 @@
     <string name="make_sure_auth_in_time">Figyelj arra, hogy még a kód lejárta előtt koppints rá az ellenőrzés gombra</string>
     <string name="enable_2fa">2FA engedélyezése</string>
     <string name="check">Ellenőrzés</string>
+    <string name="now_widget_fake_title">15:45-ig kint maradhatsz</string>
+    <string name="now_widget_fake_description">Van még %1$svisszaérni</string>
+    <string name="enter_current_password">Add meg a jelenlegi jelszavad a folytatáshoz</string>
 </resources>

@@ -53,6 +53,7 @@
                     android:layout_width="@dimen/card_icon"
                     android:layout_height="@dimen/card_icon"
                     android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/spacing"
                     android:backgroundTint="?android:attr/colorForeground"
                     android:gravity="center"
                     android:text="n"
@@ -61,16 +62,12 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="@dimen/text_container_margin"
-                    android:layout_marginEnd="@dimen/text_container_margin"
-                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:layout_margin="@dimen/text_container_margin"
                     android:orientation="horizontal">
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="10dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
@@ -86,8 +83,8 @@
                             style="@style/Description"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/description"
-                            android:gravity="start" />
+                            android:gravity="start"
+                            android:text="@string/description" />
                     </LinearLayout>
 
                     <TextView
@@ -95,6 +92,7 @@
                         style="@style/Description"
                         android:layout_width="35sp"
                         android:layout_height="match_parent"
+                        android:layout_marginStart="@dimen/spacing"
                         android:gravity="center"
                         android:lineSpacingExtra="-5sp"
                         android:text="@string/hours" />

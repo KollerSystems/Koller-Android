@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/root"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:theme="@style/Theme.MainTheme"
+    android:background="@drawable/card">
+
+
+    <ImageView
+        android:id="@id/home_view_stay_slider"
+        android:layout_width="100dp"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/card_padding_half"
+        android:src="?attr/colorPrimaryContainer" />
+
+    <ImageView
+
+        android:layout_gravity="start|top"
+        android:layout_margin="@dimen/card_padding_half"
+        android:layout_width="@dimen/card_corner_radius_in_between"
+        android:layout_height="@dimen/card_corner_radius_in_between"
+        android:src="@drawable/corner"
+        android:scaleX="-1" />
+
+    <ImageView
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/card_padding_half"
+        android:layout_width="@dimen/card_corner_radius_in_between"
+        android:layout_height="@dimen/card_corner_radius_in_between"
+        android:src="@drawable/corner"
+        android:scaleY="-1" />
+
+    <ImageView
+        android:layout_gravity="start|bottom"
+        android:layout_margin="@dimen/card_padding_half"
+        android:layout_width="@dimen/card_corner_radius_in_between"
+        android:layout_height="@dimen/card_corner_radius_in_between"
+        android:src="@drawable/corner"
+        android:scaleX="-1"
+        android:scaleY="-1"/>
+
+    <ImageView
+        android:layout_gravity="end|top"
+        android:layout_margin="@dimen/card_padding_half"
+        android:layout_width="@dimen/card_corner_radius_in_between"
+        android:layout_height="@dimen/card_corner_radius_in_between"
+        android:src="@drawable/corner" />
+
+
+
+    <LinearLayout
+        android:id="@+id/ly_title_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/card_padding"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:id="@+id/text_icon"
+            android:layout_width="@dimen/card_icon"
+            android:layout_height="@dimen/card_icon"
+            android:layout_marginEnd="@dimen/spacing"
+            android:background="@drawable/walk"
+            android:backgroundTint="?android:attr/colorForeground"
+            tools:ignore="HardcodedText" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="@dimen/text_container_margin"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/text_outgoing_top"
+                style="@style/Title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/now_widget_fake_title"
+                android:ellipsize="start"
+                android:maxLines="2"/>
+
+            <TextView
+                android:id="@+id/text_outgoing_down"
+                style="@style/Description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/now_widget_fake_description"
+                android:ellipsize="end"
+                android:maxLines="2"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_lessons_time"
+            style="@style/Description"
+            android:layout_width="35sp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing"
+            android:layout_marginTop="@dimen/text_container_margin"
+            android:layout_marginEnd="@dimen/text_container_margin"
+            android:layout_marginBottom="@dimen/text_container_margin"
+            android:lineSpacingExtra="-5sp"
+            android:text="@string/hours"
+            android:visibility="gone"
+            tools:visibility="visible" />
+    </LinearLayout>
+
+</FrameLayout>

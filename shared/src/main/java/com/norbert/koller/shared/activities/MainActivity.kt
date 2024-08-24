@@ -56,7 +56,7 @@ import java.util.Calendar
 
 abstract class MainActivity : AppCompatActivity() {
 
-    private lateinit var nfcAdapter: NfcAdapter
+    private var nfcAdapter: NfcAdapter? = null
 
     @OptIn(ExperimentalStdlibApi::class)
     private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
@@ -104,14 +104,14 @@ abstract class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        nfcAdapter.disableReaderMode(this)
+        nfcAdapter?.disableReaderMode(this)
     }
 
     override fun onResume() {
         super.onResume()
 
 
-        nfcAdapter.enableReaderMode(this, callback, NfcAdapter.FLAG_READER_NFC_A, null)
+        nfcAdapter?.enableReaderMode(this, callback, NfcAdapter.FLAG_READER_NFC_A, null)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 

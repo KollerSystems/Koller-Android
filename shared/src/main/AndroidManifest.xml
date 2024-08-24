@@ -26,7 +26,14 @@
         tools:targetApi="tiramisu"
         android:supportsRtl="true">
 
-
+        <receiver android:name="com.norbert.koller.shared.CanteenWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_canteen" />
+        </receiver>
 
         <receiver android:name=".broadcastreceivers.MyNotificationPublisher"
             android:enabled="true"/>
