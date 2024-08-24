@@ -13,6 +13,7 @@ import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
+import android.net.Uri
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
@@ -214,6 +215,21 @@ open class ApplicationManager : Application() {
             }
 
             return description
+        }
+
+        fun openAppOrPlayStore(context : Context, packageName : String){
+            var intent: Intent? = context.packageManager.getLaunchIntentForPackage(packageName)
+
+            if (intent == null) {
+                intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+            }
+            context.startActivity(intent)
+        }
+
+        fun openPlayStore(context : Context, packageName : String){
+
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=$packageName"))
+            context.startActivity(intent)
         }
     }
 }

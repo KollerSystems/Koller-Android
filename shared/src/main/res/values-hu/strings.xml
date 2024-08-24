@@ -414,7 +414,7 @@
     <string name="class_teacher">Osztályfőnök</string>
     <string name="in_">Be</string>
     <string name="two_factor_authentication">Kétlépcsős azonosítás</string>
-    <string name="authentication_code">Hitelesítési kód</string>
+    <string name="authentication_code">Hitelesítő kód</string>
     <string name="please_use_2fa">Kérlek használd a kétlépcsős azonosító kódodat a folytatáshoz</string>
     <string name="use_recovery_code">Helyreállítási kód használata</string>
     <string name="install_authenticator_app">Hitelesítő alkalmazás telepítése</string>
@@ -426,7 +426,9 @@
     <string name="copy_koller_auth_code">Koppints az alábbi kódra, hogy kimásold azt.</string>
     <string name="open_auth_app">Nyisd meg a telepített hitelesítő alkalmazást és a + ikonra koppintva válaszd ki a kulcs beírása / kód használata opciót, majd illeszd be a kimásolt kódot.</string>
     <string name="enter_auth_code">Hitelesítő kód megadása</string>
-    <string name="copy_auth_code">Másold ki a hitelesítő alkalmazás által generált hatjegyű ellenőrző kódot.</string>
+    <string name="copy_auth_code">Másold ki a hitelesítő alkalmazás által generált hatjegyű hitelesítő kódot.</string>
     <string name="paste_auth">Majd illeszd be az alábbi mezőbe.</string>
     <string name="make_sure_auth_in_time">Figyelj arra, hogy még a kód lejárta előtt koppints rá az ellenőrzés gombra</string>
+    <string name="enable_2fa">2FA engedélyezése</string>
+    <string name="check">Ellenőrzés</string>
 </resources>

@@ -82,6 +82,11 @@ abstract class SettingsActivity : ToolbarActivity() {
             getDeveloperBinding().buttonTimeOffsetReset.text = (hours + timeOffset).toString()
         }
 
+        getDeveloperBinding().cbTestActivity.setOnClickListener {
+            val intent = Intent(this, TwoFAPasswordActivity::class.java)
+            startActivity(intent)
+        }
+
 
         getExternalBinding().cbNotification.setOnClickListener {
             val notificationsIntent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {

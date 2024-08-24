@@ -18,12 +18,10 @@
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/header_margin_horizontal">
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/button"
-            style="@style/ButtonIcon"
+            style="@style/Button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/save"
-            app:icon="@drawable/save" />
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

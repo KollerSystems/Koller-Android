@@ -49,6 +49,7 @@
     <!-- Buttons -->
     <dimen name="button_vertical_padding">11dp</dimen>
     <dimen name="button_horizontal_padding">24dp</dimen>
+    <dimen name="icon_button_padding">16dp</dimen>
 
 
     <!-- Toolbar -->

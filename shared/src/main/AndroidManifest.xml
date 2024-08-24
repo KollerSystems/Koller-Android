@@ -26,6 +26,8 @@
         tools:targetApi="tiramisu"
         android:supportsRtl="true">
 
+
+
         <receiver android:name=".broadcastreceivers.MyNotificationPublisher"
             android:enabled="true"/>
         <activity
@@ -38,6 +40,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activities.TwoFACodeActivity"
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
+        <activity
+            android:name=".activities.TwoFAPasswordActivity"
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.LoginActivity"
             android:exported="false"

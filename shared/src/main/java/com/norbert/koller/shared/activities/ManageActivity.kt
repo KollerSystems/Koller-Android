@@ -9,6 +9,7 @@ import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.FrameLayout
+import androidx.appcompat.content.res.AppCompatResources
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ActivityToolbarBinding
 import com.norbert.koller.shared.databinding.ViewManageBarBinding
@@ -29,6 +30,16 @@ abstract class ManageActivity : ToolbarActivity(){
         frameLayout.addView(manageBarBinding.root)
 
         super.setContentView(frameLayout)
+    }
+
+    fun displayButton(text : String){
+        manageBarBinding.button.text = text
+    }
+
+    fun displayButton(text: String, icon : Int){
+        displayButton(text)
+        manageBarBinding.button.icon = AppCompatResources.getDrawable(this, icon)
+        manageBarBinding.button.setPaddingRelative(resources.getDimensionPixelSize(R.dimen.icon_button_padding), manageBarBinding.button.paddingTop, manageBarBinding.button.paddingEnd, manageBarBinding.button.paddingBottom)
     }
 
 }

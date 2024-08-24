@@ -29,10 +29,7 @@ class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity()
     override fun onPostCreate(savedInstanceState: Bundle?) {
         super.onPostCreate(savedInstanceState)
 
-        getDeveloperBinding().cbTestActivity.setOnClickListener {
-            val intent = Intent(this, EditStudyGroupActivity::class.java)
-            startActivity(intent)
-        }
+
     }
 
 }
