@@ -13,6 +13,7 @@ import com.norbert.koller.shared.api.APIInterface
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import java.util.Calendar
 
 abstract class SettingsActivity : ToolbarActivity() {
@@ -103,6 +104,7 @@ abstract class SettingsActivity : ToolbarActivity() {
                 languageIntent.data = Uri.fromParts("package", packageName, null)
                 startActivity(languageIntent)
             }
+            RecyclerViewHelper.roundCardTop(getExternalBinding().cbNotification)
         }
 
 

@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
+import androidx.core.view.marginTop
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
@@ -330,7 +333,7 @@ class RecyclerViewHelper {
 
         fun roundCardTop(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.OverlayRoundedCardTop,0,0,0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+            roundCardX(view, view2, R.style.OverlayRoundedCardTop,view.marginLeft,0,view.marginRight,context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun roundCardTopLeft(view : View, view2 : View? = null){
