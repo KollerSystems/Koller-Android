@@ -91,7 +91,8 @@
             android:name=".activities.CreateNewPostActivity"
             android:exported="false" />
             <!-->
-
+        <service android:name=".ListViewWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
         <service
             android:name=".KollerHostApduService"
             android:exported="true"

@@ -55,7 +55,7 @@
         android:id="@+id/ly_title_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/card_padding"
+        android:paddingHorizontal="@dimen/card_padding"
         android:gravity="center_vertical">
 
         <TextView

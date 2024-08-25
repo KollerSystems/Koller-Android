@@ -25,6 +25,12 @@
         <item name="editTextStyle">@style/EditText</item>
         <item name="textInputStyle">@style/TextInput</item>
         <item name="recyclerViewStyle">@style/RecyclerView</item>
+
+        <item name="canteen_category">@string/unset</item>
+        <item name="canteen_time">@string/unset</item>
+        <item name="canteen_icon">@drawable/line_thick</item>
+        <item name="canteen_background">@drawable/square</item>
+        <item name="canteen_title">@string/unset</item>
     </style>
 
     <style name="RecyclerView">
@@ -799,5 +805,49 @@
 
     <style name="NestedScrollView">
         <item name="android:scrollbars">vertical</item>
+    </style>
+
+
+
+    <style name="FakeCanteenItemBreakfast">
+        <item name="canteen_category">@string/breakfast</item>
+        <item name="canteen_time">6:00 - 8:45</item>
+        <item name="canteen_icon">@drawable/breakfast</item>
+        <item name="canteen_background">@drawable/card_top</item>
+    </style>
+
+    <style name="FakeCanteenItemLunch">
+        <item name="canteen_category">@string/lunch</item>
+        <item name="canteen_time">13:00 - 15:45</item>
+        <item name="canteen_icon">@drawable/lunch</item>
+    </style>
+
+    <style name="FakeCanteenItemDinner">
+        <item name="canteen_category">@string/dinner</item>
+        <item name="canteen_time">19:15 - 19:45</item>
+        <item name="canteen_icon">@drawable/dinner</item>
+        <item name="canteen_background">@drawable/card_bottom</item>
+    </style>
+
+    <style name="FakeCanteenItemBreakfast1" parent="@style/FakeCanteenItemBreakfast">
+        <item name="canteen_title">@string/fake_breakfast_1</item>
+    </style>
+
+    <style name="FakeCanteenItemLunch1" parent="@style/FakeCanteenItemLunch">
+        <item name="canteen_title">@string/fake_lunch_1</item>
+        <item name="canteen_background">@drawable/square</item>
+    </style>
+
+    <style name="FakeCanteenItemDinner1" parent="@style/FakeCanteenItemDinner">
+        <item name="canteen_title">@string/fake_dinner_1</item>
+    </style>
+
+    <style name="FakeCanteenItemBreakfast2" parent="@style/FakeCanteenItemBreakfast">
+        <item name="canteen_title">@string/fake_breakfast_2</item>
+    </style>
+
+    <style name="FakeCanteenItemLunch2" parent="@style/FakeCanteenItemLunch">
+        <item name="canteen_title">@string/fake_lunch_2</item>
+        <item name="canteen_background">@drawable/card_bottom</item>
     </style>
 </resources>

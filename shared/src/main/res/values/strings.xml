@@ -441,6 +441,13 @@
     <string name="enable_2fa">Enable 2FA</string>
     <string name="check">Check</string>
     <string name="now_widget_fake_title">You can stay out until 15:45</string>
-    <string name="now_widget_fake_description">You have 2 hour 12 minutes to return</string>
+    <string name="now_widget_fake_description">You have 2 hours 12 minutes to return</string>
     <string name="enter_current_password">Enter your current password to continue</string>
+    <string name="fake_date_1">August 25.</string>
+    <string name="fake_date_2">August 26.</string>
+    <string name="fake_breakfast_1">Dry bread and water</string>
+    <string name="fake_lunch_1">Stone soup and yummi stew</string>
+    <string name="fake_dinner_1">Cookies</string>
+    <string name="fake_breakfast_2">Banana</string>
+    <string name="fake_lunch_2">Bone broth, cubed cabbage</string>
 </resources>

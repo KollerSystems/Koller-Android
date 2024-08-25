@@ -5,16 +5,16 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="@dimen/spacing">
+    android:padding="@dimen/spacing"
+    android:theme="@style/Theme.MainTheme">
 
     <ImageView
-        android:id="@+id/imageView5"
-        style="@style/TransparentIcon"
         android:layout_width="@dimen/card_icon"
         android:layout_height="@dimen/card_icon"
         android:layout_marginBottom="@dimen/text_container_margin"
         android:importantForAccessibility="no"
-        app:srcCompat="@drawable/box" />
+        android:src="@drawable/box"
+        app:tint="?attr/colorForeground066" />
 
     <TextView
         android:id="@+id/textView4"

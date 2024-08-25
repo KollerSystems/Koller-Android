@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -22,7 +22,7 @@
             android:alpha="0.05"
             android:importantForAccessibility="no"
             android:scaleType="fitStart"
-            app:srcCompat="@drawable/breakfast" />
+            app:srcCompat="?canteen_icon" />
     </FrameLayout>
 
     <LinearLayout
@@ -41,7 +41,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/text_container_margin"
-                android:text="@string/title"
+                android:text="?canteen_category"
                 android:textAppearance="@style/Description" />
 
             <TextView
@@ -51,7 +51,7 @@
                 android:layout_margin="@dimen/text_container_margin"
                 android:layout_weight="1"
                 android:gravity="center_vertical|end"
-                android:text="@string/time"
+                android:text="?canteen_time"
                 android:textAppearance="@style/Description" />
         </LinearLayout>
 
@@ -60,9 +60,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/text_container_margin"
-            android:text="@string/title"
+            android:text="?canteen_title"
             android:textAppearance="@style/Title" />
 
     </LinearLayout>
 
-</merge>
+</FrameLayout>

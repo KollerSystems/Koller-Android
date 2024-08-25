@@ -1,5 +1,7 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.content.Context
+import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,20 +32,11 @@ class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) 
         holder.itemBinding.content.textTime.text = currentItem.time
         holder.itemBinding.content.textTitle.text = currentItem.foodName
         val context = holder.itemView.context
-        when(currentItem.category){
-            0 ->{
-                holder.itemBinding.content.textCategory.text = context.getString(R.string.breakfast)
-                holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.breakfast))
-            }
-            1 ->{
-                holder.itemBinding.content.textCategory.text = context.getString(R.string.lunch)
-                holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.lunch))
-            }
-            2 ->{
-                holder.itemBinding.content.textCategory.text = context.getString(R.string.dinner)
-                holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, R.drawable.dinner))
-            }
-        }
+
+        val resources = getCategoryResources(context, currentItem.category)
+
+        holder.itemBinding.content.textCategory.text = resources.first
+        holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, resources.second))
 
         holder.itemView.setOnClickListener{
             val dialog = CanteenBsdFragment(currentItem)
@@ -56,4 +49,20 @@ class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) 
     }
 
     class ViewHolder(val itemBinding: ItemCanteenBinding) : RecyclerView.ViewHolder(itemBinding.root)
+
+    companion object{
+        fun getCategoryResources(context : Context, category : Int) : Pair<String, Int>{
+            return when(category){
+                0 ->{
+                    Pair(context.getString(R.string.breakfast), R.drawable.breakfast)
+                }
+                1 ->{
+                    Pair(context.getString(R.string.lunch), R.drawable.lunch)
+                }
+                else ->{
+                    Pair(context.getString(R.string.dinner), R.drawable.dinner)
+                }
+            }
+        }
+    }
 }

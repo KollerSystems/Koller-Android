@@ -434,4 +434,11 @@
     <string name="now_widget_fake_title">15:45-ig kint maradhatsz</string>
     <string name="now_widget_fake_description">Van még %1$svisszaérni</string>
     <string name="enter_current_password">Add meg a jelenlegi jelszavad a folytatáshoz</string>
+    <string name="fake_date_1">Augusztus 25.</string>
+    <string name="fake_date_2">Augusztus 26.</string>
+    <string name="fake_breakfast_1">Száraz kenyér és víz</string>
+    <string name="fake_lunch_1">Kőleves és finomfőzelék</string>
+    <string name="fake_dinner_1">Keksz</string>
+    <string name="fake_breakfast_2">Banán</string>
+    <string name="fake_lunch_2">Csontleves, káposztás kocka</string>
 </resources>

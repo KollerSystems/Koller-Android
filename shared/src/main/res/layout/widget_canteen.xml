@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:theme="@style/Theme.MainTheme"
     android:background="@drawable/card"
-    android:backgroundTint="?android:attr/colorBackground"
-    android:divider="@null"
-    android:dividerHeight="1dp"
-    android:orientation="vertical"
-    tools:listitem="@layout/widget_item_canteen" />
+    android:backgroundTint="?android:attr/colorBackground">
+
+    <ListView
+        android:id="@+id/list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:divider="@drawable/divider"
+        android:listSelector="@android:color/transparent"
+        android:orientation="vertical"
+        android:padding="@dimen/card_padding_half"
+        android:scrollbarStyle="outsideOverlay"
+        tools:listitem="@layout/widget_item_canteen" />
+
+    <include
+        android:id="@+id/empty_view"
+        layout="@layout/item_nothing_to_display"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical" />
+
+</FrameLayout>

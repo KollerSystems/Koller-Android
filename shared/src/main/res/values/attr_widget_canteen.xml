@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="canteen_title" format="string" />
+    <attr name="canteen_category" format="string" />
+    <attr name="canteen_time" format="string" />
+    <attr name="canteen_icon" format="reference" />
+    <attr name="canteen_background" format="reference" />
+</resources>
