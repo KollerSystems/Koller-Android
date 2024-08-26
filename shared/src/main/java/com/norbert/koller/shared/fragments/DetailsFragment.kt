@@ -30,7 +30,6 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
 
 
-    lateinit var loadingOl : FullScreenLoading
     lateinit var viewModel: ResponseViewModel
 
     abstract fun getDataTag() : String
@@ -60,12 +59,10 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
     abstract fun getTimeLimit() : Int
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+    fun createLoadingOverlay() : FullScreenLoading{
+        val loadingOl = FullScreenLoading(requireContext())
+        loadingOl.setLayoutParams(LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
+        (swrl.parent as ViewGroup).addView(loadingOl)
 
         viewModel.onLoadSuccess = {
             loadingOl.setState(ResponseViewModel.NONE)
@@ -73,6 +70,23 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
         viewModel.onLoadError = {
             loadingOl.setState(ResponseViewModel.ERROR)
+        }
+
+        loadingOl.loadData = {
+            viewModel.load(apiFunctionToCall(), getDataTag())
+        }
+        return loadingOl
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+
+        swrl = view.findViewById(R.id.swrl)
+        swrl.setOnRefreshListener {
+            refresh()
         }
 
         viewModel.onRefreshSuccess = {
@@ -87,19 +101,9 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
             swrl.isRefreshing = false
         }
 
-        swrl = view.findViewById(R.id.swrl)
-        loadingOl = FullScreenLoading(requireContext())
-        loadingOl.setLayoutParams(LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
-        (swrl.parent as ViewGroup).addView(loadingOl)
-        swrl.setOnRefreshListener {
-            refresh()
-        }
-
         if(!viewModel.response.isInitialized) {
 
-            loadingOl.loadData = {
-                viewModel.load(apiFunctionToCall(), getDataTag())
-            }
+
 
             if (viewModel.id == null) {
                 viewModel.id = id!!
@@ -134,17 +138,12 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                     }
                 }
 
-                loadingOl.loadData!!.invoke()
-                return
+                createLoadingOverlay().loadData!!.invoke()
 
             } else {
 
-                loadingOl.setState(viewModel.state)
+                createLoadingOverlay().setState(viewModel.state)
             }
-        }
-        else
-        {
-            loadingOl.rootView.isVisible = false
         }
     }
 
