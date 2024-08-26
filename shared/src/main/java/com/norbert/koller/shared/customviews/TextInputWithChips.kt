@@ -15,6 +15,7 @@ import android.widget.EditText
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.view.allViews
 import androidx.core.view.isVisible
 import androidx.core.view.size
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,7 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.TextInputWithChipsBinding
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.checkByPass
 import com.norbert.koller.shared.recycleradapters.SimpleUserRecyclerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -108,6 +110,13 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
                 binding.til.boxStrokeWidth = startBoxStrokeWidth
                 binding.til.error = null
                 disableList()
+
+                if(containsChip()){
+                    for (i in 0 until binding.chips.childCount-1){
+                        val chip = binding.chips.getChildAt(i) as Chip
+                        chip.checkByPass(false)
+                    }
+                }
             }
         }
 
