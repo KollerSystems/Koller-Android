@@ -4,7 +4,6 @@ import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import android.app.PendingIntent
 import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
 import android.nfc.NfcAdapter
@@ -28,7 +27,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
@@ -38,16 +36,18 @@ import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ActivityMainBinding
-import com.norbert.koller.shared.fragments.UserFragment
+import com.norbert.koller.shared.fragments.CalendarFragment
+import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.shared.managers.setupPortrait
-import com.norbert.koller.shared.managers.toInt
 import com.norbert.koller.shared.viewmodels.MainActivityViewModel
-
+import com.norbert.koller.shared.widgets.CanteenWidgetProvider
+import com.norbert.koller.shared.widgets.NowWidgetProvider
+import com.norbert.koller.shared.widgets.WidgetHelper
 import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import java.io.IOException
@@ -58,6 +58,13 @@ abstract class MainActivity : AppCompatActivity() {
 
     private var nfcAdapter: NfcAdapter? = null
 
+    fun byteArrayToInt(bytes: ByteArray): Int {
+        var value = 0
+        for (b in bytes) {
+            value = (value shl 8) + (b.toInt() and 0xFF)
+        }
+        return value
+    }
     @OptIn(ExperimentalStdlibApi::class)
     private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
 
@@ -67,20 +74,18 @@ abstract class MainActivity : AppCompatActivity() {
         try {
             mifareClassic.connect()
 
-            var fullInt = ""
 
             val sectorSector = 1
             mifareClassic.authenticateSectorWithKeyA(sectorSector, "A0A1A2A3A4A5".hexToByteArray())
 
-            val blockCount = mifareClassic.getBlockCountInSector(sectorSector)
-            for (blockIndex in 0 until blockCount) {
-                val blockNumber = mifareClassic.sectorToBlock(sectorSector) + blockIndex
-                val blockData = mifareClassic.readBlock(blockNumber)
-                val hexData = blockData.toInt()
-                fullInt += hexData.toString()
-            }
+
+
+            val blockNumber = mifareClassic.sectorToBlock(sectorSector)
+            val blockData = mifareClassic.readBlock(blockNumber)
+
             binding.root.post{
-                addFragment(ApplicationManager.userFragment(fullInt.dropLast(14).toInt()))
+                addFragment(ApplicationManager.userFragment(byteArrayToInt(blockData)))
+                viewModel.currentBottomSheetDialogFragment?.dismiss()
             }
 
 
@@ -90,16 +95,6 @@ abstract class MainActivity : AppCompatActivity() {
             mifareClassic.close()
 
         }
-    }
-
-    private fun bytesToHex(bytes: ByteArray): String {
-        val hexChars = CharArray(bytes.size * 2)
-        for (i in bytes.indices) {
-            val v = bytes[i].toInt() and 0xFF
-            hexChars[i * 2] = "0123456789ABCDEF"[v shr 4]
-            hexChars[i * 2 + 1] = "0123456789ABCDEF"[v and 0x0F]
-        }
-        return String(hexChars)
     }
 
     override fun onPause() {
@@ -121,6 +116,50 @@ abstract class MainActivity : AppCompatActivity() {
                 handleBackPress()
             }
         }
+
+
+
+        if (WidgetHelper.widgetTag != null) {
+
+            if (viewModel.currentBottomSheetDialogFragment != null) {
+                viewModel.currentBottomSheetDialogFragment!!.dismiss()
+            }
+            when (WidgetHelper.widgetTag) {
+                NowWidgetProvider.TAG -> {
+                    if (bottomNavigationView().selectedItemId != R.id.home) {
+                        bottomNavigationView().selectedItemId = R.id.home
+
+                    }
+                    bottomNavigationView().post {
+                        if (supportFragmentManager.fragments[0] !is HomeFragment) {
+                            addFragment(ApplicationManager.homeFragment())
+
+                        }
+                    }
+                }
+
+                CanteenWidgetProvider.TAG -> {
+                    if (bottomNavigationView().selectedItemId != R.id.calendar) {
+                        bottomNavigationView().selectedItemId = R.id.calendar
+
+                    }
+                    bottomNavigationView().post {
+                        if (supportFragmentManager.fragments[0] !is CalendarFragment) {
+                            addFragment(ApplicationManager.calendarFragment())
+                        }
+                        bottomNavigationView().post {
+                            bottomNavigationView().post {
+                                (supportFragmentManager.fragments[0] as CalendarFragment).getViewPager().currentItem =
+                                    2
+                            }
+                        }
+                    }
+
+                }
+            }
+
+        }
+
     }
 
     var defaultTitlePadding : Int = 0

@@ -1,6 +1,5 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.widgets
 
-import android.app.ListActivity
 import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
@@ -8,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.widget.RemoteViews
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.LaunchActivity
 
 
@@ -44,7 +44,8 @@ class CanteenWidgetProvider : AppWidgetProvider() {
 
                 // Set the action for the intent.
                 // When the user touches a particular view.
-                activityIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                activityIntent.putExtra( AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+                activityIntent.putExtra(WidgetHelper.WIDGET_TAG_KEY, TAG)
                 activityIntent.setData(Uri.parse(intent.toUri(Intent.URI_INTENT_SCHEME)))
                 val pendingIntent = PendingIntent.getActivity(
                     context, appWidgetId,
@@ -60,6 +61,10 @@ class CanteenWidgetProvider : AppWidgetProvider() {
             appWidgetManager.updateAppWidget(appWidgetId, views)
         }
         super.onUpdate(context, appWidgetManager, appWidgetIds)
+    }
+
+    companion object{
+        val TAG = "canteen"
     }
 
 }

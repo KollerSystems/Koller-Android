@@ -60,7 +60,7 @@ abstract class LoginViewPagerRecyclerAdapter : RecyclerView.Adapter<LoginViewPag
         binding.text.text = activity.getString(R.string.please_login)
         binding.tilSecond.editText!!.transformationMethod = PasswordTransformationMethod()
         binding.tilFirst.editText!!.setText("tweinek5")
-        binding.tilSecond.editText!!.setText("rT1>k.U'`B?&amp;AsA9")
+        binding.tilSecond.editText!!.setText("rT1>k.U'`B?&AsA9")
         binding.tilFirst.editText!!.importantForAutofill = IMPORTANT_FOR_AUTOFILL_YES_EXCLUDE_DESCENDANTS
         binding.tilSecond.editText!!.importantForAutofill = IMPORTANT_FOR_AUTOFILL_YES_EXCLUDE_DESCENDANTS
 

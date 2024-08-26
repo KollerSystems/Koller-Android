@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -15,12 +16,19 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.widgets.WidgetHelper
 import kotlinx.coroutines.launch
 
 class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
+
+        WidgetHelper.widgetTag = intent.getStringExtra(WidgetHelper.WIDGET_TAG_KEY)
+        if(WidgetHelper.widgetTag != null) {
+            Toast.makeText(this, WidgetHelper.widgetTag, Toast.LENGTH_SHORT).show()
+            intent.removeExtra(WidgetHelper.WIDGET_TAG_KEY)
+        }
 
         AuthenticationManager.handleFailedTokenRefresh = {
 

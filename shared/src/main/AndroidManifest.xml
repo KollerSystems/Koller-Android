@@ -26,13 +26,22 @@
         tools:targetApi="tiramisu"
         android:supportsRtl="true">
 
-        <receiver android:name="com.norbert.koller.shared.CanteenWidgetProvider"
+        <receiver android:name="com.norbert.koller.shared.widgets.CanteenWidgetProvider"
             android:exported="false">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
                 android:resource="@xml/widget_provider_canteen" />
+        </receiver>
+
+        <receiver android:name="com.norbert.koller.shared.widgets.NowWidgetProvider"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                android:resource="@xml/widget_provider_now" />
         </receiver>
 
         <receiver android:name=".broadcastreceivers.MyNotificationPublisher"
@@ -91,7 +100,7 @@
             android:name=".activities.CreateNewPostActivity"
             android:exported="false" />
             <!-->
-        <service android:name=".ListViewWidgetService"
+        <service android:name=".widgets.ListViewWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
         <service
             android:name=".KollerHostApduService"

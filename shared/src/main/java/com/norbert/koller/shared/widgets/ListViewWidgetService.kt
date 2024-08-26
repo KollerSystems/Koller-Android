@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.widgets
 
 import android.content.Intent
 import android.widget.RemoteViewsService

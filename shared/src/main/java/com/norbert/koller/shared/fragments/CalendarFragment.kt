@@ -11,6 +11,8 @@ import com.google.android.material.tabs.TabLayout
 
 abstract class CalendarFragment : PagedFragment() {
 
+    abstract fun getViewPager() : ViewPager2
+
     override fun getFragmentTitle(): String? {
         return getString(R.string.calendar)
     }

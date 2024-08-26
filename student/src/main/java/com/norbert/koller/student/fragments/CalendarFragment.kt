@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import androidx.viewpager2.widget.ViewPager2
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.CanteenFragment
 import com.google.android.material.tabs.TabLayoutMediator
@@ -12,6 +13,10 @@ import com.norbert.koller.shared.fragments.DaysFragment
 class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() {
 
     lateinit var adapter : CalendarViewPagerAdapter
+
+    override fun getViewPager(): ViewPager2 {
+        return binding.viewPager
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,7 +32,7 @@ class CalendarFragment : com.norbert.koller.shared.fragments.CalendarFragment() 
                     tab.text = getString(R.string.days)
                 }
                 1->{
-                    tab.text = "Ügyeletesek"
+                    tab.text = getString(R.string.duty_teachers)
                 }
                 2->{
                     tab.text = getString(R.string.canteen)

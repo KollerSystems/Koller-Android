@@ -1,4 +1,4 @@
-package com.norbert.koller.shared
+package com.norbert.koller.shared.widgets
 
 import android.content.Context
 import android.content.Intent
@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.RemoteViews
 import android.widget.RemoteViewsService
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CanteenData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.formatDate
