@@ -27,10 +27,12 @@ abstract class BsdFragment : BottomSheetDialogFragment() {
         viewGroup = getContentHolder(inflater)
         viewGroup.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurface))
         binding.root.addView(viewGroup)
-        if((context as MainActivity).viewModel.currentBottomSheetDialogFragment != null){
-            (context as MainActivity).viewModel.currentBottomSheetDialogFragment!!.dismiss()
+        if(context is MainActivity) {
+            if ((context as MainActivity).viewModel.currentBottomSheetDialogFragment != null) {
+                (context as MainActivity).viewModel.currentBottomSheetDialogFragment!!.dismiss()
+            }
+            (context as MainActivity).viewModel.currentBottomSheetDialogFragment = this
         }
-        (context as MainActivity).viewModel.currentBottomSheetDialogFragment = this
         return binding.root
     }
 
@@ -41,8 +43,10 @@ abstract class BsdFragment : BottomSheetDialogFragment() {
 
     override fun onDismiss(dialog: DialogInterface) {
         super.onDismiss(dialog)
-        if((context as MainActivity).viewModel.currentBottomSheetDialogFragment == this) {
-            (context as MainActivity).viewModel.currentBottomSheetDialogFragment = null
+        if(context is MainActivity) {
+            if ((context as MainActivity).viewModel.currentBottomSheetDialogFragment == this) {
+                (context as MainActivity).viewModel.currentBottomSheetDialogFragment = null
+            }
         }
     }
 
