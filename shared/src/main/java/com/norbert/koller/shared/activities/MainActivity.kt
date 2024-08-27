@@ -158,6 +158,7 @@ abstract class MainActivity : AppCompatActivity() {
                 }
             }
 
+            WidgetHelper.widgetTag = null
         }
 
     }

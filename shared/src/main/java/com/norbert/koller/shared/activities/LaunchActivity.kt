@@ -20,6 +20,7 @@ import com.norbert.koller.shared.widgets.WidgetHelper
 import kotlinx.coroutines.launch
 
 class LaunchActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
@@ -27,7 +28,7 @@ class LaunchActivity : AppCompatActivity() {
         WidgetHelper.widgetTag = intent.getStringExtra(WidgetHelper.WIDGET_TAG_KEY)
         if(WidgetHelper.widgetTag != null) {
             Toast.makeText(this, WidgetHelper.widgetTag, Toast.LENGTH_SHORT).show()
-            intent.removeExtra(WidgetHelper.WIDGET_TAG_KEY)
+            intent = null
         }
 
         AuthenticationManager.handleFailedTokenRefresh = {
