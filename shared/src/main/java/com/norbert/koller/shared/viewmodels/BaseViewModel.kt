@@ -11,7 +11,7 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import kotlinx.coroutines.flow.Flow
 
-class BaseViewModel : ViewModel() {
+class BaseViewModel : MenuViewModel() {
 
     companion object{
         const val pageSize : Int = 25
@@ -20,9 +20,6 @@ class BaseViewModel : ViewModel() {
     var owner : UserData? = null
 
     var id : Int? = null
-
-    var filters : MutableMap<String, ArrayList<String>> = mutableMapOf()
-    var dateFilters : MutableMap<String, androidx.core.util.Pair<Long, Long>> = mutableMapOf()
 
     var filtersShown : MutableLiveData<Boolean> = MutableLiveData(false)
 

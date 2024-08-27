@@ -14,7 +14,7 @@ abstract class StudyGroupsFragment : ListFragment() {
 
 
     override fun getPagingSource(): PagingSource {
-        return StudyGroupPagingSource(requireContext(), viewModel)
+        return StudyGroupPagingSource(requireContext(), getBaseViewModel())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

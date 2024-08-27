@@ -15,7 +15,7 @@ class OutgoingTemporaryFragment(userData: UserData? = null) : com.norbert.koller
 
         addButton(getString(R.string.add_temporary_outgoing)){
             CreateOutgoingActivity.type = CreateOutgoingActivity.TEMPORARY
-            CreateOutgoingActivity.userData = viewModel.owner
+            CreateOutgoingActivity.userData = getBaseViewModel().owner
             val intent = Intent(requireContext(), CreateOutgoingActivity::class.java)
             requireContext().startActivity(intent)
         }

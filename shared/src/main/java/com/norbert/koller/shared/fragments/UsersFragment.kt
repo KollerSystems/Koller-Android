@@ -24,7 +24,7 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
 
 
     override fun getPagingSource(): PagingSource {
-        return UserPagingSource(requireContext(), viewModel)
+        return UserPagingSource(requireContext(), getBaseViewModel())
     }
 
 

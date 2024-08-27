@@ -13,7 +13,7 @@ abstract class StudyGroupTypesFragment(defaultFilters : MutableMap<String, Array
     }
 
     override fun getPagingSource(): PagingSource {
-        return StudyGroupTypePagingSource(requireContext(), viewModel)
+        return StudyGroupTypePagingSource(requireContext(), getBaseViewModel())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -13,7 +13,7 @@ abstract class BaseProgramsFragment(defaultFilters : MutableMap<String, ArrayLis
     }
 
     override fun getPagingSource(): PagingSource {
-        return ProgramPagingSource(requireContext(), viewModel)
+        return ProgramPagingSource(requireContext(), getBaseViewModel())
     }
 
 

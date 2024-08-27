@@ -11,62 +11,9 @@
         style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingTop="@null">
 
-        <TextView
-            android:id="@+id/text_filters"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/text_container_margin"
-            android:text="@string/filters"
-            android:textAppearance="@style/Description"
-            android:textStyle="bold"
-            app:layout_maxWidth="@dimen/tablet_max_width" />
-
-        <com.google.android.material.chip.ChipGroup
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_date"
-                style="@style/ChipDropdownFilter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/date"
-                app:closeIconEnabled="true" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_gender"
-                style="@style/ChipDropdownFilter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/gender"
-                app:closeIconEnabled="true" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_class"
-                style="@style/ChipDropdownFilter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/class_"
-                app:closeIconEnabled="true" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chip_group"
-                style="@style/ChipDropdownFilter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/group"
-                app:closeIconEnabled="true" />
-        </com.google.android.material.chip.ChipGroup>
-
-        <View
-            android:id="@+id/view_divider"
-            style="@style/SeparatorLine"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="@dimen/spacing"
-            android:layout_marginBottom="@dimen/text_container_margin" />
 
         <TextView
             style="@style/CategoryCardName"

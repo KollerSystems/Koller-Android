@@ -21,7 +21,7 @@ import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 
 
 @SuppressLint("ClickableViewAccessibility")
-class SuperCoolRecyclerView(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
+class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : FrameLayout(context, attrs) {
 
     var appBar : AppBarLayout? = null
     val binding = ViewSuperCoolRecyclerBinding.inflate(LayoutInflater.from(context), this)

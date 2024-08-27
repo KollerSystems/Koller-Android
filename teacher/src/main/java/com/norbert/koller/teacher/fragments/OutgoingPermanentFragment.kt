@@ -16,7 +16,7 @@ class OutgoingPermanentFragment(userData: UserData? = null) : com.norbert.koller
 
         addButton(getString(R.string.add_continuous_outgoing)){
             CreateOutgoingActivity.type = CreateOutgoingActivity.PERMANENT
-            CreateOutgoingActivity.userData = viewModel.owner
+            CreateOutgoingActivity.userData = getBaseViewModel().owner
             val intent = Intent(requireContext(), CreateOutgoingActivity::class.java)
             requireContext().startActivity(intent)
         }

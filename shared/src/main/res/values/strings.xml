@@ -451,4 +451,15 @@
     <string name="fake_breakfast_2">Banana</string>
     <string name="fake_lunch_2">Bone broth, cubed cabbage</string>
     <string name="duty_teachers">Duty teachers</string>
+    <string name="search_on_google">Search on Google</string>
+    <string name="from_better">From better</string>
+    <string name="from_worst">From worst</string>
+    <string name="first_quarter">First quarter of year</string>
+    <string name="half_year">Half-year</string>
+    <string name="third_quarter">Third quarter of year</string>
+    <string name="full_year">Full year</string>
+    <string name="custom_range">Custom range</string>
+    <string name="this_day">This day</string>
+    <string name="one_week">One week</string>
+    <string name="four_weeks">Four weeks</string>
 </resources>

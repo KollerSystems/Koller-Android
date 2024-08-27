@@ -16,7 +16,7 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
     }
 
     override fun getPagingSource(): PagingSource {
-        return RoomPagingSource(requireContext(), viewModel)
+        return RoomPagingSource(requireContext(), getBaseViewModel())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

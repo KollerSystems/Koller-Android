@@ -2,7 +2,6 @@
 <com.norbert.koller.shared.customviews.NestedCoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/windowBackground"
@@ -159,11 +158,5 @@
 
         </com.google.android.flexbox.FlexboxLayout>
     </com.google.android.material.appbar.AppBarLayout>
-
-    <com.norbert.koller.shared.customviews.SuperCoolRecyclerView
-        android:id="@+id/sc_recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
 
 </com.norbert.koller.shared.customviews.NestedCoordinatorLayout>

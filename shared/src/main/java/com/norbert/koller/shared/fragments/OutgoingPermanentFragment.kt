@@ -18,7 +18,7 @@ import com.norbert.koller.shared.viewmodels.ResponseViewModel
 open class OutgoingPermanentFragment(val userData: UserData? = null) : ListFragment() {
 
     override fun getPagingSource(): PagingSource {
-        return UserPagingSource(requireContext(), viewModel)
+        return UserPagingSource(requireContext(), getBaseViewModel())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,6 +41,6 @@ open class OutgoingPermanentFragment(val userData: UserData? = null) : ListFragm
         super.onViewCreated(view, savedInstanceState)
 
         if(userData != null)
-            viewModel.owner = userData
+            getBaseViewModel().owner = userData
     }
 }

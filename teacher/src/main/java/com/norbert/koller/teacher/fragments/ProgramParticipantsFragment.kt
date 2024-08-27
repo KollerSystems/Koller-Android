@@ -13,7 +13,7 @@ import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 class ProgramParticipantsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
     override fun getPagingSource(): PagingSource {
-        return UserPagingSource(requireContext(), viewModel)
+        return UserPagingSource(requireContext(), getBaseViewModel())
     }
 
 

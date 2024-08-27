@@ -442,4 +442,15 @@
     <string name="fake_breakfast_2">Banán</string>
     <string name="fake_lunch_2">Csontleves, káposztás kocka</string>
     <string name="duty_teachers">Ügyeletesek</string>
+    <string name="search_on_google">Keresés Google-n</string>
+    <string name="from_better">Jobbtól</string>
+    <string name="from_worst">Rosszabbtól</string>
+    <string name="first_quarter">Első negyedév</string>
+    <string name="half_year">Félév</string>
+    <string name="third_quarter">Három negyedév</string>
+    <string name="full_year">Teljes tanév</string>
+    <string name="custom_range">Egyéni tartomány</string>
+    <string name="this_day">Mai nap</string>
+    <string name="one_week">Egy hét</string>
+    <string name="four_weeks">Négy hét</string>
 </resources>

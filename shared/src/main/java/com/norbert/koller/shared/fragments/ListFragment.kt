@@ -16,6 +16,7 @@ import android.widget.LinearLayout.VERTICAL
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.view.ContextThemeWrapper
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.view.children
 import androidx.core.widget.doOnTextChanged
@@ -24,12 +25,14 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexboxLayout
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.SearchView
+import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.databinding.FragmentListBinding
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
@@ -44,13 +47,16 @@ import kotlinx.coroutines.launch
 import retrofit2.Response
 
 
-abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : FragmentInMainActivity() {
+abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : MenuFragment() {
 
-    lateinit var binding : FragmentListBinding
 
-    lateinit var viewModel : BaseViewModel
+    fun getBaseViewModel() : BaseViewModel {
+        return viewModel as BaseViewModel
+    }
     lateinit var apiRecyclerAdapter : ApiRecyclerAdapter
     var duration : Long = 0
+
+    lateinit var scRecyclerView : SuperCoolRecyclerView
 
 
     abstract fun getPagingSource() : PagingSource
@@ -60,26 +66,17 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         return this
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        binding = FragmentListBinding.inflate(layoutInflater)
-        val view = binding.root
-
-        binding.scRecyclerView.getRecyclerView().layoutManager = LinearLayoutManager(context)
-        binding.scRecyclerView.appBar = binding.appBar
-
+    override fun assignViewModel() {
         viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
 
         if(defaultFilters != null) {
             viewModel.filters = defaultFilters!!
         }
 
-        viewModel.pagingSource = {
+        getBaseViewModel().pagingSource = {
             getPagingSource()
         }
-
-
-        return view
     }
 
 
@@ -87,18 +84,20 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        scRecyclerView = SuperCoolRecyclerView(requireContext())
+        binding.root.addView(scRecyclerView)
+        val params = CoordinatorLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
+        params.behavior = AppBarLayout.ScrollingViewBehavior()
+        scRecyclerView.layoutParams = params
 
-        binding.scRecyclerView.getRecyclerView().apply {
-            layoutManager = LinearLayoutManager(requireContext())
-            adapter = apiRecyclerAdapter
-        }
-
-
+        scRecyclerView.getRecyclerView().layoutManager = LinearLayoutManager(context)
+        scRecyclerView.getRecyclerView().adapter = apiRecyclerAdapter
+        scRecyclerView.appBar = binding.appBar
 
         lifecycleScope.launch {
 
-            viewModel.pagingData.collectLatest { pagingData ->
-                viewModel.currentPagingSource.recyclerAdapter = apiRecyclerAdapter
+            getBaseViewModel().pagingData.collectLatest { pagingData ->
+                getBaseViewModel().currentPagingSource.recyclerAdapter = apiRecyclerAdapter
                 apiRecyclerAdapter.submitData(pagingData)
             }
         }
@@ -111,23 +110,6 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
                 apiRecyclerAdapter.fullRefresh()
             }
         }
-    }
-
-    fun setupSort(firstLocalizedString : Int, secondLocalizedString : Int, sortBy : String, firstSort : String = "asc", secondSort : String = "desc"){
-        val firstChild = binding.chipsSort.getChildAt(0) as Chip
-        firstChild.tag = sortBy+":"+firstSort
-        firstChild.text = getString(firstLocalizedString)
-        val secondChild = binding.chipsSort.getChildAt(1) as Chip
-        secondChild.tag = sortBy+":"+secondSort
-        secondChild.text = getString(secondLocalizedString)
-    }
-
-    fun createChip() : Chip{
-        val chip = Chip(requireContext())
-        chip.layoutParams = ViewGroup.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
-        binding.chipsFilter.addView(chip)
-        chip.isCloseIconVisible = true
-        return chip
     }
 
     fun addButton(text : String, onClick: () -> Unit) : Button {
@@ -192,7 +174,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
         binding.chipsFilter.layoutParams = chipMarginLayoutParams
 
 
-        if(viewModel.filtersShown.value == false) {
+        if(getBaseViewModel().filtersShown.value == false) {
             var anyOfHas = false
             for (chip in binding.chipsFilter.children) {
                 chip as Chip
@@ -203,7 +185,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
                 chip.measure(WRAP_CONTENT, WRAP_CONTENT)
                 chip.layoutParams.height = chip.measuredHeight
             }
-            viewModel.filtersShown.value = anyOfHas
+            getBaseViewModel().filtersShown.value = anyOfHas
         }
 
 
@@ -238,7 +220,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             closeButton.measure(MATCH_PARENT, WRAP_CONTENT)
             closeButton.layoutParams.height = closeButton.measuredHeight
 
-            viewModel.filtersShown.observe(viewLifecycleOwner){ checked ->
+            getBaseViewModel().filtersShown.observe(viewLifecycleOwner){ checked ->
 
 
                 if(checked){
@@ -272,7 +254,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
             searchBar.getEditText().setOnFocusChangeListener { focusedView, isFocused ->
                 if (isFocused) {
-                    viewModel.filtersShown.value = true
+                    getBaseViewModel().filtersShown.value = true
                 }
             }
         }
@@ -284,7 +266,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
 
-            viewModel.filtersShown.value = false
+            getBaseViewModel().filtersShown.value = false
             searchBar.getEditText().clearFocus()
 
             viewModel.filters.entries.removeIf { it.key != filterName }
@@ -318,25 +300,5 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
     }
-
-    fun addDateChip(filterName : String = "Date"){
-
-        val chip = createChip()
-        chip.connectToDateRangePicker(parentFragmentManager, filterName, viewModel)
-    }
-
-    fun addSortingChip(filterName : String, localizedNameId : Int, arrayList: ArrayList<ListItem>){
-
-        val chip = createChip()
-        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, arrayList, viewModel)
-    }
-
-    fun addSortingChip(filterName : String, localizedNameId : Int, getValues: suspend () -> Response<*>, tag : String, collapseText : Boolean = false){
-
-        val chip = createChip()
-        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, getValues, viewModel, tag, collapseText)
-    }
-
-
 
 }

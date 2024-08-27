@@ -15,7 +15,7 @@ class BaseProgramTypesFragment(defaultFilters : MutableMap<String, ArrayList<Str
     }
 
     override fun getPagingSource(): PagingSource {
-        return ProgramTypePagingSource(requireContext(), viewModel)
+        return ProgramTypePagingSource(requireContext(), getBaseViewModel())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

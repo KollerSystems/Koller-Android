@@ -16,7 +16,7 @@ class CrossingsFragment(val uid : Int? = null) : ListFragment() {
     }
 
     override fun getPagingSource(): PagingSource {
-        return CrossingPagingSource(requireContext(), viewModel.id!!, viewModel)
+        return CrossingPagingSource(requireContext(), getBaseViewModel().id!!, getBaseViewModel())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -26,8 +26,8 @@ class CrossingsFragment(val uid : Int? = null) : ListFragment() {
         apiRecyclerAdapter.chipsSort = binding.chipsSort
         apiRecyclerAdapter.chipsFilter = binding.chipsFilter
 
-        if(viewModel.id == null) {
-            viewModel.id = uid
+        if(getBaseViewModel().id == null) {
+            getBaseViewModel().id = uid
         }
 
         addSortingChip("Direction", R.string.direction, arrayListOf(
