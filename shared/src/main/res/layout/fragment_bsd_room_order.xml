@@ -3,80 +3,32 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/BottomSheetMainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    android:background="?attr/colorSurface">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="@dimen/application_padding"
+        android:paddingTop="@dimen/application_padding"
+        android:paddingBottom="@dimen/text_container_margin"
+        tools:listitem="@layout/description_toggle">
 
-    <com.google.android.material.card.MaterialCardView
-        style="@style/CardHeader"
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <include
+        android:id="@+id/footer"
+        layout="@layout/content_message_footer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_marginTop="@dimen/text_container_margin"
+        android:layout_marginBottom="@dimen/application_padding" />
 
-        <com.google.android.material.bottomsheet.BottomSheetDragHandleView
-            android:id="@+id/drag_handle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+</LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="horizontal"
-            android:padding="@dimen/card_padding">
-
-            <TextView
-                android:id="@+id/text_title"
-                style="@style/Title"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_margin="@dimen/text_container_margin"
-                android:layout_weight="1"
-                android:text="@string/room_order" />
-
-            <TextView
-                android:id="@+id/text_grade"
-                style="@style/IconLikeText"
-                android:layout_marginStart="@dimen/spacing"
-                android:text="4"
-                android:textColor="#00BF9F"
-                android:textStyle="bold"
-                tools:ignore="HardcodedText" />
-
-        </LinearLayout>
-
-    </com.google.android.material.card.MaterialCardView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/colorSurface"
-        android:clipChildren="false"
-        android:clipToPadding="false"
-        android:orientation="vertical">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingHorizontal="@dimen/application_padding"
-            android:paddingTop="@dimen/application_padding"
-            android:paddingBottom="@dimen/text_container_margin"
-            tools:listitem="@layout/description_toggle">
-
-        </androidx.recyclerview.widget.RecyclerView>
-
-        <include
-            android:id="@+id/footer"
-            layout="@layout/content_message_footer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/application_padding"
-            android:layout_marginTop="@dimen/text_container_margin"
-            android:layout_marginBottom="@dimen/application_padding" />
-
-    </LinearLayout>
-    </LinearLayout>

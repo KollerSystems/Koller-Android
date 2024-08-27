@@ -48,6 +48,8 @@
     <dimen name="text_description">13sp</dimen>
     <dimen name="text_description_smaller">8.666sp</dimen>
 
+    <item name="icon_like_text" type="dimen" format="float">1.2</item>
+
 
     <!-- Buttons -->
     <dimen name="button_vertical_padding">11dp</dimen>

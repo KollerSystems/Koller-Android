@@ -15,41 +15,38 @@ import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.managers.setupBottomSheet
 import kotlin.math.roundToInt
 
-class RoomOrderBsdFragment : BottomSheetDialogFragment()  {
+class RoomOrderBsdFragment : BsdFragment()  {
 
 
-    lateinit var binding : FragmentBsdRoomOrderBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View {
-        // Inflate the layout for this fragment
-        binding = FragmentBsdRoomOrderBinding.inflate(layoutInflater)
-        return binding.root
-    }
+    lateinit var contentBinding : FragmentBsdRoomOrderBinding
 
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog!!.setupBottomSheet()
+
+        setTitle(getString(R.string.room_order))
 
         val finalGradeFloat : Float = RoomOrderData.instance[0].finalGrade.toFloat() / 2
-        if(finalGradeFloat != (finalGradeFloat).roundToInt().toFloat()){
-            binding.textGrade.text = "${(finalGradeFloat + 0.5f).roundToInt()},"
+        val finalGradeString = if(finalGradeFloat != (finalGradeFloat).roundToInt().toFloat()){
+            "${(finalGradeFloat + 0.5f).roundToInt()},"
         }
         else{
-            binding.textGrade.text = finalGradeFloat.toString()
+            finalGradeFloat.toString()
         }
+        addEndText(finalGradeString)
 
-        binding.footer.textName.text = RoomOrderData.instance[0].teacher.name
+        contentBinding.footer.textName.text = RoomOrderData.instance[0].teacher.name
 
 
-        binding.footer.textDate.text = RoomOrderData.instance[0].date.formatDate("MM. dd.")
+        contentBinding.footer.textDate.text = RoomOrderData.instance[0].date.formatDate("MM. dd.")
 
-        binding.recyclerView.layoutManager = LinearLayoutManager(context)
-        binding.recyclerView.setHasFixedSize(true)
+        contentBinding.recyclerView.layoutManager = LinearLayoutManager(context)
+        contentBinding.recyclerView.setHasFixedSize(true)
+    }
+
+    override fun getContentHolder(inflater: LayoutInflater): ViewGroup {
+        contentBinding = FragmentBsdRoomOrderBinding.inflate(layoutInflater)
+        return contentBinding.root
     }
 
     companion object {

@@ -15,12 +15,12 @@ import com.norbert.koller.teacher.recycleradapters.BaseProgramTypeRecyclerAdapte
 
 class RoomTidinessFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
-    override fun getFragmentTitle(): String? {
+    override fun getFragmentTitle(): String {
         return getString(R.string.room_order)
     }
 
     override fun getPagingSource(): PagingSource {
-        return RoomPagingSource(requireContext(), viewModel)
+        return RoomPagingSource(requireContext(), getBaseViewModel())
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
