@@ -14,12 +14,12 @@ import android.graphics.drawable.Drawable
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
+import android.os.Bundle
 import android.util.Log
 import android.util.TypedValue
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.MarginLayoutParams
 import android.view.WindowManager
@@ -37,21 +37,25 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
+import com.norbert.koller.shared.fragments.OutgoingPermanentFragment
+import com.norbert.koller.shared.fragments.OutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.RoomFragment
 import com.norbert.koller.shared.fragments.RoomsFragment
 import com.norbert.koller.shared.fragments.StudentHostelFragment
 import com.norbert.koller.shared.fragments.StudyGroupTypesFragment
 import com.norbert.koller.shared.fragments.UserFragment
-import com.norbert.koller.shared.fragments.OutgoingPermanentFragment
-import com.norbert.koller.shared.fragments.OutgoingTemporaryFragment
 import com.norbert.koller.shared.fragments.UsersFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.recycleradapters.LoginViewPagerRecyclerAdapter
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.nio.ByteBuffer
 import java.util.Date
 import java.util.Locale
@@ -59,15 +63,71 @@ import java.util.Locale
 
 open class ApplicationManager : Application() {
 
+    private val TAG: String = ApplicationManager::class.java.getSimpleName()
+    private var mVisibleCount = 0
+    private var mInBackground = false
+
+    private val applicationScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
 
 
     override fun onCreate() {
         super.onCreate()
         DynamicColors.applyToActivitiesIfAvailable(this)
+
+        registerActivityLifecycleCallbacks(object : ActivityLifecycleCallbacks {
+            override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
+            }
+
+            override fun onActivityStarted(activity: Activity) {
+                mVisibleCount++
+                if (mInBackground && mVisibleCount > 0) {
+                    mInBackground = false
+                    Log.i(TAG, "App in foreground")
+                }
+            }
+
+            override fun onActivityResumed(activity: Activity) {
+            }
+
+            override fun onActivityPaused(activity: Activity) {
+            }
+
+            override fun onActivityStopped(activity: Activity) {
+                mVisibleCount--
+                if (mVisibleCount == 0) {
+                    if (activity.isFinishing) {
+                        Log.i(TAG, "App is finishing")
+                    } else {
+                        mInBackground = true
+                        Log.i(TAG, "App in background")
+
+                        applicationScope.launch {
+                            DataStoreManager.saveCache(applicationContext)
+                        }
+
+                    }
+                }
+            }
+
+            override fun onActivitySaveInstanceState(activity: Activity, outState: Bundle) {
+            }
+
+            override fun onActivityDestroyed(activity: Activity) {
+            }
+        })
     }
 
+    fun isAppInBackground(): Boolean {
+        return mInBackground
+    }
 
+    fun isAppVisible(): Boolean {
+        return mVisibleCount > 0
+    }
 
+    fun getVisibleCount(): Int {
+        return mVisibleCount
+    }
 
     companion object Comp{
 

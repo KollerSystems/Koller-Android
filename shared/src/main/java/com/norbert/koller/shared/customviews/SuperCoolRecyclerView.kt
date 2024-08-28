@@ -66,10 +66,6 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : Fra
 
             }
         }
-    }
-
-    override fun onFinishInflate() {
-        super.onFinishInflate()
 
         binding.fabScrollToTop.setOnClickListener{
 
@@ -127,6 +123,12 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : Fra
                 }
             }
         }
+    }
+
+    override fun onFinishInflate() {
+        super.onFinishInflate()
+
+
 
 
     }

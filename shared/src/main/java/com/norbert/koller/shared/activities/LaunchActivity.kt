@@ -63,7 +63,7 @@ class LaunchActivity : AppCompatActivity() {
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
                     // Check whether the initial data is ready.
-                    return if (UserData.instance.uid != -1 || !ApplicationManager.isOnline(this@LaunchActivity)) {
+                    return if (UserData.instance.uid != -1) {
                         // The content is ready. Start drawing.
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
@@ -74,22 +74,6 @@ class LaunchActivity : AppCompatActivity() {
                 }
             }
         )
-
-
-
-        if (!ApplicationManager.isOnline(this@LaunchActivity)) {
-            MaterialAlertDialogBuilder(this@LaunchActivity)
-                .setTitle("Nincs internet")
-                .setMessage("Az alkalmazás jelenleg csakis internettel képes működni")
-                .setIcon(R.drawable.no_internet)
-                .setPositiveButton("Alkalmazás bezárása")
-                { _, _ ->
-                    finishAffinity()
-                }
-                .show()
-
-            return
-        }
 
         lifecycleScope.launch {
             LoginTokensData.instance = DataStoreManager.readTokens(this@LaunchActivity)

@@ -9,6 +9,7 @@ import android.widget.LinearLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
@@ -16,7 +17,10 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.LoadingOverlayView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
+import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.viewmodels.DetailsViewModel
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 
 abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() {
@@ -71,6 +75,8 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
         return loadingOl
     }
 
+    abstract fun getDataType() : Class<*>
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -103,13 +109,11 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
                 val key = Pair(getDataTag(), viewModel.id)
                 if (CacheManager.savedValues.containsKey(key)) {
-                    if (!ApplicationManager.isOnline(requireContext())) {
-                        createSnackBar()
-                    } else {
-                        if (!CacheManager.savedValues[key]!!.isUnexpired(getTimeLimit())) {
-                            refresh()
-                        }
+
+                    if (!CacheManager.savedValues[key]!!.isUnexpired(getTimeLimit())) {
+                        refresh()
                     }
+
                     viewModel.response.value = CacheManager.savedValues[key]!!
                     return
                 }
@@ -124,13 +128,30 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                     }
 
                     if (foundIndex != null) {
-                        viewModel.response.value = CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!]
+
+                        viewModel.updateValues(CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!], getDataTag())
+
                         refresh()
                         return
                     }
                 }
 
-                createLoadingOverlay().loadData!!.invoke()
+                val loadingOverlay = createLoadingOverlay()
+
+                lifecycleScope.launch {
+                    val baseData = DataStoreManager.readDetail(requireContext(), getDataTag(), viewModel.id!!, getDataType())
+                    if(baseData != null){
+                        viewModel.response.value = baseData
+                        loadingOverlay.setState(DetailsViewModel.NONE)
+                        if(!baseData.isUnexpired(getTimeLimit())){
+                            refresh()
+                        }
+                        return@launch
+                    }
+
+                    loadingOverlay.loadData!!.invoke()
+
+                }
 
             } else {
 

@@ -6,6 +6,7 @@ import android.icu.text.SimpleDateFormat
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.google.android.material.chip.Chip
@@ -15,10 +16,14 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
+import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.formatDate
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
 import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import retrofit2.Response
+import java.util.Date
 import kotlin.random.Random
 
 
@@ -31,6 +36,12 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
     companion object{
 
     }
+
+    open fun getTimeLimit() : Int{
+        return DateTimeHelper.TIME_NOT_IMPORTANT
+    }
+
+    abstract fun getDataType() : Class<*>
 
     @SuppressLint("WeekBasedYear")
     fun getFilters() : String{
@@ -82,33 +93,41 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
         if(recyclerAdapter.withLoadingAnim) {
             recyclerAdapter.state = ApiRecyclerAdapter.STATE_LOADING
-        }
-        else{
-            if(areParametersDefault()) {
-                CacheManager.savedListsOfValues.remove(dataTag)
-            }
-            recyclerAdapter.withLoadingAnim = true
-        }
 
+            if(offset <= 0 && areParametersDefault()) {
 
-        if(offset <= 0 && areParametersDefault() && CacheManager.savedListsOfValues.containsKey(dataTag) && (CacheManager.savedListsOfValues[dataTag]!![0].isValid(context, DateTimeHelper.TIME_NOT_IMPORTANT))) {
+                if(CacheManager.savedListsOfValues.containsKey(dataTag) && (CacheManager.savedListsOfValues[dataTag]!![0].isValid(context, getTimeLimit()))){
 
+                    /*CacheManager.savedListsOfValues[dataTag]!!.forEachIndexed { index, element ->
+              if(CacheManager.savedValues.containsKey(Pair(dataTag, element.getMainID()))){
+                  CacheManager.savedListsOfValues[dataTag]!![index] = CacheManager.savedValues[Pair(dataTag, element.getMainID())]!!
+              }
+          }*/
 
+                    val savedValues = CacheManager.savedListsOfValues[dataTag]!!
 
-            CacheManager.savedListsOfValues[dataTag]!!.forEachIndexed { index, element ->
-                if(CacheManager.savedValues.containsKey(Pair(dataTag, element.getMainID()))){
-                    CacheManager.savedListsOfValues[dataTag]!![index] = CacheManager.savedValues[Pair(dataTag, element.getMainID())]!!
+                    return formatRecievedValues(savedValues,0, savedValues.size)
                 }
+
+
+
+                val baseDataList = DataStoreManager.readList(context, dataTag, getDataType())?.toCollection(java.util.ArrayList())
+
+                if(baseDataList != null && baseDataList[0].isValid(context, getTimeLimit())){
+                    CacheManager.savedListsOfValues[dataTag] = baseDataList
+                    return formatRecievedValues(baseDataList,0, baseDataList.size)
+                }
+
             }
 
-            val savedValues = CacheManager.savedListsOfValues[dataTag]!!
 
 
-            val result = formatRecievedValues(savedValues,0, savedValues.size)
-            return result
+
+
+
         }
 
-
+        recyclerAdapter.withLoadingAnim = true
 
         Handler(Looper.getMainLooper()).post {
             recyclerAdapter.notifyItemInserted(recyclerAdapter.itemCount)

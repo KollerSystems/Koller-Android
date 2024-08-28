@@ -17,6 +17,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.customviews.CardButton
+import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -30,7 +31,9 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
     abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
     abstract fun getNestedScrollView() : NestedScrollView
 
-
+    override fun getDataType(): Class<*> {
+        return UserData::class.java
+    }
 
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
