@@ -11,12 +11,11 @@ import com.norbert.koller.shared.R
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.viewmodels.MainActivityViewModel
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
 
 class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
 
-    lateinit var viewModel : ResponseViewModel
+    lateinit var viewModel : DetailsViewModel
 
     override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
         return if(viewModel.owner!!.uid == UserData.instance.uid){
@@ -27,7 +26,7 @@ class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
         if(userData != null){
             viewModel.owner = userData
         }

@@ -11,26 +11,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.customviews.EditText
 import com.norbert.koller.shared.data.CanteenData
-import com.norbert.koller.shared.databinding.FragmentBsdCanteenBinding
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfCanteenBinding
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
 
 
-class CanteenBsdFragment(val canteenData: CanteenData? = null) : ScrollBsdFragment() {
+class CanteenBsdfFragment(val canteenData: CanteenData? = null) : ScrollBsdfFragment() {
 
-    lateinit var binding : FragmentBsdCanteenBinding
-    lateinit var viewModel: ResponseViewModel
+    lateinit var binding : ContentFragmentBsdfCanteenBinding
+    lateinit var viewModel: DetailsViewModel
 
     override fun getContent(inflater: LayoutInflater): ViewGroup {
-        binding = FragmentBsdCanteenBinding.inflate(layoutInflater)
+        binding = ContentFragmentBsdfCanteenBinding.inflate(layoutInflater)
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
 
         if(canteenData != null){
             viewModel.response.value = canteenData

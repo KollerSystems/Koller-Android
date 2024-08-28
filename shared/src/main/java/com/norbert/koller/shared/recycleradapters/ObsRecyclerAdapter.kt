@@ -25,12 +25,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
-import com.norbert.koller.shared.fragments.bottomsheet.MessageBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.MessageBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdfFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
@@ -128,11 +128,11 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         holder.itemView.setOnClickListener {
 
             if(currentItem.title == context.getString(R.string.room_order)){
-                val dialog = RoomOrderBsdFragment()
-                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBsdFragment.TAG)
+                val dialog = RoomOrderBsdfFragment()
+                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBsdfFragment.TAG)
             }else{
-                val dialog = MessageBsdFragment()
-                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, MessageBsdFragment.TAG)
+                val dialog = MessageBsdfFragment()
+                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, MessageBsdfFragment.TAG)
             }
 
             currentItem.read = true
@@ -142,12 +142,12 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            val dialog = ListStaticBsdFragment(arrayListOf(
+            val dialog = ListStaticBsdfFragment(arrayListOf(
                 ListItem(text, null, icon, null, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)
                 })))
-            dialog.show(fragmentManager.supportFragmentManager, ListBsdFragment.TAG)
+            dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
 
 
 

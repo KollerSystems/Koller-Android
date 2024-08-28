@@ -7,7 +7,6 @@ import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
-import com.norbert.koller.shared.recycleradapters.LoginViewPagerRecyclerAdapter
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.*
 import com.norbert.koller.teacher.fragments.CalendarFragment
@@ -19,7 +18,7 @@ import com.norbert.koller.teacher.fragments.UserFragment
 import com.norbert.koller.teacher.fragments.OutgoingPermanentFragment
 import com.norbert.koller.teacher.fragments.OutgoingTemporaryFragment
 import com.norbert.koller.teacher.fragments.UsersFragment
-import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBsdFragment
+import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBsdfFragment
 
 class ApplicationManager : ApplicationManager() {
 
@@ -41,8 +40,8 @@ class ApplicationManager : ApplicationManager() {
         }
 
         openProfile = {context: Context ->
-            val dialog = ProfileBsdFragment()
-            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment.TAG)
+            val dialog = ProfileBsdfFragment()
+            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdfFragment.TAG)
         }
 
         getAppColor = {context->

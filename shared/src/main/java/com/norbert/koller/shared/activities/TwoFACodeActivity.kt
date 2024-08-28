@@ -3,13 +3,13 @@ package com.norbert.koller.shared.activities
 import android.os.Bundle
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.databinding.Content2faCodeBinding
+import com.norbert.koller.shared.databinding.ContentActivity2faCodeBinding
 import com.norbert.koller.shared.managers.ApplicationManager
 
 class TwoFACodeActivity : ManageActivity() {
-    lateinit var binding : Content2faCodeBinding
+    lateinit var binding : ContentActivity2faCodeBinding
     override fun createContentView(): ViewGroup {
-        binding = Content2faCodeBinding.inflate(layoutInflater)
+        binding = ContentActivity2faCodeBinding.inflate(layoutInflater)
         return binding.root
     }
 

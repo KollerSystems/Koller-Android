@@ -20,42 +20,11 @@
             tools:context=".activities.CreateNewPostActivity">
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <com.norbert.koller.shared.customviews.TextInputWithChips
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="@dimen/text_container_margin">
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:hint="@string/addressee"
-                    app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius"
-                    app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
-                    app:boxCornerRadiusTopEnd="@dimen/card_corner_radius"
-                    app:boxCornerRadiusTopStart="@dimen/card_corner_radius"
-                    app:boxStrokeErrorColor="?attr/colorPrimary"
-                    app:errorEnabled="true"
-                    app:errorIconDrawable="@null"
-                    app:errorIconTint="?attr/colorPrimary"
-                    app:errorTextColor="?attr/colorPrimary"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <EditText
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="top"
-                        android:importantForAutofill="no"
-                        android:inputType="text"
-                        android:text="@string/everyone"
-                        android:textAppearance="@style/Text"
-                        tools:ignore="LabelFor" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="@dimen/text_container_margin"
+                android:layout_marginBottom="@dimen/text_container_margin" />
 
             <TextView
                 style="@style/CategoryCardName"

@@ -3,18 +3,18 @@ package com.norbert.koller.shared.activities
 import android.os.Bundle
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.databinding.ContentChangePasswordBinding
+import com.norbert.koller.shared.databinding.ContentActivityChangePasswordBinding
 
 class ChangePasswordActivity : ManageActivity() {
 
-    lateinit var contentBinding : ContentChangePasswordBinding
+    lateinit var contentBinding : ContentActivityChangePasswordBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
 
     override fun createContentView(): ViewGroup {
-        contentBinding = ContentChangePasswordBinding.inflate(layoutInflater)
+        contentBinding = ContentActivityChangePasswordBinding.inflate(layoutInflater)
         return contentBinding.root
     }
 

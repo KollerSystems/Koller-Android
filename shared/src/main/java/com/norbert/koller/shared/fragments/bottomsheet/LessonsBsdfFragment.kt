@@ -1,28 +1,22 @@
 package com.norbert.koller.shared.fragments.bottomsheet
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.ProgramData
-import com.norbert.koller.shared.databinding.FragmentBsdTitleBinding
 import com.norbert.koller.shared.recycleradapters.LessonRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.ListAdapter
-import com.norbert.koller.shared.viewmodels.MainActivityViewModel
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
 
-class LessonsBsdFragment(private var programDatas : ArrayList<ProgramData>? = null) : RecyclerBsdFragment() {
+class LessonsBsdfFragment(private var programDatas : ArrayList<ProgramData>? = null) : RecyclerBsdfFragment() {
 
-    lateinit var viewModel: ResponseViewModel
+    lateinit var viewModel: DetailsViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
         if(programDatas != null){
             viewModel.response.value = programDatas
         }

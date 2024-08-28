@@ -11,7 +11,7 @@ import com.norbert.koller.student.fragments.HomeFragment
 import com.norbert.koller.student.fragments.RoomFragment
 import com.norbert.koller.student.fragments.StudentHostelFragment
 import com.norbert.koller.student.fragments.UserFragment
-import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdFragment
+import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdfFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.student.R
@@ -42,8 +42,8 @@ class ApplicationManager : ApplicationManager() {
         }
 
         openProfile = {context: Context ->
-            val dialog = ProfileBsdFragment()
-            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment.TAG)
+            val dialog = ProfileBsdfFragment()
+            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdfFragment.TAG)
         }
 
         getAppColor = {context->

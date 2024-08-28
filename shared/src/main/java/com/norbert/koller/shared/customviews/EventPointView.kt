@@ -3,13 +3,11 @@ package com.norbert.koller.shared.customviews
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.view.View
 import android.widget.LinearLayout
-import android.widget.TextView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ViewEventPointBinding
 
-class EventPoint(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+class EventPointView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
     private var mLabel: String = ""
     private var mTime: String = ""

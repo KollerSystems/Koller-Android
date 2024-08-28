@@ -3,9 +3,7 @@ package com.norbert.koller.shared.fragments.bottomsheet
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
@@ -14,13 +12,13 @@ import androidx.core.widget.doOnTextChanged
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ListAdapter
-import com.norbert.koller.shared.viewmodels.ListBsdFragmentViewModel
+import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
 
-abstract class ListBsdFragment(private var alreadyChecked : ArrayList<String>? = null, private val filterName : Int? = null) : RecyclerBsdFragment() {
+abstract class ListBsdfFragment(private var alreadyChecked : ArrayList<String>? = null, private val filterName : Int? = null) : RecyclerBsdfFragment() {
 
     var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
 
-    lateinit var viewModel: ListBsdFragmentViewModel
+    lateinit var viewModel: ListBsdfFragmentViewModel
 
     var adapter : ListAdapter? = null
 
@@ -31,7 +29,7 @@ abstract class ListBsdFragment(private var alreadyChecked : ArrayList<String>? =
 
     fun setRecyclerView(){
 
-        adapter = ListAdapter(this@ListBsdFragment)
+        adapter = ListAdapter(this@ListBsdfFragment)
         getRecyclerView().adapter = adapter
         getRecyclerView().layoutManager = LinearLayoutManager(context)
         getRecyclerView().setHasFixedSize(true)

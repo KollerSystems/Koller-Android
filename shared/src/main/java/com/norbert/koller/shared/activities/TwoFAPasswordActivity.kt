@@ -3,13 +3,13 @@ package com.norbert.koller.shared.activities
 import android.os.Bundle
 import android.view.ViewGroup
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.databinding.Content2faPasswordBinding
+import com.norbert.koller.shared.databinding.ContentActivity2faPasswordBinding
 import com.norbert.koller.shared.managers.ApplicationManager
 
 class TwoFAPasswordActivity : ManageActivity() {
-    lateinit var binding : Content2faPasswordBinding
+    lateinit var binding : ContentActivity2faPasswordBinding
     override fun createContentView(): ViewGroup {
-        binding = Content2faPasswordBinding.inflate(layoutInflater)
+        binding = ContentActivity2faPasswordBinding.inflate(layoutInflater)
         return binding.root
     }
 

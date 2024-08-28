@@ -103,7 +103,7 @@
                 android:clipToPadding="false"
                 android:orientation="vertical">
 
-                <com.norbert.koller.shared.customviews.EventPoint
+                <com.norbert.koller.shared.customviews.EventPointView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/n_card_padding"
@@ -112,7 +112,7 @@
                     custom:time="6:00" />
 
 
-                <com.norbert.koller.shared.customviews.EventPoint
+                <com.norbert.koller.shared.customviews.EventPointView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/n_card_padding"
@@ -120,7 +120,7 @@
                     custom:text="@string/room_scoring"
                     custom:time="8:00">
 
-                </com.norbert.koller.shared.customviews.EventPoint>
+                </com.norbert.koller.shared.customviews.EventPointView>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -149,7 +149,7 @@
 
                 </LinearLayout>
 
-                <com.norbert.koller.shared.customviews.EventPoint
+                <com.norbert.koller.shared.customviews.EventPointView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/n_card_padding"
@@ -273,7 +273,7 @@
                 android:clipToPadding="false"
                 android:orientation="vertical">
 
-                <com.norbert.koller.shared.customviews.EventPoint
+                <com.norbert.koller.shared.customviews.EventPointView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/n_card_padding"
@@ -309,7 +309,7 @@
 
                 </LinearLayout>
 
-                <com.norbert.koller.shared.customviews.EventPoint
+                <com.norbert.koller.shared.customviews.EventPointView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/n_card_padding"
@@ -341,7 +341,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <com.norbert.koller.shared.customviews.EventPoint
+                <com.norbert.koller.shared.customviews.EventPointView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="@dimen/n_card_padding"

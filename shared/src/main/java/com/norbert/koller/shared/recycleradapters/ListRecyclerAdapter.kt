@@ -13,13 +13,13 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 
 data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false){
 }
 
-class ListAdapter (val bottomSheet : ListBsdFragment) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+class ListAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
 
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {

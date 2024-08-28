@@ -453,4 +453,6 @@
     <string name="this_day">Mai nap</string>
     <string name="one_week">Egy hét</string>
     <string name="four_weeks">Négy hét</string>
+    <string name="is_out">Kint</string>
+    <string name="is_in">Bent</string>
 </resources>

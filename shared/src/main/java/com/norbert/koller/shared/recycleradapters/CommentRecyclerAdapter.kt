@@ -8,10 +8,10 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CommentData
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
 
 
 class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
@@ -51,9 +51,9 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, 
             buttonMore.setOnClickListener {
 
                 val fragmentManager = (context as AppCompatActivity)
-                val dialog = ListStaticBsdFragment(arrayListOf(
+                val dialog = ListStaticBsdfFragment(arrayListOf(
                     ListItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag))))
-                dialog.show(fragmentManager.supportFragmentManager, ListBsdFragment.TAG)
+                dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
 
 
 

@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.FragmentDayBinding
-import com.norbert.koller.shared.fragments.bottomsheet.LessonsBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.LessonsBsdfFragment
 import java.util.Date
 
 class DayRecyclerAdapter : PagingDataAdapter<Any, DayRecyclerAdapter.ViewHolder>(Comparator){
@@ -30,8 +30,8 @@ class DayRecyclerAdapter : PagingDataAdapter<Any, DayRecyclerAdapter.ViewHolder>
                 ProgramData(2,0,"Online Marketing", 7, UserData(name = "Kis Gazsi"), 9, Date(24432), 0, 1),
                 ProgramData(7,2,"Offline Marketing", 5, UserData(name = "Nagy Gazsi"), 8, Date(24432), 1, 2)
             )
-            val dialog = LessonsBsdFragment(lessons3)
-            dialog.show((holder.itemView.context as AppCompatActivity).supportFragmentManager, LessonsBsdFragment.TAG)
+            val dialog = LessonsBsdfFragment(lessons3)
+            dialog.show((holder.itemView.context as AppCompatActivity).supportFragmentManager, LessonsBsdfFragment.TAG)
 
         }
     }

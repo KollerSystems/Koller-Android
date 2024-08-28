@@ -5,11 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.norbert.koller.shared.customviews.DescriptionButton
 import com.norbert.koller.shared.customviews.DescriptionView
 import com.norbert.koller.student.R
@@ -17,11 +14,11 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.fragments.ProgramFragmentInterface
-import com.norbert.koller.shared.fragments.bottomsheet.ScrollBsdFragment
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
-import com.norbert.koller.student.databinding.FragmentBsdBaseProgramBinding
+import com.norbert.koller.shared.fragments.bottomsheet.ScrollBsdfFragment
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
+import com.norbert.koller.student.databinding.ContentFragmentBsdfBaseProgramBinding
 
-class StudyGroupDetailsFragment(val program : ProgramData? = null) : ScrollBsdFragment(), ProgramFragmentInterface {
+class StudyGroupDetailsBsdfFragment(val program : ProgramData? = null) : ScrollBsdfFragment(), ProgramFragmentInterface {
 
     override lateinit var ncwDate: DescriptionView
     override lateinit var ncwTime: DescriptionView
@@ -29,13 +26,13 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : ScrollBsdFr
     override lateinit var ncbTeacher: DescriptionButton
     override lateinit var toGeneralButton: View
 
-    lateinit var binding : FragmentBsdBaseProgramBinding
+    lateinit var binding : ContentFragmentBsdfBaseProgramBinding
     override fun getContent(inflater: LayoutInflater): ViewGroup {
-        binding = FragmentBsdBaseProgramBinding.inflate(inflater)
+        binding = ContentFragmentBsdfBaseProgramBinding.inflate(inflater)
         return binding.root
     }
 
-    lateinit var viewModel : ResponseViewModel
+    lateinit var viewModel : DetailsViewModel
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -49,7 +46,7 @@ class StudyGroupDetailsFragment(val program : ProgramData? = null) : ScrollBsdFr
             (context as MainActivity).addFragment(com.norbert.koller.student.fragments.StudyGroupTypeFragment((viewModel.response.value as StudyGroupData).programID))
         }
 
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 

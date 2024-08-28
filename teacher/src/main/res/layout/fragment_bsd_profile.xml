@@ -13,12 +13,12 @@
 
     <include
         android:id="@+id/header"
-        layout="@layout/content_fragment_bsd_profile_header" />
+        layout="@layout/content_fragment_bsdf_profile_header" />
 
 
     <include
         android:id="@+id/footer"
-        layout="@layout/content_fragment_bsd_profile_footer"
+        layout="@layout/content_fragment_bsdf_profile_footer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

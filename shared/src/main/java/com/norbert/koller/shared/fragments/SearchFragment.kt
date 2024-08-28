@@ -1,61 +1,33 @@
 package com.norbert.koller.shared.fragments
 
 
-import android.animation.ValueAnimator
-import android.graphics.Color
 import android.os.Bundle
-import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.ViewGroup.LayoutParams.MATCH_PARENT
-import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
-import android.widget.Button
 import android.widget.LinearLayout
-import android.widget.LinearLayout.VERTICAL
-import android.widget.TextView
-import androidx.appcompat.content.res.AppCompatResources
-import androidx.appcompat.view.ContextThemeWrapper
-import androidx.core.animation.doOnEnd
-import androidx.core.view.children
-import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.flexbox.FlexboxLayout
-import com.google.android.material.button.MaterialButton
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.customviews.SearchView
-import com.norbert.koller.shared.databinding.FragmentListBinding
+import com.norbert.koller.shared.databinding.FragmentSearchBinding
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
 import com.norbert.koller.shared.helpers.connectToDateRangePickerWithTemplates
-import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.recycleradapters.PagingSource
-import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.viewmodels.BaseViewModel
-import com.norbert.koller.shared.viewmodels.MenuViewModel
-import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.launch
+import com.norbert.koller.shared.viewmodels.ListViewModel
+import com.norbert.koller.shared.viewmodels.SearchViewModel
 import retrofit2.Response
 
 
-abstract class MenuFragment() : FragmentInMainActivity() {
+abstract class SearchFragment() : FragmentInMainActivity() {
 
-    lateinit var binding : FragmentListBinding
+    lateinit var binding : FragmentSearchBinding
 
-    lateinit var viewModel : MenuViewModel
+    lateinit var viewModel : SearchViewModel
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        binding = FragmentListBinding.inflate(layoutInflater)
+        binding = FragmentSearchBinding.inflate(layoutInflater)
         val view = binding.root
 
         assignViewModel()
@@ -66,7 +38,7 @@ abstract class MenuFragment() : FragmentInMainActivity() {
 
 
     open fun assignViewModel(){
-        viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ListViewModel::class.java]
     }
 
 

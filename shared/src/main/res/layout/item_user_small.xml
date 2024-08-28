@@ -19,8 +19,8 @@
 
         <com.norbert.koller.shared.customviews.UserView
             android:id="@+id/user"
-            android:layout_width="75dp"
-            android:layout_height="75dp" />
+            android:layout_width="80dp"
+            android:layout_height="80dp" />
 
         <TextView
             android:id="@+id/text_name"

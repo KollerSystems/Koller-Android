@@ -6,15 +6,11 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
-import android.widget.Button
 import android.widget.LinearLayout
-import androidx.core.view.isVisible
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.databinding.ViewFullScreenLoadingBinding
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
-import com.stfalcon.imageviewer.common.extensions.isVisible
+import com.norbert.koller.shared.databinding.ViewLoadingOverlayBinding
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
 
-class FullScreenLoading : LinearLayout {
+class LoadingOverlayView : LinearLayout {
 
     constructor(context: Context?, attrs: AttributeSet?, defStyle: Int) : super(
         context!!,
@@ -25,9 +21,9 @@ class FullScreenLoading : LinearLayout {
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
     constructor(context: Context?) : super(context!!)
 
-    lateinit var binding : ViewFullScreenLoadingBinding
+    lateinit var binding : ViewLoadingOverlayBinding
 
-    private var state: Int = ResponseViewModel.LOADING
+    private var state: Int = DetailsViewModel.LOADING
 
     var loadData: (() -> Unit)? = null
 
@@ -45,13 +41,13 @@ class FullScreenLoading : LinearLayout {
     fun setState(value : Int){
         state = value
         when (state){
-            ResponseViewModel.LOADING ->{
+            DetailsViewModel.LOADING ->{
                 crossFade(binding.error.root, binding.progressBar)
             }
-            ResponseViewModel.ERROR ->{
+            DetailsViewModel.ERROR ->{
                 crossFade(binding.progressBar, binding.error.root)
             }
-            ResponseViewModel.NONE ->{
+            DetailsViewModel.NONE ->{
                 fadeOut()
             }
         }
@@ -72,10 +68,10 @@ class FullScreenLoading : LinearLayout {
     }
 
     init {
-        binding = ViewFullScreenLoadingBinding.inflate(LayoutInflater.from(context), this, true)
+        binding = ViewLoadingOverlayBinding.inflate(LayoutInflater.from(context), this, true)
 
         binding.error.btn.setOnClickListener{
-            setState(ResponseViewModel.LOADING)
+            setState(DetailsViewModel.LOADING)
             loadData!!.invoke()
         }
 

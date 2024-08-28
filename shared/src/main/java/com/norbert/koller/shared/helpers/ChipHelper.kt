@@ -9,15 +9,15 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.fragments.bottomsheet.ListApiBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListApiBsdfFragment
 import com.norbert.koller.shared.managers.checkByPass
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.managers.restoreDropDown
-import com.norbert.koller.shared.viewmodels.MenuViewModel
+import com.norbert.koller.shared.viewmodels.SearchViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.util.Arrays
@@ -28,7 +28,7 @@ class ChipHelper {
 
 }
 
-fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: MenuViewModel){
+fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: SearchViewModel){
 
 
     fun setChip(dateString : String){
@@ -72,7 +72,7 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName 
     }
 }
 
-fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: MenuViewModel){
+fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: SearchViewModel){
 
 
     fun setChip(dateString : String){
@@ -121,7 +121,7 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
 
     setOnClickListener {
 
-        val dialog = ListStaticBsdFragment(arrayListOf(
+        val dialog = ListStaticBsdfFragment(arrayListOf(
             ListItem(context.getString(R.string.this_day), null, AppCompatResources.getDrawable(context, R.drawable.today), null, {
                 setViewModelAndChip(getEndOfTodayAndStartOfSpecificDayAgo(0))
             }),
@@ -163,19 +163,19 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
                 drpd.show(fragmentManager, "MATERIAL_DATE_RANGE_PICKER")
             })))
 
-        dialog.show(fragmentManager, ListBsdFragment.TAG)
+        dialog.show(fragmentManager, ListBsdfFragment.TAG)
         post {
             dialog.setTitle(context.getString(R.string.date))
         }
     }
 }
 
-fun Chip.resetChip(localizedNameSting : String, viewModel: MenuViewModel, filterName : String){
+fun Chip.resetChip(localizedNameSting : String, viewModel: SearchViewModel, filterName : String){
     viewModel.filters.remove(filterName)
     resetSimpleChip(localizedNameSting)
 }
 
-fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel: MenuViewModel, filterName : String){
+fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel: SearchViewModel, filterName : String){
     checkByPass(true)
     text = localizedNameSting
     this.addCloseOption {
@@ -183,7 +183,7 @@ fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel
     }
 }
 
-fun Chip.createAndSetChipText(viewModel: MenuViewModel, filterName: String, tag: String, localizedFilterId : Int){
+fun Chip.createAndSetChipText(viewModel: SearchViewModel, filterName: String, tag: String, localizedFilterId : Int){
     val strings : ArrayList<String> = arrayListOf()
 
     for (id in viewModel.filters[filterName]!!){
@@ -197,9 +197,9 @@ fun Chip.createAndSetChipText(viewModel: MenuViewModel, filterName: String, tag:
 
 }
 
-fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBsdFragment, viewModel: MenuViewModel, filterName: String, localizedFilterId: Int){
+fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBsdfFragment, viewModel: SearchViewModel, filterName: String, localizedFilterId: Int){
 
-    dialog.show(fragmentManager, ListBsdFragment.TAG)
+    dialog.show(fragmentManager, ListBsdfFragment.TAG)
 
     if(dialog.getValuesOnFinish == null){
     dialog.getValuesOnFinish = { values, locNames ->
@@ -223,7 +223,7 @@ fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBs
     }
 }
 
-fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: MenuViewModel, tag : String, collapseText : Boolean){
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: SearchViewModel, tag : String, collapseText : Boolean){
 
     if(viewModel.filters.containsKey(filterName)){
 
@@ -260,7 +260,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListApiBsdFragment(getValues, viewModel.filters[filterName], tag, localizedFilterId)
+        val dialog = ListApiBsdfFragment(getValues, viewModel.filters[filterName], tag, localizedFilterId)
         dialog.collapseText = collapseText
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
@@ -268,7 +268,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     }
 }
 
-fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>, viewModel: MenuViewModel){
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>, viewModel: SearchViewModel){
 
 
     if(viewModel.filters.containsKey(filterName)){
@@ -292,7 +292,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListStaticBsdFragment(arrayList, viewModel.filters[filterName], localizedFilterId)
+        val dialog = ListStaticBsdfFragment(arrayList, viewModel.filters[filterName], localizedFilterId)
 
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)

@@ -1,7 +1,6 @@
 package com.norbert.koller.shared.viewmodels
 
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
@@ -11,7 +10,7 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import kotlinx.coroutines.flow.Flow
 
-class BaseViewModel : MenuViewModel() {
+class ListViewModel : SearchViewModel() {
 
     companion object{
         const val pageSize : Int = 25

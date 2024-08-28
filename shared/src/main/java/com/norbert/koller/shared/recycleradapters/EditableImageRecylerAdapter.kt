@@ -23,6 +23,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.google.android.material.card.MaterialCardView
+import com.norbert.koller.shared.databinding.ItemEditableImageBinding
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.stfalcon.imageviewer.StfalconImageViewer
 import java.util.ArrayList
@@ -127,7 +128,7 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
 
         return when (viewType) {
             0 -> {
-                val itemView = LayoutInflater.from(parent.context).inflate(R.layout.item_editable_image, parent, false)
+                val itemView = ItemEditableImageBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                 ImageViewHolder(itemView)
             }
 
@@ -149,26 +150,26 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
                 holder as ImageViewHolder
 
                 if(position==0){
-                    holder.mcardCoverOverlay.visibility = VISIBLE
+                    holder.itemBinding.mcardCoverOverlay.visibility = VISIBLE
                 }
                 else{
-                    holder.mcardCoverOverlay.visibility = GONE
+                    holder.itemBinding.mcardCoverOverlay.visibility = GONE
                 }
 
                 val currentItem = imageList[position]
-                holder.image.setImageURI(currentItem)
+                holder.itemBinding.image.setImageURI(currentItem)
 
-                holder.itemView.setOnClickListener{
+                holder.itemBinding.mcard.setOnClickListener{
 
                     StfalconImageViewer.Builder(context, imageList){view,uri ->
                         view.setImageURI(uri)
                     }
                         .withStartPosition(holder.bindingAdapterPosition)
-                        .withTransitionFrom(holder.image)
+                        .withTransitionFrom(holder.itemBinding.image)
                         .show((context as AppCompatActivity).supportFragmentManager)
                 }
 
-                holder.buttonRemove.setOnClickListener{
+                holder.itemBinding.btnRemove.setOnClickListener{
                     imageList.removeAt(holder.bindingAdapterPosition)
                     recyclerView!!.adapter!!.notifyItemRemoved(holder.bindingAdapterPosition)
                     if(position == 0 && imageList.size != 0) {
@@ -177,7 +178,7 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
                     updateLimit(textViewLimit, imageList.size, imageLimit)
                 }
 
-                holder.buttonRemove.setOnTouchListener { v, event ->
+                holder.itemBinding.btnRemove.setOnTouchListener { v, event ->
                     when (event?.action) {
                         MotionEvent.ACTION_DOWN ->
                             draggable = false
@@ -253,12 +254,7 @@ class EditableImageRecyclerAdapter (private val imageList : ArrayList<Uri>, val 
         return imageList.size + 1
     }
 
-    class ImageViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
-    {
-        val image : ImageView = itemView.findViewById(R.id.image_view)
-        val mcardCoverOverlay : MaterialCardView = itemView.findViewById(R.id.mcard_cover_overlay)
-        val buttonRemove : Button = itemView.findViewById(R.id.btn_remove)
-    }
+    class ImageViewHolder(val itemBinding: ItemEditableImageBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
     class ButtonViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 }

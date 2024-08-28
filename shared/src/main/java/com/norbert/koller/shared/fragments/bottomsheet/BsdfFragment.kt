@@ -19,19 +19,17 @@ import android.widget.LinearLayout
 import android.widget.LinearLayout.HORIZONTAL
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.marginEnd
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.button.MaterialButton
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.databinding.FragmentBsdTitleBinding
-import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.databinding.FragmentBsdfTitleBinding
 import com.norbert.koller.shared.managers.getAttributeColor
 
 
-abstract class BsdFragment : BottomSheetDialogFragment() {
+abstract class BsdfFragment : BottomSheetDialogFragment() {
 
-    private lateinit var binding : FragmentBsdTitleBinding
+    private lateinit var binding : FragmentBsdfTitleBinding
     lateinit var viewGroup : ViewGroup
 
     override fun onCreateView(
@@ -39,7 +37,7 @@ abstract class BsdFragment : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentBsdTitleBinding.inflate(layoutInflater)
+        binding = FragmentBsdfTitleBinding.inflate(layoutInflater)
         viewGroup = getContentHolder(inflater)
         viewGroup.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurface))
         binding.root.addView(viewGroup)

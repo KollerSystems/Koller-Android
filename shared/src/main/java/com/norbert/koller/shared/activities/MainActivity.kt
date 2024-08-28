@@ -65,6 +65,11 @@ abstract class MainActivity : AppCompatActivity() {
         }
         return value
     }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+    }
+
     @OptIn(ExperimentalStdlibApi::class)
     private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
 

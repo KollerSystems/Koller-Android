@@ -462,4 +462,6 @@
     <string name="this_day">This day</string>
     <string name="one_week">One week</string>
     <string name="four_weeks">Four weeks</string>
+    <string name="is_out">Out</string>
+    <string name="is_in">In</string>
 </resources>

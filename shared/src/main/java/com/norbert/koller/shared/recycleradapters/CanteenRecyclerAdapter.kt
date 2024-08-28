@@ -1,20 +1,15 @@
 package com.norbert.koller.shared.recycleradapters
 
 import android.content.Context
-import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CanteenData
 import com.norbert.koller.shared.databinding.ItemCanteenBinding
-import com.norbert.koller.shared.fragments.bottomsheet.CanteenBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.LessonsBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.CanteenBsdfFragment
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) : RecyclerView.Adapter<CanteenRecyclerAdapter.ViewHolder>() {
@@ -39,8 +34,8 @@ class CanteenRecyclerAdapter (private val canteenList : ArrayList<CanteenData>) 
         holder.itemBinding.content.imageIcon.setImageDrawable(AppCompatResources.getDrawable(context, resources.second))
 
         holder.itemView.setOnClickListener{
-            val dialog = CanteenBsdFragment(currentItem)
-            dialog.show((holder.itemView.context as AppCompatActivity).supportFragmentManager, CanteenBsdFragment.TAG)
+            val dialog = CanteenBsdfFragment(currentItem)
+            dialog.show((holder.itemView.context as AppCompatActivity).supportFragmentManager, CanteenBsdfFragment.TAG)
         }
     }
 

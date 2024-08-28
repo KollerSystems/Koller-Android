@@ -13,8 +13,8 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.fragments.ManageAccountFragment
 import com.norbert.koller.shared.data.DevData
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileFooterBinding
-import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileHeaderBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -23,10 +23,10 @@ import com.norbert.koller.shared.recycleradapters.DevRecyclerAdapter
 import kotlinx.coroutines.launch
 
 
-abstract class ProfileBsdFragment : ScrollBsdFragment() {
+abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
-    abstract fun getHeaderBinding() : ContentFragmentBsdProfileHeaderBinding
-    abstract fun getFooterBinding() : ContentFragmentBsdProfileFooterBinding
+    abstract fun getHeaderBinding() : ContentFragmentBsdfProfileHeaderBinding
+    abstract fun getFooterBinding() : ContentFragmentBsdfProfileFooterBinding
 
     override fun getTheme(): Int {
         return R.style.BottomSheetDialogFull

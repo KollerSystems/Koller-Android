@@ -5,22 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.student.R
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileFooterBinding
-import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileHeaderBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
-import com.norbert.koller.student.databinding.FragmentBsdProfileBinding
+import com.norbert.koller.student.databinding.ContentFragmentBsdfProfileBinding
 
-class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment() {
+class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdfFragment() {
 
-    lateinit var binding : FragmentBsdProfileBinding
+    lateinit var binding : ContentFragmentBsdfProfileBinding
 
-    override fun getHeaderBinding(): ContentFragmentBsdProfileHeaderBinding {
+    override fun getHeaderBinding(): ContentFragmentBsdfProfileHeaderBinding {
         return binding.header
     }
 
-    override fun getFooterBinding(): ContentFragmentBsdProfileFooterBinding {
+    override fun getFooterBinding(): ContentFragmentBsdfProfileFooterBinding {
         return binding.footer
     }
 
@@ -35,7 +34,7 @@ class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.Profi
     }
 
     override fun getContent(inflater: LayoutInflater): ViewGroup {
-        binding = FragmentBsdProfileBinding.inflate(layoutInflater)
+        binding = ContentFragmentBsdfProfileBinding.inflate(layoutInflater)
         return binding.root
     }
 

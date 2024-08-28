@@ -13,11 +13,11 @@ import com.norbert.koller.shared.activities.ManageActivity
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
-import com.norbert.koller.teacher.databinding.ActivityEditUserBinding
+import com.norbert.koller.teacher.databinding.ContentActivityEditUserBinding
 
 class EditUserActivity : ManageActivity() {
 
-    lateinit var binding : ActivityEditUserBinding
+    lateinit var binding : ContentActivityEditUserBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,7 +37,7 @@ class EditUserActivity : ManageActivity() {
     }
 
     override fun createContentView(): ViewGroup {
-        binding = ActivityEditUserBinding.inflate(layoutInflater)
+        binding = ContentActivityEditUserBinding.inflate(layoutInflater)
         return binding.root
     }
 

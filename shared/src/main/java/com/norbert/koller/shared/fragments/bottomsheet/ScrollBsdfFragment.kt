@@ -4,9 +4,8 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ScrollView
 import androidx.core.widget.NestedScrollView
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-abstract class ScrollBsdFragment : BsdFragment() {
+abstract class ScrollBsdfFragment : BsdfFragment() {
     override fun getContentHolder(inflater: LayoutInflater): ViewGroup {
         val scrollView = NestedScrollView(requireContext())
         scrollView.addView(getContent(inflater))

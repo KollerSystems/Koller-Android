@@ -5,7 +5,6 @@ import android.animation.ValueAnimator
 import android.graphics.Color
 import android.os.Bundle
 import android.view.Gravity
-import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
@@ -13,7 +12,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.LinearLayout.VERTICAL
-import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -33,25 +31,20 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
-import com.norbert.koller.shared.databinding.FragmentListBinding
-import com.norbert.koller.shared.helpers.connectToCheckBoxList
-import com.norbert.koller.shared.helpers.connectToDateRangePicker
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.viewmodels.BaseViewModel
+import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 
-abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : MenuFragment() {
+abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : SearchFragment() {
 
 
-    fun getBaseViewModel() : BaseViewModel {
-        return viewModel as BaseViewModel
+    fun getBaseViewModel() : ListViewModel {
+        return viewModel as ListViewModel
     }
     lateinit var apiRecyclerAdapter : ApiRecyclerAdapter
     var duration : Long = 0
@@ -68,7 +61,7 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
 
     override fun assignViewModel() {
-        viewModel = ViewModelProvider(this)[BaseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ListViewModel::class.java]
 
         if(defaultFilters != null) {
             viewModel.filters = defaultFilters!!

@@ -5,21 +5,14 @@ import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.AutoCompleteTextView
-import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.ChipGroup
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.bottomsheet.PostTypesBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ScheduleBsdFragment
 import com.norbert.koller.shared.recycleradapters.EditableImageRecyclerAdapter
 
 
@@ -48,7 +41,7 @@ class CreateNewPostActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_create_new_post)
+        setContentView(R.layout.content_activity_create_new_post)
 
 
         tilAddresse = findViewById (R.id.til)

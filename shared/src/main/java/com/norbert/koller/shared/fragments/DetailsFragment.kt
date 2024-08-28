@@ -1,7 +1,6 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,28 +8,22 @@ import android.view.ViewTreeObserver
 import android.widget.LinearLayout
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.view.ViewCompat
-import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.lifecycleScope
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.FullScreenLoading
-import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.customviews.LoadingOverlayView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
-import com.skydoves.androidveil.VeilLayout
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
 
 
 abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() {
 
 
 
-    lateinit var viewModel: ResponseViewModel
+    lateinit var viewModel: DetailsViewModel
 
     abstract fun getDataTag() : String
 
@@ -59,17 +52,17 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
     abstract fun getTimeLimit() : Int
 
-    fun createLoadingOverlay() : FullScreenLoading{
-        val loadingOl = FullScreenLoading(requireContext())
+    fun createLoadingOverlay() : LoadingOverlayView{
+        val loadingOl = LoadingOverlayView(requireContext())
         loadingOl.setLayoutParams(LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         (swrl.parent as ViewGroup).addView(loadingOl)
 
         viewModel.onLoadSuccess = {
-            loadingOl.setState(ResponseViewModel.NONE)
+            loadingOl.setState(DetailsViewModel.NONE)
         }
 
         viewModel.onLoadError = {
-            loadingOl.setState(ResponseViewModel.ERROR)
+            loadingOl.setState(DetailsViewModel.ERROR)
         }
 
         loadingOl.loadData = {
@@ -82,7 +75,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
         super.onViewCreated(view, savedInstanceState)
 
 
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
 
         swrl = view.findViewById(R.id.swrl)
         swrl.setOnRefreshListener {

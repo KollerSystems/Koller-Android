@@ -11,9 +11,6 @@ import android.net.Uri
 import android.provider.MediaStore
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -23,13 +20,11 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import com.google.android.flexbox.FlexboxLayout
-import com.google.android.material.card.MaterialCardView
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ViewAttachBinding
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.stfalcon.imageviewer.StfalconImageViewer
@@ -47,7 +42,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
 
     fun showDialog(){
         val fragmentManager = (context as AppCompatActivity)
-        val dialog = ListStaticBsdFragment(arrayListOf(
+        val dialog = ListStaticBsdfFragment(arrayListOf(
             ListItem("Fénykép készítése", null, AppCompatResources.getDrawable(context, R.drawable.camera), null, {
 
                 if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
@@ -75,7 +70,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
                 startGallery!!.launch(galleryIntent)
             })
         ))
-        dialog.show(fragmentManager.supportFragmentManager, ListBsdFragment.TAG)
+        dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
     }
 
     fun resetUI(){

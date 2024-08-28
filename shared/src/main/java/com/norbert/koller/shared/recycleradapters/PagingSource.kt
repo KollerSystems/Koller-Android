@@ -16,16 +16,16 @@ import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.formatDate
-import com.norbert.koller.shared.viewmodels.BaseViewModel
+import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.delay
 import retrofit2.Response
 import kotlin.random.Random
 
 
-abstract class PagingSource(val context: Context, val viewModel: BaseViewModel) : PagingSource<Int, Any>()  {
+abstract class PagingSource(val context: Context, val viewModel: ListViewModel) : PagingSource<Int, Any>()  {
 
     private var lastFirstChar : String? = null
-    private var lastListSize : Int = BaseViewModel.pageSize + 1
+    private var lastListSize : Int = ListViewModel.pageSize + 1
     lateinit var recyclerAdapter: ApiRecyclerAdapter
 
     companion object{
@@ -68,7 +68,7 @@ abstract class PagingSource(val context: Context, val viewModel: BaseViewModel) 
 
         val dataTag = recyclerAdapter.getDataTag()
 
-        if(recyclerAdapter.beingEmptied || lastListSize < BaseViewModel.pageSize) {
+        if(recyclerAdapter.beingEmptied || lastListSize < ListViewModel.pageSize) {
             Log.d("INFO", "TO EMPTY")
             return LoadResult.Page(emptyList(), null, null)
         }

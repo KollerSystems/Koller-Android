@@ -1,24 +1,19 @@
 package com.norbert.koller.teacher.fragments
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
-import com.norbert.koller.shared.databinding.FragmentListBinding
 import com.norbert.koller.shared.R as Rs
-import com.norbert.koller.shared.fragments.FragmentInMainActivity
-import com.norbert.koller.shared.fragments.MenuFragment
+import com.norbert.koller.shared.fragments.SearchFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.databinding.FragmentStatisticsBinding
 
-class StatisticsFragment : MenuFragment() {
+class StatisticsFragment : SearchFragment() {
 
     lateinit var contentBinding : FragmentStatisticsBinding
 

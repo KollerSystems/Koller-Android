@@ -16,11 +16,11 @@ import com.norbert.koller.shared.customviews.NestedCoordinatorLayout
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.customviews.TimeRangeView
-import com.norbert.koller.teacher.databinding.ActivityEditStudyGroupBinding
+import com.norbert.koller.teacher.databinding.ContentActivityEditStudyGroupBinding
 
 open class EditSpecificStudyGroupActivity : ManageActivity() {
 
-    lateinit var binding : ActivityEditStudyGroupBinding
+    lateinit var binding : ContentActivityEditStudyGroupBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +47,7 @@ open class EditSpecificStudyGroupActivity : ManageActivity() {
     }
 
     override fun createContentView(): ViewGroup {
-        binding = ActivityEditStudyGroupBinding.inflate(layoutInflater)
+        binding = ContentActivityEditStudyGroupBinding.inflate(layoutInflater)
         val params = CoordinatorLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         params.behavior = AppBarLayout.ScrollingViewBehavior()
         binding.root.layoutParams = params

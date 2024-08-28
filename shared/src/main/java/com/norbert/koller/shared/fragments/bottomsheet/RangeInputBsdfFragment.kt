@@ -7,13 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.doOnTextChanged
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.android.material.textfield.TextInputLayout
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.databinding.FragmentBsdRangeInputBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfRangeInputBinding
 
-class RangeInputBsdFragment(val defaultRange : Pair<Int?, Int?>) : BottomSheetDialogFragment() {
+class RangeInputBsdfFragment(val defaultRange : Pair<Int?, Int?>) : BottomSheetDialogFragment() {
 
-    lateinit var binding : FragmentBsdRangeInputBinding
+    lateinit var binding : ContentFragmentBsdfRangeInputBinding
 
     lateinit var getValuesOnFinish: ((range : Pair<Int?, Int?>) -> Unit)
     var userChanged : Boolean = false
@@ -24,7 +22,7 @@ class RangeInputBsdFragment(val defaultRange : Pair<Int?, Int?>) : BottomSheetDi
         savedInstanceState: Bundle?
     ): View {
         // Inflate the layout for this fragment
-        binding = FragmentBsdRangeInputBinding.inflate(layoutInflater)
+        binding = ContentFragmentBsdfRangeInputBinding.inflate(layoutInflater)
         return binding.root
     }
 

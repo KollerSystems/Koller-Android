@@ -1,6 +1,5 @@
 package com.norbert.koller.teacher.activities
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View.GONE
 import android.view.ViewGroup
@@ -11,20 +10,18 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.customviews.TextInputWithChips
 import com.norbert.koller.shared.data.OutgoingData
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.viewmodels.ResponseViewModel
+import com.norbert.koller.shared.viewmodels.DetailsViewModel
 import com.norbert.koller.teacher.R
-import com.norbert.koller.teacher.databinding.ActivityCreateOutgoingBinding
+import com.norbert.koller.teacher.databinding.ContentActivityCreateOutgoingBinding
 
 class CreateOutgoingActivity() : EditableToolbarActivity() {
 
@@ -38,9 +35,9 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
         var userData: UserData? = null
     }
 
-    lateinit var binding : ActivityCreateOutgoingBinding
+    lateinit var binding : ContentActivityCreateOutgoingBinding
 
-    lateinit var viewModel : ResponseViewModel
+    lateinit var viewModel : DetailsViewModel
 
     fun outgoingData() : OutgoingData{
         return (viewModel.response.value as OutgoingData)
@@ -49,7 +46,7 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this)[ResponseViewModel::class.java]
+        viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
 
         if(savedInstanceState == null){
             val data = OutgoingData()
@@ -94,7 +91,7 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = ListStaticBsdFragment(arrayListOf(
+            val dialog = ListStaticBsdfFragment(arrayListOf(
                 ListItem(
                     getString(com.norbert.koller.shared.R.string.temporary),
                     null,
@@ -114,7 +111,7 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
                     })
 
             ))
-            dialog.show(supportFragmentManager, ListBsdFragment.TAG)
+            dialog.show(supportFragmentManager, ListBsdfFragment.TAG)
 
         }
 
@@ -152,7 +149,7 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
     }
 
     override fun createContentView(): ViewGroup {
-        binding = ActivityCreateOutgoingBinding.inflate(layoutInflater)
+        binding = ContentActivityCreateOutgoingBinding.inflate(layoutInflater)
         return binding.root
     }
 

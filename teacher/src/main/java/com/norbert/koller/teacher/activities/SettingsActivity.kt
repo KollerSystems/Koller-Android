@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.ViewGroup
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
-import com.norbert.koller.teacher.databinding.ActivitySettingsBinding
+import com.norbert.koller.teacher.databinding.ContentActivitySettingsBinding
 
 class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity() {
 
-    private lateinit var binding : ActivitySettingsBinding
+    private lateinit var binding : ContentActivitySettingsBinding
 
     override fun getExternalBinding(): ContentActivitySettingsExternalBinding {
         return binding.external
@@ -21,7 +21,7 @@ class SettingsActivity : com.norbert.koller.shared.activities.SettingsActivity()
 
 
     override fun createContentView(): ViewGroup {
-        binding = ActivitySettingsBinding.inflate(layoutInflater)
+        binding = ContentActivitySettingsBinding.inflate(layoutInflater)
         return binding.root
     }
 

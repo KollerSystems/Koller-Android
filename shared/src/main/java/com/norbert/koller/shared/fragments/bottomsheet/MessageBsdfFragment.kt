@@ -4,18 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.norbert.koller.shared.R
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.norbert.koller.shared.databinding.FragmentBsdMessageBinding
-import com.norbert.koller.shared.databinding.FragmentBsdTitleBinding
-import com.norbert.koller.shared.managers.setupBottomSheet
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfMessageBinding
 
 
-class MessageBsdFragment : ScrollBsdFragment() {
+class MessageBsdfFragment : ScrollBsdfFragment() {
 
-    lateinit var contentBinding : FragmentBsdMessageBinding
+    lateinit var contentBinding : ContentFragmentBsdfMessageBinding
     override fun getContent(inflater: LayoutInflater): ViewGroup {
-        contentBinding = FragmentBsdMessageBinding.inflate(inflater)
+        contentBinding = ContentFragmentBsdfMessageBinding.inflate(inflater)
         return contentBinding.root
     }
 

@@ -4,20 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileFooterBinding
-import com.norbert.koller.shared.databinding.ContentFragmentBsdProfileHeaderBinding
-import com.norbert.koller.teacher.R
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
+import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.teacher.databinding.FragmentBsdProfileBinding
 
-class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment() {
+class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdfFragment() {
 
     lateinit var binding : FragmentBsdProfileBinding
 
-    override fun getHeaderBinding(): ContentFragmentBsdProfileHeaderBinding {
+    override fun getHeaderBinding(): ContentFragmentBsdfProfileHeaderBinding {
         return binding.header
     }
 
-    override fun getFooterBinding(): ContentFragmentBsdProfileFooterBinding {
+    override fun getFooterBinding(): ContentFragmentBsdfProfileFooterBinding {
         return binding.footer
     }
 

@@ -17,7 +17,7 @@
         android:paddingHorizontal="@dimen/application_padding"
         android:paddingTop="@dimen/application_padding"
         android:paddingBottom="@dimen/text_container_margin"
-        tools:listitem="@layout/description_toggle">
+        tools:listitem="@layout/toggle_description">
 
     </androidx.recyclerview.widget.RecyclerView>
 

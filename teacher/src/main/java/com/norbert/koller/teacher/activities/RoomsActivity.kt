@@ -4,16 +4,11 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.activity.addCallback
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.appbar.AppBarLayout
-import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.tabs.TabLayout
 import com.norbert.koller.shared.managers.setup
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdFragment
-import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.databinding.ActivityRoomsBinding
 
