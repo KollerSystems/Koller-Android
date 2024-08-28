@@ -131,8 +131,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                     }
 
                     if (foundIndex != null) {
-                        viewModel.response.value =
-                            CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!]
+                        viewModel.response.value = CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!]
                         refresh()
                         return
                     }
@@ -149,7 +148,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
     fun refresh(){
 
-        viewModel.refresh(apiFunctionToCall())
+        viewModel.refresh(apiFunctionToCall(), getDataTag())
     }
 
 

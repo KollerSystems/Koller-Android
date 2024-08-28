@@ -25,15 +25,20 @@ class ResponseViewModel : ViewModel() {
     var response = MutableLiveData<Any>()
     var owner : UserData? = null
 
+    fun updateValues(it : BaseData, dataTag: String){
+        it as BaseData
+        it.saveReceivedTime()
+        CacheManager.savedValues[Pair(dataTag, it.getMainID())] = it
+        response.value = it
+    }
+
     fun load(api : suspend () -> retrofit2.Response<*>, dataTag :String) {
         state = LOADING
         RetrofitInstance.communicate(viewModelScope, api,
             {
                 state = NONE
                 it as BaseData
-                it.saveReceivedTime()
-                CacheManager.savedValues[Pair(dataTag, it.getMainID())] = it
-                response.value = it
+                updateValues(it, dataTag)
                 onLoadSuccess(it)
             },
             { _, _ ->
@@ -43,10 +48,12 @@ class ResponseViewModel : ViewModel() {
         )
     }
 
-    fun refresh(api : suspend () -> retrofit2.Response<*>){
+    fun refresh(api : suspend () -> retrofit2.Response<*>, dataTag :String){
         RetrofitInstance.communicate(viewModelScope, api,
             {
-                onRefreshSuccess(it as BaseData)
+                it as BaseData
+                updateValues(it, dataTag)
+                onRefreshSuccess(it)
             },
             {_, _ ->
                 onRefreshError()
