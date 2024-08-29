@@ -54,10 +54,6 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
                 visibility = GONE
             }
             else{
-                val textText: TextView
-                val textName: TextView
-                val icon: ImageView
-
                 when (mType){
                     0->{
 
@@ -67,8 +63,6 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
                         binding.textLabel.text = context.getString(R.string.help)
                     }
                 }
-
-
 
                 binding.text.text = mText
 

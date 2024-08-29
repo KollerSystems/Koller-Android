@@ -1,6 +1,7 @@
 package com.norbert.koller.teacher.fragments
 
 import android.view.View
+import com.norbert.koller.shared.data.StudyGroupTypeData
 import com.norbert.koller.shared.fragments.StudyGroupTypeFragment
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.databinding.FragmentProgramBinding
@@ -18,6 +19,10 @@ class StudyGroupTypeDataFragment(pid : Int? = null) : StudyGroupTypeFragment(pid
 
     override fun setupTransition(view: View) {
 
+    }
+
+    override fun getDataType(): Class<*> {
+        return StudyGroupTypeData::class.java
     }
 
 }

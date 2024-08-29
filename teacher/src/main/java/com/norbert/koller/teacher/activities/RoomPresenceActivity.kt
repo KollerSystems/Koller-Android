@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.datastore.preferences.core.edit
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -14,9 +15,11 @@ import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.RoomOrderConditionsBase
 import com.norbert.koller.shared.data.RoomOrderData
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.teacher.R
 import com.stfalcon.imageviewer.StfalconImageViewer
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 
@@ -42,7 +45,8 @@ class RoomPresenceActivity : RoomsActivity() {
         lifecycleScope.launch {
             knowsTheLayout = false
             var read = 0
-            val data = DataStoreManager.readInt(this@RoomPresenceActivity, DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT)
+
+            val data = userDataStore.data.first()[DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT]
             if(data != null) {
                 read = data
             }
@@ -53,7 +57,9 @@ class RoomPresenceActivity : RoomsActivity() {
 
             read++
             if(read <= 3){
-                DataStoreManager.save(this@RoomPresenceActivity, DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT, read)
+                userDataStore.edit {
+                    it[DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT] = read
+                }
             }
         }
     }

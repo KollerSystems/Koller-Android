@@ -11,6 +11,7 @@ import com.norbert.koller.shared.customviews.DescriptionView
 import com.norbert.koller.shared.customviews.CardButton
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.data.StudyGroupData
+import com.norbert.koller.shared.data.StudyGroupTypeData
 import com.norbert.koller.shared.fragments.DetailsFragment
 import com.norbert.koller.shared.fragments.ProgramFragmentInterface
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -47,6 +48,10 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
 
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
+    }
+
+    override fun getDataType(): Class<*> {
+        return StudyGroupData::class.java
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

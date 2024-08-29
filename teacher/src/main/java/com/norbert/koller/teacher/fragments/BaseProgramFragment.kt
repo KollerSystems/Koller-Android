@@ -54,6 +54,10 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
         return DateTimeHelper.TIME_IMPORTANT
     }
 
+    override fun getDataType(): Class<*> {
+        return BaseProgramData::class.java
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
