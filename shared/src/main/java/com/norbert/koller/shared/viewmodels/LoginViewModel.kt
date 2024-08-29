@@ -36,7 +36,9 @@ class LoginViewModel : ViewModel() {
 
                 RetrofitInstance.communicate(viewModelScope, RetrofitInstance.api::getCurrentUser,
                     { response ->
-                        userData.value = response as UserData
+                        response as UserData
+                        LoginTokensData.instance!!.uid = response.uid
+                        userData.value = response
                     },
                     {errorMsg, _ ->
                         getUserError.value = errorMsg?: "-"

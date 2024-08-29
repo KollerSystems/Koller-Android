@@ -5,6 +5,8 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -18,6 +20,7 @@ import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBin
 import com.norbert.koller.shared.fragments.CrossingsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.managers.setupBottomSheet
 import com.norbert.koller.shared.recycleradapters.DevRecyclerAdapter
 import kotlinx.coroutines.launch
@@ -57,7 +60,9 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
                     lifecycleScope.launch{
 
-                        DataStoreManager.remove(requireActivity(), DataStoreManager.TOKENS)
+                        requireContext().loginDataStore.edit {
+                            it.remove(DataStoreManager.TOKENS)
+                        }
                         ApplicationManager.openLogin.invoke(requireContext())
                         requireActivity().finish()
                         dialog.dismiss()

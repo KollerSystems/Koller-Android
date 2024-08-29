@@ -1,11 +1,14 @@
 package com.norbert.koller.shared.activities
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
@@ -16,6 +19,7 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.widgets.WidgetHelper
 import kotlinx.coroutines.launch
 
@@ -34,7 +38,11 @@ class LaunchActivity : AppCompatActivity() {
         AuthenticationManager.handleFailedTokenRefresh = {
 
             lifecycleScope.launch {
-                DataStoreManager.remove(this@LaunchActivity, DataStoreManager.TOKENS)
+
+
+                loginDataStore.edit {
+                    it.remove(DataStoreManager.TOKENS)
+                }
                 finishAffinity()
                 ApplicationManager.openActivity(
                     this@LaunchActivity,
@@ -46,7 +54,7 @@ class LaunchActivity : AppCompatActivity() {
 
         AuthenticationManager.handleRefreshedTokenSaving = {
             lifecycleScope.launch {
-                DataStoreManager.save(
+                DataStoreManager.saveTokens(
                     this@LaunchActivity,
                     LoginTokensData.instance!!
                 )
@@ -83,19 +91,25 @@ class LaunchActivity : AppCompatActivity() {
 
             } else {
 
-                RetrofitInstance.communicate(lifecycleScope, RetrofitInstance.api::getCurrentUser,
-                    {
-                        UserData.instance = it as UserData
+                if(ApplicationManager.isOnline(this@LaunchActivity)) {
+                    RetrofitInstance.communicate(lifecycleScope,
+                        RetrofitInstance.api::getCurrentUser,
+                        {
+                            UserData.instance = it as UserData
 
-                        ApplicationManager.openMain.invoke(this@LaunchActivity)
-                        finish()
-                    },
-                    { _, _ ->
-                        ApplicationManager.openLogin.invoke(this@LaunchActivity)
-                        finish()
-                    })
+                            ApplicationManager.openMain.invoke(this@LaunchActivity)
+                            finish()
+                        },
+                        { _, _ ->
+                            ApplicationManager.openLogin.invoke(this@LaunchActivity)
+                            finish()
+                        })
 
-
+                }
+                else{
+                    ApplicationManager.openMain.invoke(this@LaunchActivity)
+                    finish()
+                }
             }
         }
 

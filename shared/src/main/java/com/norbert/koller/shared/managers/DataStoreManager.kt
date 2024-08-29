@@ -11,6 +11,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.google.gson.Gson
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.LoginTokensData
+import com.norbert.koller.shared.data.UserData
 import kotlinx.coroutines.flow.first
 
 
@@ -20,80 +21,45 @@ class DataStoreManager {
     companion object {
 
         val LOGIN_DATA_NAME = "login_data"
-        val TOKENS = "tokens"
-        val ROOM_PRESENCE_KNOWS_THE_LAYOUT = "room_presence_knows_the_layout"
-        private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = LOGIN_DATA_NAME)
-
+        val TIP_DATA_NAME = "tip_data"
+        val TOKENS = stringPreferencesKey("tokens")
+        val ROOM_PRESENCE_KNOWS_THE_LAYOUT = intPreferencesKey("room_presence_knows_the_layout")
+        val Context.loginDataStore: DataStore<Preferences> by preferencesDataStore(name = LOGIN_DATA_NAME)
+        val Context.tipDataStore: DataStore<Preferences> by preferencesDataStore(name = TIP_DATA_NAME)
+        val Context.userDataStore: DataStore<Preferences> by preferencesDataStore(name = "User")
 
 
         suspend fun saveCache(context: Context){
             for ((key, baseData) in CacheManager.savedValues){
-                val gson = Gson()
-                val json = gson.toJson(baseData)
-                save(context, "${key.first}:${key.second}", json)
+                val json = Gson().toJson(baseData)
+                context.userDataStore.edit {
+                    it[stringPreferencesKey("${key.first}:${key.second}")] = json
+
+                }
             }
 
             for((key, baseDataList) in CacheManager.savedListsOfValues){
-                val gson = Gson()
-                val json = gson.toJson(baseDataList)
-                save(context, key, json)
-            }
-        }
+                val json = Gson().toJson(baseDataList)
+                context.userDataStore.edit {
+                    it[stringPreferencesKey(key)] = json
 
-        suspend fun save(context: Context, key: String, value: String) {
-            val dataStoreKey = stringPreferencesKey(key)
-            context.dataStore.edit { login_data ->
-                login_data[dataStoreKey] = value
-
+                }
             }
         }
 
         suspend fun readTokens(context: Context): LoginTokensData? {
-            val dataStoreKey = stringPreferencesKey(TOKENS)
-            val preferences = context.dataStore.data.first()
-            return Gson().fromJson(preferences[dataStoreKey], LoginTokensData::class.java)
+            return Gson().fromJson(context.loginDataStore.data.first()[TOKENS], LoginTokensData::class.java)
         }
 
-        suspend fun save(context: Context, tokensData: LoginTokensData) {
-            val dataStoreKey = stringPreferencesKey(TOKENS)
-            context.dataStore.edit { login_data ->
+        suspend fun saveTokens(context: Context, tokensData: LoginTokensData) {
+            val dataStoreKey = TOKENS
+            context.loginDataStore.edit { login_data ->
                 login_data[dataStoreKey] = Gson().toJson(tokensData)
-
             }
-        }
-
-        suspend fun save(context: Context, key: String, value: Boolean) {
-            val dataStoreKey = booleanPreferencesKey(key)
-            context.dataStore.edit { login_data ->
-                login_data[dataStoreKey] = value
-
-            }
-        }
-
-        suspend fun save(context: Context, key: String, value: Int) {
-            val dataStoreKey = intPreferencesKey(key)
-            context.dataStore.edit { login_data ->
-                login_data[dataStoreKey] = value
-
-            }
-        }
-
-        suspend fun remove(context: Context, key: String) {
-            val dataStoreKey = stringPreferencesKey(key)
-            context.dataStore.edit { login_data ->
-                login_data.remove(dataStoreKey)
-
-            }
-        }
-
-        suspend fun read(context: Context, key: String): String? {
-            val dataStoreKey = stringPreferencesKey(key)
-            val preferences = context.dataStore.data.first()
-            return preferences[dataStoreKey]
         }
 
         suspend fun readDetail(context: Context, key: String, id: Int, classOfT : Class<*>) : BaseData?{
-            val json = read(context, "$key:$id")
+            val json = context.userDataStore.data.first()[stringPreferencesKey("$key:$id")]
             if(json == null) return null
 
             val gson = Gson()
@@ -101,25 +67,12 @@ class DataStoreManager {
         }
 
         suspend fun readList(context: Context, key: String, classOfT : Class<*>) : Array<BaseData>?{
-            val json = read(context, key)
+            val json = context.userDataStore.data.first()[stringPreferencesKey(key)]
             if(json == null) return null
 
             val gson = Gson()
             return gson.fromJson(json, classOfT) as Array<BaseData>
         }
-
-        suspend fun readBoolean(context: Context, key: String): Boolean? {
-            val dataStoreKey = booleanPreferencesKey(key)
-            val preferences = context.dataStore.data.first()
-            return preferences[dataStoreKey]
-        }
-
-        suspend fun readInt(context: Context, key: String): Int? {
-            val dataStoreKey = intPreferencesKey(key)
-            val preferences = context.dataStore.data.first()
-            return preferences[dataStoreKey]
-        }
-
     }
 }
 

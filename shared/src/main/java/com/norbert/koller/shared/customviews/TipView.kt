@@ -10,10 +10,17 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ViewTipBinding
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.TOKENS
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.tipDataStore
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 
@@ -41,7 +48,7 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
 
         (context as AppCompatActivity).lifecycleScope.launch {
             var read = 0
-            val data = DataStoreManager.readInt(context, resources.getResourceEntryName(id))
+            val data = context.tipDataStore.data.first()[intPreferencesKey(resources.getResourceEntryName(id))]
             if(data != null) read = data
             if(read == -1 || (mType == 0 && read < 2)){
                 visibility = GONE
@@ -68,13 +75,17 @@ class TipView(context: Context, attrs: AttributeSet) : LinearLayout(context, att
                 binding.buttonClose.setOnClickListener{
                     visibility = GONE
                     context.lifecycleScope.launch {
-                        DataStoreManager.save(context, resources.getResourceEntryName(id), -1)
+                        context.tipDataStore.edit {
+                            it[intPreferencesKey(resources.getResourceEntryName(id))] = -1
+                        }
                     }
                 }
             }
             if(read != -1){
                 read++
-                DataStoreManager.save(context, resources.getResourceEntryName(id), read)
+                context.tipDataStore.edit {
+                    it[intPreferencesKey(resources.getResourceEntryName(id))] = read
+                }
             }
         }
 

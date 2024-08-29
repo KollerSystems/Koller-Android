@@ -22,6 +22,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
+import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -40,6 +42,7 @@ import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.setVisibilityBy
@@ -226,7 +229,9 @@ abstract class MainActivity : AppCompatActivity() {
         AuthenticationManager.handleFailedTokenRefresh = {
 
             lifecycleScope.launch {
-                DataStoreManager.remove(this@MainActivity, DataStoreManager.TOKENS)
+                loginDataStore.edit {
+                    it.remove(DataStoreManager.TOKENS)
+                }
                 finishAffinity()
                 ApplicationManager.openActivity(
                     this@MainActivity,
@@ -238,7 +243,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         AuthenticationManager.handleRefreshedTokenSaving = {
             lifecycleScope.launch {
-                DataStoreManager.save(
+                DataStoreManager.saveTokens(
                     this@MainActivity,
                     LoginTokensData.instance!!
                 )

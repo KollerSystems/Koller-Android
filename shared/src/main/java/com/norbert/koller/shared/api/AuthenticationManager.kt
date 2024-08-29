@@ -59,7 +59,8 @@ class AuthenticationManager : Authenticator {
                         LoginTokensData.instance = LoginTokensData(
                             tokenData.accessToken,
                             Calendar.getInstance().timeInMillis + tokenData.expiresIn - RetrofitInstance.timeout,
-                            tokenData.refreshToken
+                            tokenData.refreshToken,
+                            LoginTokensData.instance!!.uid
                         )
                         handleRefreshedTokenSaving?.invoke()
 

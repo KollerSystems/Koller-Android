@@ -130,7 +130,7 @@ class LoginActivity : AppCompatActivity() {
 
         viewModel.userData.observe(this){
             lifecycleScope.launch {
-                DataStoreManager.save(this@LoginActivity, LoginTokensData.instance!!)
+                DataStoreManager.saveTokens(this@LoginActivity, LoginTokensData.instance!!)
             }
 
             UserData.instance = it as UserData
