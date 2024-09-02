@@ -23,7 +23,6 @@ class DetailsViewModel : ViewModel() {
     var owner : UserData? = null
 
     fun updateValues(it : BaseData, dataTag: String){
-        it as BaseData
         it.saveReceivedTime()
         CacheManager.savedValues[Pair(dataTag, it.getMainID())] = it
         response.value = it
@@ -46,13 +45,16 @@ class DetailsViewModel : ViewModel() {
     }
 
     fun refresh(api : suspend () -> retrofit2.Response<*>, dataTag :String){
+        state = LOADING
         RetrofitInstance.communicate(viewModelScope, api,
             {
+                state = NONE
                 it as BaseData
                 updateValues(it, dataTag)
                 onRefreshSuccess(it)
             },
             {_, _ ->
+                state = ERROR
                 onRefreshError()
             }
         )

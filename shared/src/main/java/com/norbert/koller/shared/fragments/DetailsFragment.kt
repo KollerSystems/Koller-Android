@@ -158,11 +158,23 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                 createLoadingOverlay().setState(viewModel.state)
             }
         }
+        else{
+            when(viewModel.state){
+                DetailsViewModel.LOADING ->{
+                    swrl.isRefreshing = true
+                }
+                DetailsViewModel.ERROR->{
+                    createSnackBar()
+                }
+            }
+        }
     }
 
     fun refresh(){
 
         viewModel.refresh(apiFunctionToCall(), getDataTag())
+
+        swrl.isRefreshing = true
     }
 
 
