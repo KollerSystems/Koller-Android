@@ -1,18 +1,17 @@
 package com.norbert.koller.shared.fragments
 
-import android.os.Bundle
-import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
-open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+open class UserListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
 
     override fun getFragmentTitle(): String? {
@@ -28,12 +27,12 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
     }
 
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
+        return UserRecyclerAdapter()
+    }
 
-        setupSort(R.string.abc, R.string.zyx,"Name")
-        apiRecyclerAdapter = UserRecyclerAdapter()
-        apiRecyclerAdapter.chipsSort = binding.chipsSort
-        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
         /*leaderUsersRecyclerView = view.findViewById(R.id.recycler_view_header)
         leaderUsersRecyclerView.setHasFixedSize(false)
@@ -46,7 +45,7 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
 
         leaderUsersRecyclerView.adapter = UserRecyclerAdapter(null)*/
 
-
+        setupSort(R.string.abc, R.string.zyx,"Name")
 
         addSortingChip("Gender", R.string.gender, arrayListOf(
             ListItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
@@ -63,9 +62,5 @@ open class UsersFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group", true)
 
         addSearchbar("Name")
-
-        super.onViewCreated(view, savedInstanceState)
-
-
     }
 }

@@ -34,7 +34,7 @@ interface BaseProgramFragmentInterface : ProgramFragmentInterface {
     }
 
     fun classClick(response : BaseProgramData, context : Context){
-        val userFragment = ApplicationManager.usersFragment(null)
+        val userFragment = ApplicationManager.userListFragment(null)
             .setFilter("Class.ID", response.class_.id.toString())
         (context as MainActivity).addFragment(userFragment)
     }

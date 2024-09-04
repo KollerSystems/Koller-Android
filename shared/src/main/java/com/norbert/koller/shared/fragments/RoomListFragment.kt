@@ -5,11 +5,12 @@ import android.view.View
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.RoomPagingSource
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
 
 
-open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+open class RoomListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
     override fun getFragmentTitle(): String? {
         return getString(R.string.rooms)
@@ -19,27 +20,17 @@ open class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>?
         return RoomPagingSource(requireContext(), getBaseViewModel())
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
+        return RoomRecyclerAdapter()
+    }
+
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
         setupSort(R.string.from_down, R.string.from_up,"RID")
-
-        apiRecyclerAdapter = RoomRecyclerAdapter()
-        apiRecyclerAdapter.chipsSort = binding.chipsSort
-        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
-
-        addSortingChip("Floor", R.string.floor_level, arrayListOf(
-        ))
-
-
-        addSortingChip("Annexe", R.string.annexe, arrayListOf(
-        ))
-
+        addSortingChip("Floor", R.string.floor_level, arrayListOf())
+        addSortingChip("Annexe", R.string.annexe, arrayListOf())
         addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group", true)
-
-
         addSearchbar("RID")
-
-
-        super.onViewCreated(view, savedInstanceState)
     }
 }

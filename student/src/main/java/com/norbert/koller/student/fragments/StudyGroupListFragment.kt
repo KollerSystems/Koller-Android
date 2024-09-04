@@ -3,29 +3,27 @@ package com.norbert.koller.student.fragments
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.fragments.StudyGroupsFragment
+import com.norbert.koller.shared.fragments.StudyGroupListFragment
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.student.recycleradapters.StudyGroupRecyclerAdapter
 
-class StudyGroupsFragment : StudyGroupsFragment() {
+class StudyGroupListFragment : StudyGroupListFragment() {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
+        return StudyGroupRecyclerAdapter()
+    }
 
-        apiRecyclerAdapter = StudyGroupRecyclerAdapter()
-
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
         addDateChip()
 
         val lessonLocalName : String = requireContext().getString(R.string.lesson).lowercase()
-
         addSortingChip("Length", com.norbert.koller.shared.R.string.length, arrayListOf(
             ListItem("1 ${lessonLocalName}", null, null, "1"),
             ListItem("2 ${lessonLocalName}", null, null, "2")
         ))
-
-
-        super.onViewCreated(view, savedInstanceState)
-
     }
 
 }

@@ -66,10 +66,10 @@ class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
                 CanteenFragment()
             }
             3->{
-                BaseProgramsFragment()
+                BaseProgramListFragment()
             }
             4->{
-                StudyGroupsFragment()
+                StudyGroupListFragment()
             }
             else->{
                 Fragment()

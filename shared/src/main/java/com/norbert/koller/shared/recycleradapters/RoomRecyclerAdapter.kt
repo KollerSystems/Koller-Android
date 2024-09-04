@@ -15,10 +15,6 @@ import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
-    override fun getDataTag(): String {
-        return "room"
-    }
-
     fun getShortName(name : String) : String{
         val nameParts : List<String> = name.split(" ")
         return nameParts[0][0] + ".\u00A0" + nameParts[1]

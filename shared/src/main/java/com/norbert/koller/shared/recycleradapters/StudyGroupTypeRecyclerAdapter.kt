@@ -16,10 +16,6 @@ abstract class StudyGroupTypeRecyclerAdapter() : ApiRecyclerAdapterWithTransitio
 
     abstract fun getFragment(item: StudyGroupTypeData) : Fragment
 
-    override fun getDataTag(): String {
-        return "study_group_type"
-    }
-
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

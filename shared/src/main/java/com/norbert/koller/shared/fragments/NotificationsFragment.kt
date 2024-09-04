@@ -21,10 +21,6 @@ import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 class NotificationsFragment : FragmentInMainActivity() {
 
 
-
-    private lateinit var notificsRecyclerView: SuperCoolRecyclerView
-    private lateinit var notificationDataArrayList: ArrayList<TodayData>
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,7 +31,7 @@ class NotificationsFragment : FragmentInMainActivity() {
 
 
 
-    override fun getFragmentTitle(): String? {
+    override fun getFragmentTitle(): String {
         return getString(R.string.notifications)
     }
 
@@ -43,19 +39,7 @@ class NotificationsFragment : FragmentInMainActivity() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        notificsRecyclerView = view.findViewById(R.id.sc_recycler_view)
-        notificsRecyclerView.appBar = view.findViewById(R.id.app_bar)
 
-        notificsRecyclerView.getRecyclerView().layoutManager = LinearLayoutManager(context)
-        notificsRecyclerView.getRecyclerView().setHasFixedSize(true)
-
-        notificationDataArrayList = arrayListOf(
-            TodayData(context?.getDrawable(R.drawable.room),"Szobarend", "K, P", "4"),
-            TodayData(context?.getDrawable(R.drawable.award),"Igazgatói dicséret", "Katona Márton Barnabást igazgatói dicséretben részesítem, mivel találkoztam vele a Mondoconon"
-            )
-        )
-
-        notificsRecyclerView.getRecyclerView().adapter = ObsRecyclerAdapter(notificationDataArrayList)
 
 
         sendNotification()

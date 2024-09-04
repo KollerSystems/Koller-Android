@@ -16,10 +16,6 @@ import java.util.Date
 
 class GateRecyclerAdapter() :ApiRecyclerAdapter(){
 
-    override fun getDataTag(): String {
-        return "exits_and_entrances"
-    }
-
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return CrossingViewHolder(ItemDescriptiveIconBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

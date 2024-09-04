@@ -12,12 +12,12 @@ import com.norbert.koller.teacher.activities.*
 import com.norbert.koller.teacher.fragments.CalendarFragment
 import com.norbert.koller.teacher.fragments.HomeFragment
 import com.norbert.koller.teacher.fragments.RoomFragment
-import com.norbert.koller.teacher.fragments.RoomsFragment
+import com.norbert.koller.teacher.fragments.RoomListFragment
 import com.norbert.koller.teacher.fragments.StudentHostelFragment
 import com.norbert.koller.teacher.fragments.UserFragment
-import com.norbert.koller.teacher.fragments.OutgoingPermanentFragment
-import com.norbert.koller.teacher.fragments.OutgoingTemporaryFragment
-import com.norbert.koller.teacher.fragments.UsersFragment
+import com.norbert.koller.teacher.fragments.OutgoingPermanentListFragment
+import com.norbert.koller.teacher.fragments.OutgoingTemporaryListFragment
+import com.norbert.koller.teacher.fragments.UserListFragment
 import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBsdfFragment
 
 class ApplicationManager : ApplicationManager() {
@@ -56,13 +56,13 @@ class ApplicationManager : ApplicationManager() {
         notificationFragment = { NotificationsFragment() }
         roomFragment = {rid -> RoomFragment(rid) }
         userFragment = {uid -> UserFragment(uid) }
-        roomsFragment = {RoomsFragment()}
-        usersFragment = {UsersFragment()}
+        roomListFragment = {RoomListFragment()}
+        userListFragment = {UserListFragment()}
 
-        outgoingTemporaryFragment = { OutgoingTemporaryFragment(it) }
-        outgoingPermanentFragment = { OutgoingPermanentFragment(it) }
+        outgoingTemporaryListFragment = { OutgoingTemporaryListFragment(it) }
+        outgoingPermanentListFragment = { OutgoingPermanentListFragment(it) }
 
-        studyGroupsFragment = {map-> com.norbert.koller.teacher.fragments.StudyGroupTypesFragment(map) }
+        studyGroupsFragment = {map-> com.norbert.koller.teacher.fragments.StudyGroupTypeListFragment(map) }
     }
 
 

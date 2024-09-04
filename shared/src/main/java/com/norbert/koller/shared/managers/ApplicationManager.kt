@@ -41,21 +41,20 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
-import com.norbert.koller.shared.fragments.OutgoingPermanentFragment
-import com.norbert.koller.shared.fragments.OutgoingTemporaryFragment
+import com.norbert.koller.shared.fragments.OutgoingPermanentListFragment
+import com.norbert.koller.shared.fragments.OutgoingTemporaryListFragment
 import com.norbert.koller.shared.fragments.RoomFragment
-import com.norbert.koller.shared.fragments.RoomsFragment
+import com.norbert.koller.shared.fragments.RoomListFragment
 import com.norbert.koller.shared.fragments.StudentHostelFragment
-import com.norbert.koller.shared.fragments.StudyGroupTypesFragment
+import com.norbert.koller.shared.fragments.StudyGroupTypeListFragment
 import com.norbert.koller.shared.fragments.UserFragment
-import com.norbert.koller.shared.fragments.UsersFragment
+import com.norbert.koller.shared.fragments.UserListFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.recycleradapters.LoginViewPagerRecyclerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.nio.ByteBuffer
 import java.util.Date
 import java.util.Locale
@@ -152,13 +151,13 @@ open class ApplicationManager : Application() {
 
         lateinit var getAppColor: (context : Context) -> Int
 
-        var roomsFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomsFragment = {map-> RoomsFragment(map) }
-        var usersFragment: (map : MutableMap<String, ArrayList<String>>?) -> UsersFragment = {map-> UsersFragment(map) }
+        var roomListFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomListFragment = { map-> RoomListFragment(map) }
+        var userListFragment: (map : MutableMap<String, ArrayList<String>>?) -> UserListFragment = { map-> UserListFragment(map) }
 
-        lateinit var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupTypesFragment
+        lateinit var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupTypeListFragment
 
-        var outgoingTemporaryFragment: (userData : UserData?) -> OutgoingTemporaryFragment = { userData -> OutgoingTemporaryFragment(userData) }
-        var outgoingPermanentFragment: (userData : UserData?) -> OutgoingPermanentFragment = { userData -> OutgoingPermanentFragment(userData) }
+        var outgoingTemporaryListFragment: (userData : UserData?) -> OutgoingTemporaryListFragment = { userData -> OutgoingTemporaryListFragment(userData) }
+        var outgoingPermanentListFragment: (userData : UserData?) -> OutgoingPermanentListFragment = { userData -> OutgoingPermanentListFragment(userData) }
 
         const val minLengthBeforeDismiss : Int = 3
 

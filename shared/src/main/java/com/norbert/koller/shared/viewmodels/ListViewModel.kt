@@ -6,7 +6,9 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import kotlinx.coroutines.flow.Flow
 
@@ -15,6 +17,19 @@ class ListViewModel : SearchViewModel() {
     companion object{
         const val pageSize : Int = 25
     }
+
+    var state: Int = ApiHelper.STATE_NONE
+    var isRequestModeRefresh : Boolean = false
+
+    var beingEmptied: Boolean = false
+    var shouldBeEmpty: Boolean = false
+
+    lateinit var onRefreshError: () -> Unit
+    lateinit var onRefreshSuccess: () -> Unit
+
+    lateinit var onAppendLoading: () -> Unit
+    lateinit var onAppendError: () -> Unit
+    lateinit var onAppendSuccess: () -> Unit
 
     var owner : UserData? = null
 
@@ -34,8 +49,4 @@ class ListViewModel : SearchViewModel() {
             currentPagingSource = pagingSource()
             currentPagingSource
         }.flow.cachedIn(viewModelScope)
-
-    init {
-
-    }
 }

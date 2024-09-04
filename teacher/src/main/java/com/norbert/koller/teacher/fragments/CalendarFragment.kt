@@ -66,7 +66,7 @@ class CalendarViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
                 BaseProgramsFragment()
             }
             4->{
-                StudyGroupsFragment()
+                StudyGroupListFragment()
             }
             else->{
                 Fragment()

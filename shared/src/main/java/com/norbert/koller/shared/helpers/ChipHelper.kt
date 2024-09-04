@@ -1,12 +1,17 @@
 package com.norbert.koller.shared.helpers
 
+import android.view.ContextThemeWrapper
+import android.view.ViewTreeObserver
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.util.Pair
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
+import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.fragments.bottomsheet.ListApiBsdfFragment
@@ -25,24 +30,56 @@ import java.util.Calendar
 
 class ChipHelper {
 
+    companion object{
+        fun getDateFilterValue(viewModel: SearchViewModel) : MutableMap<String, Pair<Long, Long>>{
+            return viewModel.dateFilters
+        }
+
+        fun getFilterValue(viewModel: SearchViewModel) : MutableMap<String, ArrayList<String>>{
+            return viewModel.filters
+        }
+
+        fun changeFilterValue(viewModel: SearchViewModel, filterName : String, selection : ArrayList<String>){
+            getFilterValue(viewModel)[filterName] = selection
+            viewModel.onChipsChanged?.invoke()
+        }
+
+        fun changeDateFilterValue(viewModel: SearchViewModel, filterName : String, selection : Pair<Long, Long>){
+            getDateFilterValue(viewModel)[filterName] = selection
+            viewModel.onChipsChanged?.invoke()
+        }
+
+        fun removeFilterValue(viewModel: SearchViewModel, filterName : String){
+            getFilterValue(viewModel).remove(filterName)
+            viewModel.onChipsChanged?.invoke()
+        }
+
+        fun removeDateFilterValue(viewModel: SearchViewModel, filterName : String = "Date"){
+            getDateFilterValue(viewModel).remove(filterName)
+            viewModel.onChipsChanged?.invoke()
+        }
+    }
+    
+    
 
 }
 
 fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: SearchViewModel){
 
 
+
     fun setChip(dateString : String){
         checkByPass(true)
         text = dateString
         this.addCloseOption {
-            viewModel.dateFilters.remove(filterName)
+            ChipHelper.removeDateFilterValue(viewModel, filterName)
             resetSimpleChip(context.getString(R.string.date))
         }
 
     }
 
-    if(viewModel.dateFilters.containsKey(filterName)){
-        setChip(dateDoubleToString(viewModel.dateFilters[filterName]!!))
+    if(ChipHelper.getDateFilterValue(viewModel).containsKey(filterName)){
+        setChip(dateDoubleToString(ChipHelper.getDateFilterValue(viewModel)[filterName]!!))
     }
     else{
         resetSimpleChip(context.getString(R.string.date))
@@ -52,8 +89,8 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName 
 
         val dprdb = MaterialDatePicker.Builder.dateRangePicker()
 
-        if (viewModel.dateFilters.containsKey(filterName)) {
-            dprdb.setSelection(viewModel.dateFilters[filterName])
+        if (ChipHelper.getDateFilterValue(viewModel).containsKey(filterName)) {
+            dprdb.setSelection(ChipHelper.getDateFilterValue(viewModel)[filterName])
         }
 
         val drpd = dprdb.build()
@@ -62,7 +99,7 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName 
 
             val dateString = dateDoubleToString(selection)
             if(text.toString() != dateString) {
-                viewModel.dateFilters[filterName] = selection
+                ChipHelper.changeDateFilterValue(viewModel, filterName, selection)
                 setChip(dateDoubleToString(selection))
             }
         }
@@ -79,14 +116,14 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
         checkByPass(true)
         text = dateString
         this.addCloseOption {
-            viewModel.dateFilters.remove(filterName)
+            ChipHelper.getDateFilterValue(viewModel).remove(filterName)
             resetSimpleChip(context.getString(R.string.date))
         }
 
     }
 
-    if(viewModel.dateFilters.containsKey(filterName)){
-        setChip(dateDoubleToString(viewModel.dateFilters[filterName]!!))
+    if(ChipHelper.getDateFilterValue(viewModel).containsKey(filterName)){
+        setChip(dateDoubleToString(ChipHelper.getDateFilterValue(viewModel)[filterName]!!))
     }
     else{
         resetSimpleChip(context.getString(R.string.date))
@@ -115,7 +152,7 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
 
     fun setViewModelAndChip(selection : Pair<Long, Long>){
 
-        viewModel.dateFilters[filterName] = selection
+        ChipHelper.changeDateFilterValue(viewModel, filterName, selection)
         setChip(dateDoubleToString(selection))
     }
 
@@ -146,8 +183,8 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
             ListItem(context.getString(R.string.custom_range), null, AppCompatResources.getDrawable(context, R.drawable.date_range), null, {
                 val dprdb = MaterialDatePicker.Builder.dateRangePicker()
 
-                if (viewModel.dateFilters.containsKey(filterName)) {
-                    dprdb.setSelection(viewModel.dateFilters[filterName])
+                if (ChipHelper.getDateFilterValue(viewModel).containsKey(filterName)) {
+                    dprdb.setSelection(ChipHelper.getDateFilterValue(viewModel)[filterName])
                 }
 
                 val drpd = dprdb.build()
@@ -171,7 +208,7 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
 }
 
 fun Chip.resetChip(localizedNameSting : String, viewModel: SearchViewModel, filterName : String){
-    viewModel.filters.remove(filterName)
+    ChipHelper.removeFilterValue(viewModel, filterName)
     resetSimpleChip(localizedNameSting)
 }
 
@@ -186,7 +223,7 @@ fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel
 fun Chip.createAndSetChipText(viewModel: SearchViewModel, filterName: String, tag: String, localizedFilterId : Int){
     val strings : ArrayList<String> = arrayListOf()
 
-    for (id in viewModel.filters[filterName]!!){
+    for (id in ChipHelper.getFilterValue(viewModel)[filterName]!!){
         for (elements in CacheManager.savedListsOfValues[tag]!!){
             if(id == elements.getMainID().toString()){
                 strings.add(elements.getTitle())
@@ -208,14 +245,14 @@ fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBs
         if (values.size != 0) {
             val locNamesString = arrayToString(locNames)
             if (text.toString() != locNamesString) {
-                viewModel.filters[filterName] = values
+                ChipHelper.changeFilterValue(viewModel, filterName, values)
                 setChip(locNamesString, localizedFilterId, viewModel, filterName)
             }
         } else {
 
             val string = context.getString(localizedFilterId)
             if (text.toString() != string) {
-                viewModel.filters.remove(filterName)
+                ChipHelper.removeFilterValue(viewModel, filterName)
                 resetChip(string, viewModel, filterName)
             }
         }
@@ -225,7 +262,7 @@ fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBs
 
 fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: SearchViewModel, tag : String, collapseText : Boolean){
 
-    if(viewModel.filters.containsKey(filterName)){
+    if(ChipHelper.getFilterValue(viewModel).containsKey(filterName)){
 
 
          viewModel.viewModelScope.launch {
@@ -242,7 +279,13 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
 
                 },{
                         error, errorBody ->
-                    setChip(context.getString(R.string.an_error_occurred), localizedFilterId, viewModel, filterName)
+                    resetChip(context.getString(localizedFilterId), viewModel, filterName)
+
+                    val snackbar = ((context as androidx.appcompat.view.ContextThemeWrapper).baseContext as MainActivity).getSnackBar(context.getString(R.string.an_error_occurred), Snackbar.LENGTH_LONG)
+                    snackbar.setAction(context.getString(R.string.ok)){
+
+                    }
+                    snackbar.show()
                 })
             }
 
@@ -260,7 +303,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListApiBsdfFragment(getValues, viewModel.filters[filterName], tag, localizedFilterId)
+        val dialog = ListApiBsdfFragment(getValues, ChipHelper.getFilterValue(viewModel)[filterName], tag, localizedFilterId)
         dialog.collapseText = collapseText
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
@@ -271,10 +314,10 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
 fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>, viewModel: SearchViewModel){
 
 
-    if(viewModel.filters.containsKey(filterName)){
+    if(ChipHelper.getFilterValue(viewModel).containsKey(filterName)){
         val localizedStrings : ArrayList<String> = arrayListOf()
 
-        for (tag in viewModel.filters[filterName]!!){
+        for (tag in ChipHelper.getFilterValue(viewModel)[filterName]!!){
             for (elements in arrayList){
                 if(tag == elements.tag){
                     localizedStrings.add(elements.title)
@@ -292,7 +335,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListStaticBsdfFragment(arrayList, viewModel.filters[filterName], localizedFilterId)
+        val dialog = ListStaticBsdfFragment(arrayList, ChipHelper.getFilterValue(viewModel)[filterName], localizedFilterId)
 
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)

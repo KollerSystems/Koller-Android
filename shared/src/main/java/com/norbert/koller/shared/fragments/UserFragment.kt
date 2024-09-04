@@ -8,16 +8,11 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
-import android.widget.Button
-import android.widget.TextView
 import androidx.core.widget.NestedScrollView
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.customviews.UserView
-import com.norbert.koller.shared.customviews.CardButton
-import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -165,13 +160,13 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
             }
 
             getHeaderBinding().btnGroup.setOnClickListener {
-                val userFragment = ApplicationManager.usersFragment(null)
+                val userFragment = ApplicationManager.userListFragment(null)
                     .setFilter("Group.ID", response.group!!.id.toString())
                 (requireContext() as MainActivity).addFragment(userFragment)
             }
 
             getHeaderBinding().btnClassOrProfession.setOnClickListener {
-                val userFragment = ApplicationManager.usersFragment(null)
+                val userFragment = ApplicationManager.userListFragment(null)
                     .setFilter("Class.ID", response.class_!!.id.toString())
                 (requireContext() as MainActivity).addFragment(userFragment)
             }

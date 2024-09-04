@@ -6,6 +6,7 @@ import android.icu.text.SimpleDateFormat
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -14,6 +15,8 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.data.ErrorData
+import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -31,24 +34,20 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
     private var lastFirstChar : String? = null
     private var lastListSize : Int = ListViewModel.pageSize + 1
-    lateinit var recyclerAdapter: ApiRecyclerAdapter
-
-    companion object{
-
-    }
 
     open fun getTimeLimit() : Int{
         return DateTimeHelper.TIME_NOT_IMPORTANT
     }
 
     abstract fun getDataType() : Class<*>
+    abstract fun getDataTag() : String
 
     @SuppressLint("WeekBasedYear")
     fun getFilters() : String{
 
         var finalString = ""
 
-        for ((key, value) in viewModel.filters) {
+        for ((key, value) in (viewModel.filters)) {
 
             for (argument in value) {
 
@@ -56,7 +55,7 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
             }
         }
 
-        for ((key, value) in viewModel.dateFilters) {
+        for ((key, value) in (viewModel.dateFilters)) {
             finalString += "${key}[gte]:${value.first.formatDate(DateTimeHelper.apiFormat) + "T00:00:00.000Z"},${key}[lte]:${SimpleDateFormat(DateTimeHelper.apiFormat).format(value.second) + "T00:00:00.000Z"},"
         }
         finalString.dropLast(1)
@@ -65,125 +64,122 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
     }
 
     fun getSort() : String{
-        if(recyclerAdapter.chipsSort == null) return ""
-        val chip : Chip = recyclerAdapter.chipsSort!!.findViewById(recyclerAdapter.chipsSort!!.checkedChipId)
-        return chip.tag.toString()
+        return viewModel.sortOptions[viewModel.selectedSort]
     }
-
 
     abstract suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : Response<List<BaseData>>
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {
 
-        Log.d("INFO", "HELLO LOADI")
-
-        val dataTag = recyclerAdapter.getDataTag()
-
-        if(recyclerAdapter.beingEmptied || lastListSize < ListViewModel.pageSize) {
-            Log.d("INFO", "TO EMPTY")
-            return LoadResult.Page(emptyList(), null, null)
-        }
+        Log.d("LISTGET", viewModel.sortOptions[viewModel.selectedSort]+"<----",)
 
         var offset = params.key ?: 0
-
-        if(recyclerAdapter.snapshot().size == 0 || recyclerAdapter.setOffsetToZero){
+        if(viewModel.isRequestModeRefresh) {
             offset = 0
-            recyclerAdapter.setOffsetToZero = false
-        }
 
-        if(recyclerAdapter.withLoadingAnim) {
-            recyclerAdapter.state = ApiRecyclerAdapter.STATE_LOADING
+            viewModel.state = ApiHelper.STATE_LOADING
+            var pagingSource : LoadResult<Int, Any>? = null
 
-            if(offset <= 0 && areParametersDefault()) {
+            delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-                if(CacheManager.savedListsOfValues.containsKey(dataTag) && (CacheManager.savedListsOfValues[dataTag]!![0].isValid(context, getTimeLimit()))){
-
-                    /*CacheManager.savedListsOfValues[dataTag]!!.forEachIndexed { index, element ->
-              if(CacheManager.savedValues.containsKey(Pair(dataTag, element.getMainID()))){
-                  CacheManager.savedListsOfValues[dataTag]!![index] = CacheManager.savedValues[Pair(dataTag, element.getMainID())]!!
-              }
-          }*/
-
-                    val savedValues = CacheManager.savedListsOfValues[dataTag]!!
-
-                    return formatRecievedValues(savedValues,0, savedValues.size)
-                }
-
-
-
-                val baseDataList = DataStoreManager.readList(context, dataTag, getDataType())?.toCollection(java.util.ArrayList())
-
-                if(baseDataList != null && baseDataList[0].isValid(context, getTimeLimit())){
-                    CacheManager.savedListsOfValues[dataTag] = baseDataList
-                    return formatRecievedValues(baseDataList,0, baseDataList.size)
-                }
-
+            RetrofitInstance.communicate({getApiResponse(RetrofitInstance.api, params.loadSize, offset)}, {response ->
+                pagingSource = onSuccess(response, offset, params)
+                viewModel.onRefreshSuccess()
+            }) { error, errorBody ->
+                pagingSource = onError(error, errorBody)
+                viewModel.onRefreshError()
             }
 
-
-
-
-
-
+            return pagingSource!!
         }
-
-        recyclerAdapter.withLoadingAnim = true
-
-        Handler(Looper.getMainLooper()).post {
-            recyclerAdapter.notifyItemInserted(recyclerAdapter.itemCount)
-        }
-
-        var pagingSource : LoadResult<Int, Any>? = null
-
-
-        delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
-
-        RetrofitInstance.communicate({getApiResponse(RetrofitInstance.api, params.loadSize, offset)}, {response ->
-
-            response as List<BaseData>
-
-            if(areParametersDefault() && response.isNotEmpty()) {
-                response[0].saveReceivedTime()
-                if (!CacheManager.savedListsOfValues.containsKey(dataTag)) {
-                    CacheManager.savedListsOfValues[dataTag] = ArrayList()
-                }
-                CacheManager.savedListsOfValues[dataTag]!!.addAll(response)
+        else{
+            if (viewModel.beingEmptied || lastListSize < ListViewModel.pageSize) {
+                viewModel.beingEmptied = false
+                offset = 0
+                return LoadResult.Page(emptyList(), null, null)
             }
 
-            pagingSource = formatRecievedValues(response, offset, params.loadSize)
+            if(viewModel.shouldBeEmpty){
+                offset = 0
+                viewModel.shouldBeEmpty = false
+            }
 
-        }) { error, errorBody ->
+            if (offset <= 0 && areParametersDefault()) {
 
-            recyclerAdapter.state = ApiRecyclerAdapter.STATE_ERROR
-            recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1)
-            Log.e("ERROR", error.toString())
-            pagingSource = LoadResult.Error(Throwable("Error: $error. Error body: $errorBody"))
+                if (CacheManager.savedListsOfValues.containsKey(getDataTag()) && (CacheManager.savedListsOfValues[getDataTag()]!![0].isValid(
+                        context,
+                        getTimeLimit()
+                    ))
+                ) {
+                    val savedValues = CacheManager.savedListsOfValues[getDataTag()]!!
+                    viewModel.onAppendSuccess()
+                    return formatRecievedValues(savedValues, 0, savedValues.size)
+                }
 
+                viewModel.state = ApiHelper.STATE_LOADING
+
+                val baseDataList = DataStoreManager.readList(context, getDataTag(), getDataType())
+                    ?.toCollection(java.util.ArrayList())
+
+                if (baseDataList != null && baseDataList[0].isValid(context, getTimeLimit())) {
+                    CacheManager.savedListsOfValues[getDataTag()] = baseDataList
+                    viewModel.onAppendSuccess()
+                    return formatRecievedValues(baseDataList, 0, baseDataList.size)
+                }
+            }
+
+            viewModel.onAppendLoading()
+            viewModel.state = ApiHelper.STATE_LOADING
+            var pagingSource : LoadResult<Int, Any>? = null
+
+            delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
+
+            RetrofitInstance.communicate({getApiResponse(RetrofitInstance.api, params.loadSize, offset)}, {response ->
+                pagingSource = onSuccess(response, offset, params)
+                viewModel.onAppendSuccess()
+            }) { error, errorBody ->
+                pagingSource = onError(error, errorBody)
+                viewModel.onAppendError()
+            }
+
+            return pagingSource!!
         }
-
-        return pagingSource!!
     }
 
-    fun areParametersDefault() : Boolean{
-        return (viewModel.filters.isEmpty() && viewModel.dateFilters.isEmpty() && (recyclerAdapter.chipsSort?.checkedChipId ?: R.id.chip_first) == R.id.chip_first)
+    fun areParametersDefault() : Boolean {
+        return ((viewModel.filters).isEmpty() &&
+                (viewModel.dateFilters).isEmpty() &&
+                viewModel.selectedSort == 0)
+    }
+
+    fun onSuccess(response : Any, offset: Int, params: LoadParams<Int>) : LoadResult<Int, Any>{
+        response as List<BaseData>
+
+        if(viewModel.selectedSort == 0 && response.isNotEmpty()) {
+            response[0].saveReceivedTime()
+            if (!CacheManager.savedListsOfValues.containsKey(getDataTag())) {
+                CacheManager.savedListsOfValues[getDataTag()] = ArrayList()
+            }
+            CacheManager.savedListsOfValues[getDataTag()]!!.addAll(response)
+        }
+
+        val pagingSource = formatRecievedValues(response, offset, params.loadSize)
+        viewModel.isRequestModeRefresh = false
+
+        return pagingSource
+    }
+
+    fun onError(error: String?, errorBody: ErrorData?) : LoadResult<Int, Any>{
+        viewModel.state = ApiHelper.STATE_ERROR
+        val pagingSource : LoadResult<Int, Any> = LoadResult.Error(Throwable("Error: $error. Error body: $errorBody"))
+        return pagingSource
     }
 
     fun formatRecievedValues(responseAs : List<BaseData>, offset : Int, limit: Int): LoadResult<Int, Any> {
-
-        if(offset <= 0){
-            recyclerAdapter.recyclerView.scrollToPosition(0)
-        }
-
-        recyclerAdapter.notifyItemRemoved(recyclerAdapter.itemCount - 1)
-        recyclerAdapter.notifyItemChanged(recyclerAdapter.itemCount - 1 - 1, Object())
-        Log.d("INFUPUPUPUPUO", recyclerAdapter.itemCount.toString())
-
-        recyclerAdapter.state = ApiRecyclerAdapter.STATE_NONE
+        viewModel.state = ApiHelper.STATE_NONE
 
         lastListSize = responseAs.size
         val items = mutableListOf<Any>()
-
-
 
         for (data in responseAs) {
             val firstChar = data.diffrentDecider(context)
@@ -204,6 +200,4 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
     override fun getRefreshKey(state: PagingState<Int, Any>): Int? {
         return state.anchorPosition
     }
-
-
 }

@@ -178,11 +178,13 @@ class ProgramTypePagingSource(context : Context, viewModel: ListViewModel) : Pag
         return Array<BaseProgramTypeData>::class.java
     }
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-
-        return apiResponse.getBaseProgramTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    override fun getDataTag(): String {
+        return "base_program_type"
     }
 
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+        return apiResponse.getBaseProgramTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
 }
 
 class StudyGroupTypePagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
@@ -191,11 +193,13 @@ class StudyGroupTypePagingSource(context : Context, viewModel: ListViewModel) : 
         return Array<StudyGroupTypeData>::class.java
     }
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-
-        return apiResponse.getStudyGroupTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    override fun getDataTag(): String {
+        return "study_group_type"
     }
 
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+        return apiResponse.getStudyGroupTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
 }
 
 class CrossingPagingSource(context: Context, val uid : Int, viewModel: ListViewModel) : PagingSource(context, viewModel) {
@@ -204,12 +208,13 @@ class CrossingPagingSource(context: Context, val uid : Int, viewModel: ListViewM
         return Array<CrossingData>::class.java
     }
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-
-        return apiResponse.getMyCrossings(uid, limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
-
+    override fun getDataTag(): String {
+        return "crossing"
     }
 
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+        return apiResponse.getMyCrossings(uid, limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
 }
 
 class UserPagingSource(context: Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
@@ -218,12 +223,13 @@ class UserPagingSource(context: Context, viewModel: ListViewModel) : PagingSourc
         return Array<UserData>::class.java
     }
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-
-        return apiResponse.getUsers(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
-
+    override fun getDataTag(): String {
+        return "user"
     }
 
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+        return apiResponse.getUsers(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
 }
 
 class RoomPagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
@@ -232,11 +238,13 @@ class RoomPagingSource(context : Context, viewModel: ListViewModel) : PagingSour
         return Array<RoomData>::class.java
     }
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-
-        return apiResponse.getRooms(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    override fun getDataTag(): String {
+        return "room"
     }
 
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+        return apiResponse.getRooms(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
 }
 
 class ProgramPagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
@@ -245,12 +253,13 @@ class ProgramPagingSource(context : Context, viewModel: ListViewModel) : PagingS
         return Array<BaseProgramData>::class.java
     }
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-
-        return apiResponse.getBasePrograms(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
-
+    override fun getDataTag(): String {
+        return "base_program"
     }
 
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+        return apiResponse.getBasePrograms(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
 }
 
 class StudyGroupPagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
@@ -259,10 +268,11 @@ class StudyGroupPagingSource(context : Context, viewModel: ListViewModel) : Pagi
         return Array<StudyGroupData>::class.java
     }
 
-    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-
-        return apiResponse.getStudyGroups(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
-
+    override fun getDataTag(): String {
+        return "study_group"
     }
 
+    override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
+        return apiResponse.getStudyGroups(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
 }

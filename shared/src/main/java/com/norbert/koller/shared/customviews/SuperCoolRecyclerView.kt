@@ -26,15 +26,16 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : Fra
     var appBar : AppBarLayout? = null
     val binding = ViewSuperCoolRecyclerBinding.inflate(LayoutInflater.from(context), this)
 
-    private lateinit var recyclerAdapter : ApiRecyclerAdapter
+    fun getRecyclerAdapter() : PagingDataAdapter<*, *>{
+        return binding.recyclerView.adapter as PagingDataAdapter<*, *>
+    }
 
-    fun getRecyclerView() : RecyclerView{
-        return binding.recyclerView
+    fun setRecyclerAdapter(adapter : PagingDataAdapter<*, *>){
+        binding.recyclerView.adapter = adapter
     }
 
 
     init {
-
         binding.textTitle.visibility = GONE
 
         var previousWidth = 0;
@@ -94,56 +95,29 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : Fra
             })
         }
 
-        binding.recyclerView.post{
-            //TODO: ezek törlése, ha minden recycler view fasza
-            if (binding.recyclerView.adapter is ApiRecyclerAdapter) {
-
-                recyclerAdapter = (binding.recyclerView.adapter as ApiRecyclerAdapter)
-                recyclerAdapter.addOnPagesUpdatedListener {
-                    binding.srl.isRefreshing = false
-                    binding.recyclerView.post {
-                        updateTitle()
-                    }
-                }
+        binding.recyclerView.layoutManager = LinearLayoutManager(context)
 
 
-                binding.srl.setOnRefreshListener {
-
-                    recyclerAdapter.withLoadingAnim = false
-                    recyclerAdapter.seemlessRefresh()
-                }
-
-
-
+        /*getRecyclerAdapter().addOnPagesUpdatedListener {
+            binding.recyclerView.post {
                 updateTitle()
-                binding.recyclerView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
-
-                    updateTitle()
-
-                }
             }
+        }*/
+
+        updateTitle()
+        binding.recyclerView.setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
+            updateTitle()
         }
     }
-
-    override fun onFinishInflate() {
-        super.onFinishInflate()
-
-
-
-
-    }
-
 
     fun updateTitle(){
         val layoutManager = (binding.recyclerView.layoutManager as LinearLayoutManager)
         val firstVisibleItemIndex: Int = layoutManager.findFirstVisibleItemPosition()
         val firstCompletelyVisibleIndex: Int = layoutManager.findFirstCompletelyVisibleItemPosition()
 
-        val pagingAdapter = (binding.recyclerView.adapter as PagingDataAdapter<*, *>)
-
         if (firstVisibleItemIndex != -1) {
-            val firstData = pagingAdapter.getItemViewType(firstVisibleItemIndex)
-            val list = pagingAdapter.snapshot()
+            val firstData = getRecyclerAdapter().getItemViewType(firstVisibleItemIndex)
+            val list = getRecyclerAdapter().snapshot()
             if (firstData == 1) {
 
                 binding.textTitle.text = list[firstVisibleItemIndex] as String
@@ -160,7 +134,7 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : Fra
         }
 
         if (firstCompletelyVisibleIndex != -1) {
-            val firstData = pagingAdapter.getItemViewType(firstCompletelyVisibleIndex)
+            val firstData = getRecyclerAdapter().getItemViewType(firstCompletelyVisibleIndex)
             if(firstCompletelyVisibleIndex != 0) {
                 binding.textTitle.visibility = VISIBLE
                 if (firstData == 1) {

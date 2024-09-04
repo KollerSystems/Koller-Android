@@ -7,7 +7,7 @@ import androidx.core.widget.NestedScrollView
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
-import com.norbert.koller.shared.fragments.CrossingsFragment
+import com.norbert.koller.shared.fragments.CrossingListFragment
 import com.norbert.koller.shared.fragments.PersonalDataFragment
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 import com.norbert.koller.teacher.activities.EditUserActivity
@@ -23,7 +23,7 @@ class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.User
         }
 
         binding.cbCrossings.setOnClickListener {
-            (context as MainActivity).addFragment(CrossingsFragment(viewModel.id))
+            (context as MainActivity).addFragment(CrossingListFragment(viewModel.id))
         }
 
         binding.cbEdit.setOnClickListener {

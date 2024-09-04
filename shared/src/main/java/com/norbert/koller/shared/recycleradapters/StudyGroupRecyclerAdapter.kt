@@ -13,10 +13,6 @@ abstract class StudyGroupRecyclerAdapter() : ApiRecyclerAdapterWithTransition() 
 
     abstract fun onItemPress(holder: RecyclerView.ViewHolder, item: StudyGroupData)
 
-    override fun getDataTag(): String {
-        return "study_group"
-    }
-
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

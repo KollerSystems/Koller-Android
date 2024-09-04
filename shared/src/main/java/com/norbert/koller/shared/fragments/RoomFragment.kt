@@ -1,12 +1,8 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
@@ -63,7 +59,7 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
 
             getHeaderBinding().btnDescription.setOnClickListener{
 
-                val userFragment = ApplicationManager.roomsFragment(null)
+                val userFragment = ApplicationManager.roomListFragment(null)
                     .setFilter("Group.ID", response.group!!.id.toString())
 
                 (context as MainActivity).addFragment(userFragment)

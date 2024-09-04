@@ -10,7 +10,7 @@ class BaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        apiRecyclerAdapter = ProgramRecyclerAdapter()
+        recyclerAdapter = ProgramRecyclerAdapter()
 
 
         addDateChip()

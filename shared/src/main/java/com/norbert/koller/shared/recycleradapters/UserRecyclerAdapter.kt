@@ -18,10 +18,6 @@ import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
-    override fun getDataTag(): String {
-        return "user"
-    }
-
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

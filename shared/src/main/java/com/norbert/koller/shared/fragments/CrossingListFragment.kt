@@ -6,12 +6,13 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.recycleradapters.GateRecyclerAdapter
 import com.norbert.koller.shared.api.CrossingPagingSource
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 
-class CrossingsFragment(val uid : Int? = null) : ListFragment() {
+class CrossingListFragment(val uid : Int? = null) : ListFragment() {
 
-    override fun getFragmentTitle(): String? {
+    override fun getFragmentTitle(): String {
         return getString(R.string.port_exits_and_entrances)
     }
 
@@ -19,24 +20,23 @@ class CrossingsFragment(val uid : Int? = null) : ListFragment() {
         return CrossingPagingSource(requireContext(), getBaseViewModel().id!!, getBaseViewModel())
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
+        return GateRecyclerAdapter()
+    }
+
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
-        apiRecyclerAdapter = GateRecyclerAdapter()
-        apiRecyclerAdapter.chipsSort = binding.chipsSort
-        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
-
-        if(getBaseViewModel().id == null) {
-            getBaseViewModel().id = uid
-        }
-
         addSortingChip("Direction", R.string.direction, arrayListOf(
             ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "1"),
             ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "0")
         ))
-
         addDateChip("Time")
 
+        if(getBaseViewModel().id == null) {
+            getBaseViewModel().id = uid
+        }
 
 
         /*chipLateness.setOnClickListener {
@@ -76,7 +76,5 @@ class CrossingsFragment(val uid : Int? = null) : ListFragment() {
 
 
         }*/
-
-        super.onViewCreated(view, savedInstanceState)
     }
 }

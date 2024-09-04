@@ -3,13 +3,14 @@ package com.norbert.koller.shared.recycleradapters
 import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.iterator
 import androidx.core.widget.doBeforeTextChanged
+import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.chip.Chip
@@ -21,99 +22,32 @@ import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.databinding.ItemNothingToDisplayBinding
 import com.norbert.koller.shared.databinding.TextViewDateBinding
 import com.norbert.koller.shared.databinding.ViewErrorRetryBinding
+import com.norbert.koller.shared.fragments.ListFragment
+import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.viewmodels.ListViewModel
 
 abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHolder>(Comparator) {
 
-    lateinit var recyclerView: RecyclerView
-
-    var state: Int = STATE_NONE
-    var withLoadingAnim: Boolean = true
-
-    var setOffsetToZero : Boolean = false
-
-    var beforeRefresh: (() -> Unit)? = null
-
-    var chipsSort: ChipGroup? = null
-    var chipsFilter: ChipGroup? = null
-    var searchBar: SearchView? = null
-
-    abstract fun getDataTag(): String
-
-    @SuppressLint("SetTextI18n")
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        this.recyclerView = recyclerView
-
-        for (chip in chipsFilter!!) {
-            chip as Chip
-            chip.doBeforeTextChanged { text, start, before, count ->
-                fullRefresh()
-            }
-        }
-
-
-        if (searchBar != null) {
-            searchBar!!.tag = searchBar!!.getEditText().text.toString()
-            searchBar!!.getEditText().setOnEditorActionListener { _, actionId, _ ->
-                if (actionId == EditorInfo.IME_ACTION_DONE) {
-                    if (searchBar!!.tag != searchBar!!.getEditText().text.toString()) {
-                        fullRefresh()
-                    }
-
-                    searchBar!!.tag = searchBar!!.getEditText().text.toString()
-                }
-                false
-            }
-
-            searchBar!!.getButton().setOnClickListener {
-                searchBar!!.getEditText().setText("")
-                if (searchBar!!.tag != searchBar!!.getEditText().text.toString()) {
-                    fullRefresh()
-                }
-
-
-                searchBar!!.tag = ""
-            }
-        }
-
-        recyclerView.post {
-            chipsSort?.setOnCheckedStateChangeListener { chipGroup: ChipGroup, ints: MutableList<Int> ->
-                fullRefresh()
-            }
-        }
-    }
-
-    var beingEmptied: Boolean = false
+    lateinit var viewModel : ListViewModel
 
     fun seemlessRefresh() {
-        beforeRefresh?.invoke()
-        recyclerView.scrollToPosition(0)
-        setOffsetToZero = true
+        viewModel.isRequestModeRefresh = true
         refresh()
-        recyclerView.scrollToPosition(0)
     }
 
     fun fullRefresh() {
-
-        recyclerView.scrollToPosition(0)
-
-        beingEmptied = true
-        Log.d("INFO", "START TO EMPTY")
-        seemlessRefresh()
-
-        recyclerView.scrollToPosition(0)
-
-
-        beingEmptied = false
-        Log.d("INFO", "START TO LOAD")
-        seemlessRefresh()
-
-
+        if(viewModel.beingEmptied || viewModel.shouldBeEmpty) return
+        viewModel.isRequestModeRefresh = false
+        viewModel.beingEmptied = true
+        refresh()
+        viewModel.shouldBeEmpty = true
+        refresh()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if (super.getItemCount() == 0 && state == STATE_NONE) {
+        if (super.getItemCount() == 0 && viewModel.state == ApiHelper.STATE_NONE) {
             val binding = ItemNothingToDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return EmptyViewHolder(binding)
         } else {
@@ -148,10 +82,10 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        if (state == STATE_NONE && super.getItemCount() == 0)
+        if (viewModel.state == ApiHelper.STATE_NONE && super.getItemCount() == 0)
             return
 
-        if (state != STATE_NONE && position == itemCount - 1) {
+        if (viewModel.state != ApiHelper.STATE_NONE && position == itemCount - 1) {
 
             when (getItemViewType(position)) {
                 VIEW_TYPE_RETRY -> {
@@ -201,7 +135,7 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
     override fun getItemCount(): Int {
 
-        return if (state != STATE_NONE || super.getItemCount() == 0) {
+        return if ((viewModel.state != ApiHelper.STATE_NONE || super.getItemCount() == 0) && !viewModel.isRequestModeRefresh) {
             super.getItemCount() + 1
         } else {
             super.getItemCount()
@@ -211,13 +145,13 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
     override fun getItemViewType(position: Int): Int {
 
-        if (super.getItemCount() == 0 && state == STATE_NONE)
+        if (super.getItemCount() == 0 && viewModel.state == ApiHelper.STATE_NONE)
             return -1
 
-        if (position == itemCount - 1) {
-            if (state == STATE_LOADING) {
+        if (position == itemCount - 1 && !viewModel.isRequestModeRefresh) {
+            if (viewModel.state == ApiHelper.STATE_LOADING) {
                 return VIEW_TYPE_LOADING
-            } else if (state == STATE_ERROR) {
+            } else if (viewModel.state == ApiHelper.STATE_ERROR) {
                 return VIEW_TYPE_RETRY
             }
         }
@@ -232,11 +166,6 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
 
     companion object {
-        const val STATE_NONE = 0
-        const val STATE_LOADING = 1
-        const val STATE_ERROR = 2
-
-
         const val VIEW_TYPE_ITEM = 0
         const val VIEW_TYPE_SEPARATOR = 1
         const val VIEW_TYPE_LOADING = 2

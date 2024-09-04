@@ -464,4 +464,5 @@
     <string name="four_weeks">Four weeks</string>
     <string name="is_out">Out</string>
     <string name="is_in">In</string>
+    <string name="failed_to_refresh">Failed to get fresh data</string>
 </resources>

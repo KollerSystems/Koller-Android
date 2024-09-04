@@ -10,7 +10,7 @@
     android:focusableInTouchMode="true"
     android:orientation="vertical"
     android:translationZ="100dp"
-    tools:context=".fragments.UsersFragment">
+    tools:context=".fragments.UserListFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/app_bar"

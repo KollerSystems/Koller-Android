@@ -16,14 +16,7 @@ class BaseProgramTypeRecyclerAdapter() : ApiRecyclerAdapter() {
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun getDataTag(): String {
-        return "base_program_type"
-    }
-
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
-
-
-        val context = holder.itemView.context
 
         holder as RecyclerViewHelper.UserViewHolder
 
@@ -34,8 +27,6 @@ class BaseProgramTypeRecyclerAdapter() : ApiRecyclerAdapter() {
         val description = "${item.teacher?.name} • ${item.rid}"
 
         holder.itemBinding.textDescription.text = description
-
-
 
         holder.itemView.setOnClickListener {
 

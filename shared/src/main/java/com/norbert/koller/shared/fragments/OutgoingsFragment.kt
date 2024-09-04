@@ -61,10 +61,10 @@ class UserOutgoingViewPagerAdapter(val userData: UserData?, fragmentManager: Fra
     override fun createFragment(position: Int): Fragment {
         return when(position){
             0->{
-                ApplicationManager.outgoingTemporaryFragment(userData)
+                ApplicationManager.outgoingTemporaryListFragment(userData)
             }
             1->{
-                ApplicationManager.outgoingPermanentFragment(userData)
+                ApplicationManager.outgoingPermanentListFragment(userData)
             }
             else->{
                 Fragment()

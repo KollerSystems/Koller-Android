@@ -15,10 +15,6 @@ abstract class ProgramRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
     abstract fun onItemPress(holder: RecyclerView.ViewHolder, item : BaseProgramData)
 
-    override fun getDataTag(): String {
-        return "base_program"
-    }
-
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }

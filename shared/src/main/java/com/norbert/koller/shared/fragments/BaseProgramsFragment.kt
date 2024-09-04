@@ -21,9 +21,6 @@ abstract class BaseProgramsFragment(defaultFilters : MutableMap<String, ArrayLis
 
         setupSort(com.norbert.koller.shared.R.string.newest, com.norbert.koller.shared.R.string.oldest,"Date", "desc,Lesson:desc", "asc,Lesson:asc")
 
-        apiRecyclerAdapter.chipsSort = binding.chipsSort
-        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
-
         addSearchbar("Topic")
 
         super.onViewCreated(view, savedInstanceState)

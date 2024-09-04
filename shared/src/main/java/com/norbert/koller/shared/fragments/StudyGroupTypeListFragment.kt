@@ -6,7 +6,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.StudyGroupTypePagingSource
 import com.norbert.koller.shared.recycleradapters.PagingSource
 
-abstract class StudyGroupTypesFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+abstract class StudyGroupTypeListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
     override fun getFragmentTitle(): String? {
         return getString(R.string.study_groups)
@@ -16,16 +16,12 @@ abstract class StudyGroupTypesFragment(defaultFilters : MutableMap<String, Array
         return StudyGroupTypePagingSource(requireContext(), getBaseViewModel())
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
         setupSort(R.string.abc, R.string.zyx,"Topic")
 
-        apiRecyclerAdapter.chipsSort = binding.chipsSort
-        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
-
         addSearchbar("Topic")
-
-        super.onViewCreated(view, savedInstanceState)
     }
 
 }

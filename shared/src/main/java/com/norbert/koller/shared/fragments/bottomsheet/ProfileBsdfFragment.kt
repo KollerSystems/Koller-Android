@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -17,7 +16,7 @@ import com.norbert.koller.shared.data.DevData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
-import com.norbert.koller.shared.fragments.CrossingsFragment
+import com.norbert.koller.shared.fragments.CrossingListFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
@@ -94,7 +93,7 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
         getFooterBinding().cbCrossings.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(CrossingsFragment(UserData.instance.uid))
+            (requireContext() as MainActivity).addFragment(CrossingListFragment(UserData.instance.uid))
             this.dismiss()
         }
 

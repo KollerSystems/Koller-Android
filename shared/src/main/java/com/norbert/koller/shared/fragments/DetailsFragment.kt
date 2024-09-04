@@ -15,6 +15,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.LoadingOverlayView
+import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -89,9 +90,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
         }
 
         viewModel.onRefreshSuccess = {
-            if(snackbar != null){
-                snackbar!!.dismiss()
-            }
+            snackbar?.dismiss()
             swrl.isRefreshing = false
         }
 
@@ -180,27 +179,16 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
 
     fun createSnackBar(){
-        snackbar = (context as MainActivity).getSnackBar("Friss adatok lekérése sikertelen", Snackbar.LENGTH_INDEFINITE)
-        snackbar!!.setAction(getString(R.string.retry)){
+        snackbar = ApiHelper.createSnackBar(requireContext()){
             refresh()
         }
-        snackbar!!.view.viewTreeObserver
-            .addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-                override fun onPreDraw(): Boolean {
-                    snackbar!!.view.viewTreeObserver.removeOnPreDrawListener(this)
-                    (snackbar!!.view.layoutParams as CoordinatorLayout.LayoutParams).behavior =
-                        null
-                    return true
-                }
-            })
-        snackbar!!.show()
     }
 
     override fun onStop() {
         super.onStop()
-        if(snackbar != null){
-            snackbar!!.dismiss()
-        }
+
+        snackbar?.dismiss()
+
     }
 
 }

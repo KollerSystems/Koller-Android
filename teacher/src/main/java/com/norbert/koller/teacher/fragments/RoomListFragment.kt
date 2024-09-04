@@ -2,11 +2,8 @@ package com.norbert.koller.teacher.fragments
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
-import android.widget.Button
-import com.norbert.koller.shared.R
 
-class RoomsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : com.norbert.koller.shared.fragments.RoomsFragment(defaultFilters) {
+class RoomListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : com.norbert.koller.shared.fragments.RoomListFragment(defaultFilters) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

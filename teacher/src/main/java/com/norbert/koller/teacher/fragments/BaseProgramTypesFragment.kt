@@ -21,9 +21,7 @@ class BaseProgramTypesFragment(defaultFilters : MutableMap<String, ArrayList<Str
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
         setupSort(R.string.abc, R.string.zyx,"Topic")
-        apiRecyclerAdapter = BaseProgramTypeRecyclerAdapter()
-        apiRecyclerAdapter.chipsSort = binding.chipsSort
-        apiRecyclerAdapter.chipsFilter = binding.chipsFilter
+        recyclerAdapter = BaseProgramTypeRecyclerAdapter()
 
 
         addSearchbar("Topic")
