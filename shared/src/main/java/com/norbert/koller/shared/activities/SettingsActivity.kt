@@ -7,6 +7,8 @@ import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View.VISIBLE
+import androidx.datastore.preferences.core.edit
+import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customviews.CardToggle
 import com.norbert.koller.shared.api.APIInterface
@@ -14,6 +16,10 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.tipDataStore
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
+import kotlinx.coroutines.launch
 import java.util.Calendar
 
 abstract class SettingsActivity : ToolbarActivity() {
@@ -86,6 +92,31 @@ abstract class SettingsActivity : ToolbarActivity() {
         getDeveloperBinding().cbTestActivity.setOnClickListener {
             val intent = Intent(this, TwoFAPasswordActivity::class.java)
             startActivity(intent)
+        }
+
+        getDeveloperBinding().cbRemoveCurrentUserSaveData.setOnClickListener{
+            lifecycleScope.launch {
+                userDataStore.edit {
+                    it.clear()
+                }
+            }
+        }
+
+        getDeveloperBinding().cbRemoveTipsSaveData.setOnClickListener{
+            lifecycleScope.launch {
+                tipDataStore.edit {
+                    it.clear()
+                }
+            }
+        }
+
+        getDeveloperBinding().cbRemoveLoginSaveData.setOnClickListener{
+            lifecycleScope.launch {
+                loginDataStore.edit {
+                    it.clear()
+                }
+            }
+
         }
 
 

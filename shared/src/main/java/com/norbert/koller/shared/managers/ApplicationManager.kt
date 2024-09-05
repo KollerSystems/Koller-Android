@@ -37,6 +37,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
@@ -145,7 +146,9 @@ open class ApplicationManager : Application() {
         lateinit var notificationFragment: () -> NotificationsFragment
 
         lateinit var roomFragment: (rid : Int) -> RoomFragment
+        lateinit var roomFragmentWithData: (roomData: RoomData) -> RoomFragment
         lateinit var userFragment: (uid : Int) -> UserFragment
+        lateinit var userFragmentWithData: (userData: UserData) -> UserFragment
 
         lateinit var loginViewPagerRecyclerAdapter: () -> LoginViewPagerRecyclerAdapter
 

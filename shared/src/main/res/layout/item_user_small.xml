@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:clickable="true"
     app:cardCornerRadius="@null"
-    app:contentPadding="0dp"
-    app:shapeAppearance="@null">
+    app:shapeAppearance="@null"
+    app:strokeColor="?attr/colorSurfaceContainerLow">
 
     <LinearLayout
+        android:id="@+id/ly"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -23,7 +23,7 @@
             android:layout_height="80dp" />
 
         <TextView
-            android:id="@+id/text_name"
+            android:id="@+id/text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="-5dp"
@@ -31,6 +31,7 @@
             android:layout_marginRight="-5dp"
             android:layout_marginBottom="@dimen/text_container_margin"
             android:gravity="center_horizontal"
+            android:lines="2"
             tools:text="Katona\nMárton" />
 
     </LinearLayout>

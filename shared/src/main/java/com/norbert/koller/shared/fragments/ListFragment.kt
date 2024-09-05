@@ -337,7 +337,6 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
             viewModel.filters.entries.removeIf { it.key != filterName }
 
             viewModel.dateFilters.entries.removeIf { it.key != filterName }
-            viewModel.onChipsChanged?.invoke()
 
             for(chip in binding.chipsFilter.children){
                 (chip as Chip).performCloseIconClick()

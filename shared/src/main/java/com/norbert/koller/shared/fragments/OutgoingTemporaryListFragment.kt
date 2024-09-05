@@ -6,6 +6,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.OutgoingRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
@@ -15,7 +16,7 @@ open class OutgoingTemporaryListFragment(val userData : UserData? = null) : List
     }
 
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {
-        return UserRecyclerAdapter()
+        return OutgoingRecyclerAdapter()
     }
 
     override fun onSetUpSearching() {

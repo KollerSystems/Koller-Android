@@ -5,12 +5,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.NestedScrollView
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.FragmentUserBinding
 
 
-class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(uid) {
+class UserFragment : com.norbert.koller.shared.fragments.UserFragment {
+
+    constructor(id : Int? = null) : super(
+        id, null
+    )
+
+    constructor(userData : UserData? = null) : super(
+        null, userData
+    )
 
     lateinit var binding : FragmentUserBinding
 

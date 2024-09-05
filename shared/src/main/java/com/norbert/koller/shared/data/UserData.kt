@@ -15,6 +15,7 @@ class UserData(
     @SerializedName("GuardiaName") val guardiaName : String? = null,
     @SerializedName("GuardianPhone") val guardianPhone : String? = null,
     @SerializedName("RID") val rid : Int? = null,
+    @SerializedName("BedNum") val bedNum : Int? = null,
     @SerializedName("Country") val country : String ? = null,
     @SerializedName("City") val city : String? = null,
     @SerializedName("Street") val street : String? = null,

@@ -120,13 +120,43 @@
 
     </com.google.android.material.card.MaterialCardView>
 
-            <com.norbert.koller.shared.customviews.CardButton
-                style="@style/CardBottom"
-                android:id="@+id/cb_test_activity"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:description="Hell yeah. An activity!"
-                app:text="Maybe open an activity" />
+    <com.norbert.koller.shared.customviews.CardButton
+        style="@style/CardMiddle"
+        android:id="@+id/cb_test_activity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:description="Hell yeah. An activity!"
+        app:text="Maybe open an activity" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/cb_remove_current_user_save_data"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:text="Remove current user save data" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+
+        android:id="@+id/cb_remove_every_user_save_data"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:text="Remove every user save data" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/cb_remove_tips_save_data"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:text="Remove tips save data" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/cb_remove_login_save_data"
+        style="@style/CardBottom"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:text="Remove login save data" />
+
 
 
 </LinearLayout>

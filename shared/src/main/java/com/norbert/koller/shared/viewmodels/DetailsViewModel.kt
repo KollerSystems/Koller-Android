@@ -3,10 +3,14 @@ package com.norbert.koller.shared.viewmodels
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.CacheManager
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlin.random.Random
 
 class DetailsViewModel : ViewModel() {
 
@@ -30,34 +34,41 @@ class DetailsViewModel : ViewModel() {
 
     fun load(api : suspend () -> retrofit2.Response<*>, dataTag :String) {
         state = LOADING
-        RetrofitInstance.communicate(viewModelScope, api,
-            {
-                state = NONE
-                it as BaseData
-                updateValues(it, dataTag)
-                onLoadSuccess(it)
-            },
-            { _, _ ->
-                state = ERROR
-                onLoadError()
-            }
-        )
+        viewModelScope.launch {
+            delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
+            RetrofitInstance.communicate(api,
+                {
+                    state = NONE
+                    it as BaseData
+                    updateValues(it, dataTag)
+                    onLoadSuccess(it)
+                },
+                { _, _ ->
+                    state = ERROR
+                    onLoadError()
+                }
+            )
+        }
     }
 
     fun refresh(api : suspend () -> retrofit2.Response<*>, dataTag :String){
         state = LOADING
-        RetrofitInstance.communicate(viewModelScope, api,
-            {
-                state = NONE
-                it as BaseData
-                updateValues(it, dataTag)
-                onRefreshSuccess(it)
-            },
-            {_, _ ->
-                state = ERROR
-                onRefreshError()
-            }
-        )
+        viewModelScope.launch {
+            delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
+            RetrofitInstance.communicate(api,
+                {
+                    state = NONE
+                    it as BaseData
+                    updateValues(it, dataTag)
+                    onRefreshSuccess(it)
+                },
+                {_, _ ->
+                    state = ERROR
+                    onRefreshError()
+                }
+            )
+        }
+
     }
 
     lateinit var onLoadError: () -> Unit

@@ -13,6 +13,7 @@ import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -21,7 +22,7 @@ import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Response
 
 
-abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
+abstract class UserFragment(uid : Int? = null, userData: UserData? = null) : DetailsFragment(uid, userData) {
 
     abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
     abstract fun getNestedScrollView() : NestedScrollView

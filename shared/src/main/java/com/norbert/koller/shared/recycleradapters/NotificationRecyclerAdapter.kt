@@ -13,42 +13,29 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.UserView
+import com.norbert.koller.shared.databinding.ItemBinding
+import com.norbert.koller.shared.databinding.ItemReadableBinding
 import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
-class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
+class NotificationRecyclerAdapter() : ApiRecyclerAdapter() {
 
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
-        return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return RecyclerViewHelper.ItemViewHolder(ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
-        super.onBindItemViewHolder(holder, item, position)
 
-        val context = holder.itemView.context
-        holder as RecyclerViewHelper.UserViewHolder
+        holder as RecyclerViewHelper.ItemViewHolder
 
         item as UserData
-        holder.itemBinding.user.getImage().setImageDrawable(
-            AppCompatResources.getDrawable(
-                context,
-                R.drawable.person
-            )
-        )
-        holder.itemBinding.user.setUser(item)
+
         holder.itemBinding.textTitle.text = item.name
         holder.itemBinding.textDescription.text = item.createDescription()
 
         holder.itemView.setOnClickListener {
 
-            if (item.uid == UserData.instance.uid) {
-                ApplicationManager.openProfile(context)
-            } else {
-
-                val fragment = ApplicationManager.userFragmentWithData(item)
-                (context as MainActivity).addFragmentWithTransition(fragment, holder.itemView as MaterialCardView, getTransitionName(item.getMainID()))
-            }
 
         }
     }

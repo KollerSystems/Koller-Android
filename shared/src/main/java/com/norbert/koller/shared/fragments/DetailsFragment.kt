@@ -1,6 +1,8 @@
 package com.norbert.koller.shared.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -15,6 +17,7 @@ import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.LoadingOverlayView
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
@@ -24,9 +27,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() {
-
-
+abstract class DetailsFragment(val id : Int? = null, val baseData : BaseData? = null) : FragmentInMainActivity() {
 
     lateinit var viewModel: DetailsViewModel
 
@@ -42,7 +43,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
     lateinit var swrl : SwipeRefreshLayout
 
     open fun setupTransition(view : View){
-        ViewCompat.setTransitionName(view, "cardTransition_${id}position")
+        ViewCompat.setTransitionName(view, "cardTransition_${id?:baseData!!.getMainID()}position")
     }
 
     override fun onCreateView(
@@ -101,10 +102,8 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
         if(!viewModel.response.isInitialized) {
 
-
-
             if (viewModel.id == null) {
-                viewModel.id = id!!
+                viewModel.id = id?:baseData!!.getMainID()
 
                 val key = Pair(getDataTag(), viewModel.id)
                 if (CacheManager.savedValues.containsKey(key)) {
@@ -114,6 +113,12 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                     }
 
                     viewModel.response.value = CacheManager.savedValues[key]!!
+                    return
+                }
+
+                if(baseData != null){
+                    viewModel.response.value = baseData
+                    refresh()
                     return
                 }
 

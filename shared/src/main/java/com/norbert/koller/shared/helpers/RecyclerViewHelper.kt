@@ -1,11 +1,14 @@
 package com.norbert.koller.shared.helpers
 
+import android.os.Handler
+import android.os.Looper
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
+import android.widget.TextView
 import androidx.core.view.marginLeft
 import androidx.core.view.marginRight
 import androidx.core.view.marginTop
@@ -14,17 +17,21 @@ import androidx.recyclerview.widget.LinearSmoothScroller
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
+import com.google.android.material.imageview.ShapeableImageView
 import com.google.android.material.shape.ShapeAppearanceModel
 import com.google.android.material.shape.Shapeable
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ItemBinding
+import com.norbert.koller.shared.databinding.ItemReadableBinding
 import com.norbert.koller.shared.databinding.ItemUserBinding
 
 class RecyclerViewHelper {
 
-    class ItemViewHolder(val itemBinding: ItemBinding) : RecyclerView.ViewHolder(itemBinding.root){}
+    class ItemViewHolder(val itemBinding: ItemBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
     class UserViewHolder(val itemBinding: ItemUserBinding) : RecyclerView.ViewHolder(itemBinding.root)
+
+    class ReadableViewHolder(val itemBinding : ItemReadableBinding) : RecyclerView.ViewHolder(itemBinding.root)
 
     companion object{
         fun roundRecyclerItemsVerticallyWithSeparator(view : View, position : Int, pagingDataAdapter : PagingDataAdapter<Any, RecyclerView.ViewHolder>){
@@ -296,6 +303,15 @@ class RecyclerViewHelper {
             }
         }
 
+        fun setStateAppearance(view : View, overlay : Int){
+            val shapeAppearance = ShapeAppearanceModel.builder(
+                view.context,
+                overlay,
+                0
+            ).build()
+
+            (view as Shapeable).shapeAppearanceModel = shapeAppearance
+        }
 
         fun roundCardX(view : View, view2 : View?, overlay : Int, leftPadding : Int, topPadding : Int, rightPadding : Int, bottomPadding : Int){
             val context = view.context
@@ -333,7 +349,7 @@ class RecyclerViewHelper {
 
         fun roundCardTop(view : View, view2 : View? = null){
             val context = view.context
-            roundCardX(view, view2, R.style.OverlayRoundedCardTop,view.marginLeft,0,view.marginRight,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+            roundCardX(view, view2, R.style.OverlayRoundedCardTop,view.marginLeft,view.marginLeft,view.marginRight,context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun roundCardTopLeft(view : View, view2 : View? = null){
