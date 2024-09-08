@@ -11,6 +11,7 @@ import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.google.gson.Gson
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -19,8 +20,11 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
 import com.norbert.koller.shared.widgets.WidgetHelper
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class LaunchActivity : AppCompatActivity() {
@@ -35,6 +39,7 @@ class LaunchActivity : AppCompatActivity() {
             intent = null
         }
 
+        //lehet felesleges
         AuthenticationManager.handleFailedTokenRefresh = {
 
             lifecycleScope.launch {
@@ -54,10 +59,7 @@ class LaunchActivity : AppCompatActivity() {
 
         AuthenticationManager.handleRefreshedTokenSaving = {
             lifecycleScope.launch {
-                DataStoreManager.saveTokens(
-                    this@LaunchActivity,
-                    LoginTokensData.instance!!
-                )
+                DataStoreManager.saveTokens(this@LaunchActivity)
             }
         }
 
@@ -71,7 +73,7 @@ class LaunchActivity : AppCompatActivity() {
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
                     // Check whether the initial data is ready.
-                    return if (UserData.instance.uid != -1) {
+                    return if (CacheManager.userData.uid != -1) {
                         // The content is ready. Start drawing.
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
@@ -84,32 +86,18 @@ class LaunchActivity : AppCompatActivity() {
         )
 
         lifecycleScope.launch {
-            LoginTokensData.instance = DataStoreManager.readTokens(this@LaunchActivity)
-            if (LoginTokensData.instance == null) {
+            CacheManager.loginData = DataStoreManager.readTokens(this@LaunchActivity)
+            val json = userDataStore.data.first()[DataStoreManager.USER]
+
+            if (CacheManager.loginData == null || json == null) {
                 ApplicationManager.openLogin.invoke(this@LaunchActivity)
                 finish()
 
             } else {
 
-                if(ApplicationManager.isOnline(this@LaunchActivity)) {
-                    RetrofitInstance.communicate(lifecycleScope,
-                        RetrofitInstance.api::getCurrentUser,
-                        {
-                            UserData.instance = it as UserData
-
-                            ApplicationManager.openMain.invoke(this@LaunchActivity)
-                            finish()
-                        },
-                        { _, _ ->
-                            ApplicationManager.openLogin.invoke(this@LaunchActivity)
-                            finish()
-                        })
-
-                }
-                else{
-                    ApplicationManager.openMain.invoke(this@LaunchActivity)
-                    finish()
-                }
+                CacheManager.userData = Gson().fromJson(json, UserData::class.java)
+                ApplicationManager.openMain.invoke(this@LaunchActivity)
+                finish()
             }
         }
 

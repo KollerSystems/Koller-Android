@@ -18,6 +18,7 @@ import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ItemUserSmallBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.getAttributeColor
 
 
@@ -55,7 +56,7 @@ class UserPreviewRecyclerAdapter (private var userList : ArrayList<UserData>, va
 
             holder.itemView.setOnClickListener {
 
-                if(currentItem.uid == UserData.instance.uid){
+                if(currentItem.uid == CacheManager.userData.uid){
                     ApplicationManager.openProfile.invoke(holder.itemView.context)
                 }
                 else{

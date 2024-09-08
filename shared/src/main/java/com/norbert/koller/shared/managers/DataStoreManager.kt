@@ -12,6 +12,7 @@ import com.google.gson.Gson
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.UserData
+import com.squareup.picasso.Cache
 import kotlinx.coroutines.flow.first
 
 
@@ -22,6 +23,7 @@ class DataStoreManager {
 
         val LOGIN_DATA_NAME = "login_data"
         val TIP_DATA_NAME = "tip_data"
+        val USER = stringPreferencesKey("current_user")
         val TOKENS = stringPreferencesKey("tokens")
         val ROOM_PRESENCE_KNOWS_THE_LAYOUT = intPreferencesKey("room_presence_knows_the_layout")
         val Context.loginDataStore: DataStore<Preferences> by preferencesDataStore(name = LOGIN_DATA_NAME)
@@ -30,8 +32,10 @@ class DataStoreManager {
 
 
         suspend fun saveCache(context: Context){
+            val gson = Gson()
+
             for ((key, baseData) in CacheManager.savedValues){
-                val json = Gson().toJson(baseData)
+                val json = gson.toJson(baseData)
                 context.userDataStore.edit {
                     it[stringPreferencesKey("${key.first}:${key.second}")] = json
 
@@ -39,11 +43,17 @@ class DataStoreManager {
             }
 
             for((key, baseDataList) in CacheManager.savedListsOfValues){
-                val json = Gson().toJson(baseDataList)
+                val json = gson.toJson(baseDataList)
                 context.userDataStore.edit {
                     it[stringPreferencesKey(key)] = json
 
                 }
+            }
+
+            val json = gson.toJson(CacheManager.userData)
+            context.userDataStore.edit {
+                it[USER] = json
+
             }
         }
 
@@ -51,10 +61,13 @@ class DataStoreManager {
             return Gson().fromJson(context.loginDataStore.data.first()[TOKENS], LoginTokensData::class.java)
         }
 
-        suspend fun saveTokens(context: Context, tokensData: LoginTokensData) {
-            val dataStoreKey = TOKENS
+        suspend fun saveTokens(context: Context) {
+            val gson = Gson()
             context.loginDataStore.edit { login_data ->
-                login_data[dataStoreKey] = Gson().toJson(tokensData)
+                login_data[TOKENS] = gson.toJson(CacheManager.loginData!!)
+            }
+            context.userDataStore.edit {
+                it[USER] = gson.toJson(CacheManager.userData)
             }
         }
 

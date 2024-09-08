@@ -9,6 +9,7 @@ import com.norbert.koller.shared.data.ApiLoginRefreshData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -37,7 +38,7 @@ class AuthenticationManager : Authenticator {
     }
 
     fun getToken() : ApiLoginRefreshData{
-        return ApiLoginRefreshData("refresh_token", LoginTokensData.instance!!.refreshToken)
+        return ApiLoginRefreshData("refresh_token", CacheManager.loginData!!.refreshToken)
     }
 
     override fun authenticate(route: Route?, response: Response): Request? {
@@ -56,16 +57,16 @@ class AuthenticationManager : Authenticator {
                     val tokenData : LoginTokensResponseData? = response2.body()
 
                     if (response2.isSuccessful && tokenData != null) {
-                        LoginTokensData.instance = LoginTokensData(
+                        CacheManager.loginData = LoginTokensData(
                             tokenData.accessToken,
                             Calendar.getInstance().timeInMillis + tokenData.expiresIn - RetrofitInstance.timeout,
                             tokenData.refreshToken,
-                            LoginTokensData.instance!!.uid
+                            CacheManager.loginData!!.uid
                         )
                         handleRefreshedTokenSaving?.invoke()
 
                         request = response.request.newBuilder()
-                            .header("Authorization", "Bearer ${LoginTokensData.instance?.accessToken}")
+                            .header("Authorization", "Bearer ${CacheManager.loginData?.accessToken}")
                             .build()
 
                     }
@@ -111,7 +112,7 @@ class AuthenticationManager : Authenticator {
             delay(100)
         }
         request = response.request.newBuilder()
-            .header("Authorization", "Bearer ${LoginTokensData.instance!!.accessToken}")
+            .header("Authorization", "Bearer ${CacheManager.loginData!!.accessToken}")
             .build()
     }
 

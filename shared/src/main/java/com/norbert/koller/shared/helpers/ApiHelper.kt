@@ -15,8 +15,8 @@ class ApiHelper {
         const val STATE_LOADING = 1
         const val STATE_ERROR = 2
 
-        fun createSnackBar(context : Context, onRefresh: (()-> Unit)) : Snackbar{
-            val snackbar = (context as MainActivity).getSnackBar(context.getString(R.string.failed_to_refresh), Snackbar.LENGTH_INDEFINITE)
+        fun createSnackBar(context : Context, text : String, onRefresh: (()-> Unit)) : Snackbar{
+            val snackbar = (context as MainActivity).getSnackBar(text, Snackbar.LENGTH_INDEFINITE)
             snackbar.setAction(context.getString(R.string.retry)){
                 onRefresh.invoke()
             }
@@ -24,12 +24,19 @@ class ApiHelper {
                 .addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
                     override fun onPreDraw(): Boolean {
                         snackbar.view.viewTreeObserver.removeOnPreDrawListener(this)
-                        (snackbar.view.layoutParams as CoordinatorLayout.LayoutParams).behavior =
-                            null
+                        if(snackbar.view.layoutParams is CoordinatorLayout.LayoutParams){
+                            (snackbar.view.layoutParams as CoordinatorLayout.LayoutParams).behavior = null
+                        }
                         return true
                     }
                 })
             snackbar.show()
+
+            return snackbar
+        }
+
+        fun createSnackBar(context : Context, onRefresh: (()-> Unit)) : Snackbar{
+            val snackbar = createSnackBar(context,  context.getString(R.string.failed_to_refresh), onRefresh)
 
             return snackbar
         }

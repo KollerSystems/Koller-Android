@@ -18,6 +18,7 @@ import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBin
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingListFragment
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.managers.setupBottomSheet
@@ -40,9 +41,9 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         super.onViewCreated(view, savedInstanceState)
         dialog!!.setupBottomSheet()
 
-        getHeaderBinding().user.setUser(UserData.instance)
-        getHeaderBinding().textName.text = UserData.instance.name
-        getHeaderBinding().textDescription.text = UserData.instance.createDescription()
+        getHeaderBinding().user.setUser(CacheManager.userData)
+        getHeaderBinding().textName.text = CacheManager.userData.name
+        getHeaderBinding().textDescription.text = CacheManager.userData.createDescription()
 
         getHeaderBinding().btnLogout.setOnClickListener{
 
@@ -60,7 +61,7 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
                     lifecycleScope.launch{
 
                         requireContext().loginDataStore.edit {
-                            it.remove(DataStoreManager.TOKENS)
+                            it.clear()
                         }
                         ApplicationManager.openLogin.invoke(requireContext())
                         requireActivity().finish()
@@ -87,13 +88,13 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
         getHeaderBinding().cbRoom.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(UserData.instance.rid!!))
+            (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(CacheManager.userData.rid!!))
             this.dismiss()
         }
 
         getFooterBinding().cbCrossings.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(CrossingListFragment(UserData.instance.uid))
+            (requireContext() as MainActivity).addFragment(CrossingListFragment(CacheManager.userData.uid))
             this.dismiss()
         }
 

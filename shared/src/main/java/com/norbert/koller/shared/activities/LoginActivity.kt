@@ -37,6 +37,7 @@ import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.databinding.ActivityLoginBinding
 import com.norbert.koller.shared.databinding.ActivityMainBinding
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.back
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getColorOfPixel
@@ -129,11 +130,11 @@ class LoginActivity : AppCompatActivity() {
         }
 
         viewModel.userData.observe(this){
-            lifecycleScope.launch {
-                DataStoreManager.saveTokens(this@LoginActivity, LoginTokensData.instance!!)
-            }
 
-            UserData.instance = it as UserData
+            CacheManager.userData = it as UserData
+            lifecycleScope.launch {
+                DataStoreManager.saveTokens(this@LoginActivity)
+            }
 
             ApplicationManager.openMain.invoke(this@LoginActivity)
             finish()

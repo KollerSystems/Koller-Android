@@ -5,8 +5,4 @@ data class LoginTokensData (
     val expiresAt : Long,
     val refreshToken : String,
     var uid : Int = -1
-){
-    companion object{
-        var instance : LoginTokensData? = null
-    }
-}
+)

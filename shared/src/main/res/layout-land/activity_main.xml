@@ -6,6 +6,17 @@
     android:orientation="vertical"
     tools:context=".activities.MainActivity">
 
+    <TextView
+        android:id="@+id/internet_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorErrorContainer"
+        android:drawableStart="@drawable/no_internet"
+        android:drawablePadding="@dimen/spacing"
+        android:padding="@dimen/spacing"
+        android:text="@string/no_internet"
+        android:visibility="gone" />
+
     <LinearLayout
 
         android:layout_width="match_parent"

@@ -456,4 +456,6 @@
     <string name="is_out">Kint</string>
     <string name="is_in">Bent</string>
     <string name="failed_to_refresh">Friss adatok lekérése sikertelen</string>
+    <string name="failed_to_refresh_user">Friss felhasználói adataid lekérése sikertelen</string>
+    <string name="no_internet">Nincs internet kapcsolat!</string>
 </resources>

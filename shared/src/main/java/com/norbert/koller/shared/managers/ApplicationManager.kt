@@ -115,6 +115,8 @@ open class ApplicationManager : Application() {
             override fun onActivityDestroyed(activity: Activity) {
             }
         })
+
+
     }
 
     fun isAppInBackground(): Boolean {

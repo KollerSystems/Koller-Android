@@ -2,10 +2,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activities.MainActivity"
     android:layout_width="match_parent"
-android:layout_height="match_parent"
->
+    android:layout_height="match_parent"
+    tools:context=".activities.MainActivity">
 
 
     <com.sofakingforever.stars.AnimatedStarsView
@@ -27,6 +26,7 @@ android:layout_height="match_parent"
 
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:id="@+id/cl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/header_footer_size"
@@ -112,7 +112,6 @@ android:layout_height="match_parent"
                 </LinearLayout>
 
                 <com.google.android.material.card.MaterialCardView
-                    android:contentDescription="@string/your_profile"
                     android:id="@+id/card_user"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
@@ -120,6 +119,7 @@ android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/spacing"
                     android:layout_marginEnd="20dp"
                     android:layout_marginBottom="@dimen/spacing"
+                    android:contentDescription="@string/your_profile"
                     app:cardCornerRadius="999dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -163,6 +163,17 @@ android:layout_height="match_parent"
         app:menu="@menu/bottom_navigation_view">
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    <TextView
+        android:id="@+id/internet_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?attr/colorErrorContainer"
+        android:drawableStart="@drawable/no_internet"
+        android:drawablePadding="@dimen/spacing"
+        android:padding="@dimen/spacing"
+        android:text="@string/no_internet"
+        android:visibility="gone" />
 
 
 </FrameLayout>

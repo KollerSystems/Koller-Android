@@ -15,6 +15,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.managers.CacheManager
 
 class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
@@ -42,7 +43,7 @@ class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
         holder.itemView.setOnClickListener {
 
-            if (item.uid == UserData.instance.uid) {
+            if (item.uid == CacheManager.userData.uid) {
                 ApplicationManager.openProfile(context)
             } else {
 

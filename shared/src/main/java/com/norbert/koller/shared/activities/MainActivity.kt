@@ -4,8 +4,13 @@ import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
+import android.net.ConnectivityManager
+import android.net.Network
+import android.net.NetworkCapabilities
+import android.net.NetworkRequest
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.MifareClassic
@@ -15,6 +20,8 @@ import android.util.Log
 import android.view.View
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.ViewGroup.MarginLayoutParams
+import android.view.WindowInsets
 import android.view.animation.AnimationUtils
 import android.widget.TextView
 import android.window.OnBackInvokedDispatcher
@@ -22,8 +29,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isVisible
+import androidx.core.view.updatePadding
+import androidx.core.view.updatePaddingRelative
 import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -35,12 +46,14 @@ import com.google.android.material.transition.MaterialContainerTransform
 import com.norbert.koller.shared.KollerHostApduService
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.AuthenticationManager
-import com.norbert.koller.shared.data.LoginTokensData
+import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
+import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.managers.camelToSnakeCase
@@ -55,6 +68,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Calendar
+import kotlin.properties.Delegates
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -177,11 +191,24 @@ abstract class MainActivity : AppCompatActivity() {
     abstract fun getAppIcon() : Int
     private lateinit var binding : ActivityMainBinding
 
+    private lateinit var connectivityManager: ConnectivityManager
+    var statusBarHeight : Int = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        val rootView: View = findViewById(android.R.id.content)
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        if(binding.cl != null){
+            ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, insets ->
+                statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+                binding.internetStatus.updatePadding(top = binding.internetStatus.paddingBottom + statusBarHeight)
+                insets
+            }
+        }
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
 
@@ -197,9 +224,55 @@ abstract class MainActivity : AppCompatActivity() {
             textView
         }
         binding.textSwitcher.measureAllChildren = false
+
+        val networkRequest = NetworkRequest.Builder()
+            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+            .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+            .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+            .build()
+
+        val networkCallback = object : ConnectivityManager.NetworkCallback() {
+            override fun onAvailable(network: Network) {
+                super.onAvailable(network)
+                runOnUiThread {
+                    onOnline()
+                }
+            }
+
+            override fun onLost(network: Network) {
+                super.onLost(network)
+                runOnUiThread {
+                    onOffline()
+                }
+            }
+        }
+
+        connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
+        connectivityManager.requestNetwork(networkRequest, networkCallback)
     }
 
+    fun onOnline(){
+        binding.internetStatus.isVisible = false
+        if(binding.cl != null){
+            binding.cl?.updatePadding(top = 0)
+        }
+        else{
+            window.statusBarColor = getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
+        }
+    }
 
+    fun onOffline(){
+        binding.internetStatus.isVisible = true
+        if(binding.cl != null){
+            binding.internetStatus.post{
+                binding.cl!!.updatePadding(top = binding.internetStatus.height - binding.internetStatus.paddingTop + binding.internetStatus.paddingBottom)
+            }
+        }
+        else{
+            window.statusBarColor = getAttributeColor(com.google.android.material.R.attr.colorErrorContainer)
+        }
+
+    }
 
     fun bottomNavigationView() : NavigationBarView{
         return (binding.navigationView as NavigationBarView)
@@ -218,11 +291,30 @@ abstract class MainActivity : AppCompatActivity() {
     val backgroundAnimatorIn = ValueAnimator.ofFloat(0f, 1f)
     val backgroundAnimatorOut = ValueAnimator.ofFloat(1f, 0f)
 
+    private fun refreshUserData(){
+        RetrofitInstance.communicate(lifecycleScope,
+            RetrofitInstance.api::getCurrentUser,
+            {
+                CacheManager.userData = it as UserData
+            },
+            { _, _ ->
+                ApiHelper.createSnackBar(this, getString(R.string.failed_to_refresh_user)){
+                    refreshUserData()
+                }
+            })
+
+    }
+
     override fun onPostCreate(savedInstanceState: Bundle?) {
 
         super.onPostCreate(savedInstanceState)
 
-
+        if(ApplicationManager.isOnline(this)){
+            onOnline()
+        }
+        else{
+            onOffline()
+        }
 
 
 
@@ -243,10 +335,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         AuthenticationManager.handleRefreshedTokenSaving = {
             lifecycleScope.launch {
-                DataStoreManager.saveTokens(
-                    this@MainActivity,
-                    LoginTokensData.instance!!
-                )
+                DataStoreManager.saveTokens(this@MainActivity                )
             }
         }
 
@@ -275,7 +364,6 @@ abstract class MainActivity : AppCompatActivity() {
         }
         else{
             binding.imageAppIcon!!.setImageResource(getAppIcon())
-            window.statusBarColor = this.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
         }
 
         binding.buttonBack.setOnClickListener{
@@ -304,12 +392,15 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         Picasso.get()
-            .load(UserData.instance.picture)
+            .load(CacheManager.userData.picture)
             .noPlaceholder()
             .into(binding.imageUser)
 
 
         if(savedInstanceState == null) {
+            if(ApplicationManager.isOnline(this)) {
+                refreshUserData()
+            }
             changeBackStackState(R.id.home)
             binding.textTitleDescription.measure(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             viewModel.descriptionHeight = binding.textTitleDescription.measuredHeight;

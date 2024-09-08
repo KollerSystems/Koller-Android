@@ -9,6 +9,7 @@ import com.norbert.koller.shared.activities.ChangePasswordActivity
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.FragmentManageAccountBinding
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.stfalcon.imageviewer.StfalconImageViewer
 
 class ManageAccountFragment : FragmentInMainActivity() {
@@ -27,8 +28,8 @@ class ManageAccountFragment : FragmentInMainActivity() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textName.text = UserData.instance.name
-        binding.user.setUser(UserData.instance)
+        binding.textName.text = CacheManager.userData.name
+        binding.user.setUser(CacheManager.userData)
 
         binding.user.setOnClickListener{
             StfalconImageViewer.Builder(requireContext(), listOf(binding.user.getImage().drawable)){ view, drawable ->

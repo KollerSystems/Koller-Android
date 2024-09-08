@@ -11,6 +11,7 @@ import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import kotlinx.coroutines.launch
 
@@ -32,12 +33,12 @@ class LoginViewModel : ViewModel() {
         RetrofitInstance.communicate(viewModelScope, {RetrofitInstance.api.postLogin(loginData)},
             {
                 it as LoginTokensResponseData
-                LoginTokensData.instance = LoginTokensData(it.accessToken, Calendar.getInstance().timeInMillis + it.expiresIn-RetrofitInstance.timeout, it.refreshToken)
+                CacheManager.loginData = LoginTokensData(it.accessToken, Calendar.getInstance().timeInMillis + it.expiresIn-RetrofitInstance.timeout, it.refreshToken)
 
                 RetrofitInstance.communicate(viewModelScope, RetrofitInstance.api::getCurrentUser,
                     { response ->
                         response as UserData
-                        LoginTokensData.instance!!.uid = response.uid
+                        CacheManager.loginData!!.uid = response.uid
                         userData.value = response
                     },
                     {errorMsg, _ ->

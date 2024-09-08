@@ -11,6 +11,7 @@ import com.norbert.koller.shared.R
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.viewmodels.DetailsViewModel
 
 class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
@@ -18,7 +19,7 @@ class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
     lateinit var viewModel : DetailsViewModel
 
     override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
-        return if(viewModel.owner!!.uid == UserData.instance.uid){
+        return if(viewModel.owner!!.uid == CacheManager.userData.uid){
             Pair(getString(R.string.user_outgoings),"")
         } else{
             Pair(viewModel.owner!!.name, getString(R.string.user_outgoings))

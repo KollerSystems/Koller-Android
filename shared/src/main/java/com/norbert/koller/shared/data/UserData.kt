@@ -30,11 +30,6 @@ class UserData(
 
 ) : BaseData()
 {
-
-    companion object {
-        var instance: UserData = UserData()
-    }
-
     override fun diffrentDecider(context: Context): String {
         if(name == null){
             return "NO NAME"

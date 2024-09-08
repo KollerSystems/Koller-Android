@@ -9,6 +9,7 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.shared.fragments.UserOutgoingsFragment
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.student.databinding.ContentFragmentBsdfProfileBinding
 
 class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdfFragment() {
@@ -28,7 +29,7 @@ class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.Prof
 
         binding.cbOutgoing.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(UserOutgoingsFragment(UserData.instance))
+            (requireContext() as MainActivity).addFragment(UserOutgoingsFragment(CacheManager.userData))
             this.dismiss()
         }
     }
