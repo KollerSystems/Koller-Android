@@ -291,6 +291,7 @@
     </style>
 
     <style name="ChipFilter" parent="@style/Widget.Material3.Chip.Filter">
+
         <item name="checkedIconEnabled">false</item>
         <item name="checkedIcon">@null</item>
         <item name="chipMinTouchTargetSize">0dp</item>

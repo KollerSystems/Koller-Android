@@ -4,7 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.norbert.koller.teacher.fragments.ProgramParticipantsFragment
+import com.norbert.koller.teacher.fragments.ProgramParticipantListFragment
 import com.norbert.koller.teacher.fragments.StudyGroupTypeDataFragment
 
 class ProgramTypeViewPagerAdapter(val pid : Int? = null, fragmentManager: FragmentManager, lifecycle: Lifecycle) : FragmentStateAdapter(fragmentManager, lifecycle) {
@@ -19,10 +19,10 @@ class ProgramTypeViewPagerAdapter(val pid : Int? = null, fragmentManager: Fragme
                 StudyGroupTypeDataFragment(pid)
             }
             1 ->{
-                ProgramParticipantsFragment()
+                ProgramParticipantListFragment()
             }
             2 ->{
-                ProgramParticipantsFragment()
+                ProgramParticipantListFragment()
             }
             else -> {
                 Fragment()

@@ -1,16 +1,14 @@
 package com.norbert.koller.teacher.fragments
 
-import android.os.Bundle
-import android.view.View
-import com.norbert.koller.shared.fragments.BaseProgramsFragment
+import com.norbert.koller.shared.fragments.BaseProgramListFragment
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.recycleradapters.ProgramRecyclerAdapter
 
-class BaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : BaseProgramsFragment(defaultFilters) {
+class BaseProgramListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : BaseProgramListFragment(defaultFilters) {
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-        recyclerAdapter = ProgramRecyclerAdapter()
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
 
         addDateChip()
@@ -21,9 +19,9 @@ class BaseProgramsFragment(defaultFilters : MutableMap<String, ArrayList<String>
             ListItem("1 ${lessonLocalName}", null, null, "1"),
             ListItem("2 ${lessonLocalName}", null, null, "2")
         ))
+    }
 
-
-
-        super.onViewCreated(view, savedInstanceState)
+    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
+        return ProgramRecyclerAdapter()
     }
 }

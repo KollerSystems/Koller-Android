@@ -3,15 +3,24 @@ package com.norbert.koller.teacher.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.norbert.koller.shared.customviews.CardButton
+import com.norbert.koller.shared.data.RoomData
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentRoomHeaderBinding
-import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.activities.EditRoomActivity
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
-import com.norbert.koller.teacher.activities.RoomRateActivity
 import com.norbert.koller.teacher.databinding.FragmentRoomBinding
 
-class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.RoomFragment(rid)  {
+class RoomFragment : com.norbert.koller.shared.fragments.RoomFragment {
+
+    constructor(id : Int? = null) : super(
+        id, null
+    )
+
+    constructor(roomData : RoomData? = null) : super(
+        null, roomData
+    )
+
+    constructor() : super(null, null)
 
     lateinit var binding : FragmentRoomBinding
     override fun getHeaderBinding(): ContentFragmentRoomHeaderBinding {
@@ -22,7 +31,7 @@ class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.Room
         super.onViewCreated(view, savedInstanceState)
 
         binding.cbRoomTidiness.setOnClickListener{
-            getMainActivity().addFragment(RoomTidinessFragment())
+            getMainActivity().addFragment(RoomTidinessListFragment())
         }
 
         binding.cbPresence.setOnClickListener{

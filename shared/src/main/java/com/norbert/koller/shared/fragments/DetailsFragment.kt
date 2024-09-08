@@ -42,8 +42,8 @@ abstract class DetailsFragment(val id : Int? = null, val baseData : BaseData? = 
 
     lateinit var swrl : SwipeRefreshLayout
 
-    open fun setupTransition(view : View){
-        ViewCompat.setTransitionName(view, "cardTransition_${id?:baseData!!.getMainID()}position")
+    open fun setupTransition(view : View, id : Int?){
+        ViewCompat.setTransitionName(view, "cardTransition_${id}position")
     }
 
     override fun onCreateView(
@@ -52,7 +52,10 @@ abstract class DetailsFragment(val id : Int? = null, val baseData : BaseData? = 
     ): View? {
         // Inflate the layout for this fragment
         val view = createRootView()
-        setupTransition(view.rootView)
+        val id = id?:baseData?.getMainID()
+        if(id != null){
+            setupTransition(view.rootView, id)
+        }
         return view
     }
 
@@ -85,9 +88,10 @@ abstract class DetailsFragment(val id : Int? = null, val baseData : BaseData? = 
 
         viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
 
+
         swrl = view.findViewById(R.id.swrl)
         swrl.setOnRefreshListener {
-            refresh()
+            viewModel.refresh(apiFunctionToCall(), getDataTag())
         }
 
         viewModel.onRefreshSuccess = {

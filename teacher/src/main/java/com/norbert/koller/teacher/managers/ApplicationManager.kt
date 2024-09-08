@@ -56,6 +56,9 @@ class ApplicationManager : ApplicationManager() {
         notificationFragment = { NotificationsFragment() }
         roomFragment = {rid -> RoomFragment(rid) }
         userFragment = {uid -> UserFragment(uid) }
+
+        roomFragmentWithData = { RoomFragment(it) }
+        userFragmentWithData = { UserFragment(it) }
         roomListFragment = {RoomListFragment()}
         userListFragment = {UserListFragment()}
 

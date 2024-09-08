@@ -5,6 +5,7 @@ import android.view.View
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ProgramTypePagingSource
 import com.norbert.koller.shared.fragments.ListFragment
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.teacher.recycleradapters.BaseProgramTypeRecyclerAdapter
 
@@ -18,15 +19,18 @@ class BaseProgramTypesFragment(defaultFilters : MutableMap<String, ArrayList<Str
         return ProgramTypePagingSource(requireContext(), getBaseViewModel())
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
+        return BaseProgramTypeRecyclerAdapter()
+    }
+
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
         setupSort(R.string.abc, R.string.zyx,"Topic")
-        recyclerAdapter = BaseProgramTypeRecyclerAdapter()
 
 
         addSearchbar("Topic")
 
-        super.onViewCreated(view, savedInstanceState)
     }
 
 }

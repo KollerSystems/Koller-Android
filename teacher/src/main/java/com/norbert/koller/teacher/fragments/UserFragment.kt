@@ -13,7 +13,17 @@ import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 import com.norbert.koller.teacher.activities.EditUserActivity
 import com.norbert.koller.teacher.databinding.FragmentUserBinding
 
-class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(uid) {
+class UserFragment : com.norbert.koller.shared.fragments.UserFragment {
+
+    constructor(id : Int? = null) : super(
+        id, null
+    )
+
+    constructor(userData : UserData? = null) : super(
+        null, userData
+    )
+
+    constructor() : super(null, null)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

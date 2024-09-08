@@ -21,6 +21,8 @@ class UserFragment : com.norbert.koller.shared.fragments.UserFragment {
         null, userData
     )
 
+    constructor() : super(null, null)
+
     lateinit var binding : FragmentUserBinding
 
     override fun getHeaderBinding(): ContentFragmentUserHeaderBinding {

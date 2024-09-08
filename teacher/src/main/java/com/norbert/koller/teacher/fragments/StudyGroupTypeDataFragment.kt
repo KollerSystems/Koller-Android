@@ -17,7 +17,7 @@ class StudyGroupTypeDataFragment(pid : Int? = null) : StudyGroupTypeFragment(pid
         return binding.root
     }
 
-    override fun setupTransition(view: View) {
+    override fun setupTransition(view: View, id : Int?) {
 
     }
 
