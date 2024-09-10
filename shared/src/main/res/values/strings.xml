@@ -2,7 +2,7 @@
 <resources>
 
     <string name="password">Password</string>
-    <string name="invalid_username">Invalid Username</string>
+    <string name="invalid_username">Invalid username</string>
     <string name="invalid_password">Invalid password</string>
     <string name="ok">Okey</string>
     <string name="login_failed">Unsuccessful login</string>
@@ -104,8 +104,8 @@
     <string name="country">Country</string>
     <string name="required">Required</string>
     <string name="optional">Optional</string>
-    <string name="invalid_id">Invalid education ID</string>
-    <string name="finnish">Finnish</string>
+    <string name="invalid_id">Invalid student number</string>
+    <string name="finnish">Finish</string>
     <string name="backward">Backward</string>
     <string name="date">Date</string>
     <string name="filters">Filters</string>
@@ -148,8 +148,7 @@
     <string name="date_time">Date</string>
     <string name="addressee">Addressee</string>
     <string name="unset">Unset</string>
-    <string name="are_you_sure_canel_title">Are you sure you want to discard this post?</string>
-    <string name="q_save_a_draft">Would you like to save it as a draft?</string>
+    <string name="q_save_a_draft">Save as a draft?</string>
     <string name="continue_editing">Continue editing</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
@@ -163,7 +162,7 @@
     <string name="high_priority_highlighting">High priority highlighting</string>
     <string name="news_desc">For example, the kitchen will be closed next week.</string>
     <string name="program_desc">For example, a trip and even a basic program replacement.</string>
-    <string name="are_you_sure_you_want_to_discard_the_post">Are you sure you want to discard the post?</string>
+    <string name="are_you_sure_you_want_to_discard_the_post">Discard post?</string>
     <string name="create_a_draft">Create a draft</string>
     <string name="state">State</string>
     <string name="direction">Direction</string>
@@ -410,7 +409,7 @@
     <string name="aggregated">Aggregated</string>
     <string name="with_permission">With permission</string>
     <string name="graduation_certificate">Graduation certificate</string>
-    <string name="press_here_to_upload_image">Press here to upload image</string>
+    <string name="press_here_to_upload_image">Tap here to upload image</string>
     <string name="different_image">Different image</string>
     <string name="time_range">Time range</string>
     <string name="clear_filters">Clear filters</string>
@@ -467,4 +466,6 @@
     <string name="failed_to_refresh">Failed to get fresh data</string>
     <string name="failed_to_refresh_user">Failed to get your fresh user data</string>
     <string name="no_internet">No internet connection!</string>
+    <string name="discard">Discard</string>
+    <string name="sure_logout">Log out?</string>
 </resources>

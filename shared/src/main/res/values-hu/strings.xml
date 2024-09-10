@@ -153,8 +153,7 @@
     <string name="date_time">Időpont</string>
     <string name="addressee">Címzett</string>
     <string name="unset">Nincs beállítva</string>
-    <string name="are_you_sure_canel_title">Biztosan el akarod vetni a bejegyzést?</string>
-    <string name="q_save_a_draft">Szeretnéd piszkozatként elmenteni?</string>
+    <string name="q_save_a_draft">Elmented piszkozatként?</string>
     <string name="continue_editing">Szerkesztés folytatása</string>
     <string name="yes">Igen</string>
     <string name="no">Nem</string>
@@ -168,7 +167,7 @@
     <string name="high_priority_highlighting">Magas prioritású kiemelés</string>
     <string name="news_desc">Például a jövő héten zárva lesz a konyha.</string>
     <string name="program_desc">Például kirándulás és akár alapprogram pótlási lehetőség.</string>
-    <string name="are_you_sure_you_want_to_discard_the_post">Biztos el akarod vetni a bejegyzést?</string>
+    <string name="are_you_sure_you_want_to_discard_the_post">Elveted a bejegyzést?</string>
     <string name="create_a_draft">Piszkozat létrehozása</string>
     <string name="state">Állapot</string>
     <string name="direction">Irány</string>
@@ -214,7 +213,7 @@
     <string name="bug_report">Hibajelentés</string>
     <string name="suggestion">Javaslat</string>
     <string name="send">Küldés</string>
-    <string name="already_reported">Már reportolt</string>
+    <string name="already_reported">Már jelentett</string>
     <string name="already_suggested">Már javasolt</string>
     <string name="pending">Folyamatban</string>
     <string name="not_a_bug">Nem hiba</string>
@@ -401,7 +400,7 @@
     <string name="aggregated">Összesített</string>
     <string name="with_permission">Engedéllyel</string>
     <string name="graduation_certificate">Érettségi bizonyítvány</string>
-    <string name="press_here_to_upload_image">Nyomj ide a kép feltöltéséhez</string>
+    <string name="press_here_to_upload_image">Koppints ide a kép feltöltéséhez</string>
     <string name="different_image">Másik kép</string>
     <string name="time_range">Időtartam</string>
     <string name="clear_filters">Szűrők törlése</string>
@@ -458,4 +457,6 @@
     <string name="failed_to_refresh">Friss adatok lekérése sikertelen</string>
     <string name="failed_to_refresh_user">Friss felhasználói adataid lekérése sikertelen</string>
     <string name="no_internet">Nincs internet kapcsolat!</string>
+    <string name="discard">Elvetés</string>
+    <string name="sure_logout">Kijelentkezel?</string>
 </resources>

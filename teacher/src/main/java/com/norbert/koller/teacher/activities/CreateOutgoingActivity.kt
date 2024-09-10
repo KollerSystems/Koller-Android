@@ -135,10 +135,10 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
         onBackPressedDispatcher.addCallback(this){
             MaterialAlertDialogBuilder(this@CreateOutgoingActivity)
                 .setTitle(getString(com.norbert.koller.shared.R.string.are_you_sure_you_want_to_discard_the_post))
-                .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
+                .setPositiveButton(getString(com.norbert.koller.shared.R.string.discard)) { _, _ ->
                     finish()
                 }
-                .setNegativeButton(getString(com.norbert.koller.shared.R.string.no)) { _, _ ->
+                .setNegativeButton(getString(com.norbert.koller.shared.R.string.cancel)) { _, _ ->
 
                 }
                 .setNeutralButton(getString(com.norbert.koller.shared.R.string.create_a_draft)){ _, _->

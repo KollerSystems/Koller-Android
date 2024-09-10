@@ -40,11 +40,11 @@ abstract class RoomsActivity : AppCompatActivity() {
         ){
             MaterialAlertDialogBuilder(this@RoomsActivity)
                 .setTitle(getString(R.string.are_you_sure_discard_all_grade))
-                .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
+                .setPositiveButton(getString(com.norbert.koller.shared.R.string.discard)) { _, _ ->
 
                     finish()
                 }
-                .setNegativeButton(getString(com.norbert.koller.shared.R.string.no)){ _, _ ->
+                .setNegativeButton(getString(com.norbert.koller.shared.R.string.cancel)){ _, _ ->
 
                 }
                 .setNeutralButton(getString(com.norbert.koller.shared.R.string.create_a_draft)){ _, _ ->
@@ -67,10 +67,10 @@ abstract class RoomsActivity : AppCompatActivity() {
         contentBinding.manageBar.button.setOnClickListener{
             MaterialAlertDialogBuilder(this)
                 .setTitle(getString(R.string.are_you_sure_publish_all_grade))
-                .setPositiveButton(getString(com.norbert.koller.shared.R.string.yes)) { _, _ ->
+                .setPositiveButton(getString(com.norbert.koller.shared.R.string.publish_all)) { _, _ ->
                     finish()
                 }
-                .setNegativeButton(getString(com.norbert.koller.shared.R.string.no)){ _, _ ->
+                .setNegativeButton(getString(com.norbert.koller.shared.R.string.cancel)){ _, _ ->
 
                 }
                 .show()

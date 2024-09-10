@@ -48,13 +48,13 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         getHeaderBinding().btnLogout.setOnClickListener{
 
             MaterialAlertDialogBuilder(view.context)
-                .setTitle("Biztosan ki akarsz jelentkezni?")
+                .setTitle(getString(R.string.sure_logout))
                 .setPositiveButton(
-                    getText(R.string.yes)
+                    getText(R.string.logout)
                 )
                 { _, _ ->
                     val dialog = MaterialAlertDialogBuilder(view.context)
-                        .setTitle("Kijelentkezés...")
+                        .setTitle(getString(R.string.loading))
                         .setCancelable(false)
                         .show()
 
