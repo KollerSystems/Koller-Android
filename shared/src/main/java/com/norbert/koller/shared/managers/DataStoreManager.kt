@@ -50,10 +50,12 @@ class DataStoreManager {
                 }
             }
 
-            val json = gson.toJson(CacheManager.userData)
-            context.userDataStore.edit {
-                it[USER] = json
+            if(CacheManager.userData.uid != -1){
+                val json = gson.toJson(CacheManager.userData)
+                context.userDataStore.edit {
+                    it[USER] = json
 
+                }
             }
         }
 
@@ -66,8 +68,10 @@ class DataStoreManager {
             context.loginDataStore.edit { login_data ->
                 login_data[TOKENS] = gson.toJson(CacheManager.loginData!!)
             }
-            context.userDataStore.edit {
-                it[USER] = gson.toJson(CacheManager.userData)
+            if(CacheManager.userData.uid != -1) {
+                context.userDataStore.edit {
+                    it[USER] = gson.toJson(CacheManager.userData)
+                }
             }
         }
 
