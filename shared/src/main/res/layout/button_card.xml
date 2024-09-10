@@ -48,7 +48,7 @@
         android:layout_width="20dp"
         android:layout_height="20dp"
         android:layout_marginStart="@dimen/text_container_margin"
-        android:background="@drawable/add"
+        android:background="@drawable/right"
         android:backgroundTint="?attr/colorForeground066"
         android:visibility="gone">
 

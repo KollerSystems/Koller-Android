@@ -31,6 +31,8 @@
         <item name="canteen_icon">@drawable/line_thick</item>
         <item name="canteen_background">@drawable/square</item>
         <item name="canteen_title">@string/unset</item>
+
+        <item name="end_icon">@drawable/right</item>
     </style>
 
     <style name="RecyclerView">

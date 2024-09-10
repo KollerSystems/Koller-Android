@@ -171,6 +171,7 @@
         android:text="@string/state" />
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@null"
 
         android:id="@+id/cb_status"
         style="@style/CardSingle"

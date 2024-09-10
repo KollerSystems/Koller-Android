@@ -102,6 +102,7 @@
                         style="@style/CardBottom"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:end_icon="@null"
                         app:icon="@drawable/close"
                         app:text="@string/remove">
 

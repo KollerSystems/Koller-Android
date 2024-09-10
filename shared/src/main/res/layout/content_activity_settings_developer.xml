@@ -129,6 +129,7 @@
         app:text="Maybe open an activity" />
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@null"
         android:id="@+id/cb_remove_current_user_save_data"
         style="@style/CardMiddle"
         android:layout_width="match_parent"
@@ -136,7 +137,7 @@
         app:text="Remove current user save data" />
 
     <com.norbert.koller.shared.customviews.CardButton
-
+        app:end_icon="@null"
         android:id="@+id/cb_remove_every_user_save_data"
         style="@style/CardMiddle"
         android:layout_width="match_parent"
@@ -144,6 +145,7 @@
         app:text="Remove every user save data" />
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@null"
         android:id="@+id/cb_remove_tips_save_data"
         style="@style/CardMiddle"
         android:layout_width="match_parent"
@@ -151,6 +153,7 @@
         app:text="Remove tips save data" />
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@null"
         android:id="@+id/cb_remove_login_save_data"
         style="@style/CardBottom"
         android:layout_width="match_parent"

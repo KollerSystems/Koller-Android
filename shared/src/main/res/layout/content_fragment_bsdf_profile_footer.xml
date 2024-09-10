@@ -24,6 +24,7 @@
         app:text="@string/settings" />
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@drawable/open_in_new"
         android:id="@+id/cb_privacy_policy"
         style="@style/CardBottom"
         android:layout_width="match_parent"
@@ -83,6 +84,7 @@
         tools:listitem="@layout/item_dev" />
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@drawable/open_in_new"
         android:id="@+id/cb_support"
         style="@style/CardMiddle"
         android:layout_width="match_parent"
@@ -91,6 +93,7 @@
         app:text="@string/support_us" />
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@drawable/open_in_new"
         android:id="@+id/cb_github"
         style="@style/CardMiddle"
         android:layout_width="match_parent"
@@ -102,6 +105,7 @@
     </com.norbert.koller.shared.customviews.CardButton>
 
     <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@drawable/open_in_new"
         android:id="@+id/cb_email"
         style="@style/CardBottom"
         android:layout_width="match_parent"
