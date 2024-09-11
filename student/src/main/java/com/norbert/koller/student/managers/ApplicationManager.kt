@@ -61,11 +61,6 @@ class ApplicationManager : ApplicationManager() {
         userFragment = {uid ->
             UserFragment(uid) }
 
-        roomFragmentWithData = {
-            RoomFragment(it) }
-        userFragmentWithData = {
-            UserFragment(it) }
-
         studyGroupsFragment = {map-> com.norbert.koller.student.fragments.StudyGroupTypeListFragment(map) }
     }
 }

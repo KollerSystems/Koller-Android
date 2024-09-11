@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-abstract class DetailsFragment(val id : Int? = null, val baseData : BaseData? = null) : FragmentInMainActivity() {
+abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() {
 
     lateinit var viewModel: DetailsViewModel
 
@@ -52,7 +52,6 @@ abstract class DetailsFragment(val id : Int? = null, val baseData : BaseData? = 
     ): View? {
         // Inflate the layout for this fragment
         val view = createRootView()
-        val id = id?:baseData?.getMainID()
         if(id != null){
             setupTransition(view.rootView, id)
         }
@@ -107,41 +106,17 @@ abstract class DetailsFragment(val id : Int? = null, val baseData : BaseData? = 
         if(!viewModel.response.isInitialized) {
 
             if (viewModel.id == null) {
-                viewModel.id = id?:baseData!!.getMainID()
+                viewModel.id = id
 
                 val key = Pair(getDataTag(), viewModel.id)
-                if (CacheManager.savedValues.containsKey(key)) {
+                if (CacheManager.detailsDataMap.containsKey(key)) {
 
-                    if (!CacheManager.savedValues[key]!!.isUnexpired(getTimeLimit())) {
+                    if (!CacheManager.detailsDataMap[key]!!.isUnexpired(getTimeLimit())) {
                         refresh()
                     }
 
-                    viewModel.response.value = CacheManager.savedValues[key]!!
+                    viewModel.response.value = CacheManager.detailsDataMap[key]!!
                     return
-                }
-
-                if(baseData != null){
-                    viewModel.response.value = baseData
-                    refresh()
-                    return
-                }
-
-                if (CacheManager.savedListsOfValues.containsKey(getDataTag())) {
-                    var foundIndex: Int? = null
-
-                    CacheManager.savedListsOfValues[getDataTag()]!!.forEachIndexed { i, value ->
-                        if (value.getMainID() == viewModel.id) {
-                            foundIndex = i
-                        }
-                    }
-
-                    if (foundIndex != null) {
-
-                        viewModel.updateValues(CacheManager.savedListsOfValues[getDataTag()]!![foundIndex!!], getDataTag())
-
-                        refresh()
-                        return
-                    }
                 }
 
                 val loadingOverlay = createLoadingOverlay()

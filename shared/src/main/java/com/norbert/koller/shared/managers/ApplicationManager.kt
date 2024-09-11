@@ -148,9 +148,7 @@ open class ApplicationManager : Application() {
         lateinit var notificationFragment: () -> NotificationsFragment
 
         lateinit var roomFragment: (rid : Int) -> RoomFragment
-        lateinit var roomFragmentWithData: (roomData: RoomData) -> RoomFragment
         lateinit var userFragment: (uid : Int) -> UserFragment
-        lateinit var userFragmentWithData: (userData: UserData) -> UserFragment
 
         lateinit var loginViewPagerRecyclerAdapter: () -> LoginViewPagerRecyclerAdapter
 

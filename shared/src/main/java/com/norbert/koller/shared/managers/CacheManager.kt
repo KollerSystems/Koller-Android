@@ -9,9 +9,17 @@ import okhttp3.Response
 
 object CacheManager {
 
-    var savedListsOfValues : MutableMap<String, ArrayList<BaseData>> = mutableMapOf()
+    var listDataMap : MutableMap<String, MutableList<Int>> = mutableMapOf()
 
-    var savedValues : MutableMap<Pair<String, Int>, BaseData> = mutableMapOf()
+    fun getListDataMapWithValues(dataTag : String) : List<BaseData>{
+        val list = mutableListOf<BaseData>()
+        for (listData in listDataMap[dataTag]!!){
+            list.add(detailsDataMap[Pair(dataTag, listData)]!!)
+        }
+        return list
+    }
+
+    var detailsDataMap : MutableMap<Pair<String, Int>, BaseData> = mutableMapOf()
 
     var loginData : LoginTokensData? = null
 

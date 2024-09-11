@@ -48,7 +48,7 @@ class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
         holder.itemView.setOnClickListener {
 
-            val fragment = ApplicationManager.roomFragmentWithData(item)
+            val fragment = ApplicationManager.roomFragment(item.getMainID())
             (holder.itemView.context as MainActivity).addFragmentWithTransition(fragment, holder.itemView, getTransitionName(item.getMainID()))
 
         }

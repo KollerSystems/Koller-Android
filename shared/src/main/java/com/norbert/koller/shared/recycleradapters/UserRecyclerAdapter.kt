@@ -47,7 +47,7 @@ class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
                 ApplicationManager.openProfile(context)
             } else {
 
-                val fragment = ApplicationManager.userFragmentWithData(item)
+                val fragment = ApplicationManager.userFragment(item.getMainID())
                 (context as MainActivity).addFragmentWithTransition(fragment, holder.itemView as MaterialCardView, getTransitionName(item.getMainID()))
             }
 

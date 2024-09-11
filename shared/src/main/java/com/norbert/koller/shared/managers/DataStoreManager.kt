@@ -34,7 +34,7 @@ class DataStoreManager {
         suspend fun saveCache(context: Context){
             val gson = Gson()
 
-            for ((key, baseData) in CacheManager.savedValues){
+            for ((key, baseData) in CacheManager.detailsDataMap){
                 val json = gson.toJson(baseData)
                 context.userDataStore.edit {
                     it[stringPreferencesKey("${key.first}:${key.second}")] = json
@@ -42,7 +42,7 @@ class DataStoreManager {
                 }
             }
 
-            for((key, baseDataList) in CacheManager.savedListsOfValues){
+            for((key, baseDataList) in CacheManager.listDataMap){
                 val json = gson.toJson(baseDataList)
                 context.userDataStore.edit {
                     it[stringPreferencesKey(key)] = json
@@ -83,12 +83,12 @@ class DataStoreManager {
             return gson.fromJson(json, classOfT) as BaseData
         }
 
-        suspend fun readList(context: Context, key: String, classOfT : Class<*>) : Array<BaseData>?{
+        suspend fun readList(context: Context, key: String, classOfT : Class<*>) : MutableList<Int>?{
             val json = context.userDataStore.data.first()[stringPreferencesKey(key)]
             if(json == null) return null
 
             val gson = Gson()
-            return gson.fromJson(json, classOfT) as Array<BaseData>
+            return gson.fromJson<MutableList<Int>>(json, classOfT)
         }
     }
 }
