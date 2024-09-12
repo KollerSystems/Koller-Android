@@ -20,4 +20,8 @@ class BaseProgramTypeData(
     override fun getMainID(): Int {
         return id
     }
+
+    override fun updateValues(baseData: BaseData) {
+        super.updateValues(baseData)
+    }
 }

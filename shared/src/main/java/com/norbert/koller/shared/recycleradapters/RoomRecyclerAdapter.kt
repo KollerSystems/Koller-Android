@@ -45,6 +45,9 @@ class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
             holder.itemBinding.textDescription.text = desc
         }
+        else{
+            holder.itemBinding.textDescription.text = holder.itemView.context.getString(R.string.empty)
+        }
 
         holder.itemView.setOnClickListener {
 

@@ -25,4 +25,13 @@ open class ProgramData(
     override fun getMainID(): Int {
         return id
     }
+
+    override fun updateValues(baseData: BaseData) {
+        super.updateValues(baseData)
+        baseData as ProgramData
+        programID = baseData.programID
+        date = baseData.date
+        lesson = baseData.lesson
+        length = baseData.length
+    }
 }

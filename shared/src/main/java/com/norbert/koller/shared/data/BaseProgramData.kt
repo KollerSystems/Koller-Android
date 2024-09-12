@@ -13,9 +13,15 @@ class BaseProgramData(
     topic: String,
     rid : Int,
     teacher: UserData?,
-    prgraomId: Int,
+    programId: Int,
     date: Date,
     lesson: Int,
     length: Int,
     @SerializedName("Class") var class_: ClassData,
-) : ProgramData(id, type, topic, rid, teacher, prgraomId, date, lesson, length)
+) : ProgramData(id, type, topic, rid, teacher, programId, date, lesson, length){
+    override fun updateValues(baseData: BaseData) {
+        super.updateValues(baseData)
+        baseData as BaseProgramData
+        class_ = baseData.class_
+    }
+}

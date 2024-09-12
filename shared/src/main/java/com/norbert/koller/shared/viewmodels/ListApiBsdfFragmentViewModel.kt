@@ -14,7 +14,7 @@ class ListApiBsdfFragmentViewModel : ListBsdfFragmentViewModel() {
         RetrofitInstance.communicate(apiToCall, {
             val arrayList : ArrayList<BaseData> = ArrayList(it as List<BaseData>)
             list.value = responseToListItemList(arrayList)
-            CacheManager.savedListsOfValues[key] = arrayList
+            //CacheManager.savedListsOfValues[key] = arrayList
 
 
 

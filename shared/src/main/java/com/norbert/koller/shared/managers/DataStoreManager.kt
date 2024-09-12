@@ -11,6 +11,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import com.google.gson.Gson
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.LoginTokensData
+import com.norbert.koller.shared.data.StudyGroupTypeData
 import com.norbert.koller.shared.data.UserData
 import com.squareup.picasso.Cache
 import kotlinx.coroutines.flow.first
@@ -88,7 +89,9 @@ class DataStoreManager {
             if(json == null) return null
 
             val gson = Gson()
-            return gson.fromJson<MutableList<Int>>(json, classOfT)
+            val array = gson.fromJson(json, Array<Int>::class.java)
+            val list = array.toMutableList()
+            return list
         }
     }
 }

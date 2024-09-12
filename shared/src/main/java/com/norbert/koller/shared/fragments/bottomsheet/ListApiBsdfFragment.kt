@@ -33,15 +33,15 @@ class ListApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, a
 
         if(savedInstanceState == null){
             apiViewModel().key = key!!
-
-            if(CacheManager.savedListsOfValues.containsKey(apiViewModel().key)){
+            //TODO: újraimplementálás
+            /*if(CacheManager.savedListsOfValues.containsKey(apiViewModel().key)){
                 viewModel.list.value = apiViewModel().responseToListItemList(CacheManager.savedListsOfValues[apiViewModel().key]!!)
             }
-            else{
+            else{*/
                 lifecycleScope.launch {
                     apiViewModel().call(apiToCall!!)
                 }
-            }
+            //}
 
         }
 

@@ -119,6 +119,8 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
                 val baseDataList = DataStoreManager.readList(context, getDataTag(), getDataType())
 
                 if (baseDataList != null) {
+
+                    //TODO: ennek a szarnak a fájlból való betöltése, mert különben crashel
                     if(CacheManager.detailsDataMap[Pair(getDataTag(), baseDataList[0])]!!.isValid(context, getTimeLimit())){
                         CacheManager.listDataMap[getDataTag()] = baseDataList
                         viewModel.onAppendSuccess()
@@ -156,14 +158,20 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
         response as List<BaseData>
 
         if(viewModel.selectedSort == 0 && response.isNotEmpty()) {
-            val listArray = mutableListOf<Int>()
+            if (!CacheManager.listDataMap.containsKey(getDataTag())) {
+                CacheManager.listDataMap[getDataTag()] = ArrayList()
+            }
             for(baseData in response){
                 baseData.saveReceivedTime()
-                //TODO: felülírás helyett kibővítés
-                CacheManager.detailsDataMap[Pair(getDataTag(), baseData.getMainID())] = baseData
-                listArray.add(baseData.getMainID())
+                if(CacheManager.detailsDataMap.containsKey(Pair(getDataTag(), baseData.getMainID()))){
+                    CacheManager.detailsDataMap[Pair(getDataTag(), baseData.getMainID())]!!.updateValues(baseData)
+                }
+                else{
+                    CacheManager.detailsDataMap[Pair(getDataTag(), baseData.getMainID())] = baseData
+                }
+
+                CacheManager.listDataMap[getDataTag()]!!.add(baseData.getMainID())
             }
-            CacheManager.listDataMap[getDataTag()] = listArray
         }
 
         val pagingSource = formatRecievedValues(response, offset)

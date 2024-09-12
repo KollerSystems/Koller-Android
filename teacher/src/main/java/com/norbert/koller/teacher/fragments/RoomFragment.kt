@@ -10,17 +10,7 @@ import com.norbert.koller.teacher.activities.EditRoomActivity
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.databinding.FragmentRoomBinding
 
-class RoomFragment : com.norbert.koller.shared.fragments.RoomFragment {
-
-    constructor(id : Int? = null) : super(
-        id, null
-    )
-
-    constructor(roomData : RoomData? = null) : super(
-        null, roomData
-    )
-
-    constructor() : super(null, null)
+class RoomFragment(rid : Int) : com.norbert.koller.shared.fragments.RoomFragment(rid) {
 
     lateinit var binding : FragmentRoomBinding
     override fun getHeaderBinding(): ContentFragmentRoomHeaderBinding {

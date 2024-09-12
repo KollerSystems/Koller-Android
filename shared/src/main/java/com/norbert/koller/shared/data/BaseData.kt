@@ -31,4 +31,12 @@ abstract class BaseData() {
         Log.d(receivedAt.toString(), timeInSeconds.toString())
         return timeSpent < timeInSeconds
     }
+
+    open fun updateValues(baseData: BaseData){
+
+    }
+
+    open fun isFull() : Boolean{
+        return true
+    }
 }

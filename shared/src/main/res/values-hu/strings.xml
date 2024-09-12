@@ -459,4 +459,5 @@
     <string name="no_internet">Nincs internet kapcsolat!</string>
     <string name="discard">Elvetés</string>
     <string name="sure_logout">Kijelentkezel?</string>
+    <string name="empty">Üres</string>
 </resources>

@@ -224,11 +224,12 @@ fun Chip.createAndSetChipText(viewModel: SearchViewModel, filterName: String, ta
     val strings : ArrayList<String> = arrayListOf()
 
     for (id in ChipHelper.getFilterValue(viewModel)[filterName]!!){
-        for (elements in CacheManager.savedListsOfValues[tag]!!){
+        //TODO: újraimplementálás
+        /*for (elements in CacheManager.savedListsOfValues[tag]!!){
             if(id == elements.getMainID().toString()){
                 strings.add(elements.getTitle())
             }
-        }
+        }*/
     }
     setChip(arrayToString(strings), localizedFilterId, viewModel, filterName)
 
@@ -266,8 +267,8 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
 
 
          viewModel.viewModelScope.launch {
-
-            if(CacheManager.savedListsOfValues.containsKey(tag)){
+             //TODO: újraimplementálás
+            /*if(CacheManager.savedListsOfValues.containsKey(tag)){
                 createAndSetChipText(viewModel, filterName, tag, localizedFilterId)
             }
             else{
@@ -287,7 +288,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
                     }
                     snackbar.show()
                 })
-            }
+            }*/
 
 
 

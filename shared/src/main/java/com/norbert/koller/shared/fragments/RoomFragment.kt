@@ -14,7 +14,7 @@ import com.norbert.koller.shared.recycleradapters.UserPreviewRecyclerAdapter
 import retrofit2.Response
 
 
-abstract class RoomFragment(rid: Int? = null, roomData: RoomData? = null) : DetailsFragment(rid, roomData) {
+abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
 
     override fun getDataType(): Class<*> {
         return RoomData::class.java

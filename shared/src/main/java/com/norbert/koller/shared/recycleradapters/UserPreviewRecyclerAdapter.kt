@@ -22,7 +22,7 @@ import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.getAttributeColor
 
 
-class UserPreviewRecyclerAdapter (private var userList : ArrayList<UserData>, var context : Context) : RecyclerView.Adapter<UserPreviewRecyclerAdapter.ViewHolder>(){
+class UserPreviewRecyclerAdapter (private var userList : MutableList<UserData>, var context : Context) : RecyclerView.Adapter<UserPreviewRecyclerAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 

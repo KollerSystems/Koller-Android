@@ -111,7 +111,8 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                 val key = Pair(getDataTag(), viewModel.id)
                 if (CacheManager.detailsDataMap.containsKey(key)) {
 
-                    if (!CacheManager.detailsDataMap[key]!!.isUnexpired(getTimeLimit())) {
+                    val detailsData = CacheManager.detailsDataMap[key]
+                    if (!detailsData!!.isUnexpired(getTimeLimit()) || !detailsData.isFull()) {
                         refresh()
                     }
 
@@ -126,7 +127,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                     if(baseData != null){
                         viewModel.response.value = baseData
                         loadingOverlay.setState(DetailsViewModel.NONE)
-                        if(!baseData.isUnexpired(getTimeLimit())){
+                        if(!baseData.isUnexpired(getTimeLimit()) || !baseData.isFull()){
                             refresh()
                         }
                         return@launch

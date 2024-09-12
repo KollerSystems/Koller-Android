@@ -10,4 +10,11 @@ abstract class ProgramBaseData(
     @SerializedName("RID") var rid : Int,
     @SerializedName("Teacher") var teacher: UserData?,
 ) : BaseData() {
+    override fun updateValues(baseData: BaseData) {
+        baseData as ProgramBaseData
+        type = baseData.type
+        topic = baseData.topic
+        rid = baseData.rid
+        teacher = baseData.teacher
+    }
 }

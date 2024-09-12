@@ -16,4 +16,9 @@ class StudyGroupData(
     date: Date,
     lesson: Int,
     length: Int
-) : ProgramData(id, type, topic, rid, teacher, programId, date, lesson, length)
+) : ProgramData(id, type, topic, rid, teacher, programId, date, lesson, length){
+
+    override fun updateValues(baseData: BaseData) {
+        super.updateValues(baseData)
+    }
+}

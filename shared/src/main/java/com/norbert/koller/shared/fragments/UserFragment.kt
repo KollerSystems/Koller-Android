@@ -22,7 +22,7 @@ import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Response
 
 
-abstract class UserFragment(uid : Int? = null, userData: UserData? = null) : DetailsFragment(uid, userData) {
+abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
     abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
     abstract fun getNestedScrollView() : NestedScrollView
