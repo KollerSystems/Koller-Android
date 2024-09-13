@@ -11,15 +11,8 @@ import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.FragmentRoomBinding
 
 
-class RoomFragment : com.norbert.koller.shared.fragments.RoomFragment {
+class RoomFragment(rid : Int) : com.norbert.koller.shared.fragments.RoomFragment(rid) {
 
-    constructor(id : Int? = null) : super(
-        id, null
-    )
-
-    constructor(roomData : RoomData? = null) : super(
-        null, roomData
-    )
 
     lateinit var binding : FragmentRoomBinding
     override fun getHeaderBinding(): ContentFragmentRoomHeaderBinding {

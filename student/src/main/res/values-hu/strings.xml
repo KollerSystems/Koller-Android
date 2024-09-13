@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="this_app_is_not_for_everyone_desc">Ez az alkalmazás olyan kollégistáknak készült, akiknek a kollégiuma használja a rendszerünket. Amennyiben te egy olyan kollégista vagy, akinek a kollégiuma így tesz, akkor ha minden igaz, kaptál egy emailt benne az ideiglenes jelszavaddal. Ha ez mégsem történt meg, kérlek jelezd ezt nevelőtanárodnak.</string>
+    <string name="app_name">Koller Diákoknak</string>
+
+    <string name="registration_done_description">Adataidat sikeresen rögzítettük!\nIgyekezni fogunk úgy összeállítani a szobaközösségedet, hogy az mindőtöknek a legjobb legyen.\nKérlek most várd meg, míg Email-ben értesítünk felvételedről.</string>
+
+
+    <string name="you_are_done">Elkészültél!</string>
+
+    <string name="everything_provided_so_far_description">Kérlek fuss át mindenen mégegyszer utoljára</string>
+    <string name="everything_provided_so_far">Minden amit eddig megadtál</string>
+</resources>

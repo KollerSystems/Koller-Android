@@ -1,29 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="this_app_is_not_for_everyone_desc">Ez az alkalmazás olyan kollégiumi XXXXXX készült, akiknek a kollégiuma használja a rendszerünket. Amennyiben az ön kollégiuma így tesz, akkor ha minden igaz, kapott egy emailt benne az ideiglenes jelszavával. Ha ez mégsem történt meg, kérem jelezze ezt a vezetőségnek.</string>
-    <string name="room_rate">Szoba értékelés</string>
-    <string name="are_you_sure_publish_all_grade">Közzé teszed az összes értékelést?</string>
-    <string name="are_you_sure_delete_all_grade">Törölöd az összes értékelést?</string>
+    <string name="this_app_is_not_for_everyone_desc">same in english</string>
+    <string name="room_rate">Room rate</string>
+    <string name="are_you_sure_publish_all_grade">Publish all grades?</string>
+    <string name="are_you_sure_delete_all_grade">Delete all grades?</string>
 
-    <string name="are_you_sure_discard_all_grade">Elveted az összes értékelést?</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <string name="are_you_sure_discard_all_grade">Discard all grades?</string>
 
-    <string name="app_name">Koller Tanároknak</string>
+    <string name="app_name">Koller for Teachers</string>
 
-    <string name="create_new_x_outgoing_last_part">kimenő létrehozása</string>
+    <string name="create_new_x_outgoing_last_part">outgoing</string>
 
-    <string name="students_in_studygroup">Diákok a szakkörön</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="edit_user">Edit user</string>
-    <string name="edit_room">Edit room</string>
-    <string name="edit_study_group">Edit study group</string>
-    <string name="edit_base_program">Edit base program</string>
-    <string name="which_study_groups_to_edit">Which study groups do you want to edit?</string>
-    <string name="only_this">Only this</string>
-    <string name="this_and_all_the_following">This and all the following</string>
-    <string name="date_of_beginning">Date of beginning</string>
-    <string name="days_of_week">Days of week</string>
-    <string name="repeats">Repeats</string>
-    <string name="weekly">Weekly</string>
-    <string name="every_two_weeks">Every two weeks</string>
-    <string name="every_four_weeks">Every four weeks</string>
+    <string name="students_in_studygroup">Students in the studygroup</string>
+    <string name="edit_user">Felhasználó szerkesztése</string>
+    <string name="edit_room">Szoba szerkesztése</string>
+    <string name="edit_study_group">Szakkör szerkesztése</string>
+    <string name="edit_base_program">Alapprogram szerkesztése</string>
+    <string name="which_study_groups_to_edit">Melyik szakköröket szeretnéd szerkeszteni?</string>
+    <string name="only_this">Csak ezt</string>
+    <string name="this_and_all_the_following">Ezt és az összes ezt követőt</string>
+    <string name="date_of_beginning">Kezdés dátuma</string>
+    <string name="days_of_week">Hét napjai</string>
+    <string name="repeats">Ismétlődés</string>
+    <string name="weekly">Hetente</string>
+    <string name="every_two_weeks">Két hetente</string>
+    <string name="every_four_weeks">Négy hetente</string>
 </resources>

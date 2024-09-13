@@ -11,17 +11,7 @@ import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.FragmentUserBinding
 
 
-class UserFragment : com.norbert.koller.shared.fragments.UserFragment {
-
-    constructor(id : Int? = null) : super(
-        id, null
-    )
-
-    constructor(userData : UserData? = null) : super(
-        null, userData
-    )
-
-    constructor() : super(null, null)
+class UserFragment(uid : Int) : com.norbert.koller.shared.fragments.UserFragment(uid) {
 
     lateinit var binding : FragmentUserBinding
 
