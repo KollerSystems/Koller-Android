@@ -47,6 +47,7 @@ class UserData(
 
     override fun updateValues(baseData: BaseData) {
         baseData as UserData
+        picture = baseData.picture
         name = baseData.name
         gender = baseData.gender
         rid = baseData.rid

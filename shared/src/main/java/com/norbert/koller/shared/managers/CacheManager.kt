@@ -1,21 +1,32 @@
 package com.norbert.koller.shared.managers
 
-import com.google.gson.annotations.Until
-import com.norbert.koller.shared.api.RetrofitInstance
+import android.content.Context
 import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.data.ExpiringListData
 import com.norbert.koller.shared.data.LoginTokensData
+import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.data.UserData
-import okhttp3.Response
 
 object CacheManager {
 
-    var listDataMap : MutableMap<String, MutableList<Int>> = mutableMapOf()
+    var listDataMap : MutableMap<String, ExpiringListData> = mutableMapOf()
 
-    fun getListDataMapWithValues(dataTag : String) : List<BaseData>{
+
+    suspend fun getListDataMapWithValues(context: Context, dataTag : String, classOfT : Class<*>) : List<BaseData>{
+
         val list = mutableListOf<BaseData>()
-        for (listData in listDataMap[dataTag]!!){
-            list.add(detailsDataMap[Pair(dataTag, listData)]!!)
+        for (listData in listDataMap[dataTag]!!.list){
+            val baseData : BaseData
+            if(detailsDataMap.containsKey(Pair(dataTag, listData))){
+                baseData = detailsDataMap[Pair(dataTag, listData)]!!
+            }
+            else{
+                baseData = DataStoreManager.readDetail(context, dataTag, listData, classOfT)!!
+                detailsDataMap[Pair(dataTag, listData)] = baseData
+            }
+            list.add(baseData)
         }
+
         return list
     }
 

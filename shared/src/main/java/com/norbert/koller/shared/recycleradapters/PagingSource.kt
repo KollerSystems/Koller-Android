@@ -16,6 +16,7 @@ import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ErrorData
+import com.norbert.koller.shared.data.ExpiringListData
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
@@ -107,24 +108,23 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
             if (offset <= 0 && areParametersDefault()) {
 
                 if (CacheManager.listDataMap.containsKey(getDataTag())) {
-                    val idOfFirstItem = CacheManager.listDataMap[getDataTag()]!![0]
-                    if((CacheManager.detailsDataMap[Pair(getDataTag(), idOfFirstItem)]!!.isValid(context, getTimeLimit()))){
+                    if((CacheManager.listDataMap[getDataTag()]!!.isValid(context, getTimeLimit()))){
                         viewModel.onAppendSuccess()
-                        return formatRecievedValues(CacheManager.getListDataMapWithValues(getDataTag()), 0)
+                        return formatRecievedValues(CacheManager.getListDataMapWithValues(context, getDataTag(), getDataType()), 0)
                     }
                 }
 
                 viewModel.state = ApiHelper.STATE_LOADING
 
-                val baseDataList = DataStoreManager.readList(context, getDataTag(), getDataType())
+                val baseDataList = DataStoreManager.readList(context, getDataTag())
 
                 if (baseDataList != null) {
 
-                    //TODO: ennek a szarnak a fájlból való betöltése, mert különben crashel
-                    if(CacheManager.detailsDataMap[Pair(getDataTag(), baseDataList[0])]!!.isValid(context, getTimeLimit())){
+                    if(baseDataList.isValid(context, getTimeLimit())){
                         CacheManager.listDataMap[getDataTag()] = baseDataList
+                        val response = CacheManager.getListDataMapWithValues(context, getDataTag(), getDataType())
                         viewModel.onAppendSuccess()
-                        return formatRecievedValues(CacheManager.getListDataMapWithValues(getDataTag()), 0)
+                        return formatRecievedValues(response, 0)
                     }
 
                 }
@@ -157,12 +157,14 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
     fun onSuccess(response : Any, offset: Int) : LoadResult<Int, Any>{
         response as List<BaseData>
 
-        if(viewModel.selectedSort == 0 && response.isNotEmpty()) {
-            if (!CacheManager.listDataMap.containsKey(getDataTag())) {
-                CacheManager.listDataMap[getDataTag()] = ArrayList()
+        if(response.isNotEmpty()) {
+
+            if ((!CacheManager.listDataMap.containsKey(getDataTag()) || offset == 0) && viewModel.selectedSort == 0) {
+                CacheManager.listDataMap[getDataTag()] = ExpiringListData()
+                CacheManager.listDataMap[getDataTag()]!!.saveReceivedTime()
             }
+
             for(baseData in response){
-                baseData.saveReceivedTime()
                 if(CacheManager.detailsDataMap.containsKey(Pair(getDataTag(), baseData.getMainID()))){
                     CacheManager.detailsDataMap[Pair(getDataTag(), baseData.getMainID())]!!.updateValues(baseData)
                 }
@@ -170,7 +172,10 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
                     CacheManager.detailsDataMap[Pair(getDataTag(), baseData.getMainID())] = baseData
                 }
 
-                CacheManager.listDataMap[getDataTag()]!!.add(baseData.getMainID())
+                if(viewModel.selectedSort == 0){
+                    CacheManager.listDataMap[getDataTag()]!!.list.add(baseData.getMainID())
+                }
+
             }
         }
 

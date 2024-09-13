@@ -175,7 +175,7 @@ interface APIInterface {
 
 class ProgramTypePagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
     override fun getDataType(): Class<*> {
-        return Array<BaseProgramTypeData>::class.java
+        return BaseProgramTypeData::class.java
     }
 
     override fun getDataTag(): String {
@@ -190,7 +190,7 @@ class ProgramTypePagingSource(context : Context, viewModel: ListViewModel) : Pag
 class StudyGroupTypePagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
 
     override fun getDataType(): Class<*> {
-        return Array<StudyGroupTypeData>::class.java
+        return StudyGroupTypeData::class.java
     }
 
     override fun getDataTag(): String {
@@ -205,7 +205,7 @@ class StudyGroupTypePagingSource(context : Context, viewModel: ListViewModel) : 
 class CrossingPagingSource(context: Context, val uid : Int, viewModel: ListViewModel) : PagingSource(context, viewModel) {
 
     override fun getDataType(): Class<*> {
-        return Array<CrossingData>::class.java
+        return CrossingData::class.java
     }
 
     override fun getDataTag(): String {
@@ -220,7 +220,7 @@ class CrossingPagingSource(context: Context, val uid : Int, viewModel: ListViewM
 class UserPagingSource(context: Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
 
     override fun getDataType(): Class<*> {
-        return Array<UserData>::class.java
+        return UserData::class.java
     }
 
     override fun getDataTag(): String {
@@ -235,7 +235,7 @@ class UserPagingSource(context: Context, viewModel: ListViewModel) : PagingSourc
 class RoomPagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
 
     override fun getDataType(): Class<*> {
-        return Array<RoomData>::class.java
+        return RoomData::class.java
     }
 
     override fun getDataTag(): String {
@@ -250,7 +250,7 @@ class RoomPagingSource(context : Context, viewModel: ListViewModel) : PagingSour
 class ProgramPagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
 
     override fun getDataType(): Class<*> {
-        return Array<BaseProgramData>::class.java
+        return BaseProgramData::class.java
     }
 
     override fun getDataTag(): String {
@@ -265,7 +265,7 @@ class ProgramPagingSource(context : Context, viewModel: ListViewModel) : PagingS
 class StudyGroupPagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
 
     override fun getDataType(): Class<*> {
-        return Array<StudyGroupData>::class.java
+        return StudyGroupData::class.java
     }
 
     override fun getDataTag(): String {

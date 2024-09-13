@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.managers
 
 import android.content.Context
+import android.util.Log
 import androidx.datastore.core.DataStore
 import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -10,6 +11,7 @@ import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import com.google.gson.Gson
 import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.data.ExpiringListData
 import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.StudyGroupTypeData
 import com.norbert.koller.shared.data.UserData
@@ -35,29 +37,40 @@ class DataStoreManager {
         suspend fun saveCache(context: Context){
             val gson = Gson()
 
-            for ((key, baseData) in CacheManager.detailsDataMap){
-                val json = gson.toJson(baseData)
-                context.userDataStore.edit {
-                    it[stringPreferencesKey("${key.first}:${key.second}")] = json
+            context.userDataStore.edit {
+                Log.d("MENTÉS START","")
+                for ((key, baseData) in CacheManager.detailsDataMap){
+                    val json = gson.toJson(baseData)
+
+                        it[stringPreferencesKey("${key.first}:${key.second}")] = json
+
 
                 }
-            }
 
-            for((key, baseDataList) in CacheManager.listDataMap){
-                val json = gson.toJson(baseDataList)
-                context.userDataStore.edit {
-                    it[stringPreferencesKey(key)] = json
+
+                for((key, baseDataList) in CacheManager.listDataMap){
+
+                    val json = gson.toJson(baseDataList)
+
+                        it[stringPreferencesKey(key)] = json
+
 
                 }
-            }
 
-            if(CacheManager.userData.uid != -1){
-                val json = gson.toJson(CacheManager.userData)
-                context.userDataStore.edit {
+
+                if(CacheManager.userData.uid != -1){
+                    val json = gson.toJson(CacheManager.userData)
+
                     it[USER] = json
 
+
                 }
+                Log.d("MENTÉS END","")
+
             }
+
+
+
         }
 
         suspend fun readTokens(context: Context): LoginTokensData? {
@@ -78,20 +91,19 @@ class DataStoreManager {
 
         suspend fun readDetail(context: Context, key: String, id: Int, classOfT : Class<*>) : BaseData?{
             val json = context.userDataStore.data.first()[stringPreferencesKey("$key:$id")]
+            Log.d("DETZAIL REQUERST", "Context: $context, Key: $key, ID: $id, ClassOfT: $classOfT, Json: $json")
             if(json == null) return null
 
             val gson = Gson()
             return gson.fromJson(json, classOfT) as BaseData
         }
 
-        suspend fun readList(context: Context, key: String, classOfT : Class<*>) : MutableList<Int>?{
+        suspend fun readList(context: Context, key: String) : ExpiringListData?{
             val json = context.userDataStore.data.first()[stringPreferencesKey(key)]
             if(json == null) return null
 
             val gson = Gson()
-            val array = gson.fromJson(json, Array<Int>::class.java)
-            val list = array.toMutableList()
-            return list
+            return gson.fromJson(json, ExpiringListData::class.java)
         }
     }
 }
