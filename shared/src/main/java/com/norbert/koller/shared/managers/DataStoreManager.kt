@@ -89,17 +89,17 @@ class DataStoreManager {
             }
         }
 
-        suspend fun readDetail(context: Context, key: String, id: Int, classOfT : Class<*>) : BaseData?{
-            val json = context.userDataStore.data.first()[stringPreferencesKey("$key:$id")]
-            Log.d("DETZAIL REQUERST", "Context: $context, Key: $key, ID: $id, ClassOfT: $classOfT, Json: $json")
+        suspend fun readDetail(context: Context, id: Int, classOfT : Class<*>) : BaseData?{
+            val json = context.userDataStore.data.first()[stringPreferencesKey("${classOfT.simpleName}:$id")]
+            Log.d("DETZAIL REQUERST", "Context: $context, ID: $id, ClassOfT: $classOfT, Json: $json")
             if(json == null) return null
 
             val gson = Gson()
             return gson.fromJson(json, classOfT) as BaseData
         }
 
-        suspend fun readList(context: Context, key: String) : ExpiringListData?{
-            val json = context.userDataStore.data.first()[stringPreferencesKey(key)]
+        suspend fun readList(context: Context, classOfT : Class<*>) : ExpiringListData?{
+            val json = context.userDataStore.data.first()[stringPreferencesKey(classOfT.simpleName)]
             if(json == null) return null
 
             val gson = Gson()

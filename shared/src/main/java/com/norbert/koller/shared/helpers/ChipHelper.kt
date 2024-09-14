@@ -6,6 +6,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.util.Pair
 import androidx.fragment.app.FragmentManager
+import androidx.lifecycle.findViewTreeLifecycleOwner
+import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -14,11 +16,13 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.data.ExpiringListData
 import com.norbert.koller.shared.fragments.bottomsheet.ListApiBsdfFragment
 import com.norbert.koller.shared.managers.checkByPass
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
 import com.norbert.koller.shared.managers.CacheManager
+import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.managers.restoreDropDown
@@ -220,19 +224,19 @@ fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel
     }
 }
 
-fun Chip.createAndSetChipText(viewModel: SearchViewModel, filterName: String, tag: String, localizedFilterId : Int){
+fun Chip.createAndSetChipText(viewModel: SearchViewModel, filterName: String, classOfT: Class<*>, localizedFilterId : Int){
     val strings : ArrayList<String> = arrayListOf()
 
-    for (id in ChipHelper.getFilterValue(viewModel)[filterName]!!){
-        //TODO: újraimplementálás
-        /*for (elements in CacheManager.savedListsOfValues[tag]!!){
-            if(id == elements.getMainID().toString()){
-                strings.add(elements.getTitle())
+    viewModel.viewModelScope.launch {
+        for (id in ChipHelper.getFilterValue(viewModel)[filterName]!!){
+            for (elements in CacheManager.getListDataMapWithValues(context, classOfT)){
+                if(id == elements.getMainID().toString()){
+                    strings.add(elements.getTitle())
+                }
             }
-        }*/
+        }
+        setChip(arrayToString(strings), localizedFilterId, viewModel, filterName)
     }
-    setChip(arrayToString(strings), localizedFilterId, viewModel, filterName)
-
 }
 
 fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBsdfFragment, viewModel: SearchViewModel, filterName: String, localizedFilterId: Int){
@@ -240,62 +244,71 @@ fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBs
     dialog.show(fragmentManager, ListBsdfFragment.TAG)
 
     if(dialog.getValuesOnFinish == null){
-    dialog.getValuesOnFinish = { values, locNames ->
+        dialog.getValuesOnFinish = { values, locNames ->
 
 
-        if (values.size != 0) {
-            val locNamesString = arrayToString(locNames)
-            if (text.toString() != locNamesString) {
-                ChipHelper.changeFilterValue(viewModel, filterName, values)
-                setChip(locNamesString, localizedFilterId, viewModel, filterName)
-            }
-        } else {
+            if (values.size != 0) {
+                val locNamesString = arrayToString(locNames)
+                if (text.toString() != locNamesString) {
+                    ChipHelper.changeFilterValue(viewModel, filterName, values)
+                    setChip(locNamesString, localizedFilterId, viewModel, filterName)
+                }
+            } else {
 
-            val string = context.getString(localizedFilterId)
-            if (text.toString() != string) {
-                ChipHelper.removeFilterValue(viewModel, filterName)
-                resetChip(string, viewModel, filterName)
+                val string = context.getString(localizedFilterId)
+                if (text.toString() != string) {
+                    ChipHelper.removeFilterValue(viewModel, filterName)
+                    resetChip(string, viewModel, filterName)
+                }
             }
         }
     }
-    }
 }
 
-fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: SearchViewModel, tag : String, collapseText : Boolean){
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: SearchViewModel, classOfT: Class<*>, collapseText : Boolean){
 
     if(ChipHelper.getFilterValue(viewModel).containsKey(filterName)){
 
-
          viewModel.viewModelScope.launch {
-             //TODO: újraimplementálás
-            /*if(CacheManager.savedListsOfValues.containsKey(tag)){
-                createAndSetChipText(viewModel, filterName, tag, localizedFilterId)
+            if(CacheManager.listDataMap.containsKey(classOfT.simpleName)){
+                createAndSetChipText(viewModel, filterName, classOfT, localizedFilterId)
             }
             else{
                 setChip(context.getString(R.string.loading), localizedFilterId, viewModel, filterName)
 
-                RetrofitInstance.communicate(getValues, {
-                    CacheManager.savedListsOfValues[tag] = it as ArrayList<BaseData>
-                    createAndSetChipText(viewModel, filterName, tag, localizedFilterId)
+                val baseDataList = DataStoreManager.readList(context, classOfT)
 
-                },{
-                        error, errorBody ->
-                    resetChip(context.getString(localizedFilterId), viewModel, filterName)
+                if (baseDataList != null && baseDataList.isValid(context, DateTimeHelper.TIME_NOT_IMPORTANT)) {
 
-                    val snackbar = ((context as androidx.appcompat.view.ContextThemeWrapper).baseContext as MainActivity).getSnackBar(context.getString(R.string.an_error_occurred), Snackbar.LENGTH_LONG)
-                    snackbar.setAction(context.getString(R.string.ok)){
+                    CacheManager.listDataMap[classOfT.simpleName] = baseDataList
+                    createAndSetChipText(viewModel, filterName, classOfT, localizedFilterId)
+                }
+                else{
+                    RetrofitInstance.communicate(getValues, {
+                        val responseList : List<BaseData> = it as List<BaseData>
+                        if (!CacheManager.listDataMap.containsKey(classOfT.simpleName)) {
+                            CacheManager.listDataMap[classOfT.simpleName] = ExpiringListData()
+                            CacheManager.listDataMap[classOfT.simpleName]!!.saveReceivedTime()
+                        }
+                        for (item in responseList){
+                            CacheManager.detailsDataMap[kotlin.Pair(classOfT.simpleName, item.getMainID())] = item
+                            CacheManager.listDataMap[classOfT.simpleName]!!.list.add(item.getMainID())
+                        }
 
-                    }
-                    snackbar.show()
-                })
-            }*/
+                        createAndSetChipText(viewModel, filterName, classOfT, localizedFilterId)
 
+                    },{ error, errorBody ->
+                        resetChip(context.getString(localizedFilterId), viewModel, filterName)
 
+                        val snackbar = ((context as androidx.appcompat.view.ContextThemeWrapper).baseContext as MainActivity).getSnackBar(context.getString(R.string.an_error_occurred), Snackbar.LENGTH_LONG)
+                        snackbar.setAction(context.getString(R.string.ok)){
 
-
+                        }
+                        snackbar.show()
+                    })
+                }
+            }
         }
-
-
     }
     else{
         resetSimpleChip(context.getString(localizedFilterId))
@@ -304,7 +317,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListApiBsdfFragment(getValues, ChipHelper.getFilterValue(viewModel)[filterName], tag, localizedFilterId)
+        val dialog = ListApiBsdfFragment(getValues, ChipHelper.getFilterValue(viewModel)[filterName], classOfT, localizedFilterId)
         dialog.collapseText = collapseText
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)

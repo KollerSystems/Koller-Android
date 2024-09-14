@@ -33,10 +33,6 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
         return getString(R.string.study_group)
     }
 
-    override fun getDataTag(): String {
-        return "study_group_type"
-    }
-
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return { RetrofitInstance.api.getStudyGroupType(viewModel.id!!)}
     }

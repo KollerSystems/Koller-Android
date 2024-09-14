@@ -30,10 +30,6 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
         return DateTimeHelper.TIME_IMPORTANT
     }
 
-    override fun getDataTag(): String {
-        return "room"
-    }
-
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return {RetrofitInstance.api.getRoom(viewModel.id!!)}
     }

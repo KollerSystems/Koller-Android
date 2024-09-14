@@ -45,13 +45,4 @@ class RoomData(
         }
         residents = residentList
     }
-
-    override fun isFull() : Boolean{
-        if(residents != null){
-            if(residents!![0].picture == null){
-                return false
-            }
-        }
-        return true
-    }
 }

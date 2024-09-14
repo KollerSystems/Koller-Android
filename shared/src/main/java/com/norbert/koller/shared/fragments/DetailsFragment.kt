@@ -31,8 +31,6 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
     lateinit var viewModel: DetailsViewModel
 
-    abstract fun getDataTag() : String
-
     abstract fun apiFunctionToCall() : suspend () -> retrofit2.Response<*>
 
 
@@ -74,7 +72,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
         }
 
         loadingOl.loadData = {
-            viewModel.load(apiFunctionToCall(), getDataTag())
+            viewModel.load(apiFunctionToCall(), getDataType())
         }
         return loadingOl
     }
@@ -90,7 +88,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
         swrl = view.findViewById(R.id.swrl)
         swrl.setOnRefreshListener {
-            viewModel.refresh(apiFunctionToCall(), getDataTag())
+            viewModel.refresh(apiFunctionToCall(), getDataType())
         }
 
         viewModel.onRefreshSuccess = {
@@ -108,11 +106,11 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
             if (viewModel.id == null) {
                 viewModel.id = id
 
-                val key = Pair(getDataTag(), viewModel.id)
+                val key = Pair(getDataType().simpleName, viewModel.id)
                 if (CacheManager.detailsDataMap.containsKey(key)) {
 
                     val detailsData = CacheManager.detailsDataMap[key]
-                    if (!detailsData!!.isUnexpired(getTimeLimit()) || !detailsData.isFull()) {
+                    if (!detailsData!!.isUnexpired(getTimeLimit())) {
                         refresh()
                     }
 
@@ -123,11 +121,11 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                 val loadingOverlay = createLoadingOverlay()
 
                 lifecycleScope.launch {
-                    val baseData = DataStoreManager.readDetail(requireContext(), getDataTag(), viewModel.id!!, getDataType())
+                    val baseData = DataStoreManager.readDetail(requireContext(), viewModel.id!!, getDataType())
                     if(baseData != null){
                         viewModel.response.value = baseData
                         loadingOverlay.setState(DetailsViewModel.NONE)
-                        if(!baseData.isUnexpired(getTimeLimit()) || !baseData.isFull()){
+                        if(!baseData.isUnexpired(getTimeLimit())){
                             refresh()
                         }
                         return@launch
@@ -156,7 +154,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
     fun refresh(){
 
-        viewModel.refresh(apiFunctionToCall(), getDataTag())
+        viewModel.refresh(apiFunctionToCall(), getDataType())
 
         swrl.isRefreshing = true
     }

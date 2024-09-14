@@ -8,13 +8,16 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.databinding.ItemLoadingBinding
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
+import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.viewmodels.ListApiBsdfFragmentViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class ListApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var key : String? = null, private val filterName : Int? = null) : ListBsdfFragment(alreadyChecked, filterName) {
+class ListApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var classOfT: Class<*>? = null, private val filterName : Int? = null) : ListBsdfFragment(alreadyChecked, filterName) {
 
 
     fun apiViewModel() : ListApiBsdfFragmentViewModel{
@@ -31,18 +34,29 @@ class ListApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, a
 
         viewModel = ViewModelProvider(this)[ListApiBsdfFragmentViewModel::class.java]
 
-        if(savedInstanceState == null){
-            apiViewModel().key = key!!
-            //TODO: újraimplementálás
-            /*if(CacheManager.savedListsOfValues.containsKey(apiViewModel().key)){
-                viewModel.list.value = apiViewModel().responseToListItemList(CacheManager.savedListsOfValues[apiViewModel().key]!!)
-            }
-            else{*/
-                lifecycleScope.launch {
-                    apiViewModel().call(apiToCall!!)
-                }
-            //}
+        if (savedInstanceState == null) {
+            apiViewModel().classOfT = classOfT!!
 
+            lifecycleScope.launch {
+                if (CacheManager.listDataMap.containsKey(apiViewModel().classOfT.simpleName)) {
+                    viewModel.list.value = apiViewModel().responseToListItemList(CacheManager.getListDataMapWithValues(requireContext(), classOfT!!))
+                } else {
+                    val baseDataList = DataStoreManager.readList(requireContext(), classOfT!!)
+
+                    if (baseDataList != null) {
+
+                        if(baseDataList.isValid(requireContext(), DateTimeHelper.TIME_NOT_IMPORTANT)){
+                            CacheManager.listDataMap[classOfT!!.simpleName] = baseDataList
+                            val response = CacheManager.getListDataMapWithValues(requireContext(), classOfT!!)
+                            viewModel.list.value = apiViewModel().responseToListItemList(response)
+                        }
+
+                    }
+                    else{
+                        apiViewModel().call(apiToCall!!)
+                    }
+                }
+            }
         }
 
         super.onViewCreated(view, savedInstanceState)

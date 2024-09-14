@@ -37,10 +37,6 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
         return getString(Rs.string.base_programs)
     }
 
-    override fun getDataTag(): String {
-        return "base_program"
-    }
-
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return { RetrofitInstance.api.getMandatory(viewModel.id!!)}
     }

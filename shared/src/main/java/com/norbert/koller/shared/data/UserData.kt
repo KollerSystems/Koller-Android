@@ -54,8 +54,4 @@ class UserData(
         class_ = baseData.class_
         group = baseData.group
     }
-
-    override fun isFull() : Boolean{
-        return contacts != null
-    }
 }

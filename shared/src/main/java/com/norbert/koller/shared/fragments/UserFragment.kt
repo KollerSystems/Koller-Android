@@ -35,10 +35,6 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
         return DateTimeHelper.TIME_IMPORTANT
     }
 
-    override fun getDataTag(): String {
-        return "user"
-    }
-
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return {RetrofitInstance.api.getUser(viewModel.id!!)}
     }

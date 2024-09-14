@@ -5,6 +5,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.UserPagingSource
+import com.norbert.koller.shared.data.ClassData
+import com.norbert.koller.shared.data.GroupData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
@@ -57,9 +59,9 @@ open class UserListFragment(defaultFilters : MutableMap<String, ArrayList<String
             ListItem(getString(R.string.teacher), null, null, "2")
         ))
 
-        addSortingChip("Class.ID", R.string.class_, {RetrofitInstance.api.getClasses()}, "class")
+        addSortingChip("Class.ID", R.string.class_, {RetrofitInstance.api.getClasses()}, ClassData::class.java)
 
-        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group", true)
+        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, GroupData::class.java, true)
 
         addSearchbar("Name")
     }

@@ -26,13 +26,13 @@ class DetailsViewModel : ViewModel() {
     var response = MutableLiveData<Any>()
     var owner : UserData? = null
 
-    fun updateValues(it : BaseData, dataTag: String){
+    fun updateValues(it : BaseData, dataType: Class<*>){
         it.saveReceivedTime()
-        CacheManager.detailsDataMap[Pair(dataTag, it.getMainID())] = it
+        CacheManager.detailsDataMap[Pair(dataType.simpleName, it.getMainID())] = it
         response.value = it
     }
 
-    fun load(api : suspend () -> retrofit2.Response<*>, dataTag :String) {
+    fun load(api : suspend () -> retrofit2.Response<*>, dataType :Class<*>) {
         state = LOADING
         viewModelScope.launch {
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
@@ -40,7 +40,7 @@ class DetailsViewModel : ViewModel() {
                 {
                     state = NONE
                     it as BaseData
-                    updateValues(it, dataTag)
+                    updateValues(it, dataType)
                     onLoadSuccess(it)
                 },
                 { _, _ ->
@@ -51,7 +51,7 @@ class DetailsViewModel : ViewModel() {
         }
     }
 
-    fun refresh(api : suspend () -> retrofit2.Response<*>, dataTag :String){
+    fun refresh(api : suspend () -> retrofit2.Response<*>, dataType: Class<*>){
         state = LOADING
         viewModelScope.launch {
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
@@ -59,7 +59,7 @@ class DetailsViewModel : ViewModel() {
                 {
                     state = NONE
                     it as BaseData
-                    updateValues(it, dataTag)
+                    updateValues(it, dataType)
                     onRefreshSuccess(it)
                 },
                 {_, _ ->

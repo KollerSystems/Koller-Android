@@ -12,17 +12,17 @@ object CacheManager {
     var listDataMap : MutableMap<String, ExpiringListData> = mutableMapOf()
 
 
-    suspend fun getListDataMapWithValues(context: Context, dataTag : String, classOfT : Class<*>) : List<BaseData>{
+    suspend fun getListDataMapWithValues(context: Context, classOfT : Class<*>) : List<BaseData>{
 
         val list = mutableListOf<BaseData>()
-        for (listData in listDataMap[dataTag]!!.list){
+        for (listData in listDataMap[classOfT.simpleName]!!.list){
             val baseData : BaseData
-            if(detailsDataMap.containsKey(Pair(dataTag, listData))){
-                baseData = detailsDataMap[Pair(dataTag, listData)]!!
+            if(detailsDataMap.containsKey(Pair(classOfT.simpleName, listData))){
+                baseData = detailsDataMap[Pair(classOfT.simpleName, listData)]!!
             }
             else{
-                baseData = DataStoreManager.readDetail(context, dataTag, listData, classOfT)!!
-                detailsDataMap[Pair(dataTag, listData)] = baseData
+                baseData = DataStoreManager.readDetail(context, listData, classOfT)!!
+                detailsDataMap[Pair(classOfT.simpleName, listData)] = baseData
             }
             list.add(baseData)
         }

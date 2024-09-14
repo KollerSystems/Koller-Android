@@ -8,6 +8,8 @@ import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.RetrofitInstance
+import com.norbert.koller.shared.data.ClassData
+import com.norbert.koller.shared.data.GroupData
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.shared.fragments.SearchFragment
 import com.norbert.koller.shared.recycleradapters.ListItem
@@ -40,8 +42,8 @@ class StatisticsFragment : SearchFragment() {
             ListItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
         ))
 
-        addSortingChip("Class.ID", R.string.class_, { RetrofitInstance.api.getClasses()}, "class")
+        addSortingChip("Class.ID", R.string.class_, { RetrofitInstance.api.getClasses()}, ClassData::class.java)
 
-        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, "group", true)
+        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, GroupData::class.java, true)
     }
 }

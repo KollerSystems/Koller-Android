@@ -178,10 +178,6 @@ class ProgramTypePagingSource(context : Context, viewModel: ListViewModel) : Pag
         return BaseProgramTypeData::class.java
     }
 
-    override fun getDataTag(): String {
-        return "base_program_type"
-    }
-
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
         return apiResponse.getBaseProgramTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
     }
@@ -191,10 +187,6 @@ class StudyGroupTypePagingSource(context : Context, viewModel: ListViewModel) : 
 
     override fun getDataType(): Class<*> {
         return StudyGroupTypeData::class.java
-    }
-
-    override fun getDataTag(): String {
-        return "study_group_type"
     }
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
@@ -208,10 +200,6 @@ class CrossingPagingSource(context: Context, val uid : Int, viewModel: ListViewM
         return CrossingData::class.java
     }
 
-    override fun getDataTag(): String {
-        return "crossing"
-    }
-
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
         return apiResponse.getMyCrossings(uid, limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
     }
@@ -221,10 +209,6 @@ class UserPagingSource(context: Context, viewModel: ListViewModel) : PagingSourc
 
     override fun getDataType(): Class<*> {
         return UserData::class.java
-    }
-
-    override fun getDataTag(): String {
-        return "user"
     }
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
@@ -238,10 +222,6 @@ class RoomPagingSource(context : Context, viewModel: ListViewModel) : PagingSour
         return RoomData::class.java
     }
 
-    override fun getDataTag(): String {
-        return "room"
-    }
-
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
         return apiResponse.getRooms(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
     }
@@ -253,10 +233,6 @@ class ProgramPagingSource(context : Context, viewModel: ListViewModel) : PagingS
         return BaseProgramData::class.java
     }
 
-    override fun getDataTag(): String {
-        return "base_program"
-    }
-
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
         return apiResponse.getBasePrograms(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
     }
@@ -266,10 +242,6 @@ class StudyGroupPagingSource(context : Context, viewModel: ListViewModel) : Pagi
 
     override fun getDataType(): Class<*> {
         return StudyGroupData::class.java
-    }
-
-    override fun getDataTag(): String {
-        return "study_group"
     }
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {

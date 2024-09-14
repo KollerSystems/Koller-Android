@@ -3,6 +3,7 @@ package com.norbert.koller.teacher.fragments
 import androidx.appcompat.content.res.AppCompatResources
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.UserPagingSource
+import com.norbert.koller.shared.data.GroupData
 import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
@@ -30,7 +31,7 @@ class ProgramParticipantListFragment(defaultFilters : MutableMap<String, ArrayLi
             ListItem(getString(com.norbert.koller.shared.R.string.man), null, AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.man), "1")
         ))
 
-        addSortingChip("Group.ID", com.norbert.koller.shared.R.string.group, { RetrofitInstance.api.getGroups()}, "group", true)
+        addSortingChip("Group.ID", com.norbert.koller.shared.R.string.group, { RetrofitInstance.api.getGroups()}, GroupData::class.java, true)
 
         addSortingChip("", com.norbert.koller.shared.R.string.quantity_of_completions, arrayListOf())
 

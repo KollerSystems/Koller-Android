@@ -24,8 +24,4 @@ abstract class BaseData() : ExpiringData() {
     open fun updateValues(baseData: BaseData){
 
     }
-
-    open fun isFull() : Boolean{
-        return true
-    }
 }

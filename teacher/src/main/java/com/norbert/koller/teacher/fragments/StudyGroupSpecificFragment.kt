@@ -32,10 +32,6 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
     override lateinit var ncbTeacher : DescriptionButton
     override lateinit var toGeneralButton: View
 
-    override fun getDataTag(): String {
-        return "study_group"
-    }
-
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return { RetrofitInstance.api.getStudyGroup(viewModel.id!!)}
     }

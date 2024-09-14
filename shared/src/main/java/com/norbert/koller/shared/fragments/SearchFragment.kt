@@ -96,9 +96,9 @@ abstract class SearchFragment() : FragmentInMainActivity() {
 
     }
 
-    fun addSortingChip(filterName : String, localizedNameId : Int, getValues: suspend () -> Response<*>, tag : String, collapseText : Boolean = false){
+    fun addSortingChip(filterName : String, localizedNameId : Int, getValues: suspend () -> Response<*>, classOfT: Class<*>, collapseText : Boolean = false){
         val chip = createChip()
-        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, getValues, viewModel, tag, collapseText)
+        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, getValues, viewModel, classOfT, collapseText)
 
     }
 }

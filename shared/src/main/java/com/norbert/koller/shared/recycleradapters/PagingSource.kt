@@ -41,7 +41,6 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
     }
 
     abstract fun getDataType() : Class<*>
-    abstract fun getDataTag() : String
 
     @SuppressLint("WeekBasedYear")
     fun getFilters() : String{
@@ -107,22 +106,22 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
             if (offset <= 0 && areParametersDefault()) {
 
-                if (CacheManager.listDataMap.containsKey(getDataTag())) {
-                    if((CacheManager.listDataMap[getDataTag()]!!.isValid(context, getTimeLimit()))){
+                if (CacheManager.listDataMap.containsKey(getDataType().simpleName)) {
+                    if((CacheManager.listDataMap[getDataType().simpleName]!!.isValid(context, getTimeLimit()))){
                         viewModel.onAppendSuccess()
-                        return formatRecievedValues(CacheManager.getListDataMapWithValues(context, getDataTag(), getDataType()), 0)
+                        return formatRecievedValues(CacheManager.getListDataMapWithValues(context, getDataType()), 0)
                     }
                 }
 
                 viewModel.state = ApiHelper.STATE_LOADING
 
-                val baseDataList = DataStoreManager.readList(context, getDataTag())
+                val baseDataList = DataStoreManager.readList(context, getDataType())
 
                 if (baseDataList != null) {
 
                     if(baseDataList.isValid(context, getTimeLimit())){
-                        CacheManager.listDataMap[getDataTag()] = baseDataList
-                        val response = CacheManager.getListDataMapWithValues(context, getDataTag(), getDataType())
+                        CacheManager.listDataMap[getDataType().simpleName] = baseDataList
+                        val response = CacheManager.getListDataMapWithValues(context, getDataType())
                         viewModel.onAppendSuccess()
                         return formatRecievedValues(response, 0)
                     }
@@ -159,21 +158,21 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
         if(response.isNotEmpty()) {
 
-            if ((!CacheManager.listDataMap.containsKey(getDataTag()) || offset == 0) && viewModel.selectedSort == 0) {
-                CacheManager.listDataMap[getDataTag()] = ExpiringListData()
-                CacheManager.listDataMap[getDataTag()]!!.saveReceivedTime()
+            if ((!CacheManager.listDataMap.containsKey(getDataType().simpleName) || offset == 0) && areParametersDefault()) {
+                CacheManager.listDataMap[getDataType().simpleName] = ExpiringListData()
+                CacheManager.listDataMap[getDataType().simpleName]!!.saveReceivedTime()
             }
 
             for(baseData in response){
-                if(CacheManager.detailsDataMap.containsKey(Pair(getDataTag(), baseData.getMainID()))){
-                    CacheManager.detailsDataMap[Pair(getDataTag(), baseData.getMainID())]!!.updateValues(baseData)
+                if(CacheManager.detailsDataMap.containsKey(Pair(getDataType().simpleName, baseData.getMainID()))){
+                    CacheManager.detailsDataMap[Pair(getDataType().simpleName, baseData.getMainID())]!!.updateValues(baseData)
                 }
                 else{
-                    CacheManager.detailsDataMap[Pair(getDataTag(), baseData.getMainID())] = baseData
+                    CacheManager.detailsDataMap[Pair(getDataType().simpleName, baseData.getMainID())] = baseData
                 }
 
-                if(viewModel.selectedSort == 0){
-                    CacheManager.listDataMap[getDataTag()]!!.list.add(baseData.getMainID())
+                if(areParametersDefault()){
+                    CacheManager.listDataMap[getDataType().simpleName]!!.list.add(baseData.getMainID())
                 }
 
             }
