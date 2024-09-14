@@ -2,7 +2,9 @@ package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.View
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ProgramPagingSource
+import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.PagingSource
 
 abstract class BaseProgramListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
@@ -15,13 +17,19 @@ abstract class BaseProgramListFragment(defaultFilters : MutableMap<String, Array
         return ProgramPagingSource(requireContext(), getBaseViewModel())
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+    override fun onSetUpSearching() {
+        super.onSetUpSearching()
 
         setupSort(com.norbert.koller.shared.R.string.newest, com.norbert.koller.shared.R.string.oldest,"Date", "desc,Lesson:desc", "asc,Lesson:asc")
 
-        addSearchbar("Topic")
+        addDateChip()
 
-        super.onViewCreated(view, savedInstanceState)
+        val lessonLocalName : String = requireContext().getString(R.string.lesson).lowercase()
+        addSortingChip("Length", com.norbert.koller.shared.R.string.length, arrayListOf(
+            ListItem("1 ${lessonLocalName}", null, null, "1"),
+            ListItem("2 ${lessonLocalName}", null, null, "2")
+        ))
+
+        addSearchbar("Topic")
     }
 }

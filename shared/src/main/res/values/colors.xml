@@ -10,4 +10,40 @@
     <color name="star_color_7">#FFDEC4</color>
 
     <color name="night_bg">#141C2C</color>
+
+    <color name="color05Light">#80FFFFFF</color>
+    <color name="color01Light">#1AFFFFFF</color>
+    <color name="color025Light">#40FFFFFF</color>
+    <color name="color033Light">#54FFFFFF</color>
+    <color name="color066Light">#ABFFFFFF</color>
+    <color name="color075Light">#BFFFFFFF</color>
+
+    <color name="color05Dark">#80000000</color>
+    <color name="color01Dark">#1A000000</color>
+    <color name="color025Dark">#40000000</color>
+    <color name="color033Dark">#54000000</color>
+    <color name="color066Dark">#AB000000</color>
+    <color name="color075Dark">#BF000000</color>
+
+    <color name="colorYellowDark">@android:color/holo_orange_dark</color>
+    <color name="colorRedDark">@android:color/holo_red_dark</color>
+    <color name="colorGreenDark">@android:color/holo_green_dark</color>
+    <color name="colorBlueDark">@android:color/holo_blue_dark</color>
+
+    <color name="colorYellowLight">@android:color/holo_orange_light</color>
+    <color name="colorRedLight">@android:color/holo_red_light</color>
+    <color name="colorGreenLight">@android:color/holo_green_light</color>
+    <color name="colorBlueLight">@android:color/holo_blue_light</color>
+
+    <color name="colorBestLight">#FF018786</color>
+    <color name="colorGoodLight">@android:color/holo_green_dark</color>
+    <color name="colorOkLight">@android:color/holo_orange_light</color>
+    <color name="colorBadLight">@android:color/holo_orange_dark</color>
+    <color name="colorWorstLight">@android:color/holo_red_dark</color>
+
+    <color name="colorBestDark">#8003DAC5</color>
+    <color name="colorGoodDark">#8099CC00</color>
+    <color name="colorOkDark">#80FFBB33</color>
+    <color name="colorBadDark">#80FF8800</color>
+    <color name="colorWorstDark">#80FF4444</color>
 </resources>

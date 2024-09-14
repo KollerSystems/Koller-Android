@@ -9,15 +9,37 @@
     tools:context="fragments.StudentHostelFragment">
 
     <TextView
+        style="@style/CategoryCardName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Fejlesztés alatt"
+        android:text="@string/recommended"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_container_margin"
+        android:layout_weight="1"
+        android:background="@drawable/card"
+        android:backgroundTint="?attr/colorSurfaceContainerLow"
+        android:gravity="center"
+        android:text="Fejlesztés alatt álló menüpont"
         tools:ignore="HardcodedText" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:visibility="gone" >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+    <TextView
+        style="@style/CategoryCardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/browse"
+        tools:ignore="HardcodedText" />
 
     <androidx.cardview.widget.CardView
         style="@style/MainCard"

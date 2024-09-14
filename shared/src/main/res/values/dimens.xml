@@ -34,6 +34,7 @@
     <!-- Texts -->
     <dimen name="text_container_margin">5dp</dimen>
     <dimen name="text_container_half_margin">2.5dp</dimen>
+    <dimen name="outline_width">2dp</dimen>
     <dimen name="n_text_container_margin">-5dp</dimen>
 
     <dimen name="text_drawable_size">15dp</dimen>

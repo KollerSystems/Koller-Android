@@ -58,6 +58,10 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
     abstract fun getTimeLimit() : Int
 
+    open fun onFinishLoading(){
+
+    }
+
     fun createLoadingOverlay() : LoadingOverlayView{
         val loadingOl = LoadingOverlayView(requireContext())
         loadingOl.setLayoutParams(LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
@@ -65,6 +69,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
 
         viewModel.onLoadSuccess = {
             loadingOl.setState(DetailsViewModel.NONE)
+            onFinishLoading()
         }
 
         viewModel.onLoadError = {
@@ -115,6 +120,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                     }
 
                     viewModel.response.value = CacheManager.detailsDataMap[key]!!
+                    onFinishLoading()
                     return
                 }
 
@@ -125,6 +131,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
                     if(baseData != null){
                         viewModel.response.value = baseData
                         loadingOverlay.setState(DetailsViewModel.NONE)
+                        onFinishLoading()
                         if(!baseData.isUnexpired(getTimeLimit())){
                             refresh()
                         }

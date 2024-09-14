@@ -42,10 +42,12 @@ abstract class BsdfFragment : BottomSheetDialogFragment() {
         viewGroup.setBackgroundColor(requireContext().getAttributeColor(com.google.android.material.R.attr.colorSurface))
         binding.root.addView(viewGroup)
         if(context is MainActivity) {
-            if ((context as MainActivity).viewModel.currentBottomSheetDialogFragment != null) {
-                (context as MainActivity).viewModel.currentBottomSheetDialogFragment!!.dismiss()
+            if (savedInstanceState == null){
+                if((context as MainActivity).viewModel.currentBottomSheetDialogFragment != null){
+                    (context as MainActivity).viewModel.currentBottomSheetDialogFragment!!.dismiss()
+                }
+                (context as MainActivity).viewModel.currentBottomSheetDialogFragment = this
             }
-            (context as MainActivity).viewModel.currentBottomSheetDialogFragment = this
         }
         return binding.root
     }

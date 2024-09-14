@@ -22,7 +22,6 @@ abstract class ProgramRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
 
         super.onBindItemViewHolder(holder, item, position)
-
         val context = holder.itemView.context
         holder as RecyclerViewHelper.UserViewHolder
 
@@ -37,8 +36,6 @@ abstract class ProgramRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
         holder.itemView.setOnClickListener {
 
             onItemPress(holder, item)
-
-
         }
     }
 }

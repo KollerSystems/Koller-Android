@@ -12,8 +12,7 @@ import com.norbert.koller.teacher.fragments.StudyGroupSpecificFragment
 import com.norbert.koller.teacher.fragments.StudyGroupTypeFragment
 
 class StudyGroupRecyclerAdapter : StudyGroupRecyclerAdapter() {
-
     override fun onItemPress(holder: ViewHolder, item: StudyGroupData) {
-        (holder.itemView.context as MainActivity).addFragmentWithTransition(StudyGroupSpecificFragment(item.id), holder.itemView as MaterialCardView, getTransitionName(item.getMainID()))
+        (holder.itemView.context as MainActivity).addFragmentWithTransition(StudyGroupSpecificFragment(item.getMainID()), holder.itemView, getTransitionName(item.getMainID()))
     }
 }

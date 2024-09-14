@@ -94,7 +94,7 @@ abstract class SettingsActivity : ToolbarActivity() {
             startActivity(intent)
         }
 
-        getDeveloperBinding().cbRemoveCurrentUserSaveData.setOnClickListener{
+        getDeveloperBinding().btnRemoveCurrentUserSaveData.setOnClickListener{
             lifecycleScope.launch {
                 userDataStore.edit {
                     it.clear()
@@ -102,7 +102,7 @@ abstract class SettingsActivity : ToolbarActivity() {
             }
         }
 
-        getDeveloperBinding().cbRemoveTipsSaveData.setOnClickListener{
+        getDeveloperBinding().btnRemoveTipsSaveData.setOnClickListener{
             lifecycleScope.launch {
                 tipDataStore.edit {
                     it.clear()
@@ -110,7 +110,7 @@ abstract class SettingsActivity : ToolbarActivity() {
             }
         }
 
-        getDeveloperBinding().cbRemoveLoginSaveData.setOnClickListener{
+        getDeveloperBinding().btnRemoveLoginSaveData.setOnClickListener{
             lifecycleScope.launch {
                 loginDataStore.edit {
                     it.clear()

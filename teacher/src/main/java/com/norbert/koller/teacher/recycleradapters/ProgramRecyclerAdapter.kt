@@ -8,6 +8,6 @@ import com.norbert.koller.teacher.fragments.BaseProgramFragment
 
 class ProgramRecyclerAdapter : ProgramRecyclerAdapter() {
     override fun onItemPress(holder: RecyclerView.ViewHolder, item : BaseProgramData) {
-        (holder.itemView.context as MainActivity).addFragmentWithTransition(BaseProgramFragment(item.id), holder.itemView, getTransitionName(item.getMainID()))
+        (holder.itemView.context as MainActivity).addFragmentWithTransition(BaseProgramFragment(item.getMainID()), holder.itemView, getTransitionName(item.getMainID()))
     }
 }

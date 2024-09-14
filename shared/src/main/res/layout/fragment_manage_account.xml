@@ -25,7 +25,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_gravity="center_horizontal"
-                    app:stroke_width="5dp">
+                    app:stroke_width="4dp">
 
                 </com.norbert.koller.shared.customviews.UserView>
 

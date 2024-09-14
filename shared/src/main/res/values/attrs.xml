@@ -6,6 +6,7 @@
     <attr name="colorBackground05" format="reference|color" />
     <attr name="colorBackground025" format="reference|color" />
     <attr name="colorBackground01" format="reference|color" />
+    <attr name="colorBackground" format="reference|color" />
 
     <attr name="colorForeground066" format="reference|color" />
     <attr name="colorForeground033" format="reference|color" />
@@ -18,10 +19,12 @@
     <attr name="colorYellow" format="reference|color" />
     <attr name="colorRed" format="reference|color" />
     <attr name="colorGreen" format="reference|color" />
+    <attr name="colorBlue" format="reference|color" />
 
     <attr name="colorYellowInverse" format="reference|color" />
     <attr name="colorRedInverse" format="reference|color" />
     <attr name="colorGreenInverse" format="reference|color" />
+    <attr name="colorBlueInverse" format="reference|color" />
 
     <attr name="colorBest" format="reference|color" />
     <attr name="colorGood" format="reference|color" />

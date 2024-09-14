@@ -21,7 +21,7 @@
             android:layout_marginBottom="@dimen/application_padding"
             app:layout_maxHeight="300dp"
             app:layout_maxWidth="300dp"
-            app:stroke_width="10dp" />
+            app:stroke_width="8dp" />
     </com.google.android.flexbox.FlexboxLayout>
 
 

@@ -6,6 +6,7 @@ import com.google.gson.annotations.SerializedName
 class UserData(
     @SerializedName("UID") var uid : Int = -1,
     @SerializedName("OM") var om : Long? = null,
+    @SerializedName("Role") var role : Int? = null,
     @SerializedName("Name") var name : String? = null,
     @SerializedName("Gender") var gender : Int? = null,
     @SerializedName("Picture") var picture : String? = null,

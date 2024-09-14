@@ -26,6 +26,9 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
     abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
     abstract fun getNestedScrollView() : NestedScrollView
+    fun getUserData() : UserData{
+        return viewModel.response.value as UserData
+    }
 
     override fun getDataType(): Class<*> {
         return UserData::class.java

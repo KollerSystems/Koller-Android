@@ -32,6 +32,10 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
     override lateinit var ncbTeacher : DescriptionButton
     override lateinit var toGeneralButton: View
 
+    override fun getFragmentTitle(): String {
+        return getString(com.norbert.koller.shared.R.string.study_group)
+    }
+
     override fun apiFunctionToCall(): suspend () -> Response<*> {
         return { RetrofitInstance.api.getStudyGroup(viewModel.id!!)}
     }
@@ -40,7 +44,6 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
         binding = FragmentProgramBinding.inflate(layoutInflater)
         return binding.root
     }
-
 
     override fun getTimeLimit(): Int {
         return DateTimeHelper.TIME_IMPORTANT
@@ -53,7 +56,6 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         binding.cbEdit.setOnClickListener {
             val intent = Intent(requireContext(), EditStudyGroupActivity::class.java)
             startActivity(intent)
@@ -64,7 +66,6 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
         toGeneralButton.setOnClickListener{
             (requireContext() as MainActivity).addFragment(StudyGroupTypeFragment((viewModel.response.value as StudyGroupData).programID))
         }
-
 
         viewModel.response.observe(viewLifecycleOwner) {response ->
 
@@ -81,13 +82,6 @@ class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), Progra
             ncbClassroom.getTextDescription().setOnClickListener{
                 classRoomClick(response, requireContext())
             }
-
         }
     }
-
-    override fun getFragmentTitle(): String? {
-        return getString(com.norbert.koller.shared.R.string.study_group)
-    }
-
-
 }

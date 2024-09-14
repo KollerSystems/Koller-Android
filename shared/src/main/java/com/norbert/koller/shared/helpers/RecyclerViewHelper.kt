@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.FrameLayout
 import android.widget.TextView
+import androidx.core.view.marginEnd
 import androidx.core.view.marginLeft
 import androidx.core.view.marginRight
+import androidx.core.view.marginStart
 import androidx.core.view.marginTop
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.LinearSmoothScroller
@@ -394,7 +396,7 @@ class RecyclerViewHelper {
         fun deroundCardVertical(view : View, view2 : View? = null){
 
             val context = view.context
-            deroundCardX(view, view2,0,context.resources.getDimensionPixelSize(R.dimen.card_margin),0,context.resources.getDimensionPixelSize(R.dimen.card_margin))
+            deroundCardX(view, view2,view.marginStart,context.resources.getDimensionPixelSize(R.dimen.card_margin),view.marginEnd,context.resources.getDimensionPixelSize(R.dimen.card_margin))
         }
 
         fun deroundCardWithLeftMargin(view : View, view2 : View? = null){

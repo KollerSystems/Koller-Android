@@ -11,7 +11,7 @@ import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.FragmentRoomBinding
 
 
-class RoomFragment(rid : Int) : com.norbert.koller.shared.fragments.RoomFragment(rid) {
+class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.RoomFragment(rid) {
 
 
     lateinit var binding : FragmentRoomBinding

@@ -95,7 +95,7 @@
     <string name="report">Jelentés</string>
     <string name="report_desc">A felhasználó szabályokat szeg</string>
     <string name="online_connections">Online elérhetőségek</string>
-    <string name="manage_student">Diák kezelése</string>
+    <string name="manage_student">Tanuló kezelése</string>
     <string name="like">Tetszik</string>
     <string name="add_calendar">Rögzítés naptárban</string>
     <string name="i_will_be_there">Ott leszek</string>
@@ -460,4 +460,6 @@
     <string name="discard">Elvetés</string>
     <string name="sure_logout">Kijelentkezel?</string>
     <string name="empty">Üres</string>
+    <string name="browse">Böngészés</string>
+    <string name="manage_teacher">Tanár kezelése</string>
 </resources>

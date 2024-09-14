@@ -23,7 +23,7 @@ tools:context=".activities.EditUserActivity">
                 android:id="@+id/rbiv_pfp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                custom:stroke_width="10dp">
+                custom:stroke_width="8dp">
 
             </com.norbert.koller.shared.customviews.UserView>
 

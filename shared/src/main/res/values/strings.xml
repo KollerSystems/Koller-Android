@@ -469,4 +469,6 @@
     <string name="discard">Discard</string>
     <string name="sure_logout">Log out?</string>
     <string name="empty">Empty</string>
+    <string name="browse">Browse</string>
+    <string name="manage_teacher">Manage teacher</string>
 </resources>

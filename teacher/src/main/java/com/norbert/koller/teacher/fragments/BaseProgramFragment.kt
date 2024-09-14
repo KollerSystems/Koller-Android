@@ -33,7 +33,7 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
     override lateinit var ncbTeacher : DescriptionButton
     override lateinit var toGeneralButton: View
 
-    override fun getFragmentTitle(): String? {
+    override fun getFragmentTitle(): String {
         return getString(Rs.string.base_programs)
     }
 
@@ -79,20 +79,15 @@ class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFr
 
             ncbClass.getTextDescription().setOnClickListener{
                 classClick(response, requireContext())
-
             }
 
             ncbTeacher.getTextDescription().setOnClickListener{
                 teacherClick(response, requireContext())
-
             }
 
             ncbClassroom.getTextDescription().setOnClickListener{
                 classRoomClick(response, requireContext())
-
             }
-
         }
     }
-
 }

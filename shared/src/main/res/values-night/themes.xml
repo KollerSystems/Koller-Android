@@ -3,39 +3,43 @@
     <style name="Theme.Color" parent="Theme.Material3.DynamicColors.DayNight.NoActionBar">
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="o_mr1">false</item>
-        <item name="colorBackground05">#80000000</item>
-        <item name="colorBackground01">#1A000000</item>
-        <item name="colorBackground025">#40000000</item>
-        <item name="colorBackground033">#54000000</item>
-        <item name="colorBackground066">#AB000000</item>
-        <item name="colorBackground075">#BF000000</item>
 
-        <item name="colorForeground05">#80FFFFFF</item>
-        <item name="colorForeground01">#1AFFFFFF</item>
-        <item name="colorForeground025">#40FFFFFF</item>
-        <item name="colorForeground033">#54FFFFFF</item>
-        <item name="colorForeground066">#ABFFFFFF</item>
-        <item name="colorForeground075">#BFFFFFFF</item>
-        <item name="colorForeground">#FFFFFF</item>
+        <item name="colorBackground01">@color/color01Dark</item>
+        <item name="colorBackground025">@color/color025Dark</item>
+        <item name="colorBackground033">@color/color033Dark</item>
+        <item name="colorBackground05">@color/color05Dark</item>
+        <item name="colorBackground066">@color/color066Dark</item>
+        <item name="colorBackground075">@color/color075Dark</item>
+        <item name="colorBackground">@android:color/white</item>
 
-        <item name="colorYellow">@android:color/holo_orange_light</item>
-        <item name="colorRed">@android:color/holo_red_light</item>
-        <item name="colorGreen">@android:color/holo_green_light</item>
+        <item name="colorForeground01">@color/color01Light</item>
+        <item name="colorForeground025">@color/color025Light</item>
+        <item name="colorForeground033">@color/color033Light</item>
+        <item name="colorForeground05">@color/color05Light</item>
+        <item name="colorForeground066">@color/color066Light</item>
+        <item name="colorForeground075">@color/color075Light</item>
+        <item name="colorForeground">@android:color/black</item>
 
-        <item name="colorYellowInverse">@android:color/holo_orange_dark</item>
-        <item name="colorRedInverse">@android:color/holo_red_dark</item>
-        <item name="colorGreenInverse">@android:color/holo_green_dark</item>
+        <item name="colorYellow">@color/colorYellowLight</item>
+        <item name="colorRed">@color/colorRedLight</item>
+        <item name="colorGreen">@color/colorGreenLight</item>
+        <item name="colorBlue">@color/colorBlueLight</item>
 
-        <item name="colorBest">#FF03DAC5</item>
-        <item name="colorGood">@android:color/holo_green_light</item>
-        <item name="colorOk">@android:color/holo_orange_light</item>
-        <item name="colorBad">@android:color/holo_orange_dark</item>
-        <item name="colorWorst">@android:color/holo_red_light</item>
+        <item name="colorYellowInverse">@color/colorYellowDark</item>
+        <item name="colorRedInverse">@color/colorRedDark</item>
+        <item name="colorGreenInverse">@color/colorGreenDark</item>
+        <item name="colorBlueInverse">@color/colorBlueDark</item>
 
-        <item name="colorBestInverse">#80018786</item>
-        <item name="colorGoodInverse">#80669900</item>
-        <item name="colorOkInverse">#80FFBB33</item>
-        <item name="colorBadInverse">#80FF8800</item>
-        <item name="colorWorstInverse">#80CC0000</item>
+        <item name="colorBest">@color/colorBestDark</item>
+        <item name="colorGood">@color/colorGreenDark</item>
+        <item name="colorOk">@color/colorOkDark</item>
+        <item name="colorBad">@color/colorBadDark</item>
+        <item name="colorWorst">@color/colorWorstDark</item>
+
+        <item name="colorBestInverse">@color/colorBestLight</item>
+        <item name="colorGoodInverse">@color/colorGoodLight</item>
+        <item name="colorOkInverse">@color/colorOkLight</item>
+        <item name="colorBadInverse">@color/colorBadLight</item>
+        <item name="colorWorstInverse">@color/colorWorstLight</item>
     </style>
 </resources>

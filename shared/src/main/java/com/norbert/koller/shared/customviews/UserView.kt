@@ -11,6 +11,7 @@ import com.github.iielse.imageviewer.core.Photo
 import com.github.iielse.imageviewer.core.SimpleDataProvider
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ViewUserBinding
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.squareup.picasso.Picasso
@@ -28,7 +29,7 @@ class UserView(context: Context, attrs: AttributeSet) : MaterialCardView(context
     private val red : Int = 10
     private val yellow : Int = 12
 
-    fun setUser(userData : com.norbert.koller.shared.data.UserData){
+    fun setUser(userData : UserData){
 
         Picasso.get()
             .load(userData.picture)
@@ -39,19 +40,14 @@ class UserView(context: Context, attrs: AttributeSet) : MaterialCardView(context
         setColorBasedOnClass(userData)
     }
 
-    private fun setColorBasedOnClass(userData : com.norbert.koller.shared.data.UserData){
+    private fun setColorBasedOnClass(userData : UserData){
 
-        val class_ = userData.class_?.class_
-        if(class_.isNullOrBlank()){
-            strokeColor = if(userData.group == null) {
-                Color.BLACK
-            } else{
-                context.getAttributeColor(R.attr.colorGreen)
-            }
+        if(userData.role == 2){
+            strokeColor = context.getAttributeColor(R.attr.colorBlue)
             return
         }
 
-        val year : Int = class_.split(".")[0].toInt()
+        val year : Int = userData.class_!!.class_.split(".")[0].toInt()
 
         if(year <= red){
             strokeColor = context.getAttributeColor(R.attr.colorRed)
@@ -73,15 +69,15 @@ class UserView(context: Context, attrs: AttributeSet) : MaterialCardView(context
         )
 
         try {
-            mStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.roundedBadgeImageView_stroke_width, context.resources.getDimensionPixelSize(R.dimen.text_container_half_margin))
+            mStrokeWidth = typedArray.getDimensionPixelSize(R.styleable.roundedBadgeImageView_stroke_width, context.resources.getDimensionPixelSize(R.dimen.outline_width))
         } finally {
             typedArray.recycle()
         }
 
         radius = 99999f
-        strokeColor = Color.BLACK
+        strokeColor = Color.GRAY
 
-        setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorPrimaryContainer))
+        setCardBackgroundColor(Color.TRANSPARENT)
 
 
         val mStrokeWidthInt = mStrokeWidth
