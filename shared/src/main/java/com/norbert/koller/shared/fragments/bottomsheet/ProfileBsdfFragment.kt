@@ -3,6 +3,7 @@ package com.norbert.koller.shared.fragments.bottomsheet
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.ContactsContract.Data
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.datastore.preferences.core.edit
@@ -41,9 +42,9 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         super.onViewCreated(view, savedInstanceState)
         dialog!!.setupBottomSheet()
 
-        getHeaderBinding().user.setUser(CacheManager.userData)
-        getHeaderBinding().textName.text = CacheManager.userData.name
-        getHeaderBinding().textDescription.text = CacheManager.userData.createDescription()
+        getHeaderBinding().user.setUser(CacheManager.userData!!)
+        getHeaderBinding().textName.text = CacheManager.userData!!.name
+        getHeaderBinding().textDescription.text = CacheManager.userData!!.createDescription()
 
         getHeaderBinding().btnLogout.setOnClickListener{
 
@@ -63,7 +64,9 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
                         requireContext().loginDataStore.edit {
                             it.clear()
                         }
-                        ApplicationManager.openLogin.invoke(requireContext())
+                        CacheManager.loginData = null
+
+                        ApplicationManager.openLogin(requireContext())
                         requireActivity().finish()
                         dialog.dismiss()
                         dismiss()
@@ -88,13 +91,13 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
         getHeaderBinding().cbRoom.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(CacheManager.userData.rid!!))
+            (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(CacheManager.userData!!.rid!!))
             this.dismiss()
         }
 
         getFooterBinding().cbCrossings.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(CrossingListFragment(CacheManager.userData.uid))
+            (requireContext() as MainActivity).addFragment(CrossingListFragment(CacheManager.userData!!.uid))
             this.dismiss()
         }
 

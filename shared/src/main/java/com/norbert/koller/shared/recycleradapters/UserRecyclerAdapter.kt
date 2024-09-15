@@ -43,7 +43,7 @@ class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
         holder.itemView.setOnClickListener {
 
-            if (item.uid == CacheManager.userData.uid) {
+            if (item.uid == CacheManager.userData!!.uid) {
                 ApplicationManager.openProfile(context)
             } else {
 

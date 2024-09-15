@@ -25,4 +25,5 @@
     <string name="weekly">Hetente</string>
     <string name="every_two_weeks">Két hetente</string>
     <string name="every_four_weeks">Négy hetente</string>
+    <string name="wrong_role">This user is a student. Please download Koller for Students to login or login with a different user.</string>
 </resources>

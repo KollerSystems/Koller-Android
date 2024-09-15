@@ -148,6 +148,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
             }
         }
         else{
+            onFinishLoading()
             when(viewModel.state){
                 DetailsViewModel.LOADING ->{
                     swrl.isRefreshing = true

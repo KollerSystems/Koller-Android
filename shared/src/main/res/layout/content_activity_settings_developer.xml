@@ -156,12 +156,11 @@
                 android:layout_height="match_parent"
                 android:text="Current user" />
 
-            <Button
-                android:enabled="false"
-                android:id="@+id/btn_remove_every_user_save_data"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="Every user" />
+                <Button
+                    android:id="@+id/btn_remove_every_user_save_data"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="Every user" />
 
             <Button
                 android:id="@+id/btn_remove_tips_save_data"

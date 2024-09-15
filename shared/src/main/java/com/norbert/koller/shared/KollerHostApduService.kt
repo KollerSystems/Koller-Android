@@ -16,7 +16,7 @@ class KollerHostApduService : HostApduService() {
     override fun processCommandApdu(commandApdu: ByteArray, extras: Bundle?): ByteArray {
 
         handleNFC?.invoke(commandApdu.toInt())
-        return CacheManager.userData.uid.toBytes()
+        return CacheManager.userData!!.uid.toBytes()
     }
 
     override fun onDeactivated(reason: Int) {

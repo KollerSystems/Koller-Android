@@ -16,6 +16,8 @@ import com.google.android.material.checkbox.MaterialCheckBox
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.deleteEveryUserSaveData
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.getCurrentUserDataStore
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.tipDataStore
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
@@ -96,10 +98,14 @@ abstract class SettingsActivity : ToolbarActivity() {
 
         getDeveloperBinding().btnRemoveCurrentUserSaveData.setOnClickListener{
             lifecycleScope.launch {
-                userDataStore.edit {
+                getCurrentUserDataStore()!!.edit {
                     it.clear()
                 }
             }
+        }
+
+        getDeveloperBinding().btnRemoveEveryUserSaveData.setOnClickListener{
+            deleteEveryUserSaveData()
         }
 
         getDeveloperBinding().btnRemoveTipsSaveData.setOnClickListener{

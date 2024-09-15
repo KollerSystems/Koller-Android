@@ -465,10 +465,12 @@
     <string name="is_in">In</string>
     <string name="failed_to_refresh">Failed to get fresh data</string>
     <string name="failed_to_refresh_user">Failed to get your fresh user data</string>
-    <string name="no_internet">No internet connection!</string>
+    <string name="no_internet">No internet connection</string>
     <string name="discard">Discard</string>
     <string name="sure_logout">Log out?</string>
     <string name="empty">Empty</string>
     <string name="browse">Browse</string>
     <string name="manage_teacher">Manage teacher</string>
+    <string name="classes">Classes</string>
+    <string name="groups">Groups</string>
 </resources>

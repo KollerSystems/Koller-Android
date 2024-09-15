@@ -52,6 +52,7 @@ import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.helpers.ApiHelper
+import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -325,10 +326,7 @@ abstract class MainActivity : AppCompatActivity() {
                     it.remove(DataStoreManager.TOKENS)
                 }
                 finishAffinity()
-                ApplicationManager.openActivity(
-                    this@MainActivity,
-                    LoginActivity()::class.java
-                )
+                ApplicationManager.openLogin(this@MainActivity)
             }
 
         }
@@ -392,13 +390,13 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         Picasso.get()
-            .load(CacheManager.userData.picture)
+            .load(CacheManager.userData!!.picture)
             .noPlaceholder()
             .into(binding.imageUser)
 
 
         if(savedInstanceState == null) {
-            if(ApplicationManager.isOnline(this)) {
+            if(!CacheManager.userData!!.isValid(this, DateTimeHelper.TIME_IMPORTANT)) {
                 refreshUserData()
             }
             changeBackStackState(R.id.home)

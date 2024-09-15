@@ -56,7 +56,7 @@ class UserPreviewRecyclerAdapter (private var userList : MutableList<UserData>, 
 
             holder.itemView.setOnClickListener {
 
-                if(currentItem.uid == CacheManager.userData.uid){
+                if(currentItem.uid == CacheManager.userData!!.uid){
                     ApplicationManager.openProfile.invoke(holder.itemView.context)
                 }
                 else{

@@ -8,4 +8,5 @@
 
     <string name="everything_provided_so_far_description">Please check everything one last time</string>
     <string name="everything_provided_so_far">Everything provided so far</string>
+    <string name="wrong_role">This user is a teacher. Please download Koller for Teachers to login or login with a different user.</string>
 </resources>

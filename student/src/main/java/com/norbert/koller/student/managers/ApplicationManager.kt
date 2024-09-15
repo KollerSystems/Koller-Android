@@ -34,7 +34,7 @@ class ApplicationManager : ApplicationManager() {
         }
 
         openLogin = {context : Context ->
-            openActivity(context, LoginActivity::class.java)
+            openActivity(context, com.norbert.koller.student.activities.LoginActivity::class.java)
         }
 
         openMain = {context : Context ->
@@ -49,8 +49,6 @@ class ApplicationManager : ApplicationManager() {
         getAppColor = {context->
             ContextCompat.getColor(context, R.color.app_icon_color)
         }
-
-        loginViewPagerRecyclerAdapter = { com.norbert.koller.student.recycleradapters.LoginViewPagerRecyclerAdapter() }
 
         homeFragment = { HomeFragment() }
         calendarFragment = { CalendarFragment() }

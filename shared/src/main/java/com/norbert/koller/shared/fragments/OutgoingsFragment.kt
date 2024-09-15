@@ -19,7 +19,7 @@ class UserOutgoingsFragment(val userData : UserData? = null) : PagedFragment() {
     lateinit var viewModel : DetailsViewModel
 
     override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
-        return if(viewModel.owner!!.uid == CacheManager.userData.uid){
+        return if(viewModel.owner!!.uid == CacheManager.userData!!.uid){
             Pair(getString(R.string.user_outgoings),"")
         } else{
             Pair(viewModel.owner!!.name, getString(R.string.user_outgoings))

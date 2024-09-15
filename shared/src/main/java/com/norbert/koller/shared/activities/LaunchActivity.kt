@@ -21,6 +21,8 @@ import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.data.LoginTokensResponseData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.CacheManager
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.createDynamicUserDataStore
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.getCurrentUserDataStore
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
 import com.norbert.koller.shared.widgets.WidgetHelper
@@ -49,10 +51,7 @@ class LaunchActivity : AppCompatActivity() {
                     it.remove(DataStoreManager.TOKENS)
                 }
                 finishAffinity()
-                ApplicationManager.openActivity(
-                    this@LaunchActivity,
-                    LoginActivity()::class.java
-                )
+                ApplicationManager.openLogin(this@LaunchActivity)
             }
 
         }
@@ -73,7 +72,7 @@ class LaunchActivity : AppCompatActivity() {
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
                     // Check whether the initial data is ready.
-                    return if (CacheManager.userData.uid != -1) {
+                    return if (CacheManager.userData != null) {
                         // The content is ready. Start drawing.
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
@@ -87,20 +86,29 @@ class LaunchActivity : AppCompatActivity() {
 
         lifecycleScope.launch {
             CacheManager.loginData = DataStoreManager.readTokens(this@LaunchActivity)
-            val json = userDataStore.data.first()[DataStoreManager.USER]
 
-            if (CacheManager.loginData == null || json == null) {
-                ApplicationManager.openLogin.invoke(this@LaunchActivity)
-                finish()
+            if (CacheManager.loginData != null) {
+
+                createDynamicUserDataStore(CacheManager.loginData!!.uid)
+                val json = getCurrentUserDataStore()!!.data.first()[DataStoreManager.USER]
+
+                if (json != null) {
+                    CacheManager.userData = Gson().fromJson(json, UserData::class.java)
+                    ApplicationManager.openMain.invoke(this@LaunchActivity)
+                }
+                else{
+                    ApplicationManager.openLogin.invoke(this@LaunchActivity)
+
+                }
 
             } else {
-
-                CacheManager.userData = Gson().fromJson(json, UserData::class.java)
-                ApplicationManager.openMain.invoke(this@LaunchActivity)
-                finish()
+                ApplicationManager.openLogin.invoke(this@LaunchActivity)
             }
+
+            finish()
+
+
+
         }
-
-
     }
 }

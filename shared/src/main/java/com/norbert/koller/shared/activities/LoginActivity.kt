@@ -38,6 +38,8 @@ import com.norbert.koller.shared.data.LoginTokensData
 import com.norbert.koller.shared.databinding.ActivityLoginBinding
 import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.managers.CacheManager
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.createDynamicUserDataStore
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
 import com.norbert.koller.shared.managers.back
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.getColorOfPixel
@@ -48,7 +50,7 @@ import com.stfalcon.imageviewer.common.extensions.isVisible
 import kotlinx.coroutines.launch
 import java.util.Calendar
 
-class LoginActivity : AppCompatActivity() {
+abstract class LoginActivity : AppCompatActivity() {
 
 
     lateinit var viewModel: LoginViewModel
@@ -85,6 +87,12 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    abstract fun getLoginViewModel() : LoginViewModel
+
+    abstract fun getRecyclerAdapter() : LoginViewPagerRecyclerAdapter
+
+    abstract fun getRoleError() : Int
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -92,10 +100,10 @@ class LoginActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        binding.body.viewPager.adapter = ApplicationManager.loginViewPagerRecyclerAdapter()
+        binding.body.viewPager.adapter = getRecyclerAdapter()
         binding.body.viewPager.isUserInputEnabled = false
 
-        viewModel = ViewModelProvider(this)[LoginViewModel::class.java]
+        viewModel = getLoginViewModel()
 
         val isLandscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
 
@@ -130,8 +138,17 @@ class LoginActivity : AppCompatActivity() {
         }
 
         viewModel.userData.observe(this){
+            it as UserData
+            if(CacheManager.userData?.uid != it.uid){
+                CacheManager.detailsDataMap = mutableMapOf()
+                CacheManager.listDataMap = mutableMapOf()
+            }
+            CacheManager.userData = it
+            CacheManager.userData!!.saveReceivedTime()
+            if(!userDataStore.containsKey(it.uid)){
+                createDynamicUserDataStore(CacheManager.loginData!!.uid)
+            }
 
-            CacheManager.userData = it as UserData
             lifecycleScope.launch {
                 DataStoreManager.saveTokens(this@LoginActivity)
             }
@@ -146,6 +163,23 @@ class LoginActivity : AppCompatActivity() {
             APIInterface.serverErrorPopup(this@LoginActivity, it){
                 viewModel.getUserError.value = null
             }
+        }
+
+        viewModel.getRoleError.observe(this){
+            if(viewModel.getRoleError.value == false) return@observe
+            MaterialAlertDialogBuilder(this)
+                .setTitle("Téves alkalmazás vagy felhasználó")
+                .setMessage(getString(getRoleError()))
+                .setPositiveButton(
+                    getString(R.string.ok)
+                )
+                { _, _ ->
+
+                }
+                .setOnDismissListener {
+                    viewModel.getRoleError.value = false
+                }
+                .show()
         }
     }
 

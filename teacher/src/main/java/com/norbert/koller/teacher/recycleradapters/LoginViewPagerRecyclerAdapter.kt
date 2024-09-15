@@ -13,6 +13,9 @@ class LoginViewPagerRecyclerAdapter : LoginViewPagerRecyclerAdapter() {
         binding: ContentActivityLoginBodyContentBinding,
         activity: LoginActivity
     ) {
+        binding.tilFirst.editText!!.setText("cmulranhu")
+        binding.tilSecond.editText!!.setText("porcica1")
+
         super.passwordHolder(binding, activity)
 
         binding.tilFirst.isCounterEnabled = false

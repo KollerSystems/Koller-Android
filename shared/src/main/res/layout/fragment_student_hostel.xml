@@ -46,9 +46,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="0"
+        android:stateListAnimator="@null"
         app:cardCornerRadius="@dimen/card_corner_radius">
 
         <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/fbl_browse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:dividerDrawable="@drawable/divider"
@@ -56,7 +58,7 @@
             app:flexWrap="wrap"
             app:showDivider="middle">
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_places"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
@@ -70,7 +72,7 @@
                 app:layout_flexGrow="1"
                 app:layout_flexShrink="1" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_users"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
@@ -84,7 +86,7 @@
                 app:layout_flexGrow="1"
                 app:layout_flexShrink="1" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_study_groups"
                 style="@style/CardButton"
                 android:layout_width="wrap_content"
@@ -98,37 +100,6 @@
                 app:layout_flexGrow="1"
                 app:layout_flexShrink="1" />
 
-            <Button
-                android:id="@+id/btn_base_programs"
-                style="@style/CardButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="none"
-                android:paddingLeft="@dimen/card_padding"
-                android:paddingRight="@dimen/card_padding"
-                android:singleLine="true"
-                android:text="@string/base_programs"
-                android:visibility="gone"
-                app:icon="@drawable/base_program"
-                app:layout_flexGrow="1"
-                app:layout_flexShrink="1"
-                tools:visibility="visible" />
-
-            <Button
-                android:id="@+id/btn_stats"
-                style="@style/CardButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="none"
-                android:paddingLeft="@dimen/card_padding"
-                android:paddingRight="@dimen/card_padding"
-                android:singleLine="true"
-                android:text="@string/statistics"
-                android:visibility="gone"
-                app:icon="@drawable/stats"
-                app:layout_flexGrow="1"
-                app:layout_flexShrink="1"
-                tools:visibility="visible" />
         </com.google.android.flexbox.FlexboxLayout>
 
 

@@ -456,10 +456,12 @@
     <string name="is_in">Bent</string>
     <string name="failed_to_refresh">Friss adatok lekérése sikertelen</string>
     <string name="failed_to_refresh_user">Friss felhasználói adataid lekérése sikertelen</string>
-    <string name="no_internet">Nincs internet kapcsolat!</string>
+    <string name="no_internet">Nincs internet kapcsolat</string>
     <string name="discard">Elvetés</string>
     <string name="sure_logout">Kijelentkezel?</string>
     <string name="empty">Üres</string>
     <string name="browse">Böngészés</string>
     <string name="manage_teacher">Tanár kezelése</string>
+    <string name="classes">Osztályok</string>
+    <string name="groups">Csoportok</string>
 </resources>

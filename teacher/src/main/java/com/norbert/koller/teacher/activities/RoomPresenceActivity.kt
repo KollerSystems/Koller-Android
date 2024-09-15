@@ -15,6 +15,7 @@ import com.norbert.koller.shared.customviews.UserView
 import com.norbert.koller.shared.data.RoomOrderConditionsBase
 import com.norbert.koller.shared.data.RoomOrderData
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.getCurrentUserDataStore
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
 import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.teacher.R
@@ -46,7 +47,7 @@ class RoomPresenceActivity : RoomsActivity() {
             knowsTheLayout = false
             var read = 0
 
-            val data = userDataStore.data.first()[DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT]
+            val data = getCurrentUserDataStore()!!.data.first()[DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT]
             if(data != null) {
                 read = data
             }
@@ -57,7 +58,7 @@ class RoomPresenceActivity : RoomsActivity() {
 
             read++
             if(read <= 3){
-                userDataStore.edit {
+                getCurrentUserDataStore()!!.edit {
                     it[DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT] = read
                 }
             }

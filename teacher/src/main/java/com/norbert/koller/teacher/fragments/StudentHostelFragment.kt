@@ -4,6 +4,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.teacher.R
+import com.norbert.koller.shared.R as Rs
 
 class StudentHostelFragment : com.norbert.koller.shared.fragments.StudentHostelFragment() {
 
@@ -12,15 +14,14 @@ class StudentHostelFragment : com.norbert.koller.shared.fragments.StudentHostelF
 
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnBasePrograms.isVisible = true
+        addButton(getString(Rs.string.classes), com.norbert.koller.shared.R.drawable.groups, 2)
+        addButton(getString(Rs.string.groups), com.norbert.koller.shared.R.drawable.parent, 3)
 
-        binding.btnBasePrograms.setOnClickListener{
+        addButton(getString(Rs.string.base_programs), com.norbert.koller.shared.R.drawable.base_program).setOnClickListener{
             getMainActivity().addFragment(BaseProgramTypesFragment())
         }
 
-        binding.btnStats.isVisible = true
-
-        binding.btnStats.setOnClickListener {
+        addButton(getString(Rs.string.statistics), com.norbert.koller.shared.R.drawable.stats).setOnClickListener {
             getMainActivity().addFragment(StatisticsFragment())
         }
     }

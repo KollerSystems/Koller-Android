@@ -19,8 +19,11 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.shared.api.APIInterface
 import com.norbert.koller.shared.data.ApiLoginUsernameAndPasswordData
+import com.norbert.koller.shared.data.ClassData
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentActivityLoginBodyContentBinding
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.back
 import com.norbert.koller.shared.managers.next
 
@@ -59,8 +62,6 @@ abstract class LoginViewPagerRecyclerAdapter : RecyclerView.Adapter<LoginViewPag
         binding.btnForgot.text = activity.getString(R.string.forgotten_password)
         binding.text.text = activity.getString(R.string.please_login)
         binding.tilSecond.editText!!.transformationMethod = PasswordTransformationMethod()
-        binding.tilFirst.editText!!.setText("tweinek5")
-        binding.tilSecond.editText!!.setText("porcica1")
         binding.tilFirst.editText!!.importantForAutofill = IMPORTANT_FOR_AUTOFILL_YES_EXCLUDE_DESCENDANTS
         binding.tilSecond.editText!!.importantForAutofill = IMPORTANT_FOR_AUTOFILL_YES_EXCLUDE_DESCENDANTS
 
@@ -128,8 +129,8 @@ abstract class LoginViewPagerRecyclerAdapter : RecyclerView.Adapter<LoginViewPag
 
 
         binding.buttonPrimary.setOnLongClickListener {
-            Toast.makeText(activity, "Csak téged csak most kivételesen beengedlek", Toast.LENGTH_SHORT).show()
-
+            Toast.makeText(activity, "Demo nézet bejelentkezés nélkül", Toast.LENGTH_SHORT).show()
+            CacheManager.userData = UserData(name = "Béla", class_ = ClassData(class_ = "10.b"))
             ApplicationManager.openMain.invoke(activity)
             activity.finish()
 

@@ -150,8 +150,6 @@ open class ApplicationManager : Application() {
         lateinit var roomFragment: (rid : Int) -> RoomFragment
         lateinit var userFragment: (uid : Int) -> UserFragment
 
-        lateinit var loginViewPagerRecyclerAdapter: () -> LoginViewPagerRecyclerAdapter
-
         lateinit var getAppColor: (context : Context) -> Int
 
         var roomListFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomListFragment = { map-> RoomListFragment(map) }

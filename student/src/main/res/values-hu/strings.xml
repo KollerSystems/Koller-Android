@@ -10,4 +10,5 @@
 
     <string name="everything_provided_so_far_description">Kérlek fuss át mindenen mégegyszer utoljára</string>
     <string name="everything_provided_so_far">Minden amit eddig megadtál</string>
+    <string name="wrong_role">Ez a felhasználó egy tanár. Kérlek töltsd le a Koller Tanároknak alkalmazást a bejelentkezéshez vagy jelentkezz be egy másik felhasználóval.</string>
 </resources>

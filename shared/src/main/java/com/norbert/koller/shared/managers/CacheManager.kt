@@ -34,5 +34,5 @@ object CacheManager {
 
     var loginData : LoginTokensData? = null
 
-    var userData: UserData = UserData()
+    var userData: UserData? = null
 }

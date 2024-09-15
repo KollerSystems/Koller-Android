@@ -14,7 +14,10 @@
         android:theme="@style/Theme.MainTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
-
+        <activity
+            android:name=".activities.LoginActivity"
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"/>
         <activity
             android:name=".activities.SettingsActivity"
             android:exported="false"

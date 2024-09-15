@@ -55,7 +55,6 @@ class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.User
                 getMainActivity().addFragment(PersonalDataFragment())
             }
         }
-
     }
 
     lateinit var binding : FragmentUserBinding
