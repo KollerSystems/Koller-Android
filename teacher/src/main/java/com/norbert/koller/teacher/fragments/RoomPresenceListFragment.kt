@@ -6,11 +6,11 @@ import com.norbert.koller.shared.api.RoomPagingSource
 import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
-import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
+import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.activities.RoomRateActivity
-import com.norbert.koller.teacher.recycleradapters.RoomTidinessRecyclerAdapter
+import com.norbert.koller.teacher.recycleradapters.RoomPresenceRecyclerAdapter
 
-class RoomTidinessListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+class RoomPresenceListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
 
     override fun getFragmentTitle(): String {
         return getString(R.string.room_order)
@@ -21,7 +21,7 @@ class RoomTidinessListFragment(defaultFilters : MutableMap<String, ArrayList<Str
     }
 
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {
-        return RoomTidinessRecyclerAdapter()
+        return RoomPresenceRecyclerAdapter()
     }
 
     override fun onSetUpSearching() {
@@ -29,8 +29,8 @@ class RoomTidinessListFragment(defaultFilters : MutableMap<String, ArrayList<Str
 
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
 
-        addButton("Szoba értékelése"){
-            val intent = Intent(requireContext(), RoomRateActivity::class.java)
+        addButton("Jelenlét hozzáadása"){
+            val intent = Intent(requireContext(), RoomPresenceActivity::class.java)
             startActivity(intent)
         }
     }

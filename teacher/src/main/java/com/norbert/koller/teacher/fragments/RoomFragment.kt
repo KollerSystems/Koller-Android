@@ -25,8 +25,7 @@ class RoomFragment(rid : Int? = null) : com.norbert.koller.shared.fragments.Room
         }
 
         binding.cbPresence.setOnClickListener{
-            val intent = Intent(requireContext(), RoomPresenceActivity::class.java)
-            startActivity(intent)
+            getMainActivity().addFragment(RoomPresenceListFragment())
         }
 
         binding.cbEdit.setOnClickListener {

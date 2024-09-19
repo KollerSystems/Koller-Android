@@ -16,7 +16,7 @@ import com.norbert.koller.shared.viewmodels.ListApiBsdfFragmentViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class ListApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var classOfT: Class<*>? = null, private val filterName : Int? = null) : ListBsdfFragment(alreadyChecked, filterName) {
+class ListOldApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var classOfT: Class<*>? = null, private val filterName : Int? = null) : ListBsdfFragment(alreadyChecked, filterName) {
 
 
     fun apiViewModel() : ListApiBsdfFragmentViewModel{

@@ -1,13 +1,8 @@
 package com.norbert.koller.shared.helpers
 
-import android.view.ContextThemeWrapper
-import android.view.ViewTreeObserver
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.util.Pair
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -17,7 +12,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ExpiringListData
-import com.norbert.koller.shared.fragments.bottomsheet.ListApiBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListOldApiBsdfFragment
 import com.norbert.koller.shared.managers.checkByPass
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
@@ -317,7 +312,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListApiBsdfFragment(getValues, ChipHelper.getFilterValue(viewModel)[filterName], classOfT, localizedFilterId)
+        val dialog = ListOldApiBsdfFragment(getValues, ChipHelper.getFilterValue(viewModel)[filterName], classOfT, localizedFilterId)
         dialog.collapseText = collapseText
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
