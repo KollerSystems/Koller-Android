@@ -18,7 +18,8 @@ abstract class ApiRecyclerAdapterWithTransition() : ApiRecyclerAdapter() {
         val fragment = (recyclerView.context as MainActivity).supportFragmentManager.fragments[0]
 
         fragment.postponeEnterTransition()
-        (fragment.requireView() as ViewGroup).viewTreeObserver
+        if(fragment.view == null) return
+        (fragment.view as ViewGroup).viewTreeObserver
             .addOnPreDrawListener {
                 fragment.startPostponedEnterTransition()
                 true
