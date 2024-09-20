@@ -21,7 +21,7 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
     }
 
     override fun getFragmentTitle(): String? {
-        return getString(R.string.room)
+        return getString(R.string.places)
     }
 
     abstract fun getHeaderBinding() : ContentFragmentRoomHeaderBinding
