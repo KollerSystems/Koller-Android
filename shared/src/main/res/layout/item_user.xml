@@ -19,12 +19,26 @@
         android:orientation="horizontal"
         android:padding="@dimen/card_padding">
 
-        <com.norbert.koller.shared.customviews.UserView
-            android:id="@+id/user"
+        <FrameLayout
+            android:id="@+id/fl_icon_holder"
             android:layout_width="@dimen/card_icon"
             android:layout_height="@dimen/card_icon"
-            android:layout_marginEnd="@dimen/spacing" />
+            android:layout_marginEnd="@dimen/spacing">
 
+
+            <com.norbert.koller.shared.customviews.UserView
+                android:id="@+id/user"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <ImageView
+                android:id="@+id/img_checked"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone"
+                custom:srcCompat="@drawable/check_box" />
+
+        </FrameLayout>
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"

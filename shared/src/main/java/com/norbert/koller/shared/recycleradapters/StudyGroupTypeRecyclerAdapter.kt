@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.StudyGroupTypeData
 import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -21,7 +22,7 @@ abstract class StudyGroupTypeRecyclerAdapter() : ApiRecyclerAdapterWithTransitio
     }
 
 
-    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
         super.onBindItemViewHolder(holder, item, position)
 

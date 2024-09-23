@@ -398,7 +398,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         Picasso.get()
-            .load(CacheManager.userData!!.picture)
+            .load(CacheManager.userData?.picture)
             .noPlaceholder()
             .into(binding.imageUser)
 

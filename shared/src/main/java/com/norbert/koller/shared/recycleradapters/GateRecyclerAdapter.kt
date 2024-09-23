@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.CrossingData
 import com.norbert.koller.shared.data.DefaultDayTimes
 import com.norbert.koller.shared.databinding.ItemDescriptiveIconBinding
@@ -38,7 +39,7 @@ class GateRecyclerAdapter() :ApiRecyclerAdapter(){
 
 
 
-    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
 
 

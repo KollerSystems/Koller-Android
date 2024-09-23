@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -17,7 +18,7 @@ abstract class StudyGroupRecyclerAdapter() : ApiRecyclerAdapterWithTransition() 
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
         super.onBindItemViewHolder(holder, item, position)
         val context = holder.itemView.context

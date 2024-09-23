@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.CanteenData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ItemCanteenBinding
@@ -21,7 +22,7 @@ class CanteenRecyclerAdapter() : ApiRecyclerAdapter() {
         return ViewHolder(ItemCanteenBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
 
         holder as ViewHolder

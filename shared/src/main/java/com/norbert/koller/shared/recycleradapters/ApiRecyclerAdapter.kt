@@ -17,6 +17,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customviews.SearchView
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.databinding.ItemBinding
 import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.databinding.ItemNothingToDisplayBinding
@@ -104,7 +105,7 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
         when (getItemViewType(position)) {
             VIEW_TYPE_ITEM -> {
 
-                onBindItemViewHolder(holder, item, position)
+                onBindItemViewHolder(holder, item as BaseData, position)
 
                 if (position == snapshot().size) {
                     holder.itemView.post {
@@ -131,7 +132,7 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
     }
 
-    abstract fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int)
+    abstract fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int)
 
     override fun getItemCount(): Int {
 

@@ -34,6 +34,7 @@ class ListViewModel : SearchViewModel() {
     var ownerUID : Int = -1
 
     var filtersShown : MutableLiveData<Boolean> = MutableLiveData(false)
+    var selectedItems : MutableSet<Int> = mutableSetOf()
 
     lateinit var pagingSource: (()-> PagingSource)
     lateinit var currentPagingSource : PagingSource

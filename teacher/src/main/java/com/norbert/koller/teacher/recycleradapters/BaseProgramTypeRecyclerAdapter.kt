@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.BaseProgramTypeData
 import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -16,7 +17,7 @@ class BaseProgramTypeRecyclerAdapter() : ApiRecyclerAdapter() {
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
-    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: Any, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
         holder as RecyclerViewHelper.UserViewHolder
 
