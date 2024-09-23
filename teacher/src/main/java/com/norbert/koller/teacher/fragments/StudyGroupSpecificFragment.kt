@@ -22,7 +22,7 @@ import com.norbert.koller.teacher.databinding.FragmentStudyGroupTypeBinding
 import retrofit2.Response
 
 
-class StudyGroupSpecificFragment(id : Int? = null) : DetailsFragment(id), ProgramFragmentInterface {
+class StudyGroupSpecificFragment() : DetailsFragment(), ProgramFragmentInterface {
 
     lateinit var binding : FragmentProgramBinding
 

@@ -13,7 +13,7 @@ import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
-open class UserListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+open class UserListFragment() : ListFragment() {
 
 
     override fun getFragmentTitle(): String? {

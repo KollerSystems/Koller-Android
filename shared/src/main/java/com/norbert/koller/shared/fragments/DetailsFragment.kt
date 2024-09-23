@@ -27,7 +27,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
-abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() {
+abstract class DetailsFragment() : FragmentInMainActivity() {
 
     lateinit var viewModel: DetailsViewModel
 
@@ -50,8 +50,8 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
     ): View? {
         // Inflate the layout for this fragment
         val view = createRootView()
-        if(id != null){
-            setupTransition(view.rootView, id)
+        if(requireArguments().getInt("id", -1) != -1){
+            setupTransition(view.rootView, requireArguments().getInt("id", -1))
         }
         return view
     }
@@ -109,7 +109,7 @@ abstract class DetailsFragment(val id : Int? = null) : FragmentInMainActivity() 
         if(!viewModel.response.isInitialized) {
 
             if (viewModel.id == null) {
-                viewModel.id = id
+                viewModel.id = requireArguments().getInt("id", -1)
 
                 val key = Pair(getDataType().simpleName, viewModel.id)
                 if (CacheManager.detailsDataMap.containsKey(key)) {

@@ -13,7 +13,7 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import retrofit2.Response
 
 
-abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) {
+abstract class StudyGroupTypeFragment() : DetailsFragment() {
 
     lateinit var ncbClassroom : DescriptionButton
     lateinit var ncbClass : DescriptionButton
@@ -77,11 +77,19 @@ abstract class StudyGroupTypeFragment(pid : Int? = null) : DetailsFragment(pid) 
             ncbTeacher.getTextDescription().text = response.teacher!!.name.toString()
 
             ncbClassroom.getTextDescription().setOnClickListener {
-                getMainActivity().addFragment(ApplicationManager.roomFragment(response.rid))
+                val fragment = ApplicationManager.roomFragment()
+                val bundle = Bundle()
+                bundle.putInt("id", response.rid)
+                fragment.arguments = bundle
+                getMainActivity().addFragment(fragment)
             }
 
             ncbTeacher.getTextDescription().setOnClickListener {
-                getMainActivity().addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
+                val fragment = ApplicationManager.userFragment()
+                val bundle = Bundle()
+                bundle.putInt("id", response.teacher!!.uid)
+                fragment.arguments = bundle
+                getMainActivity().addFragment(fragment)
             }
         }
     }

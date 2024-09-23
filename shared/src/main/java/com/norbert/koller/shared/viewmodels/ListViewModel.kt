@@ -31,9 +31,7 @@ class ListViewModel : SearchViewModel() {
     lateinit var onAppendError: () -> Unit
     lateinit var onAppendSuccess: () -> Unit
 
-    var owner : UserData? = null
-
-    var id : Int? = null
+    var ownerUID : Int = -1
 
     var filtersShown : MutableLiveData<Boolean> = MutableLiveData(false)
 

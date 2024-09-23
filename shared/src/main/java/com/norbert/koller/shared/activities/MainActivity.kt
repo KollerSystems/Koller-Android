@@ -107,7 +107,11 @@ abstract class MainActivity : AppCompatActivity() {
             val blockData = mifareClassic.readBlock(blockNumber)
 
             binding.root.post{
-                addFragment(ApplicationManager.userFragment(byteArrayToInt(blockData)))
+                val fragment = ApplicationManager.userFragment()
+                val bundle = Bundle()
+                bundle.putInt("id", byteArrayToInt(blockData))
+                fragment.arguments = bundle
+                addFragment(fragment)
                 viewModel.currentBottomSheetDialogFragment?.dismiss()
             }
 
@@ -338,7 +342,11 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         KollerHostApduService.handleNFC = { uid ->
-            addFragment(ApplicationManager.userFragment(uid))
+            val fragment = ApplicationManager.userFragment()
+            val bundle = Bundle()
+            bundle.putInt("id", uid)
+            fragment.arguments = bundle
+            addFragment(fragment)
         }
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]

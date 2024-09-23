@@ -10,7 +10,7 @@ import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
-class ProgramParticipantListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+class ProgramParticipantListFragment() : ListFragment() {
 
     override fun getPagingSource(): PagingSource {
         return UserPagingSource(requireContext(), getBaseViewModel())

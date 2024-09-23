@@ -5,7 +5,7 @@ import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.recycleradapters.ProgramRecyclerAdapter
 
-class BaseProgramListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : BaseProgramListFragment(defaultFilters) {
+class BaseProgramListFragment() : BaseProgramListFragment() {
 
     override fun onSetUpSearching() {
         super.onSetUpSearching()

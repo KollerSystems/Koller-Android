@@ -3,7 +3,7 @@ package com.norbert.koller.teacher.fragments
 import android.os.Bundle
 import android.view.View
 
-class RoomListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : com.norbert.koller.shared.fragments.RoomListFragment(defaultFilters) {
+class RoomListFragment() : com.norbert.koller.shared.fragments.RoomListFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

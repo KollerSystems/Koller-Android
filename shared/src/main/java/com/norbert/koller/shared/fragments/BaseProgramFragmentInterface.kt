@@ -1,10 +1,12 @@
 package com.norbert.koller.shared.fragments
 
 import android.content.Context
+import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.DescriptionButton
 import com.norbert.koller.shared.data.BaseProgramData
+import com.norbert.koller.shared.data.FilterConfigData
 import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.managers.ApplicationManager
 
@@ -34,8 +36,10 @@ interface BaseProgramFragmentInterface : ProgramFragmentInterface {
     }
 
     fun classClick(response : BaseProgramData, context : Context){
-        val userFragment = ApplicationManager.userListFragment(null)
-            .setFilter("Class.ID", response.class_.id.toString())
+        val userFragment = ApplicationManager.userListFragment()
+        val bundle = Bundle()
+        bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", arrayListOf(response.class_.id.toString())))))
+        userFragment.arguments = bundle
         (context as MainActivity).addFragment(userFragment)
     }
 

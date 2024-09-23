@@ -147,18 +147,18 @@ open class ApplicationManager : Application() {
         lateinit var studentHostelFragment: () -> StudentHostelFragment
         lateinit var notificationFragment: () -> NotificationsFragment
 
-        lateinit var roomFragment: (rid : Int) -> RoomFragment
-        lateinit var userFragment: (uid : Int) -> UserFragment
+        lateinit var roomFragment: () -> RoomFragment
+        lateinit var userFragment: () -> UserFragment
 
         lateinit var getAppColor: (context : Context) -> Int
 
-        var roomListFragment: (map : MutableMap<String, ArrayList<String>>?) -> RoomListFragment = { map-> RoomListFragment(map) }
-        var userListFragment: (map : MutableMap<String, ArrayList<String>>?) -> UserListFragment = { map-> UserListFragment(map) }
+        var roomListFragment: () -> RoomListFragment = { RoomListFragment() }
+        var userListFragment: () -> UserListFragment = { UserListFragment() }
 
-        lateinit var studyGroupsFragment: (map : MutableMap<String, ArrayList<String>>?) -> StudyGroupTypeListFragment
+        lateinit var studyGroupsFragment: () -> StudyGroupTypeListFragment
 
-        var outgoingTemporaryListFragment: (userData : UserData?) -> OutgoingTemporaryListFragment = { userData -> OutgoingTemporaryListFragment(userData) }
-        var outgoingPermanentListFragment: (userData : UserData?) -> OutgoingPermanentListFragment = { userData -> OutgoingPermanentListFragment(userData) }
+        var outgoingTemporaryListFragment: () -> OutgoingTemporaryListFragment = { OutgoingTemporaryListFragment() }
+        var outgoingPermanentListFragment: () -> OutgoingPermanentListFragment = { OutgoingPermanentListFragment() }
 
         const val minLengthBeforeDismiss : Int = 3
 

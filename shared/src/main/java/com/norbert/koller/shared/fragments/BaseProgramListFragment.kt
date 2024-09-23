@@ -7,7 +7,7 @@ import com.norbert.koller.shared.api.ProgramPagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.PagingSource
 
-abstract class BaseProgramListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+abstract class BaseProgramListFragment() : ListFragment() {
 
     override fun getFragmentTitle(): String? {
         return null

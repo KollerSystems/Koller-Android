@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.fragments
 
 import android.content.Context
+import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.DescriptionButton
@@ -38,11 +39,19 @@ interface ProgramFragmentInterface {
     }
 
     fun teacherClick(response : ProgramData, context : Context){
-        (context as MainActivity).addFragment(ApplicationManager.userFragment(response.teacher!!.uid))
+        val fragment = ApplicationManager.userFragment()
+        val bundle = Bundle()
+        bundle.putInt("id", response.teacher!!.uid)
+        fragment.arguments = bundle
+        (context as MainActivity).addFragment(fragment)
     }
 
     fun classRoomClick(response : ProgramData, context : Context){
-        (context as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid))
+        val fragment = ApplicationManager.roomFragment()
+        val bundle = Bundle()
+        bundle.putInt("id", response.rid)
+        fragment.arguments = bundle
+        (context as MainActivity).addFragment(fragment)
     }
 
 }

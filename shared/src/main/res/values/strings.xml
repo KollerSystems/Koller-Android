@@ -250,7 +250,7 @@
     <string name="create_new_x_last_part">" "</string>
     <string name="lateness">Lateness</string>
     <string name="length">Length</string>
-    <string name="temporary">Temporary</string>
+    <string name="temporary">One time</string>
     <string name="continuous">Continuous</string>
     <string name="support_us">Support us</string>
     <string name="room">Room</string>

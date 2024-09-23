@@ -22,7 +22,7 @@ import com.norbert.koller.teacher.databinding.FragmentProgramBinding
 import retrofit2.Response
 
 
-class BaseProgramFragment(id : Int? = null) : DetailsFragment(id), BaseProgramFragmentInterface {
+class BaseProgramFragment() : DetailsFragment(), BaseProgramFragmentInterface {
 
     lateinit var binding : FragmentProgramBinding
 

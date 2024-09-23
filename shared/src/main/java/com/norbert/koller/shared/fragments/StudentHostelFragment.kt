@@ -48,15 +48,15 @@ open class StudentHostelFragment : FragmentInMainActivity() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.btnPlaces.setOnClickListener{
-            (context as MainActivity).addFragment(ApplicationManager.roomListFragment(null))
+            (context as MainActivity).addFragment(ApplicationManager.roomListFragment())
         }
 
         binding.btnUsers.setOnClickListener{
-            (context as MainActivity).addFragment(ApplicationManager.userListFragment(null))
+            (context as MainActivity).addFragment(ApplicationManager.userListFragment())
         }
 
         binding.btnStudyGroups.setOnClickListener {
-            (context as MainActivity).addFragment(ApplicationManager.studyGroupsFragment(null))
+            (context as MainActivity).addFragment(ApplicationManager.studyGroupsFragment())
         }
     }
 }

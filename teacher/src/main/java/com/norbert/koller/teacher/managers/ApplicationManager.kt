@@ -52,16 +52,16 @@ class ApplicationManager : ApplicationManager() {
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
         notificationFragment = { NotificationsFragment() }
-        roomFragment = {rid -> RoomFragment(rid) }
-        userFragment = {uid -> UserFragment(uid) }
+        roomFragment = { RoomFragment() }
+        userFragment = { UserFragment() }
 
         roomListFragment = {RoomListFragment()}
         userListFragment = {UserListFragment()}
 
-        outgoingTemporaryListFragment = { OutgoingTemporaryListFragment(it) }
-        outgoingPermanentListFragment = { OutgoingPermanentListFragment(it) }
+        outgoingTemporaryListFragment = { OutgoingTemporaryListFragment() }
+        outgoingPermanentListFragment = { OutgoingPermanentListFragment() }
 
-        studyGroupsFragment = {map-> com.norbert.koller.teacher.fragments.StudyGroupTypeListFragment(map) }
+        studyGroupsFragment = { com.norbert.koller.teacher.fragments.StudyGroupTypeListFragment() }
     }
 
 

@@ -3,6 +3,7 @@ package com.norbert.koller.shared.recycleradapters
 import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
@@ -60,7 +61,11 @@ class UserPreviewRecyclerAdapter (private var userList : MutableList<UserData>, 
                     ApplicationManager.openProfile.invoke(holder.itemView.context)
                 }
                 else{
-                    (context as MainActivity).addFragment(ApplicationManager.userFragment(currentItem.uid))
+                    val fragment = ApplicationManager.userFragment()
+                    val bundle = Bundle()
+                    bundle.putInt("id", currentItem.uid)
+                    fragment.arguments = bundle
+                    (context as MainActivity).addFragment(fragment)
                 }
             }
         }

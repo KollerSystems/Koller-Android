@@ -5,12 +5,13 @@ import android.view.View
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.OutgoingRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
-open class OutgoingTemporaryListFragment(val userData : UserData? = null) : ListFragment() {
+open class OutgoingTemporaryListFragment() : ListFragment() {
     override fun getPagingSource(): PagingSource {
         return UserPagingSource(requireContext(), getBaseViewModel())
     }
@@ -27,8 +28,12 @@ open class OutgoingTemporaryListFragment(val userData : UserData? = null) : List
         addDateChip("Time")
         addSearchbar("Reason")
 
-        if(userData != null)
-            getBaseViewModel().owner = userData
+        if (arguments != null) {
+            getBaseViewModel().ownerUID = requireArguments().getInt("id", -1)
+        }
+        if(getBaseViewModel().ownerUID == -1){
+            getBaseViewModel().ownerUID = CacheManager.userData!!.uid
+        }
     }
 
 }

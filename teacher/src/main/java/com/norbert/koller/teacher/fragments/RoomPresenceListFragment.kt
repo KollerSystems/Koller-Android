@@ -10,7 +10,7 @@ import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.activities.RoomRateActivity
 import com.norbert.koller.teacher.recycleradapters.RoomPresenceRecyclerAdapter
 
-class RoomPresenceListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+class RoomPresenceListFragment() : ListFragment() {
 
     override fun getFragmentTitle(): String {
         return getString(R.string.room_order)

@@ -7,6 +7,7 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
+import com.norbert.koller.shared.data.FilterConfigData
 import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.databinding.ContentFragmentRoomHeaderBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -14,14 +15,14 @@ import com.norbert.koller.shared.recycleradapters.UserPreviewRecyclerAdapter
 import retrofit2.Response
 
 
-abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
+abstract class RoomFragment() : DetailsFragment() {
 
     override fun getDataType(): Class<*> {
         return RoomData::class.java
     }
 
     override fun getFragmentTitle(): String? {
-        return getString(R.string.places)
+        return getString(R.string.room)
     }
 
     abstract fun getHeaderBinding() : ContentFragmentRoomHeaderBinding
@@ -55,8 +56,10 @@ abstract class RoomFragment(rid: Int? = null) : DetailsFragment(rid) {
 
             getHeaderBinding().btnDescription.setOnClickListener{
 
-                val userFragment = ApplicationManager.roomListFragment(null)
-                    .setFilter("Group.ID", response.group!!.id.toString())
+                val userFragment = ApplicationManager.roomListFragment()
+                val bundle = Bundle()
+                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Group.ID", arrayListOf(response.group!!.id.toString())))))
+                userFragment.arguments = bundle
 
                 (context as MainActivity).addFragment(userFragment)
             }

@@ -17,6 +17,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.setup
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.viewmodels.DetailsViewModel
@@ -30,9 +31,6 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
     companion object{
         const val TEMPORARY : Int = 0
         const val PERMANENT : Int = 1
-
-        var type : Int = 0
-        var userData: UserData? = null
     }
 
     lateinit var binding : ContentActivityCreateOutgoingBinding
@@ -48,10 +46,13 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
 
         viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]
 
+        val uid = intent.getIntExtra("id", -1)
+        val type = intent.getIntExtra("type", -1)
+
         if(savedInstanceState == null){
             val data = OutgoingData()
-            if(userData != null){
-                data.addresses = arrayListOf(userData!!)
+            if(uid != -1){
+                data.addresses = arrayListOf(CacheManager.detailsDataMap[Pair(UserData::class.java.simpleName, uid)] as UserData)
             }
             viewModel.response.value = data
 

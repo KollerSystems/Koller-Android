@@ -38,6 +38,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
+import com.norbert.koller.shared.data.FilterConfigData
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
@@ -48,7 +49,7 @@ import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
 
-abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<String>>? = null) : SearchFragment() {
+abstract class ListFragment() : SearchFragment() {
 
     var snackbar : Snackbar? = null
 
@@ -65,16 +66,15 @@ abstract class ListFragment(var defaultFilters : MutableMap<String, ArrayList<St
 
     abstract fun getRecyclerAdapter() : ApiRecyclerAdapter
 
-    fun setFilter(filterIn : String, filterTo : String) : Fragment{
-        defaultFilters = mutableMapOf(Pair(filterIn, arrayListOf(filterTo)))
-        return this
-    }
 
     override fun assignViewModel() {
         viewModel = ViewModelProvider(this)[ListViewModel::class.java]
 
-        if(defaultFilters != null) {
-            viewModel.filters = defaultFilters!!
+        if(arguments != null) {
+            val filters: FilterConfigData? = arguments?.getParcelable("filters")
+            if(filters != null){
+                viewModel.filters = filters.filters
+            }
         }
 
         getBaseViewModel().pagingSource = {

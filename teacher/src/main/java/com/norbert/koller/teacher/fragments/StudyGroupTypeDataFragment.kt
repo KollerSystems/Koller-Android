@@ -8,7 +8,7 @@ import com.norbert.koller.teacher.databinding.FragmentProgramBinding
 import com.norbert.koller.teacher.databinding.FragmentStudyGroupTypeBinding
 import com.norbert.koller.teacher.databinding.FragmentStudyGroupTypeDataBinding
 
-class StudyGroupTypeDataFragment(pid : Int? = null) : StudyGroupTypeFragment(pid) {
+class StudyGroupTypeDataFragment() : StudyGroupTypeFragment() {
 
     lateinit var binding: FragmentStudyGroupTypeDataBinding
 

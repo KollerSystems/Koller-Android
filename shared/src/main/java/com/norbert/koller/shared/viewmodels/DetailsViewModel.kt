@@ -24,7 +24,7 @@ class DetailsViewModel : ViewModel() {
 
     var id: Int? = null
     var response = MutableLiveData<Any>()
-    var owner : UserData? = null
+    var ownerUID : Int = -1
 
     fun updateValues(it : BaseData, dataType: Class<*>){
         it.saveReceivedTime()

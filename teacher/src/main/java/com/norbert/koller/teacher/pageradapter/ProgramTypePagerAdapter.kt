@@ -1,5 +1,6 @@
 package com.norbert.koller.teacher.pageradapter
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
@@ -16,7 +17,11 @@ class ProgramTypeViewPagerAdapter(val pid : Int? = null, fragmentManager: Fragme
     override fun createFragment(position: Int): Fragment {
         return when (position) {
             0 ->{
-                StudyGroupTypeDataFragment(pid)
+                val fragment = StudyGroupTypeDataFragment()
+                val bundle = Bundle()
+                bundle.putInt("id", pid?:-1)
+                fragment.arguments = bundle
+                return fragment
             }
             1 ->{
                 ProgramParticipantListFragment()

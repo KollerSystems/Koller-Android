@@ -10,7 +10,7 @@ import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
 import com.norbert.koller.teacher.activities.RoomRateActivity
 import com.norbert.koller.teacher.recycleradapters.RoomTidinessRecyclerAdapter
 
-class RoomTidinessListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+class RoomTidinessListFragment() : ListFragment() {
 
     override fun getFragmentTitle(): String {
         return getString(R.string.room_order)

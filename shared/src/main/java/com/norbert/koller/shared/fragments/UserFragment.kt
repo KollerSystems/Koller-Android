@@ -14,6 +14,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
+import com.norbert.koller.shared.data.FilterConfigData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
@@ -22,7 +23,7 @@ import com.stfalcon.imageviewer.StfalconImageViewer
 import retrofit2.Response
 
 
-abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
+abstract class UserFragment() : DetailsFragment() {
 
     abstract fun getHeaderBinding() : ContentFragmentUserHeaderBinding
     abstract fun getNestedScrollView() : NestedScrollView
@@ -156,18 +157,26 @@ abstract class UserFragment(uid : Int? = null) : DetailsFragment(uid) {
 
 
             getHeaderBinding().btnRoom.setOnClickListener {
-                (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(response.rid!!))
+                val fragment = ApplicationManager.roomFragment()
+                val bundle = Bundle()
+                bundle.putInt("id", response.rid!!)
+                fragment.arguments = bundle
+                (requireContext() as MainActivity).addFragment(fragment)
             }
 
             getHeaderBinding().btnGroup.setOnClickListener {
-                val userFragment = ApplicationManager.userListFragment(null)
-                    .setFilter("Group.ID", response.group!!.id.toString())
+                val userFragment = ApplicationManager.userListFragment()
+                val bundle = Bundle()
+                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Group.ID", arrayListOf(response.group!!.id.toString())))))
+                userFragment.arguments = bundle
                 (requireContext() as MainActivity).addFragment(userFragment)
             }
 
             getHeaderBinding().btnClassOrProfession.setOnClickListener {
-                val userFragment = ApplicationManager.userListFragment(null)
-                    .setFilter("Class.ID", response.class_!!.id.toString())
+                val userFragment = ApplicationManager.userListFragment()
+                val bundle = Bundle()
+                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", arrayListOf(response.class_!!.id.toString())))))
+                userFragment.arguments = bundle
                 (requireContext() as MainActivity).addFragment(userFragment)
             }
 

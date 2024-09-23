@@ -91,13 +91,17 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
         getHeaderBinding().cbRoom.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(ApplicationManager.roomFragment(CacheManager.userData!!.rid!!))
+            val fragment = ApplicationManager.roomFragment()
+            val bundle = Bundle()
+            bundle.putInt("id", CacheManager.userData!!.rid!!)
+            fragment.arguments = bundle
+            (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()
         }
 
         getFooterBinding().cbCrossings.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(CrossingListFragment(CacheManager.userData!!.uid))
+            (requireContext() as MainActivity).addFragment(CrossingListFragment())
             this.dismiss()
         }
 

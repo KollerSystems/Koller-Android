@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.recycleradapters
 
 import android.annotation.SuppressLint
+import android.os.Bundle
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.content.res.AppCompatResources
@@ -51,7 +52,10 @@ class RoomRecyclerAdapter() : ApiRecyclerAdapterWithTransition(){
 
         holder.itemView.setOnClickListener {
 
-            val fragment = ApplicationManager.roomFragment(item.getMainID())
+            val fragment = ApplicationManager.roomFragment()
+            val bundle = Bundle()
+            bundle.putInt("id", item.getMainID())
+            fragment.arguments = bundle
             (holder.itemView.context as MainActivity).addFragmentWithTransition(fragment, holder.itemView, getTransitionName(item.getMainID()))
 
         }

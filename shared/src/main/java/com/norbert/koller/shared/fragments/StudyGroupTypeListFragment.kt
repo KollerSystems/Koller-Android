@@ -6,7 +6,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.StudyGroupTypePagingSource
 import com.norbert.koller.shared.recycleradapters.PagingSource
 
-abstract class StudyGroupTypeListFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+abstract class StudyGroupTypeListFragment() : ListFragment() {
 
     override fun getFragmentTitle(): String? {
         return getString(R.string.study_groups)

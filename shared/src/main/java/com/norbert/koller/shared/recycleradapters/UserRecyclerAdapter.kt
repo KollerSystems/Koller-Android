@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -47,7 +48,10 @@ class UserRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
                 ApplicationManager.openProfile(context)
             } else {
 
-                val fragment = ApplicationManager.userFragment(item.getMainID())
+                val fragment = ApplicationManager.userFragment()
+                val bundle = Bundle()
+                bundle.putInt("id", item.getMainID())
+                fragment.arguments = bundle
                 (context as MainActivity).addFragmentWithTransition(fragment, holder.itemView as MaterialCardView, getTransitionName(item.getMainID()))
             }
 

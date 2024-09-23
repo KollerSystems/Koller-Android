@@ -54,10 +54,8 @@ class ApplicationManager : ApplicationManager() {
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
         notificationFragment = { NotificationsFragment() }
-        roomFragment = {rid->
-            RoomFragment(rid) }
-        userFragment = {uid ->
-            UserFragment(uid) }
+        roomFragment = { RoomFragment() }
+        userFragment = { UserFragment() }
 
         studyGroupsFragment = {map-> com.norbert.koller.student.fragments.StudyGroupTypeListFragment(map) }
     }

@@ -9,7 +9,7 @@ import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.teacher.recycleradapters.BaseProgramTypeRecyclerAdapter
 
-class BaseProgramTypesFragment(defaultFilters : MutableMap<String, ArrayList<String>>? = null) : ListFragment(defaultFilters) {
+class BaseProgramTypesFragment() : ListFragment() {
 
     override fun getFragmentTitle(): String? {
         return getString(R.string.base_programs)
