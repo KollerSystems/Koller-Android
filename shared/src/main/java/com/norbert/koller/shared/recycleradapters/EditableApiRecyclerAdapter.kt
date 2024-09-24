@@ -52,13 +52,13 @@ abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapterWithTransition()
         if(viewModel.selectedItems.size > 0){
             mainActivity.enableEditMode()
             mainActivity.onCancelEditMode = {
-                deselectAll(mainActivity)
+                deselectAll()
             }
             mainActivity.setToolbarTitle("${viewModel.selectedItems.size} ${getTypeName(mainActivity).toLowerCase()}")
         }
     }
 
-    fun deselectAll(context: Context){
+    fun deselectAll(){
         viewModel.selectedItems = mutableSetOf()
         notifyDataSetChanged()
     }
@@ -100,7 +100,7 @@ abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapterWithTransition()
             if(viewModel.selectedItems.size > 0 && mainActivity.onCancelEditMode == null){
                 mainActivity.enableEditMode()
                 mainActivity.onCancelEditMode = {
-                    deselectAll(mainActivity)
+                    deselectAll()
                 }
             }
         }

@@ -13,16 +13,21 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.databinding.ItemCheckBoxBinding
+import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.recycleradapters.ListAdapter.ListViewHolder
 
-data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false)
+class ApiListAdapter (val bottomSheet : ListBsdfFragment) : EditableApiRecyclerAdapter() {
+    override fun onClick(holder: RecyclerView.ViewHolder, item: BaseData) {
 
-class ListAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+    }
 
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
+    override fun getIconHolder(holder: RecyclerView.ViewHolder): ViewGroup {
+        return holder.itemView as ViewGroup
     }
 
     var itemsCopy : ArrayList<ListItem>? = null
@@ -46,13 +51,15 @@ class ListAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<Li
         notifyDataSetChanged()
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
+    override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val binding = ItemCheckBoxBinding.inflate(LayoutInflater.from(parent.context), null, false)
         return ListViewHolder(binding)
     }
 
     @SuppressLint("SetTextI18n")
-    override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
+    override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
+
+        holder as ListViewHolder
 
         val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)
         (holder.itemView.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,margin,0,margin)
@@ -103,11 +110,4 @@ class ListAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<Li
             holder.itemBinding.imgIcon.visibility = GONE
         }
     }
-
-    override fun getItemCount(): Int {
-        return bottomSheet.viewModel.list.value!!.size
-    }
-
-    class ListViewHolder(var itemBinding: ItemCheckBoxBinding) : RecyclerView.ViewHolder(itemBinding.root)
-
 }

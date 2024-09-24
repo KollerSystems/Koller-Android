@@ -81,6 +81,7 @@
                 app:chipBackgroundColor="@color/color_best_toggle"
                 app:chipIcon="@drawable/check"
                 app:chipIconEnabled="true"
+                app:chipIconTint="?attr/colorControlNormal"
                 app:chipMinTouchTargetSize="0dp"
                 app:iconStartPadding="12dp"
                 app:shapeAppearance="@style/OverlayRoundedRight" />

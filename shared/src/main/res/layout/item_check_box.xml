@@ -13,7 +13,7 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/simple_list_image_icon"
+            android:id="@+id/img_icon"
             style="@style/SmallIcon"
             android:layout_marginEnd="@dimen/spacing"
             android:layout_weight="0"
@@ -29,13 +29,13 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/simple_list_text_title"
+                android:id="@+id/text_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/title" />
 
             <TextView
-                android:id="@+id/simple_list_text_description"
+                android:id="@+id/text_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/description"
