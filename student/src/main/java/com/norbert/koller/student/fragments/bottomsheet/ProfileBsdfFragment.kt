@@ -29,7 +29,11 @@ class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.Prof
 
         binding.cbOutgoing.setOnClickListener{
 
-            (requireContext() as MainActivity).addFragment(UserOutgoingsFragment(CacheManager.userData))
+            val fragment = UserOutgoingsFragment()
+            val bundle = Bundle()
+            bundle.putInt("id", CacheManager.userData!!.getMainID())
+            fragment.arguments = bundle
+            (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()
         }
     }

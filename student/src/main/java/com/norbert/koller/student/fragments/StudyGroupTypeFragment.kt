@@ -7,7 +7,7 @@ import com.norbert.koller.shared.fragments.StudyGroupTypeFragment
 import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.FragmentStudyGroupTypeBinding
 
-class StudyGroupTypeFragment(pid : Int? = null) : StudyGroupTypeFragment(pid) {
+class StudyGroupTypeFragment() : StudyGroupTypeFragment() {
 
     lateinit var binding : FragmentStudyGroupTypeBinding
 

@@ -464,4 +464,6 @@
     <string name="manage_teacher">Tanár kezelése</string>
     <string name="classes">Osztályok</string>
     <string name="groups">Csoportok</string>
+    <string name="selected">kiválasztva</string>
+    <string name="item">elem</string>
 </resources>

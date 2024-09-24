@@ -15,6 +15,7 @@ import com.norbert.koller.shared.data.ProgramData
 import com.norbert.koller.shared.data.StudyGroupData
 import com.norbert.koller.shared.fragments.ProgramFragmentInterface
 import com.norbert.koller.shared.fragments.bottomsheet.ScrollBsdfFragment
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.viewmodels.DetailsViewModel
 import com.norbert.koller.student.databinding.ContentFragmentBsdfBaseProgramBinding
 
@@ -43,7 +44,11 @@ class StudyGroupDetailsBsdfFragment(val program : ProgramData? = null) : ScrollB
         toGeneralButton.isVisible = true
         toGeneralButton.setOnClickListener{
             dismiss()
-            (context as MainActivity).addFragment(com.norbert.koller.student.fragments.StudyGroupTypeFragment((viewModel.response.value as StudyGroupData).programID))
+            val fragment = com.norbert.koller.student.fragments.StudyGroupTypeFragment()
+            val bundle = Bundle()
+            bundle.putInt("id", (viewModel.response.value as StudyGroupData).programID)
+            fragment.arguments = bundle
+            (context as MainActivity).addFragment(fragment)
         }
 
         viewModel = ViewModelProvider(this)[DetailsViewModel::class.java]

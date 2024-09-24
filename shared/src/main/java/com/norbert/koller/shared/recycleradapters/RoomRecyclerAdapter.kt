@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.recycleradapters
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +19,10 @@ import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
 
 class RoomRecyclerAdapter() : EditableApiRecyclerAdapter(){
+
+    override fun getTypeName(context: Context): String {
+        return context.getString(R.string.room)
+    }
 
     fun getShortName(name : String) : String{
         val nameParts : List<String> = name.split(" ")

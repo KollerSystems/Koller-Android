@@ -10,11 +10,20 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup.MarginLayoutParams
 import android.widget.FrameLayout
 import androidx.appcompat.content.res.AppCompatResources
+import com.google.android.material.button.MaterialButton
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ActivityToolbarBinding
 import com.norbert.koller.shared.databinding.ViewManageBarBinding
 
 abstract class ManageActivity : ToolbarActivity(){
+
+    companion object{
+        fun displayButton(button: MaterialButton, text: String, icon : Int){
+            button.text = text
+            button.setIconResource(icon)
+            button.setPaddingRelative(button.resources.getDimensionPixelSize(R.dimen.icon_button_padding), button.paddingTop, button.paddingEnd, button.paddingBottom)
+        }
+    }
 
     lateinit var manageBarBinding : ViewManageBarBinding
 

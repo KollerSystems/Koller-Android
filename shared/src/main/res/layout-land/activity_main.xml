@@ -17,10 +17,12 @@
         android:text="@string/no_internet"
         android:visibility="gone" />
 
+
     <LinearLayout
 
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/header_footer_size"
+        android:layout_weight="0"
         android:background="?attr/colorSurfaceContainer"
         android:orientation="horizontal">
 
@@ -41,7 +43,7 @@
                 android:importantForAccessibility="no"
                 app:srcCompat="@drawable/discord" />
 
-            <Button
+            <com.google.android.material.button.MaterialButton
 
                 android:id="@+id/button_back"
                 style="@style/ToolbarNavigationButton"
@@ -67,6 +69,14 @@
             android:textColor="?attr/colorForeground066"
             android:textSize="@dimen/text_main_title">
 
+            <TextView
+                android:id="@+id/text_title_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:text="@string/description"
+                android:textColor="?attr/colorForeground066" />
+
             <TextSwitcher
                 android:id="@+id/text_switcher"
                 android:layout_width="match_parent"
@@ -78,14 +88,8 @@
             </TextSwitcher>
 
 
-            <TextView
-                android:id="@+id/text_title_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:singleLine="true"
-                android:text="@string/description"
-                android:textColor="?attr/colorForeground066" />
         </LinearLayout>
+
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_user"
@@ -119,7 +123,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal">
 
 
@@ -190,5 +195,11 @@
 
     </LinearLayout>
 
-
+    <include
+        android:id="@+id/manage_bar"
+        layout="@layout/view_manage_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0"
+        android:visibility="gone" />
 </LinearLayout>

@@ -11,7 +11,7 @@ import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.FragmentUserBinding
 
 
-class UserFragment(uid : Int? = null) : com.norbert.koller.shared.fragments.UserFragment(uid) {
+class UserFragment() : com.norbert.koller.shared.fragments.UserFragment() {
 
     lateinit var binding : FragmentUserBinding
 

@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,10 @@ class UserRecyclerAdapter() : EditableApiRecyclerAdapter() {
 
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return RecyclerViewHelper.UserViewHolder(ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+    }
+
+    override fun getTypeName(context: Context): String {
+        return context.getString(R.string.user)
     }
 
     override fun onClick(holder: RecyclerView.ViewHolder, item: BaseData) {

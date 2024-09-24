@@ -20,6 +20,8 @@ open class UserListFragment() : ListFragment() {
         return getString(R.string.users)
     }
 
+
+
     private lateinit var leaderUsersRecyclerView: RecyclerView
     private lateinit var leaderUsersDataArrayList: ArrayList<UserData>
 

@@ -17,6 +17,8 @@ open class RoomListFragment() : ListFragment() {
         return getString(R.string.places)
     }
 
+
+
     override fun getPagingSource(): PagingSource {
         return RoomPagingSource(requireContext(), getBaseViewModel())
     }

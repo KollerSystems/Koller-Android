@@ -43,6 +43,7 @@ abstract class UserFragment() : DetailsFragment() {
         return {RetrofitInstance.api.getUser(viewModel.id!!)}
     }
 
+
     fun isVisible(view: View): Boolean {
         if (!view.isShown) {
             return false

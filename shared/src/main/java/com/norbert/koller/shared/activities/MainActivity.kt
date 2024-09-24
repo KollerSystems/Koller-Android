@@ -4,7 +4,6 @@ import android.Manifest
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
-import android.content.Context
 import android.content.res.Configuration
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
@@ -18,22 +17,27 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
-import android.view.WindowInsets
+import android.view.ViewGroup.VISIBLE
 import android.view.animation.AnimationUtils
 import android.widget.TextView
+import android.widget.ViewSwitcher
 import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.view.LayoutInflaterCompat
+import androidx.core.view.LayoutInflaterCompat.setFactory
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
-import androidx.core.view.updatePaddingRelative
 import androidx.datastore.preferences.core.edit
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
@@ -50,7 +54,9 @@ import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.fragments.CalendarFragment
+import com.norbert.koller.shared.fragments.FragmentInMainActivity
 import com.norbert.koller.shared.fragments.HomeFragment
+import com.norbert.koller.shared.fragments.StudyGroupTypeListFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -66,10 +72,10 @@ import com.norbert.koller.shared.widgets.CanteenWidgetProvider
 import com.norbert.koller.shared.widgets.NowWidgetProvider
 import com.norbert.koller.shared.widgets.WidgetHelper
 import com.squareup.picasso.Picasso
+import com.stfalcon.imageviewer.common.extensions.animateAlpha
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Calendar
-import kotlin.properties.Delegates
 
 
 abstract class MainActivity : AppCompatActivity() {
@@ -196,8 +202,47 @@ abstract class MainActivity : AppCompatActivity() {
     abstract fun getAppIcon() : Int
     private lateinit var binding : ActivityMainBinding
 
+    fun enableEditMode(){
+        bottomNavigationView().isVisible = false
+        binding.manageBar.root.isVisible = true
+        ManageActivity.displayButton(binding.manageBar.button, getString(R.string.remove), R.drawable.delete_forever)
+        binding.cardUser.isVisible = false
+        binding.cardUser.isClickable = false
+        binding.cardUser.isEnabled = false
+        binding.cardUser.alpha = 0f
+        binding.buttonBack.setIconResource(R.drawable.close)
+    }
+
+    fun disableEditMode(){
+        onCancelEditMode = null
+        bottomNavigationView().isVisible = true
+        binding.manageBar.root.isVisible = false
+        binding.cardUser.isVisible = true
+        binding.cardUser.isClickable = true
+        binding.cardUser.isEnabled = true
+        binding.cardUser.alpha = 1f
+        binding.buttonBack.setIconResource(R.drawable.arrow_back)
+        setToolbarTitle((supportFragmentManager.fragments[0] as FragmentInMainActivity).getFragmentTitle())
+    }
+
     private lateinit var connectivityManager: ConnectivityManager
     var statusBarHeight : Int = 0
+
+    fun setTextSwitcherFactory(fontId : Int){
+
+        binding.textSwitcher.removeAllViews()
+
+        var textView : TextView
+        binding.textSwitcher.setFactory {
+            textView = TextView(
+                this@MainActivity
+            )
+
+            textView.setTextAppearance(R.style.MainTitle)
+            textView.typeface = resources.getFont(fontId)
+            textView
+        }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -217,17 +262,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         nfcAdapter = NfcAdapter.getDefaultAdapter(this)
 
-        var textView : TextView
-
-        binding.textSwitcher.setFactory {
-            textView = TextView(
-                this@MainActivity
-            )
-
-            textView.setTextAppearance(R.style.MainTitle)
-            textView.setTypeface(resources.getFont(R.font.rubik_medium))
-            textView
-        }
+       setTextSwitcherFactory(R.font.rubik_medium)
         binding.textSwitcher.measureAllChildren = false
 
         val networkRequest = NetworkRequest.Builder()
@@ -337,7 +372,7 @@ abstract class MainActivity : AppCompatActivity() {
 
         AuthenticationManager.handleRefreshedTokenSaving = {
             lifecycleScope.launch {
-                DataStoreManager.saveTokens(this@MainActivity                )
+                DataStoreManager.saveTokens(this@MainActivity)
             }
         }
 
@@ -373,7 +408,7 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         binding.buttonBack.setOnClickListener{
-            onBackPressedDispatcher.onBackPressed()
+            handleBackPress()
         }
 
 
@@ -445,12 +480,18 @@ abstract class MainActivity : AppCompatActivity() {
             viewModel.lastFragmentId = id
 
         }
-
-
-
     }
 
+    var onCancelEditMode: (() -> Unit)? = null
+
     private fun handleBackPress(){
+
+        if(onCancelEditMode != null){
+            onCancelEditMode!!.invoke()
+            disableEditMode()
+            return
+        }
+
         binding.appBar?.setExpanded(false)
         if (supportFragmentManager.backStackEntryCount > 1) {
             dropLastFragment()
