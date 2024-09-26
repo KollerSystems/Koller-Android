@@ -16,6 +16,7 @@ class UserData(
     @SerializedName("GuardiaName") val guardiaName : String? = null,
     @SerializedName("GuardianPhone") val guardianPhone : String? = null,
     @SerializedName("RID") var rid : Int? = null,
+    @SerializedName("PID") var pid : Int? = null,
     @SerializedName("BedNum") val bedNum : Int? = null,
     @SerializedName("Country") val country : String ? = null,
     @SerializedName("City") val city : String? = null,
@@ -43,7 +44,17 @@ class UserData(
     }
 
     fun createDescription(): String{
-        return group?.group + " • " + rid  + " • " + class_?.class_
+        return if(role == 1){
+            group?.group + " • " + rid  + " • " + class_?.class_
+        }
+        else{
+            var string = ""
+            if(group != null){
+                string = group?.group + " • "
+            }
+            string += (rid.toString() + " • " + pid)
+            string
+        }
     }
 
     override fun updateValues(baseData: BaseData) {
@@ -54,5 +65,6 @@ class UserData(
         rid = baseData.rid
         class_ = baseData.class_
         group = baseData.group
+        pid = baseData.pid
     }
 }

@@ -8,6 +8,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import android.view.View.VISIBLE
+import androidx.core.view.isVisible
 import androidx.core.widget.NestedScrollView
 import com.google.android.material.chip.Chip
 import com.norbert.koller.shared.R
@@ -150,10 +151,27 @@ abstract class UserFragment() : DetailsFragment() {
 
             getHeaderBinding().textName.text = response.name
 
+            if(response.group != null){
+                getHeaderBinding().btnGroup.isVisible = true
+                getHeaderBinding().textFirstDot.isVisible = true
+                getHeaderBinding().btnGroup.text = response.group?.group
+            }
 
             getHeaderBinding().btnRoom.text = response.rid.toString()
-            getHeaderBinding().btnGroup.text = response.group?.group
-            getHeaderBinding().btnClassOrProfession.text = response.class_?.class_
+            if(response.role == 1){
+                getHeaderBinding().btnClassOrProfession.text = response.class_?.class_
+                getHeaderBinding().btnClassOrProfession.setOnClickListener {
+                    val userFragment = ApplicationManager.userListFragment()
+                    val bundle = Bundle()
+                    bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", arrayListOf(response.class_!!.id.toString())))))
+                    userFragment.arguments = bundle
+                    (requireContext() as MainActivity).addFragment(userFragment)
+                }
+            }
+            else{
+                getHeaderBinding().btnClassOrProfession.text = response.pid.toString()
+            }
+
 
 
 
@@ -173,13 +191,7 @@ abstract class UserFragment() : DetailsFragment() {
                 (requireContext() as MainActivity).addFragment(userFragment)
             }
 
-            getHeaderBinding().btnClassOrProfession.setOnClickListener {
-                val userFragment = ApplicationManager.userListFragment()
-                val bundle = Bundle()
-                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", arrayListOf(response.class_!!.id.toString())))))
-                userFragment.arguments = bundle
-                (requireContext() as MainActivity).addFragment(userFragment)
-            }
+
 
             getNestedScrollView().setOnScrollChangeListener { _: View, _: Int, _: Int, _: Int, _: Int ->
                 checkVisibility()
