@@ -22,10 +22,10 @@ import kotlin.math.roundToInt
 
 class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
 
-    lateinit var realViewStayOutSlider: View
-    lateinit var realViewLessonSlider: View
-    lateinit var textStayOutTop: TextView
-    lateinit var textStayOutBottom: TextView
+    var realViewStayOutSlider: View? = null
+    var realViewLessonSlider: View? = null
+    var textStayOutTop: TextView? = null
+    var textStayOutBottom: TextView? = null
     lateinit var cardOutgoing : View
     lateinit var cardLessons : View
 
@@ -125,7 +125,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                 outStringId = com.norbert.koller.shared.R.string.stay_out_text
                 remainStringId = com.norbert.koller.shared.R.string.now_remain
             }
-            textStayOutTop.text = getString(outStringId, nightTimeGoInsideForText)
+            textStayOutTop?.text = getString(outStringId, nightTimeGoInsideForText)
 
             outgoingTimer = object : CountDownTimer(remainingTimeOnUpdateMilli, 1000) {
                 override fun onTick(millisUntilFinished: Long) {
@@ -176,7 +176,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                     }
 
 
-                    textStayOutBottom.text = getString(remainStringId, remainText)
+                    textStayOutBottom?.text = getString(remainStringId, remainText)
 
                     (slider.layoutParams as ConstraintLayout.LayoutParams)
                         .matchConstraintPercentWidth = solid + moving
@@ -246,7 +246,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
 
                 textLessonsTime.text = DateTimeHelper.timeFromTo(currentLessonTime.from, currentLessonTime.to)
 
-                startTimerForLessons(realViewLessonSlider, currentLessonTime.from, currentLessonTime.to)
+                startTimerForLessons(realViewLessonSlider!!, currentLessonTime.from, currentLessonTime.to)
 
                 if(i < DefaultDayTimes.instance.lessons.size - 1){
                     var nextLessonTime = DefaultDayTimes.instance.lessons[i + 1]
@@ -278,7 +278,7 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
                 textLessonsNumber.background = AppCompatResources.getDrawable(requireContext(), com.norbert.koller.shared.R.drawable.pause)
                 textLessonsTime.text = DateTimeHelper.timeFromTo(currentLessonTime.to, nextLessonTime.from)
 
-                startTimerForLessons(realViewLessonSlider, currentLessonTime.to, nextLessonTime.from)
+                startTimerForLessons(realViewLessonSlider!!, currentLessonTime.to, nextLessonTime.from)
             }
         }
 

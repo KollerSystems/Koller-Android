@@ -376,13 +376,6 @@ abstract class MainActivity : AppCompatActivity() {
             }
         }
 
-        KollerHostApduService.handleNFC = { uid ->
-            val fragment = ApplicationManager.userFragment()
-            val bundle = Bundle()
-            bundle.putInt("id", uid)
-            fragment.arguments = bundle
-            addFragment(fragment)
-        }
 
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
 

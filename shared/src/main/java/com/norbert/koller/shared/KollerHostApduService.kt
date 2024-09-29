@@ -9,14 +9,9 @@ import com.norbert.koller.shared.managers.toInt
 
 class KollerHostApduService : HostApduService() {
 
-    companion object{
-        var handleNFC: ((uid : Int) -> Unit)? = null
-    }
-
     override fun processCommandApdu(commandApdu: ByteArray, extras: Bundle?): ByteArray {
 
-        handleNFC?.invoke(commandApdu.toInt())
-        return CacheManager.userData!!.uid.toBytes()
+        return commandApdu
     }
 
     override fun onDeactivated(reason: Int) {
