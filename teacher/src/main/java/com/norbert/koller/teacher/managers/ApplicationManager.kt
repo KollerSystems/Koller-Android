@@ -45,7 +45,7 @@ class ApplicationManager : ApplicationManager() {
         }
 
         getAppColor = {context->
-            ContextCompat.getColor(context, R.color.app_icon_color)
+            ContextCompat.getColor(context, R.color.appIconColor)
         }
 
         homeFragment = { HomeFragment() }

@@ -304,9 +304,8 @@
     </style>
 
     <style name="IconLikeText">
+        <item name="android:paddingTop">2dp</item>
         <item name="android:autoSizeTextType">uniform</item>
-        <item name="android:scaleX">1.2</item>
-        <item name="android:scaleY">1.2</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_gravity">center</item>
         <item name="android:layout_height">@dimen/card_icon</item>

@@ -22,8 +22,9 @@
             android:layout_width="@dimen/card_icon"
             android:layout_height="@dimen/card_icon"
             android:layout_marginEnd="@dimen/spacing"
+            android:background="@drawable/squircle"
             android:text="5"
-            android:textStyle="bold" />
+            android:textColor="@android:color/white" />
 
         <LinearLayout
             android:layout_width="0dp"

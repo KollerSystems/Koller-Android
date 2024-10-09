@@ -25,7 +25,7 @@
         android:translationY="@dimen/n_tab_height"
         android:visibility="invisible"
         app:layout_anchorGravity="top"
-        app:tabIndicator="@drawable/rounded_square"
+        app:tabIndicator="@drawable/tab_background"
         app:tabIndicatorColor="?attr/colorSecondaryContainer"
         app:tabIndicatorGravity="center"
         app:tabIndicatorHeight="25sp"

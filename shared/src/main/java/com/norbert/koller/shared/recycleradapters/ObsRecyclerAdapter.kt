@@ -1,7 +1,9 @@
 package com.norbert.koller.shared.recycleradapters
 import android.animation.AnimatorSet
 import android.animation.ValueAnimator
+import android.content.res.ColorStateList
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Handler
 import android.os.Looper
@@ -79,7 +81,20 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
             }
             else{
                 holder.iconRight.text = currentItem.charRight
-                holder.iconRight.background = null
+                if(holder.iconRight.text == "5"){
+                    holder.iconRight.setBackgroundResource(R.drawable.squircle)
+                    holder.iconRight.backgroundTintList = null
+                    holder.iconRight.scaleX = 1f
+                    holder.iconRight.scaleY = 1f
+                    holder.iconRight.setTextColor(Color.WHITE)
+                }
+                else{
+                    holder.iconRight.setBackgroundResource(R.drawable.squircle_outline)
+                    holder.iconRight.backgroundTintList = ColorStateList(
+                        arrayOf(intArrayOf(android.R.attr.state_enabled)),
+                        intArrayOf(holder.iconRight.currentTextColor))
+                }
+
                 val size = context.resources.getDimensionPixelSize(R.dimen.card_icon)
                 val layoutParams = holder.iconRight.layoutParams as MarginLayoutParams
                 layoutParams.height = size
