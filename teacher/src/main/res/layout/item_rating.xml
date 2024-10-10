@@ -64,6 +64,7 @@
                 app:chipBackgroundColor="@color/color_best_toggle"
                 app:chipEndPadding="0dp"
                 app:chipIcon="@drawable/check_thick"
+                app:chipIconTint="@color/color_best_text_toggle"
                 app:chipIconVisible="true"
                 app:chipMinTouchTargetSize="0dp"
                 app:iconStartPadding="14dp"

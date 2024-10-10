@@ -151,7 +151,8 @@
                         app:shapeAppearance="@style/OverlayRoundedRight"
                         app:textEndPadding="0dp"
                         app:textStartPadding="0dp"
-                        tools:ignore="HardcodedText,PxUsage" />
+                        tools:ignore="HardcodedText,PxUsage"
+                        android:textColor="@color/color_best_text_toggle"/>
                 </com.google.android.material.chip.ChipGroup>
 
             </LinearLayout>

@@ -35,13 +35,13 @@
     <color name="colorGreenLight">@android:color/holo_green_light</color>
     <color name="colorBlueLight">@android:color/holo_blue_light</color>
 
-    <color name="colorBestLight">#FF018786</color>
+    <color name="colorBestLight">@color/appIconColor</color>
     <color name="colorGoodLight">@android:color/holo_green_dark</color>
     <color name="colorOkLight">@android:color/holo_orange_light</color>
     <color name="colorBadLight">@android:color/holo_orange_dark</color>
     <color name="colorWorstLight">@android:color/holo_red_dark</color>
 
-    <color name="colorBestDark">#8003DAC5</color>
+    <color name="colorBestDark">@color/appIconColor</color>
     <color name="colorGoodDark">#8099CC00</color>
     <color name="colorOkDark">#80FFBB33</color>
     <color name="colorBadDark">#80FF8800</color>

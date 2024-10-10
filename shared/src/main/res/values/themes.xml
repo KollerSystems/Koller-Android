@@ -30,16 +30,16 @@
         <item name="colorGreenInverse">@color/colorGreenLight</item>
         <item name="colorBlueInverse">@color/colorBlueLight</item>
 
-        <item name="colorBest">#FF018786</item>
-        <item name="colorGood">@android:color/holo_green_dark</item>
-        <item name="colorOk">@android:color/holo_orange_light</item>
-        <item name="colorBad">@android:color/holo_orange_dark</item>
-        <item name="colorWorst">@android:color/holo_red_dark</item>
+        <item name="colorBest">@color/colorBestLight</item>
+        <item name="colorGood">@color/colorGoodLight</item>
+        <item name="colorOk">@color/colorOkLight</item>
+        <item name="colorBad">@color/colorBadLight</item>
+        <item name="colorWorst">@color/colorBadLight</item>
 
-        <item name="colorBestInverse">#8003DAC5</item>
-        <item name="colorGoodInverse">#8099CC00</item>
-        <item name="colorOkInverse">#80FFBB33</item>
-        <item name="colorBadInverse">#80FF8800</item>
-        <item name="colorWorstInverse">#80FF4444</item>
+        <item name="colorBestInverse">@color/colorBestDark</item>
+        <item name="colorGoodInverse">@color/colorGoodDark</item>
+        <item name="colorOkInverse">@color/colorOkDark</item>
+        <item name="colorBadInverse">@color/colorBadDark</item>
+        <item name="colorWorstInverse">@color/colorWorstDark</item>
     </style>
 </resources>

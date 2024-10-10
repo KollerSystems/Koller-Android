@@ -37,8 +37,6 @@
         style="@style/CategoryCardName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/spacing"
-        android:paddingVertical="@dimen/text_container_margin"
         android:text="@string/final_grade" />
 
     <com.google.android.material.card.MaterialCardView

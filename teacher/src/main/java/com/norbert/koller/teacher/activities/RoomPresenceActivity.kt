@@ -111,9 +111,6 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
 
     override fun onBindViewHolder(holder: RoomPresenceViewHolder, position: Int) {
 
-
-        holder.textPresence.setVisibilityBy(!(holder.itemView.context as RoomPresenceActivity).knowsTheLayout)
-
         RecyclerViewHelper.roundRecyclerItemsVerticallyGrid(holder.itemView, position, roomOrderConditionsData.size)
 
         holder.rbiwPfp.setOnClickListener{
@@ -134,8 +131,6 @@ class RoomPresenceRecyclerAdapter (private var roomOrderConditionsData : ArrayLi
     class RoomPresenceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
     {
         val rbiwPfp : UserView = itemView.findViewById(R.id.rbiw_pfp)
-
-        val textPresence : TextView = itemView.findViewById(R.id.text_presence)
     }
 
 }

@@ -48,14 +48,6 @@
             android:text="@string/with_permission"
             android:textAppearance="@style/Description" />
 
-        <TextView
-            android:id="@+id/text_presence"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/text_container_margin"
-            android:gravity="center_horizontal"
-            android:text="@string/presence" />
-
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/chipgroup_presence"
             android:layout_width="wrap_content"
@@ -69,9 +61,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:chipBackgroundColor="@color/color_worst_toggle"
-                app:chipIcon="@drawable/close"
+                app:chipIcon="@drawable/close_thick"
                 app:chipIconEnabled="true"
-                app:iconStartPadding="12dp"
+                app:iconStartPadding="13dp"
                 app:shapeAppearance="@style/OverlayRoundedLeft" />
 
             <com.google.android.material.chip.Chip
@@ -79,11 +71,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:chipBackgroundColor="@color/color_best_toggle"
-                app:chipIcon="@drawable/check"
+                app:chipIcon="@drawable/check_thick"
                 app:chipIconEnabled="true"
                 app:chipIconTint="?attr/colorControlNormal"
                 app:chipMinTouchTargetSize="0dp"
-                app:iconStartPadding="12dp"
+                app:iconStartPadding="13dp"
                 app:shapeAppearance="@style/OverlayRoundedRight" />
 
         </com.google.android.material.chip.ChipGroup>
