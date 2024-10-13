@@ -40,21 +40,11 @@
                     app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
 
-                    <TextView
-                        style="@style/CategoryCardNameBald"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/manage_room"
-                        android:visibility="gone"
-                        app:layout_maxWidth="@dimen/tablet_max_width"
-                        tools:visibility="visible" />
-
-
                     <com.norbert.koller.shared.customviews.CardButton
                         android:id="@+id/cb_report"
-                        style="@style/CardSingle"
+                        style="@style/CardBottom"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:visibility="gone"
                         custom:description="@string/report_room_desc"
                         custom:icon="@drawable/flag"

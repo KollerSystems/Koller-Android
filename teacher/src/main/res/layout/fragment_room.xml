@@ -36,22 +36,6 @@
                     android:orientation="vertical"
                     app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
 
-                    <TextView
-                        style="@style/CategoryCardNameBald"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/manage_room" />
-
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_room_tidiness"
-                        style="@style/CardTop"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:icon="@drawable/clean"
-                        app:text="@string/room_order">
-
-                    </com.norbert.koller.shared.customviews.CardButton>
-
                     <com.norbert.koller.shared.customviews.CardButton
                         android:id="@+id/cb_presence"
                         style="@style/CardMiddle"

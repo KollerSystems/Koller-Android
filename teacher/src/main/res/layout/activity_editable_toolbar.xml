@@ -44,17 +44,7 @@
 
                 <Button
                     android:id="@+id/button_back"
-                    style="@style/ToolbarNavigationButton"
-                    android:layout_height="@dimen/toolbar_button_size"
-                    android:layout_marginEnd="@dimen/spacing"
-                    android:alpha="0.666"
-                    android:minWidth="0dp"
-                    app:cornerRadius="1000dp"
-                    app:icon="@drawable/arrow_left"
-                    app:iconGravity="textStart"
-                    app:iconPadding="0dp"
-                    app:iconSize="25dp"
-                    app:iconTint="?android:attr/colorForeground" />
+                    style="@style/ToolbarNavigationButton" />
 
                 <TextView
                     android:id="@+id/text_title_first"

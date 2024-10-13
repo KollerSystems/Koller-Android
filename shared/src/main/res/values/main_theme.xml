@@ -39,11 +39,52 @@
         <item name="android:fillViewport">true</item>
     </style>
 
-    <style name="CardTextInput" parent="@style/TextInput">
+    <style name="CardTextInputSingle" parent="@style/TextInput">
         <item name="boxCornerRadiusBottomEnd">@dimen/card_corner_radius</item>
         <item name="boxCornerRadiusBottomStart">@dimen/card_corner_radius</item>
         <item name="boxCornerRadiusTopEnd">@dimen/card_corner_radius</item>
         <item name="boxCornerRadiusTopStart">@dimen/card_corner_radius</item>
+    </style>
+
+    <style name="CardTextInputTop" parent="@style/TextInput">
+        <item name="boxCornerRadiusBottomEnd">0dp</item>
+        <item name="boxCornerRadiusBottomStart">0dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusTopStart">@dimen/card_corner_radius</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+    <style name="CardTextInputBottom" parent="@style/TextInput">
+        <item name="boxCornerRadiusBottomEnd">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusBottomStart">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusTopEnd">0dp</item>
+        <item name="boxCornerRadiusTopStart">0dp</item>
+
+    </style>
+
+    <style name="CardTextInputMiddle" parent="@style/TextInput">
+        <item name="boxCornerRadiusBottomEnd">0dp</item>
+        <item name="boxCornerRadiusBottomStart">0dp</item>
+        <item name="boxCornerRadiusTopEnd">0dp</item>
+        <item name="boxCornerRadiusTopStart">0dp</item>
+        <item name="android:layout_marginBottom">0dp</item>
+    </style>
+
+    <style name="CardTextInputTopLeft" parent="@style/TextInput">
+        <item name="boxCornerRadiusBottomEnd">0dp</item>
+        <item name="boxCornerRadiusBottomStart">0dp</item>
+        <item name="boxCornerRadiusTopEnd">0dp</item>
+        <item name="boxCornerRadiusTopStart">@dimen/card_corner_radius</item>
+        <item name="android:layout_marginEnd">@dimen/text_container_half_margin</item>
+    </style>
+
+
+    <style name="CardTextInputTopRight" parent="@style/TextInput">
+        <item name="boxCornerRadiusBottomEnd">0dp</item>
+        <item name="boxCornerRadiusBottomStart">0dp</item>
+        <item name="boxCornerRadiusTopEnd">@dimen/card_corner_radius</item>
+        <item name="boxCornerRadiusTopStart">0dp</item>
+        <item name="android:layout_marginStart">@dimen/text_container_half_margin</item>
     </style>
 
     <style name="ImageViewerDialog" parent="android:Theme.Translucent.NoTitleBar"/>
@@ -72,7 +113,8 @@
 
     <style name="TextInput" parent="@style/Widget.Material3.TextInputLayout.OutlinedBox">
          <item name="android:layout_marginBottom">@dimen/text_container_margin</item>
-        <item name="android:layout_marginHorizontal">@dimen/text_container_margin</item>
+        <item name="android:layout_marginStart">@dimen/text_container_margin</item>
+        <item name="android:layout_marginEnd">@dimen/text_container_margin</item>
         <item name="suffixTextAppearance">@style/Description</item>
     </style>
 

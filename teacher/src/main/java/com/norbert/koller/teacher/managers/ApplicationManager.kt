@@ -17,6 +17,7 @@ import com.norbert.koller.teacher.fragments.StudentHostelFragment
 import com.norbert.koller.teacher.fragments.UserFragment
 import com.norbert.koller.teacher.fragments.OutgoingPermanentListFragment
 import com.norbert.koller.teacher.fragments.OutgoingTemporaryListFragment
+import com.norbert.koller.teacher.fragments.RoomTidinessListFragment
 import com.norbert.koller.teacher.fragments.UserListFragment
 import com.norbert.koller.teacher.fragments.bottomsheet.ProfileBsdfFragment
 
@@ -60,6 +61,8 @@ class ApplicationManager : ApplicationManager() {
 
         outgoingTemporaryListFragment = { OutgoingTemporaryListFragment() }
         outgoingPermanentListFragment = { OutgoingPermanentListFragment() }
+
+        roomTidinessListFragment = { RoomTidinessListFragment() }
 
         studyGroupsFragment = { com.norbert.koller.teacher.fragments.StudyGroupTypeListFragment() }
     }

@@ -15,46 +15,49 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.CreatePlacesActivity"
             android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:theme="@style/Theme.MainTheme" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.EditStudyGroupActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.EditSpecificStudyGroupActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.EditUserActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.CreateOutgoingActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.EditRoomActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.SettingsActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.RoomRateActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.RoomPresenceActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
-
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".activities.MainActivity"
-            android:exported="false"
-            android:enableOnBackInvokedCallback="true"/>
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
 
         <meta-data
             android:name="preloaded_fonts"

@@ -1,4 +1,4 @@
-package com.norbert.koller.teacher.recycleradapters
+package com.norbert.koller.student.recycleradapters
 
 import android.content.Context
 import android.content.Intent
@@ -12,11 +12,12 @@ import com.norbert.koller.shared.data.RoomData
 import com.norbert.koller.shared.databinding.ItemTextBinding
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdfFragment
 import com.norbert.koller.shared.recycleradapters.RoomTidinessRecyclerAdapter
-import com.norbert.koller.teacher.activities.RoomRateActivity
 
-class RoomTidinessRecyclerAdapter : RoomTidinessRecyclerAdapter() {
+class RoomTidinessRecyclerAdapter() : RoomTidinessRecyclerAdapter() {
     override fun onClick(holder: RecyclerView.ViewHolder, item: BaseData) {
-        val intent = Intent(holder.itemView.context, RoomRateActivity::class.java)
-        holder.itemView.context.startActivity(intent)
+        val dialog = RoomOrderBsdfFragment()
+        dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBsdfFragment.TAG)
     }
+
+
 }

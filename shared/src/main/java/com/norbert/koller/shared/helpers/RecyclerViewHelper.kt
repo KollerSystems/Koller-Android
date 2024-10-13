@@ -375,7 +375,7 @@ class RecyclerViewHelper {
         }
 
         fun roundCard(view : View, view2 : View? = null){
-            roundCardX(view, view2, R.style.OverlayRoundedCard, 0,0,0,0)
+            roundCardX(view, view2, R.style.OverlayRoundedCard, view.marginLeft,view.marginLeft,view.marginLeft,view.marginLeft)
         }
 
         fun deroundCardX(view : View, leftMargin : Int, topMargin : Int, rightMargin : Int, bottomMargin : Int){

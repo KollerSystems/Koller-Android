@@ -56,6 +56,8 @@
                     android:layout_marginEnd="@dimen/spacing"
                     android:backgroundTint="?android:attr/colorForeground"
                     android:gravity="center"
+                    android:scaleX="1.2"
+                    android:scaleY="1.2"
                     android:text="n"
                     tools:ignore="HardcodedText" />
 
@@ -116,6 +118,9 @@
                 style="@style/IconLikeText"
                 android:layout_width="@dimen/card_icon_smaller"
                 android:layout_height="@dimen/card_icon_smaller"
+                android:layout_marginEnd="6.7dp"
+                android:scaleX="1.2"
+                android:scaleY="1.2"
                 android:text="n"
                 android:textColor="?colorForeground066"
                 tools:ignore="HardcodedText" />
@@ -123,17 +128,13 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6.666dp"
-                android:layout_marginTop="3.333dp"
-                android:layout_marginEnd="3.3333dp"
-                android:layout_marginBottom="3.3333dp"
+                android:layout_margin="3.3dp"
                 android:layout_weight="1"
                 android:orientation="horizontal">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="6.666dp"
                     android:layout_weight="1"
                     android:orientation="vertical">
 
@@ -151,8 +152,8 @@
                         style="@style/Description"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/description"
                         android:gravity="start"
+                        android:text="@string/description"
                         android:textColor="?colorForeground033"
                         android:textSize="@dimen/text_description_smaller" />
                 </LinearLayout>
@@ -162,6 +163,7 @@
                     style="@style/Description"
                     android:layout_width="26.25sp"
                     android:layout_height="match_parent"
+                    android:layout_marginStart="6.7dp"
                     android:gravity="center"
                     android:lineSpacingExtra="-3.75sp"
                     android:text="@string/hours"

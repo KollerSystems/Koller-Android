@@ -41,6 +41,10 @@ abstract class RoomFragment() : DetailsFragment() {
         getHeaderBinding().recyclerView.layoutManager = GridLayoutManager(requireContext(),2,GridLayoutManager.HORIZONTAL,false)
         getHeaderBinding().recyclerView.setHasFixedSize(false)
 
+        getHeaderBinding().cbRoomTidiness.setOnClickListener{
+            getMainActivity().addFragment(ApplicationManager.roomTidinessListFragment())
+        }
+
         viewModel.response.observe(viewLifecycleOwner) { response ->
             response as RoomData
             if(response.residents != null) {

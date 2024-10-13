@@ -1,34 +1,20 @@
 package com.norbert.koller.teacher.fragments
 
 import android.content.Intent
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.RoomPagingSource
-import com.norbert.koller.shared.fragments.ListFragment
+import android.os.Bundle
+import android.view.View
+import com.norbert.koller.shared.fragments.RoomTidinessListFragment
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.PagingSource
-import com.norbert.koller.shared.recycleradapters.RoomRecyclerAdapter
 import com.norbert.koller.teacher.activities.RoomRateActivity
 import com.norbert.koller.teacher.recycleradapters.RoomTidinessRecyclerAdapter
 
-class RoomTidinessListFragment() : ListFragment() {
-
-    override fun getFragmentTitle(): String {
-        return getString(R.string.room_order)
-    }
-
-    override fun getPagingSource(): PagingSource {
-        return RoomPagingSource(requireContext(), getBaseViewModel())
-    }
-
+class RoomTidinessListFragment : RoomTidinessListFragment() {
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {
         return RoomTidinessRecyclerAdapter()
     }
 
-    override fun onSetUpSearching() {
-        super.onSetUpSearching()
-
-        setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
-
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         addButton("Szoba értékelése"){
             val intent = Intent(requireContext(), RoomRateActivity::class.java)
             startActivity(intent)

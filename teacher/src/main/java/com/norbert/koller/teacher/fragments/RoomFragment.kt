@@ -3,12 +3,14 @@ package com.norbert.koller.teacher.fragments
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import com.norbert.koller.shared.data.RoomData
-import com.norbert.koller.shared.data.UserData
+import androidx.core.view.isVisible
 import com.norbert.koller.shared.databinding.ContentFragmentRoomHeaderBinding
+import com.norbert.koller.shared.fragments.RoomTidinessListFragment
+import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.teacher.activities.EditRoomActivity
-import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.databinding.FragmentRoomBinding
+import okhttp3.Cache
 
 class RoomFragment() : com.norbert.koller.shared.fragments.RoomFragment() {
 
@@ -20,9 +22,8 @@ class RoomFragment() : com.norbert.koller.shared.fragments.RoomFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.cbRoomTidiness.setOnClickListener{
-            getMainActivity().addFragment(RoomTidinessListFragment())
-        }
+        binding.header.textManageRoom.isVisible = true
+        binding.header.cbRoomTidiness.isVisible = true
 
         binding.cbPresence.setOnClickListener{
             getMainActivity().addFragment(RoomPresenceListFragment())
@@ -32,6 +33,7 @@ class RoomFragment() : com.norbert.koller.shared.fragments.RoomFragment() {
             val intent = Intent(requireContext(), EditRoomActivity::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun createRootView(): View {

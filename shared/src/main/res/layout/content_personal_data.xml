@@ -173,7 +173,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="@string/introvert"
-                    android:textStyle="normal|bold" />
+                    android:textStyle="normal" />
 
                 <Space
                     android:layout_width="0dp"
@@ -186,7 +186,7 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="0"
                     android:text="@string/extrovert"
-                    android:textStyle="normal|bold"/>
+                    android:textStyle="normal" />
             </LinearLayout>
 
             <com.google.android.material.slider.RangeSlider

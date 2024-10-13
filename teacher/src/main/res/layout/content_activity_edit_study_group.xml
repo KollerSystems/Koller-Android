@@ -48,7 +48,6 @@
                     android:id="@+id/rgroup_to_edit"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/spacing"
                     android:visibility="gone"
                     tools:visibility="visible">
 
@@ -70,6 +69,14 @@
                         android:textAppearance="@style/Text"
                         tools:ignore="RtlSymmetry" />
                 </RadioGroup>
+
+                <View
+                    android:id="@+id/view_divider4"
+                    style="@style/SeparatorLine"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/spacing"
+                    android:layout_marginBottom="@dimen/spacing" />
 
                 <TextView
                     android:id="@+id/text"

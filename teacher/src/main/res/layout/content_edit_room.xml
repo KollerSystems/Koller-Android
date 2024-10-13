@@ -25,7 +25,7 @@ tools:context=".activities.EditRoomActivity">
             tools:listitem="@layout/item_user_small" />
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/CardTextInput"
+            style="@style/CardTextInputSingle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -43,7 +43,7 @@ tools:context=".activities.EditRoomActivity">
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            style="@style/CardTextInput"
+            style="@style/CardTextInputSingle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/group"

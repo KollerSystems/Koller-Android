@@ -15,6 +15,7 @@ import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdfFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.student.R
+import com.norbert.koller.student.fragments.RoomTidinessListFragment
 
 class ApplicationManager : ApplicationManager() {
 
@@ -56,6 +57,8 @@ class ApplicationManager : ApplicationManager() {
         notificationFragment = { NotificationsFragment() }
         roomFragment = { RoomFragment() }
         userFragment = { UserFragment() }
+
+        roomTidinessListFragment = { RoomTidinessListFragment() }
 
         studyGroupsFragment = { com.norbert.koller.student.fragments.StudyGroupTypeListFragment() }
     }

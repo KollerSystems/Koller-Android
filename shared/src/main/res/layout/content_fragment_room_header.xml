@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -35,4 +36,26 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         tools:text="F3" />
+
+    <TextView
+        android:id="@+id/text_manage_room"
+        style="@style/CategoryCardNameBald"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/manage_room"
+        android:visibility="gone"
+        app:layout_maxWidth="@dimen/tablet_max_width"
+        tools:visibility="visible" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/cb_room_tidiness"
+        style="@style/CardTop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:icon="@drawable/clean"
+        app:text="@string/room_tidinesses"
+        tools:visibility="visible">
+
+    </com.norbert.koller.shared.customviews.CardButton>
 </LinearLayout>

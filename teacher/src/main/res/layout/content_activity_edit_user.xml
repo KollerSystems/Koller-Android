@@ -57,7 +57,7 @@ tools:context=".activities.EditUserActivity">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_room"
-            style="@style/CardTextInput"
+            style="@style/CardTextInputSingle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -75,7 +75,7 @@ tools:context=".activities.EditUserActivity">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_group"
-            style="@style/CardTextInput"
+            style="@style/CardTextInputSingle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="0dp"
@@ -95,7 +95,7 @@ tools:context=".activities.EditUserActivity">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_class"
-            style="@style/CardTextInput"
+            style="@style/CardTextInputSingle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/class_"
