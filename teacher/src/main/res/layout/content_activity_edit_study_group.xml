@@ -128,91 +128,132 @@
                         android:maxLength="50" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <LinearLayout
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_marginTop="@dimen/card_full_margin"
+                    style="@style/CardMiddle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/text_container_margin"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content">
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/til_teacher"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:hint="@string/teacher"
-                        app:boxCornerRadiusBottomEnd="0dp"
-                        app:boxCornerRadiusBottomStart="0dp"
-                        app:boxCornerRadiusTopEnd="0dp"
-                        app:boxCornerRadiusTopStart="0dp"
-                        custom:counterEnabled="false">
+                        android:orientation="vertical">
 
-                        <com.google.android.material.textfield.TextInputEditText
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            style="@style/CategoryIcon"
+                            android:importantForAccessibility="no"
+                            app:srcCompat="@drawable/user" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_teacher"
+                            style="@style/TextInput"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:hint="@string/teacher">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text|textCapSentences"
+                                android:maxLength="50"
+                                android:textAppearance="@style/Text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                    </LinearLayout>
+                        <Button
+                            android:layout_gravity="center_horizontal"
+                            android:id="@+id/btn_teacher"
+                            style="@style/ButtonTonalIcon"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="text|textCapSentences"
-                            android:maxLength="50"
-                            android:textAppearance="@style/Text" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            android:layout_margin="@dimen/text_container_margin"
+                            android:layout_weight="0"
+                            android:text="Set me as teacher"
+                            app:icon="@drawable/person_wave" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-
-                    <Button
-                        android:id="@+id/btn_teacher"
-                        style="@style/ButtonTonalIcon"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="@dimen/text_container_margin"
-                        android:layout_weight="0"
-                        android:text="@string/me"
-                        app:cornerRadius="0dp"
-                        app:icon="@drawable/person_wave" />
-
-                </LinearLayout>
-
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_classroom"
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardMiddle"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="wrap_content">
 
-                    android:layout_marginHorizontal="@dimen/text_container_margin"
-                    android:hint="@string/classroom"
-                    app:boxCornerRadiusBottomEnd="0dp"
-                    app:boxCornerRadiusBottomStart="0dp"
-                    app:boxCornerRadiusTopEnd="0dp"
-                    app:boxCornerRadiusTopStart="0dp"
-                    app:counterEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text|textCapCharacters"
-                        android:maxLength="50"
-                        android:textAppearance="@style/Text" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/til_date"
+                        <ImageView
+                            style="@style/CategoryIcon"
+                            android:importantForAccessibility="no"
+                            app:srcCompat="@drawable/groups" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_classroom"
+                            style="@style/TextInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/classroom">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text|textCapCharacters"
+                                android:maxLength="50"
+                                android:textAppearance="@style/Text" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/CardMiddle"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content">
 
-                    android:layout_marginHorizontal="@dimen/text_container_margin"
-                    android:hint="@string/date_of_beginning"
-                    custom:boxCornerRadiusBottomEnd="0dp"
-                    custom:boxCornerRadiusBottomStart="0dp"
-                    custom:boxCornerRadiusTopEnd="0dp"
-                    custom:boxCornerRadiusTopStart="0dp"
-                    custom:counterEnabled="false">
-
-                    <com.google.android.material.textfield.TextInputEditText
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:editable="false"
-                        android:focusable="false"
-                        android:inputType="datetime|date"
-                        android:maxLength="50"
-                        android:textAppearance="@style/Text"
-                        tools:ignore="Deprecated" />
-                </com.google.android.material.textfield.TextInputLayout>
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            style="@style/CategoryIcon"
+                            android:importantForAccessibility="no"
+                            app:srcCompat="@drawable/calendar" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/til_date"
+                            style="@style/TextInput"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+
+                            android:hint="@string/date_of_beginning">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:editable="false"
+                                android:focusable="false"
+                                android:inputType="datetime|date"
+                                android:maxLength="50"
+                                android:textAppearance="@style/Text"
+                                tools:ignore="Deprecated" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+
 
                 <com.google.android.material.card.MaterialCardView
                     android:id="@+id/mcard_days"

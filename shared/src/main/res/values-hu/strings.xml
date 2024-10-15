@@ -468,4 +468,10 @@
     <string name="item">elem</string>
     <string name="menu">Menü</string>
     <string name="room_tidinesses">Szobarend</string>
+    <string name="applicants">Jelentkezők</string>
+    <string name="accepted">Felvéve</string>
+    <string name="waiting">Vár</string>
+    <string name="rejected">Elutasítva</string>
+    <string name="create">Létrehozás</string>
+    <string name="residents">Lakók</string>
 </resources>

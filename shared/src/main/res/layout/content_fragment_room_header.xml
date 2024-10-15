@@ -29,13 +29,58 @@
         android:textAppearance="@style/MainTitle"
         tools:text="216" />
 
-    <Button
-        android:id="@+id/btn_description"
-        style="@style/TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        tools:text="F3" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/spacing"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_floor"
+            style="@style/TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="2. emelet"
+            android:textAppearance="@style/Text" />
+
+        <TextView
+            android:id="@+id/text_first_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="•"
+            android:textColor="?colorForeground066"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_annexe"
+            style="@style/TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="B szárny"
+            android:textAppearance="@style/Text" />
+
+        <TextView
+            android:id="@+id/text_second_dot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="•"
+            android:textColor="?colorForeground066"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_description"
+            style="@style/TextButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingHorizontal="8dp"
+            tools:text="F3" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/text_manage_room"

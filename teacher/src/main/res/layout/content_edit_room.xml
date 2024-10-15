@@ -4,7 +4,6 @@ xmlns:custom="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:fitsSystemWindows="true"
 tools:context=".activities.EditRoomActivity">
 
 
@@ -14,7 +13,104 @@ tools:context=".activities.EditRoomActivity">
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Megnevezés" />
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/CardTextInputSingle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/room_number">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text|textCapSentences|textMultiLine"
+                android:maxLength="50" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+
+        <TextView
+            android:id="@+id/textView12"
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Elhelyezkedés" />
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardTop"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/floor" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_floor"
+                    style="@style/TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Emelet">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/annexe" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_annexe"
+                    style="@style/TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Szárny">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/Text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/residents" />
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
@@ -23,41 +119,12 @@ tools:context=".activities.EditRoomActivity">
             android:layout_margin="@dimen/text_container_margin"
             tools:itemCount="2"
             tools:listitem="@layout/item_user_small" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/CardTextInputSingle"
+        <TextView
+            style="@style/Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:enabled="false"
-            android:hint="@string/room_number"
-            app:boxCornerRadiusBottomEnd="0dp"
-            app:boxCornerRadiusBottomStart="0dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text|textCapSentences|textMultiLine"
-                android:maxLength="50"
-                android:textAppearance="@style/Text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/CardTextInputSingle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/group"
-            app:boxCornerRadiusTopEnd="0dp"
-            app:boxCornerRadiusTopStart="0dp">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text|textCapSentences|textMultiLine"
-                android:maxLength="50"
-                android:textAppearance="@style/Text" />
-        </com.google.android.material.textfield.TextInputLayout>
-
+            android:textAlignment="center"
+            android:text="F3" />
     </LinearLayout>
 
 

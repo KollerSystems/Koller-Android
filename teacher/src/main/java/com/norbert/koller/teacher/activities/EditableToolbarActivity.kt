@@ -5,8 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.app.NotificationCompat.Style
+import com.google.android.material.button.MaterialButton
 import com.google.android.material.textfield.TextInputLayout
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ActivityToolbarBinding
 import com.norbert.koller.teacher.databinding.ActivityEditableToolbarBinding
 
@@ -18,7 +21,7 @@ abstract class EditableToolbarActivity : AppCompatActivity() {
         return containerBinding.til
     }
 
-    fun getConfirmButton() : Button {
+    fun getConfirmButton() : MaterialButton {
         return containerBinding.manageBar.button
     }
 
@@ -49,4 +52,13 @@ abstract class EditableToolbarActivity : AppCompatActivity() {
 
     abstract fun getName() : Pair<String, String>
 
+    fun displayButton(text : String){
+        getConfirmButton().text = text
+    }
+
+    fun displayButton(text: String, icon : Int){
+        displayButton(text)
+        getConfirmButton().icon = AppCompatResources.getDrawable(this, icon)
+        getConfirmButton().setPaddingRelative(resources.getDimensionPixelSize(R.dimen.icon_button_padding), getConfirmButton().paddingTop, getConfirmButton().paddingEnd, getConfirmButton().paddingBottom)
+    }
 }

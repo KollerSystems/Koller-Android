@@ -23,13 +23,14 @@
         android:orientation="horizontal">
 
         <com.google.android.material.chip.Chip
-            app:shapeAppearance="@style/OverlayRoundedLeft"
             android:id="@+id/chip_one"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:checked="true"
             android:text="Egy"
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            app:shapeAppearance="@style/OverlayRoundedLeft" />
 
         <com.google.android.material.chip.Chip
             app:shapeAppearance="@style/OverlayRoundedRight"
@@ -67,7 +68,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="Szám">
+            android:hint="@string/room_number">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -87,7 +88,9 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:inputType="number|numberSigned"
+                android:maxLength="5"/>
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
 
@@ -96,12 +99,14 @@
         style="@style/CardTextInputBottom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Leírás"
-        app:helperText="@string/optional">
+        android:hint="Leírás">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:inputType="text|textCapSentences"
+            android:singleLine="true"
+            android:textAppearance="@style/Text" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
@@ -111,28 +116,70 @@
         android:layout_height="wrap_content"
         android:text="Elhelyezkedés" />
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_floor"
-        style="@style/CardTextInputTop"
+    <com.google.android.material.card.MaterialCardView
+        style="@style/CardTop"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Emelet">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_annexe"
-        style="@style/CardTextInputBottom"
+            <ImageView
+                style="@style/CategoryIcon"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/floor" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_floor"
+                style="@style/TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Emelet">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/CardBottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Szárny">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/CategoryIcon"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/annexe" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_annexe"
+                style="@style/TextInput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Szárny">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="@style/Text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+
 
 </LinearLayout>

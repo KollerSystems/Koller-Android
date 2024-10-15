@@ -477,4 +477,10 @@
     <string name="item">item</string>
     <string name="menu">Menu</string>
     <string name="room_tidinesses">Room tidinesses</string>
+    <string name="applicants">Applicants</string>
+    <string name="accepted">Accpeted</string>
+    <string name="waiting">Waiting</string>
+    <string name="rejected">Rejected</string>
+    <string name="create">Create</string>
+    <string name="residents">Residents</string>
 </resources>

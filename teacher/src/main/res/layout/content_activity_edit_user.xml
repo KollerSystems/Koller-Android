@@ -54,61 +54,108 @@ tools:context=".activities.EditUserActivity">
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/institutional_data" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_room"
-            style="@style/CardTextInputSingle"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardTop"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:hint="@string/room"
-            app:boxCornerRadiusBottomEnd="0dp"
-            app:boxCornerRadiusBottomStart="0dp">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textCapSentences|textMultiLine"
-                android:maxLength="50"
-                android:textAppearance="@style/Text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_group"
-            style="@style/CardTextInputSingle"
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/room" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_room"
+                    style="@style/TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/room">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textCapSentences|textMultiLine"
+                        android:maxLength="50"
+                        android:textAppearance="@style/Text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardMiddle"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="0dp"
-            android:hint="@string/group"
-            app:boxCornerRadiusBottomEnd="0dp"
-            app:boxCornerRadiusBottomStart="0dp"
-            app:boxCornerRadiusTopEnd="0dp"
-            app:boxCornerRadiusTopStart="0dp">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textCapSentences|textMultiLine"
-                android:maxLength="50"
-                android:textAppearance="@style/Text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_class"
-            style="@style/CardTextInputSingle"
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/parent" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_group"
+                    style="@style/TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/group">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textCapSentences|textMultiLine"
+                        android:maxLength="50"
+                        android:textAppearance="@style/Text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            style="@style/CardBottom"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="@string/class_"
-            app:boxCornerRadiusTopEnd="0dp"
-            app:boxCornerRadiusTopStart="0dp">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="text|textCapSentences|textMultiLine"
-                android:maxLength="50"
-                android:textAppearance="@style/Text" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/groups" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_class"
+                    style="@style/TextInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/class_">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text|textCapSentences|textMultiLine"
+                        android:maxLength="50"
+                        android:textAppearance="@style/Text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
 
         <TextView
             android:id="@+id/text_status"

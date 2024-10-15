@@ -99,6 +99,8 @@ class CreatePlacesActivity : EditableToolbarActivity() {
                 }
                 .show()
         }
+
+        displayButton(getString(com.norbert.koller.shared.R.string.create), com.norbert.koller.shared.R.drawable.check)
     }
 
     override fun createContentView(): ViewGroup {
