@@ -17,6 +17,28 @@ tools:context=".activities.EditRoomActivity">
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/residents" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/text_container_margin"
+            tools:itemCount="2"
+            tools:listitem="@layout/item_user_small" />
+
+        <TextView
+            style="@style/Description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="F3"
+            android:textAlignment="center" />
+
+        <TextView
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Megnevezés" />
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CardTextInputSingle"
@@ -106,25 +128,6 @@ tools:context=".activities.EditRoomActivity">
 
         </com.google.android.material.card.MaterialCardView>
 
-        <TextView
-            style="@style/CategoryCardName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/residents" />
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recycler_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_margin="@dimen/text_container_margin"
-            tools:itemCount="2"
-            tools:listitem="@layout/item_user_small" />
-        <TextView
-            style="@style/Description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textAlignment="center"
-            android:text="F3" />
     </LinearLayout>
 
 
