@@ -22,7 +22,7 @@ import com.norbert.koller.shared.managers.ApplicationManager
 
 data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false)
 
-class ListAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
+class ListRecyclerAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListRecyclerAdapter.ListViewHolder>() {
 
     override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
         super.onAttachedToRecyclerView(recyclerView)

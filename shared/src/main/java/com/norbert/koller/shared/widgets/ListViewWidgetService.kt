@@ -16,7 +16,7 @@ class ListViewWidgetService : RemoteViewsService() {
             CanteenData(4,1, "13:00 - 15:45", "Zöccség leves és Polipos genyó", Date(1724623200000)),
             CanteenData(5,2, "19:15 - 19:45", "Száraz kenyér", Date(1724623200000)),
         )
-        return CanteenListAdapter(this.applicationContext, canteenDataArrayList)
+        return CanteenListRecyclerAdapter(this.applicationContext, canteenDataArrayList)
     }
 
 }

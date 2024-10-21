@@ -7,7 +7,7 @@ import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.ListItem
 import retrofit2.Response
 
-class ListApiBsdfFragmentViewModel : ListBsdfFragmentViewModel() {
+class ListApiToggleBsdfFragmentViewModel : ListToggleBsdfFragmentViewModel() {
 
     lateinit var classOfT: Class<*>
 

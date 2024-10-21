@@ -14,7 +14,7 @@ import com.norbert.koller.shared.recycleradapters.CanteenRecyclerAdapter
 import java.util.Calendar
 
 
-class CanteenListAdapter(private val context: Context, private val canteenDataList: java.util.ArrayList<CanteenData>) : RemoteViewsService.RemoteViewsFactory {
+class CanteenListRecyclerAdapter(private val context: Context, private val canteenDataList: java.util.ArrayList<CanteenData>) : RemoteViewsService.RemoteViewsFactory {
 
     override fun onCreate() {
 

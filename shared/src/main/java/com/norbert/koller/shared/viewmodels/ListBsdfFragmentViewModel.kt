@@ -8,9 +8,7 @@ abstract class ListBsdfFragmentViewModel : ViewModel() {
 
     var list = MutableLiveData<ArrayList<ListItem>?>()
 
-    var filterName : Int? = null
-
-    var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
+    var title : String? = null
 
     var collapseText : Boolean = false
 }

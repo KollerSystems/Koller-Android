@@ -19,9 +19,9 @@ import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.recycleradapters.ListAdapter.ListViewHolder
+import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter.ListViewHolder
 
-class ApiListAdapter (val bottomSheet : ListBsdfFragment) : EditableApiRecyclerAdapter() {
+class ApiListRecyclerAdapter (val bottomSheet : ListBsdfFragment) : EditableApiRecyclerAdapter() {
     override fun onClick(holder: RecyclerView.ViewHolder, item: BaseData) {
 
     }

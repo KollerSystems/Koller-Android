@@ -17,6 +17,7 @@ import android.view.ViewGroup.MarginLayoutParams
 import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.marginLeft
@@ -157,12 +158,11 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            val dialog = ListStaticBsdfFragment(arrayListOf(
+            ListStaticBsdfFragment().setup(arrayListOf(
                 ListItem(text, null, icon, null, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)
-                })))
-            dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+                }))).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
 
 
 

@@ -12,15 +12,15 @@ import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
-import com.norbert.koller.shared.viewmodels.ListApiBsdfFragmentViewModel
+import com.norbert.koller.shared.viewmodels.ListApiToggleBsdfFragmentViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
 
-class ListOldApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var classOfT: Class<*>? = null, private val filterName : Int? = null) : ListBsdfFragment(alreadyChecked, filterName) {
+class ListOldApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null, alreadyChecked : ArrayList<String>? = null, var classOfT: Class<*>? = null, private val filterName : Int? = null) : ListBsdfFragment() {
 
 
-    fun apiViewModel() : ListApiBsdfFragmentViewModel{
-        return viewModel as ListApiBsdfFragmentViewModel
+    fun apiViewModel() : ListApiToggleBsdfFragmentViewModel{
+        return viewModel as ListApiToggleBsdfFragmentViewModel
     }
 
     var itemLoading : ViewGroup? = null
@@ -31,7 +31,7 @@ class ListOldApiBsdfFragment(var apiToCall : (suspend () -> Response<*>)? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        viewModel = ViewModelProvider(this)[ListApiBsdfFragmentViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ListApiToggleBsdfFragmentViewModel::class.java]
 
         if (savedInstanceState == null) {
             apiViewModel().classOfT = classOfT!!
