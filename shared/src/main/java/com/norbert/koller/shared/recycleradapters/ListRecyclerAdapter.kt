@@ -8,6 +8,9 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.view.ViewGroup.LayoutParams.MATCH_PARENT
+import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
+import android.view.ViewGroup.MarginLayoutParams
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
@@ -55,7 +58,9 @@ class ListAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<Li
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
 
         val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)
-        (holder.itemView.layoutParams as? ViewGroup.MarginLayoutParams)?.setMargins(0,margin,0,margin)
+        val params = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
+        params.setMargins(0,margin,0,margin)
+        holder.itemView.layoutParams = params
 
         val currentItem = bottomSheet.viewModel.list.value!![position]
 
