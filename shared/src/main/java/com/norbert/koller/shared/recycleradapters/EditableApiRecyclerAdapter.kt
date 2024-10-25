@@ -1,45 +1,17 @@
 package com.norbert.koller.shared.recycleradapters
 
-import android.annotation.SuppressLint
 import android.content.Context
-import android.util.Log
-import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.view.inputmethod.EditorInfo
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.activity.addCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import androidx.core.view.iterator
-import androidx.core.widget.doBeforeTextChanged
-import androidx.lifecycle.findViewTreeLifecycleOwner
-import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.databinding.ItemBinding
-import com.norbert.koller.shared.databinding.ItemLoadingBinding
-import com.norbert.koller.shared.databinding.ItemNothingToDisplayBinding
-import com.norbert.koller.shared.databinding.TextViewDateBinding
-import com.norbert.koller.shared.databinding.ViewErrorRetryBinding
-import com.norbert.koller.shared.fragments.ListFragment
-import com.norbert.koller.shared.helpers.ApiHelper
-import com.norbert.koller.shared.helpers.RecyclerViewHelper
-import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.viewmodels.ListViewModel
 
-abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
+abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapter() {
 
     abstract fun onClick(holder: RecyclerView.ViewHolder, item: BaseData)
 
@@ -64,7 +36,6 @@ abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapterWithTransition()
     }
 
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
-        super.onBindItemViewHolder(holder, item, position)
         checkItem(holder, item)
         holder.itemView.setOnClickListener {
             if(viewModel.selectedItems.isNotEmpty()){

@@ -1,18 +1,15 @@
 package com.norbert.koller.shared.recycleradapters
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.BaseProgramData
 import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
-abstract class ProgramRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
+abstract class ProgramRecyclerAdapter() : ApiRecyclerAdapter() {
 
     abstract fun onItemPress(holder: RecyclerView.ViewHolder, item : BaseProgramData)
 
@@ -22,7 +19,6 @@ abstract class ProgramRecyclerAdapter() : ApiRecyclerAdapterWithTransition() {
 
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
-        super.onBindItemViewHolder(holder, item, position)
         val context = holder.itemView.context
         holder as RecyclerViewHelper.UserViewHolder
 

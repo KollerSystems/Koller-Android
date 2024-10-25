@@ -85,6 +85,14 @@ abstract class ListFragment() : SearchFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        postponeEnterTransition()
+        (view as ViewGroup).viewTreeObserver
+            .addOnPreDrawListener {
+                startPostponedEnterTransition()
+                true
+            }
+
         recyclerAdapter = getRecyclerAdapter()
         recyclerAdapter!!.viewModel = getBaseViewModel()
 

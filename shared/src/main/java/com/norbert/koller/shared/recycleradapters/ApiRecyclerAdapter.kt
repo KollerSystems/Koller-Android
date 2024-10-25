@@ -8,11 +8,13 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
 import androidx.core.view.iterator
 import androidx.core.widget.doBeforeTextChanged
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
@@ -80,6 +82,9 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
         return RecyclerViewHelper.ItemViewHolder(ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
+    fun getTransitionName(id : Int) : String{
+        return "cardTransition_${id}position"
+    }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
@@ -105,7 +110,10 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
         when (getItemViewType(position)) {
             VIEW_TYPE_ITEM -> {
 
-                onBindItemViewHolder(holder, item as BaseData, position)
+                item as BaseData
+                val transitionName = getTransitionName(item.getMainID())
+                ViewCompat.setTransitionName(holder.itemView as MaterialCardView, transitionName)
+                onBindItemViewHolder(holder, item, position)
 
                 if (position == snapshot().size) {
                     holder.itemView.post {
