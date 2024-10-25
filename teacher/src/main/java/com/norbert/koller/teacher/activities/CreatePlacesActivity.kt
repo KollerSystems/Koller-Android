@@ -6,27 +6,18 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.addCallback
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
-import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.norbert.koller.shared.data.OutgoingData
-import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
-import com.norbert.koller.shared.helpers.connectToDatePicker
-import com.norbert.koller.shared.helpers.connectToTimePicker
+import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
-import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.setup
+import com.norbert.koller.shared.recycleradapters.ListCardItem
 import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.viewmodels.DetailsViewModel
 import com.norbert.koller.teacher.R
-import com.norbert.koller.teacher.activities.CreateOutgoingActivity.Companion.PERMANENT
-import com.norbert.koller.teacher.activities.CreateOutgoingActivity.Companion.TEMPORARY
 import com.norbert.koller.teacher.databinding.ActivityCreatePlacesBinding
-import com.norbert.koller.teacher.databinding.ContentActivityCreateOutgoingBinding
 
 class CreatePlacesActivity : EditableToolbarActivity() {
 
@@ -65,12 +56,11 @@ class CreatePlacesActivity : EditableToolbarActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = ListStaticBsdfFragment(arrayListOf(
-                ListItem(
+            val dialog = ListCardStaticBsdfFragment().setup(this, arrayListOf(
+                ListCardItem(
                     getString(com.norbert.koller.shared.R.string.room),
                     null,
-                    AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.room),
-                    null, {
+                    AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.room), {
                         getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.room)
                         getTitleTil().editText!!.tag = ROOM
                     })

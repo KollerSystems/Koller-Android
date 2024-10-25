@@ -3,19 +3,19 @@ package com.norbert.koller.shared.fragments.bottomsheet
 import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
-import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
 
-abstract class ToggleListBsdfFragment() : ListBsdfFragment() {
+abstract class ListToggleBsdfFragment() : ListBsdfFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -25,12 +25,14 @@ abstract class ToggleListBsdfFragment() : ListBsdfFragment() {
         }
     }
 
-    protected fun setup(alreadyChecked : ArrayList<String>? = null, title: String? = null, collapseText: Boolean = false)  : ListBsdfFragment{
-        setup(title, collapseText)
+    protected fun mergeListWithCheckedElements(alreadyChecked : ArrayList<String>? = null){
+
+        if(alreadyChecked == null) return
+
         for (item in viewModel.list.value!!) {
-            item.isChecked = alreadyChecked!!.contains(item.tag)
+            item as ListToggleItem
+            item.isChecked = alreadyChecked.contains(item.tag)
         }
-        return this
     }
 
     fun setList(){
@@ -58,10 +60,33 @@ abstract class ToggleListBsdfFragment() : ListBsdfFragment() {
             frameLayout.addView(searchView)
 
             searchView.getEditText().doOnTextChanged { text, start, before, count ->
-                adapter!!.filter(text.toString())
+                getAdapter().filter(text.toString())
             }
         }
     }
 
+    override fun onCancel(dialog: DialogInterface) {
+
+        Log.d("TEST", getValuesOnFinish.toString())
+        val toggleViewModel = viewModel as ListToggleBsdfFragmentViewModel
+        if(getValuesOnFinish != null && getRecyclerView().adapter != null) {
+
+            getAdapter().filter("")
+
+            val stringList: ArrayList<String> = arrayListOf()
+            val localizedStringList: ArrayList<String> = arrayListOf()
+
+            for (item in toggleViewModel.list.value!!) {
+                item as ListToggleItem
+                if (item.isChecked) {
+                    stringList.add(item.tag!!)
+                    localizedStringList.add(item.title)
+                }
+            }
+
+            getValuesOnFinish!!.invoke(stringList, localizedStringList)
+        }
+        super.onCancel(dialog)
+    }
 
 }

@@ -13,6 +13,7 @@ import com.norbert.koller.shared.data.CanteenData
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.CanteenRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import java.util.Date
 
@@ -34,9 +35,9 @@ class CanteenFragment : ListFragment() {
         super.onSetUpSearching()
         setupSort(R.string.newest, R.string.oldest,"Name")
         addSortingChip("type", R.string.type_, arrayListOf(
-            ListItem(getString(R.string.breakfast), null, AppCompatResources.getDrawable(requireContext(), R.drawable.breakfast), "1"),
-            ListItem(getString(R.string.lunch), null, AppCompatResources.getDrawable(requireContext(), R.drawable.lunch), "0"),
-            ListItem(getString(R.string.dinner), null, AppCompatResources.getDrawable(requireContext(), R.drawable.dinner), "2")
+            ListToggleItem(getString(R.string.breakfast), null, AppCompatResources.getDrawable(requireContext(), R.drawable.breakfast), "1"),
+            ListToggleItem(getString(R.string.lunch), null, AppCompatResources.getDrawable(requireContext(), R.drawable.lunch), "0"),
+            ListToggleItem(getString(R.string.dinner), null, AppCompatResources.getDrawable(requireContext(), R.drawable.dinner), "2")
         ))
         addDateChip()
     }

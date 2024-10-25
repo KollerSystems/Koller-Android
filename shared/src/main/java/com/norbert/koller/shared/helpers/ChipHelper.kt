@@ -1,5 +1,7 @@
 package com.norbert.koller.shared.helpers
 
+import android.content.ContextWrapper
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.util.Pair
 import androidx.fragment.app.FragmentManager
@@ -12,15 +14,18 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ExpiringListData
-import com.norbert.koller.shared.fragments.bottomsheet.ListOldApiBsdfFragment
 import com.norbert.koller.shared.managers.checkByPass
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListToggleApiBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.managers.restoreDropDown
+import com.norbert.koller.shared.recycleradapters.ListCardItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.viewmodels.SearchViewModel
 import kotlinx.coroutines.launch
 import retrofit2.Response
@@ -157,29 +162,29 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
 
     setOnClickListener {
 
-        val dialog = ListStaticBsdfFragment(arrayListOf(
-            ListItem(context.getString(R.string.this_day), null, AppCompatResources.getDrawable(context, R.drawable.today), null, {
+        val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
+            ListCardItem(context.getString(R.string.this_day), null, AppCompatResources.getDrawable(context, R.drawable.today), {
                 setViewModelAndChip(getEndOfTodayAndStartOfSpecificDayAgo(0))
             }),
-            ListItem(context.getString(R.string.one_week), null, AppCompatResources.getDrawable(context, R.drawable.week), null, {
+            ListCardItem(context.getString(R.string.one_week), null, AppCompatResources.getDrawable(context, R.drawable.week), {
                 setViewModelAndChip(getEndOfTodayAndStartOfSpecificDayAgo(7))
             }),
-            ListItem(context.getString(R.string.four_weeks), null, AppCompatResources.getDrawable(context, R.drawable.month), null, {
+            ListCardItem(context.getString(R.string.four_weeks), null, AppCompatResources.getDrawable(context, R.drawable.month), {
                 setViewModelAndChip(getEndOfTodayAndStartOfSpecificDayAgo(7*4))
             }),
-            ListItem(context.getString(R.string.first_quarter), null, AppCompatResources.getDrawable(context, R.drawable.quarter), null, {
+            ListCardItem(context.getString(R.string.first_quarter), null, AppCompatResources.getDrawable(context, R.drawable.quarter), {
 
             }),
-            ListItem(context.getString(R.string.half_year), null, AppCompatResources.getDrawable(context, R.drawable.half), null, {
+            ListCardItem(context.getString(R.string.half_year), null, AppCompatResources.getDrawable(context, R.drawable.half), {
 
             }),
-            ListItem(context.getString(R.string.third_quarter), null, AppCompatResources.getDrawable(context, R.drawable.three_quarter), null, {
+            ListCardItem(context.getString(R.string.third_quarter), null, AppCompatResources.getDrawable(context, R.drawable.three_quarter), {
 
             }),
-            ListItem(context.getString(R.string.full_year), null, AppCompatResources.getDrawable(context, R.drawable.full), null, {
+            ListCardItem(context.getString(R.string.full_year), null, AppCompatResources.getDrawable(context, R.drawable.full), {
 
             }),
-            ListItem(context.getString(R.string.custom_range), null, AppCompatResources.getDrawable(context, R.drawable.date_range), null, {
+            ListCardItem(context.getString(R.string.custom_range), null, AppCompatResources.getDrawable(context, R.drawable.date_range), {
                 val dprdb = MaterialDatePicker.Builder.dateRangePicker()
 
                 if (ChipHelper.getDateFilterValue(viewModel).containsKey(filterName)) {
@@ -197,12 +202,8 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
                 }
 
                 drpd.show(fragmentManager, "MATERIAL_DATE_RANGE_PICKER")
-            })))
-
-        dialog.show(fragmentManager, ListBsdfFragment.TAG)
-        post {
-            dialog.setTitle(context.getString(R.string.date))
-        }
+            })
+        ), context.getString(R.string.date)).show(fragmentManager, ListBsdfFragment.TAG)
     }
 }
 
@@ -312,8 +313,8 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListOldApiBsdfFragment(getValues, ChipHelper.getFilterValue(viewModel)[filterName], classOfT, localizedFilterId)
-        dialog.collapseText = collapseText
+        val dialog = ListToggleApiBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), null, null, collapseText)
+
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
 
@@ -328,6 +329,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
 
         for (tag in ChipHelper.getFilterValue(viewModel)[filterName]!!){
             for (elements in arrayList){
+                elements as ListToggleItem
                 if(tag == elements.tag){
                     localizedStrings.add(elements.title)
                 }
@@ -344,7 +346,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListStaticBsdfFragment(arrayList, ChipHelper.getFilterValue(viewModel)[filterName], localizedFilterId)
+        val dialog = ListToggleStaticBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayList, ChipHelper.getFilterValue(viewModel)[filterName], context.getString(localizedFilterId))
 
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)

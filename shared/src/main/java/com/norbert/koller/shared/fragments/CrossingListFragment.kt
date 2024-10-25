@@ -11,6 +11,7 @@ import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 
 class CrossingListFragment() : ListFragment() {
 
@@ -52,8 +53,8 @@ class CrossingListFragment() : ListFragment() {
 
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
         addSortingChip("Direction", R.string.direction, arrayListOf(
-            ListItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "1"),
-            ListItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "0")
+            ListToggleItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "1"),
+            ListToggleItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "0")
         ))
         addDateChip("Time")
 

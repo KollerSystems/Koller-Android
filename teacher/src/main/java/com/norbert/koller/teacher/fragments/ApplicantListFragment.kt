@@ -15,6 +15,7 @@ import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.fragments.RoomTidinessListFragment
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 import com.norbert.koller.teacher.activities.RoomRateActivity
@@ -43,14 +44,14 @@ class ApplicantListFragment : ListFragment() {
         setupSort(R.string.abc, R.string.zyx,"Name")
 
         addSortingChip("Type", R.string.state, arrayListOf(
-            ListItem(getString(R.string.waiting), null, AppCompatResources.getDrawable(requireContext(), R.drawable.hourglass), "0"),
-            ListItem(getString(R.string.accepted), null, AppCompatResources.getDrawable(requireContext(), R.drawable.check_circle), "1"),
-            ListItem(getString(R.string.rejected), null, AppCompatResources.getDrawable(requireContext(), R.drawable.x_circle), "2")
+            ListToggleItem(getString(R.string.waiting), null, AppCompatResources.getDrawable(requireContext(), R.drawable.hourglass), "0"),
+            ListToggleItem(getString(R.string.accepted), null, AppCompatResources.getDrawable(requireContext(), R.drawable.check_circle), "1"),
+            ListToggleItem(getString(R.string.rejected), null, AppCompatResources.getDrawable(requireContext(), R.drawable.x_circle), "2")
         ))
 
         addSortingChip("Gender", R.string.gender, arrayListOf(
-            ListItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
-            ListItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
+            ListToggleItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
+            ListToggleItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
         ))
 
         addSortingChip("Group.ID", R.string.group, { RetrofitInstance.api.getGroups()}, GroupData::class.java, true)

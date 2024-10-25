@@ -22,10 +22,13 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.databinding.ViewAttachBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.getAttributeColor
+import com.norbert.koller.shared.recycleradapters.ListCardItem
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.stfalcon.imageviewer.StfalconImageViewer
 
@@ -42,8 +45,8 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
 
     fun showDialog(){
         val fragmentManager = (context as AppCompatActivity)
-        val dialog = ListStaticBsdfFragment(arrayListOf(
-            ListItem("Fénykép készítése", null, AppCompatResources.getDrawable(context, R.drawable.camera), null, {
+        val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
+            ListCardItem("Fénykép készítése", null, AppCompatResources.getDrawable(context, R.drawable.camera), {
 
                 if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
 
@@ -63,14 +66,13 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
                     startCamera!!.launch(cameraIntent)
                 }
             }),
-            ListItem("Fénykép kiválasztása", null, AppCompatResources.getDrawable(context, R.drawable.gallery), null, {
+            ListCardItem("Fénykép kiválasztása", null, AppCompatResources.getDrawable(context, R.drawable.gallery), {
                 val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
                 galleryIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false)
                 galleryIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
                 startGallery!!.launch(galleryIntent)
             })
-        ))
-        dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+        )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
     }
 
     fun resetUI(){

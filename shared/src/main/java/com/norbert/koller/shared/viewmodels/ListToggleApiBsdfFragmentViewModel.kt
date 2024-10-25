@@ -5,9 +5,10 @@ import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ExpiringListData
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import retrofit2.Response
 
-class ListApiToggleBsdfFragmentViewModel : ListToggleBsdfFragmentViewModel() {
+class ListToggleApiBsdfFragmentViewModel : ListToggleBsdfFragmentViewModel() {
 
     lateinit var classOfT: Class<*>
 
@@ -33,7 +34,7 @@ class ListApiToggleBsdfFragmentViewModel : ListToggleBsdfFragmentViewModel() {
     fun responseToListItemList(response : List<BaseData>) : ArrayList<ListItem>{
         var listItemList: ArrayList<ListItem> = arrayListOf()
         for (i in response.indices){
-            var listItem = ListItem(response[i].getTitle(), response[i].getDescription(), null, response[i].getMainID().toString())
+            var listItem = ListToggleItem(response[i].getTitle(), response[i].getDescription(), null, response[i].getMainID().toString())
             listItemList.add(listItem)
         }
 

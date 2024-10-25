@@ -20,13 +20,9 @@ import com.norbert.koller.shared.databinding.ItemCheckBoxBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 
-data class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null, val tag : String? = null, val function: ((isChecked : Boolean) -> Unit)? = null, var isChecked : Boolean = false)
+open class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null)
 
-class ListRecyclerAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListRecyclerAdapter.ListViewHolder>() {
-
-    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
-        super.onAttachedToRecyclerView(recyclerView)
-    }
+abstract class ListRecyclerAdapter(val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListRecyclerAdapter.ListViewHolder>() {
 
     var itemsCopy : ArrayList<ListItem>? = null
 
@@ -63,31 +59,6 @@ class ListRecyclerAdapter (val bottomSheet : ListBsdfFragment) : RecyclerView.Ad
         holder.itemView.layoutParams = params
 
         val currentItem = bottomSheet.viewModel.list.value!![position]
-
-
-        if (bottomSheet.toggleList()) {
-            holder.itemBinding.checkBox.setOnCheckedChangeListener(null)
-            holder.itemBinding.checkBox.isChecked = currentItem.isChecked
-            holder.itemBinding.checkBox.visibility = VISIBLE
-            holder.itemBinding.checkBox.setOnCheckedChangeListener{ _, isChecked ->
-                currentItem.isChecked = isChecked
-            }
-
-        } else {
-            holder.itemBinding.checkBox.visibility = GONE
-        }
-
-
-        holder.itemView.setOnClickListener {
-
-            if(bottomSheet.toggleList()) {
-                holder.itemBinding.checkBox.toggle()
-            }
-            else{
-                bottomSheet.dismiss()
-            }
-            currentItem.function?.invoke(holder.itemBinding.checkBox.isChecked)
-        }
 
         if(!bottomSheet.viewModel.collapseText) {
             holder.itemBinding.textTitle.text = currentItem.title

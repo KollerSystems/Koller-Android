@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.norbert.koller.shared.recycleradapters.ListItem
 
-abstract class ListBsdfFragmentViewModel : ViewModel() {
+open class ListBsdfFragmentViewModel : ViewModel() {
 
     var list = MutableLiveData<ArrayList<ListItem>?>()
 

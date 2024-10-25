@@ -19,6 +19,7 @@ import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.NotificationRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
@@ -48,8 +49,8 @@ class NotificationsFragment : ListFragment() {
         super.onSetUpSearching()
         setupSort(R.string.newest, R.string.oldest,"Name")
         addSortingChip("type", R.string.type_, arrayListOf(
-            ListItem(getString(R.string.room_order), null, AppCompatResources.getDrawable(requireContext(), R.drawable.room), "1"),
-            ListItem(getString(R.string.commendation_warning), null, AppCompatResources.getDrawable(requireContext(),
+            ListToggleItem(getString(R.string.room_order), null, AppCompatResources.getDrawable(requireContext(), R.drawable.room), "1"),
+            ListToggleItem(getString(R.string.commendation_warning), null, AppCompatResources.getDrawable(requireContext(),
                 R.drawable.award
             ), "0")
         ))

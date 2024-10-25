@@ -5,6 +5,7 @@ import android.view.View
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.StudyGroupPagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.PagingSource
 
 abstract class StudyGroupListFragment : ListFragment() {
@@ -26,8 +27,8 @@ abstract class StudyGroupListFragment : ListFragment() {
 
         val lessonLocalName : String = requireContext().getString(R.string.lesson).lowercase()
         addSortingChip("Length", R.string.length, arrayListOf(
-            ListItem("1 ${lessonLocalName}", null, null, "1"),
-            ListItem("2 ${lessonLocalName}", null, null, "2")
+            ListToggleItem("1 ${lessonLocalName}", null, null, "1"),
+            ListToggleItem("2 ${lessonLocalName}", null, null, "2")
         ))
 
         addSearchbar("Topic")

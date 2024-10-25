@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter
@@ -17,22 +19,24 @@ import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
 
 abstract class ListBsdfFragment() : RecyclerBsdfFragment() {
 
-    abstract fun setViewModel() : ListBsdfFragmentViewModel
+    abstract fun setViewModel(activity : AppCompatActivity) : ListBsdfFragmentViewModel
 
     var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
 
     lateinit var viewModel: ListBsdfFragmentViewModel
-    var adapter : ListRecyclerAdapter? = null
 
-    protected fun setup(title : String? = null, collapseText : Boolean = false) : ListBsdfFragment{
-        viewModel = setViewModel()
+    fun getAdapter() : ListRecyclerAdapter{
+        return getRecyclerView().adapter as ListRecyclerAdapter
+    }
+
+    protected fun setup(activity : AppCompatActivity, title : String? = null, collapseText : Boolean = false) : ListBsdfFragment{
+        viewModel = setViewModel(activity)
         viewModel.title = title
         viewModel.collapseText = collapseText
         return this
     }
 
-    fun setRecyclerView(){
-        adapter = ListRecyclerAdapter(this@ListBsdfFragment)
+    fun setRecyclerView(adapter : RecyclerView.Adapter<*>){
         getRecyclerView().adapter = adapter
         getRecyclerView().layoutManager = LinearLayoutManager(context)
         getRecyclerView().setHasFixedSize(true)

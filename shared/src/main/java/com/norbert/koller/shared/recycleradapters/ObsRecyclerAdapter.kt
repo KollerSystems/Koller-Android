@@ -17,7 +17,6 @@ import android.view.ViewGroup.MarginLayoutParams
 import android.view.animation.PathInterpolator
 import android.widget.FrameLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.view.marginLeft
@@ -33,7 +32,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdfFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
@@ -158,8 +157,8 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            ListStaticBsdfFragment().setup(arrayListOf(
-                ListItem(text, null, icon, null, {
+            ListToggleStaticBsdfFragment().setup(context, arrayListOf(
+                ListCardItem(text, null, icon, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)
                 }))).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)

@@ -11,7 +11,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CommentData
-import com.norbert.koller.shared.fragments.bottomsheet.ListStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 
 
 class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
@@ -51,9 +52,8 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, 
             buttonMore.setOnClickListener {
 
                 val fragmentManager = (context as AppCompatActivity)
-                val dialog = ListStaticBsdfFragment(arrayListOf(
-                    ListItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag))))
-                dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+                ListCardStaticBsdfFragment().setup(context, arrayListOf(
+                    ListCardItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag)))).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
 
 
 

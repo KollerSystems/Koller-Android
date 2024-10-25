@@ -11,6 +11,7 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
 open class UserListFragment() : ListFragment() {
@@ -52,13 +53,13 @@ open class UserListFragment() : ListFragment() {
         setupSort(R.string.abc, R.string.zyx,"Name")
 
         addSortingChip("Gender", R.string.gender, arrayListOf(
-            ListItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
-            ListItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
+            ListToggleItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
+            ListToggleItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
         ))
 
         addSortingChip("Role", R.string.role, arrayListOf(
-            ListItem(getString(R.string.student), null, null, "1"),
-            ListItem(getString(R.string.teacher), null, null, "2")
+            ListToggleItem(getString(R.string.student), null, null, "1"),
+            ListToggleItem(getString(R.string.teacher), null, null, "2")
         ))
 
         addSortingChip("Class.ID", R.string.class_, {RetrofitInstance.api.getClasses()}, ClassData::class.java)
