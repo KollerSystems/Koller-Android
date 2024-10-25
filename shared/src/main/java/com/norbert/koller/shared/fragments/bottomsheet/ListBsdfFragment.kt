@@ -25,9 +25,6 @@ abstract class ListBsdfFragment() : RecyclerBsdfFragment() {
 
     lateinit var viewModel: ListBsdfFragmentViewModel
 
-    fun getAdapter() : ListRecyclerAdapter{
-        return getRecyclerView().adapter as ListRecyclerAdapter
-    }
 
     protected fun setup(activity : AppCompatActivity, title : String? = null, collapseText : Boolean = false) : ListBsdfFragment{
         viewModel = setViewModel(activity)

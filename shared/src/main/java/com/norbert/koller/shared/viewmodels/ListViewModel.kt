@@ -10,6 +10,7 @@ import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import kotlinx.coroutines.flow.Flow
 
 class ListViewModel : SearchViewModel() {
@@ -36,8 +37,8 @@ class ListViewModel : SearchViewModel() {
     var filtersShown : MutableLiveData<Boolean> = MutableLiveData(false)
     var selectedItems : MutableSet<Int> = mutableSetOf()
 
-    lateinit var pagingSource: (()-> PagingSource)
-    lateinit var currentPagingSource : PagingSource
+    lateinit var pagingSource: (()-> PagingSourceWithSeparator)
+    lateinit var currentPagingSource : PagingSourceWithSeparator
 
     val pagingData: Flow<PagingData<Any>> = Pager(
         config = PagingConfig(

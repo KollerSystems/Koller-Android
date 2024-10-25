@@ -3,6 +3,7 @@ package com.norbert.koller.shared.fragments
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.data.ClassData
@@ -12,6 +13,7 @@ import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.ListToggleItem
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.shared.recycleradapters.UserRecyclerAdapter
 
 open class UserListFragment() : ListFragment() {
@@ -29,6 +31,10 @@ open class UserListFragment() : ListFragment() {
 
     override fun getPagingSource(): PagingSource {
         return UserPagingSource(requireContext(), getBaseViewModel())
+    }
+
+    override fun getPagingSourceWithSeparator(): PagingSourceWithSeparator {
+        return PagingSourceWithSeparator(ApiDataObjectUser(), requireContext(), getBaseViewModel())
     }
 
 

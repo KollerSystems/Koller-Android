@@ -36,6 +36,7 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.FilterConfigData
@@ -44,6 +45,7 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -64,6 +66,9 @@ abstract class ListFragment() : SearchFragment() {
 
     abstract fun getPagingSource() : PagingSource
 
+    open fun getPagingSourceWithSeparator() : PagingSourceWithSeparator{return PagingSourceWithSeparator(ApiDataObjectUser(), requireContext(), getBaseViewModel())
+    }
+
     abstract fun getRecyclerAdapter() : ApiRecyclerAdapter
 
 
@@ -78,7 +83,7 @@ abstract class ListFragment() : SearchFragment() {
         }
 
         getBaseViewModel().pagingSource = {
-            getPagingSource()
+            getPagingSourceWithSeparator()
         }
     }
 

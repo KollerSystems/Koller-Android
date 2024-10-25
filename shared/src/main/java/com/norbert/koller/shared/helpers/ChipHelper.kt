@@ -162,7 +162,7 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
 
     setOnClickListener {
 
-        val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
+        ListCardStaticBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayListOf(
             ListCardItem(context.getString(R.string.this_day), null, AppCompatResources.getDrawable(context, R.drawable.today), {
                 setViewModelAndChip(getEndOfTodayAndStartOfSpecificDayAgo(0))
             }),

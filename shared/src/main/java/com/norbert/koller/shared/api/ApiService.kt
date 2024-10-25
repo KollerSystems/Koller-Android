@@ -173,13 +173,30 @@ interface APIInterface {
     ) : Response<StudyGroupTypeData>
 }
 
+abstract class ApiDataObject{
+    abstract fun getDataType(): Class<*>
+
+    abstract suspend fun getApiResponse(limit : Int, offset : Int, sort : String, filter: String): Response<*>
+}
+
+class ApiDataObjectProgramType : ApiDataObject() {
+
+    override fun getDataType(): Class<*> {
+        return BaseProgramTypeData::class.java
+    }
+
+    override suspend fun getApiResponse(limit : Int, offset : Int, sort : String, filter: String): Response<*> {
+        return RetrofitInstance.api.getBaseProgramTypes(limit, offset, sort, filter)
+    }
+}
+
 class ProgramTypePagingSource(context : Context, viewModel: ListViewModel) : PagingSource(context, viewModel) {
     override fun getDataType(): Class<*> {
         return BaseProgramTypeData::class.java
     }
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
-        return apiResponse.getBaseProgramTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+        return RetrofitInstance.api.getBaseProgramTypes(limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
     }
 }
 
@@ -202,6 +219,17 @@ class CrossingPagingSource(context: Context, val uid : Int, viewModel: ListViewM
 
     override suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int): Response<List<BaseData>> {
         return apiResponse.getMyCrossings(uid, limit, offset, getSort(), getFilters()) as Response<List<BaseData>>
+    }
+}
+
+class ApiDataObjectUser : ApiDataObject() {
+
+    override fun getDataType(): Class<*> {
+        return UserData::class.java
+    }
+
+    override suspend fun getApiResponse(limit : Int, offset : Int, sort : String, filter: String): Response<*> {
+        return RetrofitInstance.api.getUsers(limit, offset, sort, filter)
     }
 }
 

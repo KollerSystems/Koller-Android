@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.norbert.koller.shared.R
@@ -59,34 +60,9 @@ abstract class ListToggleBsdfFragment() : ListBsdfFragment() {
             getRoot().addView(frameLayout, 1)
             frameLayout.addView(searchView)
 
-            searchView.getEditText().doOnTextChanged { text, start, before, count ->
-                getAdapter().filter(text.toString())
-            }
+            setupSearch(searchView)
         }
     }
 
-    override fun onCancel(dialog: DialogInterface) {
-
-        Log.d("TEST", getValuesOnFinish.toString())
-        val toggleViewModel = viewModel as ListToggleBsdfFragmentViewModel
-        if(getValuesOnFinish != null && getRecyclerView().adapter != null) {
-
-            getAdapter().filter("")
-
-            val stringList: ArrayList<String> = arrayListOf()
-            val localizedStringList: ArrayList<String> = arrayListOf()
-
-            for (item in toggleViewModel.list.value!!) {
-                item as ListToggleItem
-                if (item.isChecked) {
-                    stringList.add(item.tag!!)
-                    localizedStringList.add(item.title)
-                }
-            }
-
-            getValuesOnFinish!!.invoke(stringList, localizedStringList)
-        }
-        super.onCancel(dialog)
-    }
-
+    abstract fun setupSearch(searchView: com.norbert.koller.shared.customviews.SearchView)
 }

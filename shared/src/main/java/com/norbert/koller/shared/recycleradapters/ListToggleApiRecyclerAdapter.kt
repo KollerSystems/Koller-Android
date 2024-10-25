@@ -15,6 +15,7 @@ import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.databinding.ItemNothingToDisplayBinding
 import com.norbert.koller.shared.databinding.ViewErrorRetryBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListToggleApiBsdfFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_ITEM
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_LOADING
@@ -22,27 +23,25 @@ import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.V
 import com.norbert.koller.shared.viewmodels.ListViewModel
 
 
-class ListToggleApiRecyclerAdapter(val bottomSheet : ListBsdfFragment) :  PagingDataAdapter<Any, RecyclerView.ViewHolder>(Comparator) {
-
-    lateinit var viewModel : ListViewModel
+class ListToggleApiRecyclerAdapter(val bottomSheet : ListToggleApiBsdfFragment) :  PagingDataAdapter<Any, RecyclerView.ViewHolder>(Comparator) {
 
     fun seemlessRefresh() {
-        viewModel.isRequestModeRefresh = true
+        bottomSheet.pagingViewModel.isRequestModeRefresh = true
         refresh()
     }
 
     fun fullRefresh() {
-        if(viewModel.beingEmptied || viewModel.shouldBeEmpty) return
-        viewModel.isRequestModeRefresh = false
-        viewModel.beingEmptied = true
+        if(bottomSheet.pagingViewModel.beingEmptied || bottomSheet.pagingViewModel.shouldBeEmpty) return
+        bottomSheet.pagingViewModel.isRequestModeRefresh = false
+        bottomSheet.pagingViewModel.beingEmptied = true
         refresh()
-        viewModel.shouldBeEmpty = true
+        bottomSheet.pagingViewModel.shouldBeEmpty = true
         refresh()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if (super.getItemCount() == 0 && viewModel.state == ApiHelper.STATE_NONE) {
+        if (super.getItemCount() == 0 && bottomSheet.pagingViewModel.state == ApiHelper.STATE_NONE) {
             val binding = ItemNothingToDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false)
             return ApiRecyclerAdapter.EmptyViewHolder(binding)
         } else {
@@ -72,10 +71,10 @@ class ListToggleApiRecyclerAdapter(val bottomSheet : ListBsdfFragment) :  Paging
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        if (viewModel.state == ApiHelper.STATE_NONE && super.getItemCount() == 0)
+        if (bottomSheet.pagingViewModel.state == ApiHelper.STATE_NONE && super.getItemCount() == 0)
             return
 
-        if (viewModel.state != ApiHelper.STATE_NONE && position == itemCount - 1) {
+        if (bottomSheet.pagingViewModel.state != ApiHelper.STATE_NONE && position == itemCount - 1) {
 
             when (getItemViewType(position)) {
                 VIEW_TYPE_RETRY -> {
@@ -90,7 +89,6 @@ class ListToggleApiRecyclerAdapter(val bottomSheet : ListBsdfFragment) :  Paging
         }
 
         val item = getItem(position)!! as ListToggleItem
-
 
         holder as ListRecyclerAdapter.ListViewHolder
 
@@ -142,7 +140,7 @@ class ListToggleApiRecyclerAdapter(val bottomSheet : ListBsdfFragment) :  Paging
 
     override fun getItemCount(): Int {
 
-        return if ((viewModel.state != ApiHelper.STATE_NONE || super.getItemCount() == 0) && !viewModel.isRequestModeRefresh) {
+        return if ((bottomSheet.pagingViewModel.state != ApiHelper.STATE_NONE || super.getItemCount() == 0) && !bottomSheet.pagingViewModel.isRequestModeRefresh) {
             super.getItemCount() + 1
         } else {
             super.getItemCount()
@@ -152,13 +150,13 @@ class ListToggleApiRecyclerAdapter(val bottomSheet : ListBsdfFragment) :  Paging
 
     override fun getItemViewType(position: Int): Int {
 
-        if (super.getItemCount() == 0 && viewModel.state == ApiHelper.STATE_NONE)
+        if (super.getItemCount() == 0 && bottomSheet.pagingViewModel.state == ApiHelper.STATE_NONE)
             return -1
 
-        if (position == itemCount - 1 && !viewModel.isRequestModeRefresh) {
-            if (viewModel.state == ApiHelper.STATE_LOADING) {
+        if (position == itemCount - 1 && !bottomSheet.pagingViewModel.isRequestModeRefresh) {
+            if (bottomSheet.pagingViewModel.state == ApiHelper.STATE_LOADING) {
                 return VIEW_TYPE_LOADING
-            } else if (viewModel.state == ApiHelper.STATE_ERROR) {
+            } else if (bottomSheet.pagingViewModel.state == ApiHelper.STATE_ERROR) {
                 return VIEW_TYPE_RETRY
             }
         }

@@ -32,6 +32,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdfFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -130,7 +131,6 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
             if(waitingDone){
                 waitToHideText(holder)
             }
-
         }
         else{
             holder.cardUnreadOverlay.setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow))
@@ -157,16 +157,11 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            ListToggleStaticBsdfFragment().setup(context, arrayListOf(
+            ListCardStaticBsdfFragment().setup(context, arrayListOf(
                 ListCardItem(text, null, icon, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)
                 }))).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
-
-
-
-
-
 
             return@setOnLongClickListener true
         }
