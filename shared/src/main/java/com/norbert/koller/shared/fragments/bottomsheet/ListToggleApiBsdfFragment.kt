@@ -1,30 +1,37 @@
 package com.norbert.koller.shared.fragments.bottomsheet
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.api.ApiDataObject
 import com.norbert.koller.shared.api.ApiDataObjectUser
-import com.norbert.koller.shared.api.UserPagingSource
 import com.norbert.koller.shared.customviews.SearchView
+import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
-import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListToggleApiRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListStaticToggleBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListToggleApiBsdfFragmentViewModel
+import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
 import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -34,8 +41,11 @@ class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
 
     lateinit var pagingViewModel : ListViewModel
 
-    fun setup(activity : AppCompatActivity, alreadyChecked : ArrayList<String>? = null, title: String? = null, collapseText: Boolean = false) : ListBsdfFragment{
+    fun setup(activity : AppCompatActivity, apiDataObject: ApiDataObject, alreadyChecked : MutableSet<Int>? = null, title: String? = null, collapseText: Boolean = false) : ListBsdfFragment{
         setup(activity, title, collapseText)
+        pagingViewModel = ViewModelProvider(activity)[ListViewModel::class.java]
+        pagingViewModel.selectedItems = alreadyChecked?: mutableSetOf()
+        pagingViewModel.apiDataObject = apiDataObject
         return this
     }
 
@@ -44,16 +54,16 @@ class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
     }
 
     override fun setViewModel(activity : AppCompatActivity): ListBsdfFragmentViewModel {
-        return ViewModelProvider(activity)[ListToggleApiBsdfFragmentViewModel::class.java]
+        return ViewModelProvider(activity)[ListToggleBsdfFragmentViewModel::class.java]
     }
 
-    fun apiViewModel() : ListToggleApiBsdfFragmentViewModel{
-        return viewModel as ListToggleApiBsdfFragmentViewModel
+    fun apiViewModel() : ListToggleBsdfFragmentViewModel {
+        return viewModel as ListToggleBsdfFragmentViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        pagingViewModel = ViewModelProvider(this)[ListViewModel::class.java]
+        pagingViewModel = ViewModelProvider(requireActivity() as AppCompatActivity)[ListViewModel::class.java]
 
         setRecyclerView(ListToggleApiRecyclerAdapter(this))
 
@@ -66,19 +76,39 @@ class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
         }
 
         pagingViewModel.onAppendLoading = {
-
+            Handler(Looper.getMainLooper()).post {
+                getAdapter().notifyItemChanged(getAdapter().itemCount -1)
+                getAdapter().notifyItemInserted(getAdapter().itemCount)
+            }
         }
 
         pagingViewModel.onAppendError = {
-
+            Handler(Looper.getMainLooper()).post {
+                getAdapter().notifyItemChanged(getAdapter().itemCount -1)
+                getRecyclerView().requestLayout()
+            }
         }
 
         pagingViewModel.onAppendSuccess = {
+            getAdapter().notifyItemRemoved(getAdapter().itemCount)
+            getRecyclerView().requestLayout()
+            if(getRoot().getChildAt(1) !is FrameLayout){
+                getRecyclerView().post{
+                    if(getAdapter().itemCount > 15){
+                        createSearchView()
+                    }
+                }
+            }
+
 
         }
+        pagingViewModel.onChipsChanged = {
+            getAdapter().fullRefresh()
+        }
+
 
         pagingViewModel.pagingSource = {
-            PagingSourceWithSeparator(ApiDataObjectUser(), requireContext(), pagingViewModel)
+            PagingSource(requireContext(), pagingViewModel)
         }
 
         lifecycleScope.launch {
@@ -87,48 +117,49 @@ class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
             }
         }
 
-        if (savedInstanceState == null) {
-            /* apiViewModel().classOfT = classOfT!!
-
-            lifecycleScope.launch {
-                if (CacheManager.listDataMap.containsKey(apiViewModel().classOfT.simpleName)) {
-                    viewModel.list.value = apiViewModel().responseToListItemList(CacheManager.getListDataMapWithValues(requireContext(), classOfT!!))
-                } else {
-                    val baseDataList = DataStoreManager.readList(requireContext(), classOfT!!)
-
-                    if (baseDataList != null) {
-
-                        if(baseDataList.isValid(requireContext(), DateTimeHelper.TIME_NOT_IMPORTANT)){
-                            CacheManager.listDataMap[classOfT!!.simpleName] = baseDataList
-                            val response = CacheManager.getListDataMapWithValues(requireContext(), classOfT!!)
-                            viewModel.list.value = apiViewModel().responseToListItemList(response)
-                        }
-
-                    }
-                    else{
-                        apiViewModel().call(apiToCall!!)
-                    }
-                }
-            }
-            */
-        }
-
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel.list.observe(this){
-            if(it == null){
-                dismiss()
-                var snackbar = (requireContext() as MainActivity).getSnackBar(getString(R.string.an_error_occurred), Snackbar.LENGTH_SHORT)
-                snackbar.show()
-            }
-            else{
-
-            }
-        }
     }
 
     override fun setupSearch(searchView: SearchView) {
-        TODO("Not yet implemented")
+        searchView.getEditText().doOnTextChanged{_,_,_,_->
+            if(searchView.getEditText().text.isNullOrBlank()){
+                pagingViewModel.search = null
+            }
+            else{
+                pagingViewModel.search = Pair("Class.Class", ApplicationManager.searchApiWithRegex(searchView.getEditText().text!!.toString()))
+            }
+        }
+
+        searchView.tag = searchView.getEditText().text.toString()
+        searchView.getEditText().setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                if (searchView.tag != searchView.getEditText().text.toString()) {
+                    pagingViewModel.onChipsChanged?.invoke()
+                }
+
+                searchView.tag = searchView.getEditText().text.toString()
+            }
+            false
+        }
     }
 
+
+    override fun onCancel(dialog: DialogInterface) {
+
+        Log.d("TEST", getValuesOnFinish.toString())
+
+        if(getValuesOnFinish != null) {
+
+            val displayStringList: ArrayList<String> = arrayListOf()
+
+            for (item in pagingViewModel.selectedItems) {
+                displayStringList.add(CacheManager.detailsDataMap[Pair(pagingViewModel.apiDataObject.getDataType().simpleName, item)]!!.getTitle())
+            }
+
+            getValuesOnFinish!!.invoke(pagingViewModel.selectedItems, displayStringList)
+        }
+
+        pagingViewModel.selectedItems = mutableSetOf()
+        super.onCancel(dialog)
+    }
 }

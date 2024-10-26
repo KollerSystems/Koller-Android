@@ -8,12 +8,11 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.viewModelScope
 import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.data.ExpiringListData
+import com.norbert.koller.shared.api.ApiDataObject
+import com.norbert.koller.shared.data.ListCardItem
+import com.norbert.koller.shared.data.ListItem
+import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.managers.checkByPass
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
@@ -22,43 +21,39 @@ import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragm
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.formatDate
-import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.shared.managers.restoreDropDown
-import com.norbert.koller.shared.recycleradapters.ListCardItem
-import com.norbert.koller.shared.recycleradapters.ListToggleItem
-import com.norbert.koller.shared.viewmodels.SearchViewModel
+import com.norbert.koller.shared.viewmodels.ListApiComplexViewModel
 import kotlinx.coroutines.launch
-import retrofit2.Response
 import java.util.Arrays
 import java.util.Calendar
 
 class ChipHelper {
 
     companion object{
-        fun getDateFilterValue(viewModel: SearchViewModel) : MutableMap<String, Pair<Long, Long>>{
+        fun getDateFilterValue(viewModel: ListApiComplexViewModel) : MutableMap<String, Pair<Long, Long>>{
             return viewModel.dateFilters
         }
 
-        fun getFilterValue(viewModel: SearchViewModel) : MutableMap<String, ArrayList<String>>{
+        fun getFilterValue(viewModel: ListApiComplexViewModel) : MutableMap<String, MutableSet<Int>>{
             return viewModel.filters
         }
 
-        fun changeFilterValue(viewModel: SearchViewModel, filterName : String, selection : ArrayList<String>){
+        fun changeFilterValue(viewModel: ListApiComplexViewModel, filterName : String, selection : MutableSet<Int>){
             getFilterValue(viewModel)[filterName] = selection
             viewModel.onChipsChanged?.invoke()
         }
 
-        fun changeDateFilterValue(viewModel: SearchViewModel, filterName : String, selection : Pair<Long, Long>){
+        fun changeDateFilterValue(viewModel: ListApiComplexViewModel, filterName : String, selection : Pair<Long, Long>){
             getDateFilterValue(viewModel)[filterName] = selection
             viewModel.onChipsChanged?.invoke()
         }
 
-        fun removeFilterValue(viewModel: SearchViewModel, filterName : String){
+        fun removeFilterValue(viewModel: ListApiComplexViewModel, filterName : String){
             getFilterValue(viewModel).remove(filterName)
             viewModel.onChipsChanged?.invoke()
         }
 
-        fun removeDateFilterValue(viewModel: SearchViewModel, filterName : String = "Date"){
+        fun removeDateFilterValue(viewModel: ListApiComplexViewModel, filterName : String = "Date"){
             getDateFilterValue(viewModel).remove(filterName)
             viewModel.onChipsChanged?.invoke()
         }
@@ -68,7 +63,7 @@ class ChipHelper {
 
 }
 
-fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: SearchViewModel){
+fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: ListApiComplexViewModel){
 
 
 
@@ -113,7 +108,7 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName 
     }
 }
 
-fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: SearchViewModel){
+fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: ListApiComplexViewModel){
 
 
     fun setChip(dateString : String){
@@ -207,12 +202,12 @@ fun Chip.connectToDateRangePickerWithTemplates(fragmentManager : FragmentManager
     }
 }
 
-fun Chip.resetChip(localizedNameSting : String, viewModel: SearchViewModel, filterName : String){
+fun Chip.resetChip(localizedNameSting : String, viewModel: ListApiComplexViewModel, filterName : String){
     ChipHelper.removeFilterValue(viewModel, filterName)
     resetSimpleChip(localizedNameSting)
 }
 
-fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel: SearchViewModel, filterName : String){
+fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel: ListApiComplexViewModel, filterName : String){
     checkByPass(true)
     text = localizedNameSting
     this.addCloseOption {
@@ -220,13 +215,13 @@ fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel
     }
 }
 
-fun Chip.createAndSetChipText(viewModel: SearchViewModel, filterName: String, classOfT: Class<*>, localizedFilterId : Int){
+fun Chip.createAndSetChipText(viewModel: ListApiComplexViewModel, filterName: String, classOfT: Class<*>, localizedFilterId : Int){
     val strings : ArrayList<String> = arrayListOf()
 
     viewModel.viewModelScope.launch {
         for (id in ChipHelper.getFilterValue(viewModel)[filterName]!!){
             for (elements in CacheManager.getListDataMapWithValues(context, classOfT)){
-                if(id == elements.getMainID().toString()){
+                if(id == elements.getMainID()){
                     strings.add(elements.getTitle())
                 }
             }
@@ -235,7 +230,7 @@ fun Chip.createAndSetChipText(viewModel: SearchViewModel, filterName: String, cl
     }
 }
 
-fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBsdfFragment, viewModel: SearchViewModel, filterName: String, localizedFilterId: Int){
+fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBsdfFragment, viewModel: ListApiComplexViewModel, filterName: String, localizedFilterId: Int){
 
     dialog.show(fragmentManager, ListBsdfFragment.TAG)
 
@@ -261,48 +256,22 @@ fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBs
     }
 }
 
-fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, getValues: suspend () -> Response<*>, viewModel: SearchViewModel, classOfT: Class<*>, collapseText : Boolean){
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, apiDataObject: ApiDataObject, viewModel: ListApiComplexViewModel, collapseText : Boolean){
 
     if(ChipHelper.getFilterValue(viewModel).containsKey(filterName)){
 
          viewModel.viewModelScope.launch {
-            if(CacheManager.listDataMap.containsKey(classOfT.simpleName)){
-                createAndSetChipText(viewModel, filterName, classOfT, localizedFilterId)
+            if(CacheManager.listDataMap.containsKey(apiDataObject.getDataType().simpleName)){
+                createAndSetChipText(viewModel, filterName, apiDataObject.getDataType(), localizedFilterId)
             }
             else{
                 setChip(context.getString(R.string.loading), localizedFilterId, viewModel, filterName)
 
-                val baseDataList = DataStoreManager.readList(context, classOfT)
+                val baseDataList = DataStoreManager.readList(context, apiDataObject.getDataType())
 
-                if (baseDataList != null && baseDataList.isValid(context, DateTimeHelper.TIME_NOT_IMPORTANT)) {
+                CacheManager.listDataMap[apiDataObject.getDataType().simpleName] = baseDataList!!
+                createAndSetChipText(viewModel, filterName, apiDataObject.getDataType(), localizedFilterId)
 
-                    CacheManager.listDataMap[classOfT.simpleName] = baseDataList
-                    createAndSetChipText(viewModel, filterName, classOfT, localizedFilterId)
-                }
-                else{
-                    RetrofitInstance.communicate(getValues, {
-                        val responseList : List<BaseData> = it as List<BaseData>
-                        if (!CacheManager.listDataMap.containsKey(classOfT.simpleName)) {
-                            CacheManager.listDataMap[classOfT.simpleName] = ExpiringListData()
-                            CacheManager.listDataMap[classOfT.simpleName]!!.saveReceivedTime()
-                        }
-                        for (item in responseList){
-                            CacheManager.detailsDataMap[kotlin.Pair(classOfT.simpleName, item.getMainID())] = item
-                            CacheManager.listDataMap[classOfT.simpleName]!!.list.add(item.getMainID())
-                        }
-
-                        createAndSetChipText(viewModel, filterName, classOfT, localizedFilterId)
-
-                    },{ error, errorBody ->
-                        resetChip(context.getString(localizedFilterId), viewModel, filterName)
-
-                        val snackbar = ((context as androidx.appcompat.view.ContextThemeWrapper).baseContext as MainActivity).getSnackBar(context.getString(R.string.an_error_occurred), Snackbar.LENGTH_LONG)
-                        snackbar.setAction(context.getString(R.string.ok)){
-
-                        }
-                        snackbar.show()
-                    })
-                }
             }
         }
     }
@@ -313,7 +282,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     setOnClickListener {
 
 
-        val dialog = ListToggleApiBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), null, null, collapseText)
+        val dialog = ListToggleApiBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), apiDataObject, ChipHelper.getFilterValue(viewModel)[filterName], context.getString(localizedFilterId), collapseText)
 
 
         handleValuesOnFinish(fragmentManager, dialog, viewModel, filterName, localizedFilterId)
@@ -321,7 +290,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
     }
 }
 
-fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>, viewModel: SearchViewModel){
+fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, arrayList : ArrayList<ListItem>, viewModel: ListApiComplexViewModel){
 
 
     if(ChipHelper.getFilterValue(viewModel).containsKey(filterName)){
@@ -330,7 +299,7 @@ fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : St
         for (tag in ChipHelper.getFilterValue(viewModel)[filterName]!!){
             for (elements in arrayList){
                 elements as ListToggleItem
-                if(tag == elements.tag){
+                if(tag == elements.id){
                     localizedStrings.add(elements.title)
                 }
             }

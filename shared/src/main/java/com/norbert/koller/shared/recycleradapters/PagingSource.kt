@@ -31,47 +31,25 @@ import java.util.Date
 import kotlin.random.Random
 
 
-abstract class PagingSource(val context: Context, val viewModel: ListViewModel) : PagingSource<Int, Any>()  {
+open class PagingSource(val context: Context, val viewModel: ListViewModel) : PagingSource<Int, Any>()  {
 
-    private var lastFirstChar : String? = null
-    private var lastListSize : Int = ListViewModel.pageSize + 1
-
-    open fun getTimeLimit() : Int{
-        return DateTimeHelper.TIME_NOT_IMPORTANT
-    }
-
-    abstract fun getDataType() : Class<*>
+    protected var lastListSize : Int = ListViewModel.pageSize + 1
 
     @SuppressLint("WeekBasedYear")
-    fun getFilters() : String{
+    open fun getFilters() : String{
 
-        var finalString = ""
-
-        for ((key, value) in (viewModel.filters)) {
-
-            for (argument in value) {
-
-                finalString += "${key}:${argument},"
-            }
+        if(viewModel.search != null){
+            return "${viewModel.search!!.first}:${viewModel.search!!.second},"
         }
+        return ""
 
-        for ((key, value) in (viewModel.dateFilters)) {
-            finalString += "${key}[gte]:${value.first.formatDate(DateTimeHelper.apiFormat) + "T00:00:00.000Z"},${key}[lte]:${SimpleDateFormat(DateTimeHelper.apiFormat).format(value.second) + "T00:00:00.000Z"},"
-        }
-        finalString.dropLast(1)
-
-        return finalString
     }
 
-    fun getSort() : String{
-        return viewModel.sortOptions[viewModel.selectedSort]
+    open fun getSort() : String?{
+        return null
     }
-
-    abstract suspend fun getApiResponse(apiResponse : APIInterface, limit : Int, offset : Int) : Response<List<BaseData>>
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Any> {
-
-
 
         var offset = params.key ?: 0
         if(viewModel.isRequestModeRefresh) {
@@ -82,7 +60,7 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-            RetrofitInstance.communicate({getApiResponse(RetrofitInstance.api, params.loadSize, offset)}, {response ->
+            RetrofitInstance.communicate({viewModel.apiDataObject.getApiResponse(params.loadSize, offset, getSort(), getFilters())}, {response ->
                 pagingSource = onSuccess(response, offset)
                 viewModel.onRefreshSuccess()
             }) { error, errorBody ->
@@ -106,22 +84,22 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
             if (offset <= 0 && areParametersDefault()) {
 
-                if (CacheManager.listDataMap.containsKey(getDataType().simpleName)) {
-                    if((CacheManager.listDataMap[getDataType().simpleName]!!.isValid(context, getTimeLimit()))){
+                if (CacheManager.listDataMap.containsKey(viewModel.apiDataObject.getDataType().simpleName)) {
+                    if((CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName]!!.isValid(context, viewModel.apiDataObject.getTimeLimit()))){
                         viewModel.onAppendSuccess()
-                        return formatRecievedValues(CacheManager.getListDataMapWithValues(context, getDataType()), 0)
+                        return formatRecievedValues(CacheManager.getListDataMapWithValues(context, viewModel.apiDataObject.getDataType()), 0)
                     }
                 }
 
                 viewModel.state = ApiHelper.STATE_LOADING
 
-                val baseDataList = DataStoreManager.readList(context, getDataType())
+                val baseDataList = DataStoreManager.readList(context, viewModel.apiDataObject.getDataType())
 
                 if (baseDataList != null) {
 
-                    if(baseDataList.isValid(context, getTimeLimit())){
-                        CacheManager.listDataMap[getDataType().simpleName] = baseDataList
-                        val response = CacheManager.getListDataMapWithValues(context, getDataType())
+                    if(baseDataList.isValid(context, viewModel.apiDataObject.getTimeLimit())){
+                        CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName] = baseDataList
+                        val response = CacheManager.getListDataMapWithValues(context, viewModel.apiDataObject.getDataType())
                         viewModel.onAppendSuccess()
                         return formatRecievedValues(response, 0)
                     }
@@ -135,7 +113,7 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-            RetrofitInstance.communicate({getApiResponse(RetrofitInstance.api, params.loadSize, offset)}, {response ->
+            RetrofitInstance.communicate({viewModel.apiDataObject.getApiResponse(params.loadSize, offset, getSort(), getFilters())}, {response ->
                 pagingSource = onSuccess(response, offset)
                 viewModel.onAppendSuccess()
             }) { error, errorBody ->
@@ -147,10 +125,8 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
         }
     }
 
-    fun areParametersDefault() : Boolean {
-        return ((viewModel.filters).isEmpty() &&
-                (viewModel.dateFilters).isEmpty() &&
-                viewModel.selectedSort == 0)
+    open fun areParametersDefault() : Boolean {
+        return viewModel.search == null
     }
 
     fun onSuccess(response : Any, offset: Int) : LoadResult<Int, Any>{
@@ -158,21 +134,21 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
 
         if(response.isNotEmpty()) {
 
-            if ((!CacheManager.listDataMap.containsKey(getDataType().simpleName) || offset == 0) && areParametersDefault()) {
-                CacheManager.listDataMap[getDataType().simpleName] = ExpiringListData()
-                CacheManager.listDataMap[getDataType().simpleName]!!.saveReceivedTime()
+            if ((!CacheManager.listDataMap.containsKey(viewModel.apiDataObject.getDataType().simpleName) || offset == 0) && areParametersDefault()) {
+                CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName] = ExpiringListData()
+                CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName]!!.saveReceivedTime()
             }
 
             for(baseData in response){
-                if(CacheManager.detailsDataMap.containsKey(Pair(getDataType().simpleName, baseData.getMainID()))){
-                    CacheManager.detailsDataMap[Pair(getDataType().simpleName, baseData.getMainID())]!!.updateValues(baseData)
+                if(CacheManager.detailsDataMap.containsKey(Pair(viewModel.apiDataObject.getDataType().simpleName, baseData.getMainID()))){
+                    CacheManager.detailsDataMap[Pair(viewModel.apiDataObject.getDataType().simpleName, baseData.getMainID())]!!.updateValues(baseData)
                 }
                 else{
-                    CacheManager.detailsDataMap[Pair(getDataType().simpleName, baseData.getMainID())] = baseData
+                    CacheManager.detailsDataMap[Pair(viewModel.apiDataObject.getDataType().simpleName, baseData.getMainID())] = baseData
                 }
 
                 if(areParametersDefault()){
-                    CacheManager.listDataMap[getDataType().simpleName]!!.list.add(baseData.getMainID())
+                    CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName]!!.list.add(baseData.getMainID())
                 }
 
             }
@@ -190,25 +166,15 @@ abstract class PagingSource(val context: Context, val viewModel: ListViewModel) 
         return pagingSource
     }
 
-    fun formatRecievedValues(responseAs : List<BaseData>, offset : Int): LoadResult<Int, Any> {
+    open fun formatRecievedValues(responseAs : List<BaseData>, offset : Int): LoadResult<Int, Any> {
         viewModel.state = ApiHelper.STATE_NONE
 
         lastListSize = responseAs.size
-        val items = mutableListOf<Any>()
-
-        for (data in responseAs) {
-            val firstChar = data.diffrentDecider(context)
-            if (firstChar != lastFirstChar) {
-                items.add(firstChar)
-                lastFirstChar = firstChar
-            }
-            items.add(data)
-        }
 
         return LoadResult.Page(
-            data = items,
+            data = responseAs,
             prevKey = if (offset == 0) null else offset - responseAs.size,
-            nextKey = if (items.isEmpty()) null else offset + responseAs.size
+            nextKey = if (responseAs.isEmpty()) null else offset + responseAs.size
         )
     }
 

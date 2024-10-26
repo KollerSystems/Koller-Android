@@ -23,13 +23,12 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
+import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.databinding.ViewAttachBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.recycleradapters.ListCardItem
-import com.norbert.koller.shared.recycleradapters.ListItem
 import com.stfalcon.imageviewer.StfalconImageViewer
 
 

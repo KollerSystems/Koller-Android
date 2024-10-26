@@ -163,7 +163,7 @@ abstract class UserFragment() : DetailsFragment() {
                 getHeaderBinding().btnClassOrProfession.setOnClickListener {
                     val userFragment = ApplicationManager.userListFragment()
                     val bundle = Bundle()
-                    bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", arrayListOf(response.class_!!.id.toString())))))
+                    bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", mutableSetOf(response.class_!!.id)))))
                     userFragment.arguments = bundle
                     (requireContext() as MainActivity).addFragment(userFragment)
                 }
@@ -186,7 +186,7 @@ abstract class UserFragment() : DetailsFragment() {
             getHeaderBinding().btnGroup.setOnClickListener {
                 val userFragment = ApplicationManager.userListFragment()
                 val bundle = Bundle()
-                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Group.ID", arrayListOf(response.group!!.id.toString())))))
+                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Group.ID", mutableSetOf(response.group!!.id)))))
                 userFragment.arguments = bundle
                 (requireContext() as MainActivity).addFragment(userFragment)
             }

@@ -14,15 +14,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.norbert.koller.shared.broadcastreceivers.MyNotificationPublisher
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.UserPagingSource
+import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
+import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.NotificationRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 
 
 class NotificationsFragment : ListFragment() {
@@ -31,8 +31,9 @@ class NotificationsFragment : ListFragment() {
         return getString(R.string.notifications)
     }
 
-    override fun getPagingSource(): PagingSource {
-        return UserPagingSource(requireContext(), getBaseViewModel())
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectUser()
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
 
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {
@@ -49,10 +50,8 @@ class NotificationsFragment : ListFragment() {
         super.onSetUpSearching()
         setupSort(R.string.newest, R.string.oldest,"Name")
         addSortingChip("type", R.string.type_, arrayListOf(
-            ListToggleItem(getString(R.string.room_order), null, AppCompatResources.getDrawable(requireContext(), R.drawable.room), "1"),
-            ListToggleItem(getString(R.string.commendation_warning), null, AppCompatResources.getDrawable(requireContext(),
-                R.drawable.award
-            ), "0")
+            ListToggleItem(getString(R.string.room_order), null, AppCompatResources.getDrawable(requireContext(), R.drawable.room), 1),
+            ListToggleItem(getString(R.string.commendation_warning), null, AppCompatResources.getDrawable(requireContext(), R.drawable.award), 0)
         ))
         addDateChip()
     }

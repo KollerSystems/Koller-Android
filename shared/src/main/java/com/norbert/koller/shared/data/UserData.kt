@@ -67,4 +67,12 @@ class UserData(
         group = baseData.group
         pid = baseData.pid
     }
+
+    override fun getTitle(): String {
+        return name!!
+    }
+
+    override fun getDescription(): String {
+        return createDescription()
+    }
 }

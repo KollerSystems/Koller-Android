@@ -10,6 +10,7 @@ import android.view.ViewGroup.MarginLayoutParams
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.databinding.ItemCheckBoxBinding
 import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.databinding.ItemNothingToDisplayBinding
@@ -17,13 +18,18 @@ import com.norbert.koller.shared.databinding.ViewErrorRetryBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListToggleApiBsdfFragment
 import com.norbert.koller.shared.helpers.ApiHelper
+import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_EMPTY
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_ITEM
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_LOADING
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_RETRY
 import com.norbert.koller.shared.viewmodels.ListViewModel
 
-
 class ListToggleApiRecyclerAdapter(val bottomSheet : ListToggleApiBsdfFragment) :  PagingDataAdapter<Any, RecyclerView.ViewHolder>(Comparator) {
+
+    fun deselectAll(){
+        bottomSheet.pagingViewModel.selectedItems = mutableSetOf()
+        notifyDataSetChanged()
+    }
 
     fun seemlessRefresh() {
         bottomSheet.pagingViewModel.isRequestModeRefresh = true
@@ -41,97 +47,80 @@ class ListToggleApiRecyclerAdapter(val bottomSheet : ListToggleApiBsdfFragment) 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
-        if (super.getItemCount() == 0 && bottomSheet.pagingViewModel.state == ApiHelper.STATE_NONE) {
-            val binding = ItemNothingToDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-            return ApiRecyclerAdapter.EmptyViewHolder(binding)
-        } else {
-
-            return when (viewType) {
-                VIEW_TYPE_ITEM -> {
-                    setItemViewHolder(parent)
-                }
-
-                VIEW_TYPE_LOADING -> {
-                    val binding = ItemLoadingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                    ApiRecyclerAdapter.LoadingViewHolder(binding)
-                }
-
-                else -> {
-                    val binding = ViewErrorRetryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-                    ApiRecyclerAdapter.ErrorViewHolder(binding)
-                }
+        return when (viewType) {
+            VIEW_TYPE_EMPTY -> {
+                val binding = ItemNothingToDisplayBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ApiRecyclerAdapter.EmptyViewHolder(binding)
+            }
+            VIEW_TYPE_ITEM -> {
+                setItemViewHolder(parent)
+            }
+            VIEW_TYPE_LOADING -> {
+                val binding = ItemLoadingBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ApiRecyclerAdapter.LoadingViewHolder(binding)
+            }
+            else -> {
+                val binding = ViewErrorRetryBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                ApiRecyclerAdapter.ErrorViewHolder(binding)
             }
         }
     }
 
-    open fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
+    fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return ListRecyclerAdapter.ListViewHolder(ItemCheckBoxBinding.inflate(LayoutInflater.from(parent.context), parent, false))
     }
 
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        if (bottomSheet.pagingViewModel.state == ApiHelper.STATE_NONE && super.getItemCount() == 0)
-            return
+        when (getItemViewType(position)) {
+            VIEW_TYPE_ITEM -> {
+                val item = getItem(position) as BaseData
 
-        if (bottomSheet.pagingViewModel.state != ApiHelper.STATE_NONE && position == itemCount - 1) {
+                holder as ListRecyclerAdapter.ListViewHolder
 
-            when (getItemViewType(position)) {
-                VIEW_TYPE_RETRY -> {
+                val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)
+                val params = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
+                params.setMargins(0,margin,0,margin)
+                holder.itemView.layoutParams = params
 
-                    val retryViewHolder = holder as ApiRecyclerAdapter.ErrorViewHolder
-                    retryViewHolder.itemBinding.btn.setOnClickListener {
-                        retry()
+                if(!bottomSheet.viewModel.collapseText) {
+                    holder.itemBinding.textTitle.text = item.getTitle()
+                    if (item.getDescription().isNotEmpty()) {
+                        holder.itemBinding.textDescription.visibility = VISIBLE
+                        holder.itemBinding.textDescription.text = item.getDescription()
                     }
                 }
+                else{
+                    holder.itemBinding.textTitle.text = "${item.getTitle()} • ${item.getDescription()}"
+                }
+
+                holder.itemBinding.imgIcon.visibility = GONE
+
+
+                holder.itemBinding.checkBox.setOnCheckedChangeListener(null)
+                holder.itemBinding.checkBox.isChecked = bottomSheet.pagingViewModel.selectedItems.contains(item.getMainID())
+                holder.itemBinding.checkBox.visibility = VISIBLE
+                holder.itemBinding.checkBox.setOnCheckedChangeListener{ _, isChecked ->
+                    if(isChecked){
+                        bottomSheet.pagingViewModel.selectedItems.add(item.getMainID())
+                    }
+                    else{
+                        bottomSheet.pagingViewModel.selectedItems.remove(item.getMainID())
+                    }
+                }
+
+                holder.itemView.setOnClickListener {
+
+                    holder.itemBinding.checkBox.toggle()
+                }
             }
-            return
-        }
+            VIEW_TYPE_RETRY -> {
 
-        val item = getItem(position)!! as ListToggleItem
-
-        holder as ListRecyclerAdapter.ListViewHolder
-
-        val margin = holder.itemView.resources.getDimensionPixelSize(R.dimen.card_margin)
-        val params = MarginLayoutParams(MATCH_PARENT, WRAP_CONTENT)
-        params.setMargins(0,margin,0,margin)
-        holder.itemView.layoutParams = params
-
-        if(!bottomSheet.viewModel.collapseText) {
-            holder.itemBinding.textTitle.text = item.title
-            if (!item.description.isNullOrEmpty()) {
-                holder.itemBinding.textDescription.visibility = VISIBLE
-                holder.itemBinding.textDescription.text = item.description
-            }
-        }
-        else{
-            holder.itemBinding.textTitle.text = "${item.title} • ${item.description}"
-        }
-
-        if(item.icon != null) {
-            holder.itemBinding.imgIcon.visibility = VISIBLE
-            holder.itemBinding.imgIcon.setImageDrawable(item.icon)
-        }
-        else{
-            holder.itemBinding.imgIcon.visibility = GONE
-        }
-
-        holder.itemBinding.checkBox.setOnCheckedChangeListener(null)
-        holder.itemBinding.checkBox.isChecked = item.isChecked
-        holder.itemBinding.checkBox.visibility = VISIBLE
-        holder.itemBinding.checkBox.setOnCheckedChangeListener{ _, isChecked ->
-            item.isChecked = isChecked
-        }
-
-
-        holder.itemView.setOnClickListener {
-
-            holder.itemBinding.checkBox.toggle()
-        }
-
-        if (position == snapshot().size) {
-            holder.itemView.post {
-                notifyItemChanged(snapshot().size - 1, Object())
+                val retryViewHolder = holder as ApiRecyclerAdapter.ErrorViewHolder
+                retryViewHolder.itemBinding.btn.setOnClickListener {
+                    retry()
+                }
             }
         }
     }
@@ -151,7 +140,7 @@ class ListToggleApiRecyclerAdapter(val bottomSheet : ListToggleApiBsdfFragment) 
     override fun getItemViewType(position: Int): Int {
 
         if (super.getItemCount() == 0 && bottomSheet.pagingViewModel.state == ApiHelper.STATE_NONE)
-            return -1
+            return VIEW_TYPE_EMPTY
 
         if (position == itemCount - 1 && !bottomSheet.pagingViewModel.isRequestModeRefresh) {
             if (bottomSheet.pagingViewModel.state == ApiHelper.STATE_LOADING) {

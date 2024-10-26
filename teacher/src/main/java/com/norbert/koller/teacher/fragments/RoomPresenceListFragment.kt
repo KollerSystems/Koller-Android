@@ -2,10 +2,12 @@ package com.norbert.koller.teacher.fragments
 
 import android.content.Intent
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.RoomPagingSource
+import com.norbert.koller.shared.api.ApiDataObject
+import com.norbert.koller.shared.api.ApiDataObjectRoom
 import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.activities.RoomRateActivity
 import com.norbert.koller.teacher.recycleradapters.RoomPresenceRecyclerAdapter
@@ -16,8 +18,9 @@ class RoomPresenceListFragment() : ListFragment() {
         return getString(R.string.room_order)
     }
 
-    override fun getPagingSource(): PagingSource {
-        return RoomPagingSource(requireContext(), getBaseViewModel())
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectRoom()
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
 
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {

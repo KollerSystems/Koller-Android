@@ -9,13 +9,13 @@ import androidx.activity.addCallback
 import androidx.appcompat.content.res.AppCompatResources
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.setup
-import com.norbert.koller.shared.recycleradapters.ListCardItem
-import com.norbert.koller.shared.recycleradapters.ListItem
+
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.databinding.ActivityCreatePlacesBinding
 

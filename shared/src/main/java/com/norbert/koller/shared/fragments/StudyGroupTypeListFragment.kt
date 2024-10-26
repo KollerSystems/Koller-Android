@@ -3,8 +3,9 @@ package com.norbert.koller.shared.fragments
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.StudyGroupTypePagingSource
+import com.norbert.koller.shared.api.ApiDataObjectStudyGroupType
 import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 
 abstract class StudyGroupTypeListFragment() : ListFragment() {
 
@@ -12,8 +13,9 @@ abstract class StudyGroupTypeListFragment() : ListFragment() {
         return getString(R.string.study_groups)
     }
 
-    override fun getPagingSource(): PagingSource {
-        return StudyGroupTypePagingSource(requireContext(), getBaseViewModel())
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectStudyGroupType()
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
 
     override fun onSetUpSearching() {

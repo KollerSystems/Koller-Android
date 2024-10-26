@@ -32,6 +32,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdfFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
+import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.getAttributeColor
@@ -161,7 +162,8 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
                 ListCardItem(text, null, icon, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)
-                }))).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+                })
+            )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
 
             return@setOnLongClickListener true
         }

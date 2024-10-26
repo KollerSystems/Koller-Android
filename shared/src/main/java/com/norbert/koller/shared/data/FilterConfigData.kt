@@ -5,5 +5,5 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class FilterConfigData(
-    var filters : MutableMap<String, ArrayList<String>>
+    var filters : MutableMap<String, MutableSet<Int>>
 ) : Parcelable

@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.ApiDataObjectCrossing
+import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.GateRecyclerAdapter
-import com.norbert.koller.shared.api.CrossingPagingSource
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
-import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.recycleradapters.ListToggleItem
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 
 class CrossingListFragment() : ListFragment() {
 
@@ -27,8 +27,9 @@ class CrossingListFragment() : ListFragment() {
         }
     }
 
-    override fun getPagingSource(): PagingSource {
-        return CrossingPagingSource(requireContext(), getBaseViewModel().ownerUID, getBaseViewModel())
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectCrossing(getBaseViewModel().ownerUID)
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
 
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {
@@ -53,8 +54,8 @@ class CrossingListFragment() : ListFragment() {
 
         setupSort(R.string.newest, R.string.oldest, "Time", "desc", "asc")
         addSortingChip("Direction", R.string.direction, arrayListOf(
-            ListToggleItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), "1"),
-            ListToggleItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), "0")
+            ListToggleItem(getString(R.string.out), null, AppCompatResources.getDrawable(requireContext(), R.drawable.out), 1),
+            ListToggleItem(getString(R.string.in_), null, AppCompatResources.getDrawable(requireContext(), R.drawable.in_), 0)
         ))
         addDateChip("Time")
 

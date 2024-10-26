@@ -14,7 +14,7 @@ class UserListFragment() : com.norbert.koller.shared.fragments.UserListFragment(
         addButton("Felhasználó felvétele") {
             val fragment = ApplicantListFragment()
             val bundle = Bundle()
-            bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Type", arrayListOf("0")))))
+            bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Type", mutableSetOf(0)))))
             fragment.arguments = bundle
             (context as MainActivity).addFragment(fragment)
         }

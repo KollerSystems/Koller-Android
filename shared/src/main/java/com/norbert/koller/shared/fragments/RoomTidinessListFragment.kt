@@ -2,9 +2,10 @@ package com.norbert.koller.shared.fragments
 
 import android.content.Intent
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.RoomPagingSource
+import com.norbert.koller.shared.api.ApiDataObjectRoom
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.shared.recycleradapters.RoomTidinessRecyclerAdapter
 
 abstract class RoomTidinessListFragment() : ListFragment() {
@@ -13,8 +14,9 @@ abstract class RoomTidinessListFragment() : ListFragment() {
         return getString(R.string.room_tidinesses)
     }
 
-    override fun getPagingSource(): PagingSource {
-        return RoomPagingSource(requireContext(), getBaseViewModel())
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectRoom()
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
 
 

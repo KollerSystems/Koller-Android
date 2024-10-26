@@ -1,26 +1,20 @@
 package com.norbert.koller.shared.recycleradapters
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.ViewGroup.MarginLayoutParams
-import android.widget.CheckBox
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.databinding.ItemCheckBoxBinding
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
-
-open class ListItem(val title: String, val description: String? = null, val icon: Drawable? = null)
 
 abstract class ListRecyclerAdapter(val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListRecyclerAdapter.ListViewHolder>() {
 

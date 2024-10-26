@@ -10,6 +10,7 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
+import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.data.OutgoingData
 import com.norbert.koller.shared.data.UserData
@@ -20,9 +21,6 @@ import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.setup
-import com.norbert.koller.shared.recycleradapters.ListCardItem
-import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.shared.viewmodels.DetailsViewModel
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.databinding.ContentActivityCreateOutgoingBinding

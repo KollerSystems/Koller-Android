@@ -62,7 +62,7 @@ abstract class RoomFragment() : DetailsFragment() {
 
                 val userFragment = ApplicationManager.roomListFragment()
                 val bundle = Bundle()
-                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Group.ID", arrayListOf(response.group!!.id.toString())))))
+                bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Group.ID", mutableSetOf(response.group!!.id)))))
                 userFragment.arguments = bundle
 
                 (context as MainActivity).addFragment(userFragment)

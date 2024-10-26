@@ -6,11 +6,10 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
-import com.norbert.koller.shared.recycleradapters.ListCardItem
-import com.norbert.koller.shared.recycleradapters.ListItem
 import com.norbert.koller.teacher.activities.CreatePlacesActivity
 
 class RoomListFragment() : com.norbert.koller.shared.fragments.RoomListFragment() {

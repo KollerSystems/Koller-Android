@@ -3,10 +3,10 @@ package com.norbert.koller.shared.fragments
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.StudyGroupPagingSource
-import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.recycleradapters.ListToggleItem
+import com.norbert.koller.shared.api.ApiDataObjectStudyGroup
+import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 
 abstract class StudyGroupListFragment : ListFragment() {
 
@@ -14,8 +14,9 @@ abstract class StudyGroupListFragment : ListFragment() {
         return null
     }
 
-    override fun getPagingSource(): PagingSource {
-        return StudyGroupPagingSource(requireContext(), getBaseViewModel())
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectStudyGroup()
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
 
     override fun onSetUpSearching() {
@@ -27,8 +28,8 @@ abstract class StudyGroupListFragment : ListFragment() {
 
         val lessonLocalName : String = requireContext().getString(R.string.lesson).lowercase()
         addSortingChip("Length", R.string.length, arrayListOf(
-            ListToggleItem("1 ${lessonLocalName}", null, null, "1"),
-            ListToggleItem("2 ${lessonLocalName}", null, null, "2")
+            ListToggleItem("1 ${lessonLocalName}", null, null, 1),
+            ListToggleItem("2 ${lessonLocalName}", null, null, 2)
         ))
 
         addSearchbar("Topic")

@@ -46,6 +46,7 @@ import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
+import com.norbert.koller.shared.viewmodels.ListApiComplexViewModel
 import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
@@ -55,8 +56,8 @@ abstract class ListFragment() : SearchFragment() {
 
     var snackbar : Snackbar? = null
 
-    fun getBaseViewModel() : ListViewModel {
-        return viewModel as ListViewModel
+    fun getBaseViewModel() : ListApiComplexViewModel {
+        return viewModel as ListApiComplexViewModel
     }
 
     lateinit var scRecyclerView : SuperCoolRecyclerView
@@ -64,26 +65,23 @@ abstract class ListFragment() : SearchFragment() {
 
     var chipHolderAnimationDuration : Long = 0
 
-    abstract fun getPagingSource() : PagingSource
-
-    open fun getPagingSourceWithSeparator() : PagingSourceWithSeparator{return PagingSourceWithSeparator(ApiDataObjectUser(), requireContext(), getBaseViewModel())
-    }
+    abstract fun getPagingSource() : PagingSourceWithSeparator
 
     abstract fun getRecyclerAdapter() : ApiRecyclerAdapter
 
 
     override fun assignViewModel() {
-        viewModel = ViewModelProvider(this)[ListViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ListApiComplexViewModel::class.java]
 
         if(arguments != null) {
             val filters: FilterConfigData? = arguments?.getParcelable("filters")
             if(filters != null){
-                viewModel.filters = filters.filters
+                getBaseViewModel().filters = filters.filters
             }
         }
 
         getBaseViewModel().pagingSource = {
-            getPagingSourceWithSeparator()
+            getPagingSource()
         }
     }
 
@@ -153,14 +151,14 @@ abstract class ListFragment() : SearchFragment() {
                 scRecyclerView.binding.srl.isEnabled = false
             }
             Handler(Looper.getMainLooper()).post {
-                recyclerAdapter!!.notifyItemChanged(recyclerAdapter!!.itemCount)
+                recyclerAdapter!!.notifyItemChanged(recyclerAdapter!!.itemCount-1)
                 snackbar?.dismiss()
             }
         }
 
         getBaseViewModel().onAppendError = {
             Handler(Looper.getMainLooper()).post {
-                recyclerAdapter!!.notifyItemChanged(recyclerAdapter!!.itemCount)
+                recyclerAdapter!!.notifyItemChanged(recyclerAdapter!!.itemCount-1)
                 snackbar?.dismiss()
             }
         }
@@ -169,7 +167,7 @@ abstract class ListFragment() : SearchFragment() {
             scRecyclerView.binding.srl.isEnabled = true
 
             recyclerAdapter!!.notifyItemRemoved(recyclerAdapter!!.itemCount)
-            recyclerAdapter!!.notifyItemChanged(recyclerAdapter!!.itemCount - 1, Object())
+            recyclerAdapter!!.notifyItemChanged(recyclerAdapter!!.itemCount -1, Object())
 
         }
 
@@ -347,29 +345,26 @@ abstract class ListFragment() : SearchFragment() {
             getBaseViewModel().filtersShown.value = false
             searchBar.getEditText().clearFocus()
 
-            viewModel.filters.entries.removeIf { it.key != filterName }
+            getBaseViewModel().filters = mutableMapOf()
 
-            viewModel.dateFilters.entries.removeIf { it.key != filterName }
+            getBaseViewModel().dateFilters = mutableMapOf()
 
             for(chip in binding.chipsFilter.children){
                 (chip as Chip).performCloseIconClick()
             }
         }
 
-        if(viewModel.filters.containsKey(filterName)){
+        if(getBaseViewModel().search != null){
 
-            searchBar.getEditText().setText(viewModel.filters[filterName]!![0])
+            searchBar.getEditText().setText(getBaseViewModel().search!!.second)
         }
 
         searchBar.getEditText().doOnTextChanged { text, start, before, count ->
             if(searchBar.getEditText().text.isNullOrBlank()){
-                viewModel.filters.remove(filterName)
-
+                getBaseViewModel().search = null
             }
             else{
-
-                viewModel.filters[filterName] = arrayListOf(ApplicationManager.searchApiWithRegex(searchBar.getEditText().text!!.toString()))
-
+                getBaseViewModel().search = Pair(filterName, ApplicationManager.searchApiWithRegex(searchBar.getEditText().text!!.toString()))
             }
         }
 
@@ -378,7 +373,7 @@ abstract class ListFragment() : SearchFragment() {
         searchBar.getEditText().setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
                 if (searchBar.tag != searchBar.getEditText().text.toString()) {
-                    viewModel.onChipsChanged?.invoke()
+                    getBaseViewModel().onChipsChanged?.invoke()
                 }
 
                 searchBar.tag = searchBar.getEditText().text.toString()
@@ -389,7 +384,7 @@ abstract class ListFragment() : SearchFragment() {
         searchBar.getButton().setOnClickListener {
             searchBar.getEditText().setText("")
             if (searchBar.tag != searchBar.getEditText().text.toString()) {
-                viewModel.onChipsChanged?.invoke()
+                getBaseViewModel().onChipsChanged?.invoke()
             }
 
 

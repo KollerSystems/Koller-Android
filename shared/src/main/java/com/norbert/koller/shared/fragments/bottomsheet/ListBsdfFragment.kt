@@ -21,7 +21,7 @@ abstract class ListBsdfFragment() : RecyclerBsdfFragment() {
 
     abstract fun setViewModel(activity : AppCompatActivity) : ListBsdfFragmentViewModel
 
-    var getValuesOnFinish: ((listOftTrue : ArrayList<String>, localizedStrings : ArrayList<String>) -> Unit)? = null
+    var getValuesOnFinish: ((listOftTrue : MutableSet<Int>, localizedStrings : ArrayList<String>) -> Unit)? = null
 
     lateinit var viewModel: ListBsdfFragmentViewModel
 
@@ -42,9 +42,7 @@ abstract class ListBsdfFragment() : RecyclerBsdfFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(savedInstanceState != null){
-            dismiss()
-        }
+        viewModel = setViewModel(requireContext() as AppCompatActivity)
 
         if(viewModel.title != null) {
             setTitle(viewModel.title!!)

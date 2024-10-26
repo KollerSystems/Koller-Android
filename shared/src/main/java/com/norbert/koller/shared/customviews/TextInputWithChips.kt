@@ -176,7 +176,7 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
 
                 if(binding.et.text.length >= 2){
                     CoroutineScope(Dispatchers.IO).launch {
-                        RetrofitInstance.communicate({RetrofitInstance.api.getUsers(25, 0, filter = "Name:${ApplicationManager.searchApiWithRegex(binding.et.text.toString())},Role:1")}, {
+                        RetrofitInstance.communicate({RetrofitInstance.api.getUsers(25, 0, "Name:asc", filter = "Name:${ApplicationManager.searchApiWithRegex(binding.et.text.toString())},Role:1")}, {
 
                             val response = it as List<UserData>
                             if(binding.et.text.length >= 2) {

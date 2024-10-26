@@ -1,19 +1,19 @@
 package com.norbert.koller.shared.recycleradapters
 
 import android.annotation.SuppressLint
-import android.graphics.drawable.Drawable
 import android.view.View.GONE
+import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 
-class ListCardItem(title: String, description: String? = null, icon: Drawable? = null, val function: (() -> Unit)? = null) : ListItem(title, description, icon)
-
-class ListCardRecyclerAdapter(bottomSheet : ListBsdfFragment) : ListRecyclerAdapter(bottomSheet) {
+class ListCardRecyclerAdapter(bottomSheet : ListCardStaticBsdfFragment) : ListRecyclerAdapter(bottomSheet) {
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
+        bottomSheet as ListCardStaticBsdfFragment
 
-        val currentItem = bottomSheet.viewModel.list.value!![position] as ListCardItem
+        val currentItem = bottomSheet.getListCardStaticViewModel().list.value!![position] as ListCardItem
 
         holder.itemBinding.checkBox.visibility = GONE
 

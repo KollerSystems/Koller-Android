@@ -7,15 +7,14 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.norbert.koller.shared.customviews.SearchView
-import com.norbert.koller.shared.recycleradapters.ListItem
+import com.norbert.koller.shared.data.ListItem
+import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.ListToggleApiRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.ListToggleItem
-import com.norbert.koller.shared.recycleradapters.ListToggleRecyclerAdapter
+import com.norbert.koller.shared.recycleradapters.ListToggleStaticRecyclerAdapter
 import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListStaticToggleBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
+import com.norbert.koller.shared.viewmodels.ListToggleStaticBsdfFragmentViewModel
 
 class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
 
@@ -23,55 +22,59 @@ class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
         return getRecyclerView().adapter as ListRecyclerAdapter
     }
 
-    fun setup(activity : AppCompatActivity, list : ArrayList<ListItem>? = null, alreadyChecked : ArrayList<String>? = null, title: String? = null, collapseText: Boolean = false) : ListBsdfFragment{
+    fun setup(activity : AppCompatActivity, list : ArrayList<ListItem>? = null, alreadyChecked : MutableSet<Int>? = null, title: String? = null, collapseText: Boolean = false) : ListBsdfFragment{
         setup(activity, title, collapseText)
-        val listCopy : ArrayList<ListItem> = arrayListOf()
-        for(listElement in list!!){
-            listElement as ListToggleItem
-            listCopy.add(ListToggleItem(listElement.title, listElement.description, listElement.icon, listElement.tag, listElement.isChecked) as ListItem)
-        }
-        viewModel.list.value = listCopy
-        mergeListWithCheckedElements(alreadyChecked)
+        getToggleViewModel().list.value = list
+        getToggleViewModel().selectedItems = alreadyChecked?: mutableSetOf()
         return this
     }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
 
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.list.observe(this){
 
-            setRecyclerView(ListToggleRecyclerAdapter(this))
+        if(getToggleViewModel().list.value.isNullOrEmpty()) return
 
+        setRecyclerView(ListToggleStaticRecyclerAdapter(this))
+        if(getToggleViewModel().list.value!!.size > 15){
+            createSearchView()
         }
+
+
     }
 
     override fun setViewModel(activity : AppCompatActivity): ListBsdfFragmentViewModel {
-        return ViewModelProvider(activity)[ListStaticToggleBsdfFragmentViewModel::class.java]
+        return ViewModelProvider(activity)[ListToggleStaticBsdfFragmentViewModel::class.java]
+    }
+
+    fun getToggleViewModel() : ListToggleStaticBsdfFragmentViewModel{
+        return viewModel as ListToggleStaticBsdfFragmentViewModel
     }
 
     override fun onCancel(dialog: DialogInterface) {
 
         Log.d("TEST", getValuesOnFinish.toString())
-        val toggleViewModel = viewModel as ListToggleBsdfFragmentViewModel
+
         if(getValuesOnFinish != null && getRecyclerView().adapter != null) {
 
             getAdapter().filter("")
 
-            val stringList: ArrayList<String> = arrayListOf()
             val localizedStringList: ArrayList<String> = arrayListOf()
 
-            for (item in toggleViewModel.list.value!!) {
+            for (item in getToggleViewModel().list.value!!) {
                 item as ListToggleItem
-                if (item.isChecked) {
-                    stringList.add(item.tag!!)
+                if(getToggleViewModel().selectedItems.contains(item.id)) {
                     localizedStringList.add(item.title)
                 }
             }
 
-            getValuesOnFinish!!.invoke(stringList, localizedStringList)
+            getValuesOnFinish!!.invoke(getToggleViewModel().selectedItems, localizedStringList)
         }
+
+        getToggleViewModel().selectedItems = mutableSetOf()
         super.onCancel(dialog)
     }
 

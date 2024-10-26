@@ -38,7 +38,7 @@ interface BaseProgramFragmentInterface : ProgramFragmentInterface {
     fun classClick(response : BaseProgramData, context : Context){
         val userFragment = ApplicationManager.userListFragment()
         val bundle = Bundle()
-        bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", arrayListOf(response.class_.id.toString())))))
+        bundle.putParcelable("filters", FilterConfigData(mutableMapOf(Pair("Class.ID", mutableSetOf(response.class_.id)))))
         userFragment.arguments = bundle
         (context as MainActivity).addFragment(userFragment)
     }

@@ -1,22 +1,21 @@
 package com.norbert.koller.teacher.fragments
 
-import android.os.Bundle
-import android.view.View
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.ProgramTypePagingSource
+import com.norbert.koller.shared.api.ApiDataObjectBaseProgramType
 import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.PagingSource
+import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.teacher.recycleradapters.BaseProgramTypeRecyclerAdapter
 
 class BaseProgramTypesFragment() : ListFragment() {
 
-    override fun getFragmentTitle(): String? {
+    override fun getFragmentTitle(): String {
         return getString(R.string.base_programs)
     }
 
-    override fun getPagingSource(): PagingSource {
-        return ProgramTypePagingSource(requireContext(), getBaseViewModel())
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectBaseProgramType()
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
 
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {

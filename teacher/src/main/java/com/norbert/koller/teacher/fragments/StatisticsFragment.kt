@@ -7,13 +7,14 @@ import androidx.appcompat.content.res.AppCompatResources
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.api.ApiDataObjectClass
+import com.norbert.koller.shared.api.ApiDataObjectGroup
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.ClassData
 import com.norbert.koller.shared.data.GroupData
+import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.shared.fragments.SearchFragment
-import com.norbert.koller.shared.recycleradapters.ListItem
-import com.norbert.koller.shared.recycleradapters.ListToggleItem
 import com.norbert.koller.teacher.databinding.FragmentStatisticsBinding
 
 class StatisticsFragment : SearchFragment() {
@@ -39,12 +40,12 @@ class StatisticsFragment : SearchFragment() {
         addDateChipWithTemplates()
 
         addSortingChip("Gender", R.string.gender, arrayListOf(
-            ListToggleItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), "0"),
-            ListToggleItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), "1")
+            ListToggleItem(getString(R.string.woman), null, AppCompatResources.getDrawable(requireContext(), R.drawable.woman), 0),
+            ListToggleItem(getString(R.string.man), null, AppCompatResources.getDrawable(requireContext(), R.drawable.man), 1)
         ))
 
-        addSortingChip("Class.ID", R.string.class_, { RetrofitInstance.api.getClasses()}, ClassData::class.java)
+        addSortingChip("Class.ID", R.string.class_, ApiDataObjectClass())
 
-        addSortingChip("Group.ID", R.string.group, {RetrofitInstance.api.getGroups()}, GroupData::class.java, true)
+        addSortingChip("Group.ID", R.string.group, ApiDataObjectGroup(), true)
     }
 }

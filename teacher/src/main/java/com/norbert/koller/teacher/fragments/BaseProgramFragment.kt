@@ -38,7 +38,7 @@ class BaseProgramFragment() : DetailsFragment(), BaseProgramFragmentInterface {
     }
 
     override fun apiFunctionToCall(): suspend () -> Response<*> {
-        return { RetrofitInstance.api.getMandatory(viewModel.id!!)}
+        return { RetrofitInstance.api.getBaseProgram(viewModel.id!!)}
     }
 
     override fun createRootView(): View {

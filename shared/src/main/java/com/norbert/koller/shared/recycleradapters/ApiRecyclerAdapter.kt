@@ -88,45 +88,27 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
-        if (viewModel.state == ApiHelper.STATE_NONE && super.getItemCount() == 0)
-            return
-
-        if (viewModel.state != ApiHelper.STATE_NONE && position == itemCount - 1) {
-
-            when (getItemViewType(position)) {
-                VIEW_TYPE_RETRY -> {
-
-                    val retryViewHolder = holder as ErrorViewHolder
-                    retryViewHolder.itemBinding.btn.setOnClickListener {
-                        retry()
-                    }
-                }
-            }
-            return
-        }
-
-        val item = getItem(position)!!
 
         when (getItemViewType(position)) {
             VIEW_TYPE_ITEM -> {
-
+                val item = getItem(position)!!
                 item as BaseData
                 val transitionName = getTransitionName(item.getMainID())
                 ViewCompat.setTransitionName(holder.itemView as MaterialCardView, transitionName)
                 onBindItemViewHolder(holder, item, position)
-
-                if (position == snapshot().size) {
-                    holder.itemView.post {
-                        notifyItemChanged(snapshot().size - 1, Object())
-                    }
-                }
             }
-
             VIEW_TYPE_SEPARATOR -> {
-
+                val item = getItem(position)!!
                 holder as DateViewHolder
                 item as String
                 holder.itemBinding.text.text = item
+            }
+            VIEW_TYPE_RETRY -> {
+
+                val retryViewHolder = holder as ErrorViewHolder
+                retryViewHolder.itemBinding.btn.setOnClickListener {
+                    retry()
+                }
             }
         }
 
@@ -155,7 +137,7 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
     override fun getItemViewType(position: Int): Int {
 
         if (super.getItemCount() == 0 && viewModel.state == ApiHelper.STATE_NONE)
-            return -1
+            return VIEW_TYPE_EMPTY
 
         if (position == itemCount - 1 && !viewModel.isRequestModeRefresh) {
             if (viewModel.state == ApiHelper.STATE_LOADING) {
@@ -175,6 +157,7 @@ abstract class ApiRecyclerAdapter() : PagingDataAdapter<Any, RecyclerView.ViewHo
 
 
     companion object {
+        const val VIEW_TYPE_EMPTY = -1
         const val VIEW_TYPE_ITEM = 0
         const val VIEW_TYPE_SEPARATOR = 1
         const val VIEW_TYPE_LOADING = 2
