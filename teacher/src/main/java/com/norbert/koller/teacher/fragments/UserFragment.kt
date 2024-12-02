@@ -43,6 +43,14 @@ class UserFragment() : com.norbert.koller.shared.fragments.UserFragment() {
             binding.cbPersonalData.isVisible = true
             binding.cbCommendationsOrWarnings.isVisible = true
 
+            binding.cbKey.setOnClickListener{
+                val fragment = KeyPagedFragment()
+                val bundle = Bundle()
+                bundle.putInt("id", getUserData().uid)
+                fragment.arguments = bundle
+                (context as MainActivity).addFragment(fragment)
+            }
+
             binding.cbOutgoings.setOnClickListener {
                 val fragment = OutgoingListFragment()
                 val bundle = Bundle()
