@@ -9,7 +9,7 @@
 
     <string name="app_name">Koller Tanároknak</string>
 
-    <string name="create_new_x_outgoing_last_part">kimenő létrehozása</string>
+    <string name="create_new_outgoing">Kimenő létrehozása</string>
 
     <string name="students_in_studygroup">Diákok a szakkörön</string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -27,4 +27,5 @@
     <string name="every_two_weeks">Every two weeks</string>
     <string name="every_four_weeks">Every four weeks</string>
     <string name="wrong_role">Ez a felhasználó egy tanuló. Kérlek töltsd le a Koller Tanulóknak alkalmazást a bejelentkezéshez vagy jelentkezz be egy másik felhasználóval.</string>
+    <string name="add_outgoing">Kimenő hozzáadása</string>
 </resources>

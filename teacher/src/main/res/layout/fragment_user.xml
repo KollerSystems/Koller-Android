@@ -52,10 +52,8 @@
                         style="@style/CardTop"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:visibility="gone"
                         app:icon="@drawable/key"
-                        app:text="Kulcsfelvétel"
-                        tools:visibility="visible" />
+                        app:text="Kulcsok" />
 
                     <com.norbert.koller.shared.customviews.CardButton
                         android:id="@+id/cb_presence"
@@ -69,7 +67,7 @@
 
                     <com.norbert.koller.shared.customviews.CardButton
                         android:id="@+id/cb_outgoings"
-                        style="@style/CardTop"
+                        style="@style/CardMiddle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:visibility="gone"
@@ -130,7 +128,7 @@
 
                     <com.norbert.koller.shared.customviews.CardButton
                         android:id="@+id/cb_edit"
-                        style="@style/CardTop"
+                        style="@style/CardMiddle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         app:icon="@drawable/pencil"

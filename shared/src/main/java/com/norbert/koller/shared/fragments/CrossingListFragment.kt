@@ -15,7 +15,6 @@ import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 
 class CrossingListFragment() : ListFragment() {
 
-
     override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
         return if(getBaseViewModel().ownerUID == CacheManager.userData!!.uid){
             Pair(getString(R.string.port_exits_and_entrances),"")
@@ -27,17 +26,7 @@ class CrossingListFragment() : ListFragment() {
         }
     }
 
-    override fun getPagingSource(): PagingSourceWithSeparator {
-        getBaseViewModel().apiDataObject = ApiDataObjectCrossing(getBaseViewModel().ownerUID)
-        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
-    }
-
-    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
-        return GateRecyclerAdapter()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
 
         if (arguments != null) {
             getBaseViewModel().ownerUID = requireArguments().getInt("id", -1)
@@ -47,6 +36,15 @@ class CrossingListFragment() : ListFragment() {
         }
 
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun getPagingSource(): PagingSourceWithSeparator {
+        getBaseViewModel().apiDataObject = ApiDataObjectCrossing(getBaseViewModel().ownerUID)
+        return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
+    }
+
+    override fun getRecyclerAdapter(): ApiRecyclerAdapter {
+        return GateRecyclerAdapter()
     }
 
     override fun onSetUpSearching() {

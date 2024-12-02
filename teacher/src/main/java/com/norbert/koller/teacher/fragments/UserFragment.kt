@@ -11,7 +11,6 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingListFragment
 import com.norbert.koller.shared.fragments.PersonalDataFragment
-import com.norbert.koller.shared.fragments.UserOutgoingsFragment
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import com.norbert.koller.teacher.activities.EditUserActivity
 import com.norbert.koller.teacher.databinding.FragmentUserBinding
@@ -43,10 +42,9 @@ class UserFragment() : com.norbert.koller.shared.fragments.UserFragment() {
             binding.cbCrossings.isVisible = true
             binding.cbPersonalData.isVisible = true
             binding.cbCommendationsOrWarnings.isVisible = true
-            RecyclerViewHelper.deroundCardVertical(binding.cbEdit)
 
             binding.cbOutgoings.setOnClickListener {
-                val fragment = UserOutgoingsFragment()
+                val fragment = OutgoingListFragment()
                 val bundle = Bundle()
                 bundle.putInt("id", getUserData().uid)
                 fragment.arguments = bundle

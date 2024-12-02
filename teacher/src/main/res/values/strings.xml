@@ -9,7 +9,7 @@
 
     <string name="app_name">Koller for Teachers</string>
 
-    <string name="create_new_x_outgoing_last_part">outgoing</string>
+    <string name="create_new_outgoing">Create outgoing</string>
 
     <string name="students_in_studygroup">Students in the studygroup</string>
     <string name="edit_user">Felhasználó szerkesztése</string>
@@ -26,4 +26,5 @@
     <string name="every_two_weeks">Két hetente</string>
     <string name="every_four_weeks">Négy hetente</string>
     <string name="wrong_role">This user is a student. Please download Koller for Students to login or login with a different user.</string>
+    <string name="add_outgoing">Add outgoing</string>
 </resources>

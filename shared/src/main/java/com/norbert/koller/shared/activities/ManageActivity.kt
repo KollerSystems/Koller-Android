@@ -25,6 +25,10 @@ abstract class ManageActivity : ToolbarActivity(){
         }
     }
 
+    fun getConfirmButton() : MaterialButton {
+        return manageBarBinding.button
+    }
+
     lateinit var manageBarBinding : ViewManageBarBinding
 
     override fun setContentView(view: View?) {

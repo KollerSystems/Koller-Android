@@ -37,13 +37,10 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.RoomData
-import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
-import com.norbert.koller.shared.fragments.OutgoingPermanentListFragment
-import com.norbert.koller.shared.fragments.OutgoingTemporaryListFragment
+import com.norbert.koller.shared.fragments.OutgoingListFragment
 import com.norbert.koller.shared.fragments.RoomFragment
 import com.norbert.koller.shared.fragments.RoomListFragment
 import com.norbert.koller.shared.fragments.RoomTidinessListFragment
@@ -52,7 +49,6 @@ import com.norbert.koller.shared.fragments.StudyGroupTypeListFragment
 import com.norbert.koller.shared.fragments.UserFragment
 import com.norbert.koller.shared.fragments.UserListFragment
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.recycleradapters.LoginViewPagerRecyclerAdapter
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
@@ -159,8 +155,7 @@ open class ApplicationManager : Application() {
 
         lateinit var studyGroupsFragment: () -> StudyGroupTypeListFragment
 
-        var outgoingTemporaryListFragment: () -> OutgoingTemporaryListFragment = { OutgoingTemporaryListFragment() }
-        var outgoingPermanentListFragment: () -> OutgoingPermanentListFragment = { OutgoingPermanentListFragment() }
+        var outgoingListFragment: () -> OutgoingListFragment = { OutgoingListFragment() }
 
         const val minLengthBeforeDismiss : Int = 3
 

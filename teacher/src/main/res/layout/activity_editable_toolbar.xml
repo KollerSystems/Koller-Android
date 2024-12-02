@@ -98,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/spacing"
-                    android:text="@string/create_new_x_outgoing_last_part"
+                    android:text="@string/create_new_outgoing"
                     android:textAppearance="@style/Title"
                     android:textStyle="bold" />
 

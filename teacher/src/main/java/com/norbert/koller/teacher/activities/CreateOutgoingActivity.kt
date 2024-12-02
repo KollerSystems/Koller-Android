@@ -6,17 +6,13 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import androidx.activity.addCallback
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import com.norbert.koller.shared.data.ListCardItem
+import com.norbert.koller.shared.activities.ManageActivity
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.data.OutgoingData
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.helpers.connectToDatePicker
 import com.norbert.koller.shared.helpers.connectToTimePicker
 import com.norbert.koller.shared.managers.CacheManager
@@ -25,14 +21,8 @@ import com.norbert.koller.shared.viewmodels.DetailsViewModel
 import com.norbert.koller.teacher.R
 import com.norbert.koller.teacher.databinding.ContentActivityCreateOutgoingBinding
 
-class CreateOutgoingActivity() : EditableToolbarActivity() {
+class CreateOutgoingActivity() : ManageActivity() {
 
-
-
-    companion object{
-        const val TEMPORARY : Int = 0
-        const val PERMANENT : Int = 1
-    }
 
     lateinit var binding : ContentActivityCreateOutgoingBinding
 
@@ -61,10 +51,6 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
 
         findViewById<AppBarLayout>(com.norbert.koller.shared.R.id.app_bar).setup()
 
-        val textFirst : TextView = findViewById(R.id.text_title_first)
-        if(textFirst.text.isNullOrBlank()){
-            textFirst.visibility = GONE
-        }
 
         val buttonExit : Button = findViewById(R.id.button_back)
 
@@ -78,41 +64,8 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
         binding.tilTimeTo.connectToTimePicker(supportFragmentManager)
 
 
-        when (type){
-            TEMPORARY ->{
-                getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.temporary)
-                getTitleTil().editText!!.tag = TEMPORARY
-            }
-            PERMANENT ->{
-                getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.continuous)
-                getTitleTil().editText!!.tag = PERMANENT
-            }
-        }
 
-        getTitleTil().editText!!.setOnClickListener{
 
-            currentFocus?.clearFocus()
-
-            val dialog = ListCardStaticBsdfFragment().setup(this, arrayListOf(
-                ListCardItem(
-                    getString(com.norbert.koller.shared.R.string.temporary),
-                    null,
-                    AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.transparent_clock), {
-                        getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.temporary)
-                        getTitleTil().editText!!.tag = TEMPORARY
-                    }),
-
-                ListCardItem(
-                    getString(com.norbert.koller.shared.R.string.continuous),
-                    null,
-                    AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.clock), {
-                        getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.continuous)
-                        getTitleTil().editText!!.tag = PERMANENT
-                    })
-
-            )).show(supportFragmentManager, ListBsdfFragment.TAG)
-
-        }
 
         val onChange : (() -> Unit) = {
             getConfirmButton().isEnabled = (ApplicationManager.allFilled(binding.tilDateFrom, binding.tilDateTo, binding.tilTimeFrom, binding.tilTimeTo, binding.tilPurpose) && binding.tilAddresse.containsChip())
@@ -152,7 +105,7 @@ class CreateOutgoingActivity() : EditableToolbarActivity() {
         return binding.root
     }
 
-    override fun getName(): Pair<String, String> {
-        return Pair(getString(com.norbert.koller.shared.R.string.create_new_x_first_part), getString(R.string.create_new_x_outgoing_last_part))
+    override fun getName(): String {
+        return getString(R.string.create_new_outgoing)
     }
 }
