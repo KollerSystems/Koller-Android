@@ -194,6 +194,13 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.norbert.koller.shared.customviews.CardToggle
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:text="@string/repeats"
+            app:icon="@drawable/loop"/>
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/mcard_repeat"
             style="@style/CardBottom"
@@ -203,61 +210,116 @@
             android:layout_marginBottom="@null"
             app:cardCornerRadius="@null"
             app:cardPreventCornerOverlap="false"
-            app:contentPadding="@dimen/card_padding"
+            app:contentPadding="@null"
+            app:contentPaddingLeft="@dimen/card_padding"
+            app:contentPaddingRight="@dimen/card_padding"
+            app:contentPaddingBottom="@dimen/card_padding"
             app:shapeAppearance="@style/OverlayRoundedCardBottom">
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:paddingStart="40dp">
 
-                <ImageView
-                    style="@style/CategoryIcon"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:adjustViewBounds="true"
-                    android:alpha="0.666"
-                    android:importantForAccessibility="no"
-                    app:srcCompat="@drawable/loop" />
 
-                <LinearLayout
+                    <CheckBox
+                        android:id="@+id/check_box_monday2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/monday"
+                        android:textAppearance="@style/Text"
+                        android:visibility="visible" />
+
+                    <CheckBox
+                        android:id="@+id/check_box_monday6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/tuesday"
+                        android:textAppearance="@style/Text"
+                        android:visibility="visible" />
+
+                    <CheckBox
+                        android:id="@+id/check_box_monday7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/wednesday"
+                        android:textAppearance="@style/Text"
+                        android:visibility="visible" />
+
+                    <CheckBox
+                        android:id="@+id/check_box_monday5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/thursday"
+                        android:textAppearance="@style/Text"
+                        android:visibility="visible" />
+
+                    <CheckBox
+                        android:id="@+id/check_box_monday8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/friday"
+                        android:textAppearance="@style/Text"
+                        android:visibility="visible" />
+
+                <CheckBox
+                    android:id="@+id/check_box_monday4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:text="@string/saturday"
+                    android:textAppearance="@style/Text"
+                    android:visibility="visible" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+                <CheckBox
+                        android:id="@+id/check_box_monday3"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="@dimen/text_container_margin"
-                        android:text="@string/repeats" />
+                        android:text="@string/sunday"
+                        android:textAppearance="@style/Text"
+                        android:visibility="visible" />
+
+                    <View
+                        android:id="@+id/view"
+                        style="@style/SeparatorLine"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="@dimen/text_container_margin"
+                        android:layout_marginEnd="@dimen/spacing" />
 
                     <RadioGroup
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:checkedButton="@id/rbtn_weekly">
+                        android:checkedButton="@id/rbtn_weekly2">
+
+                        <RadioButton
+                            android:id="@+id/rbtn_weekly2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Only this week" />
 
                         <RadioButton
                             android:id="@+id/rbtn_weekly"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Nincs" />
+                            android:text="@string/weekly" />
 
                         <RadioButton
                             android:id="@+id/rbtn_every_two_weeks"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Naponta" />
+                            android:text="@string/every_two_weeks" />
 
                         <RadioButton
                             android:id="@+id/rbtn_every_four_weeks"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Hetente" />
+                            android:text="@string/every_four_weeks" />
                     </RadioGroup>
 
                     <com.google.android.material.textfield.TextInputLayout
+                        android:layout_marginTop="@dimen/text_container_margin"
                         android:id="@+id/til_date_cancel"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -266,7 +328,6 @@
                         android:layout_marginBottom="@dimen/text_container_margin"
                         android:layout_weight="1"
                         android:hint="Lejárati dátum"
-                        android:visibility="gone"
                         app:endIconDrawable="@drawable/close_thick"
                         app:endIconMode="custom">
 
@@ -282,7 +343,6 @@
                             tools:ignore="Deprecated" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                </LinearLayout>
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
