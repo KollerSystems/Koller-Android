@@ -23,8 +23,14 @@ class EditStudyGroupActivity : EditSpecificStudyGroupActivity() {
         binding.rgroupToEdit.setOnCheckedChangeListener { radioGroup, id ->
             val onlyThis = id == R.id.rbtn_only_this
 
-            binding.mcardDays.isVisible = !onlyThis
-            binding.mcardRepeat.isVisible = !onlyThis
+            binding.checkBoxMonday.isVisible = !onlyThis
+            binding.checkBoxTuesday.isVisible = !onlyThis
+            binding.checkBoxWednesday.isVisible = !onlyThis
+            binding.checkBoxThursday.isVisible = !onlyThis
+            binding.trcwMonday.isVisible = !onlyThis
+            binding.trcvTuesday.isVisible = !onlyThis
+            binding.trcvWednesday.isVisible = !onlyThis
+            binding.trcvThursday.isVisible = !onlyThis
             binding.mcardRange.isVisible = onlyThis
             binding.tilTitle.isEnabled = !onlyThis
             binding.tilDescription.isEnabled = !onlyThis
@@ -34,6 +40,10 @@ class EditStudyGroupActivity : EditSpecificStudyGroupActivity() {
             }
             else{
                 binding. tilDate.hint = "Kezdés dátuma"
+                binding.checkBoxMonday.isChecked = false
+                binding.checkBoxTuesday.isChecked = false
+                binding.checkBoxWednesday.isChecked = false
+                binding.checkBoxThursday.isChecked = false
             }
         }
 

@@ -47,9 +47,17 @@
         </com.google.android.material.textfield.TextInputLayout>
 
 
+        <TextView
+            android:id="@+id/text3"
+            style="@style/CategoryCardName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Érvényesség"
+            android:translationZ="1dp" />
+
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/create_new_post_card_datetime"
-            style="@style/CardSingle"
+            style="@style/CardTop"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -186,6 +194,98 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcard_repeat"
+            style="@style/CardBottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/card_full_margin"
+            android:layout_marginBottom="@null"
+            app:cardCornerRadius="@null"
+            app:cardPreventCornerOverlap="false"
+            app:contentPadding="@dimen/card_padding"
+            app:shapeAppearance="@style/OverlayRoundedCardBottom">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    style="@style/CategoryIcon"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:adjustViewBounds="true"
+                    android:alpha="0.666"
+                    android:importantForAccessibility="no"
+                    app:srcCompat="@drawable/loop" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/text_container_margin"
+                        android:text="@string/repeats" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:checkedButton="@id/rbtn_weekly">
+
+                        <RadioButton
+                            android:id="@+id/rbtn_weekly"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Nincs" />
+
+                        <RadioButton
+                            android:id="@+id/rbtn_every_two_weeks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Naponta" />
+
+                        <RadioButton
+                            android:id="@+id/rbtn_every_four_weeks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hetente" />
+                    </RadioGroup>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_date_cancel"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginLeft="@dimen/text_container_margin"
+                        android:layout_marginRight="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_weight="1"
+                        android:hint="Lejárati dátum"
+                        android:visibility="gone"
+                        app:endIconDrawable="@drawable/close_thick"
+                        app:endIconMode="custom">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="-15dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:inputType="datetime|date"
+                            android:singleLine="false"
+                            android:textAppearance="@style/Text"
+                            tools:ignore="Deprecated" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </LinearLayout>
 </com.google.android.flexbox.FlexboxLayout>
