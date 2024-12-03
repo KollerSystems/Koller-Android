@@ -1,8 +1,7 @@
-package com.norbert.koller.teacher.fragments
+package com.norbert.koller.shared.fragments
 
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ApiDataObjectUser
-import com.norbert.koller.shared.fragments.ListFragment
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.OutgoingRecyclerAdapter
@@ -32,5 +31,4 @@ class KeyRetrievalListFragment : ListFragment() {
             getBaseViewModel().ownerUID = CacheManager.userData!!.uid
         }
     }
-
 }

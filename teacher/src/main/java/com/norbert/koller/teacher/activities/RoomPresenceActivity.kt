@@ -17,7 +17,6 @@ import com.norbert.koller.shared.data.RoomOrderData
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.getCurrentUserDataStore
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.userDataStore
-import com.norbert.koller.shared.managers.setVisibilityBy
 import com.norbert.koller.teacher.R
 import com.stfalcon.imageviewer.StfalconImageViewer
 import kotlinx.coroutines.flow.first

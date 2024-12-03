@@ -23,6 +23,7 @@
         app:icon="@drawable/wave"
         app:text="@string/user_outgoings" />
 
+
     <com.norbert.koller.shared.customviews.CardButton
         android:id="@+id/cb_commendations_warnings"
         style="@style/CardMiddle"

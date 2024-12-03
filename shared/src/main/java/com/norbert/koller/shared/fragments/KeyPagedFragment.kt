@@ -1,4 +1,4 @@
-package com.norbert.koller.teacher.fragments
+package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -7,12 +7,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import androidx.viewpager2.widget.MarginPageTransformer
 import com.google.android.material.tabs.TabLayoutMediator
-import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.fragments.PagedFragment
-import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.viewmodels.DetailsViewModel
 

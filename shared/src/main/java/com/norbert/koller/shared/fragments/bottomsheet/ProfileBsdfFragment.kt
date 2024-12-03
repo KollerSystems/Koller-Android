@@ -18,6 +18,7 @@ import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingListFragment
+import com.norbert.koller.shared.fragments.KeyPagedFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
@@ -94,6 +95,16 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
             val fragment = ApplicationManager.roomFragment()
             val bundle = Bundle()
             bundle.putInt("id", CacheManager.userData!!.rid!!)
+            fragment.arguments = bundle
+            (requireContext() as MainActivity).addFragment(fragment)
+            this.dismiss()
+        }
+
+        getHeaderBinding().cbKeys.setOnClickListener{
+
+            val fragment = KeyPagedFragment()
+            val bundle = Bundle()
+            bundle.putInt("id", CacheManager.userData!!.uid)
             fragment.arguments = bundle
             (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()

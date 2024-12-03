@@ -110,4 +110,12 @@
         android:visibility="gone"
         app:icon="@drawable/groups"
         app:text="@string/my_groups" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/cb_keys"
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/key"
+        app:text="@string/keys"/>
 </LinearLayout>

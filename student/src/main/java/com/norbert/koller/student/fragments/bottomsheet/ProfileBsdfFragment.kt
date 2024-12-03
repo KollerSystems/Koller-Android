@@ -8,7 +8,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
-import com.norbert.koller.shared.fragments.UserOutgoingsFragment
+import com.norbert.koller.shared.fragments.OutgoingListFragment
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.student.databinding.ContentFragmentBsdfProfileBinding
 
@@ -29,7 +29,7 @@ class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.Prof
 
         binding.cbOutgoing.setOnClickListener{
 
-            val fragment = UserOutgoingsFragment()
+            val fragment = OutgoingListFragment()
             val bundle = Bundle()
             bundle.putInt("id", CacheManager.userData!!.getMainID())
             fragment.arguments = bundle

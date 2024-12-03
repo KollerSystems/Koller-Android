@@ -1,7 +1,5 @@
 package com.norbert.koller.teacher.fragments
 
-import android.R.attr.key
-import android.R.attr.value
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -10,8 +8,8 @@ import androidx.core.widget.NestedScrollView
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.databinding.ContentFragmentUserHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingListFragment
+import com.norbert.koller.shared.fragments.KeyPagedFragment
 import com.norbert.koller.shared.fragments.PersonalDataFragment
-import com.norbert.koller.shared.helpers.RecyclerViewHelper
 import com.norbert.koller.teacher.activities.EditUserActivity
 import com.norbert.koller.teacher.databinding.FragmentUserBinding
 
@@ -24,10 +22,7 @@ class UserFragment() : com.norbert.koller.shared.fragments.UserFragment() {
 
 
 
-        binding.cbEdit.setOnClickListener {
-            val intent = Intent(requireContext(), EditUserActivity::class.java)
-            startActivity(intent)
-        }
+
 
 
     }
@@ -42,14 +37,6 @@ class UserFragment() : com.norbert.koller.shared.fragments.UserFragment() {
             binding.cbCrossings.isVisible = true
             binding.cbPersonalData.isVisible = true
             binding.cbCommendationsOrWarnings.isVisible = true
-
-            binding.cbKey.setOnClickListener{
-                val fragment = KeyPagedFragment()
-                val bundle = Bundle()
-                bundle.putInt("id", getUserData().uid)
-                fragment.arguments = bundle
-                (context as MainActivity).addFragment(fragment)
-            }
 
             binding.cbOutgoings.setOnClickListener {
                 val fragment = OutgoingListFragment()
@@ -69,6 +56,19 @@ class UserFragment() : com.norbert.koller.shared.fragments.UserFragment() {
             binding.cbPersonalData.setOnClickListener{
                 getMainActivity().addFragment(PersonalDataFragment())
             }
+        }
+
+        binding.cbKey.setOnClickListener{
+            val fragment = KeyPagedFragment()
+            val bundle = Bundle()
+            bundle.putInt("id", getUserData().uid)
+            fragment.arguments = bundle
+            (context as MainActivity).addFragment(fragment)
+        }
+
+        binding.cbEdit.setOnClickListener {
+            val intent = Intent(requireContext(), EditUserActivity::class.java)
+            startActivity(intent)
         }
     }
 
