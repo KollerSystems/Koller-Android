@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
 import com.google.android.material.chip.ChipGroup
+import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ApiDataObject
 import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.databinding.FragmentSearchBinding
@@ -81,9 +82,9 @@ abstract class SearchFragment() : FragmentInMainActivity() {
     }
 
 
-    fun addDateChip(filterName : String = "Date"){
+    fun addDateChip(filterName : String = "Date", localizedId : Int = R.string.date){
         val chip = createChip()
-        chip.connectToDateRangePicker(parentFragmentManager, filterName, viewModel)
+        chip.connectToDateRangePicker(parentFragmentManager, filterName, viewModel, localizedId)
 
     }
 

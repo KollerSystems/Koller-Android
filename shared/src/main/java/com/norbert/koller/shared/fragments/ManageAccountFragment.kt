@@ -28,8 +28,8 @@ class ManageAccountFragment : FragmentInMainActivity() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.textName.text = CacheManager.userData!!.name
-        binding.user.setUser(CacheManager.userData!!)
+        binding.textName.text = CacheManager.getCurrentUserData()!!.name
+        binding.user.setUser(CacheManager.getCurrentUserData()!!)
 
         binding.user.setOnClickListener{
             StfalconImageViewer.Builder(requireContext(), listOf(binding.user.getImage().drawable)){ view, drawable ->

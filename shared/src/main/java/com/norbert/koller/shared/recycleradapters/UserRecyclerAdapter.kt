@@ -32,7 +32,7 @@ class UserRecyclerAdapter() : EditableApiRecyclerAdapter() {
     }
 
     override fun onClick(holder: RecyclerView.ViewHolder, item: BaseData) {
-        if (item.getMainID() == CacheManager.userData!!.uid) {
+        if (item.getMainID() == CacheManager.getCurrentUserData()!!.uid) {
             ApplicationManager.openProfile(holder.itemView.context)
         } else {
 

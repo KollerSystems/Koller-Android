@@ -335,7 +335,9 @@ abstract class MainActivity : AppCompatActivity() {
         RetrofitInstance.communicate(lifecycleScope,
             RetrofitInstance.api::getCurrentUser,
             {
-                CacheManager.userData = it as UserData
+                it as UserData
+                it.saveReceivedTime()
+                CacheManager.updateCurrentUserData(it)
             },
             { _, _ ->
                 ApiHelper.createSnackBar(this, getString(R.string.failed_to_refresh_user)){
@@ -426,13 +428,13 @@ abstract class MainActivity : AppCompatActivity() {
         }
 
         Picasso.get()
-            .load(CacheManager.userData?.picture)
+            .load(CacheManager.getCurrentUserData()?.picture)
             .noPlaceholder()
             .into(binding.imageUser)
 
 
         if(savedInstanceState == null) {
-            if(!CacheManager.userData!!.isValid(this, DateTimeHelper.TIME_IMPORTANT)) {
+            if(!CacheManager.getCurrentUserData()!!.isValid(this, DateTimeHelper.TIME_IMPORTANT)) {
                 refreshUserData()
             }
             changeBackStackState(R.id.home)

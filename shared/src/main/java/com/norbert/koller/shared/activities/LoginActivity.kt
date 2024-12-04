@@ -139,12 +139,13 @@ abstract class LoginActivity : AppCompatActivity() {
 
         viewModel.userData.observe(this){
             it as UserData
-            if(CacheManager.userData?.uid != it.uid){
+            if(CacheManager.getCurrentUserData()?.uid != it.uid){
                 CacheManager.detailsDataMap = mutableMapOf()
                 CacheManager.listDataMap = mutableMapOf()
             }
-            CacheManager.userData = it
-            CacheManager.userData!!.saveReceivedTime()
+            it.saveReceivedTime()
+            CacheManager.detailsDataMap[Pair(UserData::class.simpleName!!, it.uid)] = it
+            CacheManager.currentUserId = it.uid
             if(!userDataStore.containsKey(it.uid)){
                 createDynamicUserDataStore(CacheManager.loginData!!.uid)
             }

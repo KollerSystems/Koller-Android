@@ -72,7 +72,7 @@ class LaunchActivity : AppCompatActivity() {
             object : ViewTreeObserver.OnPreDrawListener {
                 override fun onPreDraw(): Boolean {
                     // Check whether the initial data is ready.
-                    return if (CacheManager.userData != null) {
+                    return if (CacheManager.getCurrentUserData() != null) {
                         // The content is ready. Start drawing.
                         content.viewTreeObserver.removeOnPreDrawListener(this)
                         true
@@ -93,7 +93,9 @@ class LaunchActivity : AppCompatActivity() {
                 val json = getCurrentUserDataStore()!!.data.first()[DataStoreManager.USER]
 
                 if (json != null) {
-                    CacheManager.userData = Gson().fromJson(json, UserData::class.java)
+                    val userData = Gson().fromJson(json, UserData::class.java)
+                    CacheManager.detailsDataMap[Pair(UserData::class.simpleName!!, userData.uid)] = userData
+                    CacheManager.currentUserId = userData.uid
                     ApplicationManager.openMain.invoke(this@LaunchActivity)
                 }
                 else{

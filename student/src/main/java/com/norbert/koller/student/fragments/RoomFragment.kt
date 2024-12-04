@@ -31,7 +31,7 @@ class RoomFragment() : com.norbert.koller.shared.fragments.RoomFragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        if(viewModel.id == CacheManager.userData!!.rid){
+        if(viewModel.id == CacheManager.getCurrentUserData()!!.rid){
             binding.header.textManageRoom.isVisible = true
             binding.header.textManageRoom.text = getString(com.norbert.koller.shared.R.string.menu)
             binding.header.cbRoomTidiness.isVisible = true

@@ -43,9 +43,9 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         super.onViewCreated(view, savedInstanceState)
         dialog!!.setupBottomSheet()
 
-        getHeaderBinding().user.setUser(CacheManager.userData!!)
-        getHeaderBinding().textName.text = CacheManager.userData!!.name
-        getHeaderBinding().textDescription.text = CacheManager.userData!!.createDescription()
+        getHeaderBinding().user.setUser(CacheManager.getCurrentUserData()!!)
+        getHeaderBinding().textName.text = CacheManager.getCurrentUserData()!!.name
+        getHeaderBinding().textDescription.text = CacheManager.getCurrentUserData()!!.createDescription()
 
         getHeaderBinding().btnLogout.setOnClickListener{
 
@@ -94,7 +94,7 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
             val fragment = ApplicationManager.roomFragment()
             val bundle = Bundle()
-            bundle.putInt("id", CacheManager.userData!!.rid!!)
+            bundle.putInt("id", CacheManager.getCurrentUserData()!!.rid!!)
             fragment.arguments = bundle
             (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()
@@ -104,7 +104,7 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
 
             val fragment = KeyPagedFragment()
             val bundle = Bundle()
-            bundle.putInt("id", CacheManager.userData!!.uid)
+            bundle.putInt("id", CacheManager.getCurrentUserData()!!.uid)
             fragment.arguments = bundle
             (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()
@@ -124,8 +124,6 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@Marci599"))
             startActivity(browserIntent)
         }
-
-        //DEVS
 
         getFooterBinding().cardOrganization.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://kollegium.tech/"))

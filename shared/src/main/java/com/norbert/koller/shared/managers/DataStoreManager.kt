@@ -95,8 +95,8 @@ class DataStoreManager {
                 }
 
 
-                if(CacheManager.userData != null){
-                    val json = gson.toJson(CacheManager.userData)
+                if(CacheManager.getCurrentUserData() != null){
+                    val json = gson.toJson(CacheManager.getCurrentUserData())
 
                     it[USER] = json
 
@@ -119,9 +119,9 @@ class DataStoreManager {
             context.loginDataStore.edit { login_data ->
                 login_data[TOKENS] = gson.toJson(CacheManager.loginData!!)
             }
-            if(CacheManager.userData != null) {
+            if(CacheManager.getCurrentUserData() != null) {
                 getCurrentUserDataStore()!!.edit {
-                    it[USER] = gson.toJson(CacheManager.userData)
+                    it[USER] = gson.toJson(CacheManager.getCurrentUserData())
                 }
             }
         }

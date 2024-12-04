@@ -28,7 +28,7 @@ open class KeyAccessListFragment  : ListFragment() {
             getBaseViewModel().ownerUID = requireArguments().getInt("id", -1)
         }
         if(getBaseViewModel().ownerUID == -1){
-            getBaseViewModel().ownerUID = CacheManager.userData!!.uid
+            getBaseViewModel().ownerUID = CacheManager.getCurrentUserData()!!.uid
         }
     }
 

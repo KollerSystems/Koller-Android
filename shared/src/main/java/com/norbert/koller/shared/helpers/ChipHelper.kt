@@ -63,7 +63,7 @@ class ChipHelper {
 
 }
 
-fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: ListApiComplexViewModel){
+fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName : String = "Date", viewModel: ListApiComplexViewModel, localizedId : Int){
 
 
 
@@ -72,7 +72,7 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName 
         text = dateString
         this.addCloseOption {
             ChipHelper.removeDateFilterValue(viewModel, filterName)
-            resetSimpleChip(context.getString(R.string.date))
+            resetSimpleChip(context.getString(localizedId))
         }
 
     }
@@ -81,7 +81,7 @@ fun Chip.connectToDateRangePicker(fragmentManager : FragmentManager, filterName 
         setChip(dateDoubleToString(ChipHelper.getDateFilterValue(viewModel)[filterName]!!))
     }
     else{
-        resetSimpleChip(context.getString(R.string.date))
+        resetSimpleChip(context.getString(localizedId))
     }
 
     setOnClickListener {

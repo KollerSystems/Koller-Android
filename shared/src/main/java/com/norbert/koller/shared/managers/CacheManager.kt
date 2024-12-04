@@ -34,5 +34,14 @@ object CacheManager {
 
     var loginData : LoginTokensData? = null
 
-    var userData: UserData? = null
+    var currentUserId: Int? = null
+
+    fun getCurrentUserData() : UserData?{
+        return detailsDataMap[Pair(UserData::class.simpleName, currentUserId)] as UserData?
+    }
+
+    fun updateCurrentUserData(userData: UserData){
+        detailsDataMap[Pair(UserData::class.simpleName!!, userData.uid)] = userData
+        currentUserId = userData.uid
+    }
 }

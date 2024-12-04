@@ -46,7 +46,7 @@ abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapter() {
             }
         }
 
-        if(CacheManager.userData!!.role == 2){
+        if(CacheManager.getCurrentUserData()!!.role == 2){
             holder.itemView.setOnLongClickListener {
                 toggleItem(holder, item)
                 return@setOnLongClickListener true

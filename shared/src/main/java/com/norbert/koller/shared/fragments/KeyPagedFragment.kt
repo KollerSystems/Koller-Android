@@ -17,7 +17,7 @@ class KeyPagedFragment : PagedFragment() {
     lateinit var viewModel : DetailsViewModel
 
     override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
-        return if(viewModel.ownerUID == CacheManager.userData!!.uid){
+        return if(viewModel.ownerUID == CacheManager.getCurrentUserData()!!.uid){
             Pair("Kulcsok","")
         } else{
             Pair(
@@ -33,7 +33,7 @@ class KeyPagedFragment : PagedFragment() {
             viewModel.ownerUID = requireArguments().getInt("id", -1)
         }
         if(viewModel.ownerUID == -1){
-            viewModel.ownerUID = CacheManager.userData!!.uid
+            viewModel.ownerUID = CacheManager.getCurrentUserData()!!.uid
         }
         super.onViewCreated(view, savedInstanceState)
 

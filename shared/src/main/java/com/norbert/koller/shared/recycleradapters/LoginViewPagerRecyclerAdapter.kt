@@ -130,7 +130,8 @@ abstract class LoginViewPagerRecyclerAdapter : RecyclerView.Adapter<LoginViewPag
 
         binding.buttonPrimary.setOnLongClickListener {
             Toast.makeText(activity, "Demo nézet bejelentkezés nélkül", Toast.LENGTH_SHORT).show()
-            CacheManager.userData = UserData(name = "Béla", class_ = ClassData(class_ = "10.b"))
+            CacheManager.currentUserId = -2
+            CacheManager.detailsDataMap[Pair(UserData::class.simpleName!!, -2)] = UserData(name = "Béla", class_ = ClassData(class_ = "10.b"))
             ApplicationManager.openMain.invoke(activity)
             activity.finish()
 

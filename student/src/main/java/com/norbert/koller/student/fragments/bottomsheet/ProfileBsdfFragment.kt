@@ -31,7 +31,7 @@ class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.Prof
 
             val fragment = OutgoingListFragment()
             val bundle = Bundle()
-            bundle.putInt("id", CacheManager.userData!!.getMainID())
+            bundle.putInt("id", CacheManager.getCurrentUserData()!!.getMainID())
             fragment.arguments = bundle
             (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()

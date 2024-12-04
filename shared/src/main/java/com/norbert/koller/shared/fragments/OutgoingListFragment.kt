@@ -16,7 +16,7 @@ import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 open class OutgoingListFragment() : ListFragment() {
 
     override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
-        return if(getBaseViewModel().ownerUID == CacheManager.userData!!.uid){
+        return if(getBaseViewModel().ownerUID == CacheManager.getCurrentUserData()!!.uid){
             Pair(getString(R.string.user_outgoings),"")
         } else{
             Pair(
@@ -32,7 +32,7 @@ open class OutgoingListFragment() : ListFragment() {
             getBaseViewModel().ownerUID = requireArguments().getInt("id", -1)
         }
         if(getBaseViewModel().ownerUID == -1){
-            getBaseViewModel().ownerUID = CacheManager.userData!!.uid
+            getBaseViewModel().ownerUID = CacheManager.getCurrentUserData()!!.uid
         }
 
         super.onViewCreated(view, savedInstanceState)

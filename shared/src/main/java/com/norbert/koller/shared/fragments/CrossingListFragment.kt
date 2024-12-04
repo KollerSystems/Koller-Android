@@ -16,7 +16,7 @@ import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 class CrossingListFragment() : ListFragment() {
 
     override fun getFragmentTitleAndDescription(): Pair<String?, String?> {
-        return if(getBaseViewModel().ownerUID == CacheManager.userData!!.uid){
+        return if(getBaseViewModel().ownerUID == CacheManager.currentUserId){
             Pair(getString(R.string.port_exits_and_entrances),"")
         } else{
             Pair(
@@ -32,7 +32,7 @@ class CrossingListFragment() : ListFragment() {
             getBaseViewModel().ownerUID = requireArguments().getInt("id", -1)
         }
         if(getBaseViewModel().ownerUID == -1){
-            getBaseViewModel().ownerUID = CacheManager.userData!!.uid
+            getBaseViewModel().ownerUID = CacheManager.currentUserId!!
         }
 
         super.onViewCreated(view, savedInstanceState)
