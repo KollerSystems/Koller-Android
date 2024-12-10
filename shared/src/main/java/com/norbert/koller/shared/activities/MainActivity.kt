@@ -5,6 +5,7 @@ import android.animation.AnimatorSet
 import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.res.Configuration
+import android.graphics.Rect
 import android.graphics.drawable.ColorDrawable
 import android.net.ConnectivityManager
 import android.net.Network
@@ -17,25 +18,21 @@ import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
 import android.view.ViewGroup.VISIBLE
+import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AnimationUtils
 import android.widget.TextView
-import android.widget.ViewSwitcher
 import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.animation.doOnEnd
 import androidx.core.app.ActivityCompat
-import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.LayoutInflaterCompat
-import androidx.core.view.LayoutInflaterCompat.setFactory
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
+import androidx.core.view.marginBottom
 import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
 import androidx.datastore.preferences.core.edit
@@ -47,7 +44,6 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
-import com.norbert.koller.shared.KollerHostApduService
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.api.RetrofitInstance
@@ -56,7 +52,6 @@ import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.FragmentInMainActivity
 import com.norbert.koller.shared.fragments.HomeFragment
-import com.norbert.koller.shared.fragments.StudyGroupTypeListFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -72,13 +67,21 @@ import com.norbert.koller.shared.widgets.CanteenWidgetProvider
 import com.norbert.koller.shared.widgets.NowWidgetProvider
 import com.norbert.koller.shared.widgets.WidgetHelper
 import com.squareup.picasso.Picasso
-import com.stfalcon.imageviewer.common.extensions.animateAlpha
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Calendar
 
 
 abstract class MainActivity : AppCompatActivity() {
+
+    var isKeyboardShowing: Boolean = false
+    fun onKeyboardVisibilityChanged(opened: Boolean) {
+        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+            binding.navigationView.isVisible = !opened
+
+            (binding.cl!!.layoutParams as MarginLayoutParams).updateMargins(bottom = if (opened) 0 else resources.getDimensionPixelSize(R.dimen.header_footer_size))
+        }
+    }
 
     private var nfcAdapter: NfcAdapter? = null
 
@@ -289,6 +292,32 @@ abstract class MainActivity : AppCompatActivity() {
 
         connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
         connectivityManager.requestNetwork(networkRequest, networkCallback)
+
+        rootView.getViewTreeObserver().addOnGlobalLayoutListener(
+            OnGlobalLayoutListener {
+                val r = Rect()
+                rootView.getWindowVisibleDisplayFrame(r)
+                val screenHeight: Int = rootView.getRootView().getHeight()
+
+                // r.bottom is the position above soft keypad or device button.
+                // if keypad is shown, the r.bottom is smaller than that before.
+                val keypadHeight = screenHeight - r.bottom
+
+                Log.d("TAG", "keypadHeight = $keypadHeight")
+                if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
+                    // keyboard is opened
+                    if (!isKeyboardShowing) {
+                        isKeyboardShowing = true
+                        onKeyboardVisibilityChanged(true)
+                    }
+                } else {
+                    // keyboard is closed
+                    if (isKeyboardShowing) {
+                        isKeyboardShowing = false
+                        onKeyboardVisibilityChanged(false)
+                    }
+                }
+            })
     }
 
     fun onOnline(){

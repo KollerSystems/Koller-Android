@@ -51,7 +51,7 @@ class DataStoreManager {
         var userDataStore : MutableMap<Int, DataStore<Preferences>?> = mutableMapOf()
 
         fun getCurrentUserDataStore() : DataStore<Preferences>?{
-            return userDataStore[CacheManager.loginData!!.uid]
+            return userDataStore[CacheManager.loginData?.uid]
         }
 
         fun Context.deleteEveryUserSaveData() {
@@ -136,7 +136,7 @@ class DataStoreManager {
         }
 
         suspend fun readList(context: Context, classOfT : Class<*>) : ExpiringListData?{
-            val json = getCurrentUserDataStore()!!.data.first()[stringPreferencesKey(classOfT.simpleName)]
+            val json = getCurrentUserDataStore()?.data?.first()?.get(stringPreferencesKey(classOfT.simpleName))
             if(json == null) return null
 
             val gson = Gson()
