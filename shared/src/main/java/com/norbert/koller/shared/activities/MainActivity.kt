@@ -75,11 +75,20 @@ import java.util.Calendar
 abstract class MainActivity : AppCompatActivity() {
 
     var isKeyboardShowing: Boolean = false
+    fun inEditMode() : Boolean{
+        return binding.cardUser.alpha == 0f
+    }
     fun onKeyboardVisibilityChanged(opened: Boolean) {
-        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
-            binding.navigationView.isVisible = !opened
 
+        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
             (binding.cl!!.layoutParams as MarginLayoutParams).updateMargins(bottom = if (opened) 0 else resources.getDimensionPixelSize(R.dimen.header_footer_size))
+            binding.cl!!.forceLayout()
+            if(inEditMode()){
+                binding.manageBar.root.isVisible = !opened
+            }
+            else{
+                binding.navigationView.isVisible = !opened
+            }
         }
     }
 
@@ -206,19 +215,23 @@ abstract class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
 
     fun enableEditMode(){
+
         bottomNavigationView().isVisible = false
-        binding.manageBar.root.isVisible = true
         ManageActivity.displayButton(binding.manageBar.button, getString(R.string.remove), R.drawable.delete_forever)
         binding.cardUser.isVisible = false
         binding.cardUser.isClickable = false
         binding.cardUser.isEnabled = false
         binding.cardUser.alpha = 0f
         binding.buttonBack.setIconResource(R.drawable.close)
+
+        if(isKeyboardShowing) return
+
+        binding.manageBar.root.isVisible = true
     }
 
     fun disableEditMode(){
         onCancelEditMode = null
-        bottomNavigationView().isVisible = true
+
         binding.manageBar.root.isVisible = false
         binding.cardUser.isVisible = true
         binding.cardUser.isClickable = true
@@ -226,6 +239,8 @@ abstract class MainActivity : AppCompatActivity() {
         binding.cardUser.alpha = 1f
         binding.buttonBack.setIconResource(R.drawable.arrow_back)
         setToolbarTitle((supportFragmentManager.fragments[0] as FragmentInMainActivity).getFragmentTitle())
+        if(isKeyboardShowing) return
+        bottomNavigationView().isVisible = true
     }
 
     private lateinit var connectivityManager: ConnectivityManager
