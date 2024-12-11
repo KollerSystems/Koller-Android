@@ -223,6 +223,11 @@ abstract class ListFragment() : SearchFragment() {
         button.setOnClickListener {
             onClick.invoke()
         }
+        getMainActivity().onEditModeChange = {
+            button.isEnabled = !it
+            button.alpha = if (it) 0.25f else 1f
+
+        }
         return button
     }
 

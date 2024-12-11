@@ -75,6 +75,7 @@ import java.util.Calendar
 abstract class MainActivity : AppCompatActivity() {
 
     var isKeyboardShowing: Boolean = false
+    var onEditModeChange: ((Boolean) -> Unit)? = null
     fun inEditMode() : Boolean{
         return binding.cardUser.alpha == 0f
     }
@@ -216,6 +217,7 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun enableEditMode(){
 
+        onEditModeChange?.invoke(true)
         bottomNavigationView().isVisible = false
         ManageActivity.displayButton(binding.manageBar.button, getString(R.string.remove), R.drawable.delete_forever)
         binding.cardUser.isVisible = false
@@ -229,7 +231,10 @@ abstract class MainActivity : AppCompatActivity() {
         binding.manageBar.root.isVisible = true
     }
 
+
     fun disableEditMode(){
+
+        onEditModeChange?.invoke(false)
         onCancelEditMode = null
 
         binding.manageBar.root.isVisible = false
