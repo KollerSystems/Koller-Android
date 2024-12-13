@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <com.norbert.koller.shared.customviews.DescriptionView
+        app:icon="@drawable/out"
+        app:name="Irány"
+        app:detail="Ki"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.norbert.koller.shared.customviews.DescriptionView
+        app:icon="@drawable/timer"
+        app:name="Módja"
+        app:detail="Időben"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <com.norbert.koller.shared.customviews.DescriptionButton
+        app:icon="@drawable/wave"
+        app:name="Kimenő"
+        app:detail="Bevásárlás"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/text_container_margin"
+        layout="@layout/content_message_footer"/>
+</LinearLayout>
