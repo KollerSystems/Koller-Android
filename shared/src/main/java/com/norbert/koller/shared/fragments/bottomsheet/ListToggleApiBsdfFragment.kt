@@ -21,6 +21,7 @@ import com.norbert.koller.shared.api.ApiDataObject
 import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.data.ListToggleItem
+import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -40,6 +41,8 @@ import retrofit2.Response
 class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
 
     lateinit var pagingViewModel : ListViewModel
+
+    //TODO: Úgy szar, ahogy van
 
     fun setup(activity : AppCompatActivity, apiDataObject: ApiDataObject, alreadyChecked : MutableSet<Int>? = null, title: String? = null, collapseText: Boolean = false) : ListBsdfFragment{
         setup(activity, title, collapseText)
@@ -153,13 +156,15 @@ class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
             val displayStringList: ArrayList<String> = arrayListOf()
 
             for (item in pagingViewModel.selectedItems) {
-                displayStringList.add(CacheManager.detailsDataMap[Pair(pagingViewModel.apiDataObject.getDataType().simpleName, item)]!!.getTitle())
+
+                displayStringList.add(CacheManager.getDetailsDataMapValue(pagingViewModel.apiDataObject!!.getDataType().simpleName, item)!!.getTitle())
             }
 
             getValuesOnFinish!!.invoke(pagingViewModel.selectedItems, displayStringList)
         }
 
         pagingViewModel.selectedItems = mutableSetOf()
+        pagingViewModel.apiDataObject = null
         super.onCancel(dialog)
     }
 }

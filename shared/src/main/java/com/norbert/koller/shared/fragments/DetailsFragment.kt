@@ -112,10 +112,13 @@ abstract class DetailsFragment() : FragmentInMainActivity() {
                 viewModel.id = requireArguments().getInt("id", -1)
 
                 val key = Pair(getDataType().simpleName, viewModel.id!!)
-                if (CacheManager.detailsDataMap.containsKey(key)) {
 
-                    val detailsData = CacheManager.getDetailsDataMap(key)
-                    if (!detailsData!!.isUnexpired(getTimeLimit())) {
+                var detailsData = CacheManager.getDetailsDataMapValue(key)
+
+                if (detailsData != null) {
+
+
+                    if (!detailsData.isUnexpired(getTimeLimit())) {
                         refresh()
                     }
 
@@ -127,12 +130,12 @@ abstract class DetailsFragment() : FragmentInMainActivity() {
                 val loadingOverlay = createLoadingOverlay()
 
                 lifecycleScope.launch {
-                    val baseData = DataStoreManager.readDetail(requireContext(), viewModel.id!!, getDataType())
-                    if(baseData != null){
-                        viewModel.response.value = baseData
+                    detailsData = DataStoreManager.readDetail(requireContext(), viewModel.id!!, getDataType())
+                    if(detailsData != null){
+                        viewModel.response.value = detailsData
                         loadingOverlay.setState(DetailsViewModel.NONE)
                         onFinishLoading()
-                        if(!baseData.isUnexpired(getTimeLimit())){
+                        if(!detailsData!!.isUnexpired(getTimeLimit())){
                             refresh()
                         }
                         return@launch

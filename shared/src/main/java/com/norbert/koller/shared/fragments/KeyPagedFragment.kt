@@ -21,7 +21,7 @@ class KeyPagedFragment : PagedFragment() {
             Pair("Kulcsok","")
         } else{
             Pair(
-                (CacheManager.detailsDataMap[Pair(UserData::class.java.simpleName, viewModel.ownerUID)] as UserData).name,
+                (CacheManager.getDetailsDataMapValue(UserData::class.simpleName!!, viewModel.ownerUID) as UserData).name,
                 "Kulcsok"
             )
         }

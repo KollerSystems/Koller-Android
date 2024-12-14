@@ -76,10 +76,13 @@ class DataStoreManager {
 
             getCurrentUserDataStore()?.edit {
                 Log.d("MENTÉS START","")
-                for ((key, baseData) in CacheManager.detailsDataMap){
-                    val json = gson.toJson(baseData)
+                for (categories in CacheManager.detailsDataMap){
+                    for(values in categories.value){
+                        val json = gson.toJson(values.value)
 
-                        it[stringPreferencesKey("${key.first}:${key.second}")] = json
+                        it[stringPreferencesKey("${categories.key}:${values.key}")] = json
+
+                    }
 
 
                 }

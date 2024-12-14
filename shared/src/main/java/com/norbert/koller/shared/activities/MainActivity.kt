@@ -44,6 +44,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
+import com.norbert.koller.shared.CacheActivity
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.AuthenticationManager
 import com.norbert.koller.shared.api.RetrofitInstance
@@ -469,6 +470,12 @@ abstract class MainActivity : AppCompatActivity() {
 
             dropAllFragments()
 
+        }
+
+        binding.cardUser.setOnLongClickListener{
+            ApplicationManager.openActivity(this, CacheActivity::class.java)
+
+            return@setOnLongClickListener true
         }
 
         binding.cardUser.setOnClickListener{

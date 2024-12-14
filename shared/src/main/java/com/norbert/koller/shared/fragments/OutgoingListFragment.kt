@@ -20,7 +20,7 @@ open class OutgoingListFragment() : ListFragment() {
             Pair(getString(R.string.user_outgoings),"")
         } else{
             Pair(
-                (CacheManager.detailsDataMap[Pair(UserData::class.java.simpleName, getBaseViewModel().ownerUID)] as UserData).name,
+                (CacheManager.getDetailsDataMapValue(UserData::class.simpleName!!, getBaseViewModel().ownerUID) as UserData).name,
                 getString(R.string.user_outgoings)
             )
         }

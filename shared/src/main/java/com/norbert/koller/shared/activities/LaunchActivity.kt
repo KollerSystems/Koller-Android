@@ -96,7 +96,7 @@ class LaunchActivity : AppCompatActivity() {
 
                 if (json != null) {
                     val userData = Gson().fromJson(json, UserData::class.java)
-                    CacheManager.detailsDataMap[Pair(UserData::class.simpleName!!, userData.uid)] = userData
+                    CacheManager.setDetailsDataMapValue(UserData::class.simpleName!!, userData.uid, userData)
                     CacheManager.currentUserId = userData.uid
                     ApplicationManager.openMain.invoke(this@LaunchActivity)
                 }

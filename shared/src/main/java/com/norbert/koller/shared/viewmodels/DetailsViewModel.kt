@@ -28,7 +28,7 @@ class DetailsViewModel : ViewModel() {
 
     fun updateValues(it : BaseData, dataType: Class<*>){
         it.saveReceivedTime()
-        CacheManager.detailsDataMap[Pair(dataType.simpleName, it.getMainID())] = it
+        CacheManager.setDetailsDataMapValue(dataType.simpleName, it.getMainID(), it)
         response.value = it
     }
 

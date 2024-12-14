@@ -65,9 +65,10 @@ open class UserListFragment() : ListFragment() {
             ListToggleItem(getString(R.string.teacher), null, null, 2)
         ))
 
-        addSortingChip("Class.ID", R.string.class_, ApiDataObjectClass())
 
         addSortingChip("Group.ID", R.string.group, ApiDataObjectGroup(), true)
+
+        addSortingChip("Class.ID", R.string.class_, ApiDataObjectClass())
 
         addSearchbar("Name")
     }

@@ -60,7 +60,7 @@ open class PagingSource(val context: Context, val viewModel: ListViewModel) : Pa
 
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-            RetrofitInstance.communicate({viewModel.apiDataObject.getApiResponse(params.loadSize, offset, getSort(), getFilters())}, {response ->
+            RetrofitInstance.communicate({viewModel.apiDataObject!!.getApiResponse(params.loadSize, offset, getSort(), getFilters())}, {response ->
                 pagingSource = onSuccess(response, offset)
                 viewModel.onRefreshSuccess()
             }) { error, errorBody ->
@@ -84,22 +84,22 @@ open class PagingSource(val context: Context, val viewModel: ListViewModel) : Pa
 
             if (offset <= 0 && areParametersDefault()) {
 
-                if (CacheManager.listDataMap.containsKey(viewModel.apiDataObject.getDataType().simpleName)) {
-                    if((CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName]!!.isValid(context, viewModel.apiDataObject.getTimeLimit()))){
+                if (CacheManager.listDataMap.containsKey(viewModel.apiDataObject!!.getDataType().simpleName)) {
+                    if((CacheManager.listDataMap[viewModel.apiDataObject!!.getDataType().simpleName]!!.isValid(context, viewModel.apiDataObject!!.getTimeLimit()))){
                         viewModel.onAppendSuccess()
-                        return formatRecievedValues(CacheManager.getListDataMapWithValues(context, viewModel.apiDataObject.getDataType()), 0)
+                        return formatRecievedValues(CacheManager.getListDataMapWithValues(context, viewModel.apiDataObject!!.getDataType()), 0)
                     }
                 }
 
                 viewModel.state = ApiHelper.STATE_LOADING
 
-                val baseDataList = DataStoreManager.readList(context, viewModel.apiDataObject.getDataType())
+                val baseDataList = DataStoreManager.readList(context, viewModel.apiDataObject!!.getDataType())
 
                 if (baseDataList != null) {
 
-                    if(baseDataList.isValid(context, viewModel.apiDataObject.getTimeLimit())){
-                        CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName] = baseDataList
-                        val response = CacheManager.getListDataMapWithValues(context, viewModel.apiDataObject.getDataType())
+                    if(baseDataList.isValid(context, viewModel.apiDataObject!!.getTimeLimit())){
+                        CacheManager.listDataMap[viewModel.apiDataObject!!.getDataType().simpleName] = baseDataList
+                        val response = CacheManager.getListDataMapWithValues(context, viewModel.apiDataObject!!.getDataType())
                         viewModel.onAppendSuccess()
                         return formatRecievedValues(response, 0)
                     }
@@ -113,7 +113,7 @@ open class PagingSource(val context: Context, val viewModel: ListViewModel) : Pa
 
             delay(Random.nextLong((APIInterface.loadingDelayFrom * 1000).toLong(), (APIInterface.loadingDelayTo * 1000 + 1).toLong()))
 
-            RetrofitInstance.communicate({viewModel.apiDataObject.getApiResponse(params.loadSize, offset, getSort(), getFilters())}, {response ->
+            RetrofitInstance.communicate({viewModel.apiDataObject!!.getApiResponse(params.loadSize, offset, getSort(), getFilters())}, {response ->
                 pagingSource = onSuccess(response, offset)
                 viewModel.onAppendSuccess()
             }) { error, errorBody ->
@@ -134,21 +134,22 @@ open class PagingSource(val context: Context, val viewModel: ListViewModel) : Pa
 
         if(response.isNotEmpty()) {
 
-            if ((!CacheManager.listDataMap.containsKey(viewModel.apiDataObject.getDataType().simpleName) || offset == 0) && areParametersDefault()) {
-                CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName] = ExpiringListData()
-                CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName]!!.saveReceivedTime()
+            if ((!CacheManager.listDataMap.containsKey(viewModel.apiDataObject!!.getDataType().simpleName) || offset == 0) && areParametersDefault()) {
+                CacheManager.listDataMap[viewModel.apiDataObject!!.getDataType().simpleName] = ExpiringListData()
+                CacheManager.listDataMap[viewModel.apiDataObject!!.getDataType().simpleName]!!.saveReceivedTime()
             }
 
             for(baseData in response){
-                if(CacheManager.detailsDataMap.containsKey(Pair(viewModel.apiDataObject.getDataType().simpleName, baseData.getMainID()))){
-                    CacheManager.detailsDataMap[Pair(viewModel.apiDataObject.getDataType().simpleName, baseData.getMainID())]!!.updateValues(baseData)
+                val baseDataInCache = CacheManager.getDetailsDataMapValue(viewModel.apiDataObject!!.getDataType().simpleName, baseData.getMainID())
+                if(baseDataInCache != null){
+                    baseDataInCache.updateValues(baseData)
                 }
                 else{
-                    CacheManager.detailsDataMap[Pair(viewModel.apiDataObject.getDataType().simpleName, baseData.getMainID())] = baseData
+                    CacheManager.setDetailsDataMapValue(viewModel.apiDataObject!!.getDataType().simpleName, baseData.getMainID(), baseData)
                 }
 
                 if(areParametersDefault()){
-                    CacheManager.listDataMap[viewModel.apiDataObject.getDataType().simpleName]!!.list.add(baseData.getMainID())
+                    CacheManager.listDataMap[viewModel.apiDataObject!!.getDataType().simpleName]!!.list.add(baseData.getMainID())
                 }
 
             }

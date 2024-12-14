@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.helpers
 
 import android.content.ContextWrapper
+import android.content.SyncResult
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.util.Pair
@@ -10,6 +11,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ApiDataObject
+import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.data.ListToggleItem
@@ -218,15 +220,47 @@ fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel
 fun Chip.createAndSetChipText(viewModel: ListApiComplexViewModel, filterName: String, classOfT: Class<*>, localizedFilterId : Int){
     val strings : ArrayList<String> = arrayListOf()
 
-    viewModel.viewModelScope.launch {
-        for (id in ChipHelper.getFilterValue(viewModel)[filterName]!!){
-            for (elements in CacheManager.getListDataMapWithValues(context, classOfT)){
-                if(id == elements.getMainID()){
-                    strings.add(elements.getTitle())
+    if(ChipHelper.getFilterValue(viewModel)[filterName]!!.isNotEmpty()){
+        viewModel.viewModelScope.launch {
+
+            val requiredButNotFoundYetList = ChipHelper.getFilterValue(viewModel)[filterName]!!
+
+            val mutableMap = CacheManager.detailsDataMap[classOfT.simpleName]
+            if(mutableMap != null){
+
+                for (id in ChipHelper.getFilterValue(viewModel)[filterName]!!){
+
+                    val baseData = mutableMap[id]
+                    if(baseData != null){
+                        strings.add(baseData.getTitle())
+                        requiredButNotFoundYetList.remove(id)
+                    }
                 }
             }
+
+            if(requiredButNotFoundYetList.isNotEmpty()){
+                setChip(context.getString(R.string.loading), localizedFilterId, viewModel, filterName)
+                for(id in requiredButNotFoundYetList){
+                    val baseData = DataStoreManager.readDetail(context, id, classOfT)
+                    if(baseData != null){
+                        CacheManager.setDetailsDataMapValue(classOfT::class.simpleName!!, id, baseData)
+                        strings.add(baseData.getTitle())
+                        requiredButNotFoundYetList.remove(id)
+                    }
+                }
+            }
+            
+            if(requiredButNotFoundYetList.isNotEmpty()){
+                /*TODO: itt most vagy valami mód le kell kérni a szerverről az összes nem megtaláltat,
+                vagy csak szimplán törlöm a filterből a fenébe.
+                De mivel ide szinte csak hibából kifojólag lehet eljutni, nem kell túl komolyan venni.*/
+            }
+
+            setChip(arrayToString(strings), localizedFilterId, viewModel, filterName)
         }
-        setChip(arrayToString(strings), localizedFilterId, viewModel, filterName)
+    }
+    else{
+        setChip("", localizedFilterId, viewModel, filterName)
     }
 }
 
@@ -259,21 +293,7 @@ fun Chip.handleValuesOnFinish(fragmentManager : FragmentManager, dialog : ListBs
 fun Chip.connectToCheckBoxList(fragmentManager: FragmentManager, filterName : String, localizedFilterId : Int, apiDataObject: ApiDataObject, viewModel: ListApiComplexViewModel, collapseText : Boolean){
 
     if(ChipHelper.getFilterValue(viewModel).containsKey(filterName)){
-
-         viewModel.viewModelScope.launch {
-            if(CacheManager.listDataMap.containsKey(apiDataObject.getDataType().simpleName)){
-                createAndSetChipText(viewModel, filterName, apiDataObject.getDataType(), localizedFilterId)
-            }
-            else{
-                setChip(context.getString(R.string.loading), localizedFilterId, viewModel, filterName)
-
-                val baseDataList = DataStoreManager.readList(context, apiDataObject.getDataType())
-
-                CacheManager.listDataMap[apiDataObject.getDataType().simpleName] = baseDataList!!
-                createAndSetChipText(viewModel, filterName, apiDataObject.getDataType(), localizedFilterId)
-
-            }
-        }
+        createAndSetChipText(viewModel, filterName, apiDataObject.getDataType(), localizedFilterId)
     }
     else{
         resetSimpleChip(context.getString(localizedFilterId))

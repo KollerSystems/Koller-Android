@@ -19,8 +19,9 @@ class CrossingListFragment() : ListFragment() {
         return if(getBaseViewModel().ownerUID == CacheManager.currentUserId){
             Pair(getString(R.string.port_exits_and_entrances),"")
         } else{
+
             Pair(
-                (CacheManager.detailsDataMap[Pair(UserData::class.java.simpleName, getBaseViewModel().ownerUID)] as UserData).name,
+                (CacheManager.getDetailsDataMapValue(UserData::class.simpleName!!, getBaseViewModel().ownerUID) as UserData).name,
                 getString(R.string.port_exits_and_entrances)
             )
         }

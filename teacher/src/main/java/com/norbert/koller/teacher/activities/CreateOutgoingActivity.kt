@@ -43,7 +43,8 @@ class CreateOutgoingActivity() : ManageActivity() {
         if(savedInstanceState == null){
             val data = OutgoingData()
             if(uid != -1){
-                data.addresses = arrayListOf(CacheManager.detailsDataMap[Pair(UserData::class.java.simpleName, uid)] as UserData)
+
+                data.addresses = arrayListOf(CacheManager.getDetailsDataMapValue(UserData::class.java.simpleName, uid) as UserData)
             }
             viewModel.response.value = data
 

@@ -18,13 +18,10 @@ object CacheManager {
 
         val list = mutableListOf<BaseData>()
         for (listData in listDataMap[classOfT.simpleName]!!.list){
-            val baseData : BaseData
-            if(detailsDataMap.containsKey(Pair(classOfT.simpleName, listData))){
-                baseData = detailsDataMap[Pair(classOfT.simpleName, listData)]!!
-            }
-            else{
+            var baseData = getDetailsDataMapValue(classOfT.simpleName, listData)
+            if(baseData == null){
                 baseData = DataStoreManager.readDetail(context, listData, classOfT)!!
-                detailsDataMap[Pair(classOfT.simpleName, listData)] = baseData
+                setDetailsDataMapValue(classOfT.simpleName, listData, baseData)
             }
             list.add(baseData)
         }
@@ -32,14 +29,14 @@ object CacheManager {
         return list
     }
 
-    var detailsDataMap : MutableMap<Pair<String, Int>, BaseData> = mutableMapOf()
+    var detailsDataMap : MutableMap<String, (MutableMap<Int, BaseData>)> = mutableMapOf()
 
-    fun getDetailsDataMap(category : String, id : Int) : BaseData?{
-        return getDetailsDataMap(Pair(category, id))
+    fun getDetailsDataMapValue(category : String, id : Int) : BaseData?{
+        return getDetailsDataMapValue(Pair(category, id))
     }
 
-    fun getDetailsDataMap(pair : Pair<String, Int>) : BaseData?{
-        val baseData = detailsDataMap[pair]
+    fun getDetailsDataMapValue(pair : Pair<String, Int>) : BaseData?{
+        val baseData = detailsDataMap[pair.first]?.get(pair.second)
 
         Log.d("CM:GetDetails", Gson().toJson(baseData))
         return baseData
@@ -49,12 +46,19 @@ object CacheManager {
 
     var currentUserId: Int? = null
 
+    fun setDetailsDataMapValue(category : String, id : Int, baseData: BaseData){
+        if(!detailsDataMap.containsKey(category)){
+            detailsDataMap[category] = mutableMapOf()
+        }
+        detailsDataMap[category]!![id] = baseData
+    }
+
     fun getCurrentUserData() : UserData?{
-        return detailsDataMap[Pair(UserData::class.simpleName, currentUserId)] as UserData?
+        return detailsDataMap[UserData::class.simpleName]?.get(currentUserId) as UserData?
     }
 
     fun updateCurrentUserData(userData: UserData){
-        detailsDataMap[Pair(UserData::class.simpleName!!, userData.uid)] = userData
+        detailsDataMap[UserData::class.simpleName!!]!![userData.uid] = userData
         currentUserId = userData.uid
     }
 }

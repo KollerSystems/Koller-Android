@@ -144,7 +144,7 @@ abstract class LoginActivity : AppCompatActivity() {
                 CacheManager.listDataMap = mutableMapOf()
             }
             it.saveReceivedTime()
-            CacheManager.detailsDataMap[Pair(UserData::class.simpleName!!, it.uid)] = it
+            CacheManager.setDetailsDataMapValue(UserData::class.simpleName!!, it.uid, it)
             CacheManager.currentUserId = it.uid
             if(!userDataStore.containsKey(it.uid)){
                 createDynamicUserDataStore(CacheManager.loginData!!.uid)
