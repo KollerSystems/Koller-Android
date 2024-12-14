@@ -1,6 +1,8 @@
 package com.norbert.koller.shared.managers
 
 import android.content.Context
+import android.util.Log
+import com.google.gson.Gson
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ExpiringListData
 import com.norbert.koller.shared.data.LoginTokensData
@@ -31,6 +33,17 @@ object CacheManager {
     }
 
     var detailsDataMap : MutableMap<Pair<String, Int>, BaseData> = mutableMapOf()
+
+    fun getDetailsDataMap(category : String, id : Int) : BaseData?{
+        return getDetailsDataMap(Pair(category, id))
+    }
+
+    fun getDetailsDataMap(pair : Pair<String, Int>) : BaseData?{
+        val baseData = detailsDataMap[pair]
+
+        Log.d("CM:GetDetails", Gson().toJson(baseData))
+        return baseData
+    }
 
     var loginData : LoginTokensData? = null
 

@@ -111,15 +111,15 @@ abstract class DetailsFragment() : FragmentInMainActivity() {
             if (viewModel.id == null) {
                 viewModel.id = requireArguments().getInt("id", -1)
 
-                val key = Pair(getDataType().simpleName, viewModel.id)
+                val key = Pair(getDataType().simpleName, viewModel.id!!)
                 if (CacheManager.detailsDataMap.containsKey(key)) {
 
-                    val detailsData = CacheManager.detailsDataMap[key]
+                    val detailsData = CacheManager.getDetailsDataMap(key)
                     if (!detailsData!!.isUnexpired(getTimeLimit())) {
                         refresh()
                     }
 
-                    viewModel.response.value = CacheManager.detailsDataMap[key]!!
+                    viewModel.response.value = detailsData
                     onFinishLoading()
                     return
                 }

@@ -20,7 +20,7 @@ class DetailsViewModel : ViewModel() {
         const val NONE = 2
     }
 
-    var state : Int = LOADING
+    var state : Int = NONE
 
     var id: Int? = null
     var response = MutableLiveData<Any>()

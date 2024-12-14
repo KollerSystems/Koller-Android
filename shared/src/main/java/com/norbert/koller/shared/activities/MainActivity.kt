@@ -323,7 +323,6 @@ abstract class MainActivity : AppCompatActivity() {
                 // if keypad is shown, the r.bottom is smaller than that before.
                 val keypadHeight = screenHeight - r.bottom
 
-                Log.d("TAG", "keypadHeight = $keypadHeight")
                 if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
                     // keyboard is opened
                     if (!isKeyboardShowing) {
