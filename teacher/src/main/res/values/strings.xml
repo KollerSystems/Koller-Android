@@ -31,4 +31,5 @@
     <string name="from_number">From number</string>
     <string name="to_number">To number</string>
     <string name="set_me_as_teacher">Set me as teacher</string>
+    <string name="create_places">Create places</string>
 </resources>

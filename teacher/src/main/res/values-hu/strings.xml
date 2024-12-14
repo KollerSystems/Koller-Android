@@ -32,4 +32,5 @@
     <string name="from_number">Számtól</string>
     <string name="to_number">Számig</string>
     <string name="set_me_as_teacher">Magam beállítása tanárnak</string>
+    <string name="create_places">Helyiségek létrehozása</string>
 </resources>

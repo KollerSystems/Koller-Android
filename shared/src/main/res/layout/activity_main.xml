@@ -177,7 +177,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="?attr/colorErrorContainer"
-        app:drawableStart="@drawable/no_internet"
+        app:drawableStartCompat="@drawable/no_internet"
         android:drawablePadding="@dimen/spacing"
         android:padding="@dimen/spacing"
         android:text="@string/no_internet"

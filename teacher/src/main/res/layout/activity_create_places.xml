@@ -15,57 +15,59 @@
         android:layout_height="wrap_content"
         android:text="@string/naming" />
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:baselineAligned="false"
-        android:orientation="horizontal">
+        android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_from_number"
-            style="@style/CardTextInputTop"
-            android:layout_width="0dp"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/text_container_half_margin"
-            android:layout_marginBottom="@dimen/text_container_margin"
-            android:layout_weight="1"
-            android:hint="@string/from_number"
-            app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
-            app:boxCornerRadiusTopEnd="0dp">
+            android:baselineAligned="false"
+            android:orientation="horizontal">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_from_number"
+                style="@style/CardTextInputTop"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number|numberSigned"
-                android:maxLength="5" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginEnd="@dimen/text_container_half_margin"
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:layout_weight="1"
+                android:hint="@string/from_number"
+                app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+                app:boxCornerRadiusTopEnd="0dp">
 
-        <TextView
-            android:gravity="center_vertical"
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="0"
-            android:text="-"
-            tools:ignore="HardcodedText" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number|numberSigned"
+                    android:maxLength="5" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_to_number"
-            style="@style/CardTextInputTopRight"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/text_container_margin"
-            android:layout_weight="1"
-            android:hint="@string/to_number"
-            app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_to_number"
+                style="@style/CardTextInputTopRight"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:inputType="number|numberSigned"
-                android:maxLength="5" />
-        </com.google.android.material.textfield.TextInputLayout>
-    </LinearLayout>
+                android:layout_marginBottom="@dimen/text_container_margin"
+                android:layout_weight="1"
+                android:hint="@string/to_number"
+                app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="number|numberSigned"
+                    android:maxLength="5" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="25dp"
+            android:layout_height="6dp"
+            android:layout_gravity="center"
+            android:background="@drawable/connection_line" />
+    </FrameLayout>
 
     <TextView
         android:id="@+id/textView12"
