@@ -154,25 +154,29 @@
                 android:id="@+id/btn_remove_current_user_save_data"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Current user" />
+                android:text="Current user"
+                tools:ignore="HardcodedText" />
 
                 <Button
                     android:id="@+id/btn_remove_every_user_save_data"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:text="Every user" />
+                    android:text="Every user"
+                    tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/btn_remove_tips_save_data"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Tips" />
+                android:text="Tips"
+                tools:ignore="HardcodedText" />
 
             <Button
                 android:id="@+id/btn_remove_login_save_data"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text="Login" />
+                android:text="Login"
+                tools:ignore="HardcodedText" />
             </com.google.android.flexbox.FlexboxLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>

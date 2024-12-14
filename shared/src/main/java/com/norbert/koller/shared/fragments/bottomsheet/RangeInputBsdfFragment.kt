@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.fragments.bottomsheet
 
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -26,6 +27,7 @@ class RangeInputBsdfFragment(val defaultRange : Pair<Int?, Int?>) : BottomSheetD
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

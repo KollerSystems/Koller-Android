@@ -12,6 +12,7 @@ import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.formatDate
 import com.norbert.koller.shared.recycleradapters.CanteenRecyclerAdapter
 import java.util.Calendar
+import java.util.Locale
 
 
 class CanteenListRecyclerAdapter(private val context: Context, private val canteenDataList: java.util.ArrayList<CanteenData>) : RemoteViewsService.RemoteViewsFactory {
@@ -64,7 +65,8 @@ class CanteenListRecyclerAdapter(private val context: Context, private val cante
     fun textView(i : Int) : RemoteViews {
         val dateViews = RemoteViews(context.packageName, R.layout.text_view_date)
 
-        dateViews.setTextViewText(R.id.text, canteenDataList[i].date.formatDate(DateTimeHelper.monthDay).capitalize())
+        dateViews.setTextViewText(R.id.text, canteenDataList[i].date.formatDate(DateTimeHelper.monthDay).capitalize(
+            Locale.ROOT))
 
         return dateViews
     }

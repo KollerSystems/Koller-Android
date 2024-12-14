@@ -17,7 +17,9 @@
         android:divider="@drawable/divider"
         android:listSelector="@android:color/transparent"
         android:orientation="vertical"
-        android:padding="@dimen/card_padding_half"
+        android:paddingHorizontal="@dimen/card_padding_half"
+        android:paddingTop="@dimen/card_full_margin"
+        android:paddingBottom="@dimen/card_padding_half"
         android:scrollbarStyle="outsideOverlay"
         tools:listitem="@layout/widget_item_canteen" />
 

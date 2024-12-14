@@ -1,5 +1,6 @@
 package com.norbert.koller.teacher.recycleradapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.activities.LoginActivity
@@ -9,6 +10,7 @@ import com.norbert.koller.teacher.R
 
 class LoginViewPagerRecyclerAdapter : LoginViewPagerRecyclerAdapter() {
 
+    @SuppressLint("SetTextI18n")
     override fun passwordHolder(
         binding: ContentActivityLoginBodyContentBinding,
         activity: LoginActivity

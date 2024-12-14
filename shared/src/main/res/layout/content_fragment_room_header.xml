@@ -42,8 +42,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
-            android:text="2. emelet"
-            android:textAppearance="@style/Text" />
+            tools:text="2. emelet"
+            android:text="-"
+            android:textAppearance="@style/Text"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/text_first_dot"
@@ -60,8 +62,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingHorizontal="8dp"
-            android:text="B szárny"
-            android:textAppearance="@style/Text" />
+            tools:text="B szárny"
+            android:text="-"
+            android:textAppearance="@style/Text"
+            tools:ignore="HardcodedText" />
 
         <TextView
             android:id="@+id/text_second_dot"
@@ -79,7 +83,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:paddingHorizontal="8dp"
-            tools:text="F3" />
+            android:text="-"
+            tools:text="F3"
+            tools:ignore="HardcodedText" />
     </LinearLayout>
 
     <TextView

@@ -431,7 +431,7 @@
     <string name="enable_2fa">2FA engedélyezése</string>
     <string name="check">Ellenőrzés</string>
     <string name="now_widget_fake_title">15:45-ig kint maradhatsz</string>
-    <string name="now_widget_fake_description">Van még %1$svisszaérni</string>
+    <string name="now_widget_fake_description">Van még 2 óra 12 perced visszaérni</string>
     <string name="enter_current_password">Add meg a jelenlegi jelszavad a folytatáshoz</string>
     <string name="fake_date_1">Augusztus 25.</string>
     <string name="fake_date_2">Augusztus 26.</string>
@@ -475,4 +475,8 @@
     <string name="create">Létrehozás</string>
     <string name="residents">Lakók</string>
     <string name="keys">Kulcsok</string>
+    <string name="location">Elhelyezkedés</string>
+    <string name="validity">Érvényesség</string>
+    <string name="only_this_week">Csak ezen a héten</string>
+    <string name="expiration_date">Lejárati dátum</string>
 </resources>

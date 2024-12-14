@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import android.view.View
@@ -27,6 +28,7 @@ interface ProgramFragmentInterface {
         toGeneralButton = view.findViewById(com.norbert.koller.shared.R.id.button)
     }
 
+    @SuppressLint("SetTextI18n")
     fun setViews(response : ProgramData, context : Context){
         ncwDate.getTextDescription().text = response.date.formatDate(DateTimeHelper.monthDay)
         ncwTime.getTextDescription().text = ApplicationManager.createClassesText(context, response.lesson, response.length)

@@ -9,6 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:clipChildren="false"
         android:clipToPadding="false"
         android:elevation="50dp"
@@ -30,14 +31,16 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/squircle"
                 android:text="5"
-                android:textColor="@android:color/white" />
+                android:textColor="@android:color/white"
+                tools:ignore="HardcodedText" />
 
             <ImageView
                 android:id="@+id/img_checked"
                 app:srcCompat="@drawable/check_box"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone" />
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
 
         </FrameLayout>
 

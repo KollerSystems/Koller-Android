@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -71,6 +72,7 @@ class ListToggleApiRecyclerAdapter(val bottomSheet : ListToggleApiBsdfFragment) 
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
 
         when (getItemViewType(position)) {

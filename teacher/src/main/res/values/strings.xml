@@ -27,4 +27,8 @@
     <string name="every_four_weeks">Every four weeks</string>
     <string name="wrong_role">This user is a student. Please download Koller for Students to login or login with a different user.</string>
     <string name="add_outgoing">Add outgoing</string>
+    <string name="naming">Name</string>
+    <string name="from_number">From number</string>
+    <string name="to_number">To number</string>
+    <string name="set_me_as_teacher">Set me as teacher</string>
 </resources>

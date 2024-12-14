@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView2"
-    tools:context="com.norbert.koller.student.fragments.RegisterSchoolFragment"
         style="@style/FullMainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

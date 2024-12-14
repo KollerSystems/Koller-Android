@@ -32,14 +32,16 @@ tools:context=".activities.EditRoomActivity">
             style="@style/Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="F3"
-            android:textAlignment="center" />
+            tools:text="F3"
+            android:text="-"
+            android:textAlignment="center"
+            tools:ignore="HardcodedText" />
 
         <TextView
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Megnevezés" />
+            android:text="@string/naming" />
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CardTextInputSingle"
             android:layout_width="match_parent"
@@ -62,7 +64,7 @@ tools:context=".activities.EditRoomActivity">
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Elhelyezkedés" />
+            android:text="@string/location" />
 
         <com.google.android.material.card.MaterialCardView
             style="@style/CardTop"
@@ -84,7 +86,7 @@ tools:context=".activities.EditRoomActivity">
                     style="@style/TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Emelet">
+                    android:hint="@string/floor_level">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
@@ -116,7 +118,7 @@ tools:context=".activities.EditRoomActivity">
                     style="@style/TextInput"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Szárny">
+                    android:hint="@string/annexe">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"

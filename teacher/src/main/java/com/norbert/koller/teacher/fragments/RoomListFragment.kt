@@ -20,7 +20,7 @@ class RoomListFragment() : com.norbert.koller.shared.fragments.RoomListFragment(
         addButton("Helyiségek létrehozása"){
             val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
                 ListCardItem(
-                    getString(R.string.room),
+                    getString(R.string.rooms),
                     null,
                     AppCompatResources.getDrawable(requireContext(), R.drawable.room), {
                         val intent = Intent(requireContext(), CreatePlacesActivity::class.java)

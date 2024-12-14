@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.recycleradapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -25,6 +26,7 @@ abstract class RoomTidinessRecyclerAdapter() : EditableApiRecyclerAdapter() {
         return holder.itemBinding.flIconHolder
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
         super.onBindItemViewHolder(holder, item, position)
 

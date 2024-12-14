@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.customviews
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.util.AttributeSet
@@ -34,6 +35,7 @@ class CardButton(context: Context, attrs: AttributeSet) : Card(context, attrs) {
         binding = ButtonCardBinding.inflate(LayoutInflater.from(context), this, true)
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onFinishInflate() {
         super.onFinishInflate()
 

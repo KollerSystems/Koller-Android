@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.GridLayoutManager
@@ -35,6 +36,7 @@ abstract class RoomFragment() : DetailsFragment() {
         return {RetrofitInstance.api.getRoom(viewModel.id!!)}
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

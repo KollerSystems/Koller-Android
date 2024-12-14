@@ -9,57 +9,16 @@
     tools:context=".activities.CreatePlacesActivity">
 
     <TextView
-        android:id="@+id/textView3"
-        style="@style/Description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/text_container_margin"
-        android:text="Mennyiség"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_one"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:checked="true"
-            android:text="Egy"
-            android:textAlignment="center"
-            app:shapeAppearance="@style/OverlayRoundedLeft" />
-
-        <com.google.android.material.chip.Chip
-            app:shapeAppearance="@style/OverlayRoundedRight"
-            android:id="@+id/chip_range"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Intervallum"
-            android:textAlignment="center" />
-    </LinearLayout>
-
-    <View
-        android:id="@+id/view_divider2"
-        style="@style/SeparatorLine"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="@dimen/spacing"
-        android:layout_marginBottom="@dimen/spacing" />
-
-    <TextView
         android:id="@+id/textView5"
         style="@style/CategoryCardName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Megnevezés" />
+        android:text="@string/naming" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:baselineAligned="false"
         android:orientation="horizontal">
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,8 +26,12 @@
             style="@style/CardTextInputTop"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/text_container_half_margin"
+            android:layout_marginBottom="@dimen/text_container_margin"
             android:layout_weight="1"
-            android:hint="@string/room_number">
+            android:hint="@string/from_number"
+            app:boxCornerRadiusBottomStart="@dimen/card_corner_radius"
+            app:boxCornerRadiusTopEnd="0dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -77,44 +40,39 @@
                 android:maxLength="5" />
         </com.google.android.material.textfield.TextInputLayout>
 
+        <TextView
+            android:gravity="center_vertical"
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0"
+            android:text="-"
+            tools:ignore="HardcodedText" />
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/til_to_number"
             style="@style/CardTextInputTopRight"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_container_margin"
             android:layout_weight="1"
-            android:hint="Számig"
-            android:visibility="gone">
+            android:hint="@string/to_number"
+            app:boxCornerRadiusBottomEnd="@dimen/card_corner_radius">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number|numberSigned"
-                android:maxLength="5"/>
+                android:maxLength="5" />
         </com.google.android.material.textfield.TextInputLayout>
     </LinearLayout>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/til_description"
-        style="@style/CardTextInputBottom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Leírás">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text|textCapSentences"
-            android:singleLine="true"
-            android:textAppearance="@style/Text" />
-    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/textView12"
         style="@style/CategoryCardName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Elhelyezkedés" />
+        android:text="@string/location" />
 
     <com.google.android.material.card.MaterialCardView
         style="@style/CardTop"
@@ -136,7 +94,7 @@
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Emelet">
+                android:hint="@string/floor_level">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -168,7 +126,7 @@
                 style="@style/TextInput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Szárny">
+                android:hint="@string/annexe">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"

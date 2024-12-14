@@ -1,5 +1,6 @@
 package com.norbert.koller.teacher.recycleradapters
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
@@ -38,6 +39,7 @@ class RoomPresenceRecyclerAdapter() : ApiRecyclerAdapter() {
         )
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onBindItemViewHolder(holder: RecyclerView.ViewHolder, item: BaseData, position: Int) {
 
 

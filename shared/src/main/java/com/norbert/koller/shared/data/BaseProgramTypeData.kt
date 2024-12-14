@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.formatDate
 import java.util.Date
+import java.util.Locale
 
 class BaseProgramTypeData(
     id: Int,
@@ -14,7 +15,7 @@ class BaseProgramTypeData(
     teacher: UserData?,
 ) : ProgramBaseData(id, type, topic, rid, teacher){
     override fun diffrentDecider(context: Context): String {
-        return topic[0].toString().capitalize()
+        return topic[0].toString().capitalize(Locale.ROOT)
     }
 
     override fun getMainID(): Int {

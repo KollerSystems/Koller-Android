@@ -37,7 +37,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:visibility="gone"
-                app:srcCompat="@drawable/check_box" />
+                app:srcCompat="@drawable/check_box"
+                tools:ignore="ContentDescription" />
 
 
         </FrameLayout>

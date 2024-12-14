@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.norbert.koller.student.fragments.RegisterStudentFragment"
         android:id="@+id/scrollView2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -771,8 +770,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:id="@+id/textView9"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Intorvertált"
-                        tools:ignore="HardcodedText" />
+                        android:text="@string/introvert" />
 
                     <Space
                         android:layout_width="0dp"
@@ -783,8 +781,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         android:id="@+id/textView13"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Extrovertált"
-                        tools:ignore="HardcodedText" />
+                        android:text="@string/extrovert" />
 
                 </LinearLayout>
 

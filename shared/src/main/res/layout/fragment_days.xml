@@ -43,7 +43,8 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/text_container_margin"
             android:text="2024. Február 10."
-            android:textColor="?android:attr/colorForeground" />
+            android:textColor="?android:attr/colorForeground"
+            tools:ignore="HardcodedText" />
 
         <ImageView
             android:layout_width="18dp"

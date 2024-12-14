@@ -10,6 +10,7 @@ import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.getAttributeColor
+import java.util.Locale
 
 abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapter() {
 
@@ -26,7 +27,8 @@ abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapter() {
             mainActivity.onCancelEditMode = {
                 deselectAll()
             }
-            mainActivity.setToolbarTitle("${viewModel.selectedItems.size} ${getTypeName(mainActivity).toLowerCase()}")
+            mainActivity.setToolbarTitle("${viewModel.selectedItems.size} ${getTypeName(mainActivity).toLowerCase(
+                Locale.ROOT)}")
         }
     }
 
@@ -82,7 +84,8 @@ abstract class EditableApiRecyclerAdapter() : ApiRecyclerAdapter() {
                 return
             }
         }
-        mainActivity.setToolbarTitle("${viewModel.selectedItems.size} ${getTypeName(mainActivity).toLowerCase()}")
+        mainActivity.setToolbarTitle("${viewModel.selectedItems.size} ${getTypeName(mainActivity).toLowerCase(
+            Locale.ROOT)}")
     }
 
     fun toggleOnItem(holder: RecyclerView.ViewHolder, item: BaseData){

@@ -47,7 +47,7 @@ class CreatePlacesActivity : EditableToolbarActivity() {
 
         when (type){
             ROOM ->{
-                getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.room)
+                getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.rooms)
                 getTitleTil().editText!!.tag = ROOM
             }
         }
@@ -58,10 +58,10 @@ class CreatePlacesActivity : EditableToolbarActivity() {
 
             val dialog = ListCardStaticBsdfFragment().setup(this, arrayListOf(
                 ListCardItem(
-                    getString(com.norbert.koller.shared.R.string.room),
+                    getString(com.norbert.koller.shared.R.string.rooms),
                     null,
                     AppCompatResources.getDrawable(this, com.norbert.koller.shared.R.drawable.room), {
-                        getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.room)
+                        getTitleTil().editText!!.setText(com.norbert.koller.shared.R.string.rooms)
                         getTitleTil().editText!!.tag = ROOM
                     })
 

@@ -52,7 +52,7 @@
             style="@style/CategoryCardName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Érvényesség"
+            android:text="@string/validity"
             android:translationZ="1dp" />
 
         <com.google.android.material.card.MaterialCardView
@@ -221,7 +221,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:paddingStart="40dp">
+                android:paddingStart="40dp"
+                tools:ignore="RtlSymmetry">
 
 
                     <CheckBox
@@ -297,7 +298,7 @@
                             android:id="@+id/rbtn_weekly2"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Only this week" />
+                            android:text="@string/only_this_week" />
 
                         <RadioButton
                             android:id="@+id/rbtn_weekly"
@@ -318,30 +319,29 @@
                             android:text="@string/every_four_weeks" />
                     </RadioGroup>
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:layout_marginTop="@dimen/text_container_margin"
-                        android:id="@+id/til_date_cancel"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginLeft="@dimen/text_container_margin"
-                        android:layout_marginRight="@dimen/text_container_margin"
-                        android:layout_marginBottom="@dimen/text_container_margin"
-                        android:layout_weight="1"
-                        android:hint="Lejárati dátum"
-                        app:endIconDrawable="@drawable/close_thick"
-                        app:endIconMode="custom">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/til_date_cancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/text_container_margin"
+                    android:layout_marginTop="@dimen/text_container_margin"
+                    android:layout_marginRight="@dimen/text_container_margin"
+                    android:layout_marginBottom="@dimen/text_container_margin"
+                    android:hint="@string/expiration_date"
+                    app:endIconDrawable="@drawable/close_thick"
+                    app:endIconMode="custom">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:drawablePadding="-15dp"
-                            android:editable="false"
-                            android:focusable="false"
-                            android:inputType="datetime|date"
-                            android:singleLine="false"
-                            android:textAppearance="@style/Text"
-                            tools:ignore="Deprecated" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="-15dp"
+                        android:editable="false"
+                        android:focusable="false"
+                        android:inputType="datetime|date"
+                        android:singleLine="false"
+                        android:textAppearance="@style/Text"
+                        tools:ignore="Deprecated" />
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 

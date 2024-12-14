@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import com.norbert.koller.shared.R
@@ -45,6 +46,7 @@ abstract class StudyGroupTypeFragment() : DetailsFragment() {
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

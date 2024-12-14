@@ -103,7 +103,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/text_container_margin"
-                    android:text="lfbk eabq grwo dhkj svnj kbm5 hx2n s7kb"
+                    android:text="@string/loading"
                     android:textAlignment="textStart"
                     app:icon="@drawable/copy" />
 

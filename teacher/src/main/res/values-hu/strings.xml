@@ -28,4 +28,8 @@
     <string name="every_four_weeks">Négy hetente</string>
     <string name="wrong_role">Ez a felhasználó egy tanuló. Kérlek töltsd le a Koller Tanulóknak alkalmazást a bejelentkezéshez vagy jelentkezz be egy másik felhasználóval.</string>
     <string name="add_outgoing">Kimenő hozzáadása</string>
+    <string name="naming">Megnevezés</string>
+    <string name="from_number">Számtól</string>
+    <string name="to_number">Számig</string>
+    <string name="set_me_as_teacher">Magam beállítása tanárnak</string>
 </resources>

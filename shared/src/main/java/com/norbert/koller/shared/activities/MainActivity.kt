@@ -554,7 +554,7 @@ abstract class MainActivity : AppCompatActivity() {
             }
             else{
 
-                viewModel.mainFragmentList.removeLast()
+                viewModel.mainFragmentList.removeAt(viewModel.mainFragmentList.size-1)
                 bottomNavigationView().selectedItemId = viewModel.mainFragmentList.last()
 
             }

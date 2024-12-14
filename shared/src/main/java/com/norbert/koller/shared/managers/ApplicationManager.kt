@@ -1,5 +1,6 @@
 package com.norbert.koller.shared.managers
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.app.Application
 import android.app.Dialog
@@ -434,6 +435,7 @@ fun View.setVisibilityBy(drawable : Drawable?){
     }
 }
 
+@SuppressLint("SetTextI18n")
 fun TextView.setVisibilityBy(int : Int){
     if(int == 0){
         visibility = GONE
