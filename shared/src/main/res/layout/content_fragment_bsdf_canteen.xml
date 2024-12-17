@@ -13,21 +13,21 @@
             app:layout_constraintTop_toTopOf="parent">
 
 
-            <com.norbert.koller.shared.customviews.DescriptionView
-                android:id="@+id/ncw_stfkate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:detail="-"
-                app:icon="@drawable/bolt"
-                app:name="Energia" />
+    <com.norbert.koller.shared.customviews.DescriptionView
+        android:id="@+id/ncw_stfkate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:detail="-"
+        app:icon="@drawable/bolt"
+        app:name="@string/energy" />
 
-            <com.norbert.koller.shared.customviews.DescriptionView
+    <com.norbert.koller.shared.customviews.DescriptionView
                 android:id="@+id/ncw_stasdate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:detail="-"
                 app:icon="@drawable/timeline"
-                app:name="Fehérje" />
+                app:name="@string/protein" />
 
             <com.norbert.koller.shared.customviews.DescriptionView
                 android:id="@+id/ncw_stfsdate"
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 app:detail="-"
                 app:icon="@drawable/humidity"
-                app:name="Zsír" />
+                app:name="@string/fat" />
 
             <com.norbert.koller.shared.customviews.DescriptionView
                 android:id="@+id/ncw_stgfdgdsaate"
@@ -43,7 +43,7 @@
                 android:layout_height="wrap_content"
                 app:detail="-"
                 app:icon="@drawable/humidity_percentage"
-                app:name="Telített zsírsav" />
+                app:name="@string/saturated_fat" />
 
             <com.norbert.koller.shared.customviews.DescriptionView
                 android:id="@+id/ncw_stfate"
@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 app:detail="-"
                 app:icon="@drawable/wheat"
-                app:name="Szénhidrát" />
+                app:name="@string/carbohydrate" />
 
             <com.norbert.koller.shared.customviews.DescriptionView
                 android:id="@+id/ncw_stasdfgate"
@@ -59,17 +59,17 @@
                 android:layout_height="wrap_content"
                 app:detail="-"
                 app:icon="@drawable/cube"
-                app:name="Cukor" />
+                app:name="@string/sugar" />
 
-            <com.norbert.koller.shared.customviews.DescriptionView
-                android:id="@+id/ncw_statdsae"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:detail="-"
-                app:icon="@drawable/salt"
-                app:name="Só">
+    <com.norbert.koller.shared.customviews.DescriptionView
+        android:id="@+id/ncw_statdsae"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:detail="-"
+        app:icon="@drawable/salt"
+        app:name="@string/salt">
 
-            </com.norbert.koller.shared.customviews.DescriptionView>
+    </com.norbert.koller.shared.customviews.DescriptionView>
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="wrap_content"
@@ -82,18 +82,18 @@
 
                 <com.norbert.koller.shared.customviews.AllergensView
                     app:icon="@drawable/egg"
-                    app:description="Tojást"
+                    app:description="@string/egg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <com.norbert.koller.shared.customviews.AllergensView
                     app:icon="@drawable/wheat"
                     app:allergen_type="may_contain"
-                    app:description="Glutént"
+                    app:description="@string/gluten"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
                 <com.norbert.koller.shared.customviews.AllergensView
                     app:icon="@drawable/peanut"
-                    app:description="Mogyorót"
+                    app:description="@string/peanut"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
 

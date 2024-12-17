@@ -164,7 +164,6 @@ class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
         }
 
         pagingViewModel.selectedItems = mutableSetOf()
-        pagingViewModel.apiDataObject = null
         super.onCancel(dialog)
     }
 }

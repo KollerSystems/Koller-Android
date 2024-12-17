@@ -16,7 +16,7 @@
         android:divider="@drawable/divider"
         android:orientation="vertical"
         android:paddingHorizontal="@dimen/card_padding_half"
-        android:paddingTop="@dimen/card_padding_half"
+        android:paddingTop="@dimen/card_full_margin"
         android:showDividers="middle">
 
         <TextView

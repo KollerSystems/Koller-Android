@@ -488,4 +488,14 @@
     <string name="validity">Validity</string>
     <string name="only_this_week">Only this week</string>
     <string name="expiration_date">Expiration date</string>
+    <string name="salt">Salt</string>
+    <string name="energy">Energy</string>
+    <string name="fat">Fat</string>
+    <string name="saturated_fat">Saturated fat</string>
+    <string name="carbohydrate">Carbohydrate</string>
+    <string name="sugar">Sugar</string>
+    <string name="egg">egg</string>
+    <string name="gluten">gluten</string>
+    <string name="peanut">peanut</string>
+    <string name="protein">Protein</string>
 </resources>

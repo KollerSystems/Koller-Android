@@ -479,4 +479,14 @@
     <string name="validity">Érvényesség</string>
     <string name="only_this_week">Csak ezen a héten</string>
     <string name="expiration_date">Lejárati dátum</string>
+    <string name="salt">Só</string>
+    <string name="energy">Energia</string>
+    <string name="fat">Zsír</string>
+    <string name="saturated_fat">Telített zsírsav</string>
+    <string name="carbohydrate">Szénhidrát</string>
+    <string name="sugar">Cukor</string>
+    <string name="egg">tojást</string>
+    <string name="gluten">glutént</string>
+    <string name="peanut">mogyorót</string>
+    <string name="protein">Fehérje</string>
 </resources>
