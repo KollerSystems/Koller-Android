@@ -23,6 +23,9 @@ class KeyRetrievalListFragment : ListFragment() {
         setupSort(R.string.newest, R.string.oldest, "Time")
         addDateChip("Time")
         addSearchbar("Reason")
+        addButton(getString(R.string.add_key)){
+
+        }
 
         if (arguments != null) {
             getBaseViewModel().ownerUID = requireArguments().getInt("id", -1)

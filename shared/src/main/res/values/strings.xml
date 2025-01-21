@@ -498,4 +498,6 @@
     <string name="gluten">gluten</string>
     <string name="peanut">peanut</string>
     <string name="protein">Protein</string>
+    <string name="add_key">Add key</string>
+    <string name="key">Key</string>
 </resources>

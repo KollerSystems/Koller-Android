@@ -9,6 +9,7 @@ import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.ClassData
 import com.norbert.koller.shared.data.GroupData
+import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
@@ -69,6 +70,11 @@ open class UserListFragment() : ListFragment() {
         addSortingChip("Group.ID", R.string.group, ApiDataObjectGroup(), true)
 
         addSortingChip("Class.ID", R.string.class_, ApiDataObjectClass())
+
+        addSortingChip("Key", R.string.key, arrayListOf(
+            ListToggleItem("Használ", null, AppCompatResources.getDrawable(requireContext(), R.drawable.key), 0),
+            ListToggleItem("Nem használ", null, AppCompatResources.getDrawable(requireContext(), R.drawable.key_off), 1)
+        ))
 
         addSearchbar("Name")
     }

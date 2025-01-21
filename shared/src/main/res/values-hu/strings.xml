@@ -489,4 +489,6 @@
     <string name="gluten">glutént</string>
     <string name="peanut">mogyorót</string>
     <string name="protein">Fehérje</string>
+    <string name="add_key">Kulcs felvétele</string>
+    <string name="key">Kulcs</string>
 </resources>

@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:outlineProvider="none"
-    app:cardBackgroundColor="#54000000"
+    app:cardBackgroundColor="?attr/colorSurfaceContainerLow"
     app:contentPadding="0dp">
 
     <com.google.android.material.card.MaterialCardView
@@ -20,7 +20,7 @@
         app:cardBackgroundColor="?attr/colorPrimary"
         app:cardCornerRadius="100dp"
         app:cardElevation="99999dp"
-        tools:visibility="visible">
+        tools:visibility="gone">
 
         <TextView
             android:id="@+id/textView30"
@@ -53,7 +53,7 @@
             android:layout_height="@dimen/card_icon"
             android:layout_marginEnd="@dimen/spacing"
             android:alpha="0.666"
-            app:srcCompat="@drawable/room" />
+            app:srcCompat="@drawable/empty" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -112,7 +112,6 @@
         android:outlineProvider="none"
         android:visibility="gone"
         app:cardBackgroundColor="?attr/colorSurfaceContainerHigh"
-        app:cardCornerRadius="0dp"
-        tools:visibility="visible" />
+        app:cardCornerRadius="0dp" />
 
 </com.google.android.material.card.MaterialCardView>
