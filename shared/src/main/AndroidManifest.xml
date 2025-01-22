@@ -27,6 +27,10 @@
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu">
         <activity
+            android:name=".activities.ManageKeyActivityContent"
+            android:exported="false"
+            android:theme="@style/Theme.MainTheme" />
+        <activity
             android:name=".CacheActivity"
             android:exported="false" />
 
