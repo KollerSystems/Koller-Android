@@ -40,6 +40,7 @@ import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
+import com.norbert.koller.shared.fragments.KeyAccessListFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.fragments.OutgoingListFragment
 import com.norbert.koller.shared.fragments.RoomFragment
@@ -157,6 +158,8 @@ open class ApplicationManager : Application() {
         lateinit var studyGroupsFragment: () -> StudyGroupTypeListFragment
 
         var outgoingListFragment: () -> OutgoingListFragment = { OutgoingListFragment() }
+
+        var keyAccessListFragment: () -> KeyAccessListFragment = { KeyAccessListFragment() }
 
         const val minLengthBeforeDismiss : Int = 3
 

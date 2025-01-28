@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 import com.norbert.koller.shared.data.UserData
+import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.viewmodels.DetailsViewModel
 
@@ -74,7 +75,7 @@ class UserOutgoingViewPagerAdapter(val ownerUID: Int?, fragmentManager: Fragment
                 return fragment
             }
             1->{
-                val fragment = KeyAccessListFragment()
+                val fragment = ApplicationManager.keyAccessListFragment()
                 fragment.arguments = bundle
                 return fragment
             }

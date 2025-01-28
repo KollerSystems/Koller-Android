@@ -1,25 +1,25 @@
 package com.norbert.koller.shared.activities
 
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
+import android.view.ViewGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ContentActivityManageKeyBinding
 
-class ManageKeyActivityContent : AppCompatActivity() {
+class ManageKeyActivityContent : ManageActivity() {
 
     private lateinit var binding: ContentActivityManageKeyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        displayButton(getString(R.string.acquire), R.drawable.key_active)
+    }
 
+    override fun createContentView(): ViewGroup {
         binding = ContentActivityManageKeyBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        return binding.root
+    }
 
-
+    override fun getName(): String {
+        return getString(R.string.acquire_keys)
     }
 }

@@ -84,6 +84,19 @@ class TextInputWithChips(context: Context, attrs: AttributeSet) : LinearLayout(c
     }
     
     init {
+
+        val typedArray = context.theme.obtainStyledAttributes(
+            attrs,
+            R.styleable.textInputWithChips,
+            0, 0
+        )
+
+        try {
+            binding.til.hint = typedArray.getString(R.styleable.textInputWithChips_hint) ?: ""
+        } finally {
+            typedArray.recycle()
+        }
+
         orientation = VERTICAL
 
         val startBoxStrokeWidth = binding.til.boxStrokeWidth

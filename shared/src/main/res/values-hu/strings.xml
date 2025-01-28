@@ -491,4 +491,7 @@
     <string name="protein">Fehérje</string>
     <string name="add_key">Kulcs felvétele</string>
     <string name="key">Kulcs</string>
+    <string name="acquire">Felvétel</string>
+    <string name="acquire_keys">Kulcsok felvétele</string>
+    <string name="give_access">Jogosultság hozzáadása</string>
 </resources>

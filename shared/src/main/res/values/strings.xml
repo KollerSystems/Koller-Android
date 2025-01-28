@@ -500,4 +500,7 @@
     <string name="protein">Protein</string>
     <string name="add_key">Add key</string>
     <string name="key">Key</string>
+    <string name="acquire">Acquire</string>
+    <string name="acquire_keys">Acquire keys</string>
+    <string name="give_access">Give access</string>
 </resources>

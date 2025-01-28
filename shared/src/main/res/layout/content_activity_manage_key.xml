@@ -5,4 +5,169 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".activities.ManageKeyActivityContent"/>
+    tools:context=".activities.ManageKeyActivityContent"
+    style="@style/MainLayout">
+    <com.norbert.koller.shared.customviews.TextInputWithChips
+        app:hint="@string/addressee"
+        android:id="@+id/til_addresse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_container_margin"
+        android:layout_marginBottom="@dimen/text_container_margin" />
+
+    <com.norbert.koller.shared.customviews.TextInputWithChips
+        android:id="@+id/til_key"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/text_container_margin"
+        android:layout_marginBottom="@dimen/text_container_margin"
+        app:hint="@string/keys"/>
+
+    <TextView
+        android:id="@+id/text3"
+        style="@style/CategoryCardName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Felvétel ideje"
+        android:translationZ="1dp" />
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/create_new_post_card_datetime"
+        style="@style/CardSingle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/CategoryIcon"
+                android:adjustViewBounds="true"
+                android:alpha="0.666"
+                android:importantForAccessibility="no"
+                app:srcCompat="@drawable/calendar" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_date_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_container_margin"
+                        android:layout_marginRight="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_weight="1"
+                        android:hint="@string/from_date"
+                        app:endIconDrawable="@drawable/close_thick"
+                        app:endIconMode="custom">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="-15dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:inputType="datetime|date"
+                            android:textAppearance="@style/Text"
+                            tools:ignore="Deprecated" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_time_from"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_container_margin"
+                        android:layout_marginRight="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_weight="1"
+                        android:hint="@string/from_time"
+                        app:endIconDrawable="@drawable/close_thick"
+                        app:endIconMode="custom">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:drawablePadding="-15dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:inputType="datetime|time"
+                            android:singleLine="false"
+                            android:textAppearance="@style/Text"
+                            tools:ignore="Deprecated" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_date_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_container_margin"
+                        android:layout_marginRight="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_weight="1"
+                        android:hint="@string/to_date"
+                        app:endIconDrawable="@drawable/close_thick"
+                        app:endIconMode="custom">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="-15dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:inputType="datetime|date"
+                            android:singleLine="false"
+                            android:textAppearance="@style/Text"
+                            tools:ignore="Deprecated" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_time_to"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/text_container_margin"
+                        android:layout_marginRight="@dimen/text_container_margin"
+                        android:layout_marginBottom="@dimen/text_container_margin"
+                        android:layout_weight="1"
+                        android:hint="@string/to_time"
+                        app:endIconDrawable="@drawable/close_thick"
+                        app:endIconMode="custom">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawablePadding="-15dp"
+                            android:editable="false"
+                            android:focusable="false"
+                            android:inputType="datetime|time"
+                            android:singleLine="false"
+                            android:textAppearance="@style/Text"
+                            tools:ignore="Deprecated" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</LinearLayout>

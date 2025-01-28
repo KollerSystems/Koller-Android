@@ -88,5 +88,9 @@
         <attr name="title" format="string" />
     </declare-styleable>
 
+    <declare-styleable name="textInputWithChips">
+        <attr name="hint" format="string" />
+    </declare-styleable>
+
 
 </resources>

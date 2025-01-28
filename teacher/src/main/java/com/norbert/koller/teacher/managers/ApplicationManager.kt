@@ -3,6 +3,7 @@ package com.norbert.koller.teacher.managers
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.norbert.koller.teacher.fragments.KeyAccessListFragment
 import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
@@ -60,6 +61,8 @@ class ApplicationManager : ApplicationManager() {
         outgoingListFragment = { OutgoingListFragment() }
 
         roomTidinessListFragment = { RoomTidinessListFragment() }
+
+        keyAccessListFragment = { KeyAccessListFragment() }
 
         studyGroupsFragment = { com.norbert.koller.teacher.fragments.StudyGroupTypeListFragment() }
     }
