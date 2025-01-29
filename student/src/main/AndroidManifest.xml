@@ -32,6 +32,11 @@
             android:exported="false"
             android:enableOnBackInvokedCallback="true"
 />
+        <activity
+            android:name=".activities.ManageKeyActivity"
+            android:exported="false"
+            android:enableOnBackInvokedCallback="true"
+            />
 
         <meta-data
             android:name="preloaded_fonts"

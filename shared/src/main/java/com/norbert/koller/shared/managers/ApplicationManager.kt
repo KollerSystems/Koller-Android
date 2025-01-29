@@ -38,6 +38,7 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.color.DynamicColors
 import com.google.android.material.textfield.TextInputLayout
 import com.norbert.koller.shared.R
+import com.norbert.koller.shared.activities.ManageKeyActivity
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.fragments.KeyAccessListFragment
@@ -160,6 +161,8 @@ open class ApplicationManager : Application() {
         var outgoingListFragment: () -> OutgoingListFragment = { OutgoingListFragment() }
 
         var keyAccessListFragment: () -> KeyAccessListFragment = { KeyAccessListFragment() }
+
+        var manageKeyActivity: () -> ManageKeyActivity = { ManageKeyActivity() }
 
         const val minLengthBeforeDismiss : Int = 3
 

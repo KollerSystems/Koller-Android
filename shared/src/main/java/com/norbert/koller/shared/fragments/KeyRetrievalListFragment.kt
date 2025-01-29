@@ -1,7 +1,6 @@
 package com.norbert.koller.shared.fragments
 
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.ManageKeyActivityContent
 import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
@@ -26,7 +25,7 @@ class KeyRetrievalListFragment : ListFragment() {
         addDateChip("Time")
         addSearchbar("Reason")
         addButton(getString(R.string.acquire_keys)){
-            ApplicationManager.openActivity(requireContext(), ManageKeyActivityContent::class.java)
+            ApplicationManager.openActivity(requireContext(), ApplicationManager.manageKeyActivity()::class.java)
         }
 
         if (arguments != null) {

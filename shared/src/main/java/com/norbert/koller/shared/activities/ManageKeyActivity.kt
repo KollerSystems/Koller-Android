@@ -5,13 +5,14 @@ import android.view.ViewGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.databinding.ContentActivityManageKeyBinding
 
-class ManageKeyActivityContent : ManageActivity() {
+open class ManageKeyActivity : ManageActivity() {
 
     private lateinit var binding: ContentActivityManageKeyBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         displayButton(getString(R.string.acquire), R.drawable.key_active)
+
     }
 
     override fun createContentView(): ViewGroup {

@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.norbert.koller.shared.activities.LoginActivity
+import com.norbert.koller.student.activities.ManageKeyActivity
 import com.norbert.koller.student.activities.MainActivity
 import com.norbert.koller.student.activities.SettingsActivity
 import com.norbert.koller.student.fragments.CalendarFragment
@@ -61,5 +62,7 @@ class ApplicationManager : ApplicationManager() {
         roomTidinessListFragment = { RoomTidinessListFragment() }
 
         studyGroupsFragment = { com.norbert.koller.student.fragments.StudyGroupTypeListFragment() }
+
+        manageKeyActivity = { ManageKeyActivity() }
     }
 }
