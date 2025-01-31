@@ -26,6 +26,9 @@ class AcquiredKeyDFragment : DialogFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.stars.onStart()
+        binding.btnClose.setOnClickListener {
+            dismiss()
+        }
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
@@ -34,6 +37,10 @@ class AcquiredKeyDFragment : DialogFragment() {
         return dialog
     }
 
+    override fun dismiss() {
+        super.dismiss()
+        requireActivity().finish()
+    }
 
     companion object {
         const val TAG = "AcquiredKeyDFragment"

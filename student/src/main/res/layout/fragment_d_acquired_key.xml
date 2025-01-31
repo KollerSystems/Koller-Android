@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/night_bg">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?android:attr/windowBackground"
+    android:fitsSystemWindows="false">
+
     <com.sofakingforever.stars.AnimatedStarsView
         android:id="@+id/stars"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha="0.2"
-        android:background="@color/night_bg"
+        android:alpha="0.333"
         app:starsView_maxStarSize="300dp"
         app:starsView_minStarSize="150dp"
-        app:starsView_starColors="@array/star_colors_small"
+        app:starsView_starColors="@array/bubble_colors"
         app:starsView_starCount="100" />
+
     <com.google.android.flexbox.FlexboxLayout
         style="@style/MainLayout"
         android:layout_width="match_parent"
@@ -23,11 +24,23 @@
         android:background="@null"
         app:flexDirection="column">
 
-        <TextView
+        <TextClock
+            style="@style/Description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="12:47"
+            android:format24Hour="yyyy. MM. dd."
+            android:format12Hour="@null"
+            android:textSize="25sp"
+            app:layout_flexGrow="0"
+            app:layout_flexShrink="0" />
+
+        <TextClock
+            android:format12Hour="hh:mm:ss a"
+            android:format24Hour="kk:mm:ss"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
             android:textSize="50sp"
             app:layout_flexGrow="0"
             app:layout_flexShrink="0" />
@@ -42,29 +55,42 @@
             app:layout_flexGrow="1"
             app:layout_flexShrink="1">
 
-            <LinearLayout
-                android:id="@+id/imageView2"
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/card_padding"
-                android:background="@drawable/squircle"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:weightSum="100"
                 app:layout_maxHeight="300dp"
-                app:layout_maxWidth="300dp">
+                app:layout_maxWidth="300dp"
+                android:layout_marginBottom="@dimen/card_padding">
 
-                <ImageView
+                <com.norbert.koller.shared.customviews.UserView
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="80"
-                    android:adjustViewBounds="true"
-                    android:src="@drawable/kitchen"
-                    app:tint="@android:color/white" />
+                    android:layout_height="match_parent"
+                    app:layout_flexGrow="0"
+                    app:layout_flexShrink="0"
+                    app:layout_alignSelf="center"/>
+
+                <LinearLayout
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+                    android:background="@drawable/squircle"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:weightSum="100"
+>
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="80"
+                        android:adjustViewBounds="true"
+                        android:src="@drawable/kitchen"
+                        app:tint="@android:color/white" />
 
 
-
-            </LinearLayout>
+                </LinearLayout>
+            </FrameLayout>
 
             <TextView
                 style="@style/MainTitle"
@@ -72,9 +98,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="Teakonyha"
-                android:textSize="30sp" />
+                android:textSize="40sp" />
+
             <TextView
-                android:textStyle="bold"
                 style="@style/Description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -105,8 +131,10 @@
             app:layout_flexShrink="0" />
     </com.google.android.flexbox.FlexboxLayout>
 
+
+
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_close"
         style="@style/ToolbarNavigationButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

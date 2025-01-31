@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="appIconColor">#673AB7</color>
+    <color name="appIconColorBubble1">#40673AB7</color>
+    <color name="appIconColorBubble2">#405529A2</color>
+    <color name="appIconColorBubble3">#408453DB</color>
 </resources>

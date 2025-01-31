@@ -13,6 +13,8 @@
         <!--<item>@color/star_color_4</item>-->
     </integer-array>
 
+
+
     <integer-array name="meteorites_colors">
         <item>@color/star_color_1</item>
         <item>@color/star_color_7</item>
