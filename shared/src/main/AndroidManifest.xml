@@ -27,9 +27,9 @@
         android:theme="@style/Theme.MainTheme"
         tools:targetApi="tiramisu">
         <activity
-            android:name=".activities.ManageKeyActivityContent"
-            android:exported="false"
-            android:theme="@style/Theme.MainTheme" />
+            android:name=".activities.ManageKeyActivity"
+            android:enableOnBackInvokedCallback="true"
+            android:exported="false" />
         <activity
             android:name=".CacheActivity"
             android:exported="false" />
