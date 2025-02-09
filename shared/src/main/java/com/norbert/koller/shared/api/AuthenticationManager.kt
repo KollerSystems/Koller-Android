@@ -47,7 +47,8 @@ class AuthenticationManager : Authenticator {
 
             if(!response.request.url.toString().contains("/oauth/token")) {
 
-                Log.d("TESTTESTS", "111")
+
+                Log.d("AuthenticatorManager", "NEM OAUTH KÉRÉS: ${response.request.url}")
 
                 if (!tokenRefreshInProgress.get()) {
 
@@ -71,7 +72,7 @@ class AuthenticationManager : Authenticator {
 
                     }
                     else{
-                        Log.d("TESTTESTS", "NEM JOPOOOOOOOOOOOOO")
+                        Log.d("AuthenticatorManager", "SIKERTELEN")
 
                     }
                     tokenRefreshInProgress.set(false)
@@ -90,8 +91,9 @@ class AuthenticationManager : Authenticator {
                 }
             }
             else{
+                //OAUTH KÉRÉS
 
-                Log.d("TESTTESTS", "333333")
+                Log.d("AuthenticatorManager", "OAUTH KÉRÉS")
 
                 tokenRefreshInProgress.set(false)
 

@@ -11,9 +11,9 @@ class AuthInterceptor() : Interceptor {
 
         val requestBuilder = chain.request().newBuilder()
 
-        CacheManager.loginData?.accessToken.let {
-            requestBuilder.addHeader("Authorization", "Bearer $it")
-        }
+
+        requestBuilder.addHeader("Authorization", "Bearer ${CacheManager.loginData?.accessToken}")
+
 
 
         return chain.proceed(requestBuilder.build())
