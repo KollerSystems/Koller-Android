@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="?android:attr/windowBackground"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:fitsSystemWindows="false">
 
     <com.sofakingforever.stars.AnimatedStarsView
@@ -20,7 +22,9 @@
     <FrameLayout
         android:id="@+id/fl_body"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
         <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/fb_layout"
@@ -28,31 +32,41 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@null"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             app:flexDirection="column">
 
-            <TextClock
-                style="@style/Description"
+            <LinearLayout
+                android:id="@+id/ly_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik"
-                android:format12Hour="@null"
-                android:format24Hour="yyyy. MM. dd."
-                android:gravity="center"
-                android:textSize="25sp"
-                app:layout_flexGrow="0"
-                app:layout_flexShrink="0" />
+                android:orientation="vertical">
 
-            <TextClock
-                style="@style/Text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/rubik"
-                android:format12Hour="hh:mm:ss a"
-                android:format24Hour="kk:mm:ss"
-                android:gravity="center"
-                android:textSize="50sp"
-                app:layout_flexGrow="0"
-                app:layout_flexShrink="0" />
+                <TextClock
+                    style="@style/Description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik"
+                    android:format12Hour="@null"
+                    android:format24Hour="yyyy. MM. dd."
+                    android:gravity="center"
+                    android:textSize="25sp"
+                    app:layout_flexGrow="0"
+                    app:layout_flexShrink="0" />
+
+                <TextClock
+                    style="@style/Text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/rubik"
+                    android:format12Hour="hh:mm:ss a"
+                    android:format24Hour="kk:mm:ss"
+                    android:gravity="center"
+                    android:textSize="50sp"
+                    app:layout_flexGrow="0"
+                    app:layout_flexShrink="0" />
+            </LinearLayout>
+
 
             <com.google.android.flexbox.FlexboxLayout
                 android:layout_width="match_parent"

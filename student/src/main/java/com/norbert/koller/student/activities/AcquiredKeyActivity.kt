@@ -1,13 +1,19 @@
 package com.norbert.koller.student.activities
 
+import android.animation.TimeInterpolator
+import android.animation.ValueAnimator
 import android.app.Activity
 import android.app.Dialog
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.animation.AnimationUtils
+import android.view.animation.Interpolator
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -21,11 +27,35 @@ import com.norbert.koller.student.R
 import com.norbert.koller.student.databinding.ActivityAcquiredKeyBinding
 import java.util.Timer
 import java.util.TimerTask
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.random.Random
 
 
 class AcquiredKeyActivity : AppCompatActivity() {
 
     private lateinit var binding : ActivityAcquiredKeyBinding
+    private val handler = Handler(Looper.getMainLooper())
+
+
+    private fun animateFloatingView(view: View) {
+        handler.post(object : Runnable {
+            override fun run() {
+                val maxOffset = 33
+
+                val newX = Random.nextInt(-maxOffset, maxOffset).toFloat()
+                val newY = Random.nextInt(-maxOffset, maxOffset).toFloat()
+                val distance = (Math.sqrt(Math.pow(newX.toDouble() - view.translationX, 2.0) + Math.pow(newY.toDouble() - view.translationY, 2.0)) * 25).toLong()
+                view.animate()
+                    .translationX(newX)
+                    .translationY(newY)
+                    .setDuration(distance)
+                    .start()
+
+                handler.postDelayed(this, distance)
+            }
+        })
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,6 +81,8 @@ class AcquiredKeyActivity : AppCompatActivity() {
         binding.btnClose.setOnClickListener {
             finish()
         }
+
+        animateFloatingView(binding.lyTime)
 
         fun fadeSwitch() {
             if (binding.uv.isVisible) {
