@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/CategoryCardNameBald"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Adatok" />
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/text_container_margin"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardCornerRadius="@dimen/card_corner_radius"
+        app:strokeColor="?attr/colorSurfaceContainerLow"
+        app:strokeWidth="1dp">
+
+        <com.norbert.koller.shared.customviews.SeparatorLinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.norbert.koller.shared.customviews.DescriptionView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/card_padding"
+                app:detail="2025. 07. 22. 10:10"
+                app:icon="@drawable/start"
+                app:name="Felvétel" />
+
+            <com.norbert.koller.shared.customviews.DescriptionView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/card_padding"
+                app:detail="2025. 07. 22. 15:44"
+                app:icon="@drawable/end"
+                app:name="Leadás">
+
+            </com.norbert.koller.shared.customviews.DescriptionView>
+
+
+            <com.norbert.koller.shared.customviews.DescriptionButton
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="@dimen/card_padding"
+                app:detail="Kis Gazsi"
+                app:icon="@drawable/user"
+                app:name="Kiadó" />
+        </com.norbert.koller.shared.customviews.SeparatorLinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/CategoryCardNameBald"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Kezelés" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        style="@style/CardTop"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:end_icon="@null"
+        app:icon="@drawable/key_off"
+        app:text="Leadás">
+
+    </com.norbert.koller.shared.customviews.CardButton>
+
+    <com.norbert.koller.shared.customviews.CardButton
+
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/pencil"
+        app:text="@string/edit" />
+
+    <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@null"
+
+        style="@style/CardMiddle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/close"
+        app:text="@string/remove" >
+
+    </com.norbert.koller.shared.customviews.CardButton>
+
+    <com.norbert.koller.shared.customviews.CardButton
+
+
+        style="@style/CardBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:icon="@drawable/admin"
+        app:text="Jogosultság kezelése" />
+
+</LinearLayout>

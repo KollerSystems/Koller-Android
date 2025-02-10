@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.norbert.koller.shared.customviews.DescriptionView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:detail="2025. 07. 22. 10:10"
+        app:icon="@drawable/start"
+        app:name="Felvétel" />
+
+    <com.norbert.koller.shared.customviews.DescriptionView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:detail="2025. 07. 22. 15:44"
+        app:icon="@drawable/end"
+        app:name="Leadás">
+    </com.norbert.koller.shared.customviews.DescriptionView>
+
+    <com.norbert.koller.shared.customviews.DescriptionButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:detail="Kis Gazsi"
+        app:icon="@drawable/user"
+        app:name="Kiadó" />
+
+        <Button
+            android:layout_marginBottom="@dimen/text_container_margin"
+            android:layout_marginTop="@dimen/spacing"
+            style="@style/ButtonIcon"
+            app:layout_flexGrow="1"
+            app:layout_flexShrink="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="Leadás"
+            app:icon="@drawable/key_off"
+            app:ignore="RtlSymmetry"
+            app:visibility="visible" />
+</LinearLayout>
