@@ -11,6 +11,7 @@ class ChangePasswordActivity : ManageActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        displayButton(getString(R.string.modify), R.drawable.save)
     }
 
     override fun createContentView(): ViewGroup {

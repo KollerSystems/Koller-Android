@@ -494,4 +494,5 @@
     <string name="acquire">Felvétel</string>
     <string name="acquire_keys">Kulcsok felvétele</string>
     <string name="give_access">Jogosultság hozzáadása</string>
+    <string name="modify">Módosítás</string>
 </resources>

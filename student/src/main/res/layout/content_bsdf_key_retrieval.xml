@@ -38,7 +38,5 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:text="Leadás"
-            app:icon="@drawable/key_off"
-            app:ignore="RtlSymmetry"
-            app:visibility="visible" />
+            app:icon="@drawable/key_off" />
 </LinearLayout>

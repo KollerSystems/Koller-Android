@@ -119,6 +119,7 @@
     </style>
 
     <style name="EditText">
+        <item name="android:maxLength">50</item>
         <item name="android:textAppearance">@style/Text</item>
         <item name="android:drawablePadding">-15dp</item>
     </style>
@@ -465,6 +466,22 @@
         <item name="cornerSizeBottomRight">8dp</item>
         <item name="cornerSizeTopLeft">0dp</item>
         <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="OverlayRoundedTop">
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+        <item name="cornerSizeTopLeft">8dp</item>
+        <item name="cornerSizeTopRight">8dp</item>
+        <item name="cornerFamily">rounded</item>
+    </style>
+
+    <style name="OverlayRoundedBottom">
+        <item name="cornerSizeBottomLeft">8dp</item>
+        <item name="cornerSizeBottomRight">8dp</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
         <item name="cornerFamily">rounded</item>
     </style>
 

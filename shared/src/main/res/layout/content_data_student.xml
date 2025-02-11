@@ -48,7 +48,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPersonName" />
+                            android:inputType="text|textPersonName|textCapWords" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -63,7 +63,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPersonName" />
+                            android:inputType="text|textPersonName|textCapWords" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -175,7 +175,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="date" />
+                            android:inputType="text|textCapSentences" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -216,7 +216,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="textPostalAddress" />
+                            android:inputType="text|textPostalAddress|textCapSentences" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <LinearLayout
@@ -239,7 +239,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textPostalAddress" />
+                                android:inputType="text|textPostalAddress|textCapSentences" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -256,7 +256,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textPostalAddress" />
+                                android:inputType="text|textPostalAddress|textCapCharacters" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                     </LinearLayout>
@@ -281,7 +281,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textPostalAddress" />
+                                android:inputType="text|textPostalAddress|textCapSentences" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -298,7 +298,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textPostalAddress" />
+                                android:inputType="text|textPostalAddress|textCapCharacters" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -323,7 +323,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textPostalAddress" />
+                                android:inputType="text|textPostalAddress|textCapCharacters" />
                         </com.google.android.material.textfield.TextInputLayout>
 
                         <com.google.android.material.textfield.TextInputLayout
@@ -341,7 +341,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                                 style="@style/EditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:inputType="textPostalAddress" />
+                                android:inputType="text|textPostalAddress|textCapCharacters" />
                         </com.google.android.material.textfield.TextInputLayout>
                     </LinearLayout>
 
@@ -378,7 +378,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone" />
+                        android:inputType="number|numberSigned" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -426,7 +426,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="phone" />
+                        android:inputType="number|numberSigned" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -464,7 +464,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="phone" />
+                            android:inputType="text|textCapSentences" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
@@ -479,7 +479,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="phone" />
+                            android:inputType="text|textCapSentences" />
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 
@@ -520,6 +520,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:digits="+0123456789"
                         android:inputType="phone" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -594,7 +595,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -631,7 +632,7 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         style="@style/EditText"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress" />
+                        android:inputType="text" />
                 </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
@@ -672,7 +673,8 @@ android:layout_marginBottom="@dimen/text_container_margin"
                         <com.google.android.material.textfield.TextInputEditText
                             style="@style/EditText"
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content" />
+                            android:layout_height="wrap_content"
+                            android:inputType="text" />
                     </com.google.android.material.textfield.TextInputLayout>
 
                 </LinearLayout>
@@ -720,22 +722,56 @@ android:layout_marginBottom="@dimen/text_container_margin"
                             style="@style/EditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="phone" />
+                            android:inputType="text|textCapSentences|textMultiLine" />
                     </com.google.android.material.textfield.TextInputLayout>
 
-                    <com.google.android.material.textfield.TextInputLayout
+                    <com.google.android.flexbox.FlexboxLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginHorizontal="@dimen/text_container_margin"
-                        android:layout_marginBottom="@dimen/text_container_margin"
-                        android:hint="@string/has_disadvantage">
+                        android:layout_margin="@dimen/text_container_margin"
+                        app:flexWrap="wrap"
+                        app:flexDirection="row">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            style="@style/EditText"
-                            android:layout_width="match_parent"
+                        <com.google.android.material.chip.Chip
+
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:inputType="phone" />
-                    </com.google.android.material.textfield.TextInputLayout>
+                            app:layout_flexGrow="1"
+                            app:layout_flexShrink="1"
+                            android:paddingHorizontal="16dp"
+                            android:paddingVertical="17dp"
+                            android:text="Nem hátrányos helyzetű"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            app:shapeAppearance="@style/OverlayRoundedTop" />
+
+                        <com.google.android.material.chip.Chip
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_flexGrow="1"
+                            app:layout_flexShrink="1"
+                            android:paddingVertical="17dp"
+                            android:paddingHorizontal="16dp"
+                            android:text="Hátrányos helyzetű"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                          app:chipCornerRadius="0dp"/>
+
+                        <com.google.android.material.chip.Chip
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:layout_flexGrow="1"
+                            app:layout_flexShrink="1"
+                            android:paddingVertical="17dp"
+                            android:paddingHorizontal="16dp"
+                            android:text="Halmozottan hátrányos helyzetű"
+                            android:textAlignment="center"
+                            android:textSize="14sp"
+                            app:shapeAppearance="@style/OverlayRoundedBottom" />
+
+                    </com.google.android.flexbox.FlexboxLayout>
                 </LinearLayout>
 
             </LinearLayout>
@@ -834,8 +870,10 @@ android:layout_marginBottom="@dimen/text_container_margin"
                 app:helperText="@string/optional">
 
                 <com.google.android.material.textfield.TextInputEditText
+                    style="@style/EditText"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:inputType="text|textCapSentences|textMultiLine" />
             </com.google.android.material.textfield.TextInputLayout>
 
         </com.google.android.material.card.MaterialCardView>

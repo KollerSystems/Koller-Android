@@ -7,7 +7,6 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/textView3"
         style="@style/CategoryCardNameBald"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -57,7 +56,6 @@
 
 
     <TextView
-        android:id="@+id/textView3"
         style="@style/CategoryCardNameBald"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -100,6 +98,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:icon="@drawable/admin"
-        app:text="Jogosultság kezelése" />
+        app:text="Jogosultság" />
 
 </LinearLayout>

@@ -503,4 +503,5 @@
     <string name="acquire">Acquire</string>
     <string name="acquire_keys">Acquire keys</string>
     <string name="give_access">Give access</string>
+    <string name="modify">Modify</string>
 </resources>
