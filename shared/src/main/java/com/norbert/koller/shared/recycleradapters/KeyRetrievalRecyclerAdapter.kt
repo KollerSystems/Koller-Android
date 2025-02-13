@@ -19,7 +19,7 @@ import com.norbert.koller.shared.databinding.ItemReadableBinding
 import com.norbert.koller.shared.databinding.ItemUserBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
-class OutgoingRecyclerAdapter() : ApiRecyclerAdapter() {
+class KeyRetrievalRecyclerAdapter() : ApiRecyclerAdapter() {
 
     override fun setItemViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         return RecyclerViewHelper.ItemViewHolder(ItemBinding.inflate(LayoutInflater.from(parent.context), parent, false))

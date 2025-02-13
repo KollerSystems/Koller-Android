@@ -16,17 +16,9 @@
         android:id="@+id/ncw_stfkate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:detail="-"
-        app:icon="@drawable/calendar"
-        app:name="@string/date" />
-
-    <com.norbert.koller.shared.customviews.DescriptionView
-        android:id="@+id/ncw_stasdate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:detail="-"
-        app:icon="@drawable/clock"
-        app:name="Időtartam" />
+        app:detail="2025. 02. 13. 18:45 - 21:00"
+        app:icon="@drawable/time"
+        app:name="Intervallum" />
 
 
     <include
