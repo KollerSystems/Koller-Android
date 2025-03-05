@@ -29,13 +29,10 @@ class ApplicantListFragment : ListFragment() {
         return getString(R.string.applicants)
     }
 
-
-
     override fun getPagingSource(): PagingSourceWithSeparator {
         getBaseViewModel().apiDataObject = ApiDataObjectUser()
         return PagingSourceWithSeparator(requireContext(), getBaseViewModel())
     }
-
 
     override fun getRecyclerAdapter(): ApiRecyclerAdapter {
         return UserRecyclerAdapter()

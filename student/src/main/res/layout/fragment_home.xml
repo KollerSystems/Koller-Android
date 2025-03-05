@@ -56,20 +56,20 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/text_container_margin"
-                            android:text="Jelentkezésed le fog járni!" />
+                            android:text="A jogviszonyod meg fog szűnni!" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_margin="@dimen/text_container_margin"
-                            android:text="Amennyiben szeretnéd jövőre is biztosítani ittléted, hosszabbítsd meg a jelentkezésed." />
+                            android:text="Amennyiben szeretnéd jövőre is biztosítani ittléted, jelentkezz a következő tanévre is." />
 
                         <Button
                             android:id="@+id/btn_sign_up"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/spacing"
-                            android:text="Jelentkezés meghosszabbítása"
+                            android:text="Jelentkezés"
                             app:icon="@drawable/arrow_forward"
                             app:iconGravity="textEnd" />
                     </LinearLayout>

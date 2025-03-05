@@ -2,6 +2,7 @@ package com.norbert.koller.shared.data
 
 import android.content.Context
 import com.google.gson.annotations.SerializedName
+import com.norbert.koller.shared.R
 
 class UserData(
     @SerializedName("UID") var uid : Int = -1,
@@ -34,7 +35,7 @@ class UserData(
 {
     override fun diffrentDecider(context: Context): String {
         if(name == null){
-            return "NO NAME"
+            return context.getString(R.string.uncategorized)
         }
         return name!![0].toString()
     }
