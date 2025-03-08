@@ -496,4 +496,6 @@
     <string name="give_access">Jogosultság hozzáadása</string>
     <string name="modify">Módosítás</string>
     <string name="uncategorized">Kategorizálatlan</string>
+    <string name="custom">Egyéni</string>
+    <string name="repeats_on">Ekkor ismétlődik</string>
 </resources>

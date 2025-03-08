@@ -264,7 +264,7 @@
                             <com.norbert.koller.teacher.customviews.TimeRangeView
                                 android:id="@+id/trcw_monday"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/spacing"
                                 android:layout_marginBottom="@dimen/spacing"
                                 android:clipChildren="false"
@@ -290,7 +290,7 @@
                             <com.norbert.koller.teacher.customviews.TimeRangeView
                                 android:id="@+id/trcv_tuesday"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/spacing"
                                 android:layout_marginBottom="@dimen/spacing"
                                 android:visibility="gone"
@@ -338,7 +338,7 @@
                             <com.norbert.koller.teacher.customviews.TimeRangeView
                                 android:id="@+id/trcv_thursday"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
+                                android:layout_height="wrap_content"
                                 android:layout_marginStart="@dimen/spacing"
                                 android:layout_marginBottom="@dimen/spacing"
                                 android:visibility="gone"
@@ -411,6 +411,12 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="@string/every_four_weeks" />
+
+                                <RadioButton
+                                    android:text="@string/custom"
+                                    android:id="@+id/rbtn_every_four_weeks2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content" />
                             </RadioGroup>
                         </LinearLayout>
                     </LinearLayout>

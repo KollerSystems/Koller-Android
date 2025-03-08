@@ -505,4 +505,6 @@
     <string name="give_access">Give access</string>
     <string name="modify">Modify</string>
     <string name="uncategorized">Uncategorized</string>
+    <string name="custom">Custom</string>
+    <string name="repeats_on">Repeats on</string>
 </resources>
