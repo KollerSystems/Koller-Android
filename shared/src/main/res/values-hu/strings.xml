@@ -498,4 +498,6 @@
     <string name="uncategorized">Kategorizálatlan</string>
     <string name="custom">Egyéni</string>
     <string name="repeats_on">Ekkor ismétlődik</string>
+    <string name="duty">Ügyeletes</string>
+    <string name="categories">Kategóriák</string>
 </resources>

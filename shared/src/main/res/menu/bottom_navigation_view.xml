@@ -8,10 +8,11 @@
         android:id="@+id/calendar"
         android:icon="@drawable/calendar_icon"
         android:title="@string/calendar" />
+
     <item
         android:id="@+id/studentHostel"
-        android:icon="@drawable/building"
-        android:title="@string/student_hostel" />
+        android:icon="@drawable/browse_icon"
+        android:title="@string/browse" />
     <item
         android:id="@+id/notifications"
         android:icon="@drawable/bell_icon"

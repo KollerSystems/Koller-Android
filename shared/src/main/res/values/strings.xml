@@ -507,4 +507,6 @@
     <string name="uncategorized">Uncategorized</string>
     <string name="custom">Custom</string>
     <string name="repeats_on">Repeats on</string>
+    <string name="duty">Duty</string>
+    <string name="categories">Categories</string>
 </resources>

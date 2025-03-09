@@ -23,6 +23,7 @@ import android.view.ViewGroup.MarginLayoutParams
 import android.view.ViewGroup.VISIBLE
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AnimationUtils
+import android.widget.LinearLayout.GONE
 import android.widget.TextView
 import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,7 @@ import androidx.core.view.marginBottom
 import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
 import androidx.datastore.preferences.core.edit
+import androidx.datastore.preferences.core.intPreferencesKey
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
@@ -59,6 +61,7 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
+import com.norbert.koller.shared.managers.DataStoreManager.Companion.tipDataStore
 import com.norbert.koller.shared.managers.camelToSnakeCase
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.managers.setVisibilityBy
@@ -68,6 +71,7 @@ import com.norbert.koller.shared.widgets.CanteenWidgetProvider
 import com.norbert.koller.shared.widgets.NowWidgetProvider
 import com.norbert.koller.shared.widgets.WidgetHelper
 import com.squareup.picasso.Picasso
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.util.Calendar
@@ -275,6 +279,26 @@ abstract class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        lifecycleScope.launch {
+
+            var opened = 0
+            val data = tipDataStore.data.first()[intPreferencesKey("APP_OPEN_COUNT")]
+            if(data != null) opened = data
+            if(opened < 10){
+                bottomNavigationView().labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
+            }
+
+            if(savedInstanceState == null){
+
+                opened++
+                tipDataStore.edit {
+                    it[intPreferencesKey("APP_OPEN_COUNT")] = opened
+                }
+
+            }
+        }
+
 
         if(binding.cl != null){
             ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, insets ->

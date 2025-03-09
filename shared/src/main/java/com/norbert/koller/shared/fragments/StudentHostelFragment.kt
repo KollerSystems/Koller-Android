@@ -17,7 +17,7 @@ open class StudentHostelFragment : FragmentInMainActivity() {
     lateinit var binding : FragmentStudentHostelBinding
 
     override fun getFragmentTitle(): String? {
-        return getString(R.string.student_hostel)
+        return getString(R.string.browse)
     }
 
     fun addButton(text : String, iconResource : Int, index : Int? = null) : MaterialButton {

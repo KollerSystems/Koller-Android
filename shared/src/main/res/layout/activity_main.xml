@@ -155,6 +155,8 @@
         android:id="@id/navigation_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:itemPaddingBottom="5dp"
+        app:itemPaddingTop="10dp"
         android:layout_gravity="bottom"
         android:minHeight="@dimen/header_footer_size"
         android:translationZ="1000dp"
