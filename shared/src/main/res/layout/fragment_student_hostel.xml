@@ -107,4 +107,15 @@
 
     </androidx.cardview.widget.CardView>
 
+
+
+    <com.norbert.koller.shared.customviews.CardButton
+        android:id="@+id/cb_statistics"
+        app:text="@string/statistics"
+        android:layout_margin="@dimen/text_container_margin"
+        app:shapeAppearance="@style/OverlayRoundedCard"
+        app:icon="@drawable/stats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

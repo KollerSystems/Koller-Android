@@ -293,7 +293,7 @@
     <string name="annexe">Szárny</string>
     <string name="loading">Töltés…</string>
     <string name="create_new_x_first_part">" "</string>
-    <string name="recommended">Ajánlott</string>
+    <string name="recommended">Ajánlott és kitűzött</string>
     <string name="purpose">Célja</string>
     <string name="devices_menu_description">Itt látható az összes olyan eszköz, amelyben be vagy jelentkezve a Kollerbe.\n\nHa az itt szereplő eszközök között van olyan, amit nem imsersz meg, jelentkezz ki abból, és azonnal változtasd meg a jelszavadat.</string>
     <string name="room_number">Szobaszám</string>
@@ -500,4 +500,7 @@
     <string name="repeats_on">Ekkor ismétlődik</string>
     <string name="duty">Ügyeletes</string>
     <string name="categories">Kategóriák</string>
+    <string name="to_be_judged">Elbírálandó</string>
+    <string name="rate_rooms">Szobák értékelése</string>
+    <string name="staffing_control">Létszámellenőrzés</string>
 </resources>

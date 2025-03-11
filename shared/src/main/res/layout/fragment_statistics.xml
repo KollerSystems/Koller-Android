@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.norbert.koller.teacher.fragments.StatisticsFragment">
+    tools:context="com.norbert.koller.teacher.com.norbert.koller.shared.fragments.StatisticsFragment">
 
     <LinearLayout
         style="@style/MainLayout"

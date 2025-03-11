@@ -32,6 +32,21 @@ class RoomListFragment() : com.norbert.koller.shared.fragments.RoomListFragment(
             ))
             dialog.show(parentFragmentManager, ListBsdfFragment.TAG)
         }
+
+        addButton(getString(Rs.string.rate_rooms)){
+            val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
+                ListCardItem(
+                    getString(Rs.string.rooms),
+                    null,
+                    AppCompatResources.getDrawable(requireContext(), Rs.drawable.room), {
+                        val intent = Intent(requireContext(), CreatePlacesActivity::class.java)
+                        intent.putExtra("type", CreatePlacesActivity.ROOM)
+                        requireContext().startActivity(intent)
+                    })
+
+            ))
+            dialog.show(parentFragmentManager, ListBsdfFragment.TAG)
+        }
     }
 
 }

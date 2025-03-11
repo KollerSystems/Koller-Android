@@ -20,10 +20,6 @@ class StudentHostelFragment : com.norbert.koller.shared.fragments.StudentHostelF
         addButton(getString(Rs.string.base_programs), com.norbert.koller.shared.R.drawable.base_program).setOnClickListener{
             getMainActivity().addFragment(BaseProgramTypesFragment())
         }
-
-        addButton(getString(Rs.string.statistics), com.norbert.koller.shared.R.drawable.stats).setOnClickListener {
-            getMainActivity().addFragment(StatisticsFragment())
-        }
     }
 
 }

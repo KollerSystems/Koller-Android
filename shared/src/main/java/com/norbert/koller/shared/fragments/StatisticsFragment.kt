@@ -1,4 +1,4 @@
-package com.norbert.koller.teacher.fragments
+package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
 import android.view.View
@@ -9,20 +9,15 @@ import com.google.android.material.appbar.AppBarLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ApiDataObjectClass
 import com.norbert.koller.shared.api.ApiDataObjectGroup
-import com.norbert.koller.shared.api.RetrofitInstance
-import com.norbert.koller.shared.data.ClassData
-import com.norbert.koller.shared.data.GroupData
 import com.norbert.koller.shared.data.ListToggleItem
-import com.norbert.koller.shared.R as Rs
-import com.norbert.koller.shared.fragments.SearchFragment
-import com.norbert.koller.teacher.databinding.FragmentStatisticsBinding
+import com.norbert.koller.shared.databinding.FragmentStatisticsBinding
 
 class StatisticsFragment : SearchFragment() {
 
     lateinit var contentBinding : FragmentStatisticsBinding
 
     override fun getFragmentTitle(): String {
-        return getString(Rs.string.statistics)
+        return getString(R.string.statistics)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

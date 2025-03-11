@@ -44,7 +44,7 @@ class ApplicantListFragment : ListFragment() {
         setupSort(R.string.abc, R.string.zyx,"Name")
 
         addSortingChip("Type", R.string.state, arrayListOf(
-            ListToggleItem(getString(R.string.waiting), null, AppCompatResources.getDrawable(requireContext(), R.drawable.hourglass), 0),
+            ListToggleItem(getString(R.string.to_be_judged), null, AppCompatResources.getDrawable(requireContext(), R.drawable.hourglass), 0),
             ListToggleItem(getString(R.string.accepted), null, AppCompatResources.getDrawable(requireContext(), R.drawable.check_circle), 1),
             ListToggleItem(getString(R.string.rejected), null, AppCompatResources.getDrawable(requireContext(), R.drawable.x_circle), 2)
         ))

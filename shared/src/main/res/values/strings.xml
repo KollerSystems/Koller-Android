@@ -288,7 +288,7 @@
     <string name="retry">Retry</string>
     <string name="annexe">Annexe</string>
     <string name="loading">Loading…</string>
-    <string name="recommended">Recommended</string>
+    <string name="recommended">Recommended &amp; pinned</string>
     <string name="purpose">Purpose</string>
     <string name="devices_menu_description">Here you can see all the devices in which you are logged in to Koller.\n\nIf there are any devices listed here that you do not recognize, log out of them and change your password immediately.</string>
     <string name="room_number">Room number</string>
@@ -509,4 +509,7 @@
     <string name="repeats_on">Repeats on</string>
     <string name="duty">Duty</string>
     <string name="categories">Categories</string>
+    <string name="to_be_judged">To be judged</string>
+    <string name="rate_rooms">Rate rooms</string>
+    <string name="staffing_control">Staffing control</string>
 </resources>

@@ -61,5 +61,9 @@ open class StudentHostelFragment : FragmentInMainActivity() {
         binding.btnStudyGroups.setOnClickListener {
             (context as MainActivity).addFragment(ApplicationManager.studyGroupsFragment())
         }
+
+        binding.cbStatistics.setOnClickListener{
+            getMainActivity().addFragment(StatisticsFragment())
+        }
     }
 }
