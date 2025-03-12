@@ -40,28 +40,6 @@ class RoomPresenceActivity : RoomsActivity() {
         TabLayoutMediator(getTabLayout(), getViewPager()){tab,position->
             tab.text = (position + 200).toString()
         }.attach()
-
-
-        lifecycleScope.launch {
-            knowsTheLayout = false
-            var read = 0
-
-            val data = getCurrentUserDataStore()!!.data.first()[DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT]
-            if(data != null) {
-                read = data
-            }
-
-            if(read == 3){
-                knowsTheLayout = true
-            }
-
-            read++
-            if(read <= 3){
-                getCurrentUserDataStore()!!.edit {
-                    it[DataStoreManager.ROOM_PRESENCE_KNOWS_THE_LAYOUT] = read
-                }
-            }
-        }
     }
 }
 

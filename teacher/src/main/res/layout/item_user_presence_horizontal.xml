@@ -81,49 +81,37 @@
                     tools:text="Engedéllyel" />
             </LinearLayout>
 
-            <LinearLayout
+            <com.google.android.material.chip.ChipGroup
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_gravity="bottom"
+                android:layout_marginStart="@dimen/card_padding"
+                app:chipSpacingHorizontal="0dp"
+                app:chipSpacingVertical="0dp"
+                app:singleSelection="true">
 
-                <TextView
-                    android:id="@+id/text_presence"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/text_container_margin"
-                    android:text="@string/presence" />
-
-                <com.google.android.material.chip.ChipGroup
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_none"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/card_padding"
-                    app:chipSpacingHorizontal="0dp"
-                    app:chipSpacingVertical="0dp"
-                    app:singleSelection="true">
+                    app:chipBackgroundColor="@color/color_worst_toggle"
+                    app:chipIcon="@drawable/close"
+                    app:chipIconEnabled="true"
+                    app:iconStartPadding="12dp"
+                    app:shapeAppearance="@style/OverlayRoundedLeft" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_none"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:chipBackgroundColor="@color/color_worst_toggle"
-                        app:chipIcon="@drawable/close"
-                        app:chipIconEnabled="true"
-                        app:iconStartPadding="12dp"
-                        app:shapeAppearance="@style/OverlayRoundedLeft" />
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_yes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipBackgroundColor="@color/color_best_toggle"
+                    app:chipIcon="@drawable/check"
+                    app:chipIconEnabled="true"
+                    app:chipMinTouchTargetSize="0dp"
+                    app:iconStartPadding="12dp"
+                    app:shapeAppearance="@style/OverlayRoundedRight" />
 
-                    <com.google.android.material.chip.Chip
-                        android:id="@+id/chip_yes"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:chipBackgroundColor="@color/color_best_toggle"
-                        app:chipIcon="@drawable/check"
-                        app:chipIconEnabled="true"
-                        app:chipMinTouchTargetSize="0dp"
-                        app:iconStartPadding="12dp"
-                        app:shapeAppearance="@style/OverlayRoundedRight" />
-
-                </com.google.android.material.chip.ChipGroup>
-            </LinearLayout>
+            </com.google.android.material.chip.ChipGroup>
 
         </LinearLayout>
 

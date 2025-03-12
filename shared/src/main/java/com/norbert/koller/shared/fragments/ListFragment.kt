@@ -2,10 +2,15 @@ package com.norbert.koller.shared.fragments
 
 
 import android.animation.ValueAnimator
+import android.content.Intent
 import android.graphics.Color
+import android.graphics.drawable.Drawable
+import android.graphics.pdf.models.ListItem
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
+import android.view.Display
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
@@ -15,12 +20,15 @@ import android.view.inputmethod.EditorInfo
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.LinearLayout.VERTICAL
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.view.children
 import androidx.core.view.iterator
+import androidx.core.view.marginEnd
+import androidx.core.view.updatePadding
 import androidx.core.widget.doBeforeTextChanged
 import androidx.core.widget.doOnTextChanged
 import androidx.fragment.app.Fragment
@@ -40,6 +48,9 @@ import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.FilterConfigData
+import com.norbert.koller.shared.data.ListCardItem
+import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
@@ -50,7 +61,9 @@ import com.norbert.koller.shared.viewmodels.ListApiComplexViewModel
 import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+import java.util.ArrayList
 
+data class ButtonParameters(val text: String, val iconID : Int = R.drawable.add, val onClick: () -> Unit)
 
 abstract class ListFragment() : SearchFragment() {
 
@@ -204,31 +217,113 @@ abstract class ListFragment() : SearchFragment() {
 
     }
 
+    fun addButton(text : String, onClick: () -> Unit) {
+         addButtons(ButtonParameters(text, onClick = onClick))
+    }
 
 
-    fun addButton(text : String, onClick: () -> Unit) : Button {
-        val button = MaterialButton(ContextThemeWrapper(requireContext() as MainActivity, R.style.ButtonTonalIcon))
-        button.text = text
-        button.icon = AppCompatResources.getDrawable(requireContext(), R.drawable.add)
-        val textColor = requireContext().getAttributeColor(com.google.android.material.R.attr.colorOnSecondaryContainer)
-        button.setTextColor(textColor)
-        button.setPaddingRelative(ApplicationManager.convertDpToPixel(16, requireContext()), button.paddingTop, button.paddingEnd, button.paddingBottom)
-        button.iconTint = button.textColors
-        val params = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
-        val textContainer = resources.getDimensionPixelSize(R.dimen.text_container_margin)
-        params.setMargins(textContainer,textContainer,textContainer,textContainer)
-        params.gravity = Gravity.CENTER
-        button.layoutParams = params
-        binding.lyParameters.addView(button)
-        button.setOnClickListener {
-            onClick.invoke()
-        }
-        getMainActivity().onEditModeChange = {
-            button.isEnabled = !it
-            button.alpha = if (it) 0.25f else 1f
+    fun addButtons(vararg buttonParams : ButtonParameters) {
+
+        var viewToAddButtonWidth = Int.MAX_VALUE
+        var viewToAddButton : ViewGroup = binding.lyParameters
+        if(buttonParams.count() > 1){
+            val linearLayout  = LinearLayout(requireContext())
+            linearLayout.layoutParams = LinearLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT)
+            linearLayout.orientation = LinearLayout.HORIZONTAL
+            linearLayout.gravity = Gravity.CENTER
+            binding.lyParameters.addView(linearLayout)
+            viewToAddButton = linearLayout
+            binding.lyParameters.width
 
         }
-        return button
+
+        binding.lyParameters.post{
+
+            viewToAddButtonWidth = viewToAddButton.width
+
+            var fit = true
+            var totalButtonWidth = 0
+
+            var listCardItems : kotlin.collections.ArrayList<ListCardItem> = kotlin.collections.arrayListOf<ListCardItem>()
+
+            for (i in buttonParams.indices){
+
+                val currentButtonParam = buttonParams[i]
+
+                if(fit == true) {
+                    var style = R.style.ButtonTonalIcon
+                    var textColorID = com.google.android.material.R.attr.colorOnSecondaryContainer
+                    var backgroundColor =
+                        requireContext().getAttributeColor(com.google.android.material.R.attr.colorSecondaryContainer)
+                    if (i > 0) {
+                        style = R.style.ButtonOutlineIcon
+                        textColorID = com.google.android.material.R.attr.colorPrimary
+                        backgroundColor = 0
+                    }
+                    val button =
+                        MaterialButton(ContextThemeWrapper(requireContext() as MainActivity, style))
+                    button.setBackgroundColor(backgroundColor)
+                    val textColor = requireContext().getAttributeColor(textColorID)
+                    button.setTextColor(textColor)
+                    button.iconTint = button.textColors
+                    button.text = currentButtonParam.text
+                    button.icon =
+                        AppCompatResources.getDrawable(requireContext(), currentButtonParam.iconID)
+                    button.setPaddingRelative(
+                        ApplicationManager.convertDpToPixel(
+                            16,
+                            requireContext()
+                        ), button.paddingTop, button.paddingEnd, button.paddingBottom
+                    )
+                    val params = LinearLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT)
+                    val textContainer =
+                        resources.getDimensionPixelSize(R.dimen.text_container_margin)
+                    params.setMargins(textContainer, textContainer, textContainer, textContainer)
+                    params.gravity = Gravity.CENTER
+                    button.layoutParams = params
+                    viewToAddButton.addView(button)
+
+
+                    viewToAddButton.measure(
+                        View.MeasureSpec.UNSPECIFIED,
+                        View.MeasureSpec.UNSPECIFIED
+                    )
+
+                    totalButtonWidth += button.measuredWidth + button.marginEnd * 2
+
+                    Log.d("totalButtonWidth", totalButtonWidth.toString())
+                    Log.d("viewToAddButton", viewToAddButtonWidth.toString())
+
+                    if (buttonParams.count() - 1 > i && (viewToAddButtonWidth < totalButtonWidth + button.measuredHeight) || viewToAddButtonWidth < totalButtonWidth) {
+                        fit = false
+                        button.iconPadding = 0
+                        button.updatePadding(left = 0, right = 0)
+                        button.text = null
+                        button.setIconResource(R.drawable.more_thick)
+                        button.width = button.measuredHeight
+                        listCardItems.add(ListCardItem(currentButtonParam.text, null, AppCompatResources.getDrawable(requireContext(), currentButtonParam.iconID), currentButtonParam.onClick))
+                    }
+                    else{
+                        button.setOnClickListener {
+                            currentButtonParam.onClick.invoke()
+                        }
+                        getMainActivity().onEditModeChange = {
+                            button.isEnabled = !it
+                            button.alpha = if (it) 0.25f else 1f
+                        }
+                    }
+                }
+                else{
+                    listCardItems.add(ListCardItem(currentButtonParam.text, null, AppCompatResources.getDrawable(requireContext(), currentButtonParam.iconID), currentButtonParam.onClick))
+                }
+
+            }
+
+            if(fit == false){
+                val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), listCardItems as kotlin.collections.ArrayList<com.norbert.koller.shared.data.ListItem>?)
+                viewToAddButton.getChildAt(viewToAddButton.childCount-1).setOnClickListener { dialog.show(parentFragmentManager, ListBsdfFragment.TAG) }
+            }
+        }
     }
 
     fun addSearchbar(filterName : String){
