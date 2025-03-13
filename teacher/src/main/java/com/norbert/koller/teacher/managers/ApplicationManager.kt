@@ -4,7 +4,6 @@ import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.norbert.koller.teacher.fragments.KeyAccessListFragment
-import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.NotificationMakingManager
 import com.norbert.koller.teacher.R
@@ -51,7 +50,6 @@ class ApplicationManager : ApplicationManager() {
         homeFragment = { HomeFragment() }
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
-        notificationFragment = { NotificationsFragment() }
         roomFragment = { RoomFragment() }
         userFragment = { UserFragment() }
 

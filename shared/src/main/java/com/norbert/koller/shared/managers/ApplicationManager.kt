@@ -42,7 +42,6 @@ import com.norbert.koller.shared.activities.ManageKeyActivity
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.HomeFragment
 import com.norbert.koller.shared.fragments.KeyAccessListFragment
-import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.fragments.OutgoingListFragment
 import com.norbert.koller.shared.fragments.RoomFragment
 import com.norbert.koller.shared.fragments.RoomListFragment
@@ -145,7 +144,6 @@ open class ApplicationManager : Application() {
         lateinit var homeFragment: () -> HomeFragment
         lateinit var calendarFragment: () -> CalendarFragment
         lateinit var studentHostelFragment: () -> StudentHostelFragment
-        lateinit var notificationFragment: () -> NotificationsFragment
         lateinit var roomTidinessListFragment: () -> RoomTidinessListFragment
 
         lateinit var roomFragment: () -> RoomFragment

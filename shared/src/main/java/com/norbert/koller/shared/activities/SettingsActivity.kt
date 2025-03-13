@@ -1,6 +1,9 @@
 package com.norbert.koller.shared.activities
 
 import android.annotation.SuppressLint
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
@@ -13,6 +16,7 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.customviews.CardToggle
 import com.norbert.koller.shared.api.APIInterface
 import com.google.android.material.checkbox.MaterialCheckBox
+import com.norbert.koller.shared.broadcastreceivers.MyNotificationPublisher
 import com.norbert.koller.shared.databinding.ContentActivitySettingsDeveloperBinding
 import com.norbert.koller.shared.databinding.ContentActivitySettingsExternalBinding
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -125,6 +129,10 @@ abstract class SettingsActivity : ToolbarActivity() {
 
         }
 
+        getDeveloperBinding().cbSendNotification.setOnClickListener {
+            sendNotification()
+        }
+
 
         getExternalBinding().cbNotification.setOnClickListener {
             val notificationsIntent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
@@ -145,5 +153,21 @@ abstract class SettingsActivity : ToolbarActivity() {
         }
 
 
+    }
+
+    private fun sendNotification() {
+        val intent = Intent(this, MyNotificationPublisher::class.java)
+        val pendingIntent = PendingIntent.getBroadcast(
+            this,
+            1,
+            intent,
+            PendingIntent.FLAG_IMMUTABLE
+        )
+
+        val alarmManager = this.getSystemService(ALARM_SERVICE) as AlarmManager
+        alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP,
+            System.currentTimeMillis(),
+            pendingIntent
+        )
     }
 }

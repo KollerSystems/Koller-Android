@@ -23,7 +23,6 @@ import android.view.ViewGroup.MarginLayoutParams
 import android.view.ViewGroup.VISIBLE
 import android.view.ViewTreeObserver.OnGlobalLayoutListener
 import android.view.animation.AnimationUtils
-import android.widget.LinearLayout.GONE
 import android.widget.TextView
 import android.window.OnBackInvokedDispatcher
 import androidx.appcompat.app.AppCompatActivity
@@ -33,7 +32,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
-import androidx.core.view.marginBottom
 import androidx.core.view.updateMargins
 import androidx.core.view.updatePadding
 import androidx.datastore.preferences.core.edit
@@ -55,6 +53,7 @@ import com.norbert.koller.shared.databinding.ActivityMainBinding
 import com.norbert.koller.shared.fragments.CalendarFragment
 import com.norbert.koller.shared.fragments.FragmentInMainActivity
 import com.norbert.koller.shared.fragments.HomeFragment
+import com.norbert.koller.shared.fragments.StatisticsFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -692,12 +691,12 @@ fun showNightBgIfNeeded(id : String){
                     ApplicationManager.calendarFragment()
                 }
 
-                R.id.studentHostel -> {
+                R.id.browse -> {
                     ApplicationManager.studentHostelFragment()
                 }
 
-                R.id.notifications -> {
-                    ApplicationManager.notificationFragment()
+                R.id.statistics -> {
+                    StatisticsFragment()
                 }
                 else -> {
                     Fragment()

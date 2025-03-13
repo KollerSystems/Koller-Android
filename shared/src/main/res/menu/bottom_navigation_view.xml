@@ -10,11 +10,11 @@
         android:title="@string/calendar" />
 
     <item
-        android:id="@+id/studentHostel"
+        android:id="@+id/browse"
         android:icon="@drawable/browse_icon"
         android:title="@string/browse" />
     <item
-        android:id="@+id/notifications"
-        android:icon="@drawable/bell_icon"
-        android:title="@string/notifications" />
+        android:id="@+id/statistics"
+        android:icon="@drawable/stats"
+        android:title="@string/statistics" />
 </menu>

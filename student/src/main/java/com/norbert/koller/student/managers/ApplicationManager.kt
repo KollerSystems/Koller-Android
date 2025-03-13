@@ -13,7 +13,6 @@ import com.norbert.koller.student.fragments.RoomFragment
 import com.norbert.koller.student.fragments.StudentHostelFragment
 import com.norbert.koller.student.fragments.UserFragment
 import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdfFragment
-import com.norbert.koller.shared.fragments.NotificationsFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.student.R
 import com.norbert.koller.student.fragments.RoomTidinessListFragment
@@ -55,7 +54,6 @@ class ApplicationManager : ApplicationManager() {
         homeFragment = { HomeFragment() }
         calendarFragment = { CalendarFragment() }
         studentHostelFragment = { StudentHostelFragment() }
-        notificationFragment = { NotificationsFragment() }
         roomFragment = { RoomFragment() }
         userFragment = { UserFragment() }
 

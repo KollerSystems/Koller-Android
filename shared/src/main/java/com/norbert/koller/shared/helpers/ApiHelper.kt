@@ -20,16 +20,7 @@ class ApiHelper {
             snackbar.setAction(context.getString(R.string.retry)){
                 onRefresh.invoke()
             }
-            snackbar.view.viewTreeObserver
-                .addOnPreDrawListener(object : ViewTreeObserver.OnPreDrawListener {
-                    override fun onPreDraw(): Boolean {
-                        snackbar.view.viewTreeObserver.removeOnPreDrawListener(this)
-                        if(snackbar.view.layoutParams is CoordinatorLayout.LayoutParams){
-                            (snackbar.view.layoutParams as CoordinatorLayout.LayoutParams).behavior = null
-                        }
-                        return true
-                    }
-                })
+
             snackbar.show()
 
             return snackbar

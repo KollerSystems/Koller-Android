@@ -128,7 +128,7 @@
         app:text="Test activity" />
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/CardBottom"
+        style="@style/CardMiddle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -180,7 +180,15 @@
             </com.google.android.flexbox.FlexboxLayout>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
-    
+
+    <com.norbert.koller.shared.customviews.CardButton
+        app:end_icon="@null"
+        android:id="@+id/cb_send_notification"
+        style="@style/CardBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:text="Send notification" />
+
 
 
 

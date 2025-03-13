@@ -463,8 +463,8 @@
     <string name="four_weeks">Four weeks</string>
     <string name="is_out">Out</string>
     <string name="is_in">In</string>
-    <string name="failed_to_refresh">Failed to get fresh data</string>
-    <string name="failed_to_refresh_user">Failed to get your fresh user data</string>
+    <string name="failed_to_refresh">Failed to get up to date data</string>
+    <string name="failed_to_refresh_user">Failed to get your up to date user data</string>
     <string name="no_internet">No internet connection</string>
     <string name="discard">Discard</string>
     <string name="sure_logout">Log out?</string>

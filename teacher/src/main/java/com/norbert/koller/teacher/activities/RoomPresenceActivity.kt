@@ -55,15 +55,8 @@ class RoomPresenceViewPagerAdapter() : RecyclerView.Adapter<RoomPresenceViewPage
 
         holder.recyclerView.layoutManager = GridLayoutManager(holder.itemView.context, 2)
 
-
         val data : ArrayList<RoomOrderConditionsBase> = RoomOrderData.instance[0].conditions
-
-
         holder.recyclerView.adapter = RoomPresenceRecyclerAdapter(data)
-
-
-
-
     }
 
     override fun getItemCount(): Int {
