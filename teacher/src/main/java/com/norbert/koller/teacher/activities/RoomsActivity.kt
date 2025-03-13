@@ -39,7 +39,7 @@ abstract class RoomsActivity : AppCompatActivity() {
             enabled = true
         ){
             MaterialAlertDialogBuilder(this@RoomsActivity)
-                .setTitle(getString(R.string.are_you_sure_discard_all_grade))
+                .setMessage(getString(R.string.are_you_sure_discard_all_grade))
                 .setPositiveButton(getString(com.norbert.koller.shared.R.string.discard)) { _, _ ->
 
                     finish()
@@ -66,7 +66,7 @@ abstract class RoomsActivity : AppCompatActivity() {
 
         contentBinding.manageBar.button.setOnClickListener{
             MaterialAlertDialogBuilder(this)
-                .setTitle(getString(R.string.are_you_sure_publish_all_grade))
+                .setMessage(getString(R.string.are_you_sure_publish_all_grade))
                 .setPositiveButton(getString(com.norbert.koller.shared.R.string.publish_all)) { _, _ ->
                     finish()
                 }

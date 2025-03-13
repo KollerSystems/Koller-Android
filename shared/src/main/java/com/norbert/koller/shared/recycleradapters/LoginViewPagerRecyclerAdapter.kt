@@ -86,7 +86,7 @@ abstract class LoginViewPagerRecyclerAdapter : RecyclerView.Adapter<LoginViewPag
             }
             else{
                 MaterialAlertDialogBuilder(activity)
-                    .setTitle("Nincs internet!")
+                    .setMessage("Nincs internet!")
                     .setIcon(R.drawable.no_internet)
                     .setPositiveButton(
                         activity.getString(R.string.ok)

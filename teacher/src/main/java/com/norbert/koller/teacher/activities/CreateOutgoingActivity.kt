@@ -87,7 +87,7 @@ class CreateOutgoingActivity() : ManageActivity() {
 
         onBackPressedDispatcher.addCallback(this){
             MaterialAlertDialogBuilder(this@CreateOutgoingActivity)
-                .setTitle(getString(com.norbert.koller.shared.R.string.are_you_sure_you_want_to_discard_the_post))
+                .setMessage(getString(com.norbert.koller.shared.R.string.are_you_sure_you_want_to_discard_the_post))
                 .setPositiveButton(getString(com.norbert.koller.shared.R.string.discard)) { _, _ ->
                     finish()
                 }

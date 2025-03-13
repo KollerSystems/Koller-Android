@@ -168,7 +168,7 @@
     <string name="news_desc">Például a jövő héten zárva lesz a konyha.</string>
     <string name="program_desc">Például kirándulás és akár alapprogram pótlási lehetőség.</string>
     <string name="are_you_sure_you_want_to_discard_the_post">Elveted a bejegyzést?</string>
-    <string name="create_a_draft">Piszkozat létrehozása</string>
+    <string name="create_a_draft">Piszkozat</string>
     <string name="state">Állapot</string>
     <string name="direction">Irány</string>
     <string name="also_contributed">Hozzájárult még</string>

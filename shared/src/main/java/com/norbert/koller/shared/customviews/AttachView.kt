@@ -112,7 +112,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
 
         binding.btnRemove.setOnClickListener{
             MaterialAlertDialogBuilder(context)
-                .setTitle("Biztos törli a képet?")
+                .setMessage("Biztos törli a képet?")
                 .setPositiveButton(context.getString(R.string.remove)){_,_->
                     resetUI()
                 }
