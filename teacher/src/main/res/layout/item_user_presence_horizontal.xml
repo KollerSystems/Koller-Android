@@ -85,7 +85,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
-                android:layout_marginStart="@dimen/card_padding"
                 app:chipSpacingHorizontal="0dp"
                 app:chipSpacingVertical="0dp"
                 app:singleSelection="true">
@@ -107,6 +106,7 @@
                     app:chipBackgroundColor="@color/color_best_toggle"
                     app:chipIcon="@drawable/check"
                     app:chipIconEnabled="true"
+                    app:chipIconTint="?attr/colorControlNormal"
                     app:chipMinTouchTargetSize="0dp"
                     app:iconStartPadding="12dp"
                     app:shapeAppearance="@style/OverlayRoundedRight" />

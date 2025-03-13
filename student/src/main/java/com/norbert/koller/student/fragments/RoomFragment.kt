@@ -32,7 +32,7 @@ class RoomFragment() : com.norbert.koller.shared.fragments.RoomFragment() {
 
 
         if(viewModel.id == CacheManager.getCurrentUserData()!!.rid){
-            binding.header.textManageRoom.isVisible = true
+            binding.header.textManageRoom.isVisible = false
             binding.header.textManageRoom.text = getString(com.norbert.koller.shared.R.string.menu)
             binding.header.cbRoomTidiness.isVisible = true
             RecyclerViewHelper.roundCard(binding.header.cbRoomTidiness)

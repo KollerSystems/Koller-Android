@@ -136,11 +136,9 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         val devArrayList = arrayListOf(
             DevData("Katona Márton Barnabás", "Főmenedzsment • Front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_marton)!!, "https://Marci599.github.io"),
             DevData("Bencsik Gergő", "Menedzsment • Back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gergo)!!, "https://github.com/lolfail"),
-            DevData("Zsiga Róbert", "Back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_robert)!!, "https://github.com/IronNight007"),
-            DevData("Bende Ákos György", "Menedzsment", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gyorgy)!!, "https://github.com/kutzlect"),
+            DevData("Bende Ákos György", "Menedzsment • Szerver", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gyorgy)!!, "https://github.com/kutzlect"),
             DevData("Kovács Gábor", "Front-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_gabor)!!, "https://github.com/mrSajt2"),
-            DevData("Fehér Dávid", "Back-end", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_david)!!, "https://github.com/TheBlueLines"),
-            DevData("Juhos Gergely János", "Marketing", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_juhos)!!, "https://github.com/enderember003"),
+            DevData("Juhos Gergely János", "Marketing", AppCompatResources.getDrawable(requireContext(), R.drawable.pfp_juhos)!!, "https://github.com/enderember003")
         )
 
         devArrayList.shuffle()
@@ -150,7 +148,6 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         getFooterBinding().cbSupport.setOnClickListener{
             val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/kollersystems"))
             startActivity(browserIntent)
-
         }
 
         getFooterBinding().cbGithub.setOnClickListener{
@@ -161,10 +158,11 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         getFooterBinding().cbEmail.setOnClickListener{
 
             val intent = Intent(Intent.ACTION_SENDTO)
-            intent.data = Uri.parse("mailto:contact@norbert.hu?body=Felhasználó azonosítója:")
-
+            intent.data = Uri.parse("mailto:contact@norbert.hu?body=" +
+                    "Institution ID: -\n" +
+                    "App Version: -\n" +
+                    "User ID: ${CacheManager.currentUserId}\n")
             startActivity(intent)
-
         }
     }
 

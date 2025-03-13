@@ -226,7 +226,7 @@
     <string name="reports">Jelentések</string>
     <string name="port_exits_and_entrances_delays">Portai ki- és belépések / Késések</string>
     <string name="to_do">Teendők</string>
-    <string name="my_groups">Csoportjaim</string>
+    <string name="my_groups">Csoportom</string>
     <string name="days">Napok</string>
     <string name="canteen">Menza</string>
     <string name="base_programs">Alapprogramok</string>
@@ -503,4 +503,5 @@
     <string name="to_be_judged">Elbírálandó</string>
     <string name="rate_rooms">Szobák értékelése</string>
     <string name="staffing_control">Létszámellenőrzés</string>
+    <string name="application">Alkalmazás</string>
 </resources>

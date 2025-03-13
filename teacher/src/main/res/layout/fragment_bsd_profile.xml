@@ -6,9 +6,7 @@
     android:layout_height="wrap_content"
     android:background="@null"
     android:orientation="vertical"
-    android:paddingHorizontal="@dimen/application_padding"
-    android:paddingTop="@dimen/application_padding"
-    android:paddingBottom="0dp">
+    android:padding="@dimen/application_padding">
 
 
     <include

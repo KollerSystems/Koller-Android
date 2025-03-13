@@ -104,10 +104,8 @@
     <com.norbert.koller.shared.customviews.CardButton
         android:id="@id/cb_groups"
         style="@style/CardMiddle"
-        tools:visibility="visible"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="gone"
         app:icon="@drawable/groups"
         app:text="@string/my_groups" />
 

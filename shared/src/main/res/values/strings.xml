@@ -221,7 +221,7 @@
     <string name="reports">Reports</string>
     <string name="port_exits_and_entrances_delays">Gate exits and entrances / Delays</string>
     <string name="to_do">To do</string>
-    <string name="my_groups">My groups</string>
+    <string name="my_groups">My group</string>
     <string name="days">Days</string>
     <string name="canteen">Canteen</string>
     <string name="base_programs">Base programs</string>
@@ -512,4 +512,5 @@
     <string name="to_be_judged">To be judged</string>
     <string name="rate_rooms">Rate rooms</string>
     <string name="staffing_control">Staffing control</string>
+    <string name="application">Application</string>
 </resources>

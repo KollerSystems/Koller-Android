@@ -9,15 +9,22 @@
 
     <com.norbert.koller.shared.customviews.CardButton
         android:id="@+id/cb_crossings"
-        style="@style/CardMiddle"
-        app:icon="@drawable/gate"
-        app:text="@string/port_exits_and_entrances"
+        style="@style/CardBottom"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        app:icon="@drawable/gate"
+        app:text="@string/port_exits_and_entrances" />
+
+    <TextView
+        android:id="@+id/textView3"
+        style="@style/CategoryCardNameBald"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/application" />
 
     <com.norbert.koller.shared.customviews.CardButton
         android:id="@+id/cb_settings"
-        style="@style/CardMiddle"
+        style="@style/CardTop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:icon="@drawable/settings"
@@ -31,6 +38,15 @@
         android:layout_height="wrap_content"
         app:icon="@drawable/policy"
         app:text="@string/privacy_policy" />
+
+    <TextView
+        style="@style/Description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/text_container_margin"
+        android:gravity="center_horizontal"
+        android:minHeight="@dimen/card_padding"
+        android:text="@string/version" />
 
     <TextView
         style="@style/CategoryCardNameBald"
@@ -84,13 +100,23 @@
         tools:listitem="@layout/item_dev" />
 
     <com.norbert.koller.shared.customviews.CardButton
-        app:end_icon="@drawable/open_in_new"
         android:id="@+id/cb_support"
         style="@style/CardMiddle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:end_icon="@drawable/open_in_new"
         app:icon="@drawable/support_us"
-        app:text="@string/support_us" />
+        app:text="@string/support_us" >
+        <FrameLayout
+            android:elevation="-1dp"
+            android:layout_marginBottom="@dimen/n_card_padding"
+            android:layout_marginTop="@dimen/n_card_padding"
+            android:layout_marginLeft="@dimen/n_card_padding"
+            android:layout_marginRight="@dimen/n_card_padding"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/secondary_gradient"/>
+    </com.norbert.koller.shared.customviews.CardButton>
 
     <com.norbert.koller.shared.customviews.CardButton
         app:end_icon="@drawable/open_in_new"
@@ -114,12 +140,4 @@
         app:text="@string/email" />
 
 
-    <TextView
-        style="@style/Description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/text_container_margin"
-        android:gravity="center_horizontal"
-        android:minHeight="@dimen/card_padding"
-        android:text="@string/version" />
 </LinearLayout>
