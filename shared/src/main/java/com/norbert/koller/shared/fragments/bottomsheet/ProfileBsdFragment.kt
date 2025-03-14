@@ -1,9 +1,7 @@
 package com.norbert.koller.shared.fragments.bottomsheet
 
 import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract.Data
 import android.view.View
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.datastore.preferences.core.edit
@@ -14,21 +12,20 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.fragments.ManageAccountFragment
 import com.norbert.koller.shared.data.DevData
-import com.norbert.koller.shared.data.UserData
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBinding
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.shared.fragments.CrossingListFragment
 import com.norbert.koller.shared.fragments.KeyPagedFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.DataStoreManager.Companion.loginDataStore
 import com.norbert.koller.shared.managers.setupBottomSheet
 import com.norbert.koller.shared.recycleradapters.DevRecyclerAdapter
 import kotlinx.coroutines.launch
+import androidx.core.net.toUri
 
 
-abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
+abstract class ProfileBsdFragment : ScrollBsdfFragment() {
 
     abstract fun getHeaderBinding() : ContentFragmentBsdfProfileHeaderBinding
     abstract fun getFooterBinding() : ContentFragmentBsdfProfileFooterBinding
@@ -121,12 +118,13 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         }
 
         getFooterBinding().cbPrivacyPolicy.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/@Marci599"))
+            val browserIntent = Intent(Intent.ACTION_VIEW,
+                "https://www.youtube.com/@Marci599".toUri())
             startActivity(browserIntent)
         }
 
         getFooterBinding().cardOrganization.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://kollegium.tech/"))
+            val browserIntent = Intent(Intent.ACTION_VIEW, "https://kollegium.tech/".toUri())
             startActivity(browserIntent)
         }
 
@@ -146,22 +144,24 @@ abstract class ProfileBsdfFragment : ScrollBsdfFragment() {
         getFooterBinding().recyclerView.adapter = DevRecyclerAdapter(devArrayList)
 
         getFooterBinding().cbSupport.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.buymeacoffee.com/kollersystems"))
+            val browserIntent = Intent(Intent.ACTION_VIEW,
+                "https://www.buymeacoffee.com/kollersystems".toUri())
             startActivity(browserIntent)
         }
 
         getFooterBinding().cbGithub.setOnClickListener{
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/KollerSystems"))
+            val browserIntent = Intent(Intent.ACTION_VIEW,
+                "https://github.com/KollerSystems".toUri())
             startActivity(browserIntent)
         }
 
         getFooterBinding().cbEmail.setOnClickListener{
 
             val intent = Intent(Intent.ACTION_SENDTO)
-            intent.data = Uri.parse("mailto:contact@norbert.hu?body=" +
+            intent.data = ("mailto:contact@norbert.hu?body=" +
                     "Institution ID: -\n" +
-                    "App Version: -\n" +
-                    "User ID: ${CacheManager.currentUserId}\n")
+                    "App Version: ${getString(R.string.version)}\n" +
+                    "User ID: ${CacheManager.currentUserId}\n").toUri()
             startActivity(intent)
         }
     }

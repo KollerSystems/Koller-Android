@@ -40,15 +40,6 @@
         app:text="@string/privacy_policy" />
 
     <TextView
-        style="@style/Description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/text_container_margin"
-        android:gravity="center_horizontal"
-        android:minHeight="@dimen/card_padding"
-        android:text="@string/version" />
-
-    <TextView
         style="@style/CategoryCardNameBald"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

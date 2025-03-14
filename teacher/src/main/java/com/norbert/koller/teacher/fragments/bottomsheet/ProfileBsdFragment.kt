@@ -8,7 +8,7 @@ import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileFooterBin
 import com.norbert.koller.shared.databinding.ContentFragmentBsdfProfileHeaderBinding
 import com.norbert.koller.teacher.databinding.FragmentBsdProfileBinding
 
-class ProfileBsdfFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdfFragment() {
+class ProfileBsdFragment : com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment() {
 
     lateinit var binding : FragmentBsdProfileBinding
 

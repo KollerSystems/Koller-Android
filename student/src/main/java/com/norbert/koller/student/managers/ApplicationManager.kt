@@ -3,7 +3,6 @@ package com.norbert.koller.student.managers
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import com.norbert.koller.shared.activities.LoginActivity
 import com.norbert.koller.student.activities.ManageKeyActivity
 import com.norbert.koller.student.activities.MainActivity
 import com.norbert.koller.student.activities.SettingsActivity
@@ -12,7 +11,7 @@ import com.norbert.koller.student.fragments.HomeFragment
 import com.norbert.koller.student.fragments.RoomFragment
 import com.norbert.koller.student.fragments.StudentHostelFragment
 import com.norbert.koller.student.fragments.UserFragment
-import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdfFragment
+import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.student.R
 import com.norbert.koller.student.fragments.RoomTidinessListFragment
@@ -43,8 +42,8 @@ class ApplicationManager : ApplicationManager() {
         }
 
         openProfile = {context: Context ->
-            val dialog = ProfileBsdfFragment()
-            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdfFragment.TAG)
+            val dialog = ProfileBsdFragment()
+            dialog.show((context as AppCompatActivity).supportFragmentManager, com.norbert.koller.shared.fragments.bottomsheet.ProfileBsdFragment.TAG)
         }
 
         getAppColor = {context->

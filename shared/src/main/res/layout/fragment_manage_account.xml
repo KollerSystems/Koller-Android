@@ -10,9 +10,11 @@
     tools:context=".fragments.ManageAccountFragment">
 
         <com.google.android.flexbox.FlexboxLayout
+            style="@style/MainLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/MainLayout">
+            app:justifyContent="center">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -21,40 +23,40 @@
 
 
                         <com.norbert.koller.shared.customviews.UserView
-                    android:id="@+id/user"
-                    android:layout_width="150dp"
-                    android:layout_height="150dp"
-                    android:layout_gravity="center_horizontal"
-                    app:stroke_width="4dp">
+                            android:id="@+id/user"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center_horizontal"
+                            app:stroke_width="4dp">
 
-                </com.norbert.koller.shared.customviews.UserView>
+                        </com.norbert.koller.shared.customviews.UserView>
 
-                <TextView
-                    android:id="@+id/text_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginBottom="@dimen/application_padding"
-                    android:padding="@dimen/text_container_margin"
-                    android:text="@string/unknown"
-                    android:textAppearance="@style/MainTitle" />
+                        <TextView
+                            android:id="@+id/text_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="@dimen/application_padding"
+                            android:padding="@dimen/text_container_margin"
+                            android:text="@string/unknown"
+                            android:textAppearance="@style/MainTitle" />
 
 
-                <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_personal_data"
-                    style="@style/CardTop"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:icon="@drawable/data"
-                    app:text="@string/personal_data" />
+                        <com.norbert.koller.shared.customviews.CardButton
+                            android:id="@+id/cb_personal_data"
+                            style="@style/CardTop"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:icon="@drawable/data"
+                            app:text="@string/personal_data" />
 
                         <com.norbert.koller.shared.customviews.CardButton
                             android:id="@+id/cb_password"
                             style="@style/CardBottom"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            app:text="@string/change_password"
-                            app:icon="@drawable/key" />
+                            app:icon="@drawable/key"
+                            app:text="@string/change_password" />
 
                         <com.norbert.koller.shared.customviews.CardButton
                             android:id="@+id/cb_2fa"
@@ -67,14 +69,14 @@
                             tools:visibility="visible" />
 
                         <com.norbert.koller.shared.customviews.CardButton
-                    android:id="@+id/cb_devices"
-                    style="@style/CardBottom"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:visibility="gone"
-                    app:icon="@drawable/devices"
-                    app:text="@string/devices"
-                    tools:visibility="visible" />
+                            android:id="@+id/cb_devices"
+                            style="@style/CardBottom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:visibility="gone"
+                            app:icon="@drawable/devices"
+                            app:text="@string/devices"
+                            tools:visibility="visible" />
                 </LinearLayout>
         </com.google.android.flexbox.FlexboxLayout>
 </androidx.core.widget.NestedScrollView>
