@@ -12,7 +12,7 @@ import com.norbert.koller.teacher.fragments.CalendarFragment
 import com.norbert.koller.teacher.fragments.HomeFragment
 import com.norbert.koller.teacher.fragments.RoomFragment
 import com.norbert.koller.teacher.fragments.RoomListFragment
-import com.norbert.koller.teacher.fragments.StudentHostelFragment
+import com.norbert.koller.teacher.fragments.BrowseFragment
 import com.norbert.koller.teacher.fragments.UserFragment
 import com.norbert.koller.teacher.fragments.OutgoingListFragment
 import com.norbert.koller.teacher.fragments.RoomTidinessListFragment
@@ -49,7 +49,7 @@ class ApplicationManager : ApplicationManager() {
 
         homeFragment = { HomeFragment() }
         calendarFragment = { CalendarFragment() }
-        studentHostelFragment = { StudentHostelFragment() }
+        browseFragment = { BrowseFragment() }
         roomFragment = { RoomFragment() }
         userFragment = { UserFragment() }
 

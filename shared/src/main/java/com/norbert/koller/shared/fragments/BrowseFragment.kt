@@ -1,20 +1,20 @@
 package com.norbert.koller.shared.fragments
 
 import android.os.Bundle
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import android.widget.LinearLayout
 import com.google.android.material.button.MaterialButton
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.databinding.FragmentStudentHostelBinding
+import com.norbert.koller.shared.databinding.FragmentBrowseBinding
+import com.norbert.koller.shared.helpers.setMaxWidth
 
-open class StudentHostelFragment : FragmentInMainActivity() {
+open class BrowseFragment : FragmentInMainActivity() {
 
-    lateinit var binding : FragmentStudentHostelBinding
+    lateinit var binding : FragmentBrowseBinding
 
     override fun getFragmentTitle(): String? {
         return getString(R.string.browse)
@@ -42,13 +42,15 @@ open class StudentHostelFragment : FragmentInMainActivity() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        binding = FragmentStudentHostelBinding.inflate(layoutInflater)
+        binding = FragmentBrowseBinding.inflate(layoutInflater)
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.root.setMaxWidth()
 
         binding.btnPlaces.setOnClickListener{
             (context as MainActivity).addFragment(ApplicationManager.roomListFragment())

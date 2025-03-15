@@ -10,6 +10,7 @@ import android.widget.FrameLayout
 import android.widget.TextView
 import androidx.core.view.marginTop
 import androidx.paging.PagingDataAdapter
+import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -37,10 +38,12 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : Fra
 
     init {
         binding.textTitle.visibility = GONE
+        binding.recyclerView.itemAnimator = null
 
         var previousWidth = 0;
         viewTreeObserver.addOnGlobalLayoutListener {
             val width = width
+
 
             if (width != previousWidth) {
                 val tabletMaxWidth = resources.getDimensionPixelSize(R.dimen.tablet_max_width_with_text_container)
@@ -64,7 +67,12 @@ class SuperCoolRecyclerView(context: Context, attrs: AttributeSet? = null) : Fra
                     )
                 }
                 previousWidth = width
+            }
+        }
 
+        binding.recyclerView.post {
+            binding.recyclerView.post {
+                binding.recyclerView.itemAnimator = DefaultItemAnimator()
             }
         }
 

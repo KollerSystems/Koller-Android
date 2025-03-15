@@ -1,6 +1,7 @@
 package com.norbert.koller.shared.helpers
 
 import android.content.Context
+import android.view.View
 import android.view.ViewTreeObserver
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.google.android.material.snackbar.Snackbar
@@ -16,7 +17,7 @@ class ApiHelper {
         const val STATE_ERROR = 2
 
         fun createSnackBar(context : Context, text : String, onRefresh: (()-> Unit)) : Snackbar{
-            val snackbar = (context as MainActivity).getSnackBar(text, Snackbar.LENGTH_INDEFINITE)
+            val snackbar = (context as MainActivity).getSnackBar(text, Snackbar.LENGTH_LONG)
             snackbar.setAction(context.getString(R.string.retry)){
                 onRefresh.invoke()
             }

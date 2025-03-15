@@ -12,6 +12,7 @@ import com.norbert.koller.shared.activities.EditCloseRelativeActivity
 import com.norbert.koller.shared.activities.EditSchoolActivity
 import com.norbert.koller.shared.activities.EditStudentActivity
 import com.norbert.koller.shared.databinding.ContentPersonalDataBinding
+import com.norbert.koller.shared.helpers.setMaxWidth
 import com.norbert.koller.shared.managers.ApplicationManager
 
 class PersonalDataFragment : FragmentInMainActivity() {
@@ -33,6 +34,9 @@ class PersonalDataFragment : FragmentInMainActivity() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.root.setMaxWidth()
+
         binding.btnEditStudent.setOnClickListener{
             ApplicationManager.openActivity(requireContext(), EditStudentActivity::class.java)
         }

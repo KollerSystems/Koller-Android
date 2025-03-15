@@ -46,7 +46,7 @@ import com.norbert.koller.shared.fragments.OutgoingListFragment
 import com.norbert.koller.shared.fragments.RoomFragment
 import com.norbert.koller.shared.fragments.RoomListFragment
 import com.norbert.koller.shared.fragments.RoomTidinessListFragment
-import com.norbert.koller.shared.fragments.StudentHostelFragment
+import com.norbert.koller.shared.fragments.BrowseFragment
 import com.norbert.koller.shared.fragments.StudyGroupTypeListFragment
 import com.norbert.koller.shared.fragments.UserFragment
 import com.norbert.koller.shared.fragments.UserListFragment
@@ -139,7 +139,7 @@ open class ApplicationManager : Application() {
 
         lateinit var homeFragment: () -> HomeFragment
         lateinit var calendarFragment: () -> CalendarFragment
-        lateinit var studentHostelFragment: () -> StudentHostelFragment
+        lateinit var browseFragment: () -> BrowseFragment
         lateinit var roomTidinessListFragment: () -> RoomTidinessListFragment
 
         lateinit var roomFragment: () -> RoomFragment

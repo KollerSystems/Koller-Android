@@ -9,7 +9,7 @@ import com.norbert.koller.student.activities.SettingsActivity
 import com.norbert.koller.student.fragments.CalendarFragment
 import com.norbert.koller.student.fragments.HomeFragment
 import com.norbert.koller.student.fragments.RoomFragment
-import com.norbert.koller.student.fragments.StudentHostelFragment
+import com.norbert.koller.student.fragments.BrowseFragment
 import com.norbert.koller.student.fragments.UserFragment
 import com.norbert.koller.student.fragments.bottomsheet.ProfileBsdFragment
 import com.norbert.koller.shared.managers.ApplicationManager
@@ -52,7 +52,7 @@ class ApplicationManager : ApplicationManager() {
 
         homeFragment = { HomeFragment() }
         calendarFragment = { CalendarFragment() }
-        studentHostelFragment = { StudentHostelFragment() }
+        browseFragment = { BrowseFragment() }
         roomFragment = { RoomFragment() }
         userFragment = { UserFragment() }
 

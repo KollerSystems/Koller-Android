@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:background="@null"
                 android:orientation="vertical"
-                android:paddingBottom="80dp">
+>
 
                 <TextView
                     android:id="@id/home_text_now"

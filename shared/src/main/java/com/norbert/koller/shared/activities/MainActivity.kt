@@ -692,7 +692,7 @@ fun showNightBgIfNeeded(id : String){
                 }
 
                 R.id.browse -> {
-                    ApplicationManager.studentHostelFragment()
+                    ApplicationManager.browseFragment()
                 }
 
                 R.id.statistics -> {

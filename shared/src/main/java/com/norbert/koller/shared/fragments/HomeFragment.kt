@@ -4,13 +4,16 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.view.View
+import android.widget.LinearLayout
 import androidx.appcompat.content.res.AppCompatResources
+import androidx.core.widget.NestedScrollView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
+import com.norbert.koller.shared.helpers.setMaxWidth
 import com.norbert.koller.shared.recycleradapters.ObsRecyclerAdapter
 import java.util.ArrayList
 
@@ -48,6 +51,8 @@ abstract class HomeFragment : FragmentInMainActivity() {
 
 
         refresh = view.findViewById(R.id.home_refresh)
+
+        ((refresh.getChildAt(1) as NestedScrollView).getChildAt(0) as LinearLayout).setMaxWidth()
 
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)

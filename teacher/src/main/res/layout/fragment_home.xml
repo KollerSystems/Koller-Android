@@ -19,15 +19,15 @@
         <androidx.core.widget.NestedScrollView
             style="@style/NestedScrollView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:scrollbars="none">
 
             <LinearLayout
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:orientation="vertical"
-                android:paddingBottom="80dp">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@id/home_text_now"

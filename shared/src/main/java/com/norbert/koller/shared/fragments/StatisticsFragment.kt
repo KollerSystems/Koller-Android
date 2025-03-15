@@ -11,6 +11,7 @@ import com.norbert.koller.shared.api.ApiDataObjectClass
 import com.norbert.koller.shared.api.ApiDataObjectGroup
 import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.databinding.FragmentStatisticsBinding
+import com.norbert.koller.shared.helpers.setMaxWidth
 
 class StatisticsFragment : SearchFragment() {
 
@@ -29,6 +30,8 @@ class StatisticsFragment : SearchFragment() {
         val params = CoordinatorLayout.LayoutParams(MATCH_PARENT, MATCH_PARENT)
         params.behavior = AppBarLayout.ScrollingViewBehavior()
         contentBinding.root.layoutParams = params
+
+        contentBinding.root.setMaxWidth()
 
         setupSort(R.string.from_better, R.string.from_worst,"Name")
 

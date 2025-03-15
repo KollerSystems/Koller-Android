@@ -8,7 +8,6 @@
     tools:context="com.norbert.koller.teacher.com.norbert.koller.shared.fragments.StatisticsFragment">
 
     <LinearLayout
-        style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"

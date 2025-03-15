@@ -2,12 +2,9 @@ package com.norbert.koller.teacher.fragments
 
 import android.os.Bundle
 import android.view.View
-import androidx.core.view.isVisible
-import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.R as Rs
 
-class StudentHostelFragment : com.norbert.koller.shared.fragments.StudentHostelFragment() {
+class BrowseFragment : com.norbert.koller.shared.fragments.BrowseFragment() {
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
