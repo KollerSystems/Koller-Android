@@ -11,7 +11,7 @@
     <string name="education_ID_hint">The 11-digit code on your student ID</string>
     <string name="or">or</string>
     <string name="touch_nfc">Approach an NFC tag</string>
-    <string name="please_login">Please login to continue</string>
+    <string name="please_login">Login to continue</string>
     <string name="language">Language</string>
     <string name="logout">Logout</string>
     <string name="general">General</string>
@@ -353,7 +353,7 @@
     <string name="facebook" translatable="false">Facebook</string>
     <string name="team_name" translatable="false">Koller Systems</string>
     <string name="email" translatable="false">Email</string>
-    <string name="version" translatable="false">v0.0.3</string>
+    <string name="version" translatable="false">0.1.0-dev.4</string>
     <string name="lorem_long" translatable="false">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas vitae dolor nec metus tempus maximus. Vestibulum egestas dictum hendrerit. Pellentesque tellus enim, tempor id quam nec, fringilla gravida velit. Aenean luctus eros eu mi posuere rhoncus. Quisque quis quam augue. Morbi venenatis, libero quis gravida ornare, felis nunc efficitur felis, eu egestas eros sem ac purus. Phasellus ullamcorper ante dolor, sed pretium purus ultrices non. Quisque gravida laoreet finibus. Aenean convallis orci eu nibh faucibus dictum volutpat at felis. Donec vestibulum pulvinar justo, at vehicula enim egestas vel. Sed lectus nulla, ultrices sed sodales rhoncus, suscipit scelerisque ante.  Nulla bibendum dictum massa vel accumsan. Mauris tempor iaculis neque, vel vehicula sem ullamcorper sit amet. Ut luctus mi nunc, ac blandit justo dignissim eu. Etiam a purus a tortor luctus congue. In nec fringilla enim. Vestibulum facilisis nisl in mi venenatis varius quis ut tortor. Nullam pretium laoreet neque at condimentum.  Aliquam viverra massa sed sapien accumsan, id iaculis dolor eleifend. Etiam ex tellus, lobortis ac eros quis, dignissim auctor risus. Cras ligula ligula, bibendum vel lectus quis, posuere ultrices metus. Vivamus lobortis tempus metus, et sagittis justo convallis vel. Aenean id arcu in metus rhoncus molestie. Vestibulum cursus quis diam ac dictum. Nam ut nulla quam. Praesent molestie magna massa, at pharetra purus hendrerit at. Maecenas lobortis volutpat magna nec blandit. Donec elit urna, faucibus laoreet cursus vel, feugiat quis elit.</string>
     <string name="appdu_description">appdu_description</string>
     <string name="service_description">service_description</string>
@@ -423,7 +423,7 @@
     <string name="in_">In</string>
     <string name="two_factor_authentication">Two-Factor Authentication</string>
     <string name="authentication_code">Authentication code</string>
-    <string name="please_use_2fa">Please use your two-factor authentication code to continue</string>
+    <string name="please_use_2fa">Use your two-factor authentication code to continue</string>
     <string name="use_recovery_code">Use a recovery code</string>
     <string name="install_authenticator_app">Install authenticator app</string>
     <string name="auth_app_examples">If you haven\'t already, install your favorite time-based one-time password (TOTP) app or choose one of the following.</string>

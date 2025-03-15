@@ -12,7 +12,7 @@
     <string name="education_ID_hint">11 számjegyű kód a diákigazolványodon</string>
     <string name="or">vagy</string>
     <string name="touch_nfc">Közelítsd az NFC bilétád</string>
-    <string name="please_login">Kérlek jelentkezz be a folytatáshoz</string>
+    <string name="please_login">Jelentkezz be a folytatáshoz</string>
 
     <string name="language">Nyelv</string>
     <string name="logout">Kijelentkezés</string>
@@ -414,7 +414,7 @@
     <string name="in_">Be</string>
     <string name="two_factor_authentication">Kétlépcsős azonosítás</string>
     <string name="authentication_code">Hitelesítő kód</string>
-    <string name="please_use_2fa">Kérlek használd a kétlépcsős azonosító kódodat a folytatáshoz</string>
+    <string name="please_use_2fa">Használd a kétlépcsős azonosító kódodat a folytatáshoz</string>
     <string name="use_recovery_code">Helyreállítási kód használata</string>
     <string name="install_authenticator_app">Hitelesítő alkalmazás telepítése</string>
     <string name="auth_app_examples">Ha még nem tetted, telepítsd kedvenc időalapú, egy használatos (TOTP) alkalmazásod, vagy válassz egyet az alábbiak közül.</string>
