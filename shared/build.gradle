@@ -65,7 +65,7 @@ dependencies {
     api 'androidx.legacy:legacy-support-v4:1.0.0'
 
     api 'androidx.annotation:annotation:1.9.1'
-    api 'androidx.constraintlayout:constraintlayout:2.2.0'
+    api 'androidx.constraintlayout:constraintlayout:2.2.1'
 
     api 'androidx.lifecycle:lifecycle-livedata-ktx:2.8.7'
     api 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7'
@@ -80,14 +80,14 @@ dependencies {
 
     api 'androidx.recyclerview:recyclerview:1.4.0'
 
-    api 'androidx.paging:paging-runtime-ktx:3.3.5'
-    api 'androidx.paging:paging-common-ktx:3.3.5'
+    api 'androidx.paging:paging-runtime-ktx:3.3.6'
+    api 'androidx.paging:paging-common-ktx:3.3.6'
 
     api 'com.github.iielse:imageviewer:2.1.23'
 
-    api 'androidx.datastore:datastore-preferences:1.1.2'
+    api 'androidx.datastore:datastore-preferences:1.1.3'
 
-    api 'androidx.fragment:fragment-ktx:1.8.5'
+    api 'androidx.fragment:fragment-ktx:1.8.6'
 
     api 'com.google.android.flexbox:flexbox:3.0.0'
 }
