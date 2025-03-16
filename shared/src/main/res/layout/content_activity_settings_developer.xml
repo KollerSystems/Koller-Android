@@ -51,6 +51,7 @@
                     app:labelBehavior="floating" />
 
                 <Button
+                    style="@style/ButtonOutline"
                     android:id="@+id/button_time_offset_reset"
                     android:layout_width="80dp"
                     android:layout_height="wrap_content"
@@ -145,33 +146,34 @@
                 tools:ignore="HardcodedText" />
 
             <com.google.android.flexbox.FlexboxLayout
+                android:layout_marginTop="@dimen/text_container_margin"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:flexWrap="wrap"
                 app:dividerDrawable="@drawable/divider_space"
                 app:showDivider="middle">
-            <Button
+            <com.google.android.material.chip.Chip
                 android:id="@+id/btn_remove_current_user_save_data"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Current user"
                 tools:ignore="HardcodedText" />
 
-                <Button
-                    android:id="@+id/btn_remove_every_user_save_data"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:text="Every user"
-                    tools:ignore="HardcodedText" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/btn_remove_every_user_save_data"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Every user"
+                tools:ignore="HardcodedText" />
 
-            <Button
+            <com.google.android.material.chip.Chip
                 android:id="@+id/btn_remove_tips_save_data"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:text="Tips"
                 tools:ignore="HardcodedText" />
 
-            <Button
+            <com.google.android.material.chip.Chip
                 android:id="@+id/btn_remove_login_save_data"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
