@@ -146,14 +146,14 @@ abstract class LoginViewPagerRecyclerAdapter : RecyclerView.Adapter<LoginViewPag
                 "invalid_password" ->{
                     binding.tilSecond.error = activity.getString(R.string.invalid_password)
                 }
-                "-" -> {
-                    APIInterface.serverErrorPopup(activity, it){
-                        activity.viewModel.postLoginError.value = null
-                    }
-                }
                 null ->{
                     binding.tilFirst.error = null
                     binding.tilSecond.error = null
+                }
+                else -> {
+                    APIInterface.serverErrorPopup(activity, it){
+                        activity.viewModel.postLoginError.value = null
+                    }
                 }
             }
         }

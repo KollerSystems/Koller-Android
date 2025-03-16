@@ -91,6 +91,12 @@ object RetrofitInstance {
     }
 
     fun getErrorBody(response: Response<*>?) : ErrorData?{
-        return Gson().fromJson(response?.errorBody()?.charStream(), ErrorData::class.java)
+        val errorString = response?.errorBody()?.toString()
+        return if(errorString?.get(0) == '{'){
+            Gson().fromJson(errorString, ErrorData::class.java)
+        }
+        else{
+            ErrorData("Not JSON", errorString?:"-")
+        }
     }
 }
