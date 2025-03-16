@@ -50,8 +50,6 @@ open class BrowseFragment : FragmentInMainActivity() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.root.setMaxWidth()
-
         binding.btnPlaces.setOnClickListener{
             (context as MainActivity).addFragment(ApplicationManager.roomListFragment())
         }

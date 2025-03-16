@@ -31,7 +31,6 @@ class StatisticsFragment : SearchFragment() {
         params.behavior = AppBarLayout.ScrollingViewBehavior()
         contentBinding.root.layoutParams = params
 
-        contentBinding.root.setMaxWidth()
 
         setupSort(R.string.from_better, R.string.from_worst,"Name")
 

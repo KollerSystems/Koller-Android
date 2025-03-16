@@ -52,7 +52,6 @@ abstract class HomeFragment : FragmentInMainActivity() {
 
         refresh = view.findViewById(R.id.home_refresh)
 
-        ((refresh.getChildAt(1) as NestedScrollView).getChildAt(0) as LinearLayout).setMaxWidth()
 
 
         todayRecyclerView = view.findViewById(R.id.todayRecyclerView)

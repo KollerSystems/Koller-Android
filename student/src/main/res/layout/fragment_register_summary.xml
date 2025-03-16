@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context="com.norbert.koller.student.fragments.RegisterSummaryFragment">
 
-    <LinearLayout
+    <com.norbert.koller.shared.customviews.SuperCoolLinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
@@ -133,7 +133,7 @@
             tools:ignore="RtlSymmetry" />
 
 
-    </LinearLayout>
+    </com.norbert.koller.shared.customviews.SuperCoolLinearLayout>
 
 
 </ScrollView>

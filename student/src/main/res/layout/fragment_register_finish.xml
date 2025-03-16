@@ -20,48 +20,37 @@
         android:textSize="200dp"
         tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
-    <com.google.android.flexbox.FlexboxLayout
-        style="@style/MainLayout"
+    <com.norbert.koller.shared.customviews.SuperCoolLinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@null"
+        android:layout_gravity="center_horizontal"
         android:gravity="center"
         android:orientation="vertical"
-        app:alignItems="center">
+        app:layout_maxWidth="@dimen/tablet_max_width">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
             android:gravity="center_horizontal"
-            android:orientation="vertical"
-            app:layout_maxWidth="@dimen/tablet_max_width">
+            android:text="@string/you_are_done"
+            android:textAllCaps="false"
+            android:textAppearance="@style/MainTitleExpanded"
+            android:textSize="40sp" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/you_are_done"
-                android:textAllCaps="false"
-                android:textAppearance="@style/MainTitleExpanded"
-                android:textSize="40sp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:gravity="center_horizontal"
+            android:text="@string/registration_done_description" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:gravity="center_horizontal"
-                android:text="@string/registration_done_description" />
+        <Button
+            android:id="@+id/btn_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/quit_app" />
 
-            <Button
-                android:id="@+id/btn_exit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:text="@string/quit_app" />
-
-        </LinearLayout>
-
-    </com.google.android.flexbox.FlexboxLayout>
+    </com.norbert.koller.shared.customviews.SuperCoolLinearLayout>
 
 </FrameLayout>

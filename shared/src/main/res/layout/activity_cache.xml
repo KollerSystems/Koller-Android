@@ -11,13 +11,21 @@
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_search"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:contentPadding="@dimen/card_padding">
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/button2"
+            style="@style/ToolbarNavigationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <com.norbert.koller.shared.customviews.SearchView
             android:id="@+id/search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="@dimen/text_container_margin"
             app:cardBackgroundColor="?android:attr/windowBackground" />
     </com.google.android.material.card.MaterialCardView>
 

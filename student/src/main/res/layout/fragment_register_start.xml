@@ -21,71 +21,65 @@
         android:textSize="200dp"
         tools:ignore="HardcodedText,RtlHardcoded,SpUsage" />
 
-    <com.google.android.flexbox.FlexboxLayout
+    <com.norbert.koller.shared.customviews.SuperCoolLinearLayout
+        style="@style/MainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:justifyContent="center">
+        android:background="@null"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <LinearLayout
-            style="@style/MainLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@null"
-            android:gravity="center"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:gravity="center_horizontal"
+                android:text="@string/welcome"
+                android:textAllCaps="false"
+                android:textAppearance="@style/MainTitleExpanded"
+                android:textSize="40sp" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/welcome"
-                    android:textAllCaps="false"
-                    android:textAppearance="@style/MainTitleExpanded"
-                    android:textSize="40sp" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="25dp"
-                    android:gravity="center_horizontal"
-                    android:text="@string/happy_you_choose_us" />
-
-            </LinearLayout>
-
-            <com.google.android.flexbox.FlexboxLayout
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="25dp"
-                android:orientation="horizontal"
-                app:dividerDrawable="@drawable/divider_space"
-                app:flexWrap="wrap"
-                app:justifyContent="center"
-                app:showDivider="middle">
-
-                <Button
-                    android:id="@+id/btn_back"
-                    style="@style/ButtonOutline"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/back" />
-
-                <Button
-                    android:id="@+id/btn_next"
-                    style="@style/ButtonIconReverse"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/start"
-                    app:icon="@drawable/arrow_forward" />
-
-            </com.google.android.flexbox.FlexboxLayout>
+                android:gravity="center_horizontal"
+                android:text="@string/happy_you_choose_us" />
 
         </LinearLayout>
-    </com.google.android.flexbox.FlexboxLayout>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            app:dividerDrawable="@drawable/divider_space"
+            app:flexWrap="wrap"
+            app:justifyContent="center"
+            app:showDivider="middle">
+
+            <Button
+                android:id="@+id/btn_back"
+                style="@style/ButtonOutline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/back" />
+
+            <Button
+                android:id="@+id/btn_next"
+                style="@style/ButtonIconReverse"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/start"
+                app:icon="@drawable/arrow_forward" />
+
+        </com.google.android.flexbox.FlexboxLayout>
+
+    </com.norbert.koller.shared.customviews.SuperCoolLinearLayout>
 
 
 </FrameLayout>

@@ -85,7 +85,7 @@ abstract class MainActivity : AppCompatActivity() {
     }
     fun onKeyboardVisibilityChanged(opened: Boolean) {
 
-        if(resources.configuration.orientation == Configuration.ORIENTATION_PORTRAIT){
+        if(binding.cl != null){
             (binding.cl!!.layoutParams as MarginLayoutParams).updateMargins(bottom = if (opened) 0 else resources.getDimensionPixelSize(R.dimen.header_footer_size))
             binding.cl!!.forceLayout()
             if(inEditMode()){

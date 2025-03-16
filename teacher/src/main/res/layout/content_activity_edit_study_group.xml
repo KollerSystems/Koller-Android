@@ -15,13 +15,8 @@
         android:gravity="top"
         app:layout_anchorGravity="top">
 
-        <com.google.android.flexbox.FlexboxLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:justifyContent="center"
-            app:layout_scrollFlags="scroll">
 
-            <LinearLayout
+            <com.norbert.koller.shared.customviews.SuperCoolLinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top"
@@ -29,8 +24,7 @@
                 android:layout_marginTop="@dimen/application_padding"
                 android:animateLayoutChanges="true"
                 android:gravity="top"
-                android:orientation="vertical"
-                app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+                android:orientation="vertical">
 
                 <TextView
                     android:id="@+id/text_radio"
@@ -446,8 +440,7 @@
                 </com.google.android.material.card.MaterialCardView>
 
 
-            </LinearLayout>
-        </com.google.android.flexbox.FlexboxLayout>
+            </com.norbert.koller.shared.customviews.SuperCoolLinearLayout>
 
 
     </com.google.android.material.appbar.AppBarLayout>

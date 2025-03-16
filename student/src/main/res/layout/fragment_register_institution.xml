@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.norbert.koller.shared.customviews.SuperCoolLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/MainLayout"
@@ -65,4 +65,4 @@
         </LinearLayout>
 
     </com.google.android.material.card.MaterialCardView>
-</LinearLayout>
+</com.norbert.koller.shared.customviews.SuperCoolLinearLayout>

@@ -9,13 +9,10 @@
     app:flexDirection="column"
     tools:context=".fragments.ManageAccountFragment">
 
-        <com.google.android.flexbox.FlexboxLayout
-            style="@style/MainLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:justifyContent="center">
 
-                <LinearLayout
+
+                <com.norbert.koller.shared.customviews.SuperCoolLinearLayout
+                    style="@style/MainLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
@@ -77,6 +74,5 @@
                             app:icon="@drawable/devices"
                             app:text="@string/devices"
                             tools:visibility="visible" />
-                </LinearLayout>
-        </com.google.android.flexbox.FlexboxLayout>
+                </com.norbert.koller.shared.customviews.SuperCoolLinearLayout>
 </androidx.core.widget.NestedScrollView>

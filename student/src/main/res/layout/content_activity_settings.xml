@@ -1,33 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<com.google.android.flexbox.FlexboxLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.norbert.koller.shared.customviews.SuperCoolLinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.SettingsActivity"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".activities.SettingsActivity"
-            style="@style/FullMainLayout"
+    android:orientation="vertical"
+    style="@style/MainLayout">
 
-            app:justifyContent="center">
+    <include
+        android:id="@+id/developer"
+        layout="@layout/content_activity_settings_developer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
-            <LinearLayout
+    <include
+        android:id="@+id/external"
+        layout="@layout/content_activity_settings_external"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+</com.norbert.koller.shared.customviews.SuperCoolLinearLayout>
 
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
-
-                <include
-                    android:id="@+id/developer"
-                    layout="@layout/content_activity_settings_developer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <include
-                    android:id="@+id/external"
-                    layout="@layout/content_activity_settings_external"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-            </LinearLayout>
-        </com.google.android.flexbox.FlexboxLayout>
