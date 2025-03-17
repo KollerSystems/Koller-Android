@@ -35,6 +35,7 @@ import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.OutgoingBsdf
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
 
@@ -143,10 +144,18 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
 
         holder.itemView.setOnClickListener {
 
-            if(currentItem.title == context.getString(R.string.room_order)){
+            if(currentItem.title == context.getString(R.string.room_order)) {
                 val dialog = RoomOrderBsdfFragment()
-                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, RoomOrderBsdfFragment.TAG)
-            }else{
+                dialog.show(
+                    (holder.itemView.context as FragmentActivity).supportFragmentManager,
+                    RoomOrderBsdfFragment.TAG
+                )
+            }
+            else if(currentItem.title == "Kimenő"){
+                val dialog = OutgoingBsdf()
+                dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, OutgoingBsdf.TAG)
+            }
+            else{
                 val dialog = MessageBsdfFragment()
                 dialog.show((holder.itemView.context as FragmentActivity).supportFragmentManager, MessageBsdfFragment.TAG)
             }

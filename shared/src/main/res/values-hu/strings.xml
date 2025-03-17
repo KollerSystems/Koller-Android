@@ -504,4 +504,5 @@
     <string name="rate_rooms">Szobák értékelése</string>
     <string name="staffing_control">Létszámellenőrzés</string>
     <string name="application">Alkalmazás</string>
+    <string name="outgoing">Kimenő</string>
 </resources>

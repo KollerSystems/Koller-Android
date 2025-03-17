@@ -37,8 +37,8 @@ class RoomOrderBsdfFragment : BsdfFragment()  {
 
         contentBinding.footer.textDate.text = RoomOrderData.instance[0].date.formatDate("MM. dd.")
 
-        contentBinding.recyclerView.layoutManager = LinearLayoutManager(context)
-        contentBinding.recyclerView.setHasFixedSize(true)
+        /*contentBinding.recyclerView.layoutManager = LinearLayoutManager(context)
+        contentBinding.recyclerView.setHasFixedSize(true)*/
     }
 
     override fun getContentHolder(inflater: LayoutInflater): ViewGroup {

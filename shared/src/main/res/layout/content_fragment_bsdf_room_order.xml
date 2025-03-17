@@ -10,16 +10,70 @@
     android:orientation="vertical"
     android:background="?attr/colorSurface">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recycler_view"
+    <include
+        layout="@layout/toggle_description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingHorizontal="@dimen/application_padding"
-        android:paddingTop="@dimen/application_padding"
-        android:paddingBottom="@dimen/text_container_margin"
-        tools:listitem="@layout/toggle_description">
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_marginTop="@dimen/application_padding"
+        android:layout_weight="1" />
 
-    </androidx.recyclerview.widget.RecyclerView>
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_weight="1" />
+
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_weight="1" />
+
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_weight="1" />
+
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_weight="1" />
+
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_weight="1" />
+
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_weight="1" />
+
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_weight="1" />
+
+    <include
+        layout="@layout/toggle_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/application_padding"
+        android:layout_marginBottom="@dimen/text_container_margin"
+        android:layout_weight="1" />
 
     <include
         android:id="@+id/footer"

@@ -294,7 +294,7 @@ abstract class ListFragment() : SearchFragment() {
                     Log.d("totalButtonWidth", totalButtonWidth.toString())
                     Log.d("viewToAddButton", viewToAddButtonWidth.toString())
 
-                    if (buttonParams.count() - 1 > i && (viewToAddButtonWidth < totalButtonWidth + button.measuredHeight) || viewToAddButtonWidth < totalButtonWidth) {
+                    if (buttonParams.count() != 1 && (buttonParams.count() - 1 > i && (viewToAddButtonWidth < totalButtonWidth + button.measuredHeight) || viewToAddButtonWidth < totalButtonWidth)) {
                         fit = false
                         button.iconPadding = 0
                         button.updatePadding(left = 0, right = 0)
