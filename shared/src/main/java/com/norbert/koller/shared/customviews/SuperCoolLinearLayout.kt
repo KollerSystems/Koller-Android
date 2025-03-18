@@ -19,9 +19,7 @@ class SuperCoolLinearLayout : LinearLayout {
     constructor(context: Context?, attrs: AttributeSet?) : super(context!!, attrs)
     constructor(context: Context?) : super(context!!)
 
-    var oldWith = 0
-
     init {
-        this.setMaxWidth()
+        this.setMaxWidth(paddingStart)
     }
 }

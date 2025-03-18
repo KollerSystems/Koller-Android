@@ -16,7 +16,7 @@
             android:layout_height="match_parent"
             android:fillViewport="true">
 
-            <com.google.android.flexbox.FlexboxLayout
+            <com.norbert.koller.shared.customviews.SuperCoolLinearLayout
                 style="@style/MainLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -24,127 +24,118 @@
                 app:flexDirection="column">
 
 
-                <LinearLayout
+                <include
+                    android:id="@+id/header"
+
+                    layout="@layout/content_fragment_user_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/text_manage"
+                    style="@style/CategoryCardNameBald"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_maxWidth="@dimen/tablet_max_width_with_text_container">
+                    android:text="@string/manage_teacher"
+                    app:layout_maxWidth="@dimen/tablet_max_width" />
 
-                    <include
-                        android:id="@+id/header"
+                <com.norbert.koller.shared.customviews.CardButton
 
-                        layout="@layout/content_fragment_user_header"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content" />
+                    android:id="@+id/cb_key"
+                    style="@style/CardTop"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/key"
+                    app:text="Kulcsok" />
 
-                    <TextView
-                        android:id="@+id/text_manage"
-                        style="@style/CategoryCardNameBald"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/manage_teacher"
-                        app:layout_maxWidth="@dimen/tablet_max_width" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_presence"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/person_wave"
+                    app:text="@string/presence"
+                    tools:visibility="visible" />
 
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_outgoings"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/wave"
+                    app:text="@string/user_outgoings"
+                    tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customviews.CardButton
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_crossings"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/gate"
+                    app:text="@string/port_exits_and_entrances_delays"
+                    tools:visibility="visible" />
 
-                        android:id="@+id/cb_key"
-                        style="@style/CardTop"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:icon="@drawable/key"
-                        app:text="Kulcsok" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_calendar"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/calendar"
+                    app:text="Naptár / Teendők"
+                    tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_presence"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:icon="@drawable/person_wave"
-                        app:text="@string/presence"
-                        tools:visibility="visible" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_commendations_or_warnings"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/award"
+                    app:text="@string/commendations_warnings"
+                    tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_outgoings"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:icon="@drawable/wave"
-                        app:text="@string/user_outgoings"
-                        tools:visibility="visible" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_reports"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/flag"
+                    app:text="@string/reports"
+                    tools:visibility="visible" />
 
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_crossings"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:icon="@drawable/gate"
-                        app:text="@string/port_exits_and_entrances_delays"
-                        tools:visibility="visible" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_personal_data"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:icon="@drawable/data"
+                    app:text="Személyes adatok"
+                    tools:visibility="visible" />
 
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_edit"
+                    style="@style/CardMiddle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:icon="@drawable/pencil"
+                    app:text="@string/edit" />
 
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_calendar"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:icon="@drawable/calendar"
-                        app:text="Naptár / Teendők"
-                        tools:visibility="visible" />
+                <com.norbert.koller.shared.customviews.CardButton
+                    android:id="@+id/cb_remove"
+                    style="@style/CardBottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:end_icon="@null"
+                    app:icon="@drawable/close"
+                    app:text="@string/remove" />
 
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_commendations_or_warnings"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:icon="@drawable/award"
-                        app:text="@string/commendations_warnings"
-                        tools:visibility="visible" />
-
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_reports"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:icon="@drawable/flag"
-                        app:text="@string/reports"
-                        tools:visibility="visible" />
-
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_personal_data"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:visibility="gone"
-                        app:icon="@drawable/data"
-                        app:text="Személyes adatok"
-                        tools:visibility="visible" />
-
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_edit"
-                        style="@style/CardMiddle"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:icon="@drawable/pencil"
-                        app:text="@string/edit" />
-
-                    <com.norbert.koller.shared.customviews.CardButton
-                        android:id="@+id/cb_remove"
-                        style="@style/CardBottom"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        app:end_icon="@null"
-                        app:icon="@drawable/close"
-                        app:text="@string/remove" />
-                </LinearLayout>
-
-            </com.google.android.flexbox.FlexboxLayout>
+            </com.norbert.koller.shared.customviews.SuperCoolLinearLayout>
         </androidx.core.widget.NestedScrollView>
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

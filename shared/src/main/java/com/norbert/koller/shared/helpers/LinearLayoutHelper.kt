@@ -8,15 +8,14 @@ import com.norbert.koller.shared.R
 class LinearLayoutHelper {
 }
 
-fun ViewGroup.setMaxWidth(){
+fun ViewGroup.setMaxWidth(defaultPadding : Int){
     viewTreeObserver.addOnGlobalLayoutListener {
         val width = width
 
 
         if (width != tag) {
             val tabletMaxWidth = resources.getDimensionPixelSize(R.dimen.tablet_max_width)
-            val fullCardPadding = resources.getDimensionPixelSize(R.dimen.card_padding)
-            if (this.measuredWidth - fullCardPadding * 2 > tabletMaxWidth) {
+            if (this.measuredWidth - defaultPadding * 2 > tabletMaxWidth) {
                 Log.d("TAGHELLO", "AJAJAJAJAJ")
                 val correctPadding = (this.measuredWidth - tabletMaxWidth) / 2
                 this.setPadding(
@@ -28,9 +27,9 @@ fun ViewGroup.setMaxWidth(){
             }
             else{
                 this.setPadding(
-                    fullCardPadding,
+                    defaultPadding,
                     this.paddingTop,
-                    fullCardPadding,
+                    defaultPadding,
                     this.paddingBottom
                 )
             }
