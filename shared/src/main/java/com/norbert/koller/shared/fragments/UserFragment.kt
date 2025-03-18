@@ -56,6 +56,7 @@ abstract class UserFragment() : DetailsFragment() {
     }
 
     fun checkVisibility(){
+        if(activity == null) return
         if (isVisible(getHeaderBinding().textName)) {
             (activity as MainActivity).setToolbarTitle(getString(R.string.user))
 
