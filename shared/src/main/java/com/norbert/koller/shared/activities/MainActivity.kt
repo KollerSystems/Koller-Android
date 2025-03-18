@@ -404,6 +404,7 @@ abstract class MainActivity : AppCompatActivity() {
     val backgroundAnimatorOut = ValueAnimator.ofFloat(1f, 0f)
 
     private fun refreshUserData(){
+        if(CacheManager.currentUserId == -2) return
         RetrofitInstance.communicate(lifecycleScope,
             RetrofitInstance.api::getCurrentUser,
             {

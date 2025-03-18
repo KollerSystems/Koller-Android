@@ -2,6 +2,7 @@ package com.norbert.koller.shared.api
 
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.google.gson.Gson
+import com.google.gson.JsonSyntaxException
 import com.norbert.koller.shared.data.ErrorData
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
@@ -32,7 +33,7 @@ object RetrofitInstance {
         .authenticator(AuthenticationManager())
         .build()
 
-    val ip = "http://koller.tmtk.hu:80"
+    val ip = "https://koller.tmtk.hu/"
     val tempIP = ""
 
     val api : APIInterface by lazy {
@@ -91,12 +92,15 @@ object RetrofitInstance {
     }
 
     fun getErrorBody(response: Response<*>?) : ErrorData?{
-        val errorString = response?.errorBody()?.toString()
-        return if(errorString?.get(0) == '{'){
+
+        val errorString = response?.errorBody()?.charStream()
+
+        return try {
             Gson().fromJson(errorString, ErrorData::class.java)
-        }
-        else{
-            ErrorData("Not JSON", errorString?:"-")
+        } catch (e: IllegalStateException) {
+            ErrorData("Not JSON", e.toString())
+        } catch (e: JsonSyntaxException) {
+            ErrorData("Not JSON", e.toString())
         }
     }
 }
