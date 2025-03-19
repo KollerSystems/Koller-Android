@@ -2,6 +2,7 @@ package com.norbert.koller.shared.api
 
 import androidx.lifecycle.LifecycleCoroutineScope
 import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import com.google.gson.JsonSyntaxException
 import com.norbert.koller.shared.data.ErrorData
 import kotlinx.coroutines.CoroutineScope
@@ -39,7 +40,7 @@ object RetrofitInstance {
     val api : APIInterface by lazy {
         Retrofit.Builder()
             .baseUrl(ip)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX").create()))
             .client(client)
             .build()
             .create(APIInterface::class.java)
