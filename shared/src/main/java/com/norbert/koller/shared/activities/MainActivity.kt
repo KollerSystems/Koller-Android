@@ -41,6 +41,7 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.transition.MaterialContainerTransform
@@ -88,12 +89,11 @@ abstract class MainActivity : AppCompatActivity() {
         if(binding.cl != null){
             (binding.cl!!.layoutParams as MarginLayoutParams).updateMargins(bottom = if (opened) 0 else resources.getDimensionPixelSize(R.dimen.header_footer_size))
             binding.cl!!.forceLayout()
-            if(inEditMode()){
+
                 binding.manageBar.root.isVisible = !opened
-            }
-            else{
+
                 binding.navigationView.isVisible = !opened
-            }
+
         }
     }
 
@@ -222,17 +222,21 @@ abstract class MainActivity : AppCompatActivity() {
     fun enableEditMode(){
 
         onEditModeChange?.invoke(true)
-        bottomNavigationView().isVisible = false
+
         ManageActivity.displayButton(binding.manageBar.button, getString(R.string.remove), R.drawable.delete_forever)
-        binding.cardUser.isVisible = false
         binding.cardUser.isClickable = false
         binding.cardUser.isEnabled = false
-        binding.cardUser.alpha = 0f
+        binding.manageBar.root.isVisible = true
+        binding.manageBar.root.isClickable = true
+        binding.manageBar.button.isClickable = true
+
+        animateEditMode(0f, 0, resources.getDimensionPixelSize(R.dimen.header_footer_size))
         binding.buttonBack.setIconResource(R.drawable.close)
+        binding.manageBar.root.isVisible = true
+
 
         if(isKeyboardShowing) return
 
-        binding.manageBar.root.isVisible = true
     }
 
 
@@ -241,15 +245,72 @@ abstract class MainActivity : AppCompatActivity() {
         onEditModeChange?.invoke(false)
         onCancelEditMode = null
 
-        binding.manageBar.root.isVisible = false
-        binding.cardUser.isVisible = true
+
         binding.cardUser.isClickable = true
         binding.cardUser.isEnabled = true
-        binding.cardUser.alpha = 1f
+        binding.manageBar.root.isClickable = false
+        binding.manageBar.button.isClickable = false
+
+        animateEditMode(1f, ApplicationManager.convertDpToPixel(80, this), 0)
         binding.buttonBack.setIconResource(R.drawable.arrow_back)
         setToolbarTitle((supportFragmentManager.fragments[0] as FragmentInMainActivity).getFragmentTitle())
+
         if(isKeyboardShowing) return
-        bottomNavigationView().isVisible = true
+    }
+
+    fun animateEditMode(toAlpha : Float, toWidth : Int, toHeight : Int){
+
+        //TODO: kitalálni egy jó módját annak, hogy ne lehessen kattintani a navigation view-t, ameddig átvált
+
+        val animationSet = AnimatorSet()
+
+        val userAnimator = ValueAnimator.ofFloat(binding.cardUser.alpha, toAlpha)
+        userAnimator.addUpdateListener { valueAnimator ->
+            val value = valueAnimator.animatedValue as Float
+            binding.cardUser.alpha = value
+        }
+
+        if(binding.navigationView is BottomNavigationView){
+            val bottomNavigationViewAnimator = ValueAnimator.ofFloat(binding.manageBar.root.alpha, (toAlpha - 1) * -1)
+            bottomNavigationViewAnimator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Float
+                binding.manageBar.root.alpha = value
+            }
+
+            animationSet.playTogether(
+                userAnimator,
+                bottomNavigationViewAnimator,
+            )
+
+        }
+        else{
+            val manageBarAnimator = ValueAnimator.ofInt(binding.manageBar.root.height, toHeight)
+            manageBarAnimator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Int
+                binding.manageBar.root.layoutParams.height = value
+                binding.lyChange!!.requestLayout()
+            }
+
+            val navigationRailAnimator = ValueAnimator.ofInt(binding.navigationView.width, toWidth)
+            navigationRailAnimator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Int
+                binding.navigationView.layoutParams.width = value
+
+            }
+
+            animationSet.playTogether(
+                userAnimator,
+                navigationRailAnimator,
+                manageBarAnimator
+            )
+        }
+
+        animationSet.setDuration(resources.getInteger(R.integer.default_transition).toLong())
+        animationSet.interpolator = AnimationUtils.loadInterpolator(
+            this,
+            com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
+        )
+        animationSet.start()
     }
 
     private lateinit var connectivityManager: ConnectivityManager
@@ -279,6 +340,13 @@ abstract class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        if(binding.navigationView is BottomNavigationView){
+            binding.manageBar.root.isClickable = false
+            binding.manageBar.button.isClickable = false
+            binding.manageBar.root.alpha = 0f
+        }
+
+
         lifecycleScope.launch {
 
             var opened = 0
@@ -286,6 +354,10 @@ abstract class MainActivity : AppCompatActivity() {
             if(data != null) opened = data
             if(opened < 10){
                 bottomNavigationView().labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
+            }
+            else{
+                bottomNavigationView().itemPaddingBottom = 0
+                bottomNavigationView().itemPaddingTop = 0
             }
 
             if(savedInstanceState == null){

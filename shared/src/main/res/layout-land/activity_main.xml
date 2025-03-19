@@ -122,6 +122,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/ly_change"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
@@ -130,7 +131,7 @@
 
         <com.google.android.material.navigationrail.NavigationRailView
             android:id="@id/navigation_view"
-            android:layout_width="wrap_content"
+            android:layout_width="80dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
             android:background="?attr/colorSurfaceContainer"
@@ -146,60 +147,70 @@
         </com.google.android.material.navigationrail.NavigationRailView>
 
 
-        <FrameLayout
+        <LinearLayout
+            android:id="@+id/ly_cb"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:orientation="vertical">
 
-            <com.sofakingforever.stars.AnimatedStarsView
-                android:id="@+id/stars"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/night_bg"
-                android:foreground="@drawable/background_gradient"
-                android:foregroundTint="#000000"
-                android:visibility="gone"
-                app:starsView_maxStarSize="2dp"
-                app:starsView_meteoritesColors="@array/meteorites_colors"
-                app:starsView_meteoritesEnabled="true"
-                app:starsView_meteoritesInterval="20000"
-                app:starsView_minStarSize="1dp"
-                app:starsView_starColors="@array/star_colors_small"
-                app:starsView_starCount="50" />
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-            <androidx.fragment.app.FragmentContainerView
-                android:id="@id/fragment_container"
+                <com.sofakingforever.stars.AnimatedStarsView
+                    android:id="@+id/stars"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/night_bg"
+                    android:foreground="@drawable/background_gradient"
+                    android:foregroundTint="#000000"
+                    android:visibility="gone"
+                    app:starsView_maxStarSize="2dp"
+                    app:starsView_meteoritesColors="@array/meteorites_colors"
+                    app:starsView_meteoritesEnabled="true"
+                    app:starsView_meteoritesInterval="20000"
+                    app:starsView_minStarSize="1dp"
+                    app:starsView_starColors="@array/star_colors_small"
+                    app:starsView_starCount="50" />
+
+                <androidx.fragment.app.FragmentContainerView
+                    android:id="@id/fragment_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+                <View
+                    android:id="@+id/view_corner_left"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="top|left"
+                    android:background="@drawable/corner"
+                    android:backgroundTint="?attr/colorSurfaceContainer"
+                    android:scaleX="-1"
+                    tools:ignore="RtlHardcoded" />
+
+                <View
+                    android:id="@+id/view_corner_right"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="right|top"
+                    android:background="@drawable/corner"
+                    android:backgroundTint="?attr/colorSurfaceContainer"
+                    tools:ignore="RtlHardcoded" />
+
+            </FrameLayout>
+
+            <include
+                android:id="@+id/manage_bar"
+                layout="@layout/view_manage_bar"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="0dp"
+                android:layout_weight="0"
+                android:visibility="gone" />
 
-            <View
-                android:id="@+id/view_corner_left"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="top|left"
-                android:background="@drawable/corner"
-                android:backgroundTint="?attr/colorSurfaceContainer"
-                android:scaleX="-1"
-                tools:ignore="RtlHardcoded" />
-
-            <View
-                android:id="@+id/view_corner_right"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="right|top"
-                android:background="@drawable/corner"
-                android:backgroundTint="?attr/colorSurfaceContainer"
-                tools:ignore="RtlHardcoded" />
-
-        </FrameLayout>
+        </LinearLayout>
 
     </LinearLayout>
 
-    <include
-        android:id="@+id/manage_bar"
-        layout="@layout/view_manage_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="0"
-        android:visibility="gone" />
 </LinearLayout>
