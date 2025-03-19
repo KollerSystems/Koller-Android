@@ -91,7 +91,7 @@ abstract class ProfileBsdFragment : ScrollBsdfFragment() {
 
             val fragment = ApplicationManager.roomFragment()
             val bundle = Bundle()
-            bundle.putInt("id", CacheManager.getCurrentUserData()!!.rid!!)
+            bundle.putInt("id", CacheManager.getCurrentUserData()!!.rid?:-1)
             fragment.arguments = bundle
             (requireContext() as MainActivity).addFragment(fragment)
             this.dismiss()
