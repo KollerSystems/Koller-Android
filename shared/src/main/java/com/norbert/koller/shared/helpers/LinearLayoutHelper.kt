@@ -8,7 +8,10 @@ import com.norbert.koller.shared.R
 class LinearLayoutHelper {
 }
 
-fun ViewGroup.setMaxWidth(defaultPadding : Int){
+fun ViewGroup.setMaxWidth(defaultPadding : Int = resources.getDimensionPixelSize(R.dimen.application_padding)){
+
+
+
     viewTreeObserver.addOnGlobalLayoutListener {
         val width = width
 
