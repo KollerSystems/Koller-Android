@@ -245,6 +245,7 @@ abstract class ListFragment() : SearchFragment() {
             var totalButtonWidth = 0
 
             var listCardItems : kotlin.collections.ArrayList<ListCardItem> = kotlin.collections.arrayListOf<ListCardItem>()
+            var buttons : kotlin.collections.ArrayList<MaterialButton> = arrayListOf()
 
             for (i in buttonParams.indices){
 
@@ -281,6 +282,7 @@ abstract class ListFragment() : SearchFragment() {
                     params.setMargins(textContainer, textContainer, textContainer, textContainer)
                     params.gravity = Gravity.CENTER
                     button.layoutParams = params
+                    buttons.add(button)
                     viewToAddButton.addView(button)
 
 
@@ -307,14 +309,18 @@ abstract class ListFragment() : SearchFragment() {
                         button.setOnClickListener {
                             currentButtonParam.onClick.invoke()
                         }
-                        getMainActivity().onEditModeChange = {
-                            button.isEnabled = !it
-                            button.alpha = if (it) 0.25f else 1f
-                        }
                     }
                 }
                 else{
                     listCardItems.add(ListCardItem(currentButtonParam.text, null, AppCompatResources.getDrawable(requireContext(), currentButtonParam.iconID), currentButtonParam.onClick))
+                }
+
+            }
+
+            getMainActivity().onEditModeChange = {
+                for (button in buttons){
+                    button.isEnabled = !it
+                    button.alpha = if (it) 0.25f else 1f
                 }
 
             }
