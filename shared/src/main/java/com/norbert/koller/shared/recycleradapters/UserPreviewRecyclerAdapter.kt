@@ -46,7 +46,6 @@ class UserPreviewRecyclerAdapter (private var userList : MutableList<UserData>, 
         if(currentItem != null){
             holder.itemBinding.ly.visibility = VISIBLE
             holder.itemBinding.root.setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLow))
-            holder.itemBinding.root.strokeWidth = 0
 
             holder.itemBinding.user.setUser(currentItem)
 
@@ -70,9 +69,8 @@ class UserPreviewRecyclerAdapter (private var userList : MutableList<UserData>, 
             }
         }
         else{
+            holder.itemBinding.root.setCardBackgroundColor(context.getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainerLowest))
             holder.itemBinding.ly.visibility = INVISIBLE
-            holder.itemBinding.root.setCardBackgroundColor(Color.TRANSPARENT)
-            holder.itemBinding.root.strokeWidth = ApplicationManager.convertDpToPixel(10, context)
         }
     }
 
