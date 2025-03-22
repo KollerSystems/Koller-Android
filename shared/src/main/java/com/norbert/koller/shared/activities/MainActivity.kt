@@ -79,55 +79,33 @@ import java.util.Calendar
 
 abstract class MainActivity : AppCompatActivity() {
 
-    var isKeyboardShowing: Boolean = false
-    var onEditModeChange: ((Boolean) -> Unit)? = null
-    fun inEditMode() : Boolean{
-        return binding.cardUser.alpha == 0f
-    }
-    fun onKeyboardVisibilityChanged(opened: Boolean) {
-
-        if(binding.cl != null){
-            (binding.cl!!.layoutParams as MarginLayoutParams).updateMargins(bottom = if (opened) 0 else resources.getDimensionPixelSize(R.dimen.header_footer_size))
-            binding.cl!!.forceLayout()
-
-                binding.manageBar.root.isVisible = !opened
-
-                binding.navigationView.isVisible = !opened
-
-        }
-    }
-
+    lateinit var viewModel: MainActivityViewModel
+    private lateinit var binding : ActivityMainBinding
     private var nfcAdapter: NfcAdapter? = null
+    var isKeyboardShowing: Boolean = false
+    var defaultTitlePadding : Int = 0
+    var statusBarHeight : Int = 0
+    private lateinit var connectivityManager: ConnectivityManager
+    val backgroundAnimatorIn = ValueAnimator.ofFloat(0f, 1f)
+    val backgroundAnimatorOut = ValueAnimator.ofFloat(1f, 0f)
 
-    fun byteArrayToInt(bytes: ByteArray): Int {
-        var value = 0
-        for (b in bytes) {
-            value = (value shl 8) + (b.toInt() and 0xFF)
-        }
-        return value
-    }
-
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-    }
+    var onEditModeChange: ((Boolean) -> Unit)? = null
+    var onCancelEditMode: (() -> Unit)? = null
 
     @OptIn(ExperimentalStdlibApi::class)
-    private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
-
+    private var nfcCallback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
 
         val mifareClassic = MifareClassic.get(tag)
 
         try {
             mifareClassic.connect()
 
+            val sectorIndex = 1
 
-            val sectorSector = 1
-            mifareClassic.authenticateSectorWithKeyA(sectorSector, "A0A1A2A3A4A5".hexToByteArray())
+            mifareClassic.authenticateSectorWithKeyA(sectorIndex, "A0A1A2A3A4A5".hexToByteArray())
 
-
-
-            val blockNumber = mifareClassic.sectorToBlock(sectorSector)
-            val blockData = mifareClassic.readBlock(blockNumber)
+            val blockIndex = mifareClassic.sectorToBlock(sectorIndex)
+            val blockData = mifareClassic.readBlock(blockIndex)
 
             binding.root.post{
                 val fragment = ApplicationManager.userFragment()
@@ -136,27 +114,69 @@ abstract class MainActivity : AppCompatActivity() {
                 fragment.arguments = bundle
                 addFragment(fragment)
                 viewModel.currentBottomSheetDialogFragment?.dismiss()
+                //TODO: ellenőrizni, hogy vannak-e alert dialogok, amik ilyenkor bent ragadhatnak, vagy igazából bármi.
             }
-
-
         } catch (e: IOException) {
             e.printStackTrace()
         } finally {
             mifareClassic.close()
-
         }
+    }
+
+    abstract fun getAppIcon() : Int
+
+    fun getBottomNavigationView() : NavigationBarView{
+        return (binding.navigationView as NavigationBarView)
     }
 
     override fun onPause() {
         super.onPause()
+
         nfcAdapter?.disableReaderMode(this)
     }
 
     override fun onResume() {
         super.onResume()
 
+        fun handleWidgetAction(){
 
-        nfcAdapter?.enableReaderMode(this, callback, NfcAdapter.FLAG_READER_NFC_A, null)
+            viewModel.currentBottomSheetDialogFragment?.dismiss()
+            //TODO: ellenőrizni, hogy vannak-e alert dialogok, amik ilyenkor bent ragadhatnak, vagy igazából bármi.
+
+            when (WidgetHelper.widgetTag) {
+                NowWidgetProvider.TAG -> {
+                    if (getBottomNavigationView().selectedItemId != R.id.home) {
+                        getBottomNavigationView().selectedItemId = R.id.home
+                    }
+
+                    getBottomNavigationView().post {
+                        if (supportFragmentManager.fragments[0] !is HomeFragment) {
+                            addFragment(ApplicationManager.homeFragment())
+                        }
+                    }
+                }
+                CanteenWidgetProvider.TAG -> {
+                    if (getBottomNavigationView().selectedItemId != R.id.calendar) {
+                        getBottomNavigationView().selectedItemId = R.id.calendar
+                    }
+
+                    getBottomNavigationView().post {
+                        if (supportFragmentManager.fragments[0] !is CalendarFragment) {
+                            addFragment(ApplicationManager.calendarFragment())
+                        }
+
+                        getBottomNavigationView().post {
+                            getBottomNavigationView().post {
+                                (supportFragmentManager.fragments[0] as CalendarFragment).getViewPager().currentItem = 2
+                            }
+                        }
+                    }
+                }
+            }
+            WidgetHelper.widgetTag = null
+        }
+
+        nfcAdapter?.enableReaderMode(this, nfcCallback, NfcAdapter.FLAG_READER_NFC_A, null)
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
 
@@ -167,299 +187,9 @@ abstract class MainActivity : AppCompatActivity() {
             }
         }
 
-
-
         if (WidgetHelper.widgetTag != null) {
-
-            if (viewModel.currentBottomSheetDialogFragment != null) {
-                viewModel.currentBottomSheetDialogFragment!!.dismiss()
-            }
-            when (WidgetHelper.widgetTag) {
-                NowWidgetProvider.TAG -> {
-                    if (bottomNavigationView().selectedItemId != R.id.home) {
-                        bottomNavigationView().selectedItemId = R.id.home
-
-                    }
-                    bottomNavigationView().post {
-                        if (supportFragmentManager.fragments[0] !is HomeFragment) {
-                            addFragment(ApplicationManager.homeFragment())
-
-                        }
-                    }
-                }
-
-                CanteenWidgetProvider.TAG -> {
-                    if (bottomNavigationView().selectedItemId != R.id.calendar) {
-                        bottomNavigationView().selectedItemId = R.id.calendar
-
-                    }
-                    bottomNavigationView().post {
-                        if (supportFragmentManager.fragments[0] !is CalendarFragment) {
-                            addFragment(ApplicationManager.calendarFragment())
-                        }
-                        bottomNavigationView().post {
-                            bottomNavigationView().post {
-                                (supportFragmentManager.fragments[0] as CalendarFragment).getViewPager().currentItem =
-                                    2
-                            }
-                        }
-                    }
-
-                }
-            }
-
-            WidgetHelper.widgetTag = null
+            handleWidgetAction()
         }
-
-    }
-
-    var defaultTitlePadding : Int = 0
-
-    lateinit var viewModel: MainActivityViewModel
-    abstract fun getAppIcon() : Int
-    private lateinit var binding : ActivityMainBinding
-
-    fun enableEditMode(){
-
-        onEditModeChange?.invoke(true)
-
-        ManageActivity.displayButton(binding.manageBar.button, getString(R.string.remove), R.drawable.delete_forever)
-        binding.cardUser.isClickable = false
-        binding.cardUser.isEnabled = false
-        binding.manageBar.root.isVisible = true
-        binding.manageBar.root.isClickable = true
-        binding.manageBar.button.isClickable = true
-
-        animateEditMode(0f, 0, resources.getDimensionPixelSize(R.dimen.header_footer_size))
-        binding.buttonBack.setIconResource(R.drawable.close)
-        binding.manageBar.root.isVisible = true
-
-
-        if(isKeyboardShowing) return
-
-    }
-
-
-    fun disableEditMode(){
-
-        onEditModeChange?.invoke(false)
-        onCancelEditMode = null
-
-
-        binding.cardUser.isClickable = true
-        binding.cardUser.isEnabled = true
-        binding.manageBar.root.isClickable = false
-        binding.manageBar.button.isClickable = false
-
-        animateEditMode(1f, ApplicationManager.convertDpToPixel(80, this), 0)
-        binding.buttonBack.setIconResource(R.drawable.arrow_back)
-        setToolbarTitle((supportFragmentManager.fragments[0] as FragmentInMainActivity).getFragmentTitle())
-
-        if(isKeyboardShowing) return
-    }
-
-    fun animateEditMode(toAlpha : Float, toWidth : Int, toHeight : Int){
-
-        //TODO: kitalálni egy jó módját annak, hogy ne lehessen kattintani a navigation view-t, ameddig átvált
-
-        val animationSet = AnimatorSet()
-
-        val userAnimator = ValueAnimator.ofFloat(binding.cardUser.alpha, toAlpha)
-        userAnimator.addUpdateListener { valueAnimator ->
-            val value = valueAnimator.animatedValue as Float
-            binding.cardUser.alpha = value
-        }
-
-        if(binding.navigationView is BottomNavigationView){
-            val bottomNavigationViewAnimator = ValueAnimator.ofFloat(binding.manageBar.root.alpha, (toAlpha - 1) * -1)
-            bottomNavigationViewAnimator.addUpdateListener { valueAnimator ->
-                val value = valueAnimator.animatedValue as Float
-                binding.manageBar.root.alpha = value
-            }
-
-            animationSet.playTogether(
-                userAnimator,
-                bottomNavigationViewAnimator,
-            )
-
-        }
-        else{
-            val manageBarAnimator = ValueAnimator.ofInt(binding.manageBar.root.height, toHeight)
-            manageBarAnimator.addUpdateListener { valueAnimator ->
-                val value = valueAnimator.animatedValue as Int
-                binding.manageBar.root.layoutParams.height = value
-                binding.lyChange!!.requestLayout()
-            }
-
-            val navigationRailAnimator = ValueAnimator.ofInt(binding.navigationView.width, toWidth)
-            navigationRailAnimator.addUpdateListener { valueAnimator ->
-                val value = valueAnimator.animatedValue as Int
-                binding.navigationView.layoutParams.width = value
-
-            }
-
-            animationSet.playTogether(
-                userAnimator,
-                navigationRailAnimator,
-                manageBarAnimator
-            )
-        }
-
-        animationSet.setDuration(resources.getInteger(R.integer.default_transition).toLong())
-        animationSet.interpolator = AnimationUtils.loadInterpolator(
-            this,
-            com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
-        )
-        animationSet.start()
-    }
-
-    private lateinit var connectivityManager: ConnectivityManager
-    var statusBarHeight : Int = 0
-
-    fun setTextSwitcherFactory(fontId : Int){
-
-        binding.textSwitcher.removeAllViews()
-
-        var textView : TextView
-        binding.textSwitcher.setFactory {
-            textView = TextView(
-                this@MainActivity
-            )
-
-            textView.setTextAppearance(R.style.MainTitle)
-            textView.typeface = resources.getFont(fontId)
-            textView
-        }
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val rootView: View = findViewById(android.R.id.content)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        if(binding.navigationView is BottomNavigationView){
-            binding.manageBar.root.isClickable = false
-            binding.manageBar.button.isClickable = false
-            binding.manageBar.root.alpha = 0f
-        }
-
-
-        lifecycleScope.launch {
-
-            var opened = 0
-            val data = tipDataStore.data.first()[intPreferencesKey("APP_OPEN_COUNT")]
-            if(data != null) opened = data
-            if(opened < 10){
-                bottomNavigationView().labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
-            }
-            else{
-                bottomNavigationView().itemPaddingBottom = 0
-                bottomNavigationView().itemPaddingTop = 0
-            }
-
-            if(savedInstanceState == null){
-
-                opened++
-                tipDataStore.edit {
-                    it[intPreferencesKey("APP_OPEN_COUNT")] = opened
-                }
-
-            }
-        }
-
-
-        if(binding.cl != null){
-            ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, insets ->
-                statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
-                binding.internetStatus.updatePadding(top = binding.internetStatus.paddingBottom + statusBarHeight)
-                insets
-            }
-        }
-
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-
-       setTextSwitcherFactory(R.font.rubik_medium)
-        binding.textSwitcher.measureAllChildren = false
-
-        val networkRequest = NetworkRequest.Builder()
-            .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-            .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-            .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-            .build()
-
-        val networkCallback = object : ConnectivityManager.NetworkCallback() {
-            override fun onAvailable(network: Network) {
-                super.onAvailable(network)
-                runOnUiThread {
-                    onOnline()
-                }
-            }
-
-            override fun onLost(network: Network) {
-                super.onLost(network)
-                runOnUiThread {
-                    onOffline()
-                }
-            }
-        }
-
-        connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
-        connectivityManager.requestNetwork(networkRequest, networkCallback)
-
-        rootView.getViewTreeObserver().addOnGlobalLayoutListener(
-            OnGlobalLayoutListener {
-                val r = Rect()
-                rootView.getWindowVisibleDisplayFrame(r)
-                val screenHeight: Int = rootView.getRootView().getHeight()
-
-                // r.bottom is the position above soft keypad or device button.
-                // if keypad is shown, the r.bottom is smaller than that before.
-                val keypadHeight = screenHeight - r.bottom
-
-                if (keypadHeight > screenHeight * 0.15) { // 0.15 ratio is perhaps enough to determine keypad height.
-                    // keyboard is opened
-                    if (!isKeyboardShowing) {
-                        isKeyboardShowing = true
-                        onKeyboardVisibilityChanged(true)
-                    }
-                } else {
-                    // keyboard is closed
-                    if (isKeyboardShowing) {
-                        isKeyboardShowing = false
-                        onKeyboardVisibilityChanged(false)
-                    }
-                }
-            })
-    }
-
-    fun onOnline(){
-        binding.internetStatus.isVisible = false
-        if(binding.cl != null){
-            binding.cl?.updatePadding(top = 0)
-        }
-        else{
-            window.statusBarColor = getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
-        }
-    }
-
-    fun onOffline(){
-        binding.internetStatus.isVisible = true
-        if(binding.cl != null){
-            binding.internetStatus.post{
-                binding.cl!!.updatePadding(top = binding.internetStatus.height - binding.internetStatus.paddingTop + binding.internetStatus.paddingBottom)
-            }
-        }
-        else{
-            window.statusBarColor = getAttributeColor(com.google.android.material.R.attr.colorErrorContainer)
-        }
-
-    }
-
-    fun bottomNavigationView() : NavigationBarView{
-        return (binding.navigationView as NavigationBarView)
     }
 
     override fun onStart() {
@@ -472,29 +202,81 @@ abstract class MainActivity : AppCompatActivity() {
         super.onStop()
     }
 
-    val backgroundAnimatorIn = ValueAnimator.ofFloat(0f, 1f)
-    val backgroundAnimatorOut = ValueAnimator.ofFloat(1f, 0f)
-
-    private fun refreshUserData(){
-        if(CacheManager.currentUserId == -2) return
-        RetrofitInstance.communicate(lifecycleScope,
-            RetrofitInstance.api::getCurrentUser,
-            {
-                it as UserData
-                it.saveReceivedTime()
-                CacheManager.updateCurrentUserData(it)
-            },
-            { _, _ ->
-                ApiHelper.createSnackBar(this, getString(R.string.failed_to_refresh_user)){
-                    refreshUserData()
-                }
-            })
-
-    }
-
     override fun onPostCreate(savedInstanceState: Bundle?) {
-
         super.onPostCreate(savedInstanceState)
+
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
+        defaultTitlePadding = binding.lyTitleContainer.paddingLeft
+
+        fun refreshUserData(){
+            if(CacheManager.currentUserId == -2) return
+            RetrofitInstance.communicate(lifecycleScope,
+                RetrofitInstance.api::getCurrentUser,
+                {
+                    it as UserData
+                    it.saveReceivedTime()
+                    CacheManager.updateCurrentUserData(it)
+                },
+                { _, _ ->
+                    ApiHelper.createSnackBar(this, getString(R.string.failed_to_refresh_user)){
+                        refreshUserData()
+                    }
+                })
+
+        }
+
+        fun showBackButtonIfNeeded(){
+
+            val toPadding: Int
+            val toAlpha: Float
+
+            if (supportFragmentManager.backStackEntryCount == 1) {
+                toPadding = resources.getDimensionPixelSize(R.dimen.card_padding)
+                toAlpha = 0f
+                binding.buttonBack.isClickable = false
+
+            } else {
+                toPadding = defaultTitlePadding
+                toAlpha = 1f
+                binding.buttonBack.isClickable = true
+            }
+
+            val buttonAnimator = ValueAnimator.ofFloat(binding.buttonBack.alpha, toAlpha)
+            val animator : ValueAnimator
+            if(binding.imageAppIcon == null) {
+                animator = ValueAnimator.ofInt(binding.lyTitleContainer.paddingRight, toPadding)
+                animator.addUpdateListener { valueAnimator ->
+                    binding.lyTitleContainer.setPadding(
+                        valueAnimator.animatedValue as Int,
+                        0,
+                        valueAnimator.animatedValue as Int,
+                        0
+                    )
+                }
+            }
+            else{
+                animator = ValueAnimator.ofFloat(binding.imageAppIcon!!.alpha, (toAlpha - 1) * -1)
+                animator.addUpdateListener { valueAnimator ->
+                    binding.imageAppIcon!!.alpha = valueAnimator.animatedValue as Float
+                }
+            }
+
+            buttonAnimator.addUpdateListener { valueAnimator ->
+                binding.buttonBack.alpha = valueAnimator.animatedValue as Float
+            }
+
+            val animationSet = AnimatorSet()
+            animationSet.playTogether(
+                animator,
+                buttonAnimator
+            )
+            animationSet.setDuration(resources.getInteger(R.integer.default_transition).toLong())
+            animationSet.interpolator = AnimationUtils.loadInterpolator(
+                this,
+                com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
+            )
+            animationSet.start()
+        }
 
         if(ApplicationManager.isOnline(this)){
             onOnline()
@@ -503,10 +285,7 @@ abstract class MainActivity : AppCompatActivity() {
             onOffline()
         }
 
-
-
         AuthenticationManager.handleFailedTokenRefresh = {
-
             lifecycleScope.launch {
                 loginDataStore.edit {
                     it.remove(DataStoreManager.TOKENS)
@@ -514,7 +293,6 @@ abstract class MainActivity : AppCompatActivity() {
                 finishAffinity()
                 ApplicationManager.openLogin(this@MainActivity)
             }
-
         }
 
         AuthenticationManager.handleRefreshedTokenSaving = {
@@ -523,19 +301,7 @@ abstract class MainActivity : AppCompatActivity() {
             }
         }
 
-
-        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
-
-
-        defaultTitlePadding = binding.lyTitleContainer.paddingLeft
-
-
-
-
-
-
-        val landscape = (resources.configuration.orientation == Configuration.ORIENTATION_LANDSCAPE)
-        if(!landscape){
+        if(binding.appBar != null){
             binding.appBar!!.setupPortrait()
             val listener = AppBarLayout.OnOffsetChangedListener { appBar, verticalOffset ->
                 val seekPosition = -verticalOffset / appBar.totalScrollRange.toFloat()
@@ -551,26 +317,17 @@ abstract class MainActivity : AppCompatActivity() {
             handleBackPress()
         }
 
-
-
-        bottomNavigationView().setOnItemSelectedListener { menuItem ->
-
-
+        getBottomNavigationView().setOnItemSelectedListener { menuItem ->
             changeBackStackState(menuItem.itemId)
-
-
             return@setOnItemSelectedListener true
         }
 
-        bottomNavigationView().setOnItemReselectedListener {
-
+        getBottomNavigationView().setOnItemReselectedListener {
             dropAllFragments()
-
         }
 
         binding.cardUser.setOnLongClickListener{
             ApplicationManager.openActivity(this, CacheActivity::class.java)
-
             return@setOnLongClickListener true
         }
 
@@ -582,7 +339,6 @@ abstract class MainActivity : AppCompatActivity() {
             .load(CacheManager.getCurrentUserData()?.picture)
             .noPlaceholder()
             .into(binding.imageUser)
-
 
         if(savedInstanceState == null) {
             if(!CacheManager.getCurrentUserData()!!.isValid(this, DateTimeHelper.TIME_IMPORTANT)) {
@@ -618,17 +374,17 @@ abstract class MainActivity : AppCompatActivity() {
             binding.appBar?.setExpanded(false)
 
             showNightBgIfNeeded(id)
-
-
-
             showBackButtonIfNeeded()
 
             viewModel.lastFragmentId = id
-
         }
     }
 
-    var onCancelEditMode: (() -> Unit)? = null
+    @Deprecated("Deprecated in Java")
+    @SuppressLint("MissingSuperCall")
+    override fun onBackPressed() {
+        handleBackPress()
+    }
 
     private fun handleBackPress(){
 
@@ -641,83 +397,318 @@ abstract class MainActivity : AppCompatActivity() {
         binding.appBar?.setExpanded(false)
         if (supportFragmentManager.backStackEntryCount > 1) {
             dropLastFragment()
-
         } else {
             if (viewModel.mainFragmentList.size == 1) {
-
-                if (bottomNavigationView().selectedItemId != R.id.home) {
-                    bottomNavigationView().selectedItemId = R.id.home
+                if (getBottomNavigationView().selectedItemId != R.id.home) {
+                    getBottomNavigationView().selectedItemId = R.id.home
                     viewModel.mainFragmentList = arrayListOf(0)
                 }
                 else{
-
                     finish()
                 }
-
             }
             else{
-
                 viewModel.mainFragmentList.removeAt(viewModel.mainFragmentList.size-1)
-                bottomNavigationView().selectedItemId = viewModel.mainFragmentList.last()
-
+                getBottomNavigationView().selectedItemId = viewModel.mainFragmentList.last()
             }
-
         }
     }
 
+    fun keyboardVisibilityChanged(opened: Boolean) {
 
+        if(binding.cl != null){
+            (binding.cl!!.layoutParams as MarginLayoutParams).updateMargins(bottom = if (opened) 0 else resources.getDimensionPixelSize(R.dimen.header_footer_size))
+            binding.cl!!.forceLayout()
 
-    @Deprecated("Deprecated in Java")
-    @SuppressLint("MissingSuperCall")
-    override fun onBackPressed() {
-        handleBackPress()
+            binding.manageBar.root.isVisible = !opened
+            binding.navigationView.isVisible = !opened
+        }
+    }
+
+    fun byteArrayToInt(bytes: ByteArray): Int {
+        var value = 0
+        for (b in bytes) {
+            value = (value shl 8) + (b.toInt() and 0xFF)
+        }
+        return value
+    }
+
+    fun setTextSwitcherFactory(fontId : Int){
+
+        binding.textSwitcher.removeAllViews()
+
+        var textView : TextView
+        binding.textSwitcher.setFactory {
+            textView = TextView(this@MainActivity)
+            textView.setTextAppearance(R.style.MainTitle)
+            textView.typeface = resources.getFont(fontId)
+            textView
+        }
+    }
+
+    fun enableEditMode(){
+
+        onEditModeChange?.invoke(true)
+
+        ManageActivity.displayButton(binding.manageBar.button, getString(R.string.remove), R.drawable.delete_forever)
+
+        binding.cardUser.isClickable = false
+        binding.cardUser.isEnabled = false
+
+        binding.manageBar.root.isClickable = true
+        binding.manageBar.button.isClickable = true
+
+        binding.buttonBack.setIconResource(R.drawable.close)
+
+        animateEditMode(0f, 0, resources.getDimensionPixelSize(R.dimen.header_footer_size))
     }
 
 
-fun showNightBgIfNeeded(id : String){
-    when (resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
-        Configuration.UI_MODE_NIGHT_YES -> {
-            val c: Calendar = Calendar.getInstance()
-            val hours: Float =
-                ((c.get(Calendar.SECOND) / 60f / 60f + c.get(Calendar.MINUTE) / 60f + c.get(
-                    Calendar.HOUR_OF_DAY
-                ))) + SettingsActivity.timeOffset
-            if (id == "home" && (hours > 22 || hours < 3)) {
-                binding.appBar?.background = AppCompatResources.getDrawable(this, R.drawable.separator)
-                backgroundAnimatorOut.cancel()
-                binding.stars.setVisibilityBy(true)
-                backgroundAnimatorIn.start()
+    fun disableEditMode(){
 
-            } else if (viewModel.lastFragmentId == "home" && binding.stars.visibility == VISIBLE) {
-                binding.appBar?.background =
-                    ColorDrawable(getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
-                backgroundAnimatorIn.cancel()
-                backgroundAnimatorOut.doOnEnd {
-                    binding.stars.setVisibilityBy(false)
+        onEditModeChange?.invoke(false)
+        onCancelEditMode = null
+
+        binding.cardUser.isClickable = true
+        binding.cardUser.isEnabled = true
+
+        binding.manageBar.root.isClickable = false
+        binding.manageBar.button.isClickable = false
+
+        binding.buttonBack.setIconResource(R.drawable.arrow_back)
+
+        setToolbarTitle((supportFragmentManager.fragments[0] as FragmentInMainActivity).getFragmentTitle())
+
+        animateEditMode(1f, ApplicationManager.convertDpToPixel(80, this), 0)
+    }
+
+    fun animateEditMode(toAlpha : Float, toWidth : Int, toHeight : Int){
+
+        //TODO: kitalálni egy jó módját annak, hogy ne lehessen kattintani a navigation view-t, ameddig átvált
+
+        val animationSet = AnimatorSet()
+
+        val userAnimator = ValueAnimator.ofFloat(binding.cardUser.alpha, toAlpha)
+        userAnimator.addUpdateListener { valueAnimator ->
+            val value = valueAnimator.animatedValue as Float
+            binding.cardUser.alpha = value
+        }
+
+        if(binding.navigationView is BottomNavigationView){
+            val bottomNavigationViewAnimator = ValueAnimator.ofFloat(binding.manageBar.root.alpha, (toAlpha - 1) * -1)
+            bottomNavigationViewAnimator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Float
+                binding.manageBar.root.alpha = value
+            }
+
+            animationSet.playTogether(
+                userAnimator,
+                bottomNavigationViewAnimator,
+            )
+        }
+        else{
+            val manageBarAnimator = ValueAnimator.ofInt(binding.manageBar.root.height, toHeight)
+            manageBarAnimator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Int
+                binding.manageBar.root.layoutParams.height = value
+                binding.lyChange!!.requestLayout()
+            }
+
+            val navigationRailAnimator = ValueAnimator.ofInt(binding.navigationView.width, toWidth)
+            navigationRailAnimator.addUpdateListener { valueAnimator ->
+                val value = valueAnimator.animatedValue as Int
+                binding.navigationView.layoutParams.width = value
+
+            }
+
+            animationSet.playTogether(
+                userAnimator,
+                navigationRailAnimator,
+                manageBarAnimator
+            )
+        }
+
+        animationSet.duration = resources.getInteger(R.integer.default_transition).toLong()
+        animationSet.interpolator = AnimationUtils.loadInterpolator(
+            this,
+            com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
+        )
+        animationSet.start()
+    }
+
+    fun onOnline(){
+        binding.internetStatus.isVisible = false
+        if(binding.cl != null){
+            binding.cl?.updatePadding(top = 0)
+        }
+        else{
+            window.statusBarColor = getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer)
+        }
+    }
+
+    fun onOffline(){
+        binding.internetStatus.isVisible = true
+        if(binding.cl != null){
+            binding.internetStatus.post{
+                binding.cl!!.updatePadding(top = binding.internetStatus.height - binding.internetStatus.paddingTop + binding.internetStatus.paddingBottom)
+            }
+        }
+        else{
+            window.statusBarColor = getAttributeColor(com.google.android.material.R.attr.colorErrorContainer)
+        }
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val rootView: View = findViewById(android.R.id.content)
+
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
+
+        fun showNavigationViewLabelIfNeeded(){
+            lifecycleScope.launch {
+
+                var opened = 0
+                val data = tipDataStore.data.first()[intPreferencesKey("APP_OPEN_COUNT")]
+                if(data != null) opened = data
+                if(opened < 10){
+                    getBottomNavigationView().labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
                 }
-                backgroundAnimatorOut.reverse()
-                backgroundAnimatorOut.start()
+                else{
+                    getBottomNavigationView().itemPaddingBottom = 0
+                    getBottomNavigationView().itemPaddingTop = 0
+                }
+
+                if(savedInstanceState == null){
+
+                    opened++
+                    tipDataStore.edit {
+                        it[intPreferencesKey("APP_OPEN_COUNT")] = opened
+                    }
+                }
             }
         }
-        Configuration.UI_MODE_NIGHT_NO -> {}
-        Configuration.UI_MODE_NIGHT_UNDEFINED -> {}
+
+        fun handleKeyboardSize(){
+            rootView.viewTreeObserver.addOnGlobalLayoutListener(
+                OnGlobalLayoutListener {
+                    val r = Rect()
+                    rootView.getWindowVisibleDisplayFrame(r)
+                    val screenHeight: Int = rootView.rootView.height
+
+                    val keypadHeight = screenHeight - r.bottom
+
+                    if (keypadHeight > screenHeight * 0.15) {
+                        // keyboard is opened
+                        if (!isKeyboardShowing) {
+                            isKeyboardShowing = true
+                            keyboardVisibilityChanged(true)
+                        }
+                    } else {
+                        // keyboard is closed
+                        if (isKeyboardShowing) {
+                            isKeyboardShowing = false
+                            keyboardVisibilityChanged(false)
+                        }
+                    }
+                }
+            )
+        }
+
+        fun handleConnectivity(){
+            if(binding.cl != null){
+                ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, insets ->
+                    statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+                    binding.internetStatus.updatePadding(top = binding.internetStatus.paddingBottom + statusBarHeight)
+                    insets
+                }
+            }
+
+            val networkRequest = NetworkRequest.Builder()
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+                .build()
+
+            val networkCallback = object : ConnectivityManager.NetworkCallback() {
+                override fun onAvailable(network: Network) {
+                    super.onAvailable(network)
+                    runOnUiThread {
+                        onOnline()
+                    }
+                }
+
+                override fun onLost(network: Network) {
+                    super.onLost(network)
+                    runOnUiThread {
+                        onOffline()
+                    }
+                }
+            }
+
+            connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
+            connectivityManager.requestNetwork(networkRequest, networkCallback)
+        }
+
+        binding.textSwitcher.measureAllChildren = false
+        setTextSwitcherFactory(R.font.rubik_medium)
+
+        showNavigationViewLabelIfNeeded()
+
+        handleConnectivity()
+
+        handleKeyboardSize()
+
+        if(binding.navigationView is BottomNavigationView){
+            binding.manageBar.root.isClickable = false
+            binding.manageBar.button.isClickable = false
+            binding.manageBar.root.isVisible = true
+            binding.manageBar.root.alpha = 0f
+        }
     }
-}
+
+    fun showNightBgIfNeeded(id : String){
+        when (resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
+            Configuration.UI_MODE_NIGHT_YES -> {
+                val c: Calendar = Calendar.getInstance()
+                val hours: Float =
+                    ((c.get(Calendar.SECOND) / 60f / 60f + c.get(Calendar.MINUTE) / 60f + c.get(
+                        Calendar.HOUR_OF_DAY
+                    ))) + SettingsActivity.timeOffset
+                if (id == "home" && (hours > 22 || hours < 3)) {
+                    binding.appBar?.background = AppCompatResources.getDrawable(this, R.drawable.separator)
+                    backgroundAnimatorOut.cancel()
+                    binding.stars.setVisibilityBy(true)
+                    backgroundAnimatorIn.start()
+
+                } else if (viewModel.lastFragmentId == "home" && binding.stars.visibility == VISIBLE) {
+                    binding.appBar?.background =
+                        ColorDrawable(getAttributeColor(com.google.android.material.R.attr.colorSurfaceContainer))
+                    backgroundAnimatorIn.cancel()
+                    backgroundAnimatorOut.doOnEnd {
+                        binding.stars.setVisibilityBy(false)
+                    }
+                    backgroundAnimatorOut.reverse()
+                    backgroundAnimatorOut.start()
+                }
+            }
+            Configuration.UI_MODE_NIGHT_NO -> {}
+            Configuration.UI_MODE_NIGHT_UNDEFINED -> {}
+        }
+    }
+
+    fun addFragment(fragment: Fragment) : FragmentTransaction{
+        val fragmentTransaction = replaceFragment(fragment)
+        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
+
+        return fragmentTransaction
+    }
 
     fun dropLastFragment(){
         supportFragmentManager.popBackStack()
-
-
-    }
-
-    fun getSnackBar(text : String, time: Int): Snackbar {
-
-        return Snackbar
-            .make(
-                binding.fragmentContainer,
-                text,
-                time
-            )
     }
 
     fun dropAllFragments(){
@@ -727,33 +718,16 @@ fun showNightBgIfNeeded(id : String){
         repeat(supportFragmentManager.backStackEntryCount-1){
             supportFragmentManager.popBackStack()
         }
-
-
-
     }
-
-    fun addFragment(fragment: Fragment) : FragmentTransaction{
-        val fragmentTransaction = replaceFragment(fragment)
-        fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-
-
-
-
-        return fragmentTransaction
-    }
-
 
     fun changeBackStackState(idToSelect : Int){
 
-
-        if(idToSelect != bottomNavigationView().selectedItemId) {
-            supportFragmentManager.saveBackStack(bottomNavigationView().selectedItemId.toString())
-
-            viewModel.savedBackStacks.add(bottomNavigationView().selectedItemId)
+        if(idToSelect != getBottomNavigationView().selectedItemId) {
+            supportFragmentManager.saveBackStack(getBottomNavigationView().selectedItemId.toString())
+            viewModel.savedBackStacks.add(getBottomNavigationView().selectedItemId)
         }
 
         supportFragmentManager.restoreBackStack(idToSelect.toString())
-
         if(!viewModel.savedBackStacks.contains(idToSelect)){
             val fragment = when (idToSelect) {
                 R.id.home -> {
@@ -780,25 +754,15 @@ fun showNightBgIfNeeded(id : String){
             fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
         }
 
-
-
-
-
-
-
         if (viewModel.mainFragmentList.contains(idToSelect)) {
             viewModel.mainFragmentList.remove(idToSelect)
         }
+
         viewModel.mainFragmentList.add(idToSelect)
-
-
-
-
-
     }
 
+    private fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = getBottomNavigationView().selectedItemId) : FragmentTransaction{
 
-    private fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction{
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment, "${selectedItemId}${supportFragmentManager.backStackEntryCount}")
         fragmentTransaction.setReorderingAllowed(true)
@@ -806,8 +770,8 @@ fun showNightBgIfNeeded(id : String){
         return fragmentTransaction
     }
 
+    private fun replaceFragment(fragment: Fragment, selectedItemId : Int = getBottomNavigationView().selectedItemId) : FragmentTransaction {
 
-    private fun replaceFragment(fragment: Fragment, selectedItemId : Int = bottomNavigationView().selectedItemId) : FragmentTransaction {
         val fragmentTransaction = replaceFragmentWithoutBackStack(fragment, selectedItemId)
         fragmentTransaction.addToBackStack(selectedItemId.toString())
 
@@ -815,8 +779,6 @@ fun showNightBgIfNeeded(id : String){
     }
 
     fun addFragmentWithTransition(fragment: Fragment, view : View, name : String) : FragmentTransaction {
-
-
 
         fragment.sharedElementEnterTransition = MaterialContainerTransform().apply {
             drawingViewId = R.id.fragment_container
@@ -829,72 +791,12 @@ fun showNightBgIfNeeded(id : String){
         return fragmentTransaction
     }
 
-
-
-    private fun showBackButtonIfNeeded(){
-
-        val toPadding: Int
-        val toAlpha: Float
-
-        if (supportFragmentManager.backStackEntryCount == 1) {
-
-            toPadding = resources.getDimensionPixelSize(R.dimen.card_padding)
-            toAlpha = 0f
-            binding.buttonBack.isClickable = false
-
-        } else {
-
-            toPadding = defaultTitlePadding
-            toAlpha = 1f
-            binding.buttonBack.isClickable = true
-        }
-
-        val buttonAnimator = ValueAnimator.ofFloat(binding.buttonBack.alpha, toAlpha)
-        val animator : ValueAnimator
-        if(binding.imageAppIcon == null) {
-            animator = ValueAnimator.ofInt(binding.lyTitleContainer.paddingRight, toPadding)
-            animator.addUpdateListener { valueAnimator ->
-                binding.lyTitleContainer.setPadding(
-                    valueAnimator.animatedValue as Int,
-                    0,
-                    valueAnimator.animatedValue as Int,
-                    0
-                )
-            }
-        }
-        else{
-            animator = ValueAnimator.ofFloat(binding.imageAppIcon!!.alpha, (toAlpha - 1) * -1)
-            animator.addUpdateListener { valueAnimator ->
-                binding.imageAppIcon!!.alpha = valueAnimator.animatedValue as Float
-            }
-        }
-        buttonAnimator.addUpdateListener { valueAnimator ->
-            binding.buttonBack.alpha = valueAnimator.animatedValue as Float
-        }
-
-        val animationSet = AnimatorSet()
-        animationSet.playTogether(
-            animator,
-            buttonAnimator
-        )
-        animationSet.setDuration(resources.getInteger(R.integer.default_transition).toLong())
-        animationSet.interpolator = AnimationUtils.loadInterpolator(
-            this,
-            com.google.android.material.R.interpolator.m3_sys_motion_easing_emphasized
-        )
-        animationSet.start()
-    }
-
     @SuppressLint("PrivateResource")
     fun setToolbarTitle(title : String?, description : String = ""){
 
         val descriptionChanges = description != binding.textTitleDescription.text.toString()
-        if(title == (binding.textSwitcher.currentView as TextView).text.toString() && !descriptionChanges) {
-
+        if(title == (binding.textSwitcher.currentView as TextView).text.toString() && !descriptionChanges)
             return
-        }
-
-        Log.d("RETGIJASDIKUFHASDIOLCHBHJYXFV", "${description} :::::: ${binding.textTitleDescription.text.toString()}")
 
         if(descriptionChanges) {
             if (description.isBlank()) {
@@ -928,10 +830,10 @@ fun showNightBgIfNeeded(id : String){
             binding.textTitleDescription.text = description
         }
         binding.textSwitcher.setText(title)
-
         binding.textSwitcher.requestLayout()
-
     }
 
-
+    fun getSnackBar(text : String, time: Int): Snackbar {
+        return Snackbar.make(binding.fragmentContainer, text, time)
+    }
 }

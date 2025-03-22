@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
     private var myTag: Tag? = null
 
     @OptIn(ExperimentalStdlibApi::class)
-    private var callback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
+    private var nfcCallback : NfcAdapter.ReaderCallback = NfcAdapter.ReaderCallback { tag : Tag ->
 
 
         val mifareClassic = MifareClassic.get(tag)
@@ -67,7 +67,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
 
-        nfcAdapter.enableReaderMode(this, callback, NfcAdapter.FLAG_READER_NFC_A, null)
+        nfcAdapter.enableReaderMode(this, nfcCallback, NfcAdapter.FLAG_READER_NFC_A, null)
     }
 
     override fun onPause() {
