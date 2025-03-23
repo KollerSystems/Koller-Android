@@ -125,81 +125,120 @@ abstract class MainActivity : AppCompatActivity() {
 
     abstract fun getAppIcon() : Int
 
-    fun getBottomNavigationView() : NavigationBarView{
+    fun getNavigationView() : NavigationBarView{
         return (binding.navigationView as NavigationBarView)
     }
 
-    override fun onPause() {
-        super.onPause()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
 
-        nfcAdapter?.disableReaderMode(this)
-    }
+        val rootView: View = findViewById(android.R.id.content)
 
-    override fun onResume() {
-        super.onResume()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        fun handleWidgetAction(){
+        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
 
-            viewModel.currentBottomSheetDialogFragment?.dismiss()
-            //TODO: ellenőrizni, hogy vannak-e alert dialogok, amik ilyenkor bent ragadhatnak, vagy igazából bármi.
+        fun showNavigationViewLabelIfNeeded(){
+            lifecycleScope.launch {
 
-            when (WidgetHelper.widgetTag) {
-                NowWidgetProvider.TAG -> {
-                    if (getBottomNavigationView().selectedItemId != R.id.home) {
-                        getBottomNavigationView().selectedItemId = R.id.home
-                    }
-
-                    getBottomNavigationView().post {
-                        if (supportFragmentManager.fragments[0] !is HomeFragment) {
-                            addFragment(ApplicationManager.homeFragment())
-                        }
-                    }
+                var opened = 0
+                val data = tipDataStore.data.first()[intPreferencesKey("APP_OPEN_COUNT")]
+                if(data != null) opened = data
+                if(opened < 10){
+                    getNavigationView().labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
                 }
-                CanteenWidgetProvider.TAG -> {
-                    if (getBottomNavigationView().selectedItemId != R.id.calendar) {
-                        getBottomNavigationView().selectedItemId = R.id.calendar
-                    }
+                else{
+                    getNavigationView().itemPaddingBottom = 0
+                    getNavigationView().itemPaddingTop = 0
+                }
 
-                    getBottomNavigationView().post {
-                        if (supportFragmentManager.fragments[0] !is CalendarFragment) {
-                            addFragment(ApplicationManager.calendarFragment())
-                        }
+                if(savedInstanceState == null){
 
-                        getBottomNavigationView().post {
-                            getBottomNavigationView().post {
-                                (supportFragmentManager.fragments[0] as CalendarFragment).getViewPager().currentItem = 2
-                            }
-                        }
+                    opened++
+                    tipDataStore.edit {
+                        it[intPreferencesKey("APP_OPEN_COUNT")] = opened
                     }
                 }
             }
-            WidgetHelper.widgetTag = null
         }
 
-        nfcAdapter?.enableReaderMode(this, nfcCallback, NfcAdapter.FLAG_READER_NFC_A, null)
+        fun handleKeyboardSize(){
+            rootView.viewTreeObserver.addOnGlobalLayoutListener(
+                OnGlobalLayoutListener {
+                    val r = Rect()
+                    rootView.getWindowVisibleDisplayFrame(r)
+                    val screenHeight: Int = rootView.rootView.height
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    val keypadHeight = screenHeight - r.bottom
 
-            onBackInvokedDispatcher.registerOnBackInvokedCallback(
-                OnBackInvokedDispatcher.PRIORITY_DEFAULT
-            ){
-                handleBackPress()
+                    if (keypadHeight > screenHeight * 0.15) {
+                        // keyboard is opened
+                        if (!isKeyboardShowing) {
+                            isKeyboardShowing = true
+                            keyboardVisibilityChanged(true)
+                        }
+                    } else {
+                        // keyboard is closed
+                        if (isKeyboardShowing) {
+                            isKeyboardShowing = false
+                            keyboardVisibilityChanged(false)
+                        }
+                    }
+                }
+            )
+        }
+
+        fun handleConnectivity(){
+            if(binding.cl != null){
+                ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, insets ->
+                    statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
+                    binding.internetStatus.updatePadding(top = binding.internetStatus.paddingBottom + statusBarHeight)
+                    insets
+                }
             }
+
+            val networkRequest = NetworkRequest.Builder()
+                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
+                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
+                .build()
+
+            val networkCallback = object : ConnectivityManager.NetworkCallback() {
+                override fun onAvailable(network: Network) {
+                    super.onAvailable(network)
+                    runOnUiThread {
+                        onOnline()
+                    }
+                }
+
+                override fun onLost(network: Network) {
+                    super.onLost(network)
+                    runOnUiThread {
+                        onOffline()
+                    }
+                }
+            }
+
+            connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
+            connectivityManager.requestNetwork(networkRequest, networkCallback)
         }
 
-        if (WidgetHelper.widgetTag != null) {
-            handleWidgetAction()
+        binding.textSwitcher.measureAllChildren = false
+        setTextSwitcherFactory(R.font.rubik_medium)
+
+        showNavigationViewLabelIfNeeded()
+
+        handleConnectivity()
+
+        handleKeyboardSize()
+
+        if(binding.navigationView is BottomNavigationView){
+            binding.manageBar.root.isClickable = false
+            binding.manageBar.button.isClickable = false
+            binding.manageBar.root.isVisible = true
+            binding.manageBar.root.alpha = 0f
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        binding.stars.onStart()
-    }
-
-    override fun onStop() {
-        binding.stars.onStop()
-        super.onStop()
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {
@@ -317,12 +356,12 @@ abstract class MainActivity : AppCompatActivity() {
             handleBackPress()
         }
 
-        getBottomNavigationView().setOnItemSelectedListener { menuItem ->
+        getNavigationView().setOnItemSelectedListener { menuItem ->
             changeBackStackState(menuItem.itemId)
             return@setOnItemSelectedListener true
         }
 
-        getBottomNavigationView().setOnItemReselectedListener {
+        getNavigationView().setOnItemReselectedListener {
             dropAllFragments()
         }
 
@@ -380,6 +419,79 @@ abstract class MainActivity : AppCompatActivity() {
         }
     }
 
+    override fun onPause() {
+        super.onPause()
+
+        nfcAdapter?.disableReaderMode(this)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+        fun handleWidgetAction(){
+
+            viewModel.currentBottomSheetDialogFragment?.dismiss()
+            //TODO: ellenőrizni, hogy vannak-e alert dialogok, amik ilyenkor bent ragadhatnak, vagy igazából bármi.
+
+            when (WidgetHelper.widgetTag) {
+                NowWidgetProvider.TAG -> {
+                    if (getNavigationView().selectedItemId != R.id.home) {
+                        getNavigationView().selectedItemId = R.id.home
+                    }
+
+                    getNavigationView().post {
+                        if (supportFragmentManager.fragments[0] !is HomeFragment) {
+                            addFragment(ApplicationManager.homeFragment())
+                        }
+                    }
+                }
+                CanteenWidgetProvider.TAG -> {
+                    if (getNavigationView().selectedItemId != R.id.calendar) {
+                        getNavigationView().selectedItemId = R.id.calendar
+                    }
+
+                    getNavigationView().post {
+                        if (supportFragmentManager.fragments[0] !is CalendarFragment) {
+                            addFragment(ApplicationManager.calendarFragment())
+                        }
+
+                        getNavigationView().post {
+                            getNavigationView().post {
+                                (supportFragmentManager.fragments[0] as CalendarFragment).getViewPager().currentItem = 2
+                            }
+                        }
+                    }
+                }
+            }
+            WidgetHelper.widgetTag = null
+        }
+
+        nfcAdapter?.enableReaderMode(this, nfcCallback, NfcAdapter.FLAG_READER_NFC_A, null)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+
+            onBackInvokedDispatcher.registerOnBackInvokedCallback(
+                OnBackInvokedDispatcher.PRIORITY_DEFAULT
+            ){
+                handleBackPress()
+            }
+        }
+
+        if (WidgetHelper.widgetTag != null) {
+            handleWidgetAction()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        binding.stars.onStart()
+    }
+
+    override fun onStop() {
+        binding.stars.onStop()
+        super.onStop()
+    }
+
     @Deprecated("Deprecated in Java")
     @SuppressLint("MissingSuperCall")
     override fun onBackPressed() {
@@ -399,8 +511,8 @@ abstract class MainActivity : AppCompatActivity() {
             dropLastFragment()
         } else {
             if (viewModel.mainFragmentList.size == 1) {
-                if (getBottomNavigationView().selectedItemId != R.id.home) {
-                    getBottomNavigationView().selectedItemId = R.id.home
+                if (getNavigationView().selectedItemId != R.id.home) {
+                    getNavigationView().selectedItemId = R.id.home
                     viewModel.mainFragmentList = arrayListOf(0)
                 }
                 else{
@@ -409,7 +521,7 @@ abstract class MainActivity : AppCompatActivity() {
             }
             else{
                 viewModel.mainFragmentList.removeAt(viewModel.mainFragmentList.size-1)
-                getBottomNavigationView().selectedItemId = viewModel.mainFragmentList.last()
+                getNavigationView().selectedItemId = viewModel.mainFragmentList.last()
             }
         }
     }
@@ -558,118 +670,6 @@ abstract class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        val rootView: View = findViewById(android.R.id.content)
-
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this)
-
-        fun showNavigationViewLabelIfNeeded(){
-            lifecycleScope.launch {
-
-                var opened = 0
-                val data = tipDataStore.data.first()[intPreferencesKey("APP_OPEN_COUNT")]
-                if(data != null) opened = data
-                if(opened < 10){
-                    getBottomNavigationView().labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
-                }
-                else{
-                    getBottomNavigationView().itemPaddingBottom = 0
-                    getBottomNavigationView().itemPaddingTop = 0
-                }
-
-                if(savedInstanceState == null){
-
-                    opened++
-                    tipDataStore.edit {
-                        it[intPreferencesKey("APP_OPEN_COUNT")] = opened
-                    }
-                }
-            }
-        }
-
-        fun handleKeyboardSize(){
-            rootView.viewTreeObserver.addOnGlobalLayoutListener(
-                OnGlobalLayoutListener {
-                    val r = Rect()
-                    rootView.getWindowVisibleDisplayFrame(r)
-                    val screenHeight: Int = rootView.rootView.height
-
-                    val keypadHeight = screenHeight - r.bottom
-
-                    if (keypadHeight > screenHeight * 0.15) {
-                        // keyboard is opened
-                        if (!isKeyboardShowing) {
-                            isKeyboardShowing = true
-                            keyboardVisibilityChanged(true)
-                        }
-                    } else {
-                        // keyboard is closed
-                        if (isKeyboardShowing) {
-                            isKeyboardShowing = false
-                            keyboardVisibilityChanged(false)
-                        }
-                    }
-                }
-            )
-        }
-
-        fun handleConnectivity(){
-            if(binding.cl != null){
-                ViewCompat.setOnApplyWindowInsetsListener(rootView) { view, insets ->
-                    statusBarHeight = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top
-                    binding.internetStatus.updatePadding(top = binding.internetStatus.paddingBottom + statusBarHeight)
-                    insets
-                }
-            }
-
-            val networkRequest = NetworkRequest.Builder()
-                .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
-                .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-                .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
-                .build()
-
-            val networkCallback = object : ConnectivityManager.NetworkCallback() {
-                override fun onAvailable(network: Network) {
-                    super.onAvailable(network)
-                    runOnUiThread {
-                        onOnline()
-                    }
-                }
-
-                override fun onLost(network: Network) {
-                    super.onLost(network)
-                    runOnUiThread {
-                        onOffline()
-                    }
-                }
-            }
-
-            connectivityManager = getSystemService(ConnectivityManager::class.java) as ConnectivityManager
-            connectivityManager.requestNetwork(networkRequest, networkCallback)
-        }
-
-        binding.textSwitcher.measureAllChildren = false
-        setTextSwitcherFactory(R.font.rubik_medium)
-
-        showNavigationViewLabelIfNeeded()
-
-        handleConnectivity()
-
-        handleKeyboardSize()
-
-        if(binding.navigationView is BottomNavigationView){
-            binding.manageBar.root.isClickable = false
-            binding.manageBar.button.isClickable = false
-            binding.manageBar.root.isVisible = true
-            binding.manageBar.root.alpha = 0f
-        }
-    }
-
     fun showNightBgIfNeeded(id : String){
         when (resources?.configuration?.uiMode?.and(Configuration.UI_MODE_NIGHT_MASK)) {
             Configuration.UI_MODE_NIGHT_YES -> {
@@ -722,9 +722,9 @@ abstract class MainActivity : AppCompatActivity() {
 
     fun changeBackStackState(idToSelect : Int){
 
-        if(idToSelect != getBottomNavigationView().selectedItemId) {
-            supportFragmentManager.saveBackStack(getBottomNavigationView().selectedItemId.toString())
-            viewModel.savedBackStacks.add(getBottomNavigationView().selectedItemId)
+        if(idToSelect != getNavigationView().selectedItemId) {
+            supportFragmentManager.saveBackStack(getNavigationView().selectedItemId.toString())
+            viewModel.savedBackStacks.add(getNavigationView().selectedItemId)
         }
 
         supportFragmentManager.restoreBackStack(idToSelect.toString())
@@ -761,7 +761,7 @@ abstract class MainActivity : AppCompatActivity() {
         viewModel.mainFragmentList.add(idToSelect)
     }
 
-    private fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = getBottomNavigationView().selectedItemId) : FragmentTransaction{
+    private fun replaceFragmentWithoutBackStack(fragment: Fragment, selectedItemId : Int = getNavigationView().selectedItemId) : FragmentTransaction{
 
         val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
         fragmentTransaction.replace(R.id.fragment_container, fragment, "${selectedItemId}${supportFragmentManager.backStackEntryCount}")
@@ -770,7 +770,7 @@ abstract class MainActivity : AppCompatActivity() {
         return fragmentTransaction
     }
 
-    private fun replaceFragment(fragment: Fragment, selectedItemId : Int = getBottomNavigationView().selectedItemId) : FragmentTransaction {
+    private fun replaceFragment(fragment: Fragment, selectedItemId : Int = getNavigationView().selectedItemId) : FragmentTransaction {
 
         val fragmentTransaction = replaceFragmentWithoutBackStack(fragment, selectedItemId)
         fragmentTransaction.addToBackStack(selectedItemId.toString())
