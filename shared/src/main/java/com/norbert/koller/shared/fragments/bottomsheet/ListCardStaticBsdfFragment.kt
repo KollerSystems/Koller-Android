@@ -31,6 +31,7 @@ class ListCardStaticBsdfFragment() : ListBsdfFragment() {
 
     fun setup(activity : AppCompatActivity, list : ArrayList<ListItem>? = null, title: String? = null, collapseText: Boolean = false)  : ListBsdfFragment{
         setup(activity, title, collapseText)
+        //requireArguments().putParcelable("list", list)
         getListCardStaticViewModel().list.value = list
         return this
     }

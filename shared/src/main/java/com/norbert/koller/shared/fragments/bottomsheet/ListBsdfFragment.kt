@@ -28,6 +28,13 @@ abstract class ListBsdfFragment() : RecyclerBsdfFragment() {
 
     protected fun setup(activity : AppCompatActivity, title : String? = null, collapseText : Boolean = false) : ListBsdfFragment{
         viewModel = setViewModel(activity)
+
+        val bundle = Bundle()
+        bundle.putString("title", title)
+        bundle.putBoolean("collapseText", collapseText)
+
+        this.arguments = bundle
+
         viewModel.title = title
         viewModel.collapseText = collapseText
         return this

@@ -29,12 +29,8 @@ class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
         return this
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-
-
         super.onViewCreated(view, savedInstanceState)
-
 
         if(getToggleViewModel().list.value.isNullOrEmpty()) return
 
@@ -42,8 +38,6 @@ class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
         if(getToggleViewModel().list.value!!.size > 15){
             createSearchView()
         }
-
-
     }
 
     override fun setViewModel(activity : AppCompatActivity): ListBsdfFragmentViewModel {
