@@ -1,4 +1,4 @@
-package com.norbert.koller.shared.fragments.bottomsheet
+package com.norbert.koller.shared.fragments.bottomsheet.list
 
 import android.os.Bundle
 import android.view.View
@@ -9,7 +9,7 @@ import com.norbert.koller.shared.recycleradapters.ListCardRecyclerAdapter
 import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
 import com.norbert.koller.shared.viewmodels.ListCardStaticBsdfFragmentViewModel
 
-class ListCardStaticBsdfFragment() : ListBsdfFragment() {
+open class ListCardStaticBsdfFragment() : ListBsdfFragment() {
     override fun setViewModel(activity : AppCompatActivity): ListBsdfFragmentViewModel {
         return ViewModelProvider(activity)[ListCardStaticBsdfFragmentViewModel::class.java]
     }
@@ -28,12 +28,4 @@ class ListCardStaticBsdfFragment() : ListBsdfFragment() {
 
         }
     }
-
-    fun setup(activity : AppCompatActivity, list : ArrayList<ListItem>? = null, title: String? = null, collapseText: Boolean = false)  : ListBsdfFragment{
-        setup(activity, title, collapseText)
-        //requireArguments().putParcelable("list", list)
-        getListCardStaticViewModel().list.value = list
-        return this
-    }
-
 }

@@ -514,4 +514,6 @@
     <string name="staffing_control">Staffing control</string>
     <string name="application">Application</string>
     <string name="outgoing">Outgoing</string>
+    <string name="create_photo">Create photo</string>
+    <string name="select_photo">Select photo</string>
 </resources>

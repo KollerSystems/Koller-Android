@@ -16,14 +16,12 @@ import com.norbert.koller.shared.databinding.ItemCheckBoxBinding
 import com.norbert.koller.shared.databinding.ItemLoadingBinding
 import com.norbert.koller.shared.databinding.ItemNothingToDisplayBinding
 import com.norbert.koller.shared.databinding.ViewErrorRetryBinding
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleApiBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListToggleApiBsdfFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_EMPTY
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_ITEM
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_LOADING
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter.Companion.VIEW_TYPE_RETRY
-import com.norbert.koller.shared.viewmodels.ListViewModel
 
 class ListToggleApiRecyclerAdapter(val bottomSheet : ListToggleApiBsdfFragment) :  PagingDataAdapter<Any, RecyclerView.ViewHolder>(Comparator) {
 

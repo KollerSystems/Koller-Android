@@ -2,10 +2,8 @@ package com.norbert.koller.shared.recycleradapters
 
 import android.annotation.SuppressLint
 import android.view.View.VISIBLE
-import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.data.ListToggleItem
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListToggleStaticBsdfFragment
 
 class ListToggleStaticRecyclerAdapter (bottomSheet : ListToggleStaticBsdfFragment) : ListRecyclerAdapter(bottomSheet) {
 

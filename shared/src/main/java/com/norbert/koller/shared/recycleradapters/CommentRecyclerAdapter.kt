@@ -8,12 +8,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CommentData
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 
 
 class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()

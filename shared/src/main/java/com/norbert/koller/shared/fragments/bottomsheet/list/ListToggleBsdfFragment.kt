@@ -1,21 +1,10 @@
-package com.norbert.koller.shared.fragments.bottomsheet
+package com.norbert.koller.shared.fragments.bottomsheet.list
 
-import android.content.DialogInterface
-import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.FrameLayout
-import android.widget.SearchView
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doOnTextChanged
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.ListItem
-import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListToggleStaticBsdfFragmentViewModel
 
 abstract class ListToggleBsdfFragment() : ListBsdfFragment() {
 

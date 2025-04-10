@@ -1,4 +1,4 @@
-package com.norbert.koller.shared.fragments.bottomsheet
+package com.norbert.koller.shared.fragments.bottomsheet.list
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -7,7 +7,6 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.data.ListToggleItem
@@ -20,13 +19,6 @@ class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
 
     fun getAdapter() : ListRecyclerAdapter{
         return getRecyclerView().adapter as ListRecyclerAdapter
-    }
-
-    fun setup(activity : AppCompatActivity, list : ArrayList<ListItem>? = null, alreadyChecked : MutableSet<Int>? = null, title: String? = null, collapseText: Boolean = false) : ListBsdfFragment{
-        setup(activity, title, collapseText)
-        getToggleViewModel().list.value = list
-        getToggleViewModel().selectedItems = alreadyChecked?: mutableSetOf()
-        return this
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

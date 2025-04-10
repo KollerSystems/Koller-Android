@@ -3,8 +3,7 @@ package com.norbert.koller.shared.recycleradapters
 import android.annotation.SuppressLint
 import android.view.View.GONE
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 
 class ListCardRecyclerAdapter(bottomSheet : ListCardStaticBsdfFragment) : ListRecyclerAdapter(bottomSheet) {
 

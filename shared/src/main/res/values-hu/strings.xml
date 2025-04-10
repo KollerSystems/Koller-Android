@@ -505,4 +505,6 @@
     <string name="staffing_control">Létszámellenőrzés</string>
     <string name="application">Alkalmazás</string>
     <string name="outgoing">Kimenő</string>
+    <string name="create_photo">Fénykép készítése</string>
+    <string name="select_photo">Fénykép kiválasztása</string>
 </resources>

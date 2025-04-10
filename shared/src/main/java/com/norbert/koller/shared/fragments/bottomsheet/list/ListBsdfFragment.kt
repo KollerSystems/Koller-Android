@@ -1,21 +1,12 @@
-package com.norbert.koller.shared.fragments.bottomsheet
+package com.norbert.koller.shared.fragments.bottomsheet.list
 
-import android.content.DialogInterface
 import android.os.Bundle
-import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.View
-import android.view.ViewGroup
-import android.view.WindowManager
-import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.widget.doOnTextChanged
 import androidx.recyclerview.widget.RecyclerView
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.managers.getAttributeColor
-import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter
+import com.norbert.koller.shared.fragments.bottomsheet.RecyclerBsdfFragment
 import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
 
 abstract class ListBsdfFragment() : RecyclerBsdfFragment() {
 
@@ -24,21 +15,6 @@ abstract class ListBsdfFragment() : RecyclerBsdfFragment() {
     var getValuesOnFinish: ((listOftTrue : MutableSet<Int>, localizedStrings : ArrayList<String>) -> Unit)? = null
 
     lateinit var viewModel: ListBsdfFragmentViewModel
-
-
-    protected fun setup(activity : AppCompatActivity, title : String? = null, collapseText : Boolean = false) : ListBsdfFragment{
-        viewModel = setViewModel(activity)
-
-        val bundle = Bundle()
-        bundle.putString("title", title)
-        bundle.putBoolean("collapseText", collapseText)
-
-        this.arguments = bundle
-
-        viewModel.title = title
-        viewModel.collapseText = collapseText
-        return this
-    }
 
     fun setRecyclerView(adapter : RecyclerView.Adapter<*>){
         getRecyclerView().adapter = adapter

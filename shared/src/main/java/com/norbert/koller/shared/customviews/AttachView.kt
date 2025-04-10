@@ -22,12 +22,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.databinding.ViewAttachBinding
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.PhotoListBsdFragment
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.stfalcon.imageviewer.StfalconImageViewer
 
@@ -38,40 +37,12 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
 
     var mTitle : String = ""
 
-    var camUri : Uri? = null
-    var startCamera : ActivityResultLauncher<Intent>? = null
-    var startGallery : ActivityResultLauncher<Intent>? = null
 
     fun showDialog(){
         val fragmentManager = (context as AppCompatActivity)
-        val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
-            ListCardItem("Fénykép készítése", null, AppCompatResources.getDrawable(context, R.drawable.camera), {
-
-                if (ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
-
-                    ActivityCompat.requestPermissions(context as AppCompatActivity, arrayOf(Manifest.permission.CAMERA), 845)
-
-                } else {
-                    val values = ContentValues()
-                    values.put(MediaStore.Images.Media.TITLE, "New Picture")
-                    values.put(MediaStore.Images.Media.DESCRIPTION, "From Camera")
-                    camUri = context.contentResolver.insert(
-                        MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                        values
-                    )
-                    val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-                    cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, camUri)
-
-                    startCamera!!.launch(cameraIntent)
-                }
-            }),
-            ListCardItem("Fénykép kiválasztása", null, AppCompatResources.getDrawable(context, R.drawable.gallery), {
-                val galleryIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-                galleryIntent.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, false)
-                galleryIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
-                startGallery!!.launch(galleryIntent)
-            })
-        )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+        val dialog = PhotoListBsdFragment()
+        dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+        dialog.onAttach = {fragment, uri -> addImage(fragment, uri)}
     }
 
     fun resetUI(){
@@ -123,27 +94,6 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
 
         }
 
-    }
-
-    fun setupCamera(fragment: Fragment){
-        startCamera = fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                addImage(fragment, camUri)
-            }
-        }
-
-        startGallery = fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data: Intent? = result.data
-                if (data != null) {
-                    val uri: Uri? = data.data
-                    if (uri != null) {
-                        addImage(fragment, uri)
-
-                    }
-                }
-            }
-        }
     }
 
     init {

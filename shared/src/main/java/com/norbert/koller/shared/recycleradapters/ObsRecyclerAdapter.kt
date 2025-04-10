@@ -28,13 +28,12 @@ import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.TodayData
 import com.norbert.koller.shared.fragments.bottomsheet.MessageBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdfFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.OutgoingBsdf
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper

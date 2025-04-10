@@ -9,10 +9,8 @@ import com.norbert.koller.shared.R as Rs
 import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.ButtonParameters
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
-import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 import com.norbert.koller.teacher.activities.CreatePlacesActivity
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.activities.RoomRateActivity

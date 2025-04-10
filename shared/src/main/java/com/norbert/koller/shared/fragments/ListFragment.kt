@@ -2,22 +2,17 @@ package com.norbert.koller.shared.fragments
 
 
 import android.animation.ValueAnimator
-import android.content.Intent
 import android.graphics.Color
-import android.graphics.drawable.Drawable
-import android.graphics.pdf.models.ListItem
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
-import android.view.Display
 import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.LayoutParams.MATCH_PARENT
 import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.inputmethod.EditorInfo
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.LinearLayout.VERTICAL
 import androidx.appcompat.app.AppCompatActivity
@@ -26,42 +21,33 @@ import androidx.appcompat.view.ContextThemeWrapper
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import androidx.core.animation.doOnEnd
 import androidx.core.view.children
-import androidx.core.view.iterator
 import androidx.core.view.marginEnd
 import androidx.core.view.updatePadding
-import androidx.core.widget.doBeforeTextChanged
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.google.android.material.snackbar.Snackbar
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.activities.MainActivity
-import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.FilterConfigData
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
-import com.norbert.koller.shared.recycleradapters.PagingSource
 import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.shared.viewmodels.ListApiComplexViewModel
-import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import java.util.ArrayList
 
 data class ButtonParameters(val text: String, val iconID : Int = R.drawable.add, val onClick: () -> Unit)
 

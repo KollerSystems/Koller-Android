@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.databinding.ItemCheckBoxBinding
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 
 abstract class ListRecyclerAdapter(val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListRecyclerAdapter.ListViewHolder>() {

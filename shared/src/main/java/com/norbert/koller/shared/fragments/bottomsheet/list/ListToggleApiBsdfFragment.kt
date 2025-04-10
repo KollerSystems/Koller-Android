@@ -1,4 +1,4 @@
-package com.norbert.koller.shared.fragments.bottomsheet
+package com.norbert.koller.shared.fragments.bottomsheet.list
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -6,37 +6,23 @@ import android.os.Handler
 import android.os.Looper
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.google.android.material.bottomsheet.BottomSheetBehavior
-import com.google.android.material.snackbar.Snackbar
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.activities.MainActivity
 import com.norbert.koller.shared.api.ApiDataObject
-import com.norbert.koller.shared.api.ApiDataObjectUser
 import com.norbert.koller.shared.customviews.SearchView
-import com.norbert.koller.shared.data.ListToggleItem
-import com.norbert.koller.shared.data.UserData
-import com.norbert.koller.shared.databinding.ItemLoadingBinding
-import com.norbert.koller.shared.helpers.DateTimeHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.managers.DataStoreManager
-import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListToggleApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
-import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
 import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
 import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
 import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import retrofit2.Response
 
 class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
 

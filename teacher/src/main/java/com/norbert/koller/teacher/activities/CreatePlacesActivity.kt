@@ -10,9 +10,8 @@ import androidx.appcompat.content.res.AppCompatResources
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.setup
 

@@ -1,7 +1,6 @@
 package com.norbert.koller.shared.helpers
 
 import android.content.ContextWrapper
-import android.content.SyncResult
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.util.Pair
@@ -11,15 +10,14 @@ import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ApiDataObject
-import com.norbert.koller.shared.data.BaseData
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.managers.checkByPass
-import com.norbert.koller.shared.fragments.bottomsheet.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListCardStaticBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleApiBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.ListToggleStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListToggleApiBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListToggleStaticBsdfFragment
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.formatDate
