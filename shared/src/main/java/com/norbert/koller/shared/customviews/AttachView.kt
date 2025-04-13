@@ -1,31 +1,19 @@
 package com.norbert.koller.shared.customviews
 
-import android.Manifest
-import android.app.Activity.RESULT_OK
-import android.content.ContentValues
 import android.content.Context
-import android.content.Intent
-import android.content.pm.PackageManager
 import android.graphics.Color
 import android.net.Uri
-import android.provider.MediaStore
 import android.util.AttributeSet
 import android.view.LayoutInflater
-import androidx.activity.result.ActivityResultLauncher
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.R
-import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.databinding.ViewAttachBinding
 import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.list.PhotoListBsdFragment
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.stfalcon.imageviewer.StfalconImageViewer
@@ -42,7 +30,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
         val fragmentManager = (context as AppCompatActivity)
         val dialog = PhotoListBsdFragment()
         dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
-        dialog.onAttach = {fragment, uri -> addImage(fragment, uri)}
+        dialog.onFinish = { fragment, uri -> addImage(fragment, uri)}
     }
 
     fun resetUI(){

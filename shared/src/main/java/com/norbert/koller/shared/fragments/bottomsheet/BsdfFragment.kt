@@ -54,7 +54,6 @@ abstract class BsdfFragment : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
     }
 
     fun addEndIcon(drawableId : Int){

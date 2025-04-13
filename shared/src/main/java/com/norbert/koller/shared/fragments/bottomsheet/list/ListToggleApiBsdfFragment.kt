@@ -12,47 +12,29 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.norbert.koller.shared.api.ApiDataObject
 import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.CacheManager
 import com.norbert.koller.shared.recycleradapters.ListToggleApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSource
-import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListToggleBsdfFragmentViewModel
+import com.norbert.koller.shared.viewmodels.ListBsdfFragmentPropertiesViewModel
+import com.norbert.koller.shared.viewmodels.ListBsdfFragmentToggleViewModel
 import com.norbert.koller.shared.viewmodels.ListViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class ListToggleApiBsdfFragment() : ListToggleBsdfFragment() {
+class ListToggleApiBsdfFragment() : ListBsdfFragment() {
 
     lateinit var pagingViewModel : ListViewModel
-
-    //TODO: Úgy szar, ahogy van
-
-    fun setup(activity : AppCompatActivity, apiDataObject: ApiDataObject, alreadyChecked : MutableSet<Int>? = null, title: String? = null, collapseText: Boolean = false) : ListBsdfFragment{
-        setup(activity, title, collapseText)
-        pagingViewModel = ViewModelProvider(activity)[ListViewModel::class.java]
-        pagingViewModel.selectedItems = alreadyChecked?: mutableSetOf()
-        pagingViewModel.apiDataObject = apiDataObject
-        return this
-    }
 
     fun getAdapter(): ListToggleApiRecyclerAdapter {
         return getRecyclerView().adapter as ListToggleApiRecyclerAdapter
     }
 
-    override fun setViewModel(activity : AppCompatActivity): ListBsdfFragmentViewModel {
-        return ViewModelProvider(activity)[ListToggleBsdfFragmentViewModel::class.java]
-    }
-
-    fun apiViewModel() : ListToggleBsdfFragmentViewModel {
-        return viewModel as ListToggleBsdfFragmentViewModel
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        pagingViewModel = ViewModelProvider(requireActivity() as AppCompatActivity)[ListViewModel::class.java]
+        pagingViewModel = ViewModelProvider(this)[ListViewModel::class.java]
 
         setRecyclerView(ListToggleApiRecyclerAdapter(this))
 

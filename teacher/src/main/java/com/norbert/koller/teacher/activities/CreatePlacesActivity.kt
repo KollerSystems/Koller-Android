@@ -11,7 +11,7 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.setup
 
@@ -55,7 +55,7 @@ class CreatePlacesActivity : EditableToolbarActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = ListCardStaticBsdfFragment().setup(this, arrayListOf(
+            val dialog = ListCardBsdfFragment().setup(this, arrayListOf(
                 ListCardItem(
                     getString(com.norbert.koller.shared.R.string.rooms),
                     null,

@@ -6,19 +6,26 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.setFragmentResult
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.ViewModelProvider
 import com.norbert.koller.shared.customviews.SearchView
-import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.data.ListToggleItem
 import com.norbert.koller.shared.recycleradapters.ListRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.ListToggleStaticRecyclerAdapter
-import com.norbert.koller.shared.viewmodels.ListBsdfFragmentViewModel
-import com.norbert.koller.shared.viewmodels.ListToggleStaticBsdfFragmentViewModel
+import com.norbert.koller.shared.viewmodels.ListBsdfFragmentCardViewModel
+import com.norbert.koller.shared.viewmodels.ListBsdfFragmentPropertiesViewModel
+import com.norbert.koller.shared.viewmodels.ListBsdfFragmentToggleViewModel
 
-class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
+class ListToggleStaticBsdfFragment() : ListCardBsdfFragment() {
 
-    fun getAdapter() : ListRecyclerAdapter{
-        return getRecyclerView().adapter as ListRecyclerAdapter
+
+    override fun getSetViewModel() : ListBsdfFragmentCardViewModel {
+        return ViewModelProvider(this)[ListBsdfFragmentToggleViewModel::class.java]
+    }
+
+    fun getToggleViewModel() : ListBsdfFragmentToggleViewModel{
+        return viewModel as ListBsdfFragmentToggleViewModel
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -32,19 +39,10 @@ class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
         }
     }
 
-    override fun setViewModel(activity : AppCompatActivity): ListBsdfFragmentViewModel {
-        return ViewModelProvider(activity)[ListToggleStaticBsdfFragmentViewModel::class.java]
-    }
-
-    fun getToggleViewModel() : ListToggleStaticBsdfFragmentViewModel{
-        return viewModel as ListToggleStaticBsdfFragmentViewModel
-    }
-
     override fun onCancel(dialog: DialogInterface) {
 
-        Log.d("TEST", getValuesOnFinish.toString())
 
-        if(getValuesOnFinish != null && getRecyclerView().adapter != null) {
+        if(getRecyclerView().adapter != null) {
 
             getAdapter().filter("")
 
@@ -57,16 +55,11 @@ class ListToggleStaticBsdfFragment() : ListToggleBsdfFragment() {
                 }
             }
 
-            getValuesOnFinish!!.invoke(getToggleViewModel().selectedItems, localizedStringList)
+            setFragmentResult("", Bundle(getToggleViewModel().selectedItems, localizedStringList))
+
         }
 
         getToggleViewModel().selectedItems = mutableSetOf()
         super.onCancel(dialog)
-    }
-
-    override fun setupSearch(searchView: SearchView) {
-        searchView.getEditText().doOnTextChanged { text, start, before, count ->
-            getAdapter().filter(text.toString())
-        }
     }
 }

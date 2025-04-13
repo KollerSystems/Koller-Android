@@ -15,7 +15,6 @@ import android.view.ViewGroup.LayoutParams.WRAP_CONTENT
 import android.view.inputmethod.EditorInfo
 import android.widget.LinearLayout
 import android.widget.LinearLayout.VERTICAL
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.appcompat.view.ContextThemeWrapper
 import androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -38,14 +37,12 @@ import com.norbert.koller.shared.customviews.SearchView
 import com.norbert.koller.shared.customviews.SuperCoolRecyclerView
 import com.norbert.koller.shared.data.FilterConfigData
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.managers.ApplicationManager
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.recycleradapters.ApiRecyclerAdapter
 import com.norbert.koller.shared.recycleradapters.PagingSourceWithSeparator
-import com.norbert.koller.shared.viewmodels.ListApiComplexViewModel
+import com.norbert.koller.shared.viewmodels.ListApiViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
@@ -55,8 +52,8 @@ abstract class ListFragment() : SearchFragment() {
 
     var snackbar : Snackbar? = null
 
-    fun getBaseViewModel() : ListApiComplexViewModel {
-        return viewModel as ListApiComplexViewModel
+    fun getBaseViewModel() : ListApiViewModel {
+        return viewModel as ListApiViewModel
     }
 
     lateinit var scRecyclerView : SuperCoolRecyclerView
@@ -70,7 +67,7 @@ abstract class ListFragment() : SearchFragment() {
 
 
     override fun assignViewModel() {
-        viewModel = ViewModelProvider(this)[ListApiComplexViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ListApiViewModel::class.java]
 
         if(arguments != null) {
             val filters: FilterConfigData? = arguments?.getParcelable("filters")
@@ -312,8 +309,8 @@ abstract class ListFragment() : SearchFragment() {
             }
 
             if(fit == false){
-                val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), listCardItems as kotlin.collections.ArrayList<com.norbert.koller.shared.data.ListItem>?)
-                viewToAddButton.getChildAt(viewToAddButton.childCount-1).setOnClickListener { dialog.show(parentFragmentManager, ListBsdfFragment.TAG) }
+                /*val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), listCardItems as kotlin.collections.ArrayList<com.norbert.koller.shared.data.ListItem>?)
+                viewToAddButton.getChildAt(viewToAddButton.childCount-1).setOnClickListener { dialog.show(parentFragmentManager, ListBsdfFragment.TAG) }*/
             }
         }
     }

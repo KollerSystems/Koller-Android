@@ -10,7 +10,7 @@ import com.norbert.koller.teacher.R
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.fragments.ButtonParameters
 import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardBsdfFragment
 import com.norbert.koller.teacher.activities.CreatePlacesActivity
 import com.norbert.koller.teacher.activities.RoomPresenceActivity
 import com.norbert.koller.teacher.activities.RoomRateActivity
@@ -21,7 +21,7 @@ class RoomListFragment() : com.norbert.koller.shared.fragments.RoomListFragment(
         super.onViewCreated(view, savedInstanceState)
 
         addButtons(ButtonParameters(getString(R.string.create_places), onClick = {
-            val dialog = ListCardStaticBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
+            val dialog = ListCardBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
                 ListCardItem(
                     getString(Rs.string.rooms),
                     null,

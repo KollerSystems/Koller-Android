@@ -3,7 +3,7 @@ package com.norbert.koller.shared.viewmodels
 import androidx.lifecycle.MutableLiveData
 import com.norbert.koller.shared.data.ListItem
 
-class ListToggleStaticBsdfFragmentViewModel : ListToggleBsdfFragmentViewModel() {
+class ListBsdfFragmentToggleViewModel : ListBsdfFragmentCardViewModel() {
 
     var selectedItems : MutableSet<Int> = mutableSetOf()
 }

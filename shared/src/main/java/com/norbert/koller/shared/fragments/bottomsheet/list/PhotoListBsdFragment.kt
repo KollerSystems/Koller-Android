@@ -20,20 +20,44 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.ListCardItem
 import com.norbert.koller.shared.data.ListItem
 
-class PhotoListBsdFragment : ListCardStaticBsdfFragment() {
+class PhotoListBsdFragment : ListCardBsdfFragment() {
 
-    var onAttach: ((fragment : Fragment, uri: Uri?) -> Unit)? = null
+    var onFinish: ((fragment : Fragment, uri: Uri?) -> Unit)? = null
 
-    var camUri : Uri? = null
-    var startCamera : ActivityResultLauncher<Intent>? = null
-    var startGallery : ActivityResultLauncher<Intent>? = null
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        var camUri : Uri? = null
+
+        var startCamera : ActivityResultLauncher<Intent>? = null
+        var startGallery : ActivityResultLauncher<Intent>? = null
+
+        fun setupCamera(fragment: Fragment){
+            startCamera = fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    onFinish?.invoke(fragment, camUri)
+                }
+            }
+
+            startGallery = fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val data: Intent? = result.data
+                    if (data != null) {
+                        val uri: Uri? = data.data
+                        if (uri != null) {
+                            onFinish?.invoke(fragment, camUri)
+                        }
+                    }
+                }
+            }
+        }
+
         setupCamera(this)
 
-        viewModel.list.value = arrayListOf<ListItem>(ListCardItem(getString(R.string.create_photo), null, AppCompatResources.getDrawable(requireContext(), R.drawable.camera), {
+        getCardViewModel().list.value = arrayListOf<ListItem>(ListCardItem(getString(R.string.create_photo), null, AppCompatResources.getDrawable(requireContext(), R.drawable.camera), {
 
             if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED ) {
 
@@ -59,26 +83,6 @@ class PhotoListBsdFragment : ListCardStaticBsdfFragment() {
             galleryIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true)
             startGallery!!.launch(galleryIntent)
         }))
-    }
-
-    fun setupCamera(fragment: Fragment){
-        startCamera = fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                onAttach?.invoke(fragment, camUri)
-            }
-        }
-
-        startGallery = fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data: Intent? = result.data
-                if (data != null) {
-                    val uri: Uri? = data.data
-                    if (uri != null) {
-                        onAttach?.invoke(fragment, camUri)
-                    }
-                }
-            }
-        }
     }
 
 

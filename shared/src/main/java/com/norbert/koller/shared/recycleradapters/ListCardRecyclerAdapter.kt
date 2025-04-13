@@ -3,14 +3,14 @@ package com.norbert.koller.shared.recycleradapters
 import android.annotation.SuppressLint
 import android.view.View.GONE
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardBsdfFragment
 
-class ListCardRecyclerAdapter(bottomSheet : ListCardStaticBsdfFragment) : ListRecyclerAdapter(bottomSheet) {
+class ListCardRecyclerAdapter(bottomSheet : ListCardBsdfFragment) : ListRecyclerAdapter(bottomSheet) {
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         super.onBindViewHolder(holder, position)
-        bottomSheet as ListCardStaticBsdfFragment
+        bottomSheet as ListCardBsdfFragment
 
         val currentItem = bottomSheet.getListCardStaticViewModel().list.value!![position] as ListCardItem
 

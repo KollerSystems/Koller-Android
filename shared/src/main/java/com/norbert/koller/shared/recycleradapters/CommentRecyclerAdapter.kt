@@ -12,7 +12,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.CommentData
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardBsdfFragment
 
 
 class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, private val context: Context) : RecyclerView.Adapter<CommentRecyclerAdapter.CommentViewHolder>()
@@ -52,7 +52,7 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, 
             buttonMore.setOnClickListener {
 
                 val fragmentManager = (context as AppCompatActivity)
-                ListCardStaticBsdfFragment().setup(context, arrayListOf(
+                ListCardBsdfFragment().setup(context, arrayListOf(
                     ListCardItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag))
                 )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
 

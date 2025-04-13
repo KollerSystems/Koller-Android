@@ -3,40 +3,17 @@ package com.norbert.koller.shared.recycleradapters
 import android.annotation.SuppressLint
 import android.content.Context
 import android.icu.text.SimpleDateFormat
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
-import androidx.paging.PagingSource
-import androidx.paging.PagingState
-import com.google.android.material.chip.Chip
-import com.norbert.koller.shared.R
-import com.norbert.koller.shared.api.APIInterface
-import com.norbert.koller.shared.api.ApiDataObject
-import com.norbert.koller.shared.api.RetrofitInstance
 import com.norbert.koller.shared.data.BaseData
-import com.norbert.koller.shared.data.ErrorData
-import com.norbert.koller.shared.data.ExpiringListData
 import com.norbert.koller.shared.helpers.ApiHelper
 import com.norbert.koller.shared.helpers.DateTimeHelper
-import com.norbert.koller.shared.managers.CacheManager
-import com.norbert.koller.shared.managers.DataStoreManager
 import com.norbert.koller.shared.managers.formatDate
-import com.norbert.koller.shared.viewmodels.DetailsViewModel
-import com.norbert.koller.shared.viewmodels.ListApiComplexViewModel
-import com.norbert.koller.shared.viewmodels.ListViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import retrofit2.Response
-import java.util.Date
-import kotlin.random.Random
+import com.norbert.koller.shared.viewmodels.ListApiViewModel
 
 
-class PagingSourceWithSeparator(context: Context, viewModel: ListApiComplexViewModel) : com.norbert.koller.shared.recycleradapters.PagingSource(context, viewModel)  {
+class PagingSourceWithSeparator(context: Context, viewModel: ListApiViewModel) : com.norbert.koller.shared.recycleradapters.PagingSource(context, viewModel)  {
 
-    fun getListApiComplexViewModel() : ListApiComplexViewModel{
-        return viewModel as ListApiComplexViewModel
+    fun getListApiComplexViewModel() : ListApiViewModel{
+        return viewModel as ListApiViewModel
     }
 
     private var lastFirstChar : String? = null

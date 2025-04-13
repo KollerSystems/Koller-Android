@@ -33,7 +33,7 @@ import com.norbert.koller.shared.fragments.bottomsheet.RoomOrderBsdfFragment
 import com.google.android.material.card.MaterialCardView
 import com.google.android.material.imageview.ShapeableImageView
 import com.norbert.koller.shared.data.ListCardItem
-import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardStaticBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardBsdfFragment
 import com.norbert.koller.shared.fragments.bottomsheet.OutgoingBsdf
 import com.norbert.koller.shared.managers.getAttributeColor
 import com.norbert.koller.shared.helpers.RecyclerViewHelper
@@ -166,7 +166,7 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            ListCardStaticBsdfFragment().setup(context, arrayListOf(
+            ListCardBsdfFragment().setup(context, arrayListOf(
                 ListCardItem(text, null, icon, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)

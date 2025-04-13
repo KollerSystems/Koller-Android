@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import androidx.core.widget.doBeforeTextChanged
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.chip.Chip
-import com.google.android.material.chip.ChipGroup
 import com.norbert.koller.shared.R
 import com.norbert.koller.shared.api.ApiDataObject
 import com.norbert.koller.shared.data.ListItem
@@ -18,17 +15,14 @@ import com.norbert.koller.shared.databinding.FragmentSearchBinding
 import com.norbert.koller.shared.helpers.connectToCheckBoxList
 import com.norbert.koller.shared.helpers.connectToDateRangePicker
 import com.norbert.koller.shared.helpers.connectToDateRangePickerWithTemplates
-import com.norbert.koller.shared.viewmodels.ListApiComplexViewModel
-import com.norbert.koller.shared.viewmodels.ListViewModel
-import com.norbert.koller.shared.viewmodels.SearchViewModel
-import retrofit2.Response
+import com.norbert.koller.shared.viewmodels.ListApiViewModel
 
 
 abstract class SearchFragment() : FragmentInMainActivity() {
 
     lateinit var binding : FragmentSearchBinding
 
-    lateinit var viewModel : ListApiComplexViewModel
+    lateinit var viewModel : ListApiViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -39,7 +33,7 @@ abstract class SearchFragment() : FragmentInMainActivity() {
     }
 
     open fun assignViewModel(){
-        viewModel = ViewModelProvider(this)[ListApiComplexViewModel::class.java]
+        viewModel = ViewModelProvider(this)[ListApiViewModel::class.java]
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
