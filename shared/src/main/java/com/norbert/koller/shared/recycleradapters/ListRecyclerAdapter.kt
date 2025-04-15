@@ -14,25 +14,27 @@ import com.norbert.koller.shared.R
 import com.norbert.koller.shared.data.ListItem
 import com.norbert.koller.shared.databinding.ItemCheckBoxBinding
 import com.norbert.koller.shared.fragments.bottomsheet.list.ListBsdfFragment
+import com.norbert.koller.shared.fragments.bottomsheet.list.ListCardBsdfFragment
 import com.norbert.koller.shared.managers.ApplicationManager
+import com.norbert.koller.shared.viewmodels.ListBsdfFragmentCardViewModel
 
-abstract class ListRecyclerAdapter(val bottomSheet : ListBsdfFragment) : RecyclerView.Adapter<ListRecyclerAdapter.ListViewHolder>() {
+abstract class ListRecyclerAdapter(val bottomSheet : ListCardBsdfFragment) : RecyclerView.Adapter<ListRecyclerAdapter.ListViewHolder>() {
 
     var itemsCopy : ArrayList<ListItem>? = null
 
     fun filter(text: String) {
         if(itemsCopy == null){
-            itemsCopy = ArrayList(bottomSheet.viewModel.list.value!!)
+            itemsCopy = ArrayList(bottomSheet.getCardViewModel().list.value!!)
         }
-        bottomSheet.viewModel.list.value!!.clear()
+        bottomSheet.getCardViewModel().list.value!!.clear()
         if (text.isEmpty()) {
-            bottomSheet.viewModel.list.value!!.addAll(itemsCopy!!)
+            bottomSheet.getCardViewModel().list.value!!.addAll(itemsCopy!!)
         } else {
             for (item in itemsCopy!!) {
                 Log.d("ASDASD",text + " ::: ${item.title} ${item.description.toString()}")
                 val regexSearch = Regex(ApplicationManager.searchWithRegex(text), RegexOption.IGNORE_CASE)
                 if (regexSearch.containsMatchIn("${item.title} ${item.description.toString()}")) {
-                    bottomSheet.viewModel.list.value!!.add(item)
+                    bottomSheet.getCardViewModel().list.value!!.add(item)
                 }
             }
         }
@@ -52,7 +54,7 @@ abstract class ListRecyclerAdapter(val bottomSheet : ListBsdfFragment) : Recycle
         params.setMargins(0,margin,0,margin)
         holder.itemView.layoutParams = params
 
-        val currentItem = bottomSheet.viewModel.list.value!![position]
+        val currentItem = bottomSheet.getCardViewModel().list.value!![position]
 
         if(!bottomSheet.viewModel.collapseText) {
             holder.itemBinding.textTitle.text = currentItem.title
@@ -75,7 +77,7 @@ abstract class ListRecyclerAdapter(val bottomSheet : ListBsdfFragment) : Recycle
     }
 
     override fun getItemCount(): Int {
-        return bottomSheet.viewModel.list.value!!.size
+        return bottomSheet.getCardViewModel().list.value!!.size
     }
 
     class ListViewHolder(var itemBinding: ItemCheckBoxBinding) : RecyclerView.ViewHolder(itemBinding.root)

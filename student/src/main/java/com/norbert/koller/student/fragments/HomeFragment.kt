@@ -52,12 +52,12 @@ class HomeFragment : com.norbert.koller.shared.fragments.HomeFragment() {
 
         cardOutgoing = view.findViewById(R.id.home_card_outgoing)
         cardOutgoing.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView().selectedItemId = Rs.id.browse
+            (requireActivity() as MainActivity).getNavigationView().selectedItemId = Rs.id.browse
         }
 
         cardLessons = view.findViewById(R.id.home_card_lessons)
         cardLessons.setOnClickListener{
-            (requireActivity() as MainActivity).bottomNavigationView().selectedItemId = Rs.id.calendar
+            (requireActivity() as MainActivity).getNavigationView().selectedItemId = Rs.id.calendar
         }
 
 

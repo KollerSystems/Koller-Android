@@ -12,7 +12,7 @@ class ListCardRecyclerAdapter(bottomSheet : ListCardBsdfFragment) : ListRecycler
         super.onBindViewHolder(holder, position)
         bottomSheet as ListCardBsdfFragment
 
-        val currentItem = bottomSheet.getListCardStaticViewModel().list.value!![position] as ListCardItem
+        val currentItem = bottomSheet.getCardViewModel().list.value!![position] as ListCardItem
 
         holder.itemBinding.checkBox.visibility = GONE
 

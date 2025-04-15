@@ -6,7 +6,7 @@ import com.norbert.koller.shared.helpers.dateDoubleToString
 
 class TimeRangesListBsdFragment  {
 
-    ListCardStaticBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayListOf(
+    /*ListCardStaticBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayListOf(
     ListCardItem(context.getString(R.string.this_day), null, AppCompatResources.getDrawable(context, R.drawable.today), {
         setViewModelAndChip(getEndOfTodayAndStartOfSpecificDayAgo(0))
     }),
@@ -47,6 +47,6 @@ class TimeRangesListBsdFragment  {
 
         drpd.show(fragmentManager, "MATERIAL_DATE_RANGE_PICKER")
     })
-    ), context.getString(R.string.date)).show(fragmentManager, ListBsdfFragment.TAG)
+    ), context.getString(R.string.date)).show(fragmentManager, ListBsdfFragment.TAG)*/
 
 }

@@ -20,7 +20,7 @@ class RoomListFragment() : com.norbert.koller.shared.fragments.RoomListFragment(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        addButtons(ButtonParameters(getString(R.string.create_places), onClick = {
+        addButtons(ButtonParameters(getString(R.string.create_places), onClick = {/*
             val dialog = ListCardBsdfFragment().setup((context as AppCompatActivity), arrayListOf(
                 ListCardItem(
                     getString(Rs.string.rooms),
@@ -41,7 +41,7 @@ class RoomListFragment() : com.norbert.koller.shared.fragments.RoomListFragment(
         }),ButtonParameters(getString(Rs.string.staffing_control), Rs.drawable.presence, {
             val intent = Intent(requireContext(), RoomPresenceActivity::class.java)
             startActivity(intent)
-        }))
+        */}))
     }
 
 }

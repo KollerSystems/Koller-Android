@@ -52,9 +52,9 @@ class CommentRecyclerAdapter (private val commentList : ArrayList<CommentData>, 
             buttonMore.setOnClickListener {
 
                 val fragmentManager = (context as AppCompatActivity)
-                ListCardBsdfFragment().setup(context, arrayListOf(
+                /*ListCardBsdfFragment().setup(context, arrayListOf(
                     ListCardItem(context.getString(R.string.report), null, AppCompatResources.getDrawable(itemView.context, R.drawable.flag))
-                )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+                )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)*/
 
 
 

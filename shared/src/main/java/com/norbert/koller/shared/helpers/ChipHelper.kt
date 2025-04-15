@@ -158,7 +158,7 @@ fun Chip.connectToDateRangePickerWithTemplates(fragment : androidx.fragment.app.
 
     setOnClickListener {
 
-        ListCardBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayListOf(
+        /*ListCardBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayListOf(
             ListCardItem(context.getString(R.string.this_day), null, AppCompatResources.getDrawable(context, R.drawable.today), {
                 setViewModelAndChip(getEndOfTodayAndStartOfSpecificDayAgo(0))
             }),
@@ -199,7 +199,7 @@ fun Chip.connectToDateRangePickerWithTemplates(fragment : androidx.fragment.app.
 
                 drpd.show(fragment.parentFragmentManager, "MATERIAL_DATE_RANGE_PICKER")
             })
-        ), context.getString(R.string.date)).show(fragment.parentFragmentManager, ListBsdfFragment.TAG)
+        ), context.getString(R.string.date)).show(fragment.parentFragmentManager, ListBsdfFragment.TAG)*/
     }
 }
 
@@ -217,7 +217,7 @@ fun Chip.setChip(localizedNameSting : String, localizedFilterId : Int, viewModel
 }
 
 fun Chip.createAndSetChipText(viewModel: ListApiViewModel, filterName: String, classOfT: Class<*>, localizedFilterId : Int){
-    val strings : ArrayList<String> = arrayListOf()
+    val strings : ArrayList<String?> = arrayListOf()
 
     if(ChipHelper.getFilterValue(viewModel)[filterName]!!.isNotEmpty()){
         viewModel.viewModelScope.launch {
@@ -269,12 +269,13 @@ fun Chip.handleValuesOnFinish(fragment : androidx.fragment.app.Fragment, dialog 
 
     fragment.setFragmentResultListener("") {requestKey, bundle ->
 
+        var checkedValueSet = bundle.getIntArray("checkedValueArray")?.toMutableSet()
+        var localizedStringArray = bundle.getStringArrayList("localizedStringArray")
 
-
-        if (values.size != 0) {
-            val locNamesString = arrayToString(locNames)
+        if (checkedValueSet?.size != 0) {
+            val locNamesString = arrayToString(localizedStringArray!!)
             if (text.toString() != locNamesString) {
-                ChipHelper.changeFilterValue(viewModel, filterName, values)
+                ChipHelper.changeFilterValue(viewModel, filterName, checkedValueSet!!)
                 setChip(locNamesString, localizedFilterId, viewModel, filterName)
             }
         } else {
@@ -302,10 +303,10 @@ fun Chip.connectToCheckBoxList(fragment : androidx.fragment.app.Fragment, filter
     setOnClickListener {
 
 
-        val dialog = ListToggleApiBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), apiDataObject, ChipHelper.getFilterValue(viewModel)[filterName], context.getString(localizedFilterId), collapseText)
+        /*val dialog = ListToggleApiBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), apiDataObject, ChipHelper.getFilterValue(viewModel)[filterName], context.getString(localizedFilterId), collapseText)
 
 
-        handleValuesOnFinish(fragment, dialog, viewModel, filterName, localizedFilterId)
+        handleValuesOnFinish(fragment, dialog, viewModel, filterName, localizedFilterId)*/
 
     }
 }
@@ -314,7 +315,7 @@ fun Chip.connectToCheckBoxList(fragment : androidx.fragment.app.Fragment, filter
 
 
     if(ChipHelper.getFilterValue(viewModel).containsKey(filterName)){
-        val localizedStrings : ArrayList<String> = arrayListOf()
+        val localizedStrings : ArrayList<String?> = arrayListOf()
 
         for (tag in ChipHelper.getFilterValue(viewModel)[filterName]!!){
             for (elements in arrayList){
@@ -335,15 +336,15 @@ fun Chip.connectToCheckBoxList(fragment : androidx.fragment.app.Fragment, filter
     setOnClickListener {
 
 
-        val dialog = ListToggleStaticBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayList, ChipHelper.getFilterValue(viewModel)[filterName], context.getString(localizedFilterId))
+        /*val dialog = ListToggleStaticBsdfFragment().setup(((context as ContextWrapper).baseContext as AppCompatActivity), arrayList, ChipHelper.getFilterValue(viewModel)[filterName], context.getString(localizedFilterId))
 
 
-        handleValuesOnFinish(fragment, dialog, viewModel, filterName, localizedFilterId)
+        handleValuesOnFinish(fragment, dialog, viewModel, filterName, localizedFilterId)*/
     }
 }
 
-fun arrayToString(arrayList: ArrayList<String>) : String{
-    return Arrays.toString(arrayList.toArray()).replace("[", "").replace("]", "")
+fun arrayToString(arrayList: ArrayList<String?>) : String{
+    return arrayList.joinToString(prefix = "", postfix = "", separator = ", ")
 }
 
 fun dateDoubleToString(date : Pair<Long, Long>) : String{

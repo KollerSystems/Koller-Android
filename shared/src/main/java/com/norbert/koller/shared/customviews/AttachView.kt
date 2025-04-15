@@ -30,7 +30,9 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
         val fragmentManager = (context as AppCompatActivity)
         val dialog = PhotoListBsdFragment()
         dialog.show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
-        dialog.onFinish = { fragment, uri -> addImage(fragment, uri)}
+
+        /*dialog.onFinish = { fragment, uri -> addImage(fragment, uri)}*/
+
     }
 
     fun resetUI(){
@@ -47,7 +49,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
         }
     }
 
-    fun addImage(fragment: Fragment, uri: Uri?){
+    fun addImage(uri: Uri?){
 
         binding.image.setImageURI(uri)
         binding.image.isVisible = true
@@ -62,7 +64,7 @@ class AttachView(context: Context, attrs: AttributeSet): ConstraintLayout(contex
                 view.setImageDrawable(drawable)
             }
                 .withTransitionFrom(binding.image)
-                .show(fragment.parentFragmentManager)
+                .show((context as AppCompatActivity).supportFragmentManager)
         }
 
         binding.btnChange.setOnClickListener{

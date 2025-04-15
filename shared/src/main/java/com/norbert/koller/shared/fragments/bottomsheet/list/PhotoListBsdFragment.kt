@@ -22,11 +22,6 @@ import com.norbert.koller.shared.data.ListItem
 
 class PhotoListBsdFragment : ListCardBsdfFragment() {
 
-    var onFinish: ((fragment : Fragment, uri: Uri?) -> Unit)? = null
-
-
-
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -38,6 +33,7 @@ class PhotoListBsdFragment : ListCardBsdfFragment() {
         fun setupCamera(fragment: Fragment){
             startCamera = fragment.registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == RESULT_OK) {
+
                     onFinish?.invoke(fragment, camUri)
                 }
             }

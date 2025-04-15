@@ -10,6 +10,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.FrameLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.setFragmentResult
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.norbert.koller.shared.customviews.SearchView
@@ -117,9 +118,7 @@ class ListToggleApiBsdfFragment() : ListBsdfFragment() {
 
     override fun onCancel(dialog: DialogInterface) {
 
-        Log.d("TEST", getValuesOnFinish.toString())
 
-        if(getValuesOnFinish != null) {
 
             val displayStringList: ArrayList<String> = arrayListOf()
 
@@ -128,8 +127,9 @@ class ListToggleApiBsdfFragment() : ListBsdfFragment() {
                 displayStringList.add(CacheManager.getDetailsDataMapValue(pagingViewModel.apiDataObject!!.getDataType().simpleName, item)!!.getTitle())
             }
 
-            getValuesOnFinish!!.invoke(pagingViewModel.selectedItems, displayStringList)
-        }
+        /*setFragmentResult("", Bundle(pagingViewModel.selectedItems, displayStringList))*/
+
+
 
         pagingViewModel.selectedItems = mutableSetOf()
         super.onCancel(dialog)

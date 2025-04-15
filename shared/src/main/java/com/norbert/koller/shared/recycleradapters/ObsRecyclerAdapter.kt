@@ -166,12 +166,12 @@ class ObsRecyclerAdapter (private var todayList : ArrayList<TodayData>) : Recycl
         holder.itemView.setOnLongClickListener{
 
             val fragmentManager = (context as AppCompatActivity)
-            ListCardBsdfFragment().setup(context, arrayListOf(
+            /*ListCardBsdfFragment().setup(context, arrayListOf(
                 ListCardItem(text, null, icon, {
                     currentItem.read = !currentItem.read
                     notifyItemChanged(holder.bindingAdapterPosition)
                 })
-            )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)
+            )).show(fragmentManager.supportFragmentManager, ListBsdfFragment.TAG)*/
 
             return@setOnLongClickListener true
         }

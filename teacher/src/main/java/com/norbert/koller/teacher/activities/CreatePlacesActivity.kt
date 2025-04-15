@@ -55,7 +55,7 @@ class CreatePlacesActivity : EditableToolbarActivity() {
 
             currentFocus?.clearFocus()
 
-            val dialog = ListCardBsdfFragment().setup(this, arrayListOf(
+            /*val dialog = ListCardBsdfFragment().setup(this, arrayListOf(
                 ListCardItem(
                     getString(com.norbert.koller.shared.R.string.rooms),
                     null,
@@ -65,7 +65,7 @@ class CreatePlacesActivity : EditableToolbarActivity() {
                     })
 
             ))
-            dialog.show(supportFragmentManager, ListBsdfFragment.TAG)
+            dialog.show(supportFragmentManager, ListBsdfFragment.TAG)*/
 
         }
 

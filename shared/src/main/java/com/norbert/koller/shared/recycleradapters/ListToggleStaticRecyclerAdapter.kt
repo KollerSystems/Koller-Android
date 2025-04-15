@@ -14,7 +14,7 @@ class ListToggleStaticRecyclerAdapter (bottomSheet : ListToggleStaticBsdfFragmen
 
         bottomSheet as ListToggleStaticBsdfFragment
 
-        val currentItem = bottomSheet.viewModel.list.value!![position] as ListToggleItem
+        val currentItem = bottomSheet.getToggleViewModel().list.value!![position] as ListToggleItem
 
         holder.itemBinding.checkBox.setOnCheckedChangeListener(null)
         holder.itemBinding.checkBox.isChecked = bottomSheet.getToggleViewModel().selectedItems.contains(currentItem.id)

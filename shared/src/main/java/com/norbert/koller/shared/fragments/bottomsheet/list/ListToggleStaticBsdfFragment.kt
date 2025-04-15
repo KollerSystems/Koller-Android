@@ -55,7 +55,7 @@ class ListToggleStaticBsdfFragment() : ListCardBsdfFragment() {
                 }
             }
 
-            setFragmentResult("", Bundle(getToggleViewModel().selectedItems, localizedStringList))
+            /*setFragmentResult("", Bundle(getToggleViewModel().selectedItems, localizedStringList))*/
 
         }
 

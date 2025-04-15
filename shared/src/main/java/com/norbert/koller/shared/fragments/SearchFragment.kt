@@ -78,25 +78,25 @@ abstract class SearchFragment() : FragmentInMainActivity() {
 
     fun addDateChip(filterName : String = "Date", localizedId : Int = R.string.date){
         val chip = createChip()
-        chip.connectToDateRangePicker(parentFragmentManager, filterName, viewModel, localizedId)
+        chip.connectToDateRangePicker(this, filterName, viewModel, localizedId)
 
     }
 
     fun addDateChipWithTemplates(filterName : String = "Date"){
         val chip = createChip()
-        chip.connectToDateRangePickerWithTemplates(parentFragmentManager, filterName, viewModel)
+        chip.connectToDateRangePickerWithTemplates(this, filterName, viewModel)
 
     }
 
     fun addSortingChip(filterName : String, localizedNameId : Int, arrayList: ArrayList<ListItem>){
         val chip = createChip()
-        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, arrayList, viewModel)
+        chip.connectToCheckBoxList(this, filterName, localizedNameId, arrayList, viewModel)
 
     }
 
     fun addSortingChip(filterName : String, localizedNameId : Int, apiDataObject: ApiDataObject, collapseText : Boolean = false){
         val chip = createChip()
-        chip.connectToCheckBoxList(childFragmentManager, filterName, localizedNameId, apiDataObject, viewModel, collapseText)
+        chip.connectToCheckBoxList(this, filterName, localizedNameId, apiDataObject, viewModel, collapseText)
 
     }
 }
